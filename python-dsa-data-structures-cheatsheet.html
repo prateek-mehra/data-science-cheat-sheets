@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python DSA Data Structures Cheat Sheet</title>
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #52616b;
+      --line: #d7dee4;
+      --soft: #f5f7f9;
+      --blue: #0b67b2;
+      --green: #167a4a;
+      --amber: #9a5b00;
+      --red: #b42318;
+      --bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font: 13px/1.35 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      background: #eef3f7;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .toolbar button {
+      border: 1px solid #b8c7d3;
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font: 600 12px/1 Inter, ui-sans-serif, system-ui, sans-serif;
+      cursor: pointer;
+    }
+
+    .toolbar .hint {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .legend {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 8px;
+      color: var(--muted);
+      background: var(--soft);
+      white-space: nowrap;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .nav a {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 5px 9px;
+      color: var(--ink);
+      background: var(--soft);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav a.active {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      break-inside: avoid;
+    }
+
+    section.wide { grid-column: span 2; }
+    section.full { grid-column: 1 / -1; }
+
+    h2 {
+      margin: 0;
+      padding: 7px 9px;
+      color: #fff;
+      background: var(--ink);
+      font-size: 13px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h2.blue { background: var(--blue); }
+    h2.green { background: var(--green); }
+    h2.amber { background: var(--amber); }
+    h2.red { background: var(--red); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th, td {
+      vertical-align: top;
+      padding: 5px 7px;
+      border-top: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--muted);
+      background: var(--soft);
+      text-align: left;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    td:first-child, th:first-child { width: 37%; }
+    td:last-child, th:last-child { width: 24%; }
+
+    code {
+      font: 12px/1.3 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      color: #111827;
+      background: #f1f4f7;
+      border: 1px solid #e0e6eb;
+      border-radius: 4px;
+      padding: 1px 4px;
+      word-break: break-word;
+    }
+
+    pre {
+      margin: 0;
+      padding: 7px 9px;
+      overflow-x: auto;
+      border-top: 1px solid var(--line);
+      background: #fbfcfd;
+      font: 11px/1.35 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      white-space: pre-wrap;
+    }
+
+    pre code {
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font: inherit;
+      word-break: normal;
+    }
+
+    .note {
+      padding: 7px 9px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #fbfcfd;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .snippets {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+    }
+
+    .snippet {
+      min-width: 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .snippet:last-child { border-right: 0; }
+
+    .snippet h3 {
+      margin: 0;
+      padding: 6px 9px;
+      color: var(--muted);
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+      font-size: 11px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .split > div:first-child { border-right: 1px solid var(--line); }
+
+    ul {
+      margin: 0;
+      padding: 7px 9px 8px 23px;
+    }
+
+    li { margin: 2px 0; }
+
+    .hot {
+      color: var(--red);
+      font-weight: 800;
+    }
+
+    [contenteditable="true"] {
+      outline: 2px dashed #7aa7d9;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 900px) {
+      main { padding: 14px; }
+      header { grid-template-columns: 1fr; }
+      .legend { justify-content: flex-start; }
+      .grid { grid-template-columns: 1fr; }
+      section.wide, section.full { grid-column: auto; }
+      .split { grid-template-columns: 1fr; }
+      .split > div:first-child { border-right: 0; border-bottom: 1px solid var(--line); }
+      .snippets { grid-template-columns: 1fr; }
+      .snippet { border-right: 0; border-bottom: 1px solid var(--line); }
+      .snippet:last-child { border-bottom: 0; }
+    }
+
+    @media print {
+      .toolbar { display: none; }
+      .nav { display: none; }
+      main { max-width: none; padding: 10mm; }
+      body { font-size: 10px; }
+      h1 { font-size: 20px; }
+      h2 { font-size: 10px; padding: 5px 6px; }
+      th, td { padding: 3px 5px; }
+      code { font-size: 9px; padding: 0 2px; }
+      .grid { gap: 6px; }
+      section { border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar" aria-label="editing toolbar">
+    <button type="button" id="editBtn">Edit</button>
+    <button type="button" id="downloadBtn">Download HTML</button>
+    <button type="button" onclick="window.print()">Print / PDF</button>
+    <span class="hint">Use Edit to change text in-place, then download the updated file.</span>
+  </div>
+
+  <main id="sheet">
+    <header>
+      <div>
+        <h1>Python Data Structures Syntax</h1>
+        <div class="subtitle">For DSA rounds in India and global big tech: quick syntax, common moves, and interview traps.</div>
+      </div>
+      <div class="legend">
+        <span class="pill">n = length</span>
+        <span class="pill">avg O(1) hash ops</span>
+        <span class="pill">prefer clear built-ins</span>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="cheat sheet navigation">
+      <a href="index.html">Index</a>
+      <a href="python-dsa-data-structures-cheatsheet.html" class="active">Python DSA</a>
+      <a href="probability-cheatsheet.html">Probability</a>
+    </nav>
+
+    <div class="grid">
+      <section>
+        <h2 class="blue">List: dynamic array</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code>a = []</code>, <code>list(x)</code></td><td>O(n)</td></tr>
+          <tr><td>Index / assign</td><td><code>a[i]</code>, <code>a[i] = v</code></td><td>O(1)</td></tr>
+          <tr><td>Append / pop end</td><td><code>a.append(x)</code>, <code>a.pop()</code></td><td>O(1)*</td></tr>
+          <tr><td>Insert / pop middle</td><td><code>a.insert(i,x)</code>, <code>a.pop(i)</code></td><td>O(n)</td></tr>
+          <tr><td>Slice</td><td><code>a[l:r]</code>, <code>a[::-1]</code></td><td>O(k)</td></tr>
+          <tr><td>Sort</td><td><code>a.sort()</code>, <code>sorted(a)</code></td><td>O(n log n)</td></tr>
+          <tr><td>Custom sort</td><td><code>a.sort(key=lambda x: x[1])</code></td><td>O(n log n)</td></tr>
+          <tr><td>Reverse in-place</td><td><code>a.reverse()</code></td><td>O(n)</td></tr>
+          <tr><td>Comprehension</td><td><code>[f(x) for x in a if ok(x)]</code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Trap: <code>a.pop(0)</code> is O(n). Use <code>deque</code> for queues.</div>
+      </section>
+
+      <section>
+        <h2 class="green">Dict: hash map</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code>d = {}</code>, <code>dict()</code></td><td>O(1)</td></tr>
+          <tr><td>Put / get</td><td><code>d[k] = v</code>, <code>d[k]</code></td><td>O(1)</td></tr>
+          <tr><td>Safe get</td><td><code>d.get(k, default)</code></td><td>O(1)</td></tr>
+          <tr><td>Exists</td><td><code>k in d</code></td><td>O(1)</td></tr>
+          <tr><td>Delete</td><td><code>del d[k]</code>, <code>d.pop(k, None)</code></td><td>O(1)</td></tr>
+          <tr><td>Loop keys</td><td><code>for k in d:</code></td><td>O(n)</td></tr>
+          <tr><td>Loop pairs</td><td><code>for k, v in d.items():</code></td><td>O(n)</td></tr>
+          <tr><td>Build</td><td><code>{x: f(x) for x in arr}</code></td><td>O(n)</td></tr>
+          <tr><td>Merge</td><td><code>d3 = d1 | d2</code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Python 3.7+ preserves insertion order. Keys must be hashable.</div>
+      </section>
+
+      <section>
+        <h2 class="amber">Set: unique hash bag</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code>s = set()</code>, <code>{1, 2}</code></td><td>O(n)</td></tr>
+          <tr><td>Add</td><td><code>s.add(x)</code></td><td>O(1)</td></tr>
+          <tr><td>Remove safe</td><td><code>s.discard(x)</code></td><td>O(1)</td></tr>
+          <tr><td>Remove strict</td><td><code>s.remove(x)</code></td><td>O(1)</td></tr>
+          <tr><td>Exists</td><td><code>x in s</code></td><td>O(1)</td></tr>
+          <tr><td>Union</td><td><code>a | b</code></td><td>O(len(a)+len(b))</td></tr>
+          <tr><td>Intersect</td><td><code>a & b</code></td><td>O(min)</td></tr>
+          <tr><td>Difference</td><td><code>a - b</code></td><td>O(len(a))</td></tr>
+          <tr><td>Comprehension</td><td><code>{f(x) for x in arr}</code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Trap: <code>{}</code> is a dict, not an empty set.</div>
+      </section>
+
+      <section>
+        <h2 class="blue">String: immutable sequence</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code>s = "abc"</code></td><td>O(1)</td></tr>
+          <tr><td>Index / slice</td><td><code>s[i]</code>, <code>s[l:r]</code></td><td>O(1), O(k)</td></tr>
+          <tr><td>Reverse</td><td><code>s[::-1]</code></td><td>O(n)</td></tr>
+          <tr><td>Split</td><td><code>s.split()</code>, <code>s.split(",")</code></td><td>O(n)</td></tr>
+          <tr><td>Join</td><td><code>"".join(parts)</code></td><td>O(n)</td></tr>
+          <tr><td>Find</td><td><code>s.find("ab")</code></td><td>O(nm)</td></tr>
+          <tr><td>Char code</td><td><code>ord(c)</code>, <code>chr(x)</code></td><td>O(1)</td></tr>
+          <tr><td>Case</td><td><code>s.lower()</code>, <code>s.upper()</code></td><td>O(n)</td></tr>
+          <tr><td>Strip</td><td><code>s.strip()</code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Build many chars with list + <code>join</code>, not repeated <code>+=</code>.</div>
+      </section>
+
+      <section>
+        <h2 class="green">Tuple: immutable record</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code>t = (1, 2)</code>, <code>t = 1, 2</code></td><td>O(1)</td></tr>
+          <tr><td>One item</td><td><code>t = (1,)</code></td><td>O(1)</td></tr>
+          <tr><td>Unpack</td><td><code>x, y = t</code></td><td>O(1)</td></tr>
+          <tr><td>Swap</td><td><code>a, b = b, a</code></td><td>O(1)</td></tr>
+          <tr><td>Hash key</td><td><code>seen.add((r, c))</code></td><td>O(1)</td></tr>
+          <tr><td>Sort pairs</td><td><code>pairs.sort()</code></td><td>O(n log n)</td></tr>
+          <tr><td>Return many</td><td><code>return dist, node</code></td><td>O(1)</td></tr>
+        </table>
+        <div class="note">Use tuples for grid coordinates, graph edges, memo keys.</div>
+      </section>
+
+      <section>
+        <h2 class="red">Deque: queue / monotonic queue</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Import</td><td><code>from collections import deque</code></td><td></td></tr>
+          <tr><td>Create</td><td><code>q = deque()</code></td><td>O(1)</td></tr>
+          <tr><td>Push back</td><td><code>q.append(x)</code></td><td>O(1)</td></tr>
+          <tr><td>Pop front</td><td><code>q.popleft()</code></td><td>O(1)</td></tr>
+          <tr><td>Push front</td><td><code>q.appendleft(x)</code></td><td>O(1)</td></tr>
+          <tr><td>Pop back</td><td><code>q.pop()</code></td><td>O(1)</td></tr>
+          <tr><td>Peek</td><td><code>q[0]</code>, <code>q[-1]</code></td><td>O(1)</td></tr>
+          <tr><td>Fixed window</td><td><code>deque(maxlen=k)</code></td><td>O(1)</td></tr>
+        </table>
+        <div class="note">BFS, sliding window max/min, recent k elements.</div>
+      </section>
+
+      <section>
+        <h2 class="amber">Heap: priority queue</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Import</td><td><code>import heapq</code></td><td></td></tr>
+          <tr><td>Create min-heap</td><td><code>h = []</code></td><td>O(1)</td></tr>
+          <tr><td>Push</td><td><code>heapq.heappush(h, x)</code></td><td>O(log n)</td></tr>
+          <tr><td>Pop min</td><td><code>heapq.heappop(h)</code></td><td>O(log n)</td></tr>
+          <tr><td>Peek min</td><td><code>h[0]</code></td><td>O(1)</td></tr>
+          <tr><td>Heapify</td><td><code>heapq.heapify(a)</code></td><td>O(n)</td></tr>
+          <tr><td>Max-heap</td><td><code>heappush(h, -x)</code></td><td>O(log n)</td></tr>
+          <tr><td>Pair priority</td><td><code>heappush(h, (dist, node))</code></td><td>O(log n)</td></tr>
+        </table>
+        <div class="note">Dijkstra, top k, merge k sorted lists, median stream.</div>
+      </section>
+
+      <section>
+        <h2 class="blue">Counter / defaultdict</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Import</td><td><code>from collections import Counter, defaultdict</code></td><td></td></tr>
+          <tr><td>Count</td><td><code>cnt = Counter(arr)</code></td><td>O(n)</td></tr>
+          <tr><td>Add one</td><td><code>cnt[x] += 1</code></td><td>O(1)</td></tr>
+          <tr><td>Top k</td><td><code>cnt.most_common(k)</code></td><td>O(n log k)</td></tr>
+          <tr><td>Missing count</td><td><code>cnt[x]</code></td><td>0</td></tr>
+          <tr><td>List map</td><td><code>g = defaultdict(list)</code></td><td>O(1)</td></tr>
+          <tr><td>Set map</td><td><code>g = defaultdict(set)</code></td><td>O(1)</td></tr>
+          <tr><td>Int map</td><td><code>freq = defaultdict(int)</code></td><td>O(1)</td></tr>
+          <tr><td>Structured map</td><td><code>defaultdict(lambda: {"count": 0, "items": []})</code></td><td>O(1)</td></tr>
+        </table>
+        <pre><code>clusters = defaultdict(lambda: {"count": 0, "items": []})
+clusters[0]["count"] = 0
+clusters[0]["items"] = [nums_i[0][0]]</code></pre>
+        <div class="note">Great for anagrams, frequency windows, adjacency lists.</div>
+      </section>
+
+      <section>
+        <h2 class="green">Stack patterns</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Use</th></tr>
+          <tr><td>Create</td><td><code>st = []</code></td><td>LIFO</td></tr>
+          <tr><td>Push</td><td><code>st.append(x)</code></td><td>O(1)</td></tr>
+          <tr><td>Pop</td><td><code>st.pop()</code></td><td>O(1)</td></tr>
+          <tr><td>Peek</td><td><code>st[-1]</code></td><td>O(1)</td></tr>
+          <tr><td>Non-empty</td><td><code>while st:</code></td><td></td></tr>
+          <tr><td>Mono inc</td><td><code>while st and st[-1] &gt; x: st.pop()</code></td><td>next smaller</td></tr>
+          <tr><td>Mono dec</td><td><code>while st and st[-1] &lt; x: st.pop()</code></td><td>next greater</td></tr>
+        </table>
+        <div class="note">Parentheses, histogram, stock span, next greater element.</div>
+      </section>
+
+      <section class="wide">
+        <h2 class="red">Binary search, bisect, ranges</h2>
+        <div class="split">
+          <div>
+            <table>
+              <tr><th>Task</th><th>Syntax</th><th>Meaning</th></tr>
+              <tr><td>Import</td><td><code>from bisect import bisect_left, bisect_right</code></td><td></td></tr>
+              <tr><td>Lower bound</td><td><code>bisect_left(a, x)</code></td><td>first i with a[i] &gt;= x</td></tr>
+              <tr><td>Upper bound</td><td><code>bisect_right(a, x)</code></td><td>first i with a[i] &gt; x</td></tr>
+              <tr><td>Count x</td><td><code>right - left</code></td><td>in sorted array</td></tr>
+              <tr><td>Insert sorted</td><td><code>insort(a, x)</code></td><td>O(n)</td></tr>
+            </table>
+          </div>
+          <div>
+            <ul>
+              <li><code>range(n)</code> gives 0 to n-1.</li>
+              <li><code>range(l, r)</code> gives l to r-1.</li>
+              <li><code>range(r - 1, l - 1, -1)</code> loops down to l.</li>
+              <li><code>mid = (lo + hi) // 2</code>.</li>
+              <li>Use <code>while lo &lt; hi</code> for first-true / min-answer templates.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="amber">Matrix / grid</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
+          <tr><td>Create</td><td><code>grid = [[0]*m for _ in range(n)]</code></td><td>correct</td></tr>
+          <tr><td>Bad create</td><td><code>[[0]*m]*n</code></td><td class="hot">shared rows</td></tr>
+          <tr><td>Dims</td><td><code>n, m = len(g), len(g[0])</code></td><td></td></tr>
+          <tr><td>4 dirs</td><td><code>dirs = [(1,0),(-1,0),(0,1),(0,-1)]</code></td><td></td></tr>
+          <tr><td>Bounds</td><td><code>0 &lt;= r &lt; n and 0 &lt;= c &lt; m</code></td><td></td></tr>
+          <tr><td>Transpose</td><td><code>zip(*grid)</code></td><td>tuples</td></tr>
+          <tr><td>Flatten</td><td><code>[x for row in g for x in row]</code></td><td></td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="green">Math, chars, bits</h2>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
+          <tr><td>Char to int</td><td><code>ord(c)</code>, <code>ord(c)-ord("a")</code></td><td>ASCII / 0-index</td></tr>
+          <tr><td>Int to char</td><td><code>chr(x)</code>, <code>chr(i+ord("a"))</code></td><td>code / letter</td></tr>
+          <tr><td>Floor log2</td><td><code>x.bit_length() - 1</code></td><td>x &gt; 0</td></tr>
+          <tr><td>Power of 2</td><td><code>1 &lt;&lt; k</code></td><td>2^k</td></tr>
+          <tr><td>Test bit k</td><td><code>x &amp; (1 &lt;&lt; k)</code></td><td>nonzero if set</td></tr>
+          <tr><td>Set / clear bit</td><td><code>x |= 1 &lt;&lt; k</code>, <code>x &amp;= ~(1 &lt;&lt; k)</code></td><td>mask edit</td></tr>
+          <tr><td>Toggle bit</td><td><code>x ^= 1 &lt;&lt; k</code></td><td>flip</td></tr>
+          <tr><td>Keep low k bits</td><td><code>x &amp; ((1 &lt;&lt; k) - 1)</code></td><td>mask</td></tr>
+          <tr><td>GCD</td><td><code>from math import gcd</code></td><td><code>gcd(a, b)</code></td></tr>
+        </table>
+        <div class="note"><code>g = 0</code> is a clean rolling default because <code>gcd(0, x) = x</code>.</div>
+      </section>
+
+      <section class="full">
+        <h2 class="blue">Interview micro-patterns</h2>
+        <table>
+          <tr><th>Pattern</th><th>Syntax snapshot</th><th>When it appears</th></tr>
+          <tr><td>Two pointers</td><td><code>l, r = 0, len(a)-1</code> then move one side</td><td>sorted arrays, palindrome, pair sum</td></tr>
+          <tr><td>Sliding window</td><td><code>for r, x in enumerate(a): ... while bad: ...; l += 1</code></td><td>longest/shortest subarray, strings</td></tr>
+          <tr><td>BFS</td><td><code>q = deque([start]); seen = {start}</code></td><td>shortest path unweighted, levels</td></tr>
+          <tr><td>DFS recursion</td><td><code>def dfs(u): seen.add(u); ...</code></td><td>components, trees, backtracking</td></tr>
+          <tr><td>Memoization</td><td><code>from functools import cache</code> then <code>@cache</code></td><td>DP with state tuple</td></tr>
+          <tr><td>Prefix sum</td><td><code>pref = [0]; pref.append(pref[-1] + x)</code></td><td>range sum, subarray count</td></tr>
+          <tr><td>Reverse sort</td><td><code>a.sort(reverse=True)</code></td><td>greedy, intervals</td></tr>
+          <tr><td>Sort intervals</td><td><code>intervals.sort(key=lambda x: (x[0], x[1]))</code></td><td>merge, meeting rooms</td></tr>
+          <tr><td>Infinity</td><td><code>INF = float("inf")</code></td><td>min distance, DP init</td></tr>
+          <tr><td>Modulo</td><td><code>MOD = 10**9 + 7</code></td><td>counting answers</td></tr>
+        </table>
+        <div class="snippets">
+          <div class="snippet">
+            <h3>BFS</h3>
+            <pre><code>from collections import deque
+
+q = deque([start])
+seen = {start}
+while q:
+    u = q.popleft()
+    for v in graph[u]:
+        if v not in seen:
+            seen.add(v)
+            q.append(v)</code></pre>
+          </div>
+          <div class="snippet">
+            <h3>DFS</h3>
+            <pre><code>seen = set()
+
+def dfs(u):
+    seen.add(u)
+    for v in graph[u]:
+        if v not in seen:
+            dfs(v)</code></pre>
+          </div>
+          <div class="snippet">
+            <h3>Memoization</h3>
+            <pre><code>from functools import cache
+
+@cache
+def dp(i, state):
+    if i == n:
+        return 0
+    return best_answer</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="full">
+        <h2 class="amber">Sparse table: static range min/max/gcd</h2>
+        <div class="split">
+          <ul>
+            <li>Precompute answers for every block length <code>2^k</code>.</li>
+            <li>Query <code>[l, r]</code> by combining two overlapping blocks of length <code>2^k</code>.</li>
+            <li>Works in O(1) for idempotent ops: <code>min</code>, <code>max</code>, <code>gcd</code>.</li>
+            <li>Build O(n log n), memory O(n log n). No updates.</li>
+          </ul>
+          <pre><code># range minimum query on inclusive [l, r]
+n = len(a)
+K = n.bit_length()
+st = [a[:]]
+for k in range(1, K):
+    half = 1 &lt;&lt; (k - 1)
+    prev = st[-1]
+    st.append([
+        min(prev[i], prev[i + half])
+        for i in range(n - (1 &lt;&lt; k) + 1)
+    ])
+
+def query(l, r):
+    k = (r - l + 1).bit_length() - 1
+    return min(st[k][l], st[k][r - (1 &lt;&lt; k) + 1])</code></pre>
+        </div>
+      </section>
+
+      <section class="full">
+        <h2 class="green">Syntax traps worth memorizing</h2>
+        <div class="split">
+          <ul>
+            <li><code>for i, x in enumerate(a):</code> gives index and value.</li>
+            <li><code>for i in range(len(a)):</code> gives index only.</li>
+            <li><code>a[-1]</code> is last item. Empty list raises error.</li>
+            <li><code>sorted(a)</code> returns new list. <code>a.sort()</code> returns <code>None</code>.</li>
+            <li><code>is</code> checks identity. Use <code>==</code> for value equality.</li>
+          </ul>
+          <ul>
+            <li><code>nonlocal ans</code> inside nested DFS if assigning outer variable.</li>
+            <li><code>sys.setrecursionlimit(10**6)</code> can help deep DFS, but iterative is safer.</li>
+            <li><code>dict.values()</code> and <code>dict.keys()</code> are views, wrap with <code>list()</code> if needed.</li>
+            <li><code>heapq</code> compares tuple elements left to right.</li>
+            <li><code>copy = a[:]</code> shallow-copies a list.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const editBtn = document.getElementById("editBtn");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const sheet = document.getElementById("sheet");
+
+    editBtn.addEventListener("click", () => {
+      const editing = sheet.getAttribute("contenteditable") === "true";
+      sheet.setAttribute("contenteditable", String(!editing));
+      editBtn.textContent = editing ? "Edit" : "Done";
+      if (!editing) sheet.focus();
+    });
+
+    downloadBtn.addEventListener("click", () => {
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelector("#sheet").removeAttribute("contenteditable");
+      clone.querySelector("#editBtn").textContent = "Edit";
+      const html = "<!doctype html>\n" + clone.outerHTML;
+      const blob = new Blob([html], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "python-dsa-data-structures-cheatsheet.html";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
