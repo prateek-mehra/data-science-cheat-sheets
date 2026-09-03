@@ -191,7 +191,7 @@
   <main>
     <header>
       <h1>Probability Cheat Sheet</h1>
-      <div class="subtitle">Conditional probability and Bayes theorem from first principles.</div>
+      <div class="subtitle">Conditional probability, Bayes theorem, and random variables from first principles.</div>
     </header>
 
     <nav class="nav" aria-label="cheat sheet navigation">
@@ -265,6 +265,50 @@ P(A | B) =
     -----------------------------------------
     P(B | A)P(A) + P(B | not A)P(not A)</code></pre>
         <div class="note">Posterior = likelihood * prior / evidence.</div>
+      </section>
+
+      <section>
+        <h2 class="green">Random variables</h2>
+        <table>
+          <tr><th>Idea</th><th>Meaning</th></tr>
+          <tr><td>Random variable</td><td>A function that maps each random outcome to a number.</td></tr>
+          <tr><td>Discrete</td><td>Countable values, like die roll, heads in 3 flips, or age in completed years.</td></tr>
+          <tr><td>Continuous</td><td>Any value in an interval, like rainfall, time to finish training, or exact height.</td></tr>
+          <tr><td>Support</td><td>The possible values the random variable can take.</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="blue">PMF</h2>
+        <table>
+          <tr><th>Idea</th><th>Meaning</th></tr>
+          <tr><td>PMF</td><td>Probability mass function: a table or formula giving <code>P(X = x)</code> for each value.</td></tr>
+          <tr><td>Must sum to 1</td><td><code>sum_x P(X = x) = 1</code></td></tr>
+          <tr><td>Coin count</td><td>For heads in 3 fair flips: <code>0:1/8, 1:3/8, 2:3/8, 3:1/8</code></td></tr>
+        </table>
+        <div class="note">Counts like <code>1, 3, 3, 1</code> are not the PMF until divided by total outcomes.</div>
+      </section>
+
+      <section>
+        <h2 class="amber">Expectation</h2>
+        <pre><code>For a discrete random variable:
+E[X] = sum_x x * P(X = x)
+
+Example:
+X takes 1, 2, 3 with probabilities 0.2, 0.5, 0.3
+E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 2.1</code></pre>
+        <div class="note">Expectation is the long-run average, not necessarily the most likely value.</div>
+      </section>
+
+      <section>
+        <h2 class="green">Bernoulli</h2>
+        <table>
+          <tr><th>Idea</th><th>Formula</th></tr>
+          <tr><td>Meaning</td><td>One yes/no trial: click/no click, fraud/not fraud, pass/fail.</td></tr>
+          <tr><td>Values</td><td><code>X = 1</code> for success, <code>X = 0</code> for failure.</td></tr>
+          <tr><td>Probabilities</td><td>If <code>P(X = 1) = p</code>, then <code>P(X = 0) = 1 - p</code>.</td></tr>
+          <tr><td>Expectation</td><td><code>E[X] = p</code></td></tr>
+        </table>
       </section>
     </div>
   </main>
