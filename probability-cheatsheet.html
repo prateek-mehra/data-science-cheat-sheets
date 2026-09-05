@@ -222,6 +222,23 @@
         <div class="note">Read as: among cases where B happened, what fraction also have A?</div>
       </section>
 
+      <section class="full">
+        <h2 class="amber">Choosing k things from n</h2>
+        <table>
+          <tr><th>Does order matter?</th><th>Name</th><th>Number of ways</th></tr>
+          <tr><td>Yes: A-B-C differs from C-B-A</td><td>Permutation</td><td><code>P(n, k) = n! / (n - k)!</code></td></tr>
+          <tr><td>No: a group is the same in any order</td><td>Combination</td><td><code>C(n, k) = n! / (k!(n - k)!)</code></td></tr>
+        </table>
+        <pre><code>Example: choose 3 people from 10
+
+Order matters (gold, silver, bronze):
+P(10, 3) = 10 * 9 * 8 = 720
+
+Order does not matter (a 3-person team):
+C(10, 3) = 10! / (3! * 7!) = 120</code></pre>
+        <div class="note">Use combinations for a set or team; use permutations for a sequence, ranking, or assignment to distinct roles.</div>
+      </section>
+
       <section>
         <h2 class="green">Product rule</h2>
         <table>
