@@ -27,44 +27,13 @@
       letter-spacing: 0;
     }
 
-    .toolbar {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 14px;
-      background: #eef3f7;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .toolbar button {
-      border: 1px solid #b8c7d3;
-      background: #fff;
-      color: var(--ink);
-      border-radius: 6px;
-      padding: 6px 10px;
-      font: 600 12px/1 Inter, ui-sans-serif, system-ui, sans-serif;
-      cursor: pointer;
-    }
-
-    .toolbar .hint {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
     main {
-      max-width: 1180px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 22px;
     }
 
     header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      align-items: end;
       margin-bottom: 14px;
       padding-bottom: 12px;
       border-bottom: 2px solid var(--ink);
@@ -268,8 +237,6 @@
 
     @media (max-width: 900px) {
       main { padding: 14px; }
-      header { grid-template-columns: 1fr; }
-      .legend { justify-content: flex-start; }
       .grid { grid-template-columns: 1fr; }
       section.wide, section.full { grid-column: auto; }
       .split { grid-template-columns: 1fr; }
@@ -280,7 +247,6 @@
     }
 
     @media print {
-      .toolbar { display: none; }
       .nav { display: none; }
       main { max-width: none; padding: 10mm; }
       body { font-size: 10px; }
@@ -294,23 +260,11 @@
   </style>
 </head>
 <body>
-  <div class="toolbar" aria-label="editing toolbar">
-    <button type="button" id="editBtn">Edit</button>
-    <button type="button" id="downloadBtn">Download HTML</button>
-    <button type="button" onclick="window.print()">Print / PDF</button>
-    <span class="hint">Use Edit to change text in-place, then download the updated file.</span>
-  </div>
-
   <main id="sheet">
     <header>
       <div>
         <h1>Python Data Structures Syntax</h1>
         <div class="subtitle">For DSA rounds in India and global big tech: quick syntax, common moves, and interview traps.</div>
-      </div>
-      <div class="legend">
-        <span class="pill">n = length</span>
-        <span class="pill">avg O(1) hash ops</span>
-        <span class="pill">prefer clear built-ins</span>
       </div>
     </header>
 
@@ -318,9 +272,83 @@
       <a href="index.html">Index</a>
       <a href="python-dsa-data-structures-cheatsheet.html" class="active">Python DSA</a>
       <a href="probability-cheatsheet.html">Probability</a>
+      <a href="system-design-cheatsheet.html">System Design</a>
+      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
+      <a href="ml-optimizers-cheatsheet.html">ML Optimizers</a>
+      <a href="ml-losses-cheatsheet.html">ML Losses</a>
     </nav>
 
     <div class="grid">
+      <section class="full">
+        <h2 class="blue">Interview micro-patterns</h2>
+        <table>
+          <tr><th>Pattern</th><th>Syntax snapshot</th><th>When it appears</th></tr>
+          <tr><td>Two pointers</td><td><code>l, r = 0, len(a)-1</code> then move one side</td><td>sorted arrays, palindrome, pair sum</td></tr>
+          <tr><td>Sliding window</td><td><code>for r, x in enumerate(a): ... while bad: ...; l += 1</code></td><td>longest/shortest subarray, strings</td></tr>
+          <tr><td>BFS</td><td><code>q = deque([start]); seen = {start}</code></td><td>shortest path unweighted, levels</td></tr>
+          <tr><td>DFS recursion</td><td><code>def dfs(u): seen.add(u); ...</code></td><td>components, trees, backtracking</td></tr>
+          <tr><td>Memoization</td><td><code>from functools import cache</code> then <code>@cache</code></td><td>DP with state tuple</td></tr>
+          <tr><td>Prefix sum</td><td><code>pref = [0]; pref.append(pref[-1] + x)</code></td><td>range sum, subarray count</td></tr>
+          <tr><td>Reverse sort</td><td><code>a.sort(reverse=True)</code></td><td>greedy, intervals</td></tr>
+          <tr><td>Sort intervals</td><td><code>intervals.sort(key=lambda x: (x[0], x[1]))</code></td><td>merge, meeting rooms</td></tr>
+          <tr><td>Infinity</td><td><code>INF = float("inf")</code></td><td>min distance, DP init</td></tr>
+          <tr><td>Modulo</td><td><code>MOD = 10**9 + 7</code></td><td>counting answers</td></tr>
+        </table>
+        <div class="snippets">
+          <div class="snippet">
+            <h3>BFS</h3>
+            <pre><code>from collections import deque
+
+q = deque([start])
+seen = {start}
+while q:
+    u = q.popleft()
+    for v in graph[u]:
+        if v not in seen:
+            seen.add(v)
+            q.append(v)</code></pre>
+          </div>
+          <div class="snippet">
+            <h3>DFS</h3>
+            <pre><code>seen = set()
+
+def dfs(u):
+    seen.add(u)
+    for v in graph[u]:
+        if v not in seen:
+            dfs(v)</code></pre>
+          </div>
+          <div class="snippet">
+            <h3>Memoization</h3>
+            <pre><code>from functools import cache
+
+@cache
+def dp(i, state):
+    if i == n:
+        return 0
+    return best_answer</code></pre>
+          </div>
+        </div>
+      </section>
+      <section class="full">
+        <h2 class="green">Syntax traps worth memorizing</h2>
+        <div class="split">
+          <ul>
+            <li><code>for i, x in enumerate(a):</code> gives index and value.</li>
+            <li><code>for i in range(len(a)):</code> gives index only.</li>
+            <li><code>a[-1]</code> is last item. Empty list raises error.</li>
+            <li><code>sorted(a)</code> returns new list. <code>a.sort()</code> returns <code>None</code>.</li>
+            <li><code>is</code> checks identity. Use <code>==</code> for value equality.</li>
+          </ul>
+          <ul>
+            <li><code>nonlocal ans</code> inside nested DFS if assigning outer variable.</li>
+            <li><code>sys.setrecursionlimit(10**6)</code> can help deep DFS, but iterative is safer.</li>
+            <li><code>dict.values()</code> and <code>dict.keys()</code> are views, wrap with <code>list()</code> if needed.</li>
+            <li><code>heapq</code> compares tuple elements left to right.</li>
+            <li><code>copy = a[:]</code> shallow-copies a list.</li>
+          </ul>
+        </div>
+      </section>
       <section>
         <h2 class="blue">List: dynamic array</h2>
         <table>
@@ -527,57 +555,6 @@ clusters[0]["items"] = [nums_i[0][0]]</code></pre>
         <div class="note"><code>g = 0</code> is a clean rolling default because <code>gcd(0, x) = x</code>.</div>
       </section>
 
-      <section class="full">
-        <h2 class="blue">Interview micro-patterns</h2>
-        <table>
-          <tr><th>Pattern</th><th>Syntax snapshot</th><th>When it appears</th></tr>
-          <tr><td>Two pointers</td><td><code>l, r = 0, len(a)-1</code> then move one side</td><td>sorted arrays, palindrome, pair sum</td></tr>
-          <tr><td>Sliding window</td><td><code>for r, x in enumerate(a): ... while bad: ...; l += 1</code></td><td>longest/shortest subarray, strings</td></tr>
-          <tr><td>BFS</td><td><code>q = deque([start]); seen = {start}</code></td><td>shortest path unweighted, levels</td></tr>
-          <tr><td>DFS recursion</td><td><code>def dfs(u): seen.add(u); ...</code></td><td>components, trees, backtracking</td></tr>
-          <tr><td>Memoization</td><td><code>from functools import cache</code> then <code>@cache</code></td><td>DP with state tuple</td></tr>
-          <tr><td>Prefix sum</td><td><code>pref = [0]; pref.append(pref[-1] + x)</code></td><td>range sum, subarray count</td></tr>
-          <tr><td>Reverse sort</td><td><code>a.sort(reverse=True)</code></td><td>greedy, intervals</td></tr>
-          <tr><td>Sort intervals</td><td><code>intervals.sort(key=lambda x: (x[0], x[1]))</code></td><td>merge, meeting rooms</td></tr>
-          <tr><td>Infinity</td><td><code>INF = float("inf")</code></td><td>min distance, DP init</td></tr>
-          <tr><td>Modulo</td><td><code>MOD = 10**9 + 7</code></td><td>counting answers</td></tr>
-        </table>
-        <div class="snippets">
-          <div class="snippet">
-            <h3>BFS</h3>
-            <pre><code>from collections import deque
-
-q = deque([start])
-seen = {start}
-while q:
-    u = q.popleft()
-    for v in graph[u]:
-        if v not in seen:
-            seen.add(v)
-            q.append(v)</code></pre>
-          </div>
-          <div class="snippet">
-            <h3>DFS</h3>
-            <pre><code>seen = set()
-
-def dfs(u):
-    seen.add(u)
-    for v in graph[u]:
-        if v not in seen:
-            dfs(v)</code></pre>
-          </div>
-          <div class="snippet">
-            <h3>Memoization</h3>
-            <pre><code>from functools import cache
-
-@cache
-def dp(i, state):
-    if i == n:
-        return 0
-    return best_answer</code></pre>
-          </div>
-        </div>
-      </section>
 
       <section class="full">
         <h2 class="amber">Sparse table: static range min/max/gcd</h2>
@@ -606,53 +583,8 @@ def query(l, r):
         </div>
       </section>
 
-      <section class="full">
-        <h2 class="green">Syntax traps worth memorizing</h2>
-        <div class="split">
-          <ul>
-            <li><code>for i, x in enumerate(a):</code> gives index and value.</li>
-            <li><code>for i in range(len(a)):</code> gives index only.</li>
-            <li><code>a[-1]</code> is last item. Empty list raises error.</li>
-            <li><code>sorted(a)</code> returns new list. <code>a.sort()</code> returns <code>None</code>.</li>
-            <li><code>is</code> checks identity. Use <code>==</code> for value equality.</li>
-          </ul>
-          <ul>
-            <li><code>nonlocal ans</code> inside nested DFS if assigning outer variable.</li>
-            <li><code>sys.setrecursionlimit(10**6)</code> can help deep DFS, but iterative is safer.</li>
-            <li><code>dict.values()</code> and <code>dict.keys()</code> are views, wrap with <code>list()</code> if needed.</li>
-            <li><code>heapq</code> compares tuple elements left to right.</li>
-            <li><code>copy = a[:]</code> shallow-copies a list.</li>
-          </ul>
-        </div>
-      </section>
     </div>
   </main>
 
-  <script>
-    const editBtn = document.getElementById("editBtn");
-    const downloadBtn = document.getElementById("downloadBtn");
-    const sheet = document.getElementById("sheet");
-
-    editBtn.addEventListener("click", () => {
-      const editing = sheet.getAttribute("contenteditable") === "true";
-      sheet.setAttribute("contenteditable", String(!editing));
-      editBtn.textContent = editing ? "Edit" : "Done";
-      if (!editing) sheet.focus();
-    });
-
-    downloadBtn.addEventListener("click", () => {
-      const clone = document.documentElement.cloneNode(true);
-      clone.querySelector("#sheet").removeAttribute("contenteditable");
-      clone.querySelector("#editBtn").textContent = "Edit";
-      const html = "<!doctype html>\n" + clone.outerHTML;
-      const blob = new Blob([html], { type: "text/html" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "python-dsa-data-structures-cheatsheet.html";
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-  </script>
 </body>
 </html>

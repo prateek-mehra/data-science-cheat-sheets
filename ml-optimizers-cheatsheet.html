@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine Learning Optimizers Cheat Sheet</title>
+  <style>
+    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#0b67b2; --green:#167a4a; --amber:#9a5b00; --bg:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:13px/1.35 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:980px; margin:0 auto; padding:22px; }
+    header { margin-bottom:14px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    h1 { margin:0 0 4px; font-size:28px; line-height:1.05; }
+    .subtitle { color:var(--muted); font-size:13px; }
+    .nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .nav a { border:1px solid var(--line); border-radius:6px; padding:5px 9px; color:var(--ink); background:var(--soft); font-size:12px; font-weight:700; text-decoration:none; }
+    .nav a.active { color:#fff; background:var(--blue); border-color:var(--blue); }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    section { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#fff; break-inside:avoid; }
+    section.full { grid-column:1 / -1; }
+    h2 { margin:0; padding:7px 9px; color:#fff; background:var(--ink); font-size:13px; line-height:1.15; }
+    h2.blue { background:var(--blue); } h2.green { background:var(--green); } h2.amber { background:var(--amber); }
+    table { width:100%; border-collapse:collapse; table-layout:fixed; }
+    th,td { vertical-align:top; padding:6px 8px; border-top:1px solid var(--line); overflow-wrap:anywhere; }
+    th { color:var(--muted); background:var(--soft); text-align:left; font-size:10px; text-transform:uppercase; }
+    td:first-child,th:first-child { width:15%; }
+    code,.formula { font:12px/1.4 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; color:#111827; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
+    .formula { display:inline-block; margin:1px 0; white-space:normal; }
+    ul { margin:0; padding:7px 9px 8px 23px; } li { margin:3px 0; }
+    .note { padding:7px 9px; border-top:1px solid var(--line); color:var(--muted); background:#fbfcfd; }
+    a { color:var(--blue); }
+    .level { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--green); }
+    @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } }
+    @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code,.formula { font-size:9px; padding:0 2px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Machine Learning Optimizers</h1>
+      <div class="subtitle">A progressive guide: core formulas, what each optimizer adds, when it appeared, and how the ideas build on one another.</div>
+    </header>
+    <nav class="nav" aria-label="cheat sheet navigation">
+      <a href="index.html">Index</a>
+      <a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a>
+      <a href="probability-cheatsheet.html">Probability</a>
+      <a href="system-design-cheatsheet.html">System Design</a>
+      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
+      <a href="ml-optimizers-cheatsheet.html" class="active">ML Optimizers</a>
+      <a href="ml-losses-cheatsheet.html">ML Losses</a>
+    </nav>
+    <div class="grid">
+      <section class="full">
+        <h2 class="blue">1. Notation you need once</h2>
+        <table><tr><th>Symbol</th><th>Meaning</th><th>Read it as</th></tr>
+          <tr><td><code>w<sub>t</sub></code></td><td>Model parameters at step t</td><td>Where we are</td></tr>
+          <tr><td><code>g<sub>t</sub> = ∇<sub>w</sub> L<sub>t</sub>(w<sub>t</sub>)</code></td><td>Gradient of the mini-batch loss</td><td>Local uphill direction</td></tr>
+          <tr><td><code>η</code></td><td>Learning rate</td><td>Step scale</td></tr>
+          <tr><td><code>β, β₁, β₂</code></td><td>Exponential-average decay rates</td><td>Memory of previous gradients</td></tr>
+          <tr><td><code>ε</code></td><td>Small positive stabilizer</td><td>Avoid division by zero</td></tr>
+        </table>
+        <div class="note">Unless noted, vectors, squares, divisions, and square roots are element-wise. <code>ḡ</code> is a batch-averaged gradient. Optimizers choose update directions; learning-rate schedules and other training tricks are separate knobs.</div>
+      </section>
+      <section class="full">
+        <h2 class="green">2. Difficulty ladder · learn in this order</h2>
+        <table><tr><th>Level</th><th>Optimizer family</th><th>New idea added</th><th>Question it answers</th></tr>
+          <tr><td><span class="level">1 · Core</span></td><td>Batch GD, SGD, mini-batch SGD</td><td>Use the gradient to step downhill.</td><td>Which direction lowers the loss?</td></tr>
+          <tr><td><span class="level">2 · Memory</span></td><td>Momentum, Nesterov</td><td>Accumulate a smoothed direction; optionally look ahead.</td><td>Can we reduce zig-zagging and accelerate consistent motion?</td></tr>
+          <tr><td><span class="level">3 · Adaptation</span></td><td>AdaGrad, RMSProp, AdaDelta, Adam</td><td>Scale each coordinate using gradient history.</td><td>Can rare or differently scaled features get useful step sizes?</td></tr>
+          <tr><td><span class="level">4 · Training details</span></td><td>AdamW, AMSGrad, Adafactor</td><td>Decouple decay, constrain moment growth, or compress optimizer state.</td><td>Can we regularize, stabilize, or save memory?</td></tr>
+          <tr><td><span class="level">5 · Scale</span></td><td>LARS, LAMB</td><td>Adapt step size by layer.</td><td>Can very large batches train large models reliably?</td></tr>
+          <tr><td><span class="level">6 · Modern variants</span></td><td>Lion, Muon</td><td>Use sign-based updates or matrix-aware orthogonalization.</td><td>Can update structure or optimizer memory be improved?</td></tr>
+        </table>
+      </section>
+      <section class="full">
+        <h2 class="amber">3. Timeline · formula + what changed</h2>
+        <table><tr><th>Era</th><th>Optimizer / update</th><th>What the new step adds</th><th>Level</th></tr>
+          <tr><td>1951 / 1986</td><td><b>Gradient descent / SGD</b><br><span class="formula">w<sub>t+1</sub> = w<sub>t</sub> − η g<sub>t</sub></span></td><td>Batch GD uses the full data gradient; SGD estimates it from one example or a mini-batch. The core downhill step.</td><td>1 · Core</td></tr>
+          <tr><td>1964</td><td><b>Momentum</b><br><span class="formula">m<sub>t</sub> = βm<sub>t−1</sub> + g<sub>t</sub><br>w<sub>t+1</sub> = w<sub>t</sub> − ηm<sub>t</sub></span></td><td>Exponential memory smooths noisy gradients and builds speed in directions that persist.</td><td>2 · Memory</td></tr>
+          <tr><td>1983</td><td><b>Nesterov / NAG</b><br><span class="formula">m<sub>t</sub> = βm<sub>t−1</sub> + ∇L(w<sub>t</sub> − ηβm<sub>t−1</sub>)</span></td><td>Compute the gradient at a momentum look-ahead point, so the step can correct before overshooting.</td><td>2 · Memory</td></tr>
+          <tr><td>2011</td><td><b>AdaGrad</b><br><span class="formula">r<sub>t</sub> = r<sub>t−1</sub> + g<sub>t</sub>²<br>w<sub>t+1</sub> = w<sub>t</sub> − η g<sub>t</sub> / (√r<sub>t</sub> + ε)</span></td><td>Per-parameter rates shrink where gradients repeatedly appear; useful for sparse features. Accumulation can make steps too small over long runs.</td><td>3 · Adapt</td></tr>
+          <tr><td>2012</td><td><b>RMSProp</b><br><span class="formula">v<sub>t</sub> = ρv<sub>t−1</sub> + (1−ρ)g<sub>t</sub>²<br>w<sub>t+1</sub> = w<sub>t</sub> − ηg<sub>t</sub> / (√v<sub>t</sub> + ε)</span></td><td>Replace AdaGrad’s ever-growing sum with a moving average, so the effective rate does not decay forever.</td><td>3 · Adapt</td></tr>
+          <tr><td>2012</td><td><b>AdaDelta</b><br><span class="formula">E[g²]<sub>t</sub> = ρE[g²]<sub>t−1</sub> + (1−ρ)g<sub>t</sub>²<br>Δw<sub>t</sub> = − RMS[Δw]<sub>t−1</sub> / RMS[g]<sub>t</sub> · g<sub>t</sub></span></td><td>Uses running gradient and update magnitudes to reduce dependence on a manually chosen global learning rate.</td><td>3 · Adapt</td></tr>
+          <tr><td>2014</td><td><b>Adam</b><br><span class="formula">m<sub>t</sub>=β₁m<sub>t−1</sub>+(1−β₁)g<sub>t</sub><br>v<sub>t</sub>=β₂v<sub>t−1</sub>+(1−β₂)g<sub>t</sub>²<br>ŵ = w − η m̂<sub>t</sub>/(√v̂<sub>t</sub>+ε)</span></td><td>Combines momentum (first moment) with adaptive coordinate scaling (second moment), with bias correction early in training.</td><td>3 · Adapt</td></tr>
+          <tr><td>2017</td><td><b>AdamW</b><br><span class="formula">w<sub>t+1</sub> = w<sub>t</sub> − η[m̂<sub>t</sub>/(√v̂<sub>t</sub>+ε) + λw<sub>t</sub>]</span></td><td>Apply weight decay separately from Adam’s adaptive gradient scaling. This makes decay behave as intended for adaptive optimizers.</td><td>4 · Details</td></tr>
+          <tr><td>2018</td><td><b>AMSGrad / Adafactor</b><br><span class="formula">AMSGrad: v̂<sub>t</sub> = max(v̂<sub>t−1</sub>, v̂<sub>Adam,t</sub>)<br>Adafactor: factorize row/column second moments</span></td><td>AMSGrad keeps a non-decreasing second-moment maximum. Adafactor approximates Adam’s second-moment state with factored statistics to save memory.</td><td>4 · Details</td></tr>
+          <tr><td>2019</td><td><b>LARS / LAMB</b><br><span class="formula">u<sub>t</sub> = base optimizer update<br>w ← w − η · (‖w‖ / ‖u‖) · u</span></td><td>Scale updates by parameter-layer norms. LAMB adds Adam-style moments; designed to make large-batch training practical.</td><td>5 · Scale</td></tr>
+          <tr><td>2023</td><td><b>Lion</b><br><span class="formula">c<sub>t</sub> = β₁m<sub>t−1</sub> + (1−β₁)g<sub>t</sub><br>w ← w − η[sign(c<sub>t</sub>) + λw]<br>m<sub>t</sub> = β₂m<sub>t−1</sub> + (1−β₂)g<sub>t</sub></span></td><td>Use the sign of a momentum blend for parameter updates; stores one momentum vector and uses less optimizer state than Adam.</td><td>6 · Modern</td></tr>
+          <tr><td>2024</td><td><b>Muon</b><br><span class="formula">M<sub>t</sub> = βM<sub>t−1</sub> + G<sub>t</sub><br>W ← W − η · Ortho(M<sub>t</sub>)</span></td><td>Apply Newton–Schulz-style orthogonalization to momentum updates for 2D hidden-weight matrices. Specialized; typically paired with another optimizer for embeddings, biases, and normalization parameters.</td><td>6 · Modern</td></tr>
+        </table>
+        <div class="note">Dates are first-paper / commonly cited introduction milestones and are approximate for methods that circulated as lecture notes or preprints. They do not imply one optimizer universally replaces the earlier ones.</div>
+      </section>
+      <section>
+        <h2 class="blue">4. Adam bias correction</h2>
+        <ul>
+          <li><code>m̂<sub>t</sub> = m<sub>t</sub> / (1 − β₁<sup>t</sup>)</code></li>
+          <li><code>v̂<sub>t</sub> = v<sub>t</sub> / (1 − β₂<sup>t</sup>)</code></li>
+          <li>At the beginning, moving averages start at zero and are biased low. Divide by the expected accumulated weight to correct this.</li>
+          <li>Common starting values: <code>β₁=0.9</code>, <code>β₂=0.999</code>, <code>ε=10⁻⁸</code>. Tune for the task and implementation.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="green">5. Training optimizations that go along</h2>
+        <table><tr><th>Technique</th><th>What it changes</th></tr>
+          <tr><td>Warmup</td><td>Ramp the learning rate up at the start to avoid unstable early updates.</td></tr>
+          <tr><td>LR schedule</td><td>Decay or vary η over training (cosine, step, linear, one-cycle); often as important as optimizer choice.</td></tr>
+          <tr><td>Gradient clipping</td><td>Cap gradient norm: <code>g ← g·min(1, τ/‖g‖)</code>; controls extreme steps.</td></tr>
+          <tr><td>Weight decay</td><td>Regularize weights; for Adam-like methods prefer decoupled decay (AdamW).</td></tr>
+          <tr><td>EMA</td><td>Keep a slow moving average of model weights for smoother evaluation.</td></tr>
+          <tr><td>Mixed precision</td><td>Use lower-precision math to reduce memory and improve throughput; keep sensitive accumulations stable.</td></tr>
+          <tr><td>Accumulation</td><td>Accumulate gradients across micro-batches to emulate a larger batch under memory limits.</td></tr>
+        </table>
+        <div class="note"><strong>Reminder:</strong> optimizer, learning-rate schedule, batch size, gradient clipping, and regularization interact. Compare them with controlled experiments.</div>
+      </section>
+      <section class="full">
+        <h2 class="amber">6. Original references</h2>
+        <ul>
+          <li><a href="https://jmlr.org/papers/v12/duchi11a.html">AdaGrad · Duchi, Hazan &amp; Singer (2011)</a> · <a href="https://arxiv.org/abs/1212.5701">AdaDelta · Zeiler (2012)</a> · <a href="https://arxiv.org/abs/1412.6980">Adam · Kingma &amp; Ba (2014)</a></li>
+          <li><a href="https://arxiv.org/abs/1711.05101">AdamW · Loshchilov &amp; Hutter (2017/2019)</a> · <a href="https://arxiv.org/abs/1804.04235">Adafactor · Shazeer &amp; Stern (2018)</a></li>
+          <li><a href="https://arxiv.org/abs/1904.00962">LAMB · You et al. (2019)</a> · <a href="https://arxiv.org/abs/2302.06675">Lion · Chen et al. (2023)</a> · <a href="https://kellerjordan.github.io/posts/muon/">Muon · Jordan (2024)</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
