@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NumPy Basics Cheat Sheet</title>
+  <style>
+    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#0b67b2; --green:#167a4a; --amber:#9a5b00; --bg:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:13px/1.35 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:980px; margin:0 auto; padding:22px; }
+    header { margin-bottom:14px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    h1 { margin:0 0 4px; font-size:28px; line-height:1.05; }
+    .subtitle { color:var(--muted); font-size:13px; }
+    .nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .nav a { border:1px solid var(--line); border-radius:6px; padding:5px 9px; color:var(--ink); background:var(--soft); font-size:12px; font-weight:700; text-decoration:none; }
+    .nav a.active { color:#fff; background:var(--blue); border-color:var(--blue); }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    section { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#fff; break-inside:avoid; }
+    section.full { grid-column:1 / -1; }
+    h2 { margin:0; padding:7px 9px; color:#fff; background:var(--ink); font-size:13px; line-height:1.15; }
+    h2.blue { background:var(--blue); } h2.green { background:var(--green); } h2.amber { background:var(--amber); }
+    table { width:100%; border-collapse:collapse; table-layout:fixed; }
+    th,td { vertical-align:top; padding:6px 8px; border-top:1px solid var(--line); overflow-wrap:anywhere; }
+    th { color:var(--muted); background:var(--soft); text-align:left; font-size:10px; text-transform:uppercase; }
+    code,.formula { font:12px/1.4 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; color:#111827; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
+    .formula { display:inline-block; margin:1px 0; white-space:normal; }
+    ul { margin:0; padding:7px 9px 8px 23px; } li { margin:3px 0; }
+    .note { padding:7px 9px; border-top:1px solid var(--line); color:var(--muted); background:#fbfcfd; }
+    a { color:var(--blue); }
+    pre { margin:0; padding:7px 9px; overflow-x:auto; border-top:1px solid var(--line); background:#fbfcfd; font:11px/1.35 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; white-space:pre-wrap; }
+    pre code { display:block; padding:0; border:0; background:transparent; font:inherit; word-break:normal; }
+    @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } }
+    @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code,.formula { font-size:9px; padding:0 2px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>NumPy Basics</h1>
+      <div class="subtitle">Creating, reshaping, indexing, math and combining arrays - the everyday 80%.</div>
+    </header>
+    <nav class="nav" aria-label="cheat sheet navigation">
+      <a href="index.html">Index</a>
+      <a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a>
+      <a href="numpy-basics-cheatsheet.html" class="active">NumPy</a>
+      <a href="probability-cheatsheet.html">Probability</a>
+      <a href="system-design-cheatsheet.html">System Design</a>
+      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
+      <a href="ml-optimizers-cheatsheet.html">ML Optimizers</a>
+      <a href="ml-losses-cheatsheet.html">ML Losses</a>
+      <a href="pytorch-cheatsheet.html">PyTorch</a>
+    </nav>
+    <div class="grid">
+      <section class="full">
+        <h2 class="blue">1. Create arrays</h2>
+        <table><tr><th>Code</th><th>What you get</th></tr>
+          <tr><td><code>import numpy as np</code></td><td>The one import everyone uses</td></tr>
+          <tr><td><code>np.array([1, 2, 3])</code></td><td>Array from a list, shape <code>(3,)</code>, dtype int</td></tr>
+          <tr><td><code>np.zeros((2, 3))</code> / <code>np.ones((2, 3))</code></td><td>All 0.0 / all 1.0, shape <code>(2, 3)</code></td></tr>
+          <tr><td><code>np.full((2, 3), 7)</code></td><td>Every cell set to 7</td></tr>
+          <tr><td><code>np.arange(0, 10, 2)</code></td><td><code>[0 2 4 6 8]</code> - like range, but an array</td></tr>
+          <tr><td><code>np.linspace(0, 1, 5)</code></td><td>5 evenly spaced values from 0 to 1, inclusive</td></tr>
+          <tr><td><code>np.eye(3)</code></td><td>3x3 identity matrix</td></tr>
+          <tr><td><code>rng = np.random.default_rng(42)</code><br><code>rng.random((2, 3))</code></td><td>Reproducible random floats in [0, 1); also <code>rng.normal(0, 1, (2, 3))</code></td></tr>
+          <tr><td><code>np.array([1, 2], dtype=np.float32)</code></td><td>Pick the dtype up front</td></tr>
+        </table>
+      </section>
+      <section>
+        <h2>2. Inspect an array</h2>
+        <table><tr><th>Call</th><th>Tells you</th></tr>
+          <tr><td><code>a.shape</code></td><td>Dimensions, e.g. <code>(2, 3)</code></td></tr>
+          <tr><td><code>a.ndim</code></td><td>Number of axes</td></tr>
+          <tr><td><code>a.size</code></td><td>Total element count</td></tr>
+          <tr><td><code>a.dtype</code></td><td>Element type, e.g. <code>float64</code></td></tr>
+          <tr><td><code>a.astype(np.float32)</code></td><td>Copy converted to a new dtype</td></tr>
+          <tr><td><code>len(a)</code></td><td>Same as <code>a.shape[0]</code></td></tr>
+        </table>
+      </section>
+      <section>
+        <h2 class="green">3. Reshape &amp; rearrange</h2>
+        <table><tr><th>Call</th><th>Effect</th></tr>
+          <tr><td><code>a.reshape(3, -1)</code></td><td><code>-1</code> means infer this dimension</td></tr>
+          <tr><td><code>a.ravel()</code></td><td>Flatten to 1-D (a view when possible)</td></tr>
+          <tr><td><code>a.flatten()</code></td><td>Flatten to 1-D (always a copy)</td></tr>
+          <tr><td><code>a.T</code></td><td>Transpose</td></tr>
+          <tr><td><code>a[None, :]</code> / <code>np.expand_dims(a, 0)</code></td><td>Add a length-1 axis</td></tr>
+          <tr><td><code>np.squeeze(a)</code></td><td>Drop length-1 axes</td></tr>
+        </table>
+        <div class="note">reshape, ravel and T return views where possible - editing the result can edit the original.</div>
+      </section>
+      <section class="full">
+        <h2 class="blue">4. Index &amp; select</h2>
+        <table><tr><th>Code</th><th>Selects</th></tr>
+          <tr><td><code>a[0]</code>, <code>a[-1]</code></td><td>First / last row</td></tr>
+          <tr><td><code>a[1:4]</code>, <code>a[::2]</code></td><td>Slices, every second row</td></tr>
+          <tr><td><code>a[:, 0]</code></td><td>First column</td></tr>
+          <tr><td><code>a[0, 1]</code></td><td>One element</td></tr>
+          <tr><td><code>a[a &gt; 0]</code></td><td>Boolean mask - flat 1-D of matches</td></tr>
+          <tr><td><code>a[(a &gt; 0) &amp; (a &lt; 5)]</code></td><td>Combine masks with <code>&amp;</code>, <code>|</code>, <code>~</code> - parentheses required</td></tr>
+          <tr><td><code>a[[0, 2]]</code></td><td>Rows 0 and 2 (fancy indexing)</td></tr>
+          <tr><td><code>np.where(a &gt; 0)</code></td><td>Indices where the condition holds</td></tr>
+          <tr><td><code>np.where(a &gt; 0, a, 0)</code></td><td>Element-wise if-else</td></tr>
+        </table>
+        <div class="note">Slices are views; boolean and fancy indexing return copies.</div>
+      </section>
+      <section>
+        <h2 class="green">5. Math &amp; broadcasting</h2>
+        <table><tr><th>Code</th><th>Meaning</th></tr>
+          <tr><td><code>a + b</code>, <code>a * b</code>, <code>a ** 2</code></td><td>Element-wise (<code>*</code> is not matrix multiply)</td></tr>
+          <tr><td><code>np.sqrt(a)</code>, <code>np.exp(a)</code>, <code>np.log(a)</code></td><td>Element-wise functions</td></tr>
+          <tr><td><code>np.abs(a)</code>, <code>np.clip(a, 0, 1)</code></td><td>Absolute value, clamp to range</td></tr>
+          <tr><td><code>a + 1</code>, <code>a * 2</code></td><td>Scalar broadcasts over every element</td></tr>
+          <tr><td><code>(2,3)</code> array + <code>(3,)</code> array</td><td>Row vector adds to every row</td></tr>
+        </table>
+        <div class="note">Broadcasting: compare shapes from the right; dimensions are compatible when equal or one of them is 1.</div>
+      </section>
+      <section>
+        <h2 class="blue">6. Aggregate (axis matters)</h2>
+        <table><tr><th>Code</th><th>Result</th></tr>
+          <tr><td><code>a.sum()</code>, <code>a.mean()</code>, <code>a.std()</code></td><td>Over the whole array</td></tr>
+          <tr><td><code>a.min()</code>, <code>a.max()</code></td><td>Extremes</td></tr>
+          <tr><td><code>a.sum(axis=0)</code></td><td>Down the rows - one value per column</td></tr>
+          <tr><td><code>a.sum(axis=1)</code></td><td>Across columns - one value per row</td></tr>
+          <tr><td><code>a.argmax()</code>, <code>a.argmin(axis=1)</code></td><td>Index of the extreme</td></tr>
+          <tr><td><code>a.mean(axis=0, keepdims=True)</code></td><td>Keeps the axis as length 1, so the result broadcasts back</td></tr>
+        </table>
+        <div class="note">The axis you pass is the dimension that disappears from the result.</div>
+      </section>
+      <section>
+        <h2 class="green">7. Combine &amp; split</h2>
+        <table><tr><th>Code</th><th>Effect</th></tr>
+          <tr><td><code>np.concatenate([a, b], axis=0)</code></td><td>Join along an existing axis</td></tr>
+          <tr><td><code>np.vstack([a, b])</code> / <code>np.hstack([a, b])</code></td><td>Stack rows / columns</td></tr>
+          <tr><td><code>np.stack([a, b], axis=0)</code></td><td>Join along a new axis</td></tr>
+          <tr><td><code>np.split(a, 2)</code></td><td>Equal parts (size must divide)</td></tr>
+          <tr><td><code>np.array_split(a, 3)</code></td><td>Unequal parts allowed</td></tr>
+          <tr><td><code>np.tile(a, (2, 1))</code>, <code>np.repeat(a, 2)</code></td><td>Repeat the whole block / each element</td></tr>
+        </table>
+      </section>
+      <section>
+        <h2 class="blue">8. Linear algebra &amp; friends</h2>
+        <table><tr><th>Code</th><th>Effect</th></tr>
+          <tr><td><code>a @ b</code></td><td>Matrix multiply</td></tr>
+          <tr><td><code>np.linalg.norm(v)</code></td><td>Vector length</td></tr>
+          <tr><td><code>np.linalg.inv(m)</code></td><td>Matrix inverse</td></tr>
+          <tr><td><code>np.unique(a, return_counts=True)</code></td><td>Distinct values and their counts</td></tr>
+          <tr><td><code>np.argsort(a)</code></td><td>Indices that would sort it</td></tr>
+          <tr><td><code>np.isnan(a).any()</code></td><td>Quick NaN check</td></tr>
+        </table>
+      </section>
+      <section class="full">
+        <h2 class="amber">9. Gotchas</h2>
+        <ul>
+          <li>Slices share memory: <code>b = a[1:3]; b[0] = 99</code> changes <code>a</code>. Use <code>a[1:3].copy()</code> when you need independence.</li>
+          <li>Python list <code>* 3</code> repeats the list; NumPy array <code>* 3</code> multiplies every element.</li>
+          <li><code>a * b</code> is element-wise; matrix multiplication is <code>a @ b</code>.</li>
+          <li>An int array stays int: assigning <code>3.9</code> into it stores <code>3</code>. Convert with <code>astype</code> first.</li>
+          <li><code>reshape</code> must preserve the element count - a wrong target shape raises, it never silently pads.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

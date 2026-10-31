@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PyTorch Cheat Sheet</title>
+  <style>
+    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#0b67b2; --green:#167a4a; --amber:#9a5b00; --bg:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:13px/1.35 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:980px; margin:0 auto; padding:22px; }
+    header { margin-bottom:14px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+    h1 { margin:0 0 4px; font-size:28px; line-height:1.05; }
+    .subtitle { color:var(--muted); font-size:13px; }
+    .nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .nav a { border:1px solid var(--line); border-radius:6px; padding:5px 9px; color:var(--ink); background:var(--soft); font-size:12px; font-weight:700; text-decoration:none; }
+    .nav a.active { color:#fff; background:var(--blue); border-color:var(--blue); }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    section { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#fff; break-inside:avoid; }
+    section.full { grid-column:1 / -1; }
+    h2 { margin:0; padding:7px 9px; color:#fff; background:var(--ink); font-size:13px; line-height:1.15; }
+    h2.blue { background:var(--blue); } h2.green { background:var(--green); } h2.amber { background:var(--amber); }
+    table { width:100%; border-collapse:collapse; table-layout:fixed; }
+    th,td { vertical-align:top; padding:6px 8px; border-top:1px solid var(--line); overflow-wrap:anywhere; }
+    th { color:var(--muted); background:var(--soft); text-align:left; font-size:10px; text-transform:uppercase; }
+    code,.formula { font:12px/1.4 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; color:#111827; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
+    .formula { display:inline-block; margin:1px 0; white-space:normal; }
+    ul { margin:0; padding:7px 9px 8px 23px; } li { margin:3px 0; }
+    .note { padding:7px 9px; border-top:1px solid var(--line); color:var(--muted); background:#fbfcfd; }
+    a { color:var(--blue); }
+    pre { margin:0; padding:7px 9px; overflow-x:auto; border-top:1px solid var(--line); background:#fbfcfd; font:11px/1.35 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; white-space:pre-wrap; }
+    pre code { display:block; padding:0; border:0; background:transparent; font:inherit; word-break:normal; }
+    .snippets { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--line); }
+    .snippet { min-width:0; border-right:1px solid var(--line); }
+    .snippet:last-child { border-right:0; }
+    .snippet h3 { margin:0; padding:6px 9px; color:var(--muted); background:var(--soft); border-bottom:1px solid var(--line); font-size:11px; line-height:1.15; text-transform:uppercase; }
+    @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } .snippets { grid-template-columns:1fr; } .snippet { border-right:0; border-bottom:1px solid var(--line); } .snippet:last-child { border-bottom:0; } }
+    @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code,.formula { font-size:9px; padding:0 2px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>PyTorch: Gradient Descent &amp; a Basic CNN</h1>
+      <div class="subtitle">The update rule, batch vs stochastic vs mini-batch, the training loop, and a small CNN.</div>
+    </header>
+    <nav class="nav" aria-label="cheat sheet navigation">
+      <a href="index.html">Index</a>
+      <a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a>
+      <a href="numpy-basics-cheatsheet.html">NumPy</a>
+      <a href="probability-cheatsheet.html">Probability</a>
+      <a href="system-design-cheatsheet.html">System Design</a>
+      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
+      <a href="ml-optimizers-cheatsheet.html">ML Optimizers</a>
+      <a href="ml-losses-cheatsheet.html">ML Losses</a>
+      <a href="pytorch-cheatsheet.html" class="active">PyTorch</a>
+    </nav>
+    <div class="grid">
+      <section class="full">
+        <h2 class="blue">1. Tensors &amp; autograd in six lines</h2>
+        <pre><code>import torch
+
+x = torch.tensor([1.0, 2.0, 3.0],
+                 requires_grad=True)
+y = (x * 2).sum()
+y.backward()     # compute dy/dx
+x.grad           # tensor([2., 2., 2.])
+
+with torch.no_grad():   # no graph built
+    z = x * 2</code></pre>
+        <table><tr><th>Call</th><th>Gives</th></tr>
+          <tr><td><code>torch.randn(3, 4)</code>, <code>torch.zeros(3, 4)</code></td><td>Random-normal / zero tensors</td></tr>
+          <tr><td><code>t.shape</code>, <code>t.dtype</code>, <code>t.device</code></td><td>Shape, dtype, where it lives</td></tr>
+          <tr><td><code>t.to("cuda")</code></td><td>Move to GPU (returns a new tensor)</td></tr>
+          <tr><td><code>t.item()</code></td><td>A one-element tensor as a Python number</td></tr>
+          <tr><td><code>t.view(2, -1)</code>, <code>t.reshape(2, -1)</code></td><td>Reshape; reshape copies if it must</td></tr>
+        </table>
+      </section>
+      <section class="full">
+        <h2 class="green">2. The update rule - all of gradient descent</h2>
+        <table><tr><th>Symbol</th><th>Meaning</th></tr>
+          <tr><td><span class="formula">w &larr; w - &eta; &middot; &nabla;L(w)</span></td><td>Step the weights downhill, against the gradient of the loss</td></tr>
+          <tr><td><code>w</code></td><td>Model parameters</td></tr>
+          <tr><td><code>&eta;</code> (lr)</td><td>Learning rate - how big a step</td></tr>
+          <tr><td><code>&nabla;L(w)</code></td><td>Gradient of the loss at the current weights - the uphill direction</td></tr>
+        </table>
+        <div class="note">Every optimizer (momentum, Adam, ...) is a variation on how this step is computed and scaled. See the ML Optimizers sheet for that ladder.</div>
+      </section>
+      <section class="full">
+        <h2 class="amber">3. Batch vs stochastic vs mini-batch GD</h2>
+        <div class="snippets">
+          <div class="snippet">
+            <h3>Batch GD</h3>
+            <table>
+              <tr><th>Data per update</th><td>The whole dataset</td></tr>
+              <tr><th>Updates / epoch</th><td>1</td></tr>
+              <tr><th>Gradient</th><td>Exact for the full training loss - deterministic given the data</td></tr>
+              <tr><th>In PyTorch</th><td>One pass over the full set per step</td></tr>
+            </table>
+          </div>
+          <div class="snippet">
+            <h3>Stochastic GD (SGD)</h3>
+            <table>
+              <tr><th>Data per update</th><td>1 sample</td></tr>
+              <tr><th>Updates / epoch</th><td>N</td></tr>
+              <tr><th>Gradient</th><td>Single-sample estimate - noisy; the noise can bounce out of shallow minima</td></tr>
+              <tr><th>In PyTorch</th><td><code>DataLoader(ds, batch_size=1)</code></td></tr>
+            </table>
+          </div>
+          <div class="snippet">
+            <h3>Mini-batch GD</h3>
+            <table>
+              <tr><th>Data per update</th><td>B samples, e.g. 32-256</td></tr>
+              <tr><th>Updates / epoch</th><td>ceil(N / B) - the last batch can be partial; <code>drop_last=True</code> makes it floor(N / B)</td></tr>
+              <tr><th>Gradient</th><td>Average over B samples - less noisy than one sample, cheaper than the full set; the practical default</td></tr>
+              <tr><th>In PyTorch</th><td><code>DataLoader(ds, batch_size=B, shuffle=True)</code></td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="note">Same rule, three choices of how much data backs each gradient estimate. The optimizer is batch-size agnostic: <code>torch.optim.SGD.step()</code> updates from whatever gradient the last <code>backward()</code> produced. The batching you feed it - one sample, B samples, or the whole dataset at once - is what makes the run stochastic, mini-batch or full-batch.</div>
+      </section>
+      <section class="full">
+        <h2 class="blue">4. The training loop (mini-batch)</h2>
+        <pre><code>from torch.utils.data import DataLoader, TensorDataset
+
+loader  = DataLoader(TensorDataset(X, y),
+                     batch_size=32, shuffle=True)
+loss_fn = torch.nn.CrossEntropyLoss()
+opt = torch.optim.SGD(model.parameters(), lr=0.01)
+
+for epoch in range(10):
+    model.train()
+    for xb, yb in loader:
+        opt.zero_grad()   # clear old gradients
+        loss = loss_fn(model(xb), yb)
+        loss.backward()   # compute gradients
+        opt.step()        # apply the update</code></pre>
+        <div class="note">The same four lines drive almost every PyTorch model: zero, forward, backward, step. Skipping <code>zero_grad()</code> accumulates gradients across batches.</div>
+      </section>
+      <section class="full">
+        <h2 class="green">5. A basic CNN</h2>
+        <pre><code>import torch.nn as nn
+
+class SmallCNN(nn.Module):
+    def __init__(self, num_classes=10):
+        super().__init__()
+        self.features = nn.Sequential(
+            # input: 1x28x28
+            nn.Conv2d(1, 16, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),      # -&gt; 16x14x14
+            nn.Conv2d(16, 32, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),      # -&gt; 32x7x7
+        )
+        self.classifier = nn.Linear(32 * 7 * 7,
+                                    num_classes)
+
+    def forward(self, x):
+        x = self.features(x)     # Nx32x7x7
+        x = torch.flatten(x, 1)  # Nx(32*7*7)
+        return self.classifier(x)
+
+model = SmallCNN()   # input: Nx1x28x28</code></pre>
+        <table><tr><th>Layer</th><th>Job</th></tr>
+          <tr><td><code>nn.Conv2d(cin, cout, k, padding=1)</code></td><td>Learns <code>cout</code> local filters; padding keeps the spatial size</td></tr>
+          <tr><td><code>nn.ReLU()</code></td><td>Non-linearity, <code>max(0, x)</code></td></tr>
+          <tr><td><code>nn.MaxPool2d(2)</code></td><td>Halves height and width, keeps the strongest response</td></tr>
+          <tr><td><code>nn.Linear(fin, fout)</code></td><td>Dense layer that maps features to class scores (logits)</td></tr>
+        </table>
+      </section>
+      <section class="full">
+        <h2 class="blue">6. Train &amp; evaluate it</h2>
+        <pre><code>device = ("cuda" if torch.cuda.is_available()
+          else "cpu")
+model = SmallCNN().to(device)
+opt = torch.optim.SGD(model.parameters(),
+                      lr=0.01, momentum=0.9)
+loss_fn = nn.CrossEntropyLoss()
+
+# training: same loop as section 4, with
+# xb, yb = xb.to(device), yb.to(device)
+
+model.eval()
+correct = 0
+with torch.no_grad():
+    for xb, yb in test_loader:
+        xb, yb = xb.to(device), yb.to(device)
+        pred = model(xb).argmax(dim=1)
+        correct += (pred == yb).sum().item()
+
+print(correct / len(test_loader.dataset))</code></pre>
+      </section>
+      <section class="full">
+        <h2 class="amber">7. Gotchas</h2>
+        <ul>
+          <li>Forgetting <code>opt.zero_grad()</code> silently accumulates gradients across batches.</li>
+          <li><code>model.train()</code> vs <code>model.eval()</code> - dropout and batchnorm behave differently in each mode.</li>
+          <li>Inputs are <code>N x C x H x W</code>: a single 28x28 grayscale image becomes <code>(1, 1, 28, 28)</code> via <code>img[None, None]</code>.</li>
+          <li><code>CrossEntropyLoss</code> takes raw logits and integer class labels - no softmax, no one-hot.</li>
+          <li>Model and batch must sit on the same device, or the forward pass errors.</li>
+          <li>Use <code>loss.item()</code> for logging; keeping the tensor alive holds the whole graph in memory.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
