@@ -3,181 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cheat Sheet Index</title>
+  <title>Cheat Sheets</title>
   <style>
-    :root {
-      --ink: #172026;
-      --muted: #52616b;
-      --line: #d7dee4;
-      --soft: #f5f7f9;
-      --blue: #0b67b2;
-      --green: #167a4a;
-      --amber: #9a5b00;
-      --bg: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-
     body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--bg);
-      font: 13px/1.35 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: 0;
-    }
-
-    main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 22px;
-    }
-
-    header {
-      margin-bottom: 14px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--ink);
-    }
-
-    h1 {
-      margin: 0 0 4px;
-      font-size: 28px;
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .nav a {
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 5px 9px;
-      color: var(--ink);
-      background: var(--soft);
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .nav a.active {
-      color: #fff;
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    a.card {
-      display: block;
-      min-height: 142px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      color: inherit;
+      max-width: 560px;
+      margin: 20vh auto 0;
+      padding: 0 20px;
+      font: 16px/1.7 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #111;
       background: #fff;
-      text-decoration: none;
     }
-
-    .card h2 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      line-height: 1.15;
-      letter-spacing: 0;
-    }
-
-    .card p {
-      margin: 0 0 14px;
-      color: var(--muted);
-    }
-
-    .pill {
-      display: inline-block;
-      border-radius: 999px;
-      padding: 3px 8px;
-      color: #fff;
-      background: var(--green);
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .pill.amber { background: var(--amber); }
-
-    @media (max-width: 700px) {
-      main { padding: 14px; }
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    @media print {
-      .nav { display: none; }
-      main { max-width: none; padding: 10mm; }
+    h1 { font-size: 20px; margin: 0 0 12px; }
+    ul { margin: 0; padding-left: 20px; }
+    a { color: #0b67b2; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (prefers-color-scheme: dark) {
+      body { color: #e6e6e6; background: #111; }
+      a { color: #6db3f2; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Cheat Sheet Index</h1>
-      <div class="subtitle">A small, printable collection for quick revision.</div>
-    </header>
-
-    <nav class="nav" aria-label="cheat sheet navigation">
-      <a href="index.html" class="active">Index</a>
-      <a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a>
-      <a href="probability-cheatsheet.html">Probability</a>
-      <a href="system-design-cheatsheet.html">System Design</a>
-      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
-    </nav>
-
-    <div class="grid">
-      <a class="card" href="python-dsa-data-structures-cheatsheet.html">
-        <h2>Python DSA</h2>
-        <p>Data structures, syntax traps, bit operations, math helpers, and sparse tables.</p>
-        <span class="pill">Coding rounds</span>
-      </a>
-
-      <a class="card" href="probability-cheatsheet.html">
-        <h2>Probability</h2>
-        <p>Conditional probability and Bayes theorem derived directly from first principles.</p>
-        <span class="pill amber">First principles</span>
-      </a>
-
-      <a class="card" href="system-design-cheatsheet.html">
-        <h2>System Design</h2>
-        <p>Scaling, storage, reliability, and production architecture trade-offs.</p>
-        <span class="pill">Architecture rounds</span>
-      </a>
-
-      <a class="card" href="yolo-architecture-cheatsheet.html">
-        <h2>YOLO Architecture</h2>
-        <p>Backbone, neck, head, and the main additions across YOLO generations through Ultralytics YOLO26.</p>
-        <span class="pill amber">Computer vision</span>
-      </a>
-
-      <a class="card" href="ml-optimizers-cheatsheet.html">
-        <h2>ML Optimizers</h2>
-        <p>Progressive formulas, optimizer timeline, and practical training optimizations.</p>
-        <span class="pill amber">Machine learning</span>
-      </a>
-
-      <a class="card" href="ml-losses-cheatsheet.html">
-        <h2>ML Losses</h2>
-        <p>Classification, regression, YOLO, and other interview-ready loss functions with formulas.</p>
-        <span class="pill">Machine learning</span>
-      </a>
-    </div>
-  </main>
+  <h1>Cheat Sheets</h1>
+  <ul>
+    <li><a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a></li>
+    <li><a href="probability-cheatsheet.html">Probability</a></li>
+    <li><a href="system-design-cheatsheet.html">System Design</a></li>
+    <li><a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a></li>
+    <li><a href="ml-optimizers-cheatsheet.html">ML Optimizers</a></li>
+    <li><a href="ml-losses-cheatsheet.html">ML Losses</a></li>
+  </ul>
 </body>
 </html>
