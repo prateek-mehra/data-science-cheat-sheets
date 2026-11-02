@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python Fundamentals — Data Science Cheat Sheets</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 4rem; line-height: 1.6; }
+    a { color: #2563eb; }
+    h1 { line-height: 1.2; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #9ca3af; padding: .7rem .8rem; text-align: left; vertical-align: top; }
+    th { background: color-mix(in srgb, CanvasText 8%, Canvas); }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    @media (max-width: 560px) { body { padding: 1.25rem .75rem 3rem; } th, td { padding: .55rem; } }
+  </style>
+</head>
+<body>
+  <p><a href="index.html">← Cheat sheet index</a></p>
+  <main>
+    <h1>Python Fundamentals</h1>
+    <section aria-labelledby="mutation-reassignment">
+      <h2 id="mutation-reassignment">Mutation vs reassignment</h2>
+      <table>
+        <thead><tr><th>Operation</th><th>Changes <code>x</code>?</th><th>Why?</th></tr></thead>
+        <tbody>
+          <tr><td><code>y = x</code></td><td>No</td><td>Both reference the same list</td></tr>
+          <tr><td><code>y.append(3)</code></td><td>Yes</td><td>Mutates the shared list</td></tr>
+          <tr><td><code>y[0] = 10</code></td><td>Yes</td><td>Mutates the shared list</td></tr>
+          <tr><td><code>y = [4, 5]</code></td><td>No</td><td>Reassigns <code>y</code> to a new list</td></tr>
+          <tr><td><code>y = y + [3]</code></td><td>No</td><td>Creates a new list and reassigns <code>y</code></td></tr>
+          <tr><td><code>y += [3]</code></td><td>Yes</td><td>Mutates the existing list</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
