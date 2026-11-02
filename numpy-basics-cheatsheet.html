@@ -53,6 +53,47 @@
     </nav>
     <div class="grid">
       <section class="full">
+        <h2 class="blue">Single neuron: NumPy + sigmoid + MSE</h2>
+        <div class="note">A single sigmoid neuron maps each feature row to one prediction. This example trains with mean squared error (MSE) and gradient descent.</div>
+        <pre><code>import numpy as np
+
+# 4 samples, 2 input features; one target per sample
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=float)
+y = np.array([[0], [0], [0], [1]], dtype=float)
+
+# One weight per feature and one scalar bias
+weights = np.zeros((X.shape[1], 1))
+bias = 0.0
+learning_rate = 0.5
+
+
+def sigmoid(z):
+    z = np.clip(z, -500, 500)  # avoid exp overflow
+    return 1 / (1 + np.exp(-z))
+
+
+for _ in range(10_000):
+    # Forward pass: (samples, features) @ (features, 1) -> (samples, 1)
+    predictions = sigmoid(X @ weights + bias)
+
+    # MSE and its gradients
+    error = predictions - y
+    loss = np.mean(error ** 2)
+    d_z = (2 / y.size) * error * predictions * (1 - predictions)
+    d_weights = X.T @ d_z
+    d_bias = np.sum(d_z)
+
+    # Gradient descent update
+    weights -= learning_rate * d_weights
+    bias -= learning_rate * d_bias
+
+predictions = sigmoid(X @ weights + bias)
+print("predictions:\n", predictions.round(3))
+print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
+        <div class="note"><strong>Shapes:</strong> X is (n_samples, n_features), weights is (n_features, 1), and predictions and y are (n_samples, 1). The sigmoid derivative is p × (1 − p). The gradient includes the mean factor 2 / y.size.</div>
+      </section>
+
+      <section class="full">
         <h2 class="blue">1. Create arrays</h2>
         <table><tr><th>Code</th><th>What you get</th></tr>
           <tr><td><code>import numpy as np</code></td><td>The one import everyone uses</td></tr>
