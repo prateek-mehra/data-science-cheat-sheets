@@ -9,10 +9,13 @@
     body { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 4rem; line-height: 1.6; }
     a { color: #2563eb; }
     h1 { line-height: 1.2; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    h2 { margin-top: 2rem; }
+    h3 { margin-bottom: .5rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
     th, td { border: 1px solid #9ca3af; padding: .7rem .8rem; text-align: left; vertical-align: top; }
     th { background: color-mix(in srgb, CanvasText 8%, Canvas); }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    li + li { margin-top: .45rem; }
     @media (max-width: 560px) { body { padding: 1.25rem .75rem 3rem; } th, td { padding: .55rem; } }
   </style>
 </head>
@@ -20,8 +23,10 @@
   <p><a href="index.html">← Cheat sheet index</a></p>
   <main>
     <h1>Python Fundamentals</h1>
-    <section aria-labelledby="mutation-reassignment">
-      <h2 id="mutation-reassignment">Mutation vs reassignment</h2>
+
+    <section aria-labelledby="list">
+      <h2 id="list">List</h2>
+      <h3>Mutation vs reassignment</h3>
       <table>
         <thead><tr><th>Operation</th><th>Changes <code>x</code>?</th><th>Why?</th></tr></thead>
         <tbody>
@@ -33,6 +38,50 @@
           <tr><td><code>y += [3]</code></td><td>Yes</td><td>Mutates the existing list</td></tr>
         </tbody>
       </table>
+      <ul>
+        <li>A slice includes the start index and stops before the end index, so <code>[1:4]</code> selects positions 1, 2, and 3.</li>
+        <li><code>copy()</code> makes a separate shallow list. If the copy becomes <code>[1, 2, 3]</code>, appending to it does not change the original list.</li>
+        <li>A default list is created once when the function is defined and is reused across calls.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="dict">
+      <h2 id="dict">Dict</h2>
+      <ul><li>Keys must be unique. Values may repeat, and modern Python dictionaries preserve insertion order.</li></ul>
+    </section>
+
+    <section aria-labelledby="strings">
+      <h2 id="strings">Strings</h2>
+      <ul>
+        <li><code>str.find()</code> returns <code>-1</code> when no match is found.</li>
+        <li><code>capitalize()</code> uppercases the first character and lowercases the remaining characters; for example, <code>"cAT".capitalize()</code> returns <code>"Cat"</code>.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="tuple">
+      <h2 id="tuple">Tuple</h2>
+      <ul><li>Parentheses alone do not create a tuple; the comma does: <code>(5,)</code>.</li></ul>
+    </section>
+
+    <section aria-labelledby="bool">
+      <h2 id="bool">Bool</h2>
+      <ul><li><code>bool</code> is a subclass of <code>int</code>.</li></ul>
+    </section>
+
+    <section aria-labelledby="operators">
+      <h2 id="operators">Operators</h2>
+      <ul>
+        <li><code>==</code> checks whether values are equal.</li>
+        <li><code>is</code> checks whether two references point to the exact same object.</li>
+        <li>Exponentiation groups from the right: <code>2 ** (3 ** 2)</code>.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="objects">
+      <h2 id="objects">Objects</h2>
+      <p>Remember the inheritance hierarchy:</p>
+      <p><code>bool → int → object</code></p>
+      <p>Everything in Python ultimately inherits from <code>object</code>, with some nuances around special types.</p>
     </section>
   </main>
 </body>
