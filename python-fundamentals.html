@@ -42,12 +42,36 @@
         <li>A slice includes the start index and stops before the end index, so <code>[1:4]</code> selects positions 1, 2, and 3.</li>
         <li><code>copy()</code> makes a separate shallow list. If the copy becomes <code>[1, 2, 3]</code>, appending to it does not change the original list.</li>
         <li>A default list is created once when the function is defined and is reused across calls.</li>
+        <li><code>list.sort()</code> changes the list in place and returns <code>None</code>. Use <code>sorted(nums)</code> when you want a new sorted list.</li>
+      </ul>
+      <h3>Shallow and deep copy</h3>
+      <ul>
+        <li>Shallow copy = new outer container, shared inner objects.</li>
+        <li>Deep copy = new outer container, recursively copied inner objects.</li>
+        <li>Assignment (<code>b = a</code>) = no copy at all.</li>
+      </ul>
+      <table>
+        <thead><tr><th>Code</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>b[0] = [100, 200]</code></td><td>Replaces a reference in the outer list</td></tr>
+          <tr><td><code>b[0].append(100)</code></td><td>Mutates the shared inner list</td></tr>
+          <tr><td><code>b.append([5, 6])</code></td><td>Adds an element to <code>b</code>'s outer list</td></tr>
+          <tr><td><code>b[0][0] = 100</code></td><td>Mutates the shared inner list's element</td></tr>
+        </tbody>
+      </table>
+      <p>Remember this rule:</p>
+      <ul>
+        <li><code>=</code> on <code>b[0]</code> changes what the outer list points to.</li>
+        <li><code>.append()</code> on <code>b[0]</code> changes the object that the outer list points to.</li>
       </ul>
     </section>
 
     <section aria-labelledby="dict">
       <h2 id="dict">Dict</h2>
-      <ul><li>Keys must be unique. Values may repeat, and modern Python dictionaries preserve insertion order.</li></ul>
+      <ul>
+        <li>Keys must be unique. Values may repeat, and modern Python dictionaries preserve insertion order.</li>
+        <li>Iterating (for example, <code>list(d)</code>) a dictionary yields its keys in insertion order.</li>
+      </ul>
     </section>
 
     <section aria-labelledby="strings">
@@ -55,6 +79,7 @@
       <ul>
         <li><code>str.find()</code> returns <code>-1</code> when no match is found.</li>
         <li><code>capitalize()</code> uppercases the first character and lowercases the remaining characters; for example, <code>"cAT".capitalize()</code> returns <code>"Cat"</code>.</li>
+        <li><code>sorted(["10", "2", "1"])</code> sorts lexicographically.</li>
       </ul>
     </section>
 
@@ -74,6 +99,8 @@
         <li><code>==</code> checks whether values are equal.</li>
         <li><code>is</code> checks whether two references point to the exact same object.</li>
         <li>Exponentiation groups from the right: <code>2 ** (3 ** 2)</code>.</li>
+        <li>Empty strings and lists are falsey. <code>or</code> returns the first truthy operand itself, not a Boolean.</li>
+        <li><code>//</code> floors toward negative infinity.</li>
       </ul>
       <h3>Operator precedence</h3>
       <table>
