@@ -54,7 +54,7 @@
     <div class="grid">
       <section class="full">
         <h2 class="blue">Single neuron: NumPy + sigmoid + MSE</h2>
-        <div class="note">A single sigmoid neuron maps each feature row to one prediction. This example trains with mean squared error (MSE) and gradient descent.</div>
+        <div class="note"><strong>Forward propagation:</strong> combine each input row with the weights and bias: z = XW + b; then produce prediction p = sigmoid(z). For this example, MSE L = (1/m) Σ(p − y)².<br><strong>Backpropagation:</strong> use the chain rule to work backward from the prediction error. For sigmoid + MSE: dL/dp = (2/m)(p − y), dp/dz = p(1 − p), dL/dW = XᵀdL/dz, and dL/db = ΣdL/dz.<br><strong>Weight update:</strong> move parameters a small step opposite the gradient: W ← W − η·dL/dW; b ← b − η·dL/db. Intuitively, this nudges predictions toward the targets and lowers the loss.<br>A single sigmoid neuron maps each feature row to one prediction. This example trains with mean squared error (MSE) and gradient descent.</div>
         <pre><code>import numpy as np
 
 # 4 samples, 2 input features; one target per sample
