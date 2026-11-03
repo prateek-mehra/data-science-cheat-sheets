@@ -33,7 +33,7 @@
     @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } }
     @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code,.formula { font-size:9px; padding:0 2px; } }
   </style>
-</head>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body>
   <main>
     <header>
@@ -54,7 +54,7 @@
     <div class="grid">
       <section class="full">
         <h2 class="blue">Single neuron: NumPy + sigmoid + MSE</h2>
-        <div class="note"><strong>Forward propagation:</strong> combine each input row with the weights and bias: z = XW + b; then produce prediction p = sigmoid(z). For this example, MSE L = (1/m) Σ(p − y)².<br><strong>Backpropagation:</strong> use the chain rule to work backward from the prediction error. For sigmoid + MSE: dL/dp = (2/m)(p − y), dp/dz = p(1 − p), dL/dW = XᵀdL/dz, and dL/db = ΣdL/dz.<br><strong>Weight update:</strong> move parameters a small step opposite the gradient: W ← W − η·dL/dW; b ← b − η·dL/db. Intuitively, this nudges predictions toward the targets and lowers the loss.<br>A single sigmoid neuron maps each feature row to one prediction. This example trains with mean squared error (MSE) and gradient descent.</div>
+        <div class="note"><strong>First principles:</strong> for sample i, input \(\mathbf{x}_i\), target \(y_i\), weights \(\mathbf{w}\), and bias \(b\):<br><strong>Forward propagation:</strong> form a weighted sum, then apply the sigmoid:<br>\[ z_i = \mathbf{x}_i^\mathsf{T} \mathbf{w} + b, \qquad \hat y_i = \sigma(z_i)=\frac{1}{1+e^{-z_i}} \]<br>For \(m\) samples, measure prediction error with mean squared error:<br>\[ L=\frac{1}{m}\sum_{i=1}^{m}(\hat y_i-y_i)^2 \]<br><strong>Backpropagation by the chain rule:</strong> a weight affects loss through the weighted sum, sigmoid, and prediction:<br>\[ \frac{\partial L}{\partial w_j}=\sum_{i=1}^{m} \frac{\partial L}{\partial \hat y_i}\cdot\frac{\partial \hat y_i}{\partial z_i}\cdot\frac{\partial z_i}{\partial w_j} \]<br>The factors are \(\frac{\partial L}{\partial \hat y_i}=\frac{2}{m}(\hat y_i-y_i)\), \(\frac{\partial \hat y_i}{\partial z_i}=\sigma(z_i)(1-\sigma(z_i))=\hat y_i(1-\hat y_i)\), and \(\frac{\partial z_i}{\partial w_j}=x_{ij}\). Since \(\frac{\partial z_i}{\partial b}=1\), define the error signal:<br>\[ \delta_i=\frac{2}{m}(\hat y_i-y_i)\hat y_i(1-\hat y_i), \qquad \operatorname{grad}_{\mathbf{w}}L=X^\mathsf{T}\boldsymbol{\delta}, \qquad \frac{\partial L}{\partial b}=\sum_{i=1}^{m}\delta_i \]<br><strong>Weight update:</strong> gradient descent moves each parameter opposite its gradient, with learning rate \(\eta\):<br>\[ \mathbf{w}\leftarrow\mathbf{w}-\eta \operatorname{grad}_{\mathbf{w}}L, \qquad b\leftarrow b-\eta\frac{\partial L}{\partial b} \]<br>Forward propagation makes predictions; backpropagation measures each parameter’s contribution to the error; the update nudges parameters to reduce it.</div>
         <pre><code>import numpy as np
 
 # 4 samples, 2 input features; one target per sample
