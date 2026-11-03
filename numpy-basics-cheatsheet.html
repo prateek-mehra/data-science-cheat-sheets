@@ -91,10 +91,7 @@ predictions = sigmoid(X @ weights + bias)
 print("predictions:\n", predictions.round(3))
 print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
         <div class="note"><strong>Shapes:</strong> X is (n_samples, n_features), weights is (n_features, 1), and predictions and y are (n_samples, 1). The sigmoid derivative is p × (1 − p). The gradient includes the mean factor 2 / y.size.</div>
-      </section>
-
-      <section class="full">
-        <h2 class="blue">1. Create arrays</h2>
+      </section><section class="full"><h2 class="blue">Frequently used NumPy functions</h2><table><tr><th>Code</th><th>What you get</th></tr><tr><td><code>np.array([1, 2, 3])</code></td><td>Creates an array from the given values: <code>[1 2 3]</code>.</td></tr><tr><td><code>np.zeros((2, 3))</code></td><td>Creates a 2 × 3 array filled with zeros.</td></tr><tr><td><code>np.clip(a, 0, 1)</code></td><td>Clamps each value in <code>a</code> to the range 0 through 1.</td></tr><tr><td><code>np.exp(a)</code></td><td>Computes <code>e</code> raised to each value in <code>a</code>, element-wise.</td></tr><tr><td><code>np.mean(a)</code></td><td>Returns the mean of all values in <code>a</code>.</td></tr><tr><td><code>np.sum(a)</code></td><td>Returns the sum of all values in <code>a</code>.</td></tr></table></section><section class="full"><h2 class="blue">1. Create arrays</h2>
         <table><tr><th>Code</th><th>What you get</th></tr>
           <tr><td><code>import numpy as np</code></td><td>The one import everyone uses</td></tr>
           <tr><td><code>np.array([1, 2, 3])</code></td><td>Array from a list, shape <code>(3,)</code>, dtype int</td></tr>
