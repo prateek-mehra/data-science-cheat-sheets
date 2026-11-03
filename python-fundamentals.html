@@ -75,6 +75,30 @@
         <li><code>is</code> checks whether two references point to the exact same object.</li>
         <li>Exponentiation groups from the right: <code>2 ** (3 ** 2)</code>.</li>
       </ul>
+      <h3>Operator precedence</h3>
+      <table>
+        <thead><tr><th>Operator</th><th>Precedence</th></tr></thead>
+        <tbody>
+          <tr><td><code>()</code></td><td>Highest</td></tr>
+          <tr><td><code>**</code></td><td></td></tr>
+          <tr><td><code>* / // %</code></td><td></td></tr>
+          <tr><td><code>+ -</code></td><td></td></tr>
+          <tr><td>Comparisons (<code>==</code>, <code>&lt;</code>, <code>&gt;</code>)</td><td></td></tr>
+          <tr><td><code>not</code></td><td></td></tr>
+          <tr><td><code>and</code></td><td></td></tr>
+          <tr><td><code>or</code></td><td>Lowest</td></tr>
+        </tbody>
+      </table>
+      <p>When operators have the same precedence, associativity determines evaluation grouping.</p>
+      <h3>Associativity</h3>
+      <table>
+        <thead><tr><th>Operator</th><th>Associativity</th></tr></thead>
+        <tbody>
+          <tr><td><code>+ - * /</code></td><td>Left to right</td></tr>
+          <tr><td><code>and, or</code></td><td>Left to right</td></tr>
+          <tr><td><code>**</code></td><td>Right to left</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section aria-labelledby="objects">
