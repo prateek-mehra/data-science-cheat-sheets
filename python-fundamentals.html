@@ -41,7 +41,6 @@
       <ul>
         <li>A slice includes the start index and stops before the end index, so <code>[1:4]</code> selects positions 1, 2, and 3.</li>
         <li><code>copy()</code> makes a separate shallow list. If the copy becomes <code>[1, 2, 3]</code>, appending to it does not change the original list.</li>
-        <li>A default list is created once when the function is defined and is reused across calls.</li>
         <li><code>list.sort()</code> changes the list in place and returns <code>None</code>. Use <code>sorted(nums)</code> when you want a new sorted list.</li>
       </ul>
       <h3>Shallow and deep copy</h3>
@@ -126,6 +125,14 @@
           <tr><td><code>**</code></td><td>Right to left</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section aria-labelledby="functions">
+      <h2 id="functions">Functions</h2>
+      <ul>
+        <li>Default argument values are evaluated when the function is created, not when it's called.</li>
+        <li>Python closures use late binding: variables are looked up when the function is called, not when it is defined.</li>
+      </ul>
     </section>
 
     <section aria-labelledby="exceptions">
