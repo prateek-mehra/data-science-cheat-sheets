@@ -76,7 +76,6 @@ with torch.no_grad():   # no graph built
           <tr><td><code>t.view(2, -1)</code>, <code>t.reshape(2, -1)</code></td><td>Reshape; reshape copies if it must</td></tr>
         </table>
       </section>
-      </section>
       <section class="full">
         <h2 class="green">2. Autograd: who gets the blame?</h2>
         <div class="note">Think of each tensor as a node in a computation graph. Every operation records its inputs and a local derivative. During <code>backward()</code>, PyTorch walks the graph in reverse and sends each node's incoming gradient through the chain rule. If a value reaches the result along multiple paths, those contributions add up.</div>
@@ -110,7 +109,7 @@ for x in (a, b, c):
     x.grad = None</code></pre>
         <div class="note">This is the same bookkeeping as a tiny scalar <code>Value</code> engine: each operation remembers its parents and local backward rule; the final result starts with gradient 1; a reverse topological pass accumulates contributions into leaves. PyTorch builds and traverses that graph automatically. Leaf tensors with <code>requires_grad=True</code> receive gradients in <code>.grad</code>; intermediate tensors usually do not unless you call <code>.retain_grad()</code>. For vector outputs, provide an upstream gradient or reduce to a scalar first, for example <code>scores.sum().backward()</code>.</div>
       </section>
-
+      <section class="full">
         <h2 class="green">3. The update rule - all of gradient descent</h2>
         <table><tr><th>Symbol</th><th>Meaning</th></tr>
           <tr><td><span class="formula">w &larr; w - &eta; &middot; &nabla;L(w)</span></td><td>Step the weights downhill, against the gradient of the loss</td></tr>
