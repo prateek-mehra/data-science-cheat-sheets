@@ -77,7 +77,41 @@ with torch.no_grad():   # no graph built
         </table>
       </section>
       <section class="full">
-        <h2 class="green">2. The update rule - all of gradient descent</h2>
+              <section class="full">
+        <h2 class="green">2. Autograd: who gets the blame?</h2>
+        <div class="note">Think of each tensor as a node in a computation graph. Every operation records its inputs and a local derivative. During <code>backward()</code>, PyTorch walks the graph in reverse and sends each node's incoming gradient through the chain rule. If a value reaches the result along multiple paths, those contributions add up.</div>
+        <table><tr><th>Operation</th><th>Local gradient intuition</th></tr>
+          <tr><td><code>z = x + y</code></td><td>One extra unit of either input adds one unit to <code>z</code>: gradients are passed through unchanged.</td></tr>
+          <tr><td><code>z = x * y</code></td><td><code>x</code> gets scaled by <code>y</code>, and <code>y</code> gets scaled by <code>x</code> (product rule).</td></tr>
+          <tr><td><code>z = relu(x)</code></td><td>Positive inputs pass the gradient through; negative inputs block it. At zero, PyTorch uses gradient zero.</td></tr>
+        </table>
+        <pre><code>import torch
+import torch.nn.functional as F
+
+a = torch.tensor(2.0, requires_grad=True)
+b = torch.tensor(-3.0, requires_grad=True)
+c = torch.tensor(10.0, requires_grad=True)
+
+d = a * b + c       # d = 4
+e = F.relu(d)       # e = 4
+loss = e * e        # loss = 16
+
+loss.backward()     # seed d(loss)/d(loss) = 1, then chain backward
+print(a.grad)       # -24: 2e * b = 8 * -3
+print(b.grad)       # -16: 2e * a = 8 * 2
+print(c.grad)       #   8: 2e * 1 = 8
+
+# Inspect the graph PyTorch built (names vary by operation)
+print(loss.grad_fn)       # MulBackward0
+print(loss.grad_fn.next_functions)
+
+# Gradients accumulate by default; clear them before another pass
+for x in (a, b, c):
+    x.grad = None</code></pre>
+        <div class="note">This is the same bookkeeping as a tiny scalar <code>Value</code> engine: each operation remembers its parents and local backward rule; the final result starts with gradient 1; a reverse topological pass accumulates contributions into leaves. PyTorch builds and traverses that graph automatically. Leaf tensors with <code>requires_grad=True</code> receive gradients in <code>.grad</code>; intermediate tensors usually do not unless you call <code>.retain_grad()</code>. For vector outputs, provide an upstream gradient or reduce to a scalar first, for example <code>scores.sum().backward()</code>.</div>
+      </section>
+
+        <h2 class="green">3. The update rule - all of gradient descent</h2>
         <table><tr><th>Symbol</th><th>Meaning</th></tr>
           <tr><td><span class="formula">w &larr; w - &eta; &middot; &nabla;L(w)</span></td><td>Step the weights downhill, against the gradient of the loss</td></tr>
           <tr><td><code>w</code></td><td>Model parameters</td></tr>
@@ -87,7 +121,7 @@ with torch.no_grad():   # no graph built
         <div class="note">Every optimizer (momentum, Adam, ...) is a variation on how this step is computed and scaled. See the ML Optimizers sheet for that ladder.</div>
       </section>
       <section class="full">
-        <h2 class="amber">3. Batch vs stochastic vs mini-batch GD</h2>
+        <h2 class="amber">4. Batch vs stochastic vs mini-batch GD</h2>
         <div class="snippets">
           <div class="snippet">
             <h3>Batch GD</h3>
@@ -120,7 +154,7 @@ with torch.no_grad():   # no graph built
         <div class="note">Same rule, three choices of how much data backs each gradient estimate. The optimizer is batch-size agnostic: <code>torch.optim.SGD.step()</code> updates from whatever gradient the last <code>backward()</code> produced. The batching you feed it - one sample, B samples, or the whole dataset at once - is what makes the run stochastic, mini-batch or full-batch.</div>
       </section>
       <section class="full">
-        <h2 class="blue">4. The training loop (mini-batch)</h2>
+        <h2 class="blue">5. The training loop (mini-batch)</h2>
         <pre><code>from torch.utils.data import DataLoader, TensorDataset
 
 loader  = DataLoader(TensorDataset(X, y),
@@ -138,7 +172,7 @@ for epoch in range(10):
         <div class="note">The same four lines drive almost every PyTorch model: zero, forward, backward, step. Skipping <code>zero_grad()</code> accumulates gradients across batches.</div>
       </section>
       <section class="full">
-        <h2 class="green">5. A basic CNN</h2>
+        <h2 class="green">6. A basic CNN</h2>
         <pre><code>import torch.nn as nn
 
 class SmallCNN(nn.Module):
@@ -170,7 +204,7 @@ model = SmallCNN()   # input: Nx1x28x28</code></pre>
         </table>
       </section>
       <section class="full">
-        <h2 class="blue">6. Train &amp; evaluate it</h2>
+        <h2 class="blue">7. Train &amp; evaluate it</h2>
         <pre><code>device = ("cuda" if torch.cuda.is_available()
           else "cpu")
 model = SmallCNN().to(device)
@@ -192,7 +226,7 @@ with torch.no_grad():
 print(correct / len(test_loader.dataset))</code></pre>
       </section>
       <section class="full">
-        <h2 class="amber">7. Gotchas</h2>
+        <h2 class="amber">8. Gotchas</h2>
         <ul>
           <li>Forgetting <code>opt.zero_grad()</code> silently accumulates gradients across batches.</li>
           <li><code>model.train()</code> vs <code>model.eval()</code> - dropout and batchnorm behave differently in each mode.</li>
