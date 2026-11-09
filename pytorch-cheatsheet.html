@@ -225,7 +225,6 @@ with torch.no_grad():
 print(correct / len(test_loader.dataset))</code></pre>
       </section>
       <section class="full">
-              <section class="full">
         <h2 class="green">8. CNN building blocks: shapes, convolution &amp; parameters</h2>
         <table><tr><th>Idea</th><th>Rule of thumb</th></tr>
           <tr><td>NCHW</td><td><code>(N, C, H, W)</code> = batch size, channels, height, width. A Conv2d changes channels to <code>out_channels</code>; its kernel, stride, and padding determine height and width.</td></tr>
@@ -272,7 +271,48 @@ print(count_parameters(block))  # 5,088
 # Total: 448 + 4,640 = 5,088</code></pre>
         <div class="note">Shape tracing is a quick way to catch mismatches before the classifier: after flattening, <code>(N, C, H, W)</code> becomes <code>(N, C·H·W)</code>. For a convolution, track N unchanged, Cout from the layer, then compute Hout and Wout separately. The parameter formula above assumes groups=1; grouped convolutions use fewer weights.</div>
       </section>
-      <h2 class="amber">9. Gotchas</h2>
+      <section class="full">
+        <h2 class="blue">9. Linear layers: parameter count &amp; manual forward pass</h2>
+        <table><tr><th>Concept</th><th>Intuition / formula</th></tr>
+          <tr><td><code>nn.Linear(in, out)</code></td><td>Each output is a weighted sum of input features plus optional bias: <span class="formula">y = xW<sup>T</sup> + b</span>. PyTorch stores <code>weight</code> as <code>(out_features, in_features)</code>, so the forward pass multiplies by <code>weight.T</code>.</td></tr>
+          <tr><td>Linear parameter count</td><td><span class="formula">in_features·out_features + (out_features if bias else 0)</span>.</td></tr>
+          <tr><td>All-layer count</td><td>Sum <code>numel()</code> for every trainable parameter. This works for Linear, Conv, embeddings, and any module that registers parameters.</td></tr>
+        </table>
+        <pre><code>import torch
+import torch.nn as nn
+
+def count_params():
+    model = nn.Sequential(
+        nn.Linear(4, 8),
+        nn.ReLU(),
+        nn.Linear(8, 2),
+    )
+    return sum(p.numel() for p in model.parameters()
+               if p.requires_grad)
+
+result = count_params()
+print("Total parameters:", result)  # 58
+# First Linear: 4*8 weights + 8 biases = 40
+# Second Linear: 8*2 weights + 2 biases = 18
+# ReLU: 0 parameters</code></pre>
+        <pre><code>def manual_linear(x, layer):
+    """Match nn.Linear for inputs with any leading batch dimensions."""
+    weight = layer.weight
+    bias = layer.bias if layer.bias is not None else 0
+    return torch.matmul(x, weight.T) + bias
+
+layer_with_bias = nn.Linear(4, 8, bias=True)
+layer_without_bias = nn.Linear(4, 8, bias=False)
+x = torch.randn(2, 3, 4)  # leading dims (2, 3), 4 input features
+
+print(torch.allclose(manual_linear(x, layer_with_bias),
+                     layer_with_bias(x)))       # True
+print(torch.allclose(manual_linear(x, layer_without_bias),
+                     layer_without_bias(x)))    # True</code></pre>
+        <div class="note">The last dimension of <code>x</code> must equal <code>in_features</code>. <code>matmul</code> applies the same weight matrix across leading dimensions, so <code>(2, 3, 4)</code> becomes <code>(2, 3, 8)</code>. When counting a model, <code>requires_grad</code> excludes frozen parameters; buffers such as BatchNorm running statistics are not parameters.</div>
+      </section>
+      <section class="full">
+        <h2 class="amber">10. Gotchas</h2>
         <ul>
           <li>Forgetting <code>opt.zero_grad()</code> silently accumulates gradients across batches.</li>
           <li><code>model.train()</code> vs <code>model.eval()</code> - dropout and batchnorm behave differently in each mode.</li>
