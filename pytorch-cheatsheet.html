@@ -77,161 +77,19 @@ with torch.no_grad():   # no graph built
         </table>
       </section>
       <section class="full">
-        <h2 class="green">2. Autograd: who gets the blame?</h2>
-        <div class="note">Think of each tensor as a node in a computation graph. Every operation records its inputs and a local derivative. During <code>backward()</code>, PyTorch walks the graph in reverse and sends each node's incoming gradient through the chain rule. If a value reaches the result along multiple paths, those contributions add up.</div>
-        <table><tr><th>Operation</th><th>Local gradient intuition</th></tr>
-          <tr><td><code>z = x + y</code></td><td>One extra unit of either input adds one unit to <code>z</code>: gradients are passed through unchanged.</td></tr>
-          <tr><td><code>z = x * y</code></td><td><code>x</code> gets scaled by <code>y</code>, and <code>y</code> gets scaled by <code>x</code> (product rule).</td></tr>
-          <tr><td><code>z = relu(x)</code></td><td>Positive inputs pass the gradient through; negative inputs block it. At zero, PyTorch uses gradient zero.</td></tr>
-        </table>
-        <pre><code>import torch
-import torch.nn.functional as F
-
-a = torch.tensor(2.0, requires_grad=True)
-b = torch.tensor(-3.0, requires_grad=True)
-c = torch.tensor(10.0, requires_grad=True)
-
-d = a * b + c       # d = 4
-e = F.relu(d)       # e = 4
-loss = e * e        # loss = 16
-
-loss.backward()     # seed d(loss)/d(loss) = 1, then chain backward
-print(a.grad)       # -24: 2e * b = 8 * -3
-print(b.grad)       # -16: 2e * a = 8 * 2
-print(c.grad)       #   8: 2e * 1 = 8
-
-# Inspect the graph PyTorch built (names vary by operation)
-print(loss.grad_fn)       # MulBackward0
-print(loss.grad_fn.next_functions)
-
-# Gradients accumulate by default; clear them before another pass
-for x in (a, b, c):
-    x.grad = None</code></pre>
-        <div class="note">This is the same bookkeeping as a tiny scalar <code>Value</code> engine: each operation remembers its parents and local backward rule; the final result starts with gradient 1; a reverse topological pass accumulates contributions into leaves. PyTorch builds and traverses that graph automatically. Leaf tensors with <code>requires_grad=True</code> receive gradients in <code>.grad</code>; intermediate tensors usually do not unless you call <code>.retain_grad()</code>. For vector outputs, provide an upstream gradient or reduce to a scalar first, for example <code>scores.sum().backward()</code>.</div>
-      </section>
-      <section class="full">
-        <h2 class="green">3. The update rule - all of gradient descent</h2>
-        <table><tr><th>Symbol</th><th>Meaning</th></tr>
-          <tr><td><span class="formula">w &larr; w - &eta; &middot; &nabla;L(w)</span></td><td>Step the weights downhill, against the gradient of the loss</td></tr>
-          <tr><td><code>w</code></td><td>Model parameters</td></tr>
-          <tr><td><code>&eta;</code> (lr)</td><td>Learning rate - how big a step</td></tr>
-          <tr><td><code>&nabla;L(w)</code></td><td>Gradient of the loss at the current weights - the uphill direction</td></tr>
-        </table>
-        <div class="note">Every optimizer (momentum, Adam, ...) is a variation on how this step is computed and scaled. See the ML Optimizers sheet for that ladder.</div>
-      </section>
-      <section class="full">
-        <h2 class="amber">4. Batch vs stochastic vs mini-batch GD</h2>
-        <div class="snippets">
-          <div class="snippet">
-            <h3>Batch GD</h3>
-            <table>
-              <tr><th>Data per update</th><td>The whole dataset</td></tr>
-              <tr><th>Updates / epoch</th><td>1</td></tr>
-              <tr><th>Gradient</th><td>Exact for the full training loss - deterministic given the data</td></tr>
-              <tr><th>In PyTorch</th><td>One pass over the full set per step</td></tr>
-            </table>
-          </div>
-          <div class="snippet">
-            <h3>Stochastic GD (SGD)</h3>
-            <table>
-              <tr><th>Data per update</th><td>1 sample</td></tr>
-              <tr><th>Updates / epoch</th><td>N</td></tr>
-              <tr><th>Gradient</th><td>Single-sample estimate - noisy; the noise can bounce out of shallow minima</td></tr>
-              <tr><th>In PyTorch</th><td><code>DataLoader(ds, batch_size=1)</code></td></tr>
-            </table>
-          </div>
-          <div class="snippet">
-            <h3>Mini-batch GD</h3>
-            <table>
-              <tr><th>Data per update</th><td>B samples, e.g. 32-256</td></tr>
-              <tr><th>Updates / epoch</th><td>ceil(N / B) - the last batch can be partial; <code>drop_last=True</code> makes it floor(N / B)</td></tr>
-              <tr><th>Gradient</th><td>Average over B samples - less noisy than one sample, cheaper than the full set; the practical default</td></tr>
-              <tr><th>In PyTorch</th><td><code>DataLoader(ds, batch_size=B, shuffle=True)</code></td></tr>
-            </table>
-          </div>
-        </div>
-        <div class="note">Same rule, three choices of how much data backs each gradient estimate. The optimizer is batch-size agnostic: <code>torch.optim.SGD.step()</code> updates from whatever gradient the last <code>backward()</code> produced. The batching you feed it - one sample, B samples, or the whole dataset at once - is what makes the run stochastic, mini-batch or full-batch.</div>
-      </section>
-      <section class="full">
-        <h2 class="blue">5. The training loop (mini-batch)</h2>
-        <pre><code>from torch.utils.data import DataLoader, TensorDataset
-
-loader  = DataLoader(TensorDataset(X, y),
-                     batch_size=32, shuffle=True)
-loss_fn = torch.nn.CrossEntropyLoss()
-opt = torch.optim.SGD(model.parameters(), lr=0.01)
-
-for epoch in range(10):
-    model.train()
-    for xb, yb in loader:
-        opt.zero_grad()   # clear old gradients
-        loss = loss_fn(model(xb), yb)
-        loss.backward()   # compute gradients
-        opt.step()        # apply the update</code></pre>
-        <div class="note">The same four lines drive almost every PyTorch model: zero, forward, backward, step. Skipping <code>zero_grad()</code> accumulates gradients across batches.</div>
-      </section>
-      <section class="full">
-        <h2 class="green">6. A basic CNN</h2>
-        <pre><code>import torch.nn as nn
-
-class SmallCNN(nn.Module):
-    def __init__(self, num_classes=10):
-        super().__init__()
-        self.features = nn.Sequential(
-            # input: 1x28x28
-            nn.Conv2d(1, 16, 3, padding=1),
-            nn.ReLU(),
-            nn.MaxPool2d(2),      # -&gt; 16x14x14
-            nn.Conv2d(16, 32, 3, padding=1),
-            nn.ReLU(),
-            nn.MaxPool2d(2),      # -&gt; 32x7x7
-        )
-        self.classifier = nn.Linear(32 * 7 * 7,
-                                    num_classes)
-
-    def forward(self, x):
-        x = self.features(x)     # Nx32x7x7
-        x = torch.flatten(x, 1)  # Nx(32*7*7)
-        return self.classifier(x)
-
-model = SmallCNN()   # input: Nx1x28x28</code></pre>
-        <table><tr><th>Layer</th><th>Job</th></tr>
-          <tr><td><code>nn.Conv2d(cin, cout, k, padding=1)</code></td><td>Learns <code>cout</code> local filters; padding keeps the spatial size</td></tr>
-          <tr><td><code>nn.ReLU()</code></td><td>Non-linearity, <code>max(0, x)</code></td></tr>
-          <tr><td><code>nn.MaxPool2d(2)</code></td><td>Halves height and width, keeps the strongest response</td></tr>
-          <tr><td><code>nn.Linear(fin, fout)</code></td><td>Dense layer that maps features to class scores (logits)</td></tr>
-        </table>
-      </section>
-      <section class="full">
-        <h2 class="blue">7. Train &amp; evaluate it</h2>
-        <pre><code>device = ("cuda" if torch.cuda.is_available()
-          else "cpu")
-model = SmallCNN().to(device)
-opt = torch.optim.SGD(model.parameters(),
-                      lr=0.01, momentum=0.9)
-loss_fn = nn.CrossEntropyLoss()
-
-# training: same loop as section 4, with
-# xb, yb = xb.to(device), yb.to(device)
-
-model.eval()
-correct = 0
-with torch.no_grad():
-    for xb, yb in test_loader:
-        xb, yb = xb.to(device), yb.to(device)
-        pred = model(xb).argmax(dim=1)
-        correct += (pred == yb).sum().item()
-
-print(correct / len(test_loader.dataset))</code></pre>
-      </section>
-      <section class="full">
-        <h2 class="green">8. CNN building blocks: shapes, convolution &amp; parameters</h2>
+        <h2 class="green">2. CNN building blocks: shapes, convolution &amp; parameters</h2>
         <table><tr><th>Idea</th><th>Rule of thumb</th></tr>
           <tr><td>NCHW</td><td><code>(N, C, H, W)</code> = batch size, channels, height, width. A Conv2d changes channels to <code>out_channels</code>; its kernel, stride, and padding determine height and width.</td></tr>
           <tr><td>Conv2d output size</td><td><span class="formula">H<sub>out</sub> = floor((H<sub>in</sub> + 2P<sub>h</sub> - D<sub>h</sub>(K<sub>h</sub>-1) - 1) / S<sub>h</sub>) + 1</span>, with the same formula for W. For dilation 1 and square settings: <span class="formula">floor((in + 2·padding - kernel) / stride) + 1</span>.</td></tr>
           <tr><td>Conv2d weights</td><td>Weight shape is <code>(Cout, Cin, Kh, Kw)</code>. Each output channel has a filter spanning every input channel; bias adds one parameter per output channel.</td></tr>
           <tr><td>ReLU</td><td><span class="formula">ReLU(x) = max(0, x)</span>. It acts elementwise, changes negative values to zero, and leaves the tensor shape unchanged.</td></tr>
           <tr><td>Parameter counts</td><td><span class="formula">Conv2d = Kh·Kw·Cin·Cout + (Cout if bias else 0)</span>. ReLU and max-pooling have no trainable parameters.</td></tr>
+        </table>
+        <table><tr><th>Layer</th><th>Learns parameters?</th><th>Changes channels?</th><th>Changes spatial dimensions?</th></tr>
+          <tr><td><code>Conv2d</code></td><td>Yes</td><td>Can</td><td>Can</td></tr>
+          <tr><td><code>MaxPool2d</code></td><td>No</td><td>No</td><td>Yes</td></tr>
+          <tr><td><code>ReLU</code></td><td>No</td><td>No</td><td>No</td></tr>
+          <tr><td><code>Linear</code></td><td>Yes</td><td>Changes features</td><td>N/A</td></tr>
         </table>
         <pre><code>import torch
 import torch.nn as nn
@@ -272,7 +130,7 @@ print(count_parameters(block))  # 5,088
         <div class="note">Shape tracing is a quick way to catch mismatches before the classifier: after flattening, <code>(N, C, H, W)</code> becomes <code>(N, C·H·W)</code>. For a convolution, track N unchanged, Cout from the layer, then compute Hout and Wout separately. The parameter formula above assumes groups=1; grouped convolutions use fewer weights.</div>
       </section>
       <section class="full">
-        <h2 class="blue">9. Linear layers: parameter count &amp; manual forward pass</h2>
+        <h2 class="blue">3. Linear layers: parameter count &amp; manual forward pass</h2>
         <table><tr><th>Concept</th><th>Intuition / formula</th></tr>
           <tr><td><code>nn.Linear(in, out)</code></td><td>Each output is a weighted sum of input features plus optional bias: <span class="formula">y = xW<sup>T</sup> + b</span>. PyTorch stores <code>weight</code> as <code>(out_features, in_features)</code>, so the forward pass multiplies by <code>weight.T</code>.</td></tr>
           <tr><td>Linear parameter count</td><td><span class="formula">in_features·out_features + (out_features if bias else 0)</span>.</td></tr>
@@ -310,6 +168,154 @@ print(torch.allclose(manual_linear(x, layer_with_bias),
 print(torch.allclose(manual_linear(x, layer_without_bias),
                      layer_without_bias(x)))    # True</code></pre>
         <div class="note">The last dimension of <code>x</code> must equal <code>in_features</code>. <code>matmul</code> applies the same weight matrix across leading dimensions, so <code>(2, 3, 4)</code> becomes <code>(2, 3, 8)</code>. When counting a model, <code>requires_grad</code> excludes frozen parameters; buffers such as BatchNorm running statistics are not parameters.</div>
+      </section>
+      <section class="full">
+        <h2 class="green">4. Autograd: who gets the blame?</h2>
+        <div class="note">Think of each tensor as a node in a computation graph. Every operation records its inputs and a local derivative. During <code>backward()</code>, PyTorch walks the graph in reverse and sends each node's incoming gradient through the chain rule. If a value reaches the result along multiple paths, those contributions add up.</div>
+        <table><tr><th>Operation</th><th>Local gradient intuition</th></tr>
+          <tr><td><code>z = x + y</code></td><td>One extra unit of either input adds one unit to <code>z</code>: gradients are passed through unchanged.</td></tr>
+          <tr><td><code>z = x * y</code></td><td><code>x</code> gets scaled by <code>y</code>, and <code>y</code> gets scaled by <code>x</code> (product rule).</td></tr>
+          <tr><td><code>z = relu(x)</code></td><td>Positive inputs pass the gradient through; negative inputs block it. At zero, PyTorch uses gradient zero.</td></tr>
+        </table>
+        <pre><code>import torch
+import torch.nn.functional as F
+
+a = torch.tensor(2.0, requires_grad=True)
+b = torch.tensor(-3.0, requires_grad=True)
+c = torch.tensor(10.0, requires_grad=True)
+
+d = a * b + c       # d = 4
+e = F.relu(d)       # e = 4
+loss = e * e        # loss = 16
+
+loss.backward()     # seed d(loss)/d(loss) = 1, then chain backward
+print(a.grad)       # -24: 2e * b = 8 * -3
+print(b.grad)       # -16: 2e * a = 8 * 2
+print(c.grad)       #   8: 2e * 1 = 8
+
+# Inspect the graph PyTorch built (names vary by operation)
+print(loss.grad_fn)       # MulBackward0
+print(loss.grad_fn.next_functions)
+
+# Gradients accumulate by default; clear them before another pass
+for x in (a, b, c):
+    x.grad = None</code></pre>
+        <div class="note">This is the same bookkeeping as a tiny scalar <code>Value</code> engine: each operation remembers its parents and local backward rule; the final result starts with gradient 1; a reverse topological pass accumulates contributions into leaves. PyTorch builds and traverses that graph automatically. Leaf tensors with <code>requires_grad=True</code> receive gradients in <code>.grad</code>; intermediate tensors usually do not unless you call <code>.retain_grad()</code>. For vector outputs, provide an upstream gradient or reduce to a scalar first, for example <code>scores.sum().backward()</code>.</div>
+      </section>
+      <section class="full">
+        <h2 class="green">5. The update rule - all of gradient descent</h2>
+        <table><tr><th>Symbol</th><th>Meaning</th></tr>
+          <tr><td><span class="formula">w &larr; w - &eta; &middot; &nabla;L(w)</span></td><td>Step the weights downhill, against the gradient of the loss</td></tr>
+          <tr><td><code>w</code></td><td>Model parameters</td></tr>
+          <tr><td><code>&eta;</code> (lr)</td><td>Learning rate - how big a step</td></tr>
+          <tr><td><code>&nabla;L(w)</code></td><td>Gradient of the loss at the current weights - the uphill direction</td></tr>
+        </table>
+        <div class="note">Every optimizer (momentum, Adam, ...) is a variation on how this step is computed and scaled. See the ML Optimizers sheet for that ladder.</div>
+      </section>
+      <section class="full">
+        <h2 class="amber">6. Batch vs stochastic vs mini-batch GD</h2>
+        <div class="snippets">
+          <div class="snippet">
+            <h3>Batch GD</h3>
+            <table>
+              <tr><th>Data per update</th><td>The whole dataset</td></tr>
+              <tr><th>Updates / epoch</th><td>1</td></tr>
+              <tr><th>Gradient</th><td>Exact for the full training loss - deterministic given the data</td></tr>
+              <tr><th>In PyTorch</th><td>One pass over the full set per step</td></tr>
+            </table>
+          </div>
+          <div class="snippet">
+            <h3>Stochastic GD (SGD)</h3>
+            <table>
+              <tr><th>Data per update</th><td>1 sample</td></tr>
+              <tr><th>Updates / epoch</th><td>N</td></tr>
+              <tr><th>Gradient</th><td>Single-sample estimate - noisy; the noise can bounce out of shallow minima</td></tr>
+              <tr><th>In PyTorch</th><td><code>DataLoader(ds, batch_size=1)</code></td></tr>
+            </table>
+          </div>
+          <div class="snippet">
+            <h3>Mini-batch GD</h3>
+            <table>
+              <tr><th>Data per update</th><td>B samples, e.g. 32-256</td></tr>
+              <tr><th>Updates / epoch</th><td>ceil(N / B) - the last batch can be partial; <code>drop_last=True</code> makes it floor(N / B)</td></tr>
+              <tr><th>Gradient</th><td>Average over B samples - less noisy than one sample, cheaper than the full set; the practical default</td></tr>
+              <tr><th>In PyTorch</th><td><code>DataLoader(ds, batch_size=B, shuffle=True)</code></td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="note">Same rule, three choices of how much data backs each gradient estimate. The optimizer is batch-size agnostic: <code>torch.optim.SGD.step()</code> updates from whatever gradient the last <code>backward()</code> produced. The batching you feed it - one sample, B samples, or the whole dataset at once - is what makes the run stochastic, mini-batch or full-batch.</div>
+      </section>
+      <section class="full">
+        <h2 class="blue">7. The training loop (mini-batch)</h2>
+        <pre><code>from torch.utils.data import DataLoader, TensorDataset
+
+loader  = DataLoader(TensorDataset(X, y),
+                     batch_size=32, shuffle=True)
+loss_fn = torch.nn.CrossEntropyLoss()
+opt = torch.optim.SGD(model.parameters(), lr=0.01)
+
+for epoch in range(10):
+    model.train()
+    for xb, yb in loader:
+        opt.zero_grad()   # clear old gradients
+        loss = loss_fn(model(xb), yb)
+        loss.backward()   # compute gradients
+        opt.step()        # apply the update</code></pre>
+        <div class="note">The same four lines drive almost every PyTorch model: zero, forward, backward, step. Skipping <code>zero_grad()</code> accumulates gradients across batches.</div>
+      </section>
+      <section class="full">
+        <h2 class="green">8. A basic CNN</h2>
+        <pre><code>import torch.nn as nn
+
+class SmallCNN(nn.Module):
+    def __init__(self, num_classes=10):
+        super().__init__()
+        self.features = nn.Sequential(
+            # input: 1x28x28
+            nn.Conv2d(1, 16, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),      # -&gt; 16x14x14
+            nn.Conv2d(16, 32, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2),      # -&gt; 32x7x7
+        )
+        self.classifier = nn.Linear(32 * 7 * 7,
+                                    num_classes)
+
+    def forward(self, x):
+        x = self.features(x)     # Nx32x7x7
+        x = torch.flatten(x, 1)  # Nx(32*7*7)
+        return self.classifier(x)
+
+model = SmallCNN()   # input: Nx1x28x28</code></pre>
+        <table><tr><th>Layer</th><th>Job</th></tr>
+          <tr><td><code>nn.Conv2d(cin, cout, k, padding=1)</code></td><td>Learns <code>cout</code> local filters; padding keeps the spatial size</td></tr>
+          <tr><td><code>nn.ReLU()</code></td><td>Non-linearity, <code>max(0, x)</code></td></tr>
+          <tr><td><code>nn.MaxPool2d(2)</code></td><td>Halves height and width, keeps the strongest response</td></tr>
+          <tr><td><code>nn.Linear(fin, fout)</code></td><td>Dense layer that maps features to class scores (logits)</td></tr>
+        </table>
+      </section>
+      <section class="full">
+        <h2 class="blue">9. Train &amp; evaluate it</h2>
+        <pre><code>device = ("cuda" if torch.cuda.is_available()
+          else "cpu")
+model = SmallCNN().to(device)
+opt = torch.optim.SGD(model.parameters(),
+                      lr=0.01, momentum=0.9)
+loss_fn = nn.CrossEntropyLoss()
+
+# training: same loop as section 4, with
+# xb, yb = xb.to(device), yb.to(device)
+
+model.eval()
+correct = 0
+with torch.no_grad():
+    for xb, yb in test_loader:
+        xb, yb = xb.to(device), yb.to(device)
+        pred = model(xb).argmax(dim=1)
+        correct += (pred == yb).sum().item()
+
+print(correct / len(test_loader.dataset))</code></pre>
       </section>
       <section class="full">
         <h2 class="amber">10. Gotchas</h2>
