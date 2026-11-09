@@ -225,7 +225,54 @@ with torch.no_grad():
 print(correct / len(test_loader.dataset))</code></pre>
       </section>
       <section class="full">
-        <h2 class="amber">8. Gotchas</h2>
+              <section class="full">
+        <h2 class="green">8. CNN building blocks: shapes, convolution &amp; parameters</h2>
+        <table><tr><th>Idea</th><th>Rule of thumb</th></tr>
+          <tr><td>NCHW</td><td><code>(N, C, H, W)</code> = batch size, channels, height, width. A Conv2d changes channels to <code>out_channels</code>; its kernel, stride, and padding determine height and width.</td></tr>
+          <tr><td>Conv2d output size</td><td><span class="formula">H<sub>out</sub> = floor((H<sub>in</sub> + 2P<sub>h</sub> - D<sub>h</sub>(K<sub>h</sub>-1) - 1) / S<sub>h</sub>) + 1</span>, with the same formula for W. For dilation 1 and square settings: <span class="formula">floor((in + 2·padding - kernel) / stride) + 1</span>.</td></tr>
+          <tr><td>Conv2d weights</td><td>Weight shape is <code>(Cout, Cin, Kh, Kw)</code>. Each output channel has a filter spanning every input channel; bias adds one parameter per output channel.</td></tr>
+          <tr><td>ReLU</td><td><span class="formula">ReLU(x) = max(0, x)</span>. It acts elementwise, changes negative values to zero, and leaves the tensor shape unchanged.</td></tr>
+          <tr><td>Parameter counts</td><td><span class="formula">Conv2d = Kh·Kw·Cin·Cout + (Cout if bias else 0)</span>. ReLU and max-pooling have no trainable parameters.</td></tr>
+        </table>
+        <pre><code>import torch
+import torch.nn as nn
+
+# Trace NCHW through a small ConvBlock
+block = nn.Sequential(
+    nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2),
+    nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1),
+)
+x = torch.randn(4, 3, 32, 32)  # N=4, C=3, H=W=32
+
+for layer in block:
+    x = layer(x)
+    print(layer.__class__.__name__, tuple(x.shape))
+
+# Conv2d:   (4, 16, 32, 32)  # 3x3, stride 1, padding 1 keeps H,W
+# ReLU:     (4, 16, 32, 32)  # same shape
+# MaxPool2d:(4, 16, 16, 16)  # halves H,W
+# Conv2d:   (4, 32, 8, 8)    # floor((16 + 2 - 3)/2) + 1 = 8
+
+# Forward pass by itself: NCHW in, NCHW out
+conv = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1)
+image_batch = torch.randn(4, 3, 32, 32)
+feature_maps = conv(image_batch)  # shape: (4, 16, 32, 32)
+activated = torch.relu(feature_maps)  # elementwise max(0, x)</code></pre>
+        <pre><code># Count every trainable parameter in a model
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters()
+               if p.requires_grad)
+
+print(count_parameters(block))  # 5,088
+# Conv 3-&gt;16: 3*3*3*16 + 16 = 448
+# Conv 16-&gt;32: 3*3*16*32 + 32 = 4,640
+# ReLU and MaxPool2d: 0 each
+# Total: 448 + 4,640 = 5,088</code></pre>
+        <div class="note">Shape tracing is a quick way to catch mismatches before the classifier: after flattening, <code>(N, C, H, W)</code> becomes <code>(N, C·H·W)</code>. For a convolution, track N unchanged, Cout from the layer, then compute Hout and Wout separately. The parameter formula above assumes groups=1; grouped convolutions use fewer weights.</div>
+      </section>
+      <h2 class="amber">9. Gotchas</h2>
         <ul>
           <li>Forgetting <code>opt.zero_grad()</code> silently accumulates gradients across batches.</li>
           <li><code>model.train()</code> vs <code>model.eval()</code> - dropout and batchnorm behave differently in each mode.</li>
