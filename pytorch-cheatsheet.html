@@ -76,8 +76,8 @@ with torch.no_grad():   # no graph built
           <tr><td><code>t.view(2, -1)</code>, <code>t.reshape(2, -1)</code></td><td>Reshape; reshape copies if it must</td></tr>
         </table>
       </section>
+      </section>
       <section class="full">
-              <section class="full">
         <h2 class="green">2. Autograd: who gets the blame?</h2>
         <div class="note">Think of each tensor as a node in a computation graph. Every operation records its inputs and a local derivative. During <code>backward()</code>, PyTorch walks the graph in reverse and sends each node's incoming gradient through the chain rule. If a value reaches the result along multiple paths, those contributions add up.</div>
         <table><tr><th>Operation</th><th>Local gradient intuition</th></tr>
