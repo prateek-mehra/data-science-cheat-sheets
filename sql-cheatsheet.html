@@ -16,6 +16,9 @@
     section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
     h2 { margin: 0 0 10px; font-size: 18px; }
     pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    figure { margin: 10px 0 0; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+    figcaption { margin-top: 6px; color: var(--muted); font-size: 12px; }
     code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
     @media (max-width: 600px) { main { padding: 16px; } }
   </style>
@@ -24,7 +27,7 @@
   <main>
     <header>
       <h1>SQL Cheat Sheet</h1>
-      <div class="subtitle"><code>CASE WHEN</code>, joins, grouping and clause order.</div>
+      <div class="subtitle"><code>CASE WHEN</code>, joins, grouping, clause order and window functions.</div>
     </header>
     <p><a href="index.html">← Back to cheat sheets</a></p>
     <section>
@@ -67,6 +70,13 @@ FROM orders;</code></pre>
 FROM friend_requests
 GROUP BY date
 HAVING COUNT(*) &gt; 5;</code></pre>
+    </section>
+    <section>
+      <h2>Window functions</h2>
+      <figure>
+        <a href="images/sql-window-functions-cheat-sheet.webp"><img src="images/sql-window-functions-cheat-sheet.webp" alt="SQL window functions cheat sheet: PARTITION BY, ORDER BY, window frames, syntax and logical order of operations" loading="lazy"></a>
+        <figcaption>Source: <a href="https://learnsql.com">LearnSQL.com</a>, owned by Vertabelo SA. Licensed CC BY-NC-ND. Click to open full size.</figcaption>
+      </figure>
     </section>
   </main>
 </body>
