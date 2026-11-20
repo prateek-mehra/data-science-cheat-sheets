@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SQL Cheat Sheet — CASE WHEN</title>
+  <title>SQL Cheat Sheet</title>
   <style>
     :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
     * { box-sizing: border-box; }
@@ -24,7 +24,7 @@
   <main>
     <header>
       <h1>SQL Cheat Sheet</h1>
-      <div class="subtitle">Conditional logic with <code>CASE WHEN</code>.</div>
+      <div class="subtitle"><code>CASE WHEN</code>, joins, grouping and clause order.</div>
     </header>
     <p><a href="index.html">← Back to cheat sheets</a></p>
     <section>
@@ -53,6 +53,20 @@ FROM orders;</code></pre>
     <section>
       <h2>LEFT JOIN: ON vs WHERE</h2>
       <p>In a <code>LEFT JOIN</code>, the <code>ON</code> clause only decides which right-table rows match; it never removes left-table rows.</p>
+    </section>
+    <section>
+      <h2>Clause order</h2>
+      <p>Written: <code>SELECT → FROM → JOIN … ON → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code></p>
+      <p>Evaluated: <code>FROM → JOIN … ON → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</code></p>
+      <p>That's why a <code>SELECT</code> alias can't be used in <code>WHERE</code> but can be used in <code>ORDER BY</code>.</p>
+    </section>
+    <section>
+      <h2>HAVING</h2>
+      <p><code>WHERE</code> filters rows before grouping; <code>HAVING</code> filters groups after <code>GROUP BY</code>, so it can use aggregates.</p>
+      <pre><code>SELECT date, COUNT(*) AS requests
+FROM friend_requests
+GROUP BY date
+HAVING COUNT(*) &gt; 5;</code></pre>
     </section>
   </main>
 </body>
