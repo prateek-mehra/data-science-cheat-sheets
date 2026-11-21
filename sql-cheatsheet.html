@@ -72,6 +72,11 @@ GROUP BY date
 HAVING COUNT(*) &gt; 5;</code></pre>
     </section>
     <section>
+      <h2>Gotchas</h2>
+      <p><code>int / int</code> truncates in Postgres and SQL Server (<code>2 / 3 = 0</code>). Multiply by <code>1.0</code> or <code>100.0</code> for a decimal result.</p>
+      <p><code>COUNT(DISTINCT *)</code> is invalid. <code>DISTINCT</code> needs a column or expression: <code>COUNT(DISTINCT user_id)</code>.</p>
+    </section>
+    <section>
       <h2>Window functions</h2>
       <figure>
         <a href="images/sql-window-functions-cheat-sheet.webp"><img src="images/sql-window-functions-cheat-sheet.webp" alt="SQL window functions cheat sheet: PARTITION BY, ORDER BY, window frames, syntax and logical order of operations" loading="lazy"></a>
