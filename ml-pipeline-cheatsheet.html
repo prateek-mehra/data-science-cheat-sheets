@@ -21,6 +21,9 @@
     table { width: 100%; border-collapse: collapse; margin-top: 8px; }
     th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
     th { color: var(--muted); font-weight: 600; }
+    pre.out { margin-top: 4px; background: #fff; border: 1px dashed var(--line); color: #33424c; }
+    pre.out code { font-size: 12px; }
+    p.why { margin: 6px 0 14px; color: var(--muted); font-size: 13px; }
     /* Python syntax colors (pre-rendered with Pygments) */
     .py .k, .py .kn, .py .kc, .py .ow { color: #a626a4; font-weight: 600; }   /* keywords: import, for, in, None */
     .py .nn { color: #172026; }                                             /* module names */
@@ -64,51 +67,64 @@
     </section>
 
     <section>
-      <h2>Quick EDA (already known, just type it)</h2>
-      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span> <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">();</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">();</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># class balance → pick the metric</span></code></pre>
+      <h2>Quick EDA, with example output</h2>
+      <p>Example outputs below come from a customer-churn dataset (shortened). The grey line under each one is what to look for.</p>
+      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">shape</span></code></pre>
+      <pre class="out"><code>(5040, 8)</code></pre>
+      <p class="why">Rows × columns. Tells you whether you can afford slow models or big grids.</p>
+      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code></pre>
+      <pre class="out"><code>  customer_id   age   region channel membership  total_orders  avg_basket_value  churned
+0      C00000  35.0  Midwest     app       Plus             3            112.26        1
+1      C00001  35.0  Northeast   app        NaN             9             67.56        0
+2      C00002  49.0  West        app       Plus             7            139.20        1</code></pre>
+      <p class="why">Eyeball the values: IDs, text categories, the target column. Here <code>customer_id</code> is an ID, so drop it.</p>
+      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span></code></pre>
+      <pre class="out"><code> #   Column            Non-Null Count  Dtype
+ 0   customer_id       5040 non-null   object
+ 1   age               4690 non-null   float64
+ 2   region            4843 non-null   object
+ 3   channel           5040 non-null   object
+ 4   membership        2011 non-null   object
+ 5   total_orders      5040 non-null   int64
+ 6   avg_basket_value  4803 non-null   float64
+ 7   churned           5040 non-null   int64</code></pre>
+      <p class="why">Dtypes and non-null counts. <code>object</code> columns are categorical and need encoding; non-null &lt; rows means missing values.</p>
+      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span><span class="o">.</span><span class="n">T</span></code></pre>
+      <pre class="out"><code>                   count  unique  top      mean   std    min   50%    max
+age               4690    NaN     NaN      49.5   94.2   18    40     999
+region            4843    4       Midwest  NaN    NaN    NaN   NaN    NaN
+channel           5040    6       app      NaN    NaN    NaN   NaN    NaN
+total_orders      5040    NaN     NaN      8.0    2.9    0     8      21
+avg_basket_value  4803    NaN     NaN      59.5   30.1   1.8   54.5   284.1
+churned           5040    NaN     NaN      0.25   0.43   0     0      1</code></pre>
+      <p class="why">Look for <strong>impossible values</strong> (age max 999), skew (mean far from the median), and odd unique counts (channel has 6 values but should have 3, because of mixed case like <code>app</code> and <code>APP</code>).</p>
+      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code></pre>
+      <pre class="out"><code>age                  350
+region               197
+membership          3029   &lt;- suspicious!
+avg_basket_value     237
+(other columns: 0)</code></pre>
+      <p class="why">Missing count per column. ~5–10% missing: impute. Most of the column missing: investigate or drop. <strong>Trap:</strong> <code>read_csv</code> turns the text <code>"None"</code>/<code>"NA"</code> into NaN. Here "None" was a real membership level. Fix it with <code>df["membership"] = df["membership"].fillna("None")</code>, or read with <code>keep_default_na=False</code>.</p>
+      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code></pre>
+      <pre class="out"><code>40</code></pre>
+      <p class="why">Exact duplicate rows. Drop them with <code>df = df.drop_duplicates()</code> before splitting.</p>
+      <pre><code class="py"><span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></pre>
+      <pre class="out"><code>churned
+0    0.747
+1    0.253</code></pre>
+      <p class="why">25% positives means imbalanced classes, so use ROC AUC/F1 rather than accuracy, and <code>stratify=y</code> when splitting.</p>
       <p>Write 3 bullet findings in markdown afterwards. Graders read them.</p>
     </section>
 
     <section>
-      <h2>Option A: sklearn Pipeline (shortest, no leakage in CV)</h2>
-      <pre><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleImputer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+      <h2>Preprocess and model (plain pandas)</h2>
+      <p>Rule: <strong>learn medians, modes, categories and mean/std from train only</strong>, then apply them to test.</p>
+      <pre><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.dummy</span><span class="w"> </span><span class="kn">import</span> <span class="n">DummyClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span>
 
-<span class="n">num_cols</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
-<span class="n">cat_cols</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
-<span class="n">prep</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
-    <span class="p">(</span><span class="s2">"num"</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"imp"</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"median"</span><span class="p">)),</span>
-                      <span class="p">(</span><span class="s2">"sc"</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">())]),</span> <span class="n">num_cols</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"cat"</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"imp"</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"most_frequent"</span><span class="p">)),</span>
-                      <span class="p">(</span><span class="s2">"oh"</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">))]),</span> <span class="n">cat_cols</span><span class="p">),</span>
-<span class="p">])</span>
-
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"dummy"</span><span class="p">:</span> <span class="n">DummyClassifier</span><span class="p">(),</span>
-                <span class="s2">"lr"</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
-                <span class="s2">"rf"</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)}</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"prep"</span><span class="p">,</span> <span class="n">prep</span><span class="p">),</span> <span class="p">(</span><span class="s2">"m"</span><span class="p">,</span> <span class="n">m</span><span class="p">)]),</span>
-                        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">"roc_auc"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-
-<span class="c1"># refit whichever model won CV (RF shown here)</span>
-<span class="n">best</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"prep"</span><span class="p">,</span> <span class="n">prep</span><span class="p">),</span> <span class="p">(</span><span class="s2">"m"</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))])</span>
-<span class="n">best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"AUC"</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]))</span></code></pre>
-    </section>
-
-    <section>
-      <h2>Option B: plain pandas (more intuitive)</h2>
-      <p>Rule: <strong>learn medians, modes, categories and mean/std from train only</strong>, then apply them to test.</p>
-      <pre><code class="py"><span class="n">num_cols</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">num_cols</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">cat_cols</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
 
 <span class="c1"># 1. impute: learn from TRAIN, apply to both</span>
@@ -134,10 +150,11 @@
                                 <span class="n">scoring</span><span class="o">=</span><span class="s2">"roc_auc"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 
 <span class="n">best</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># or the CV winner</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span></code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"AUC"</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]))</span></code></pre>
       <ul>
         <li><code>.reindex(...)</code> is essential. Without it, unseen or missing categories give train and test different columns, and <code>predict</code> crashes.</li>
-        <li>Small CV leak: the medians are computed on the full training set, so the CV folds have seen them. Say so in one line. A Pipeline avoids it.</li>
+        <li>Small CV leak: the medians are computed on the full training set, so the CV folds have seen them. Say so in one line (sklearn's <code>Pipeline</code> would avoid it).</li>
         <li>A separate <code>test.csv</code> must go through the same <code>medians</code>, <code>modes</code>, <code>reindex</code> and <code>mu</code>/<code>sd</code>.</li>
       </ul>
     </section>
@@ -159,11 +176,7 @@
 
     <section>
       <h2>Feature importance (if time is left)</h2>
-      <pre><code class="py"><span class="c1"># Pipeline version</span>
-<span class="n">names</span> <span class="o">=</span> <span class="n">best</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"prep"</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"m"</span><span class="p">]</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">names</span><span class="p">)</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="c1"># pandas version</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre>
+      <pre><code class="py"><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre>
     </section>
 
     <section>
