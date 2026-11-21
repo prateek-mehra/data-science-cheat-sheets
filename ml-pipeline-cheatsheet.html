@@ -24,9 +24,6 @@
     pre.out { margin-top: 4px; background: #fff; border: 1px dashed var(--line); color: #33424c; }
     pre.out code { font-size: 12px; }
     p.why { margin: 6px 0 14px; color: var(--muted); font-size: 13px; }
-    details.eda-grp > summary { cursor: pointer; margin: 16px 0 4px; color: var(--muted); list-style: none; }
-    details.eda-grp > summary::-webkit-details-marker { display: none; }
-    details.eda-grp > summary h3.eda-group { display: inline; }
     h3.eda-group { margin: 16px 0 4px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     details.eda { border-top: 1px solid var(--line); }
     details.eda:last-of-type { border-bottom: 1px solid var(--line); }
@@ -36,6 +33,13 @@
     details.eda summary .lbl { font-weight: 600; }
     details.eda > div { padding: 0 0 6px 16px; }
     img.plot { display: block; max-width: 100%; height: auto; margin-top: 6px; border: 1px solid var(--line); border-radius: 6px; }
+    section.step { padding: 0; }
+    section.step > details > summary { cursor: pointer; list-style: none; padding: 16px; }
+    section.step > details > summary::-webkit-details-marker { display: none; }
+    section.step > details > summary h2 { margin: 0; }
+    section.step > details[open] > summary { padding-bottom: 10px; }
+    section.step > details > :not(summary) { margin-left: 16px; margin-right: 16px; }
+    section.step > details > :last-child { margin-bottom: 16px; }
     /* Python syntax colors (pre-rendered with Pygments) */
     .py .k, .py .kn, .py .kc, .py .ow { color: #a626a4; font-weight: 600; }   /* keywords: import, for, in, None */
     .py .nn { color: #172026; }                                             /* module names */
@@ -57,14 +61,12 @@
     </header>
     <p><a href="index.html">← Back to cheat sheets</a></p>
 
-    <section>
-      <h2>The idea: 4 steps</h2>
+    <section class="step"><details><summary><h2>The idea: 4 steps</h2></summary>
       <p>Load and split → preprocess (fit on train only) → compare a baseline and 2 models with CV → evaluate the winner on test.
         Everything else (EDA, features, tuning) is thinking or optional.</p>
-    </section>
+    </details></section>
 
-    <section>
-      <h2>Load and split</h2>
+    <section class="step"><details><summary><h2>Load and split</h2></summary>
       <pre><code class="py"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
 
@@ -76,12 +78,11 @@
     <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span></code></pre>
       <p><code>stratify=y</code> keeps class proportions identical in train and test (for example, 25% churn in both).
         Use it for classification. Drop it for regression, where it raises an error.</p>
-    </section>
+    </details></section>
 
-    <section>
-      <h2>Quick EDA, with example output</h2>
-      <p>Click a group, then a command, to see example output (customer-churn data, shortened) and what to look for. <a href="#" id="eda-toggle">Expand all</a></p>
-      <details class="eda-grp"><summary><h3 class="eda-group">Structure</h3></summary>
+    <section class="step"><details><summary><h2>Quick EDA, with example output</h2></summary>
+      <p>Click any command to see example output (customer-churn data, shortened) and what to look for. <a href="#" id="eda-toggle">Expand all</a></p>
+      <h3 class="eda-group">Structure</h3>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">shape</span></code> <span class="tag">size</span></summary><div><pre class="out"><code>(5040, 11)</code></pre><p class="why">Rows × columns. Tells you whether slow models or big grids are affordable.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code> <span class="tag">first rows</span></summary><div><pre class="out"><code>  customer_id   age   region channel membership  total_orders  churned
 0      C00000  35.0  Midwest     app       Plus             3        1
@@ -105,8 +106,7 @@ channel            6   &lt;- expected 3?
 membership         2
 complaints         5
 churned            2</code></pre><p class="why">Unique count ≈ row count means an ID column. Few unique values, even in a numeric column, means it's categorical-like.</p></div></details>
-      </details>
-      <details class="eda-grp"><summary><h3 class="eda-group">Missing values &amp; duplicates</h3></summary>
+      <h3 class="eda-group">Missing values &amp; duplicates</h3>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code> <span class="tag">missing count</span></summary><div><pre class="out"><code>age                  350
 region               197
 membership          3029   &lt;- suspicious!
@@ -116,8 +116,7 @@ age                      0.069
 avg_basket_value         0.047
 region                   0.039</code></pre><p class="why">Rule of thumb: under ~30%, impute (plus an optional <code>_missing</code> flag). Over ~60% that's genuinely missing: drop the column or turn it into a flag.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code> <span class="tag">duplicate rows</span></summary><div><pre class="out"><code>40</code></pre><p class="why">Drop with <code>df = df.drop_duplicates()</code> before splitting, otherwise copies can land in both train and test.</p></div></details>
-      </details>
-      <details class="eda-grp"><summary><h3 class="eda-group">Numeric columns</h3></summary>
+      <h3 class="eda-group">Numeric columns</h3>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span></code> <span class="tag">summary stats</span></summary><div><pre class="out"><code>                   count   mean   std    min   50%    max
 age                4690   49.5   94.2   18    40     999   &lt;- impossible
 total_orders       5040    8.0    2.9    0     8      21
@@ -131,8 +130,7 @@ days_since_last_order    2.09</code></pre><p class="why">|skew| &gt; 1 means hea
 <span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span>
 <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code></pre><pre class="out"><code>57   (q1=32, q3=49 → bounds 6.5 to 74.5)</code></pre><p class="why">Decide case by case: <em>impossible</em> values (age 999) become NaN; <em>real but extreme</em> values are kept, capped (<code>clip</code>), or log-transformed.</p></div></details>
-      </details>
-      <details class="eda-grp"><summary><h3 class="eda-group">Categorical columns</h3></summary>
+      <h3 class="eda-group">Categorical columns</h3>
       <details class="eda"><summary><span class="lbl">unique values of every text column</span></summary><div><pre><code class="py"><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"object"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[:</span><span class="mi">6</span><span class="p">])</span></code></pre><pre class="out"><code>region 4 [&#x27;Midwest&#x27; &#x27;Northeast&#x27; &#x27;West&#x27; &#x27;South&#x27; nan]
 channel 6 [&#x27;app&#x27; &#x27;web&#x27; &#x27;STORE&#x27; &#x27;store&#x27; &#x27;WEB&#x27; &#x27;APP&#x27;]
@@ -143,8 +141,7 @@ store     966
 APP       119
 WEB       103
 STORE      50</code></pre><p class="why">Rare categories (&lt; 1%) can be grouped into <code>"Other"</code>. High-cardinality columns (hundreds of values) shouldn't be one-hot encoded naively.</p></div></details>
-      </details>
-      <details class="eda-grp"><summary><h3 class="eda-group">Relationship with the target</h3></summary>
+      <h3 class="eda-group">Relationship with the target</h3>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code> <span class="tag">class balance</span></summary><div><pre class="out"><code>0    0.747
 1    0.253</code></pre><p class="why">25% positives means imbalanced classes: use ROC AUC/F1, not accuracy, and <code>stratify=y</code>.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span></code> <span class="tag">correlation with target</span></summary><div><pre class="out"><code>total_orders            -0.11
@@ -168,23 +165,19 @@ Northeast  0.256   1194
 South      0.243   1172
 West       0.257   1234
 NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, so you don't over-read small groups. <code>dropna=False</code> shows whether being missing itself matters.</p></div></details>
-      </details>
-      <details class="eda-grp"><summary><h3 class="eda-group">Dates</h3></summary>
+      <h3 class="eda-group">Dates</h3>
       <details class="eda"><summary><span class="lbl">parse and check range</span></summary><div><pre><code class="py"><span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">])</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span></code></pre><pre class="out"><code>(Timestamp(&#x27;2022-01-01&#x27;), Timestamp(&#x27;2024-06-18&#x27;))</code></pre><p class="why">Check the range makes sense, then derive features (<code>.dt.year</code>, <code>.dt.month</code>, tenure in days). Time-ordered data needs a date-based split.</p></div></details>
-      </details>
-      <details class="eda-grp"><summary><h3 class="eda-group">Plots (one line each)</h3></summary>
+      <h3 class="eda-group">Plots (one line each)</h3>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code> <span class="tag">distributions</span></summary><div><img class="plot" src="images/eda-hist.png" alt="Histograms of numeric columns" loading="lazy"><p class="why">Shape at a glance: <code>days_since_last_order</code> is right-skewed (log candidate), <code>total_orders</code> is roughly normal.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"days_since_last_order"</span><span class="p">)</span></code> <span class="tag">numeric feature by class</span></summary><div><img class="plot" src="images/eda-boxplot.png" alt="Boxplot of recency by churn" loading="lazy"><p class="why">Clear separation between the boxes means a strong predictor. The dots are outliers.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"membership"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">target</span><span class="p">)</span></code> <span class="tag">category by class</span></summary><div><img class="plot" src="images/eda-countplot.png" alt="Countplot of membership by churn" loading="lazy"><p class="why">Compare bar heights within each category. Premium has visibly less churn.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">".2f"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"coolwarm"</span><span class="p">)</span></code> <span class="tag">correlation heatmap</span></summary><div><img class="plot" src="images/eda-heatmap.png" alt="Correlation heatmap" loading="lazy"><p class="why">Read the target row for drivers, and look for feature pairs with |r| &gt; 0.8 (multicollinearity: drop one for linear models).</p></div></details>
-      </details>
       <p>Then write 3 bullet findings in markdown. Graders read them.</p>
-      <script>document.getElementById("eda-toggle").addEventListener("click",function(e){e.preventDefault();var d=document.querySelectorAll("details.eda, details.eda-grp"),open=this.textContent==="Expand all";d.forEach(function(x){x.open=open});this.textContent=open?"Collapse all":"Expand all";});</script>
-    </section>
+      <script>document.getElementById("eda-toggle").addEventListener("click",function(e){e.preventDefault();var d=document.querySelectorAll("details.eda"),open=this.textContent==="Expand all";d.forEach(function(x){x.open=open});this.textContent=open?"Collapse all":"Expand all";});</script>
+    </details></section>
 
-    <section>
-      <h2>Preprocess and model (plain pandas)</h2>
+    <section class="step"><details><summary><h2>Preprocess and model (plain pandas)</h2></summary>
       <p>Rule: <strong>learn medians, modes, categories and mean/std from train only</strong>, then apply them to test.</p>
       <pre><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -224,10 +217,9 @@ NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, s
         <li>Small CV leak: the medians are computed on the full training set, so the CV folds have seen them. Say so in one line (sklearn's <code>Pipeline</code> would avoid it).</li>
         <li>A separate <code>test.csv</code> must go through the same <code>medians</code>, <code>modes</code>, <code>reindex</code> and <code>mu</code>/<code>sd</code>.</li>
       </ul>
-    </section>
+    </details></section>
 
-    <section>
-      <h2>Regression swap</h2>
+    <section class="step"><details><summary><h2>Regression swap</h2></summary>
       <pre><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Ridge</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.dummy</span><span class="w"> </span><span class="kn">import</span> <span class="n">DummyRegressor</span>
@@ -239,15 +231,13 @@ NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, s
       <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)),</span>
       <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span></code></pre>
       <p>Time-ordered data: split by date (<code>df[df.date &lt; cutoff]</code>), not randomly.</p>
-    </section>
+    </details></section>
 
-    <section>
-      <h2>Feature importance (if time is left)</h2>
+    <section class="step"><details><summary><h2>Feature importance (if time is left)</h2></summary>
       <pre><code class="py"><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre>
-    </section>
+    </details></section>
 
-    <section>
-      <h2>Which metric?</h2>
+    <section class="step"><details><summary><h2>Which metric?</h2></summary>
       <table>
         <tr><th>Situation</th><th>Metric</th></tr>
         <tr><td>Balanced classes</td><td>accuracy, F1</td></tr>
@@ -255,10 +245,9 @@ NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, s
         <tr><td>Regression, interpretable error</td><td>MAE</td></tr>
         <tr><td>Regression, penalise big misses</td><td>RMSE</td></tr>
       </table>
-    </section>
+    </details></section>
 
-    <section>
-      <h2>~40-minute plan (75 min shared with SQL)</h2>
+    <section class="step"><details><summary><h2>~40-minute plan (75 min shared with SQL)</h2></summary>
       <table>
         <tr><th>Min</th><th>Do</th></tr>
         <tr><td>0–3</td><td>Read the prompt: target, metric, deliverable</td></tr>
@@ -269,10 +258,9 @@ NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, s
         <tr><td>35–40</td><td>5-bullet summary; restart and run all</td></tr>
       </table>
       <p><strong>Cut first:</strong> GridSearch, extra plots, the third model. <strong>Never cut:</strong> the baseline, leak-free preprocessing, the right metric, the summary.</p>
-    </section>
+    </details></section>
 
-    <section>
-      <h2>Common errors</h2>
+    <section class="step"><details><summary><h2>Common errors</h2></summary>
       <ul>
         <li><code>could not convert string to float</code>: a categorical column wasn't encoded.</li>
         <li><code>Input contains NaN</code>: a column was missed by imputation.</li>
@@ -280,7 +268,7 @@ NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, s
         <li>Feature-count mismatch at predict time: you forgot to <code>reindex</code> test to the train columns.</li>
         <li>Forgot an argument? <code>help(train_test_split)</code> and <code>dir(sklearn.preprocessing)</code> work offline.</li>
       </ul>
-    </section>
+    </details></section>
   </main>
 </body>
 </html>
