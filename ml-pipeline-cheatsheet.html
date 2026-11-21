@@ -24,7 +24,8 @@
     pre.out { margin-top: 4px; background: #fff; border: 1px dashed var(--line); color: #33424c; }
     pre.out code { font-size: 12px; }
     p.why { margin: 6px 0 14px; color: var(--muted); font-size: 13px; }
-    details.eda-grp > summary { cursor: pointer; margin: 16px 0 4px; color: var(--muted); }
+    details.eda-grp > summary { cursor: pointer; margin: 16px 0 4px; color: var(--muted); list-style: none; }
+    details.eda-grp > summary::-webkit-details-marker { display: none; }
     details.eda-grp > summary h3.eda-group { display: inline; }
     h3.eda-group { margin: 16px 0 4px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     details.eda { border-top: 1px solid var(--line); }
