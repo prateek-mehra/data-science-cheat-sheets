@@ -21,6 +21,16 @@
     table { width: 100%; border-collapse: collapse; margin-top: 8px; }
     th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
     th { color: var(--muted); font-weight: 600; }
+    /* Python syntax colors (pre-rendered with Pygments) */
+    .py .k, .py .kn, .py .kc, .py .ow { color: #a626a4; font-weight: 600; }   /* keywords: import, for, in, None */
+    .py .nn { color: #172026; }                                             /* module names */
+    .py .s, .py .s1, .py .s2, .py .sa, .py .se, .py .si { color: #2f8a3b; } /* strings */
+    .py .mi, .py .mf { color: #c4560c; }                                    /* numbers */
+    .py .c1, .py .c { color: #7c8a94; font-style: italic; }                 /* comments */
+    .py .nb, .py .bp { color: #0b67b2; }                                    /* builtins: print, len */
+    .py .nf, .py .nc { color: #0b67b2; font-weight: 600; }                  /* def / class names */
+    .py .o { color: #b4233c; }                                              /* operators */
+    .py .p { color: #52616b; }                                              /* punctuation */
     @media (max-width: 600px) { main { padding: 16px; } }
   </style>
 </head>
@@ -40,91 +50,91 @@
 
     <section>
       <h2>Load and split</h2>
-      <pre><code>import numpy as np, pandas as pd
-from sklearn.model_selection import train_test_split, cross_val_score
+      <pre><code class="py"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
 
-df = pd.read_csv("data.csv")      # path given in the prompt
-target = "churned"
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data.csv"</span><span class="p">)</span>      <span class="c1"># path given in the prompt</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s2">"churned"</span>
 
-X = df.drop(columns=[target]); y = df[target]
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, stratify=y, random_state=42)</code></pre>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target</span><span class="p">]);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span></code></pre>
       <p><code>stratify=y</code> keeps class proportions identical in train and test (for example, 25% churn in both).
         Use it for classification. Drop it for regression, where it raises an error.</p>
     </section>
 
     <section>
       <h2>Quick EDA (already known, just type it)</h2>
-      <pre><code>df.shape; df.info(); df.describe(include="all").T
-df.isna().sum(); df.duplicated().sum()
-df[target].value_counts(normalize=True)   # class balance → pick the metric</code></pre>
+      <pre><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span> <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">();</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">();</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># class balance → pick the metric</span></code></pre>
       <p>Write 3 bullet findings in markdown afterwards. Graders read them.</p>
     </section>
 
     <section>
       <h2>Option A: sklearn Pipeline (shortest, no leakage in CV)</h2>
-      <pre><code>from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.dummy import DummyClassifier
-from sklearn.metrics import classification_report, roc_auc_score
+      <pre><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.dummy</span><span class="w"> </span><span class="kn">import</span> <span class="n">DummyClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span>
 
-num_cols = X.select_dtypes("number").columns
-cat_cols = X.select_dtypes(exclude="number").columns
-prep = ColumnTransformer([
-    ("num", Pipeline([("imp", SimpleImputer(strategy="median")),
-                      ("sc", StandardScaler())]), num_cols),
-    ("cat", Pipeline([("imp", SimpleImputer(strategy="most_frequent")),
-                      ("oh", OneHotEncoder(handle_unknown="ignore"))]), cat_cols),
-])
+<span class="n">num_cols</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">cat_cols</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">prep</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">"num"</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"imp"</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"median"</span><span class="p">)),</span>
+                      <span class="p">(</span><span class="s2">"sc"</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">())]),</span> <span class="n">num_cols</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"cat"</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"imp"</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"most_frequent"</span><span class="p">)),</span>
+                      <span class="p">(</span><span class="s2">"oh"</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">))]),</span> <span class="n">cat_cols</span><span class="p">),</span>
+<span class="p">])</span>
 
-for name, m in {"dummy": DummyClassifier(),
-                "lr": LogisticRegression(max_iter=1000),
-                "rf": RandomForestClassifier(random_state=42)}.items():
-    s = cross_val_score(Pipeline([("prep", prep), ("m", m)]),
-                        X_train, y_train, cv=5, scoring="roc_auc")
-    print(name, s.mean().round(3))
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"dummy"</span><span class="p">:</span> <span class="n">DummyClassifier</span><span class="p">(),</span>
+                <span class="s2">"lr"</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+                <span class="s2">"rf"</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)}</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"prep"</span><span class="p">,</span> <span class="n">prep</span><span class="p">),</span> <span class="p">(</span><span class="s2">"m"</span><span class="p">,</span> <span class="n">m</span><span class="p">)]),</span>
+                        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">"roc_auc"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 
-# refit whichever model won CV (RF shown here)
-best = Pipeline([("prep", prep), ("m", RandomForestClassifier(random_state=42))])
-best.fit(X_train, y_train)
-print(classification_report(y_test, best.predict(X_test)))
-print("AUC", roc_auc_score(y_test, best.predict_proba(X_test)[:, 1]))</code></pre>
+<span class="c1"># refit whichever model won CV (RF shown here)</span>
+<span class="n">best</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">"prep"</span><span class="p">,</span> <span class="n">prep</span><span class="p">),</span> <span class="p">(</span><span class="s2">"m"</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))])</span>
+<span class="n">best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"AUC"</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]))</span></code></pre>
     </section>
 
     <section>
       <h2>Option B: plain pandas (more intuitive)</h2>
       <p>Rule: <strong>learn medians, modes, categories and mean/std from train only</strong>, then apply them to test.</p>
-      <pre><code>num_cols = X_train.select_dtypes("number").columns
-cat_cols = X_train.select_dtypes(exclude="number").columns
+      <pre><code class="py"><span class="n">num_cols</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">cat_cols</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
 
-# 1. impute: learn from TRAIN, apply to both
-medians = X_train[num_cols].median()
-modes   = X_train[cat_cols].mode().iloc[0]
-X_train = X_train.fillna(medians).fillna(modes)
-X_test  = X_test.fillna(medians).fillna(modes)
+<span class="c1"># 1. impute: learn from TRAIN, apply to both</span>
+<span class="n">medians</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">modes</span>   <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">cat_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">medians</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">modes</span><span class="p">)</span>
+<span class="n">X_test</span>  <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">medians</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">modes</span><span class="p">)</span>
 
-# 2. one-hot, then align test columns to train
-X_train = pd.get_dummies(X_train, columns=cat_cols)
-X_test  = pd.get_dummies(X_test, columns=cat_cols).reindex(
-              columns=X_train.columns, fill_value=0)
+<span class="c1"># 2. one-hot, then align test columns to train</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cat_cols</span><span class="p">)</span>
+<span class="n">X_test</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cat_cols</span><span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span>
+              <span class="n">columns</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-# 3. scale (needed for linear models; trees don't care)
-mu, sd = X_train[num_cols].mean(), X_train[num_cols].std()
-X_train[num_cols] = (X_train[num_cols] - mu) / sd
-X_test[num_cols]  = (X_test[num_cols]  - mu) / sd
+<span class="c1"># 3. scale (needed for linear models; trees don't care)</span>
+<span class="n">mu</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd</span>
+<span class="n">X_test</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span>  <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd</span>
 
-for name, m in {"dummy": DummyClassifier(),
-                "lr": LogisticRegression(max_iter=1000),
-                "rf": RandomForestClassifier(random_state=42)}.items():
-    print(name, cross_val_score(m, X_train, y_train, cv=5,
-                                scoring="roc_auc").mean().round(3))
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">"dummy"</span><span class="p">:</span> <span class="n">DummyClassifier</span><span class="p">(),</span>
+                <span class="s2">"lr"</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+                <span class="s2">"rf"</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)}</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                                <span class="n">scoring</span><span class="o">=</span><span class="s2">"roc_auc"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 
-best = RandomForestClassifier(random_state=42).fit(X_train, y_train)  # or the CV winner
-print(classification_report(y_test, best.predict(X_test)))</code></pre>
+<span class="n">best</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># or the CV winner</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span></code></pre>
       <ul>
         <li><code>.reindex(...)</code> is essential. Without it, unseen or missing categories give train and test different columns, and <code>predict</code> crashes.</li>
         <li>Small CV leak: the medians are computed on the full training set, so the CV folds have seen them. Say so in one line. A Pipeline avoids it.</li>
@@ -134,26 +144,26 @@ print(classification_report(y_test, best.predict(X_test)))</code></pre>
 
     <section>
       <h2>Regression swap</h2>
-      <pre><code>from sklearn.linear_model import LinearRegression, Ridge
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.dummy import DummyRegressor
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+      <pre><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Ridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.dummy</span><span class="w"> </span><span class="kn">import</span> <span class="n">DummyRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 
-# no stratify; scoring="neg_root_mean_squared_error" or "r2"
-pred = best.predict(X_test)
-print(mean_absolute_error(y_test, pred),
-      np.sqrt(mean_squared_error(y_test, pred)),
-      r2_score(y_test, pred))</code></pre>
+<span class="c1"># no stratify; scoring="neg_root_mean_squared_error" or "r2"</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)),</span>
+      <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span></code></pre>
       <p>Time-ordered data: split by date (<code>df[df.date &lt; cutoff]</code>), not randomly.</p>
     </section>
 
     <section>
       <h2>Feature importance (if time is left)</h2>
-      <pre><code># Pipeline version
-names = best.named_steps["prep"].get_feature_names_out()
-pd.Series(best.named_steps["m"].feature_importances_, index=names).nlargest(10)
-# pandas version
-pd.Series(best.feature_importances_, index=X_train.columns).nlargest(10)</code></pre>
+      <pre><code class="py"><span class="c1"># Pipeline version</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">best</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"prep"</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">"m"</span><span class="p">]</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">names</span><span class="p">)</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># pandas version</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre>
     </section>
 
     <section>
