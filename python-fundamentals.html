@@ -17,6 +17,9 @@
     code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
     li + li { margin-top: .45rem; }
     @media (max-width: 560px) { body { padding: 1.25rem .75rem 3rem; } th, td { padding: .55rem; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -25,7 +28,7 @@
     <h1>Python Fundamentals</h1>
 
     <section aria-labelledby="list">
-      <h2 id="list">List</h2>
+      <details class="card"><summary><h2 id="list">List</h2></summary>
       <h3>Mutation vs reassignment</h3>
       <table>
         <thead><tr><th>Operation</th><th>Changes <code>x</code>?</th><th>Why?</th></tr></thead>
@@ -63,37 +66,42 @@
         <li><code>=</code> on <code>b[0]</code> changes what the outer list points to.</li>
         <li><code>.append()</code> on <code>b[0]</code> changes the object that the outer list points to.</li>
       </ul>
+      </details>
     </section>
 
     <section aria-labelledby="dict">
-      <h2 id="dict">Dict</h2>
+      <details class="card"><summary><h2 id="dict">Dict</h2></summary>
       <ul>
         <li>Keys must be unique. Values may repeat, and modern Python dictionaries preserve insertion order.</li>
         <li>Iterating (for example, <code>list(d)</code>) a dictionary yields its keys in insertion order.</li>
       </ul>
+      </details>
     </section>
 
     <section aria-labelledby="strings">
-      <h2 id="strings">Strings</h2>
+      <details class="card"><summary><h2 id="strings">Strings</h2></summary>
       <ul>
         <li><code>str.find()</code> returns <code>-1</code> when no match is found.</li>
         <li><code>capitalize()</code> uppercases the first character and lowercases the remaining characters; for example, <code>"cAT".capitalize()</code> returns <code>"Cat"</code>.</li>
         <li><code>sorted(["10", "2", "1"])</code> sorts lexicographically.</li>
       </ul>
+      </details>
     </section>
 
     <section aria-labelledby="tuple">
-      <h2 id="tuple">Tuple</h2>
+      <details class="card"><summary><h2 id="tuple">Tuple</h2></summary>
       <ul><li>Parentheses alone do not create a tuple; the comma does: <code>(5,)</code>.</li></ul>
+      </details>
     </section>
 
     <section aria-labelledby="bool">
-      <h2 id="bool">Bool</h2>
+      <details class="card"><summary><h2 id="bool">Bool</h2></summary>
       <ul><li><code>bool</code> is a subclass of <code>int</code>.</li></ul>
+      </details>
     </section>
 
     <section aria-labelledby="operators">
-      <h2 id="operators">Operators</h2>
+      <details class="card"><summary><h2 id="operators">Operators</h2></summary>
       <ul>
         <li><code>==</code> checks whether values are equal.</li>
         <li><code>is</code> checks whether two references point to the exact same object.</li>
@@ -125,29 +133,44 @@
           <tr><td><code>**</code></td><td>Right to left</td></tr>
         </tbody>
       </table>
+      </details>
     </section>
 
     <section aria-labelledby="functions">
-      <h2 id="functions">Functions</h2>
+      <details class="card"><summary><h2 id="functions">Functions</h2></summary>
       <ul>
         <li>Default argument values are evaluated when the function is created, not when it's called.</li>
         <li>Python closures use late binding: variables are looked up when the function is called, not when it is defined.</li>
       </ul>
+      </details>
     </section>
 
     <section aria-labelledby="exceptions">
-      <h2 id="exceptions">Exception Handling</h2>
+      <details class="card"><summary><h2 id="exceptions">Exception Handling</h2></summary>
       <ul>
         <li>The <code>else</code> block runs when the <code>try</code> block completes without an exception.</li>
       </ul>
+      </details>
     </section>
 
     <section aria-labelledby="objects">
-      <h2 id="objects">Objects</h2>
+      <details class="card"><summary><h2 id="objects">Objects</h2></summary>
       <p>Remember the inheritance hierarchy:</p>
       <p><code>bool → int → object</code></p>
       <p>Everything in Python ultimately inherits from <code>object</code>, with some nuances around special types.</p>
+      </details>
     </section>
   </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
 </body>
 </html>

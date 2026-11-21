@@ -32,6 +32,9 @@
     pre code { display:block; padding:0; border:0; background:transparent; font:inherit; word-break:normal; }
     @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } }
     @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code,.formula { font-size:9px; padding:0 2px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
   </style>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body>
@@ -53,7 +56,7 @@
     </nav>
     <div class="grid">
       <section class="full">
-        <h2 class="blue">Single neuron: NumPy + sigmoid + MSE</h2>
+        <details class="card"><summary><h2 class="blue">Single neuron: NumPy + sigmoid + MSE</h2></summary>
         <div class="note"><strong>First principles:</strong> for sample i, input \(\mathbf{x}_i\), target \(y_i\), weights \(\mathbf{w}\), and bias \(b\):<br><strong>Forward propagation:</strong> form a weighted sum, then apply the sigmoid:<br>\[ z_i = \mathbf{x}_i^\mathsf{T} \mathbf{w} + b, \qquad \hat y_i = \sigma(z_i)=\frac{1}{1+e^{-z_i}} \]<br>For \(m\) samples, measure prediction error with mean squared error:<br>\[ L=\frac{1}{m}\sum_{i=1}^{m}(\hat y_i-y_i)^2 \]<br><strong>Backpropagation by the chain rule:</strong> a weight affects loss through the weighted sum, sigmoid, and prediction:<br>\[ \frac{\partial L}{\partial w_j}=\sum_{i=1}^{m} \frac{\partial L}{\partial \hat y_i}\cdot\frac{\partial \hat y_i}{\partial z_i}\cdot\frac{\partial z_i}{\partial w_j} \]<br>The factors are \(\frac{\partial L}{\partial \hat y_i}=\frac{2}{m}(\hat y_i-y_i)\), \(\frac{\partial \hat y_i}{\partial z_i}=\sigma(z_i)(1-\sigma(z_i))=\hat y_i(1-\hat y_i)\), and \(\frac{\partial z_i}{\partial w_j}=x_{ij}\). Since \(\frac{\partial z_i}{\partial b}=1\), define the error signal:<br>\[ \delta_i=\frac{2}{m}(\hat y_i-y_i)\hat y_i(1-\hat y_i), \qquad \operatorname{grad}_{\mathbf{w}}L=X^\mathsf{T}\boldsymbol{\delta}, \qquad \frac{\partial L}{\partial b}=\sum_{i=1}^{m}\delta_i \]<br><strong>Weight update:</strong> gradient descent moves each parameter opposite its gradient, with learning rate \(\eta\):<br>\[ \mathbf{w}\leftarrow\mathbf{w}-\eta \operatorname{grad}_{\mathbf{w}}L, \qquad b\leftarrow b-\eta\frac{\partial L}{\partial b} \]<br>Forward propagation makes predictions; backpropagation measures each parameter’s contribution to the error; the update nudges parameters to reduce it.</div>
         <pre><code>import numpy as np
 
@@ -91,7 +94,8 @@ predictions = sigmoid(X @ weights + bias)
 print("predictions:\n", predictions.round(3))
 print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
         <div class="note"><strong>Shapes:</strong> X is (n_samples, n_features), weights is (n_features, 1), and predictions and y are (n_samples, 1). The sigmoid derivative is p × (1 − p). The gradient includes the mean factor 2 / y.size.</div>
-      </section><section class="full"><h2 class="blue">Frequently used NumPy functions</h2><table><tr><th>Code</th><th>What you get</th></tr><tr><td><code>np.array([1, 2, 3])</code></td><td>Creates an array from the given values: <code>[1 2 3]</code>.</td></tr><tr><td><code>np.zeros((2, 3))</code></td><td>Creates a 2 × 3 array filled with zeros.</td></tr><tr><td><code>np.clip(a, 0, 1)</code></td><td>Clamps each value in <code>a</code> to the range 0 through 1.</td></tr><tr><td><code>np.exp(a)</code></td><td>Computes <code>e</code> raised to each value in <code>a</code>, element-wise.</td></tr><tr><td><code>np.mean(a)</code></td><td>Returns the mean of all values in <code>a</code>.</td></tr><tr><td><code>np.sum(a)</code></td><td>Returns the sum of all values in <code>a</code>.</td></tr></table></section><section class="full"><h2 class="blue">1. Create arrays</h2>
+        </details>
+      </section><section class="full"><details class="card"><summary><h2 class="blue">Frequently used NumPy functions</h2></summary><table><tr><th>Code</th><th>What you get</th></tr><tr><td><code>np.array([1, 2, 3])</code></td><td>Creates an array from the given values: <code>[1 2 3]</code>.</td></tr><tr><td><code>np.zeros((2, 3))</code></td><td>Creates a 2 × 3 array filled with zeros.</td></tr><tr><td><code>np.clip(a, 0, 1)</code></td><td>Clamps each value in <code>a</code> to the range 0 through 1.</td></tr><tr><td><code>np.exp(a)</code></td><td>Computes <code>e</code> raised to each value in <code>a</code>, element-wise.</td></tr><tr><td><code>np.mean(a)</code></td><td>Returns the mean of all values in <code>a</code>.</td></tr><tr><td><code>np.sum(a)</code></td><td>Returns the sum of all values in <code>a</code>.</td></tr></table></details></section><section class="full"><details class="card"><summary><h2 class="blue">1. Create arrays</h2></summary>
         <table><tr><th>Code</th><th>What you get</th></tr>
           <tr><td><code>import numpy as np</code></td><td>The one import everyone uses</td></tr>
           <tr><td><code>np.array([1, 2, 3])</code></td><td>Array from a list, shape <code>(3,)</code>, dtype int</td></tr>
@@ -102,10 +106,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>np.eye(3)</code></td><td>3x3 identity matrix</td></tr>
           <tr><td><code>rng = np.random.default_rng(42)</code><br><code>rng.random((2, 3))</code></td><td>Reproducible random floats in [0, 1); also <code>rng.normal(0, 1, (2, 3))</code></td></tr>
           <tr><td><code>np.array([1, 2], dtype=np.float32)</code></td><td>Pick the dtype up front</td></tr>
-        </table>
+        </table></details>
       </section>
       <section>
-        <h2>2. Inspect an array</h2>
+        <details class="card"><summary><h2>2. Inspect an array</h2></summary>
         <table><tr><th>Call</th><th>Tells you</th></tr>
           <tr><td><code>a.shape</code></td><td>Dimensions, e.g. <code>(2, 3)</code></td></tr>
           <tr><td><code>a.ndim</code></td><td>Number of axes</td></tr>
@@ -114,9 +118,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>a.astype(np.float32)</code></td><td>Copy converted to a new dtype</td></tr>
           <tr><td><code>len(a)</code></td><td>Same as <code>a.shape[0]</code></td></tr>
         </table>
+        </details>
       </section>
       <section>
-        <h2 class="green">3. Reshape &amp; rearrange</h2>
+        <details class="card"><summary><h2 class="green">3. Reshape &amp; rearrange</h2></summary>
         <table><tr><th>Call</th><th>Effect</th></tr>
           <tr><td><code>a.reshape(3, -1)</code></td><td><code>-1</code> means infer this dimension</td></tr>
           <tr><td><code>a.ravel()</code></td><td>Flatten to 1-D (a view when possible)</td></tr>
@@ -126,9 +131,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>np.squeeze(a)</code></td><td>Drop length-1 axes</td></tr>
         </table>
         <div class="note">reshape, ravel and T return views where possible - editing the result can edit the original.</div>
+        </details>
       </section>
       <section class="full">
-        <h2 class="blue">4. Index &amp; select</h2>
+        <details class="card"><summary><h2 class="blue">4. Index &amp; select</h2></summary>
         <table><tr><th>Code</th><th>Selects</th></tr>
           <tr><td><code>a[0]</code>, <code>a[-1]</code></td><td>First / last row</td></tr>
           <tr><td><code>a[1:4]</code>, <code>a[::2]</code></td><td>Slices, every second row</td></tr>
@@ -141,9 +147,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>np.where(a &gt; 0, a, 0)</code></td><td>Element-wise if-else</td></tr>
         </table>
         <div class="note">Slices are views; boolean and fancy indexing return copies.</div>
+        </details>
       </section>
       <section>
-        <h2 class="green">5. Math &amp; broadcasting</h2>
+        <details class="card"><summary><h2 class="green">5. Math &amp; broadcasting</h2></summary>
         <table><tr><th>Code</th><th>Meaning</th></tr>
           <tr><td><code>a + b</code>, <code>a * b</code>, <code>a ** 2</code></td><td>Element-wise (<code>*</code> is not matrix multiply)</td></tr>
           <tr><td><code>np.sqrt(a)</code>, <code>np.exp(a)</code>, <code>np.log(a)</code></td><td>Element-wise functions</td></tr>
@@ -152,9 +159,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>(2,3)</code> array + <code>(3,)</code> array</td><td>Row vector adds to every row</td></tr>
         </table>
         <div class="note">Broadcasting: compare shapes from the right; dimensions are compatible when equal or one of them is 1.</div>
+        </details>
       </section>
       <section>
-        <h2 class="blue">6. Aggregate (axis matters)</h2>
+        <details class="card"><summary><h2 class="blue">6. Aggregate (axis matters)</h2></summary>
         <table><tr><th>Code</th><th>Result</th></tr>
           <tr><td><code>a.sum()</code>, <code>a.mean()</code>, <code>a.std()</code></td><td>Over the whole array</td></tr>
           <tr><td><code>a.min()</code>, <code>a.max()</code></td><td>Extremes</td></tr>
@@ -164,9 +172,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>a.mean(axis=0, keepdims=True)</code></td><td>Keeps the axis as length 1, so the result broadcasts back</td></tr>
         </table>
         <div class="note">The axis you pass is the dimension that disappears from the result.</div>
+        </details>
       </section>
       <section>
-        <h2 class="green">7. Combine &amp; split</h2>
+        <details class="card"><summary><h2 class="green">7. Combine &amp; split</h2></summary>
         <table><tr><th>Code</th><th>Effect</th></tr>
           <tr><td><code>np.concatenate([a, b], axis=0)</code></td><td>Join along an existing axis</td></tr>
           <tr><td><code>np.vstack([a, b])</code> / <code>np.hstack([a, b])</code></td><td>Stack rows / columns</td></tr>
@@ -175,9 +184,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>np.array_split(a, 3)</code></td><td>Unequal parts allowed</td></tr>
           <tr><td><code>np.tile(a, (2, 1))</code>, <code>np.repeat(a, 2)</code></td><td>Repeat the whole block / each element</td></tr>
         </table>
+        </details>
       </section>
       <section>
-        <h2 class="blue">8. Linear algebra &amp; friends</h2>
+        <details class="card"><summary><h2 class="blue">8. Linear algebra &amp; friends</h2></summary>
         <table><tr><th>Code</th><th>Effect</th></tr>
           <tr><td><code>a @ b</code></td><td>Matrix multiply</td></tr>
           <tr><td><code>np.linalg.norm(v)</code></td><td>Vector length</td></tr>
@@ -186,9 +196,10 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <tr><td><code>np.argsort(a)</code></td><td>Indices that would sort it</td></tr>
           <tr><td><code>np.isnan(a).any()</code></td><td>Quick NaN check</td></tr>
         </table>
+        </details>
       </section>
       <section class="full">
-        <h2 class="amber">9. Gotchas</h2>
+        <details class="card"><summary><h2 class="amber">9. Gotchas</h2></summary>
         <ul>
           <li>Slices share memory: <code>b = a[1:3]; b[0] = 99</code> changes <code>a</code>. Use <code>a[1:3].copy()</code> when you need independence.</li>
           <li>Python list <code>* 3</code> repeats the list; NumPy array <code>* 3</code> multiplies every element.</li>
@@ -196,8 +207,20 @@ print("MSE:", np.mean((predictions - y) ** 2))</code></pre>
           <li>An int array stays int: assigning <code>3.9</code> into it stores <code>3</code>. Convert with <code>astype</code> first.</li>
           <li><code>reshape</code> must preserve the element count - a wrong target shape raises, it never silently pads.</li>
         </ul>
+        </details>
       </section>
     </div>
   </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
 </body>
 </html>

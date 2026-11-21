@@ -267,6 +267,9 @@
       .grid { gap: 6px; }
       section { border-radius: 0; }
     }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -292,7 +295,7 @@
 
     <div class="grid">
       <section class="full">
-        <h2 class="blue">Interview micro-patterns</h2>
+        <details class="card"><summary><h2 class="blue">Interview micro-patterns</h2></summary>
         <table>
           <tr><th>Pattern</th><th>Syntax snapshot</th><th>When it appears</th></tr>
           <tr><td>Two pointers</td><td><code class="py"><span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span></code> then move one side</td><td>sorted arrays, palindrome, pair sum</td></tr>
@@ -341,9 +344,10 @@
     <span class="k">return</span> <span class="n">best_answer</span></code></pre>
           </div>
         </div>
+        </details>
       </section>
       <section class="full">
-        <h2 class="green">Syntax traps worth memorizing</h2>
+        <details class="card"><summary><h2 class="green">Syntax traps worth memorizing</h2></summary>
         <div class="split">
           <ul>
             <li><code class="py"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span></code> gives index and value.</li>
@@ -360,9 +364,10 @@
             <li><code class="py"><span class="n">copy</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span></code> shallow-copies a list.</li>
           </ul>
         </div>
+        </details>
       </section>
       <section>
-        <h2 class="blue">List: dynamic array</h2>
+        <details class="card"><summary><h2 class="blue">List: dynamic array</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Create</td><td><code class="py"><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span></code>, <code class="py"><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(n)</td></tr>
@@ -376,10 +381,11 @@
           <tr><td>Comprehension</td><td><code class="py"><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">ok</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span></code></td><td>O(n)</td></tr>
         </table>
         <div class="note">Trap: <code class="py"><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></code> is O(n). Use <code class="py"><span class="n">deque</span></code> for queues.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">Dict: hash map</h2>
+        <details class="card"><summary><h2 class="green">Dict: hash map</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Create</td><td><code class="py"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span></code>, <code class="py"><span class="nb">dict</span><span class="p">()</span></code></td><td>O(1)</td></tr>
@@ -393,10 +399,11 @@
           <tr><td>Merge</td><td><code class="py"><span class="n">d3</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">|</span> <span class="n">d2</span></code></td><td>O(n)</td></tr>
         </table>
         <div class="note">Python 3.7+ preserves insertion order. Keys must be hashable.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="amber">Set: unique hash bag</h2>
+        <details class="card"><summary><h2 class="amber">Set: unique hash bag</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Create</td><td><code class="py"><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span></code>, <code class="py"><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span></code></td><td>O(n)</td></tr>
@@ -410,10 +417,11 @@
           <tr><td>Comprehension</td><td><code class="py"><span class="p">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">}</span></code></td><td>O(n)</td></tr>
         </table>
         <div class="note">Trap: <code class="py"><span class="p">{}</span></code> is a dict, not an empty set.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="blue">String: immutable sequence</h2>
+        <details class="card"><summary><h2 class="blue">String: immutable sequence</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Create</td><td><code class="py"><span class="n">s</span> <span class="o">=</span> <span class="s2">"abc"</span></code></td><td>O(1)</td></tr>
@@ -427,10 +435,11 @@
           <tr><td>Strip</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></code></td><td>O(n)</td></tr>
         </table>
         <div class="note">Build many chars with list + <code class="py"><span class="n">join</span></code>, not repeated <code class="py"><span class="o">+=</span></code>.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">Tuple: immutable record</h2>
+        <details class="card"><summary><h2 class="green">Tuple: immutable record</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Create</td><td><code class="py"><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code>, <code class="py"><span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span></code></td><td>O(1)</td></tr>
@@ -442,10 +451,11 @@
           <tr><td>Return many</td><td><code class="py"><span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">node</span></code></td><td>O(1)</td></tr>
         </table>
         <div class="note">Use tuples for grid coordinates, graph edges, memo keys.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="red">Deque: queue / monotonic queue</h2>
+        <details class="card"><summary><h2 class="red">Deque: queue / monotonic queue</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span></code></td><td></td></tr>
@@ -458,10 +468,11 @@
           <tr><td>Fixed window</td><td><code class="py"><span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">k</span><span class="p">)</span></code></td><td>O(1)</td></tr>
         </table>
         <div class="note">BFS, sliding window max/min, recent k elements.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="amber">Heap: priority queue</h2>
+        <details class="card"><summary><h2 class="amber">Heap: priority queue</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Import</td><td><code class="py"><span class="kn">import</span><span class="w"> </span><span class="nn">heapq</span></code></td><td></td></tr>
@@ -474,10 +485,11 @@
           <tr><td>Pair priority</td><td><code class="py"><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span></code></td><td>O(log n)</td></tr>
         </table>
         <div class="note">Dijkstra, top k, merge k sorted lists, median stream.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="blue">Counter / defaultdict</h2>
+        <details class="card"><summary><h2 class="blue">Counter / defaultdict</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
           <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span></code></td><td></td></tr>
@@ -494,10 +506,11 @@
 <span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"count"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"items"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">nums_i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span></code></pre>
         <div class="note">Great for anagrams, frequency windows, adjacency lists.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">Stack patterns</h2>
+        <details class="card"><summary><h2 class="green">Stack patterns</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Use</th></tr>
           <tr><td>Create</td><td><code class="py"><span class="n">st</span> <span class="o">=</span> <span class="p">[]</span></code></td><td>LIFO</td></tr>
@@ -509,10 +522,11 @@
           <tr><td>Mono dec</td><td><code class="py"><span class="k">while</span> <span class="n">st</span> <span class="ow">and</span> <span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>next greater</td></tr>
         </table>
         <div class="note">Parentheses, histogram, stock span, next greater element.</div>
+        </details>
       </section>
 
       <section class="wide">
-        <h2 class="red">Binary search, bisect, ranges</h2>
+        <details class="card"><summary><h2 class="red">Binary search, bisect, ranges</h2></summary>
         <div class="split">
           <div>
             <table>
@@ -534,10 +548,11 @@
             </ul>
           </div>
         </div>
+        </details>
       </section>
 
       <section>
-        <h2 class="amber">Matrix / grid</h2>
+        <details class="card"><summary><h2 class="amber">Matrix / grid</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
           <tr><td>Create</td><td><code class="py"><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span></code></td><td>correct</td></tr>
@@ -548,10 +563,11 @@
           <tr><td>Transpose</td><td><code class="py"><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">)</span></code></td><td>tuples</td></tr>
           <tr><td>Flatten</td><td><code class="py"><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">g</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span></code></td><td></td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">Math, chars, bits</h2>
+        <details class="card"><summary><h2 class="green">Math, chars, bits</h2></summary>
         <table>
           <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
           <tr><td>Char to int</td><td><code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code>, <code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span></code></td><td>ASCII / 0-index</td></tr>
@@ -565,11 +581,12 @@
           <tr><td>GCD</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">gcd</span></code></td><td><code class="py"><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code></td></tr>
         </table>
         <div class="note"><code class="py"><span class="n">g</span> <span class="o">=</span> <span class="mi">0</span></code> is a clean rolling default because <code class="py"><span class="n">gcd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span></code>.</div>
+        </details>
       </section>
 
 
       <section class="full">
-        <h2 class="amber">Sparse table: static range min/max/gcd</h2>
+        <details class="card"><summary><h2 class="amber">Sparse table: static range min/max/gcd</h2></summary>
         <div class="split">
           <ul>
             <li>Precompute answers for every block length <code class="py"><span class="mi">2</span><span class="o">^</span><span class="n">k</span></code>.</li>
@@ -593,10 +610,22 @@
     <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">st</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">l</span><span class="p">],</span> <span class="n">st</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">r</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span></code></pre>
         </div>
+        </details>
       </section>
 
     </div>
   </main>
 
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
 </body>
 </html>

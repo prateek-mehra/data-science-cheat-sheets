@@ -185,6 +185,9 @@
       th, td { padding: 3px 5px; }
       code { font-size: 9px; padding: 0 2px; }
     }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -208,16 +211,17 @@
 
     <div class="grid">
       <section>
-        <h2 class="green">Probability definition</h2>
+        <details class="card"><summary><h2 class="green">Probability definition</h2></summary>
         <table>
           <tr><th>Idea</th><th>Meaning</th></tr>
           <tr><td>Probability</td><td>Measures the fraction of outcomes in a sample space that satisfy some condition.</td></tr>
           <tr><td>Formula</td><td><code>P(A) = favorable outcomes / total outcomes</code></td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2 class="blue">Conditional probability</h2>
+        <details class="card"><summary><h2 class="blue">Conditional probability</h2></summary>
         <table>
           <tr><th>Idea</th><th>Formula</th></tr>
           <tr><td>Restrict world to B</td><td><code>P(A | B)</code></td></tr>
@@ -226,10 +230,11 @@
           <tr><td>Definition</td><td><code>P(A | B) = P(A ∩ B) / P(B)</code>, for <code>P(B) &gt; 0</code></td></tr>
         </table>
         <div class="note">Read as: among cases where B happened, what fraction also have A?</div>
+        </details>
       </section>
 
       <section class="full">
-        <h2 class="amber">Choosing k things from n</h2>
+        <details class="card"><summary><h2 class="amber">Choosing k things from n</h2></summary>
         <table>
           <tr><th>Does order matter?</th><th>Name</th><th>Number of ways</th></tr>
           <tr><td>Yes: A-B-C differs from C-B-A</td><td>Permutation</td><td><code>P(n, k) = n! / (n - k)!</code></td></tr>
@@ -243,20 +248,22 @@ P(10, 3) = 10 * 9 * 8 = 720
 Order does not matter (a 3-person team):
 C(10, 3) = 10! / (3! * 7!) = 120</code></pre>
         <div class="note">Use combinations for a set or team; use permutations for a sequence, ranking, or assignment to distinct roles.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">Product rule</h2>
+        <details class="card"><summary><h2 class="green">Product rule</h2></summary>
         <table>
           <tr><th>From</th><th>Rearrange</th></tr>
           <tr><td><code>P(A | B) = P(A ∩ B) / P(B)</code></td><td><code>P(A ∩ B) = P(A | B)P(B)</code></td></tr>
           <tr><td><code>P(B | A) = P(A ∩ B) / P(A)</code></td><td><code>P(A ∩ B) = P(B | A)P(A)</code></td></tr>
         </table>
         <div class="note">Same intersection, viewed from either condition.</div>
+        </details>
       </section>
 
       <section class="full">
-        <h2 class="amber">Bayes theorem derivation</h2>
+        <details class="card"><summary><h2 class="amber">Bayes theorem derivation</h2></summary>
         <pre><code>Start with the definition:
 P(A | B) = P(A ∩ B) / P(B)
 
@@ -275,10 +282,11 @@ P(A | B) = [P(B | A) P(A)] / P(B)</code></pre>
           <tr><td><code>P(B | A)</code> likelihood</td><td>How expected B is if A is true.</td></tr>
           <tr><td><code>P(B)</code> evidence</td><td>Overall probability of seeing B.</td></tr>
         </table>
+        </details>
       </section>
 
       <section class="full">
-        <h2 class="blue">Bayes with total probability</h2>
+        <details class="card"><summary><h2 class="blue">Bayes with total probability</h2></summary>
         <pre><code>If A and not-A split all possibilities:
 P(B) = P(B | A)P(A) + P(B | not A)P(not A)
 
@@ -288,10 +296,11 @@ P(A | B) =
     -----------------------------------------
     P(B | A)P(A) + P(B | not A)P(not A)</code></pre>
         <div class="note">Posterior = likelihood * prior / evidence.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">Random variables</h2>
+        <details class="card"><summary><h2 class="green">Random variables</h2></summary>
         <table>
           <tr><th>Idea</th><th>Meaning</th></tr>
           <tr><td>Random variable</td><td>A function that maps each random outcome to a number.</td></tr>
@@ -299,10 +308,11 @@ P(A | B) =
           <tr><td>Continuous</td><td>Any value in an interval, like rainfall, time to finish training, or exact height.</td></tr>
           <tr><td>Support</td><td>The possible values the random variable can take.</td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2 class="blue">PMF</h2>
+        <details class="card"><summary><h2 class="blue">PMF</h2></summary>
         <table>
           <tr><th>Idea</th><th>Meaning</th></tr>
           <tr><td>PMF</td><td>Probability mass function: a table or formula giving <code>P(X = x)</code> for each value.</td></tr>
@@ -310,10 +320,11 @@ P(A | B) =
           <tr><td>Coin count</td><td>For heads in 3 fair flips: <code>0:1/8, 1:3/8, 2:3/8, 3:1/8</code></td></tr>
         </table>
         <div class="note">Counts like <code>1, 3, 3, 1</code> are not the PMF until divided by total outcomes.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="amber">Expectation</h2>
+        <details class="card"><summary><h2 class="amber">Expectation</h2></summary>
         <pre><code>For a discrete random variable:
 E[X] = sum_x x * P(X = x)
 
@@ -321,10 +332,11 @@ Example:
 X takes 1, 2, 3 with probabilities 0.2, 0.5, 0.3
 E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 2.1</code></pre>
         <div class="note">Expectation is the long-run average, not necessarily the most likely value.</div>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">Bernoulli</h2>
+        <details class="card"><summary><h2 class="green">Bernoulli</h2></summary>
         <table>
           <tr><th>Idea</th><th>Formula</th></tr>
           <tr><td>Meaning</td><td>One yes/no trial: click/no click, fraud/not fraud, pass/fail.</td></tr>
@@ -332,10 +344,11 @@ E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 2.1</code></pre>
           <tr><td>Probabilities</td><td>If <code>P(X = 1) = p</code>, then <code>P(X = 0) = 1 - p</code>.</td></tr>
           <tr><td>Expectation</td><td><code>E[X] = p</code></td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2 class="blue">Question-solving checklist</h2>
+        <details class="card"><summary><h2 class="blue">Question-solving checklist</h2></summary>
         <table>
           <tr><th>Step</th><th>Quick check</th></tr>
           <tr><td>1. Read completely</td><td>Identify exactly what is given, what is being asked, and whether order, replacement, or conditioning matters.</td></tr>
@@ -343,8 +356,20 @@ E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 2.1</code></pre>
           <tr><td>3. Verify assumptions twice</td><td>Check independence, equal likelihood, replacement, and whether the cases cover every possibility without overlap.</td></tr>
         </table>
         <div class="note">Before calculating, say the model and assumptions out loud. It catches more mistakes than faster arithmetic does.</div>
+        </details>
       </section>
     </div>
   </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
 </body>
 </html>

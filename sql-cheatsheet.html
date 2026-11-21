@@ -21,6 +21,9 @@
     figcaption { margin-top: 6px; color: var(--muted); font-size: 12px; }
     code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
     @media (max-width: 600px) { main { padding: 16px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -31,7 +34,7 @@
     </header>
     <p><a href="index.html">← Back to cheat sheets</a></p>
     <section>
-      <h2>CASE WHEN syntax</h2>
+      <details class="card"><summary><h2>CASE WHEN syntax</h2></summary>
       <p>Evaluate conditions in order. SQL returns the result for the first condition that is true; <code>ELSE</code> is optional and defaults to <code>NULL</code> when omitted.</p>
       <pre><code>CASE
     WHEN condition_1 THEN result_1
@@ -39,9 +42,10 @@
     ...
     ELSE default_result
 END</code></pre>
+      </details>
     </section>
     <section>
-      <h2>Example</h2>
+      <details class="card"><summary><h2>Example</h2></summary>
       <p>Assign a label based on an order's total:</p>
       <pre><code>SELECT
     order_id,
@@ -52,37 +56,54 @@ END</code></pre>
         ELSE 'small'
     END AS order_size
 FROM orders;</code></pre>
+      </details>
     </section>
     <section>
-      <h2>LEFT JOIN: ON vs WHERE</h2>
+      <details class="card"><summary><h2>LEFT JOIN: ON vs WHERE</h2></summary>
       <p>In a <code>LEFT JOIN</code>, the <code>ON</code> clause only decides which right-table rows match; it never removes left-table rows.</p>
+      </details>
     </section>
     <section>
-      <h2>Clause order</h2>
+      <details class="card"><summary><h2>Clause order</h2></summary>
       <p>Written: <code>SELECT → FROM → JOIN … ON → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code></p>
       <p>Evaluated: <code>FROM → JOIN … ON → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</code></p>
       <p>That's why a <code>SELECT</code> alias can't be used in <code>WHERE</code> but can be used in <code>ORDER BY</code>.</p>
+      </details>
     </section>
     <section>
-      <h2>HAVING</h2>
+      <details class="card"><summary><h2>HAVING</h2></summary>
       <p><code>WHERE</code> filters rows before grouping; <code>HAVING</code> filters groups after <code>GROUP BY</code>, so it can use aggregates.</p>
       <pre><code>SELECT date, COUNT(*) AS requests
 FROM friend_requests
 GROUP BY date
 HAVING COUNT(*) &gt; 5;</code></pre>
+      </details>
     </section>
     <section>
-      <h2>Gotchas</h2>
+      <details class="card"><summary><h2>Gotchas</h2></summary>
       <p><code>int / int</code> truncates in Postgres and SQL Server (<code>2 / 3 = 0</code>). Multiply by <code>1.0</code> or <code>100.0</code> for a decimal result.</p>
       <p><code>COUNT(DISTINCT *)</code> is invalid. <code>DISTINCT</code> needs a column or expression: <code>COUNT(DISTINCT user_id)</code>.</p>
+      </details>
     </section>
     <section>
-      <h2>Window functions</h2>
+      <details class="card"><summary><h2>Window functions</h2></summary>
       <figure>
         <a href="images/sql-window-functions-cheat-sheet.webp"><img src="images/sql-window-functions-cheat-sheet.webp" alt="SQL window functions cheat sheet: PARTITION BY, ORDER BY, window frames, syntax and logical order of operations" loading="lazy"></a>
         <figcaption>Source: <a href="https://learnsql.com">LearnSQL.com</a>, owned by Vertabelo SA. Licensed CC BY-NC-ND. Click to open full size.</figcaption>
       </figure>
+      </details>
     </section>
   </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -29,6 +29,9 @@
     .note { padding:7px 9px; border-top:1px solid var(--line); color:var(--muted); background:#fbfcfd; }
     @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } }
     @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code { font-size:9px; padding:0 2px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -52,7 +55,7 @@
 
     <div class="grid">
       <section>
-        <h2 class="blue">1. Clarify requirements</h2>
+        <details class="card"><summary><h2 class="blue">1. Clarify requirements</h2></summary>
         <table>
           <tr><th>Type</th><th>Questions</th></tr>
           <tr><td>Functional</td><td>What must the system do? Who uses it? What are the core read and write flows?</td></tr>
@@ -60,10 +63,11 @@
           <tr><td>Quality</td><td>Latency targets (p50/p95/p99), availability, durability, consistency, and cost.</td></tr>
           <tr><td>Security</td><td>Authentication, authorization, encryption, privacy, and audit requirements.</td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">2. Design flow</h2>
+        <details class="card"><summary><h2 class="green">2. Design flow</h2></summary>
         <ol style="margin:0;padding:8px 10px 8px 27px">
           <li>State requirements and assumptions.</li>
           <li>Estimate traffic, storage, bandwidth, and peak load.</li>
@@ -73,10 +77,11 @@
           <li>Walk through read/write paths, bottlenecks, and failures.</li>
           <li>Close with observability, security, deployment, and trade-offs.</li>
         </ol>
+        </details>
       </section>
 
       <section class="full">
-        <h2 class="amber">3. Horizontal vs. vertical scaling</h2>
+        <details class="card"><summary><h2 class="amber">3. Horizontal vs. vertical scaling</h2></summary>
         <table>
           <tr><th>Dimension</th><th>Horizontal / scale out</th><th>Vertical / scale up</th></tr>
           <tr><td>What changes?</td><td>Add more machines or service instances.</td><td>Add CPU, memory, storage, or network capacity to one machine.</td></tr>
@@ -86,10 +91,11 @@
           <tr><td>Best fit</td><td>Stateless services, variable traffic, large datasets, and strict availability goals.</td><td>Small/moderate workloads, hard-to-partition databases, or an immediate bottleneck.</td></tr>
         </table>
         <div class="note"><strong>Rule of thumb:</strong> scale vertically first when the bottleneck is localized and one node is still practical. Scale horizontally when one node cannot meet capacity, availability, elasticity, or fault-isolation requirements. A common production design is hybrid: larger nodes + multiple replicas + partitioning when needed.</div>
+        </details>
       </section>
 
       <section>
-        <h2>When to use vertical scaling</h2>
+        <details class="card"><summary><h2>When to use vertical scaling</h2></summary>
         <ul>
           <li>The workload is small or moderate and simplicity matters.</li>
           <li>The application or database is difficult to partition.</li>
@@ -97,10 +103,11 @@
           <li>Shared memory, local transactions, or one data set are valuable.</li>
           <li>Backups and replicas sufficiently mitigate single-node risk.</li>
         </ul>
+        </details>
       </section>
 
       <section>
-        <h2>When to use horizontal scaling</h2>
+        <details class="card"><summary><h2>When to use horizontal scaling</h2></summary>
         <ul>
           <li>Traffic or data exceeds one machine's practical limit.</li>
           <li>Demand varies and instances should scale elastically.</li>
@@ -108,10 +115,11 @@
           <li>The service is stateless or state can be externalized or partitioned.</li>
           <li>Different functions or workloads need independent scaling.</li>
         </ul>
+        </details>
       </section>
 
       <section>
-        <h2 class="blue">4. Core building blocks</h2>
+        <details class="card"><summary><h2 class="blue">4. Core building blocks</h2></summary>
         <table>
           <tr><th>Component</th><th>Use / watch out for</th></tr>
           <tr><td>Load balancer</td><td>Distribute traffic and run health checks; avoid uneven routing and sticky-session traps.</td></tr>
@@ -121,10 +129,11 @@
           <tr><td>Queue/stream</td><td>Absorb bursts and decouple work; design for retries, duplicates, ordering, and lag.</td></tr>
           <tr><td>Object storage/CDN</td><td>Store and deliver large immutable blobs near users.</td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2 class="green">5. Estimation shortcuts</h2>
+        <details class="card"><summary><h2 class="green">5. Estimation shortcuts</h2></summary>
         <table>
           <tr><th>Estimate</th><th>Formula</th></tr>
           <tr><td>Average RPS</td><td><code>requests per day / 86,400</code></td></tr>
@@ -132,10 +141,11 @@
           <tr><td>Yearly storage</td><td><code>records/sec × bytes/record × seconds/year</code></td></tr>
           <tr><td>Capacity</td><td>Measure per-instance throughput, then leave headroom for failures and bursts.</td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2>6. Data and consistency</h2>
+        <details class="card"><summary><h2>6. Data and consistency</h2></summary>
         <ul>
           <li>Model around access patterns; index frequent filters and sorts.</li>
           <li>Use transactions for invariants that must change atomically.</li>
@@ -144,10 +154,11 @@
           <li>Choose strong, eventual, or read-your-writes consistency per flow.</li>
           <li>Plan retention, archival, backups, restore testing, and deletion.</li>
         </ul>
+        </details>
       </section>
 
       <section>
-        <h2>7. Reliability checklist</h2>
+        <details class="card"><summary><h2>7. Reliability checklist</h2></summary>
         <ul>
           <li>Set timeouts on every network call.</li>
           <li>Use bounded retries with exponential backoff and jitter.</li>
@@ -156,10 +167,11 @@
           <li>Define RPO and RTO; test failover and restore.</li>
           <li>Prefer graceful degradation over total failure.</li>
         </ul>
+        </details>
       </section>
 
       <section>
-        <h2 class="blue">8. Observability & security</h2>
+        <details class="card"><summary><h2 class="blue">8. Observability & security</h2></summary>
         <table>
           <tr><th>Area</th><th>Checklist</th></tr>
           <tr><td>Metrics</td><td>Traffic, errors, latency, saturation, queue lag, and cache hit rate.</td></tr>
@@ -167,10 +179,11 @@
           <tr><td>Secrets</td><td>Use a secret manager; never put secrets in code or logs.</td></tr>
           <tr><td>Access</td><td>Least privilege, tenant isolation, input validation, and audit logs.</td></tr>
         </table>
+        </details>
       </section>
 
       <section>
-        <h2 class="amber">9. Final interview questions</h2>
+        <details class="card"><summary><h2 class="amber">9. Final interview questions</h2></summary>
         <ul>
           <li>What is the expected peak load, and what happens beyond it?</li>
           <li>What fails first, and how does the system respond?</li>
@@ -178,8 +191,20 @@
           <li>How do we deploy and roll back without an outage?</li>
           <li>Which assumptions should be validated with load tests?</li>
         </ul>
+        </details>
       </section>
     </div>
   </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
 </body>
 </html>
