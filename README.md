@@ -12,3 +12,4 @@ Simple HTML pages comprising the fundamentals of data science. Helpful for anyon
 - `yolo-architecture-evolution.html` - Interactive YOLO architecture timeline
 - `ml-optimizers-cheatsheet.html` - Machine learning optimizer formulas and timeline
 - `ml-losses-cheatsheet.html` - Machine learning loss formulas and interview notes
+- `ml-pipeline-cheatsheet.html` - Timed EDA → preprocess → model round: lines to remember

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ML Pipeline Cheat Sheet</title>
+  <style>
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle { color: var(--muted); }
+    a { color: var(--blue); }
+    section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    ul { margin: 6px 0 0; padding-left: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    @media (max-width: 600px) { main { padding: 16px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>ML Pipeline Cheat Sheet</h1>
+      <div class="subtitle">The ~30 lines to remember for a timed, no-AI "EDA → preprocess → model" round.</div>
+    </header>
+    <p><a href="index.html">← Back to cheat sheets</a></p>
+
+    <section>
+      <h2>The idea: 4 steps</h2>
+      <p>Load and split → preprocess (fit on train only) → compare a baseline and 2 models with CV → evaluate the winner on test.
+        Everything else (EDA, features, tuning) is thinking or optional.</p>
+    </section>
+
+    <section>
+      <h2>Load and split</h2>
+      <pre><code>import numpy as np, pandas as pd
+from sklearn.model_selection import train_test_split, cross_val_score
+
+df = pd.read_csv("data.csv")      # path given in the prompt
+target = "churned"
+
+X = df.drop(columns=[target]); y = df[target]
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)</code></pre>
+      <p><code>stratify=y</code> keeps class proportions identical in train and test (for example, 25% churn in both).
+        Use it for classification. Drop it for regression, where it raises an error.</p>
+    </section>
+
+    <section>
+      <h2>Quick EDA (already known, just type it)</h2>
+      <pre><code>df.shape; df.info(); df.describe(include="all").T
+df.isna().sum(); df.duplicated().sum()
+df[target].value_counts(normalize=True)   # class balance → pick the metric</code></pre>
+      <p>Write 3 bullet findings in markdown afterwards. Graders read them.</p>
+    </section>
+
+    <section>
+      <h2>Option A: sklearn Pipeline (shortest, no leakage in CV)</h2>
+      <pre><code>from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.dummy import DummyClassifier
+from sklearn.metrics import classification_report, roc_auc_score
+
+num_cols = X.select_dtypes("number").columns
+cat_cols = X.select_dtypes(exclude="number").columns
+prep = ColumnTransformer([
+    ("num", Pipeline([("imp", SimpleImputer(strategy="median")),
+                      ("sc", StandardScaler())]), num_cols),
+    ("cat", Pipeline([("imp", SimpleImputer(strategy="most_frequent")),
+                      ("oh", OneHotEncoder(handle_unknown="ignore"))]), cat_cols),
+])
+
+for name, m in {"dummy": DummyClassifier(),
+                "lr": LogisticRegression(max_iter=1000),
+                "rf": RandomForestClassifier(random_state=42)}.items():
+    s = cross_val_score(Pipeline([("prep", prep), ("m", m)]),
+                        X_train, y_train, cv=5, scoring="roc_auc")
+    print(name, s.mean().round(3))
+
+# refit whichever model won CV (RF shown here)
+best = Pipeline([("prep", prep), ("m", RandomForestClassifier(random_state=42))])
+best.fit(X_train, y_train)
+print(classification_report(y_test, best.predict(X_test)))
+print("AUC", roc_auc_score(y_test, best.predict_proba(X_test)[:, 1]))</code></pre>
+    </section>
+
+    <section>
+      <h2>Option B: plain pandas (more intuitive)</h2>
+      <p>Rule: <strong>learn medians, modes, categories and mean/std from train only</strong>, then apply them to test.</p>
+      <pre><code>num_cols = X_train.select_dtypes("number").columns
+cat_cols = X_train.select_dtypes(exclude="number").columns
+
+# 1. impute: learn from TRAIN, apply to both
+medians = X_train[num_cols].median()
+modes   = X_train[cat_cols].mode().iloc[0]
+X_train = X_train.fillna(medians).fillna(modes)
+X_test  = X_test.fillna(medians).fillna(modes)
+
+# 2. one-hot, then align test columns to train
+X_train = pd.get_dummies(X_train, columns=cat_cols)
+X_test  = pd.get_dummies(X_test, columns=cat_cols).reindex(
+              columns=X_train.columns, fill_value=0)
+
+# 3. scale (needed for linear models; trees don't care)
+mu, sd = X_train[num_cols].mean(), X_train[num_cols].std()
+X_train[num_cols] = (X_train[num_cols] - mu) / sd
+X_test[num_cols]  = (X_test[num_cols]  - mu) / sd
+
+for name, m in {"dummy": DummyClassifier(),
+                "lr": LogisticRegression(max_iter=1000),
+                "rf": RandomForestClassifier(random_state=42)}.items():
+    print(name, cross_val_score(m, X_train, y_train, cv=5,
+                                scoring="roc_auc").mean().round(3))
+
+best = RandomForestClassifier(random_state=42).fit(X_train, y_train)  # or the CV winner
+print(classification_report(y_test, best.predict(X_test)))</code></pre>
+      <ul>
+        <li><code>.reindex(...)</code> is essential. Without it, unseen or missing categories give train and test different columns, and <code>predict</code> crashes.</li>
+        <li>Small CV leak: the medians are computed on the full training set, so the CV folds have seen them. Say so in one line. A Pipeline avoids it.</li>
+        <li>A separate <code>test.csv</code> must go through the same <code>medians</code>, <code>modes</code>, <code>reindex</code> and <code>mu</code>/<code>sd</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Regression swap</h2>
+      <pre><code>from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.dummy import DummyRegressor
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# no stratify; scoring="neg_root_mean_squared_error" or "r2"
+pred = best.predict(X_test)
+print(mean_absolute_error(y_test, pred),
+      np.sqrt(mean_squared_error(y_test, pred)),
+      r2_score(y_test, pred))</code></pre>
+      <p>Time-ordered data: split by date (<code>df[df.date &lt; cutoff]</code>), not randomly.</p>
+    </section>
+
+    <section>
+      <h2>Feature importance (if time is left)</h2>
+      <pre><code># Pipeline version
+names = best.named_steps["prep"].get_feature_names_out()
+pd.Series(best.named_steps["m"].feature_importances_, index=names).nlargest(10)
+# pandas version
+pd.Series(best.feature_importances_, index=X_train.columns).nlargest(10)</code></pre>
+    </section>
+
+    <section>
+      <h2>Which metric?</h2>
+      <table>
+        <tr><th>Situation</th><th>Metric</th></tr>
+        <tr><td>Balanced classes</td><td>accuracy, F1</td></tr>
+        <tr><td>Imbalanced classes</td><td>ROC AUC, PR AUC, minority-class F1 or recall (not accuracy)</td></tr>
+        <tr><td>Regression, interpretable error</td><td>MAE</td></tr>
+        <tr><td>Regression, penalise big misses</td><td>RMSE</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>~40-minute plan (75 min shared with SQL)</h2>
+      <table>
+        <tr><th>Min</th><th>Do</th></tr>
+        <tr><td>0–3</td><td>Read the prompt: target, metric, deliverable</td></tr>
+        <tr><td>3–11</td><td>EDA plus 3 written findings</td></tr>
+        <tr><td>11–19</td><td>Cleaning, 2–3 features, split, preprocessing</td></tr>
+        <tr><td>19–29</td><td>Baseline, linear model and RF with CV</td></tr>
+        <tr><td>29–35</td><td>Test metrics, feature importance</td></tr>
+        <tr><td>35–40</td><td>5-bullet summary; restart and run all</td></tr>
+      </table>
+      <p><strong>Cut first:</strong> GridSearch, extra plots, the third model. <strong>Never cut:</strong> the baseline, leak-free preprocessing, the right metric, the summary.</p>
+    </section>
+
+    <section>
+      <h2>Common errors</h2>
+      <ul>
+        <li><code>could not convert string to float</code>: a categorical column wasn't encoded.</li>
+        <li><code>Input contains NaN</code>: a column was missed by imputation.</li>
+        <li><code>ConvergenceWarning</code>: use <code>max_iter=1000</code> and scale the features.</li>
+        <li>Feature-count mismatch at predict time: you forgot to <code>reindex</code> test to the train columns.</li>
+        <li>Forgot an argument? <code>help(train_test_split)</code> and <code>dir(sklearn.preprocessing)</code> work offline.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
