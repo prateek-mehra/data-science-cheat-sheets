@@ -17,6 +17,8 @@
     ul.sheets li + li { border-top: 1px solid var(--line); }
     ul.sheets a { display: block; padding: 12px 2px; color: var(--blue); font-size: 15px; font-weight: 700; text-decoration: none; }
     ul.sheets a:hover { text-decoration: underline; }
+    details.stage-grp > summary { cursor: pointer; list-style: none; }
+    details.stage-grp > summary::-webkit-details-marker { display: none; }
     @media (max-width: 700px) { main { padding: 14px; } }
   </style>
 </head>
@@ -26,31 +28,38 @@
       <h1>Cheat Sheet Index</h1>
       <div class="subtitle">A small, printable collection for quick revision.</div>
     </header>
-    <h2 class="stage">Python fundamentals</h2>
+    <details class="stage-grp"><summary><h2 class="stage">Python fundamentals</h2></summary>
     <ul class="sheets"><li><a href="python-fundamentals.html">Overview</a></li></ul>
-    <h2 class="stage">Coding round</h2>
+    </details>
+    <details class="stage-grp"><summary><h2 class="stage">Coding round</h2></summary>
     <ul class="sheets">
       <li><a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a></li>
       <li><a href="numpy-basics-cheatsheet.html">NumPy</a></li>
       <li><a href="ml-pipeline-cheatsheet.html">ML Pipeline (EDA → Model)</a></li>
     </ul>
-    <h2 class="stage">SQL</h2>
+    </details>
+    <details class="stage-grp"><summary><h2 class="stage">SQL</h2></summary>
     <ul class="sheets"><li><a href="sql-cheatsheet.html">Overview</a></li></ul>
-    <h2 class="stage">ML fundamentals</h2>
+    </details>
+    <details class="stage-grp"><summary><h2 class="stage">ML fundamentals</h2></summary>
     <ul class="sheets">
       <li><a href="probability-cheatsheet.html">Probability</a></li>
       <li><a href="ml-optimizers-cheatsheet.html">ML Optimizers</a></li>
       <li><a href="ml-losses-cheatsheet.html">ML Losses</a></li>
     </ul>
-    <h2 class="stage">Deep learning</h2>
+    </details>
+    <details class="stage-grp"><summary><h2 class="stage">Deep learning</h2></summary>
     <ul class="sheets">
       <li><a href="pytorch-cheatsheet.html">PyTorch</a></li>
       <li><a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a></li>
     </ul>
-    <h2 class="stage">System design round</h2>
+    </details>
+    <details class="stage-grp"><summary><h2 class="stage">System design round</h2></summary>
     <ul class="sheets"><li><a href="system-design-cheatsheet.html">System Design</a></li></ul>
-    <h2 class="stage">Quiz reports</h2>
+    </details>
+    <details class="stage-grp"><summary><h2 class="stage">Quiz reports</h2></summary>
     <ul class="sheets"><li><a href="quiz-reports.html">Python MCQ Quiz Reports</a></li></ul>
+    </details>
   </main>
 </body>
 </html>
