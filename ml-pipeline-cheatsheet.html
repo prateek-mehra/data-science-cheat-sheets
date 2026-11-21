@@ -24,6 +24,8 @@
     pre.out { margin-top: 4px; background: #fff; border: 1px dashed var(--line); color: #33424c; }
     pre.out code { font-size: 12px; }
     p.why { margin: 6px 0 14px; color: var(--muted); font-size: 13px; }
+    details.eda-grp > summary { cursor: pointer; margin: 16px 0 4px; color: var(--muted); }
+    details.eda-grp > summary h3.eda-group { display: inline; }
     h3.eda-group { margin: 16px 0 4px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     details.eda { border-top: 1px solid var(--line); }
     details.eda:last-of-type { border-bottom: 1px solid var(--line); }
@@ -77,8 +79,8 @@
 
     <section>
       <h2>Quick EDA, with example output</h2>
-      <p>Click any command to see example output (customer-churn data, shortened) and what to look for. <a href="#" id="eda-toggle">Expand all</a></p>
-      <h3 class="eda-group">Structure</h3>
+      <p>Click a group, then a command, to see example output (customer-churn data, shortened) and what to look for. <a href="#" id="eda-toggle">Expand all</a></p>
+      <details class="eda-grp"><summary><h3 class="eda-group">Structure</h3></summary>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">shape</span></code> <span class="tag">size</span></summary><div><pre class="out"><code>(5040, 11)</code></pre><p class="why">Rows × columns. Tells you whether slow models or big grids are affordable.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code> <span class="tag">first rows</span></summary><div><pre class="out"><code>  customer_id   age   region channel membership  total_orders  churned
 0      C00000  35.0  Midwest     app       Plus             3        1
@@ -102,7 +104,8 @@ channel            6   &lt;- expected 3?
 membership         2
 complaints         5
 churned            2</code></pre><p class="why">Unique count ≈ row count means an ID column. Few unique values, even in a numeric column, means it's categorical-like.</p></div></details>
-      <h3 class="eda-group">Missing values &amp; duplicates</h3>
+      </details>
+      <details class="eda-grp"><summary><h3 class="eda-group">Missing values &amp; duplicates</h3></summary>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code> <span class="tag">missing count</span></summary><div><pre class="out"><code>age                  350
 region               197
 membership          3029   &lt;- suspicious!
@@ -112,7 +115,8 @@ age                      0.069
 avg_basket_value         0.047
 region                   0.039</code></pre><p class="why">Rule of thumb: under ~30%, impute (plus an optional <code>_missing</code> flag). Over ~60% that's genuinely missing: drop the column or turn it into a flag.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code> <span class="tag">duplicate rows</span></summary><div><pre class="out"><code>40</code></pre><p class="why">Drop with <code>df = df.drop_duplicates()</code> before splitting, otherwise copies can land in both train and test.</p></div></details>
-      <h3 class="eda-group">Numeric columns</h3>
+      </details>
+      <details class="eda-grp"><summary><h3 class="eda-group">Numeric columns</h3></summary>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span></code> <span class="tag">summary stats</span></summary><div><pre class="out"><code>                   count   mean   std    min   50%    max
 age                4690   49.5   94.2   18    40     999   &lt;- impossible
 total_orders       5040    8.0    2.9    0     8      21
@@ -126,7 +130,8 @@ days_since_last_order    2.09</code></pre><p class="why">|skew| &gt; 1 means hea
 <span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span>
 <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></code></pre><pre class="out"><code>57   (q1=32, q3=49 → bounds 6.5 to 74.5)</code></pre><p class="why">Decide case by case: <em>impossible</em> values (age 999) become NaN; <em>real but extreme</em> values are kept, capped (<code>clip</code>), or log-transformed.</p></div></details>
-      <h3 class="eda-group">Categorical columns</h3>
+      </details>
+      <details class="eda-grp"><summary><h3 class="eda-group">Categorical columns</h3></summary>
       <details class="eda"><summary><span class="lbl">unique values of every text column</span></summary><div><pre><code class="py"><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"object"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[:</span><span class="mi">6</span><span class="p">])</span></code></pre><pre class="out"><code>region 4 [&#x27;Midwest&#x27; &#x27;Northeast&#x27; &#x27;West&#x27; &#x27;South&#x27; nan]
 channel 6 [&#x27;app&#x27; &#x27;web&#x27; &#x27;STORE&#x27; &#x27;store&#x27; &#x27;WEB&#x27; &#x27;APP&#x27;]
@@ -137,7 +142,8 @@ store     966
 APP       119
 WEB       103
 STORE      50</code></pre><p class="why">Rare categories (&lt; 1%) can be grouped into <code>"Other"</code>. High-cardinality columns (hundreds of values) shouldn't be one-hot encoded naively.</p></div></details>
-      <h3 class="eda-group">Relationship with the target</h3>
+      </details>
+      <details class="eda-grp"><summary><h3 class="eda-group">Relationship with the target</h3></summary>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code> <span class="tag">class balance</span></summary><div><pre class="out"><code>0    0.747
 1    0.253</code></pre><p class="why">25% positives means imbalanced classes: use ROC AUC/F1, not accuracy, and <code>stratify=y</code>.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span></code> <span class="tag">correlation with target</span></summary><div><pre class="out"><code>total_orders            -0.11
@@ -161,16 +167,19 @@ Northeast  0.256   1194
 South      0.243   1172
 West       0.257   1234
 NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, so you don't over-read small groups. <code>dropna=False</code> shows whether being missing itself matters.</p></div></details>
-      <h3 class="eda-group">Dates</h3>
+      </details>
+      <details class="eda-grp"><summary><h3 class="eda-group">Dates</h3></summary>
       <details class="eda"><summary><span class="lbl">parse and check range</span></summary><div><pre><code class="py"><span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">])</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">"signup_date"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span></code></pre><pre class="out"><code>(Timestamp(&#x27;2022-01-01&#x27;), Timestamp(&#x27;2024-06-18&#x27;))</code></pre><p class="why">Check the range makes sense, then derive features (<code>.dt.year</code>, <code>.dt.month</code>, tenure in days). Time-ordered data needs a date-based split.</p></div></details>
-      <h3 class="eda-group">Plots (one line each)</h3>
+      </details>
+      <details class="eda-grp"><summary><h3 class="eda-group">Plots (one line each)</h3></summary>
       <details class="eda"><summary><code class="py"><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code> <span class="tag">distributions</span></summary><div><img class="plot" src="images/eda-hist.png" alt="Histograms of numeric columns" loading="lazy"><p class="why">Shape at a glance: <code>days_since_last_order</code> is right-skewed (log candidate), <code>total_orders</code> is roughly normal.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"days_since_last_order"</span><span class="p">)</span></code> <span class="tag">numeric feature by class</span></summary><div><img class="plot" src="images/eda-boxplot.png" alt="Boxplot of recency by churn" loading="lazy"><p class="why">Clear separation between the boxes means a strong predictor. The dots are outliers.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"membership"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">target</span><span class="p">)</span></code> <span class="tag">category by class</span></summary><div><img class="plot" src="images/eda-countplot.png" alt="Countplot of membership by churn" loading="lazy"><p class="why">Compare bar heights within each category. Premium has visibly less churn.</p></div></details>
       <details class="eda"><summary><code class="py"><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">".2f"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"coolwarm"</span><span class="p">)</span></code> <span class="tag">correlation heatmap</span></summary><div><img class="plot" src="images/eda-heatmap.png" alt="Correlation heatmap" loading="lazy"><p class="why">Read the target row for drivers, and look for feature pairs with |r| &gt; 0.8 (multicollinearity: drop one for linear models).</p></div></details>
+      </details>
       <p>Then write 3 bullet findings in markdown. Graders read them.</p>
-      <script>document.getElementById("eda-toggle").addEventListener("click",function(e){e.preventDefault();var d=document.querySelectorAll("details.eda"),open=this.textContent==="Expand all";d.forEach(function(x){x.open=open});this.textContent=open?"Collapse all":"Expand all";});</script>
+      <script>document.getElementById("eda-toggle").addEventListener("click",function(e){e.preventDefault();var d=document.querySelectorAll("details.eda, details.eda-grp"),open=this.textContent==="Expand all";d.forEach(function(x){x.open=open});this.textContent=open?"Collapse all":"Expand all";});</script>
     </section>
 
     <section>
