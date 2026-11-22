@@ -265,8 +265,36 @@ NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, s
     </details></section>
 
     <section class="step"><details><summary><h2>Feature importance (if time is left)</h2></summary>
-      <pre><code class="py"><span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+      <pre><code class="py"><span class="c1"># tree models (RandomForest, XGBoost): built-in importances</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">best</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 <span class="n">importances</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>   <span class="c1"># top 10 features</span></code></pre>
+      <p>Linear classifiers have no <code>feature_importances_</code>. Read their coefficients instead:</p>
+      <pre><code class="py"><span class="c1"># linear classifiers: one weight per feature in coef_</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>   <span class="c1"># X_train already scaled in step 3</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span>             <span class="c1"># (1, n_features) if binary, (n_classes, n_features) if multiclass</span>
+
+<span class="c1"># binary: the single row is for the positive class, lr.classes_[1]</span>
+<span class="n">coefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">coefs</span> <span class="o">=</span> <span class="n">coefs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1"># rank by |coef|, keep the sign</span>
+<span class="n">coefs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># odds ratio: +1 unit (here +1 SD) multiplies the odds of class 1 by exp(coef)</span>
+<span class="n">odds_ratios</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">coefs</span><span class="p">)</span>
+<span class="n">odds_ratios</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># multiclass: one row of weights per class</span>
+<span class="n">coef_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">lr</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="k">for</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">coef_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">top</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span></code></pre>
+      <ul>
+        <li><strong>Scale first.</strong> Coefficients are only comparable when the features share a scale, which step 3 does. Unscaled, a feature measured in thousands gets a tiny coefficient however much it matters.</li>
+        <li>The sign gives the direction: positive pushes towards the class, negative away from it. Rank by <code>|coef|</code>, not by the raw value.</li>
+        <li>Odds ratio: <code>np.exp(coef)</code> of 1.5 means one SD more multiplies the odds by 1.5 (+50%); 0.7 means −30%. For a 0/1 dummy it compares having the category with not having it.</li>
+        <li>Binary <code>coef_</code> has one row, not two, so <code>lr.coef_[0]</code>; building the multiclass DataFrame on it raises a shape error. In multiclass, each row is relative to the other classes, so read them per class.</li>
+        <li>Correlated features split the weight between them, and a stronger penalty (smaller <code>C</code>) shrinks every coefficient, so treat the ranking as rough.</li>
+      </ul>
     </details></section>
 
     <section class="step"><details><summary><h2>Which metric?</h2></summary>
