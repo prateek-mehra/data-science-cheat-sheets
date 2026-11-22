@@ -5,236 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Python DSA Data Structures Cheat Sheet</title>
   <style>
-    :root {
-      --ink: #172026;
-      --muted: #52616b;
-      --line: #d7dee4;
-      --soft: #f5f7f9;
-      --blue: #0b67b2;
-      --green: #167a4a;
-      --amber: #9a5b00;
-      --red: #b42318;
-      --bg: #ffffff;
-    }
-
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
     * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--bg);
-      font: 13px/1.35 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: 0;
-    }
-
-    main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 22px;
-    }
-
-    header {
-      margin-bottom: 14px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--ink);
-    }
-
-    h1 {
-      margin: 0 0 4px;
-      font-size: 28px;
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .legend {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .pill {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 8px;
-      color: var(--muted);
-      background: var(--soft);
-      white-space: nowrap;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .nav a {
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 5px 9px;
-      color: var(--ink);
-      background: var(--soft);
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .nav a.active {
-      color: #fff;
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    section {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fff;
-      break-inside: avoid;
-    }
-
-    section.wide { grid-column: span 2; }
-    section.full { grid-column: 1 / -1; }
-
-    h2 {
-      margin: 0;
-      padding: 7px 9px;
-      color: #fff;
-      background: var(--ink);
-      font-size: 13px;
-      line-height: 1.15;
-      letter-spacing: 0;
-    }
-
-    h2.blue { background: var(--blue); }
-    h2.green { background: var(--green); }
-    h2.amber { background: var(--amber); }
-    h2.red { background: var(--red); }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-
-    th, td {
-      vertical-align: top;
-      padding: 5px 7px;
-      border-top: 1px solid var(--line);
-    }
-
-    th {
-      color: var(--muted);
-      background: var(--soft);
-      text-align: left;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0;
-    }
-
-    td:first-child, th:first-child { width: 37%; }
-    td:last-child, th:last-child { width: 24%; }
-
-    code {
-      font: 12px/1.3 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      color: #111827;
-      background: #f1f4f7;
-      border: 1px solid #e0e6eb;
-      border-radius: 4px;
-      padding: 1px 4px;
-      word-break: break-word;
-    }
-
-    pre {
-      margin: 0;
-      padding: 7px 9px;
-      overflow-x: auto;
-      border-top: 1px solid var(--line);
-      background: #fbfcfd;
-      font: 11px/1.35 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      white-space: pre-wrap;
-    }
-
-    pre code {
-      display: block;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      font: inherit;
-      word-break: normal;
-    }
-
-    .note {
-      padding: 7px 9px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      background: #fbfcfd;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0;
-    }
-
-    .snippets {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-    }
-
-    .snippet {
-      min-width: 0;
-      border-right: 1px solid var(--line);
-    }
-
-    .snippet:last-child { border-right: 0; }
-
-    .snippet h3 {
-      margin: 0;
-      padding: 6px 9px;
-      color: var(--muted);
-      background: var(--soft);
-      border-bottom: 1px solid var(--line);
-      font-size: 11px;
-      line-height: 1.15;
-      text-transform: uppercase;
-      letter-spacing: 0;
-    }
-
-    .split > div:first-child { border-right: 1px solid var(--line); }
-
-    ul {
-      margin: 0;
-      padding: 7px 9px 8px 23px;
-    }
-
-    li { margin: 2px 0; }
-
-    .hot {
-      color: var(--red);
-      font-weight: 800;
-    }
-
-    [contenteditable="true"] {
-      outline: 2px dashed #7aa7d9;
-      outline-offset: 2px;
-    }
-
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle { color: var(--muted); }
+    a { color: var(--blue); }
+    section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    pre code { font-size: 12.5px; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; table-layout: fixed; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    th { color: var(--muted); font-weight: 600; }
+    .note { margin-top: 10px; color: var(--muted); }
+    @media (max-width: 600px) { main { padding: 16px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
     /* Python syntax colors (pre-rendered with Pygments) */
     .py .k, .py .kn, .py .kc, .py .ow { color: #a626a4; font-weight: 600; }
     .py .nn { color: #172026; }
@@ -245,31 +40,12 @@
     .py .nf, .py .nc { color: #0b67b2; font-weight: 600; }
     .py .o { color: #b4233c; }
     .py .p { color: #52616b; }
-    @media (max-width: 900px) {
-      main { padding: 14px; }
-      .grid { grid-template-columns: 1fr; }
-      section.wide, section.full { grid-column: auto; }
-      .split { grid-template-columns: 1fr; }
-      .split > div:first-child { border-right: 0; border-bottom: 1px solid var(--line); }
-      .snippets { grid-template-columns: 1fr; }
-      .snippet { border-right: 0; border-bottom: 1px solid var(--line); }
-      .snippet:last-child { border-bottom: 0; }
-    }
-
-    @media print {
-      .nav { display: none; }
-      main { max-width: none; padding: 10mm; }
-      body { font-size: 10px; }
-      h1 { font-size: 20px; }
-      h2 { font-size: 10px; padding: 5px 6px; }
-      th, td { padding: 3px 5px; }
-      code { font-size: 9px; padding: 0 2px; }
-      .grid { gap: 6px; }
-      section { border-radius: 0; }
-    }
-    details.card > summary { cursor: pointer; list-style: none; }
-    details.card > summary::-webkit-details-marker { display: none; }
-    details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    .snippet h3 { margin: 14px 0 0; color: var(--muted); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    @media (max-width: 700px) { .split { grid-template-columns: 1fr; gap: 0; } }
+    td:first-child, th:first-child { width: 37%; }
+    td:last-child, th:last-child { width: 24%; }
+    .hot { color: #b42318; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -280,22 +56,244 @@
         <div class="subtitle">For DSA rounds in India and global big tech: quick syntax, common moves, and interview traps.</div>
       </div>
     </header>
-
-    <nav class="nav" aria-label="cheat sheet navigation">
-      <a href="../index.html">Index</a>
-      <a href="python-dsa-data-structures-cheatsheet.html" class="active">Python DSA</a>
-      <a href="numpy-basics-cheatsheet.html">NumPy</a>
-      <a href="probability-cheatsheet.html">Probability</a>
-      <a href="system-design-cheatsheet.html">System Design</a>
-      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
-      <a href="ml-optimizers-cheatsheet.html">ML Optimizers</a>
-      <a href="ml-losses-cheatsheet.html">ML Losses</a>
-      <a href="pytorch-cheatsheet.html">PyTorch</a>
-    </nav>
+    <p><a href="../index.html">← Back to cheat sheets</a></p>
 
     <div class="grid">
+      <section>
+        <details class="card"><summary><h2>List: dynamic array</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span></code>, <code class="py"><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(n)</td></tr>
+          <tr><td>Index / assign</td><td><code class="py"><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>, <code class="py"><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></code></td><td>O(1)</td></tr>
+          <tr><td>Append / pop end</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>, <code class="py"><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>O(1)*</td></tr>
+          <tr><td>Insert / pop middle</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">x</span><span class="p">)</span></code>, <code class="py"><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></td><td>O(n)</td></tr>
+          <tr><td>Slice</td><td><code class="py"><span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span></code>, <code class="py"><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(k)</td></tr>
+          <tr><td>Sort</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></code>, <code class="py"><span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></td><td>O(n log n)</td></tr>
+          <tr><td>Custom sort</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></code></td><td>O(n log n)</td></tr>
+          <tr><td>Reverse in-place</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span></code></td><td>O(n)</td></tr>
+          <tr><td>Comprehension</td><td><code class="py"><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">ok</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span></code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Trap: <code class="py"><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></code> is O(n). Use <code class="py"><span class="n">deque</span></code> for queues.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>String: immutable sequence</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">s</span> <span class="o">=</span> <span class="s2">"abc"</span></code></td><td>O(1)</td></tr>
+          <tr><td>Index / slice</td><td><code class="py"><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>, <code class="py"><span class="n">s</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span></code></td><td>O(1), O(k)</td></tr>
+          <tr><td>Reverse</td><td><code class="py"><span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(n)</td></tr>
+          <tr><td>Split</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code>, <code class="py"><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span></code></td><td>O(n)</td></tr>
+          <tr><td>Join</td><td><code class="py"><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span></code></td><td>O(n)</td></tr>
+          <tr><td>Find</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"ab"</span><span class="p">)</span></code></td><td>O(nm)</td></tr>
+          <tr><td>Char code</td><td><code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code>, <code class="py"><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Case</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></code>, <code class="py"><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></code></td><td>O(n)</td></tr>
+          <tr><td>Strip</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Build many chars with list + <code class="py"><span class="n">join</span></code>, not repeated <code class="py"><span class="o">+=</span></code>.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Tuple: immutable record</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code>, <code class="py"><span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span></code></td><td>O(1)</td></tr>
+          <tr><td>One item</td><td><code class="py"><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Unpack</td><td><code class="py"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">t</span></code></td><td>O(1)</td></tr>
+          <tr><td>Swap</td><td><code class="py"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span></code></td><td>O(1)</td></tr>
+          <tr><td>Hash key</td><td><code class="py"><span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span></code></td><td>O(1)</td></tr>
+          <tr><td>Sort pairs</td><td><code class="py"><span class="n">pairs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></code></td><td>O(n log n)</td></tr>
+          <tr><td>Return many</td><td><code class="py"><span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">node</span></code></td><td>O(1)</td></tr>
+        </table>
+        <div class="note">Use tuples for grid coordinates, graph edges, memo keys.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Dict: hash map</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span></code>, <code class="py"><span class="nb">dict</span><span class="p">()</span></code></td><td>O(1)</td></tr>
+          <tr><td>Put / get</td><td><code class="py"><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></code>, <code class="py"><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></code></td><td>O(1)</td></tr>
+          <tr><td>Safe get</td><td><code class="py"><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Exists</td><td><code class="py"><span class="n">k</span> <span class="ow">in</span> <span class="n">d</span></code></td><td>O(1)</td></tr>
+          <tr><td>Delete</td><td><code class="py"><span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></code>, <code class="py"><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Loop keys</td><td><code class="py"><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span></code></td><td>O(n)</td></tr>
+          <tr><td>Loop pairs</td><td><code class="py"><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span></code></td><td>O(n)</td></tr>
+          <tr><td>Build</td><td><code class="py"><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">}</span></code></td><td>O(n)</td></tr>
+          <tr><td>Merge</td><td><code class="py"><span class="n">d3</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">|</span> <span class="n">d2</span></code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Python 3.7+ preserves insertion order. Keys must be hashable.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Set: unique hash bag</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span></code>, <code class="py"><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span></code></td><td>O(n)</td></tr>
+          <tr><td>Add</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Remove safe</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Remove strict</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Exists</td><td><code class="py"><span class="n">x</span> <span class="ow">in</span> <span class="n">s</span></code></td><td>O(1)</td></tr>
+          <tr><td>Union</td><td><code class="py"><span class="n">a</span> <span class="o">|</span> <span class="n">b</span></code></td><td>O(len(a)+len(b))</td></tr>
+          <tr><td>Intersect</td><td><code class="py"><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span></code></td><td>O(min)</td></tr>
+          <tr><td>Difference</td><td><code class="py"><span class="n">a</span> <span class="o">-</span> <span class="n">b</span></code></td><td>O(len(a))</td></tr>
+          <tr><td>Comprehension</td><td><code class="py"><span class="p">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">}</span></code></td><td>O(n)</td></tr>
+        </table>
+        <div class="note">Trap: <code class="py"><span class="p">{}</span></code> is a dict, not an empty set.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Counter / defaultdict</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span></code></td><td></td></tr>
+          <tr><td>Count</td><td><code class="py"><span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span></code></td><td>O(n)</td></tr>
+          <tr><td>Add one</td><td><code class="py"><span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></code></td><td>O(1)</td></tr>
+          <tr><td>Top k</td><td><code class="py"><span class="n">cnt</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code></td><td>O(n log k)</td></tr>
+          <tr><td>Missing count</td><td><code class="py"><span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span></code></td><td>0</td></tr>
+          <tr><td>List map</td><td><code class="py"><span class="n">g</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Set map</td><td><code class="py"><span class="n">g</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Int map</td><td><code class="py"><span class="n">freq</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Structured map</td><td><code class="py"><span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">"count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"items"</span><span class="p">:</span> <span class="p">[]})</span></code></td><td>O(1)</td></tr>
+        </table>
+        <pre><code class="py"><span class="n">clusters</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">"count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"items"</span><span class="p">:</span> <span class="p">[]})</span>
+<span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"count"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"items"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">nums_i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span></code></pre>
+        <div class="note">Great for anagrams, frequency windows, adjacency lists.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Math, chars, bits</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
+          <tr><td>Char to int</td><td><code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code>, <code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span></code></td><td>ASCII / 0-index</td></tr>
+          <tr><td>Int to char</td><td><code class="py"><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>, <code class="py"><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">))</span></code></td><td>code / letter</td></tr>
+          <tr><td>Floor log2</td><td><code class="py"><span class="n">x</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span></code></td><td>x &gt; 0</td></tr>
+          <tr><td>Power of 2</td><td><code class="py"><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span></code></td><td>2^k</td></tr>
+          <tr><td>Test bit k</td><td><code class="py"><span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span></code></td><td>nonzero if set</td></tr>
+          <tr><td>Set / clear bit</td><td><code class="py"><span class="n">x</span> <span class="o">|=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span></code>, <code class="py"><span class="n">x</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span></code></td><td>mask edit</td></tr>
+          <tr><td>Toggle bit</td><td><code class="py"><span class="n">x</span> <span class="o">^=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span></code></td><td>flip</td></tr>
+          <tr><td>Keep low k bits</td><td><code class="py"><span class="n">x</span> <span class="o">&amp;</span> <span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></code></td><td>mask</td></tr>
+          <tr><td>GCD</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">gcd</span></code></td><td><code class="py"><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code></td></tr>
+        </table>
+        <div class="note"><code class="py"><span class="n">g</span> <span class="o">=</span> <span class="mi">0</span></code> is a clean rolling default because <code class="py"><span class="n">gcd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span></code>.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Stack patterns</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Use</th></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">st</span> <span class="o">=</span> <span class="p">[]</span></code></td><td>LIFO</td></tr>
+          <tr><td>Push</td><td><code class="py"><span class="n">st</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Pop</td><td><code class="py"><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>O(1)</td></tr>
+          <tr><td>Peek</td><td><code class="py"><span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(1)</td></tr>
+          <tr><td>Non-empty</td><td><code class="py"><span class="k">while</span> <span class="n">st</span><span class="p">:</span></code></td><td></td></tr>
+          <tr><td>Mono inc</td><td><code class="py"><span class="k">while</span> <span class="n">st</span> <span class="ow">and</span> <span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>next smaller</td></tr>
+          <tr><td>Mono dec</td><td><code class="py"><span class="k">while</span> <span class="n">st</span> <span class="ow">and</span> <span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>next greater</td></tr>
+        </table>
+        <div class="note">Parentheses, histogram, stock span, next greater element.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Deque: queue / monotonic queue</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span></code></td><td></td></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span></code></td><td>O(1)</td></tr>
+          <tr><td>Push back</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Pop front</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span></code></td><td>O(1)</td></tr>
+          <tr><td>Push front</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Pop back</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>O(1)</td></tr>
+          <tr><td>Peek</td><td><code class="py"><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>, <code class="py"><span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(1)</td></tr>
+          <tr><td>Fixed window</td><td><code class="py"><span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">k</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+        </table>
+        <div class="note">BFS, sliding window max/min, recent k elements.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Heap: priority queue</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
+          <tr><td>Import</td><td><code class="py"><span class="kn">import</span><span class="w"> </span><span class="nn">heapq</span></code></td><td></td></tr>
+          <tr><td>Create min-heap</td><td><code class="py"><span class="n">h</span> <span class="o">=</span> <span class="p">[]</span></code></td><td>O(1)</td></tr>
+          <tr><td>Push</td><td><code class="py"><span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>O(log n)</td></tr>
+          <tr><td>Pop min</td><td><code class="py"><span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">h</span><span class="p">)</span></code></td><td>O(log n)</td></tr>
+          <tr><td>Peek min</td><td><code class="py"><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code></td><td>O(1)</td></tr>
+          <tr><td>Heapify</td><td><code class="py"><span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></td><td>O(n)</td></tr>
+          <tr><td>Max-heap</td><td><code class="py"><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">)</span></code></td><td>O(log n)</td></tr>
+          <tr><td>Pair priority</td><td><code class="py"><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span></code></td><td>O(log n)</td></tr>
+        </table>
+        <div class="note">Dijkstra, top k, merge k sorted lists, median stream.</div>
+        </details>
+      </section>
+      <section class="wide">
+        <details class="card"><summary><h2>Binary search, bisect, ranges</h2></summary>
+        <div class="split">
+          <div>
+            <table>
+              <tr><th>Task</th><th>Syntax</th><th>Meaning</th></tr>
+              <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">bisect</span><span class="w"> </span><span class="kn">import</span> <span class="n">bisect_left</span><span class="p">,</span> <span class="n">bisect_right</span></code></td><td></td></tr>
+              <tr><td>Lower bound</td><td><code class="py"><span class="n">bisect_left</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>first i with a[i] &gt;= x</td></tr>
+              <tr><td>Upper bound</td><td><code class="py"><span class="n">bisect_right</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>first i with a[i] &gt; x</td></tr>
+              <tr><td>Count x</td><td><code class="py"><span class="n">right</span> <span class="o">-</span> <span class="n">left</span></code></td><td>in sorted array</td></tr>
+              <tr><td>Insert sorted</td><td><code class="py"><span class="n">insort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>O(n)</td></tr>
+            </table>
+          </div>
+          <div>
+            <ul>
+              <li><code class="py"><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code> gives 0 to n-1.</li>
+              <li><code class="py"><span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span></code> gives l to r-1.</li>
+              <li><code class="py"><span class="nb">range</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></code> loops down to l.</li>
+              <li><code class="py"><span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">lo</span> <span class="o">+</span> <span class="n">hi</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span></code>.</li>
+              <li>Use <code class="py"><span class="k">while</span> <span class="n">lo</span> <span class="o">&lt;</span> <span class="n">hi</span></code> for first-true / min-answer templates.</li>
+            </ul>
+          </div>
+        </div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Matrix / grid</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
+          <tr><td>Create</td><td><code class="py"><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span></code></td><td>correct</td></tr>
+          <tr><td>Bad create</td><td><code class="py"><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">]</span><span class="o">*</span><span class="n">n</span></code></td><td class="hot">shared rows</td></tr>
+          <tr><td>Dims</td><td><code class="py"><span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></code></td><td></td></tr>
+          <tr><td>4 dirs</td><td><code class="py"><span class="n">dirs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span></code></td><td></td></tr>
+          <tr><td>Bounds</td><td><code class="py"><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">m</span></code></td><td></td></tr>
+          <tr><td>Transpose</td><td><code class="py"><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">)</span></code></td><td>tuples</td></tr>
+          <tr><td>Flatten</td><td><code class="py"><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">g</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span></code></td><td></td></tr>
+        </table>
+        </details>
+      </section>
       <section class="full">
-        <details class="card"><summary><h2 class="blue">Interview micro-patterns</h2></summary>
+        <details class="card"><summary><h2>Sparse table: static range min/max/gcd</h2></summary>
+        <div class="split">
+          <ul>
+            <li>Precompute answers for every block length <code class="py"><span class="mi">2</span><span class="o">^</span><span class="n">k</span></code>.</li>
+            <li>Query <code class="py"><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">]</span></code> by combining two overlapping blocks of length <code class="py"><span class="mi">2</span><span class="o">^</span><span class="n">k</span></code>.</li>
+            <li>Works in O(1) for idempotent ops: <code class="py"><span class="nb">min</span></code>, <code class="py"><span class="nb">max</span></code>, <code class="py"><span class="n">gcd</span></code>.</li>
+            <li>Build O(n log n), memory O(n log n). No updates.</li>
+          </ul>
+          <pre><code class="py"><span class="c1"># range minimum query on inclusive [l, r]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
+<span class="n">st</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[:]]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+    <span class="n">half</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">prev</span> <span class="o">=</span> <span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">half</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">st</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">l</span><span class="p">],</span> <span class="n">st</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">r</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span></code></pre>
+        </div>
+        </details>
+      </section>
+      <section class="full">
+        <details class="card"><summary><h2>Interview micro-patterns</h2></summary>
         <table>
           <tr><th>Pattern</th><th>Syntax snapshot</th><th>When it appears</th></tr>
           <tr><td>Two pointers</td><td><code class="py"><span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span></code> then move one side</td><td>sorted arrays, palindrome, pair sum</td></tr>
@@ -347,7 +345,7 @@
         </details>
       </section>
       <section class="full">
-        <details class="card"><summary><h2 class="green">Syntax traps worth memorizing</h2></summary>
+        <details class="card"><summary><h2>Syntax traps worth memorizing</h2></summary>
         <div class="split">
           <ul>
             <li><code class="py"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span></code> gives index and value.</li>
@@ -363,252 +361,6 @@
             <li><code class="py"><span class="n">heapq</span></code> compares tuple elements left to right.</li>
             <li><code class="py"><span class="n">copy</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span></code> shallow-copies a list.</li>
           </ul>
-        </div>
-        </details>
-      </section>
-      <section>
-        <details class="card"><summary><h2 class="blue">List: dynamic array</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span></code>, <code class="py"><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(n)</td></tr>
-          <tr><td>Index / assign</td><td><code class="py"><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>, <code class="py"><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></code></td><td>O(1)</td></tr>
-          <tr><td>Append / pop end</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>, <code class="py"><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>O(1)*</td></tr>
-          <tr><td>Insert / pop middle</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">x</span><span class="p">)</span></code>, <code class="py"><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></td><td>O(n)</td></tr>
-          <tr><td>Slice</td><td><code class="py"><span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span></code>, <code class="py"><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(k)</td></tr>
-          <tr><td>Sort</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></code>, <code class="py"><span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></td><td>O(n log n)</td></tr>
-          <tr><td>Custom sort</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></code></td><td>O(n log n)</td></tr>
-          <tr><td>Reverse in-place</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span></code></td><td>O(n)</td></tr>
-          <tr><td>Comprehension</td><td><code class="py"><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">ok</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span></code></td><td>O(n)</td></tr>
-        </table>
-        <div class="note">Trap: <code class="py"><span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></code> is O(n). Use <code class="py"><span class="n">deque</span></code> for queues.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="green">Dict: hash map</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span></code>, <code class="py"><span class="nb">dict</span><span class="p">()</span></code></td><td>O(1)</td></tr>
-          <tr><td>Put / get</td><td><code class="py"><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></code>, <code class="py"><span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></code></td><td>O(1)</td></tr>
-          <tr><td>Safe get</td><td><code class="py"><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Exists</td><td><code class="py"><span class="n">k</span> <span class="ow">in</span> <span class="n">d</span></code></td><td>O(1)</td></tr>
-          <tr><td>Delete</td><td><code class="py"><span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></code>, <code class="py"><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Loop keys</td><td><code class="py"><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span></code></td><td>O(n)</td></tr>
-          <tr><td>Loop pairs</td><td><code class="py"><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span></code></td><td>O(n)</td></tr>
-          <tr><td>Build</td><td><code class="py"><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">}</span></code></td><td>O(n)</td></tr>
-          <tr><td>Merge</td><td><code class="py"><span class="n">d3</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">|</span> <span class="n">d2</span></code></td><td>O(n)</td></tr>
-        </table>
-        <div class="note">Python 3.7+ preserves insertion order. Keys must be hashable.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="amber">Set: unique hash bag</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span></code>, <code class="py"><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span></code></td><td>O(n)</td></tr>
-          <tr><td>Add</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Remove safe</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Remove strict</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Exists</td><td><code class="py"><span class="n">x</span> <span class="ow">in</span> <span class="n">s</span></code></td><td>O(1)</td></tr>
-          <tr><td>Union</td><td><code class="py"><span class="n">a</span> <span class="o">|</span> <span class="n">b</span></code></td><td>O(len(a)+len(b))</td></tr>
-          <tr><td>Intersect</td><td><code class="py"><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span></code></td><td>O(min)</td></tr>
-          <tr><td>Difference</td><td><code class="py"><span class="n">a</span> <span class="o">-</span> <span class="n">b</span></code></td><td>O(len(a))</td></tr>
-          <tr><td>Comprehension</td><td><code class="py"><span class="p">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">}</span></code></td><td>O(n)</td></tr>
-        </table>
-        <div class="note">Trap: <code class="py"><span class="p">{}</span></code> is a dict, not an empty set.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="blue">String: immutable sequence</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">s</span> <span class="o">=</span> <span class="s2">"abc"</span></code></td><td>O(1)</td></tr>
-          <tr><td>Index / slice</td><td><code class="py"><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>, <code class="py"><span class="n">s</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span></code></td><td>O(1), O(k)</td></tr>
-          <tr><td>Reverse</td><td><code class="py"><span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(n)</td></tr>
-          <tr><td>Split</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></code>, <code class="py"><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span></code></td><td>O(n)</td></tr>
-          <tr><td>Join</td><td><code class="py"><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span></code></td><td>O(n)</td></tr>
-          <tr><td>Find</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"ab"</span><span class="p">)</span></code></td><td>O(nm)</td></tr>
-          <tr><td>Char code</td><td><code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code>, <code class="py"><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Case</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></code>, <code class="py"><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></code></td><td>O(n)</td></tr>
-          <tr><td>Strip</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></code></td><td>O(n)</td></tr>
-        </table>
-        <div class="note">Build many chars with list + <code class="py"><span class="n">join</span></code>, not repeated <code class="py"><span class="o">+=</span></code>.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="green">Tuple: immutable record</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code>, <code class="py"><span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span></code></td><td>O(1)</td></tr>
-          <tr><td>One item</td><td><code class="py"><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Unpack</td><td><code class="py"><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">t</span></code></td><td>O(1)</td></tr>
-          <tr><td>Swap</td><td><code class="py"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span></code></td><td>O(1)</td></tr>
-          <tr><td>Hash key</td><td><code class="py"><span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span></code></td><td>O(1)</td></tr>
-          <tr><td>Sort pairs</td><td><code class="py"><span class="n">pairs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></code></td><td>O(n log n)</td></tr>
-          <tr><td>Return many</td><td><code class="py"><span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">node</span></code></td><td>O(1)</td></tr>
-        </table>
-        <div class="note">Use tuples for grid coordinates, graph edges, memo keys.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="red">Deque: queue / monotonic queue</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span></code></td><td></td></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span></code></td><td>O(1)</td></tr>
-          <tr><td>Push back</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Pop front</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span></code></td><td>O(1)</td></tr>
-          <tr><td>Push front</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Pop back</td><td><code class="py"><span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>O(1)</td></tr>
-          <tr><td>Peek</td><td><code class="py"><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code>, <code class="py"><span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(1)</td></tr>
-          <tr><td>Fixed window</td><td><code class="py"><span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="n">k</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-        </table>
-        <div class="note">BFS, sliding window max/min, recent k elements.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="amber">Heap: priority queue</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Import</td><td><code class="py"><span class="kn">import</span><span class="w"> </span><span class="nn">heapq</span></code></td><td></td></tr>
-          <tr><td>Create min-heap</td><td><code class="py"><span class="n">h</span> <span class="o">=</span> <span class="p">[]</span></code></td><td>O(1)</td></tr>
-          <tr><td>Push</td><td><code class="py"><span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>O(log n)</td></tr>
-          <tr><td>Pop min</td><td><code class="py"><span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">h</span><span class="p">)</span></code></td><td>O(log n)</td></tr>
-          <tr><td>Peek min</td><td><code class="py"><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></code></td><td>O(1)</td></tr>
-          <tr><td>Heapify</td><td><code class="py"><span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></td><td>O(n)</td></tr>
-          <tr><td>Max-heap</td><td><code class="py"><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">)</span></code></td><td>O(log n)</td></tr>
-          <tr><td>Pair priority</td><td><code class="py"><span class="n">heappush</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span></code></td><td>O(log n)</td></tr>
-        </table>
-        <div class="note">Dijkstra, top k, merge k sorted lists, median stream.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="blue">Counter / defaultdict</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Cost</th></tr>
-          <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span></code></td><td></td></tr>
-          <tr><td>Count</td><td><code class="py"><span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span></code></td><td>O(n)</td></tr>
-          <tr><td>Add one</td><td><code class="py"><span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></code></td><td>O(1)</td></tr>
-          <tr><td>Top k</td><td><code class="py"><span class="n">cnt</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">k</span><span class="p">)</span></code></td><td>O(n log k)</td></tr>
-          <tr><td>Missing count</td><td><code class="py"><span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span></code></td><td>0</td></tr>
-          <tr><td>List map</td><td><code class="py"><span class="n">g</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Set map</td><td><code class="py"><span class="n">g</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Int map</td><td><code class="py"><span class="n">freq</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Structured map</td><td><code class="py"><span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">"count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"items"</span><span class="p">:</span> <span class="p">[]})</span></code></td><td>O(1)</td></tr>
-        </table>
-        <pre><code class="py"><span class="n">clusters</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s2">"count"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"items"</span><span class="p">:</span> <span class="p">[]})</span>
-<span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"count"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"items"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">nums_i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span></code></pre>
-        <div class="note">Great for anagrams, frequency windows, adjacency lists.</div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="green">Stack patterns</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Use</th></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">st</span> <span class="o">=</span> <span class="p">[]</span></code></td><td>LIFO</td></tr>
-          <tr><td>Push</td><td><code class="py"><span class="n">st</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
-          <tr><td>Pop</td><td><code class="py"><span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>O(1)</td></tr>
-          <tr><td>Peek</td><td><code class="py"><span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></code></td><td>O(1)</td></tr>
-          <tr><td>Non-empty</td><td><code class="py"><span class="k">while</span> <span class="n">st</span><span class="p">:</span></code></td><td></td></tr>
-          <tr><td>Mono inc</td><td><code class="py"><span class="k">while</span> <span class="n">st</span> <span class="ow">and</span> <span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>next smaller</td></tr>
-          <tr><td>Mono dec</td><td><code class="py"><span class="k">while</span> <span class="n">st</span> <span class="ow">and</span> <span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></code></td><td>next greater</td></tr>
-        </table>
-        <div class="note">Parentheses, histogram, stock span, next greater element.</div>
-        </details>
-      </section>
-
-      <section class="wide">
-        <details class="card"><summary><h2 class="red">Binary search, bisect, ranges</h2></summary>
-        <div class="split">
-          <div>
-            <table>
-              <tr><th>Task</th><th>Syntax</th><th>Meaning</th></tr>
-              <tr><td>Import</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">bisect</span><span class="w"> </span><span class="kn">import</span> <span class="n">bisect_left</span><span class="p">,</span> <span class="n">bisect_right</span></code></td><td></td></tr>
-              <tr><td>Lower bound</td><td><code class="py"><span class="n">bisect_left</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>first i with a[i] &gt;= x</td></tr>
-              <tr><td>Upper bound</td><td><code class="py"><span class="n">bisect_right</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>first i with a[i] &gt; x</td></tr>
-              <tr><td>Count x</td><td><code class="py"><span class="n">right</span> <span class="o">-</span> <span class="n">left</span></code></td><td>in sorted array</td></tr>
-              <tr><td>Insert sorted</td><td><code class="py"><span class="n">insort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></code></td><td>O(n)</td></tr>
-            </table>
-          </div>
-          <div>
-            <ul>
-              <li><code class="py"><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code> gives 0 to n-1.</li>
-              <li><code class="py"><span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span></code> gives l to r-1.</li>
-              <li><code class="py"><span class="nb">range</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></code> loops down to l.</li>
-              <li><code class="py"><span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">lo</span> <span class="o">+</span> <span class="n">hi</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span></code>.</li>
-              <li>Use <code class="py"><span class="k">while</span> <span class="n">lo</span> <span class="o">&lt;</span> <span class="n">hi</span></code> for first-true / min-answer templates.</li>
-            </ul>
-          </div>
-        </div>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="amber">Matrix / grid</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
-          <tr><td>Create</td><td><code class="py"><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span></code></td><td>correct</td></tr>
-          <tr><td>Bad create</td><td><code class="py"><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="p">]</span><span class="o">*</span><span class="n">n</span></code></td><td class="hot">shared rows</td></tr>
-          <tr><td>Dims</td><td><code class="py"><span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></code></td><td></td></tr>
-          <tr><td>4 dirs</td><td><code class="py"><span class="n">dirs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span></code></td><td></td></tr>
-          <tr><td>Bounds</td><td><code class="py"><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">m</span></code></td><td></td></tr>
-          <tr><td>Transpose</td><td><code class="py"><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">)</span></code></td><td>tuples</td></tr>
-          <tr><td>Flatten</td><td><code class="py"><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">g</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span></code></td><td></td></tr>
-        </table>
-        </details>
-      </section>
-
-      <section>
-        <details class="card"><summary><h2 class="green">Math, chars, bits</h2></summary>
-        <table>
-          <tr><th>Task</th><th>Syntax</th><th>Note</th></tr>
-          <tr><td>Char to int</td><td><code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code>, <code class="py"><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">-</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span></code></td><td>ASCII / 0-index</td></tr>
-          <tr><td>Int to char</td><td><code class="py"><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>, <code class="py"><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="nb">ord</span><span class="p">(</span><span class="s2">"a"</span><span class="p">))</span></code></td><td>code / letter</td></tr>
-          <tr><td>Floor log2</td><td><code class="py"><span class="n">x</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span></code></td><td>x &gt; 0</td></tr>
-          <tr><td>Power of 2</td><td><code class="py"><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span></code></td><td>2^k</td></tr>
-          <tr><td>Test bit k</td><td><code class="py"><span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span></code></td><td>nonzero if set</td></tr>
-          <tr><td>Set / clear bit</td><td><code class="py"><span class="n">x</span> <span class="o">|=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span></code>, <code class="py"><span class="n">x</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span></code></td><td>mask edit</td></tr>
-          <tr><td>Toggle bit</td><td><code class="py"><span class="n">x</span> <span class="o">^=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span></code></td><td>flip</td></tr>
-          <tr><td>Keep low k bits</td><td><code class="py"><span class="n">x</span> <span class="o">&amp;</span> <span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></code></td><td>mask</td></tr>
-          <tr><td>GCD</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">gcd</span></code></td><td><code class="py"><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></code></td></tr>
-        </table>
-        <div class="note"><code class="py"><span class="n">g</span> <span class="o">=</span> <span class="mi">0</span></code> is a clean rolling default because <code class="py"><span class="n">gcd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span></code>.</div>
-        </details>
-      </section>
-
-
-      <section class="full">
-        <details class="card"><summary><h2 class="amber">Sparse table: static range min/max/gcd</h2></summary>
-        <div class="split">
-          <ul>
-            <li>Precompute answers for every block length <code class="py"><span class="mi">2</span><span class="o">^</span><span class="n">k</span></code>.</li>
-            <li>Query <code class="py"><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">]</span></code> by combining two overlapping blocks of length <code class="py"><span class="mi">2</span><span class="o">^</span><span class="n">k</span></code>.</li>
-            <li>Works in O(1) for idempotent ops: <code class="py"><span class="nb">min</span></code>, <code class="py"><span class="nb">max</span></code>, <code class="py"><span class="n">gcd</span></code>.</li>
-            <li>Build O(n log n), memory O(n log n). No updates.</li>
-          </ul>
-          <pre><code class="py"><span class="c1"># range minimum query on inclusive [l, r]</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">K</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
-<span class="n">st</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[:]]</span>
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
-    <span class="n">half</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">prev</span> <span class="o">=</span> <span class="n">st</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
-        <span class="nb">min</span><span class="p">(</span><span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">half</span><span class="p">])</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="p">])</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">st</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">l</span><span class="p">],</span> <span class="n">st</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">r</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span></code></pre>
         </div>
         </details>
       </section>

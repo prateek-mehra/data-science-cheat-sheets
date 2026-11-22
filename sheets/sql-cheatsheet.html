@@ -15,15 +15,24 @@
     a { color: var(--blue); }
     section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
     h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 10px 0 0; }
     pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
-    figure { margin: 10px 0 0; }
-    figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
-    figcaption { margin-top: 6px; color: var(--muted); font-size: 12px; }
     code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    pre code { font-size: 12.5px; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; table-layout: fixed; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    th { color: var(--muted); font-weight: 600; }
+    .note { margin-top: 10px; color: var(--muted); }
     @media (max-width: 600px) { main { padding: 16px; } }
     details.card > summary { cursor: pointer; list-style: none; }
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    figure { margin: 10px 0 0; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+    figcaption { margin-top: 6px; color: var(--muted); font-size: 12px; }
   </style>
 </head>
 <body>
@@ -33,6 +42,27 @@
       <div class="subtitle"><code>CASE WHEN</code>, joins, grouping, clause order, CTEs and window functions.</div>
     </header>
     <p><a href="../index.html">← Back to cheat sheets</a></p>
+    <section>
+      <details class="card"><summary><h2>Clause order</h2></summary>
+      <p>Written: <code>SELECT → FROM → JOIN … ON → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code></p>
+      <p>Evaluated: <code>FROM → JOIN … ON → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</code></p>
+      <p>That's why a <code>SELECT</code> alias can't be used in <code>WHERE</code> but can be used in <code>ORDER BY</code>.</p>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>LEFT JOIN: ON vs WHERE</h2></summary>
+      <p>In a <code>LEFT JOIN</code>, the <code>ON</code> clause only decides which right-table rows match; it never removes left-table rows.</p>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>HAVING</h2></summary>
+      <p><code>WHERE</code> filters rows before grouping; <code>HAVING</code> filters groups after <code>GROUP BY</code>, so it can use aggregates.</p>
+      <pre><code>SELECT date, COUNT(*) AS requests
+FROM friend_requests
+GROUP BY date
+HAVING COUNT(*) &gt; 5;</code></pre>
+      </details>
+    </section>
     <section>
       <details class="card"><summary><h2>CASE WHEN syntax</h2></summary>
       <p>Evaluate conditions in order. SQL returns the result for the first condition that is true; <code>ELSE</code> is optional and defaults to <code>NULL</code> when omitted.</p>
@@ -59,27 +89,6 @@ FROM orders;</code></pre>
       </details>
     </section>
     <section>
-      <details class="card"><summary><h2>LEFT JOIN: ON vs WHERE</h2></summary>
-      <p>In a <code>LEFT JOIN</code>, the <code>ON</code> clause only decides which right-table rows match; it never removes left-table rows.</p>
-      </details>
-    </section>
-    <section>
-      <details class="card"><summary><h2>Clause order</h2></summary>
-      <p>Written: <code>SELECT → FROM → JOIN … ON → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code></p>
-      <p>Evaluated: <code>FROM → JOIN … ON → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</code></p>
-      <p>That's why a <code>SELECT</code> alias can't be used in <code>WHERE</code> but can be used in <code>ORDER BY</code>.</p>
-      </details>
-    </section>
-    <section>
-      <details class="card"><summary><h2>HAVING</h2></summary>
-      <p><code>WHERE</code> filters rows before grouping; <code>HAVING</code> filters groups after <code>GROUP BY</code>, so it can use aggregates.</p>
-      <pre><code>SELECT date, COUNT(*) AS requests
-FROM friend_requests
-GROUP BY date
-HAVING COUNT(*) &gt; 5;</code></pre>
-      </details>
-    </section>
-    <section>
       <details class="card"><summary><h2>Multiple CTEs</h2></summary>
       <p>You can only write <code>WITH</code> once. Separate the CTEs with a comma and drop the second <code>WITH</code>; a later CTE can reference an earlier one.</p>
       <pre><code>WITH a AS (
@@ -93,17 +102,17 @@ FROM b;</code></pre>
       </details>
     </section>
     <section>
-      <details class="card"><summary><h2>Gotchas</h2></summary>
-      <p><code>int / int</code> truncates in Postgres and SQL Server (<code>2 / 3 = 0</code>). Multiply by <code>1.0</code> or <code>100.0</code> for a decimal result.</p>
-      <p><code>COUNT(DISTINCT *)</code> is invalid. <code>DISTINCT</code> needs a column or expression: <code>COUNT(DISTINCT user_id)</code>.</p>
-      </details>
-    </section>
-    <section>
       <details class="card"><summary><h2>Window functions</h2></summary>
       <figure>
         <a href="../assets/images/sql-window-functions-cheat-sheet.webp"><img src="../assets/images/sql-window-functions-cheat-sheet.webp" alt="SQL window functions cheat sheet: PARTITION BY, ORDER BY, window frames, syntax and logical order of operations" loading="lazy"></a>
         <figcaption>Source: <a href="https://learnsql.com">LearnSQL.com</a>, owned by Vertabelo SA. Licensed CC BY-NC-ND. Click to open full size.</figcaption>
       </figure>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Gotchas</h2></summary>
+      <p><code>int / int</code> truncates in Postgres and SQL Server (<code>2 / 3 = 0</code>). Multiply by <code>1.0</code> or <code>100.0</code> for a decimal result.</p>
+      <p><code>COUNT(DISTINCT *)</code> is invalid. <code>DISTINCT</code> needs a column or expression: <code>COUNT(DISTINCT user_id)</code>.</p>
       </details>
     </section>
   </main>

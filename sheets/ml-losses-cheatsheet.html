@@ -5,44 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Machine Learning Loss Functions Cheat Sheet</title>
   <style>
-    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#0b67b2; --green:#167a4a; --amber:#9a5b00; --bg:#fff; }
-    * { box-sizing:border-box; }
-    body { margin:0; color:var(--ink); background:var(--bg); font:13px/1.35 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
-    main { max-width:980px; margin:0 auto; padding:22px; }
-    header { margin-bottom:14px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
-    h1 { margin:0 0 4px; font-size:28px; line-height:1.05; }
-    .subtitle { color:var(--muted); font-size:13px; }
-    .nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
-    .nav a { border:1px solid var(--line); border-radius:6px; padding:5px 9px; color:var(--ink); background:var(--soft); font-size:12px; font-weight:700; text-decoration:none; }
-    .nav a.active { color:#fff; background:var(--blue); border-color:var(--blue); }
-    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-    section { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#fff; break-inside:avoid; }
-    section.full { grid-column:1 / -1; }
-    h2 { margin:0; padding:7px 9px; color:#fff; background:var(--ink); font-size:13px; line-height:1.15; }
-    h2.blue { background:var(--blue); } h2.green { background:var(--green); } h2.amber { background:var(--amber); }
-    table { width:100%; border-collapse:collapse; table-layout:fixed; }
-    th,td { vertical-align:top; padding:6px 8px; border-top:1px solid var(--line); overflow-wrap:anywhere; }
-    th { color:var(--muted); background:var(--soft); text-align:left; font-size:10px; text-transform:uppercase; }
-    td:first-child,th:first-child { width:16%; }
-    code,.formula { font:12px/1.4 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; color:#111827; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
-    .formula { display:inline-block; margin:1px 0; white-space:normal; }
-    ul { margin:0; padding:7px 9px 8px 23px; } li { margin:3px 0; }
-    .note { padding:7px 9px; border-top:1px solid var(--line); color:var(--muted); background:#fbfcfd; }
-    a { color:var(--blue); }
-    @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } }
-    @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code,.formula { font-size:9px; padding:0 2px; } }
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle { color: var(--muted); }
+    a { color: var(--blue); }
+    section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    pre code { font-size: 12.5px; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; table-layout: fixed; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    th { color: var(--muted); font-weight: 600; }
+    .note { margin-top: 10px; color: var(--muted); }
+    @media (max-width: 600px) { main { padding: 16px; } }
     details.card > summary { cursor: pointer; list-style: none; }
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
     /* LaTeX formulas rendered by MathJax */
-    .formula { font-family:inherit; font-size:13px; line-height:1.5; }
-    .formula { max-width:100%; overflow-x:auto; overflow-y:hidden; vertical-align:middle; }
-    .formula mjx-container { margin:0 !important; }
-    .f-wide th:nth-child(1) { width:18%; } .f-wide th:nth-child(2) { width:50%; }
-    .math-block { padding:8px 10px; border-top:1px solid var(--line); background:#fbfcfd; }
-    .math-block p { margin:4px 0; color:var(--muted); }
-    .math-block mjx-container[display="true"] { margin:4px 0 !important; overflow-x:auto; overflow-y:hidden; }
-    @media print { .formula { font-size:10px; } }
+    .formula { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; }
+    .formula mjx-container { margin: 0 !important; }
+    .math-block { margin-top: 10px; }
+    .math-block p { margin: 4px 0; color: var(--muted); }
+    mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+    .math-block mjx-container[display="true"] { margin: 4px 0 !important; }
+    td:first-child, th:first-child { width: 16%; }
+    .f-wide th:nth-child(1) { width: 18%; } .f-wide th:nth-child(2) { width: 50%; }
   </style>
   <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
@@ -53,20 +49,105 @@
       <h1>Machine Learning Loss Functions</h1>
       <div class="subtitle">Pick a loss that matches the prediction task, target structure, and errors you care about.</div>
     </header>
-    <nav class="nav" aria-label="cheat sheet navigation">
-      <a href="../index.html">Index</a>
-      <a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a>
-      <a href="numpy-basics-cheatsheet.html">NumPy</a>
-      <a href="probability-cheatsheet.html">Probability</a>
-      <a href="system-design-cheatsheet.html">System Design</a>
-      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
-      <a href="ml-optimizers-cheatsheet.html">ML Optimizers</a>
-      <a href="ml-losses-cheatsheet.html" class="active">ML Losses</a>
-      <a href="pytorch-cheatsheet.html">PyTorch</a>
-    </nav>
+    <p><a href="../index.html">← Back to cheat sheets</a></p>
     <div class="grid">
       <section class="full">
-        <details class="card"><summary><h2 class="blue">Quick lookup · loss → formula</h2></summary>
+        <details class="card"><summary><h2>Notation &amp; the quick choice</h2></summary>
+        <table><tr><th>Symbol</th><th>Meaning</th><th>Typical use</th></tr>
+          <tr><td><span class="formula">\(y\)</span></td><td>Ground-truth label or target</td><td>What should be predicted</td></tr>
+          <tr><td><span class="formula">\(p\)</span></td><td>Predicted probability; \(z\) is a raw logit</td><td>Classification</td></tr>
+          <tr><td><span class="formula">\(\hat y\)</span></td><td>Predicted continuous value</td><td>Regression</td></tr>
+          <tr><td><span class="formula">\(N\)</span></td><td>Number of examples or elements being averaged</td><td>Batch / pixels / tokens</td></tr>
+        </table>
+        <div class="note"><strong>Quick rule:</strong> mutually exclusive classes → softmax + CCE; independent binary labels → sigmoid + BCE; continuous targets → regression loss; dense object detection → a weighted sum of classification and box-localization losses. Frameworks often compute BCE/CCE directly from logits for numerical stability.</div>
+        </details>
+      </section>
+      <section class="full">
+        <details class="card"><summary><h2>Regression errors</h2></summary>
+        <table><tr><th>Loss</th><th>Formula (per scalar error \(e = \hat y - y\))</th><th>Behavior / when useful</th></tr>
+          <tr><td><b>MSE / L2</b></td><td><span class="formula">\(\frac{1}{N} \sum e^2\)</span></td><td>Strongly penalizes large errors; smooth gradients. Sensitive to outliers. Minimizer estimates the conditional mean.</td></tr>
+          <tr><td><b>MAE / L1</b></td><td><span class="formula">\(\frac{1}{N} \sum |e|\)</span></td><td>More robust to outliers; gradient magnitude is constant away from zero. Minimizer estimates the conditional median.</td></tr>
+          <tr><td><b>Huber</b></td><td><span class="formula">\(\rho_\delta(e) = \begin{cases} \tfrac12 e^2 & |e| \le \delta \\ \delta(|e| - \tfrac12\delta) & \text{otherwise} \end{cases}\)</span></td><td>Quadratic near zero, linear for large errors; robust while retaining smooth behavior near the target.</td></tr>
+          <tr><td><b>Smooth L1</b></td><td><span class="formula">\(\begin{cases} \tfrac12 e^2/\beta & |e| \lt \beta \\ |e| - \tfrac12\beta & \text{otherwise} \end{cases}\)</span></td><td>Huber-like loss used in detection and localization; framework conventions differ in the transition scale.</td></tr>
+          <tr><td><b>Log-cosh</b></td><td><span class="formula">\(\operatorname{mean}(\log \cosh e)\)</span></td><td>Quadratic for small errors and approximately linear for large errors; smooth everywhere.</td></tr>
+          <tr><td><b>Quantile / pinball</b></td><td><span class="formula">\(\rho_\tau(e) = \max(\tau e, (\tau-1)e)\)</span></td><td>Quantile regression; asymmetric penalties estimate a chosen conditional quantile \(\tau\) rather than the mean.</td></tr>
+        </table>
+        <div class="note"><strong>Interview choice:</strong> MSE if large misses should cost disproportionately; MAE if outliers should not dominate; Huber if you want a smooth compromise. Check target scaling and units before interpreting raw loss values.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Binary cross-entropy (BCE)</h2></summary>
+        <div class="note"><span class="formula">\(L = -\frac{1}{N} \sum \left[ y \log p + (1-y) \log(1-p) \right]\)</span></div>
+        <ul>
+          <li><strong>Use:</strong> binary classification or multi-label classification (one independent yes/no target per class).</li>
+          <li>With a logit \(z\), <span class="formula">\(p = \sigma(z)\)</span>; prefer a numerically stable “with logits” implementation.</li>
+          <li><strong>Common pitfall:</strong> do not apply sigmoid twice if the loss already expects logits.</li>
+          <li>For imbalance, consider positive-class weights, sampling, or focal loss; tune calibration separately.</li>
+        </ul>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Categorical cross-entropy (CCE)</h2></summary>
+        <div class="note"><span class="formula">\(L = -\frac{1}{N} \sum_i \sum_k y_{ik} \log p_{ik}\)</span></div>
+        <ul>
+          <li><strong>Use:</strong> exactly one correct class from \(K\) mutually exclusive classes.</li>
+          <li><span class="formula">\(p = \operatorname{softmax}(z)\)</span>; for one-hot labels this is <span class="formula">\(-\log p_{\text{correct class}}\)</span>.</li>
+          <li>Integer class IDs are commonly accepted by sparse CCE. Use logits-based loss for stability.</li>
+          <li><strong>Distinguish:</strong> BCE treats class outputs independently; CCE couples them so probabilities sum to 1.</li>
+        </ul>
+        </details>
+      </section>
+      <section class="full">
+        <details class="card"><summary><h2>Focal loss · hard examples get more attention</h2></summary>
+        <div class="note"><span class="formula">\(\mathrm{FL}(p_t) = -\alpha_t (1-p_t)^{\gamma} \log(p_t)\)</span> &nbsp; where <span class="formula">\(p_t = \begin{cases} p & y = 1 \\ 1-p & \text{otherwise} \end{cases}\)</span></div>
+        <table><tr><th>Knob</th><th>Effect</th><th>Interview explanation</th></tr>
+          <tr><td><span class="formula">\(\gamma \ge 0\)</span></td><td>Down-weights easy, already-correct examples as <span class="formula">\(p_t \to 1\)</span>.</td><td>Addresses the flood of easy negatives in dense detection.</td></tr>
+          <tr><td><span class="formula">\(\alpha_t\)</span></td><td>Balances positive and negative classes.</td><td>Class weighting; it is separate from the focusing factor.</td></tr>
+          <tr><td><span class="formula">\(\gamma = 0\)</span></td><td>Reduces to alpha-weighted cross-entropy.</td><td>Check limiting cases to show you understand the formula.</td></tr>
+        </table>
+        <div class="note"><strong>Use when:</strong> extreme foreground/background imbalance, especially dense detection. It is not automatically better for ordinary balanced classification; changing loss can affect calibration.</div>
+        </details>
+      </section>
+      <section class="full">
+        <details class="card"><summary><h2>YOLO &amp; object-detection losses</h2></summary>
+        <table><tr><th>Component</th><th>Common form</th><th>Purpose / nuance</th></tr>
+          <tr><td>Box overlap</td><td><span class="formula">\(L_{\mathrm{IoU}} = 1 - \mathrm{IoU}\)</span><br><span class="formula">\(\mathrm{GIoU} = \mathrm{IoU} - \frac{|C \setminus (A \cup B)|}{|C|}, \quad L = 1 - \mathrm{GIoU}\)</span></td><td>Optimize localization in terms of box overlap. GIoU adds a penalty for the smallest enclosing box \(C\), giving a useful signal when boxes do not overlap.</td></tr>
+          <tr><td>DIoU / CIoU</td><td><span class="formula">\(\mathrm{DIoU} = \mathrm{IoU} - \frac{\rho^2(b, b^*)}{c^2}\)</span><br><span class="formula">\(\mathrm{CIoU} = \mathrm{DIoU} - \alpha v\)</span></td><td>DIoU adds center-distance penalty; CIoU also accounts for aspect-ratio mismatch. Box loss is often <span class="formula">\(1 - \mathrm{CIoU}\)</span>.</td></tr>
+          <tr><td>Class / objectness</td><td><span class="formula">\(\mathrm{BCEWithLogits}(z, y)\)</span></td><td>Train class scores and, in heads that use it, objectness/confidence scores. Assignment and class imbalance treatment depend on the YOLO version.</td></tr>
+          <tr><td>Distribution Focal Loss</td><td><span class="formula">\(\mathrm{DFL}(y) = -\left[(y_r - y)\log S_l + (y - y_l)\log S_r\right]\)</span></td><td>Regress each box side as a distribution over neighboring distance bins; interpolation supervises the two bins \(y_l \le y \le y_r\) around target \(y\).</td></tr>
+          <tr><td>Total (illustrative)</td><td><span class="formula">\(L = \lambda_{\text{box}} L_{\text{box}} + \lambda_{\text{cls}} L_{\text{cls}} + \lambda_{\text{dfl}} L_{\text{dfl}}\)</span></td><td>Modern anchor-free YOLO families combine box, class, and often DFL terms. Weights and assignment rules vary by model/release.</td></tr>
+          <tr><td>YOLO26 nuance</td><td><span class="formula">IoU box loss + BCE class loss + normalized L1 box-distance term</span></td><td>YOLO26 is DFL-free: the training-recipe <code>dfl</code> gain weights normalized L1 distances, not distribution focal loss. NMS-free is an inference path, not a loss function.</td></tr>
+        </table>
+        <div class="note"><strong>Version caveat:</strong> YOLOv1 used weighted squared-error terms; newer YOLOs use different classification, box, assignment, and auxiliary terms. Never describe one formula as the loss for every YOLO version.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Other high-value interview losses</h2></summary>
+        <table class="f-wide"><tr><th>Loss</th><th>Formula</th><th>Use</th></tr>
+          <tr><td>Hinge</td><td><span class="formula">\(\max(0,\, 1 - y \cdot f(x))\)</span>, \(y \in \{-1, +1\}\)</td><td>Max-margin classifiers / SVM intuition.</td></tr>
+          <tr><td>KL divergence</td><td><span class="formula">\(\sum p \log \frac{p}{q}\)</span></td><td>Distribution matching, knowledge distillation, VAEs. Direction matters; \(\mathrm{KL}(p \,\|\, q)\) is not symmetric.</td></tr>
+          <tr><td>Dice</td><td><span class="formula">\(1 - \frac{2\sum py + \varepsilon}{\sum p + \sum y + \varepsilon}\)</span></td><td>Segmentation with sparse foreground; overlap-based objective.</td></tr>
+          <tr><td>Triplet</td><td><span class="formula">\(\max(0,\, d(a,p) - d(a,n) + m)\)</span></td><td>Metric learning: anchor-positive closer than anchor-negative by margin \(m\).</td></tr>
+          <tr><td>InfoNCE</td><td><span class="formula">\(-\log \frac{\exp(\mathrm{sim}(q,k^+)/\tau)}{\sum_j \exp(\mathrm{sim}(q,k_j)/\tau)}\)</span></td><td>Contrastive representation learning; identify a positive among negatives.</td></tr>
+          <tr><td>Pairwise ranking</td><td><span class="formula">\(-\log \sigma(s^+ - s^-)\)</span></td><td>Learn relative order for search, recommendation, and ranking.</td></tr>
+        </table>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Common interview checks</h2></summary>
+        <ul>
+          <li><strong>Loss vs metric:</strong> loss is optimized; accuracy, F1, AP, or IoU may be monitored but are often non-differentiable.</li>
+          <li><strong>Imbalance:</strong> compare class weights, resampling, focal loss, and threshold tuning.</li>
+          <li><strong>Probability:</strong> BCE for independent labels; CCE for one-of-K labels.</li>
+          <li><strong>Outliers:</strong> square error amplifies them; absolute / Huber-style errors are more robust.</li>
+          <li><strong>Segmentation:</strong> pixel CE gives local supervision; Dice/IoU directly emphasize overlap.</li>
+          <li><strong>Multi-task models:</strong> <span class="formula">\(L_{\text{total}} = \sum_i \lambda_i L_i\)</span>; loss scales can dominate, so normalize or tune weights.</li>
+          <li><strong>Numerics:</strong> use logits-based cross-entropy and stable log-sum-exp implementations.</li>
+        </ul>
+        </details>
+      </section>
+      <section class="full">
+        <details class="card"><summary><h2>Quick lookup · loss → formula</h2></summary>
         <table><tr><th>Loss</th><th>Formula</th><th>Typical task</th></tr>
           <tr><td>BCE</td><td><span class="formula">\(-[y\log p + (1-y)\log(1-p)]\)</span></td><td>Binary / multi-label classification</td></tr>
           <tr><td>CCE</td><td><span class="formula">\(-\sum_k y_k \log p_k\)</span></td><td>Mutually exclusive classes</td></tr>
@@ -88,102 +169,7 @@
         </details>
       </section>
       <section class="full">
-        <details class="card"><summary><h2 class="blue">1. Notation &amp; the quick choice</h2></summary>
-        <table><tr><th>Symbol</th><th>Meaning</th><th>Typical use</th></tr>
-          <tr><td><span class="formula">\(y\)</span></td><td>Ground-truth label or target</td><td>What should be predicted</td></tr>
-          <tr><td><span class="formula">\(p\)</span></td><td>Predicted probability; \(z\) is a raw logit</td><td>Classification</td></tr>
-          <tr><td><span class="formula">\(\hat y\)</span></td><td>Predicted continuous value</td><td>Regression</td></tr>
-          <tr><td><span class="formula">\(N\)</span></td><td>Number of examples or elements being averaged</td><td>Batch / pixels / tokens</td></tr>
-        </table>
-        <div class="note"><strong>Quick rule:</strong> mutually exclusive classes → softmax + CCE; independent binary labels → sigmoid + BCE; continuous targets → regression loss; dense object detection → a weighted sum of classification and box-localization losses. Frameworks often compute BCE/CCE directly from logits for numerical stability.</div>
-        </details>
-      </section>
-      <section>
-        <details class="card"><summary><h2 class="green">2. Binary cross-entropy (BCE)</h2></summary>
-        <div class="note"><span class="formula">\(L = -\frac{1}{N} \sum \left[ y \log p + (1-y) \log(1-p) \right]\)</span></div>
-        <ul>
-          <li><strong>Use:</strong> binary classification or multi-label classification (one independent yes/no target per class).</li>
-          <li>With a logit \(z\), <span class="formula">\(p = \sigma(z)\)</span>; prefer a numerically stable “with logits” implementation.</li>
-          <li><strong>Common pitfall:</strong> do not apply sigmoid twice if the loss already expects logits.</li>
-          <li>For imbalance, consider positive-class weights, sampling, or focal loss; tune calibration separately.</li>
-        </ul>
-        </details>
-      </section>
-      <section>
-        <details class="card"><summary><h2 class="blue">3. Categorical cross-entropy (CCE)</h2></summary>
-        <div class="note"><span class="formula">\(L = -\frac{1}{N} \sum_i \sum_k y_{ik} \log p_{ik}\)</span></div>
-        <ul>
-          <li><strong>Use:</strong> exactly one correct class from \(K\) mutually exclusive classes.</li>
-          <li><span class="formula">\(p = \operatorname{softmax}(z)\)</span>; for one-hot labels this is <span class="formula">\(-\log p_{\text{correct class}}\)</span>.</li>
-          <li>Integer class IDs are commonly accepted by sparse CCE. Use logits-based loss for stability.</li>
-          <li><strong>Distinguish:</strong> BCE treats class outputs independently; CCE couples them so probabilities sum to 1.</li>
-        </ul>
-        </details>
-      </section>
-      <section class="full">
-        <details class="card"><summary><h2 class="amber">4. Focal loss · hard examples get more attention</h2></summary>
-        <div class="note"><span class="formula">\(\mathrm{FL}(p_t) = -\alpha_t (1-p_t)^{\gamma} \log(p_t)\)</span> &nbsp; where <span class="formula">\(p_t = \begin{cases} p & y = 1 \\ 1-p & \text{otherwise} \end{cases}\)</span></div>
-        <table><tr><th>Knob</th><th>Effect</th><th>Interview explanation</th></tr>
-          <tr><td><span class="formula">\(\gamma \ge 0\)</span></td><td>Down-weights easy, already-correct examples as <span class="formula">\(p_t \to 1\)</span>.</td><td>Addresses the flood of easy negatives in dense detection.</td></tr>
-          <tr><td><span class="formula">\(\alpha_t\)</span></td><td>Balances positive and negative classes.</td><td>Class weighting; it is separate from the focusing factor.</td></tr>
-          <tr><td><span class="formula">\(\gamma = 0\)</span></td><td>Reduces to alpha-weighted cross-entropy.</td><td>Check limiting cases to show you understand the formula.</td></tr>
-        </table>
-        <div class="note"><strong>Use when:</strong> extreme foreground/background imbalance, especially dense detection. It is not automatically better for ordinary balanced classification; changing loss can affect calibration.</div>
-        </details>
-      </section>
-      <section class="full">
-        <details class="card"><summary><h2 class="green">5. Regression errors</h2></summary>
-        <table><tr><th>Loss</th><th>Formula (per scalar error \(e = \hat y - y\))</th><th>Behavior / when useful</th></tr>
-          <tr><td><b>MSE / L2</b></td><td><span class="formula">\(\frac{1}{N} \sum e^2\)</span></td><td>Strongly penalizes large errors; smooth gradients. Sensitive to outliers. Minimizer estimates the conditional mean.</td></tr>
-          <tr><td><b>MAE / L1</b></td><td><span class="formula">\(\frac{1}{N} \sum |e|\)</span></td><td>More robust to outliers; gradient magnitude is constant away from zero. Minimizer estimates the conditional median.</td></tr>
-          <tr><td><b>Huber</b></td><td><span class="formula">\(\rho_\delta(e) = \begin{cases} \tfrac12 e^2 & |e| \le \delta \\ \delta(|e| - \tfrac12\delta) & \text{otherwise} \end{cases}\)</span></td><td>Quadratic near zero, linear for large errors; robust while retaining smooth behavior near the target.</td></tr>
-          <tr><td><b>Smooth L1</b></td><td><span class="formula">\(\begin{cases} \tfrac12 e^2/\beta & |e| \lt \beta \\ |e| - \tfrac12\beta & \text{otherwise} \end{cases}\)</span></td><td>Huber-like loss used in detection and localization; framework conventions differ in the transition scale.</td></tr>
-          <tr><td><b>Log-cosh</b></td><td><span class="formula">\(\operatorname{mean}(\log \cosh e)\)</span></td><td>Quadratic for small errors and approximately linear for large errors; smooth everywhere.</td></tr>
-          <tr><td><b>Quantile / pinball</b></td><td><span class="formula">\(\rho_\tau(e) = \max(\tau e, (\tau-1)e)\)</span></td><td>Quantile regression; asymmetric penalties estimate a chosen conditional quantile \(\tau\) rather than the mean.</td></tr>
-        </table>
-        <div class="note"><strong>Interview choice:</strong> MSE if large misses should cost disproportionately; MAE if outliers should not dominate; Huber if you want a smooth compromise. Check target scaling and units before interpreting raw loss values.</div>
-        </details>
-      </section>
-      <section class="full">
-        <details class="card"><summary><h2 class="blue">6. YOLO &amp; object-detection losses</h2></summary>
-        <table><tr><th>Component</th><th>Common form</th><th>Purpose / nuance</th></tr>
-          <tr><td>Box overlap</td><td><span class="formula">\(L_{\mathrm{IoU}} = 1 - \mathrm{IoU}\)</span><br><span class="formula">\(\mathrm{GIoU} = \mathrm{IoU} - \frac{|C \setminus (A \cup B)|}{|C|}, \quad L = 1 - \mathrm{GIoU}\)</span></td><td>Optimize localization in terms of box overlap. GIoU adds a penalty for the smallest enclosing box \(C\), giving a useful signal when boxes do not overlap.</td></tr>
-          <tr><td>DIoU / CIoU</td><td><span class="formula">\(\mathrm{DIoU} = \mathrm{IoU} - \frac{\rho^2(b, b^*)}{c^2}\)</span><br><span class="formula">\(\mathrm{CIoU} = \mathrm{DIoU} - \alpha v\)</span></td><td>DIoU adds center-distance penalty; CIoU also accounts for aspect-ratio mismatch. Box loss is often <span class="formula">\(1 - \mathrm{CIoU}\)</span>.</td></tr>
-          <tr><td>Class / objectness</td><td><span class="formula">\(\mathrm{BCEWithLogits}(z, y)\)</span></td><td>Train class scores and, in heads that use it, objectness/confidence scores. Assignment and class imbalance treatment depend on the YOLO version.</td></tr>
-          <tr><td>Distribution Focal Loss</td><td><span class="formula">\(\mathrm{DFL}(y) = -\left[(y_r - y)\log S_l + (y - y_l)\log S_r\right]\)</span></td><td>Regress each box side as a distribution over neighboring distance bins; interpolation supervises the two bins \(y_l \le y \le y_r\) around target \(y\).</td></tr>
-          <tr><td>Total (illustrative)</td><td><span class="formula">\(L = \lambda_{\text{box}} L_{\text{box}} + \lambda_{\text{cls}} L_{\text{cls}} + \lambda_{\text{dfl}} L_{\text{dfl}}\)</span></td><td>Modern anchor-free YOLO families combine box, class, and often DFL terms. Weights and assignment rules vary by model/release.</td></tr>
-          <tr><td>YOLO26 nuance</td><td><span class="formula">IoU box loss + BCE class loss + normalized L1 box-distance term</span></td><td>YOLO26 is DFL-free: the training-recipe <code>dfl</code> gain weights normalized L1 distances, not distribution focal loss. NMS-free is an inference path, not a loss function.</td></tr>
-        </table>
-        <div class="note"><strong>Version caveat:</strong> YOLOv1 used weighted squared-error terms; newer YOLOs use different classification, box, assignment, and auxiliary terms. Never describe one formula as the loss for every YOLO version.</div>
-        </details>
-      </section>
-      <section>
-        <details class="card"><summary><h2 class="amber">7. Other high-value interview losses</h2></summary>
-        <table class="f-wide"><tr><th>Loss</th><th>Formula</th><th>Use</th></tr>
-          <tr><td>Hinge</td><td><span class="formula">\(\max(0,\, 1 - y \cdot f(x))\)</span>, \(y \in \{-1, +1\}\)</td><td>Max-margin classifiers / SVM intuition.</td></tr>
-          <tr><td>KL divergence</td><td><span class="formula">\(\sum p \log \frac{p}{q}\)</span></td><td>Distribution matching, knowledge distillation, VAEs. Direction matters; \(\mathrm{KL}(p \,\|\, q)\) is not symmetric.</td></tr>
-          <tr><td>Dice</td><td><span class="formula">\(1 - \frac{2\sum py + \varepsilon}{\sum p + \sum y + \varepsilon}\)</span></td><td>Segmentation with sparse foreground; overlap-based objective.</td></tr>
-          <tr><td>Triplet</td><td><span class="formula">\(\max(0,\, d(a,p) - d(a,n) + m)\)</span></td><td>Metric learning: anchor-positive closer than anchor-negative by margin \(m\).</td></tr>
-          <tr><td>InfoNCE</td><td><span class="formula">\(-\log \frac{\exp(\mathrm{sim}(q,k^+)/\tau)}{\sum_j \exp(\mathrm{sim}(q,k_j)/\tau)}\)</span></td><td>Contrastive representation learning; identify a positive among negatives.</td></tr>
-          <tr><td>Pairwise ranking</td><td><span class="formula">\(-\log \sigma(s^+ - s^-)\)</span></td><td>Learn relative order for search, recommendation, and ranking.</td></tr>
-        </table>
-        </details>
-      </section>
-      <section>
-        <details class="card"><summary><h2 class="green">8. Common interview checks</h2></summary>
-        <ul>
-          <li><strong>Loss vs metric:</strong> loss is optimized; accuracy, F1, AP, or IoU may be monitored but are often non-differentiable.</li>
-          <li><strong>Imbalance:</strong> compare class weights, resampling, focal loss, and threshold tuning.</li>
-          <li><strong>Probability:</strong> BCE for independent labels; CCE for one-of-K labels.</li>
-          <li><strong>Outliers:</strong> square error amplifies them; absolute / Huber-style errors are more robust.</li>
-          <li><strong>Segmentation:</strong> pixel CE gives local supervision; Dice/IoU directly emphasize overlap.</li>
-          <li><strong>Multi-task models:</strong> <span class="formula">\(L_{\text{total}} = \sum_i \lambda_i L_i\)</span>; loss scales can dominate, so normalize or tune weights.</li>
-          <li><strong>Numerics:</strong> use logits-based cross-entropy and stable log-sum-exp implementations.</li>
-        </ul>
-        </details>
-      </section>
-      <section class="full">
-        <details class="card"><summary><h2 class="blue">9. References</h2></summary>
+        <details class="card"><summary><h2>References</h2></summary>
         <ul>
           <li><a href="https://openaccess.thecvf.com/content_iccv_2017/html/Lin_Focal_Loss_for_ICCV_2017_paper.html">Focal Loss · ICCV 2017</a> · <a href="https://arxiv.org/abs/1902.09630">GIoU · CVPR 2019</a> · <a href="https://arxiv.org/abs/2004.11362">Supervised Contrastive Learning · NeurIPS 2020</a></li>
           <li><a href="https://docs.ultralytics.com/reference/utils/loss">Ultralytics loss implementation reference</a> · <a href="https://docs.ultralytics.com/guides/yolo26-training-recipe">YOLO26 training recipe</a></li>
