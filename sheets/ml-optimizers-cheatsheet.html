@@ -5,44 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Machine Learning Optimizers Cheat Sheet</title>
   <style>
-    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#0b67b2; --green:#167a4a; --amber:#9a5b00; --bg:#fff; }
-    * { box-sizing:border-box; }
-    body { margin:0; color:var(--ink); background:var(--bg); font:13px/1.35 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
-    main { max-width:980px; margin:0 auto; padding:22px; }
-    header { margin-bottom:14px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
-    h1 { margin:0 0 4px; font-size:28px; line-height:1.05; }
-    .subtitle { color:var(--muted); font-size:13px; }
-    .nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
-    .nav a { border:1px solid var(--line); border-radius:6px; padding:5px 9px; color:var(--ink); background:var(--soft); font-size:12px; font-weight:700; text-decoration:none; }
-    .nav a.active { color:#fff; background:var(--blue); border-color:var(--blue); }
-    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-    section { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#fff; break-inside:avoid; }
-    section.full { grid-column:1 / -1; }
-    h2 { margin:0; padding:7px 9px; color:#fff; background:var(--ink); font-size:13px; line-height:1.15; }
-    h2.blue { background:var(--blue); } h2.green { background:var(--green); } h2.amber { background:var(--amber); }
-    table { width:100%; border-collapse:collapse; table-layout:fixed; }
-    th,td { vertical-align:top; padding:6px 8px; border-top:1px solid var(--line); overflow-wrap:anywhere; }
-    th { color:var(--muted); background:var(--soft); text-align:left; font-size:10px; text-transform:uppercase; }
-    td:first-child,th:first-child { width:15%; }
-    code,.formula { font:12px/1.4 "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; color:#111827; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
-    .formula { display:inline-block; margin:1px 0; white-space:normal; }
-    ul { margin:0; padding:7px 9px 8px 23px; } li { margin:3px 0; }
-    .note { padding:7px 9px; border-top:1px solid var(--line); color:var(--muted); background:#fbfcfd; }
-    a { color:var(--blue); }
-    .level { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--green); }
-    @media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:1fr; } section.full { grid-column:auto; } }
-    @media print { .nav { display:none; } main { max-width:none; padding:10mm; } body { font-size:10px; } h1 { font-size:20px; } h2 { font-size:10px; padding:5px 6px; } th,td { padding:3px 5px; } code,.formula { font-size:9px; padding:0 2px; } }
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle { color: var(--muted); }
+    a { color: var(--blue); }
+    section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    pre code { font-size: 12.5px; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; table-layout: fixed; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    th { color: var(--muted); font-weight: 600; }
+    .note { margin-top: 10px; color: var(--muted); }
+    @media (max-width: 600px) { main { padding: 16px; } }
     details.card > summary { cursor: pointer; list-style: none; }
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
     /* LaTeX formulas rendered by MathJax */
-    .formula { font-family:inherit; font-size:13px; line-height:1.5; }
-    .formula { max-width:100%; overflow-x:auto; overflow-y:hidden; vertical-align:middle; }
-    .formula mjx-container { margin:0 !important; }
-    .math-block { padding:8px 10px; border-top:1px solid var(--line); background:#fbfcfd; }
-    .math-block p { margin:4px 0; color:var(--muted); }
-    .math-block mjx-container[display="true"] { margin:4px 0 !important; overflow-x:auto; overflow-y:hidden; }
-    @media print { .formula { font-size:10px; } }
+    .formula { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; }
+    .formula mjx-container { margin: 0 !important; }
+    .math-block { margin-top: 10px; }
+    .math-block p { margin: 4px 0; color: var(--muted); }
+    mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+    .math-block mjx-container[display="true"] { margin: 4px 0 !important; }
+    td:first-child, th:first-child { width: 15%; }
+    table.sym td:first-child, table.sym th:first-child { width: 30%; }
+    table.timeline th:nth-child(1) { width: 11%; } table.timeline th:nth-child(2) { width: 46%; } table.timeline th:nth-child(4) { width: 12%; }
+    .level { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
   </style>
   <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
@@ -53,21 +51,11 @@
       <h1>Machine Learning Optimizers</h1>
       <div class="subtitle">A progressive guide: core formulas, what each optimizer adds, when it appeared, and how the ideas build on one another.</div>
     </header>
-    <nav class="nav" aria-label="cheat sheet navigation">
-      <a href="../index.html">Index</a>
-      <a href="python-dsa-data-structures-cheatsheet.html">Python DSA</a>
-      <a href="numpy-basics-cheatsheet.html">NumPy</a>
-      <a href="probability-cheatsheet.html">Probability</a>
-      <a href="system-design-cheatsheet.html">System Design</a>
-      <a href="yolo-architecture-cheatsheet.html">YOLO Architecture</a>
-      <a href="ml-optimizers-cheatsheet.html" class="active">ML Optimizers</a>
-      <a href="ml-losses-cheatsheet.html">ML Losses</a>
-      <a href="pytorch-cheatsheet.html">PyTorch</a>
-    </nav>
+    <p><a href="../index.html">← Back to cheat sheets</a></p>
     <div class="grid">
       <section class="full">
-        <details class="card"><summary><h2 class="blue">1. Notation you need once</h2></summary>
-        <table><tr><th>Symbol</th><th>Meaning</th><th>Read it as</th></tr>
+        <details class="card"><summary><h2>Notation you need once</h2></summary>
+        <table class="sym"><tr><th>Symbol</th><th>Meaning</th><th>Read it as</th></tr>
           <tr><td><span class="formula">\(w_t\)</span></td><td>Model parameters at step \(t\)</td><td>Where we are</td></tr>
           <tr><td><span class="formula">\(g_t = \nabla_w L_t(w_t)\)</span></td><td>Gradient of the mini-batch loss</td><td>Local uphill direction</td></tr>
           <tr><td><span class="formula">\(\eta\)</span></td><td>Learning rate</td><td>Step scale</td></tr>
@@ -78,7 +66,7 @@
         </details>
       </section>
       <section class="full">
-        <details class="card"><summary><h2 class="green">2. Difficulty ladder · learn in this order</h2></summary>
+        <details class="card"><summary><h2>Difficulty ladder · learn in this order</h2></summary>
         <table><tr><th>Level</th><th>Optimizer family</th><th>New idea added</th><th>Question it answers</th></tr>
           <tr><td><span class="level">1 · Core</span></td><td>Batch GD, SGD, mini-batch SGD</td><td>Use the gradient to step downhill.</td><td>Which direction lowers the loss?</td></tr>
           <tr><td><span class="level">2 · Memory</span></td><td>Momentum, Nesterov</td><td>Accumulate a smoothed direction; optionally look ahead.</td><td>Can we reduce zig-zagging and accelerate consistent motion?</td></tr>
@@ -90,8 +78,8 @@
         </details>
       </section>
       <section class="full">
-        <details class="card"><summary><h2 class="amber">3. Timeline · formula + what changed</h2></summary>
-        <table><tr><th>Era</th><th>Optimizer / update</th><th>What the new step adds</th><th>Level</th></tr>
+        <details class="card"><summary><h2>Timeline · formula + what changed</h2></summary>
+        <table class="timeline"><tr><th>Era</th><th>Optimizer / update</th><th>What the new step adds</th><th>Level</th></tr>
           <tr><td>1951 / 1986</td><td><b>Gradient descent / SGD</b><br><span class="formula">\(w_{t+1} = w_t - \eta\, g_t\)</span></td><td>Batch GD uses the full data gradient; SGD estimates it from one example or a mini-batch. The core downhill step.</td><td>1 · Core</td></tr>
           <tr><td>1964</td><td><b>Momentum</b><br><span class="formula">\(\begin{aligned} m_t &= \beta m_{t-1} + g_t \\ w_{t+1} &= w_t - \eta\, m_t \end{aligned}\)</span></td><td>Exponential memory smooths noisy gradients and builds speed in directions that persist.</td><td>2 · Memory</td></tr>
           <tr><td>1983</td><td><b>Nesterov / NAG</b><br><span class="formula">\(m_t = \beta m_{t-1} + \nabla L(w_t - \eta \beta m_{t-1})\)</span></td><td>Compute the gradient at a momentum look-ahead point, so the step can correct before overshooting.</td><td>2 · Memory</td></tr>
@@ -109,7 +97,7 @@
         </details>
       </section>
       <section>
-        <details class="card"><summary><h2 class="blue">4. Adam bias correction</h2></summary>
+        <details class="card"><summary><h2>Adam bias correction</h2></summary>
         <ul>
           <li><span class="formula">\(\hat m_t = \dfrac{m_t}{1 - \beta_1^{\,t}}\)</span></li>
           <li><span class="formula">\(\hat v_t = \dfrac{v_t}{1 - \beta_2^{\,t}}\)</span></li>
@@ -119,7 +107,7 @@
         </details>
       </section>
       <section>
-        <details class="card"><summary><h2 class="green">5. Training optimizations that go along</h2></summary>
+        <details class="card"><summary><h2>Training optimizations that go along</h2></summary>
         <table><tr><th>Technique</th><th>What it changes</th></tr>
           <tr><td>Warmup</td><td>Ramp the learning rate up at the start to avoid unstable early updates.</td></tr>
           <tr><td>LR schedule</td><td>Decay or vary \(\eta\) over training (cosine, step, linear, one-cycle); often as important as optimizer choice.</td></tr>
@@ -133,7 +121,7 @@
         </details>
       </section>
       <section class="full">
-        <details class="card"><summary><h2 class="amber">6. Original references</h2></summary>
+        <details class="card"><summary><h2>Original references</h2></summary>
         <ul>
           <li><a href="https://jmlr.org/papers/v12/duchi11a.html">AdaGrad · Duchi, Hazan &amp; Singer (2011)</a> · <a href="https://arxiv.org/abs/1212.5701">AdaDelta · Zeiler (2012)</a> · <a href="https://arxiv.org/abs/1412.6980">Adam · Kingma &amp; Ba (2014)</a></li>
           <li><a href="https://arxiv.org/abs/1711.05101">AdamW · Loshchilov &amp; Hutter (2017/2019)</a> · <a href="https://arxiv.org/abs/1804.04235">Adafactor · Shazeer &amp; Stern (2018)</a></li>
