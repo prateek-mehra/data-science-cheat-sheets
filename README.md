@@ -1,6 +1,6 @@
 # Data Science Cheat Sheets
 
-![Sheets](https://img.shields.io/badge/cheat%20sheets-12-0b67b2)
+![Sheets](https://img.shields.io/badge/cheat%20sheets-13-0b67b2)
 ![HTML](https://img.shields.io/badge/built%20with-plain%20HTML%20%2B%20CSS-e34f26?logo=html5&logoColor=white)
 ![No build](https://img.shields.io/badge/build%20step-none-2ea44f)
 ![Printable](https://img.shields.io/badge/printable-yes-6f42c1)
@@ -28,6 +28,7 @@ mindmap
       Overview
     ML fundamentals
       Probability
+      Statistics
       ML optimizers
       ML losses
     Deep learning
@@ -50,6 +51,7 @@ mindmap
 | 🧩 Coding round | [ML pipeline](sheets/ml-pipeline-cheatsheet.html) | Timed EDA → preprocess → model round: lines to remember |
 | 🗄️ SQL | [SQL](sheets/sql-cheatsheet.html) | `CASE WHEN`, joins, grouping, clause order, CTEs, window functions |
 | 📐 ML fundamentals | [Probability](sheets/probability-cheatsheet.html) | Conditional probability, Bayes theorem, random variables |
+| 📐 ML fundamentals | [Statistics](sheets/statistics-cheatsheet.html) | Descriptive stats, distributions, CLT, confidence intervals, hypothesis tests, A/B sample size |
 | 📐 ML fundamentals | [ML optimizers](sheets/ml-optimizers-cheatsheet.html) | Core formulas, what each optimizer adds, and when it appeared |
 | 📐 ML fundamentals | [ML losses](sheets/ml-losses-cheatsheet.html) | Picking a loss for the task, target structure and errors you care about |
 | 🧠 Deep learning | [PyTorch](sheets/pytorch-cheatsheet.html) | Update rule, batch vs mini-batch, training loop, a small CNN |
@@ -80,7 +82,7 @@ mindmap
 | <img src="assets/previews/numpy-basics-cheatsheet.jpg" width="360" alt="NumPy"><br><sub>NumPy</sub> | <img src="assets/previews/sql-cheatsheet.jpg" width="360" alt="SQL"><br><sub>SQL</sub> |
 | <img src="assets/previews/probability-cheatsheet.jpg" width="360" alt="Probability"><br><sub>Probability</sub> | <img src="assets/previews/ml-losses-cheatsheet.jpg" width="360" alt="ML losses"><br><sub>ML losses</sub> |
 | <img src="assets/previews/yolo-architecture-cheatsheet.jpg" width="360" alt="YOLO architecture"><br><sub>YOLO architecture</sub> | <img src="assets/previews/system-design-cheatsheet.jpg" width="360" alt="System design"><br><sub>System design</sub> |
-| <img src="assets/previews/quiz-reports.jpg" width="360" alt="Quiz reports"><br><sub>Quiz reports</sub> | |
+| <img src="assets/previews/quiz-reports.jpg" width="360" alt="Quiz reports"><br><sub>Quiz reports</sub> | <img src="assets/previews/statistics-cheatsheet.jpg" width="360" alt="Statistics"><br><sub>Statistics</sub> |
 
 </details>
 
