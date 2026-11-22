@@ -6,6 +6,7 @@
 ![Printable](https://img.shields.io/badge/printable-yes-6f42c1)
 
 Small, printable HTML pages covering the fundamentals of data science and ML interviews.
+Every sheet uses the same plain, single-column layout of collapsible cards, ordered from fundamentals to advanced.
 Open [`index.html`](index.html) in a browser to browse everything, or jump straight to a sheet below.
 
 <p align="center"><img src="assets/previews/index.jpg" alt="Cheat sheet index" width="720"></p>
@@ -17,13 +18,14 @@ The sheets are grouped by interview stage, the same way the index page groups th
 ```mermaid
 mindmap
   root((Cheat sheets))
-    Python
-      Python fundamentals
+    Python fundamentals
+      Overview
+    Coding round
       Python DSA
       NumPy
       ML pipeline: EDA to model
     SQL
-      SQL overview
+      Overview
     ML fundamentals
       Probability
       ML optimizers
@@ -31,18 +33,18 @@ mindmap
     Deep learning
       PyTorch
       YOLO architecture
-        YOLO evolution timeline
-    System design
-      System design round
-    Practice
-      Quiz reports
+      YOLO evolution timeline
+    System design round
+      System design
+    Quiz reports
+      Python MCQ quiz reports
 ```
 
 ## Sheets
 
 | Stage | Sheet | What it covers |
 | --- | --- | --- |
-| 🐍 Python | [Python fundamentals](sheets/python-fundamentals.html) | Python fundamentals overview |
+| 🐍 Python fundamentals | [Python fundamentals](sheets/python-fundamentals.html) | Python fundamentals overview |
 | 🧩 Coding round | [Python DSA](sheets/python-dsa-data-structures-cheatsheet.html) | Quick syntax, common moves and interview traps |
 | 🧩 Coding round | [NumPy](sheets/numpy-basics-cheatsheet.html) | Creating, reshaping, indexing, math and combining arrays |
 | 🧩 Coding round | [ML pipeline](sheets/ml-pipeline-cheatsheet.html) | Timed EDA → preprocess → model round: lines to remember |
@@ -53,8 +55,8 @@ mindmap
 | 🧠 Deep learning | [PyTorch](sheets/pytorch-cheatsheet.html) | Update rule, batch vs mini-batch, training loop, a small CNN |
 | 🧠 Deep learning | [YOLO architecture](sheets/yolo-architecture-cheatsheet.html) | Major architectural shifts from YOLOv1 to YOLO26 |
 | 🧠 Deep learning | [YOLO evolution](sheets/yolo-architecture-evolution.html) | Interactive YOLO architecture timeline |
-| 🏗️ System design | [System design](sheets/system-design-cheatsheet.html) | Requirements, scaling, storage, reliability and trade-offs |
-| 📝 Practice | [Quiz reports](quizzes/quiz-reports.html) | Python MCQ quiz history with strengths and weaknesses |
+| 🏗️ System design round | [System design](sheets/system-design-cheatsheet.html) | Requirements, scaling, storage, reliability and trade-offs |
+| 📝 Quiz reports | [Quiz reports](quizzes/quiz-reports.html) | Python MCQ quiz history with strengths and weaknesses |
 
 ## Previews
 
@@ -96,8 +98,17 @@ mindmap
 └── README.md
 ```
 
+## Sheet format
+
+- **Layout:** copy the `<style>` block of an existing sheet, such as [`sql-cheatsheet.html`](sheets/sql-cheatsheet.html). It gives one 900px column of bordered cards with plain headings, no colored header bars and no section numbers.
+- **Cards:** each topic is a `<section>` holding a `<details class="card">`, with the card title as the `<h2>` inside `<summary>`. Cards start collapsed and open automatically when printing.
+- **Order:** arrange cards as a learning path, from fundamentals to advanced, then gotchas or a recap at the end. [`ml-pipeline-cheatsheet.html`](sheets/ml-pipeline-cheatsheet.html) is the model.
+- **Links:** a sheet links only back to the index (`← Back to cheat sheets`), never to other sheets. Every sheet is reached from [`index.html`](index.html).
+- **Code:** one statement per line. Put intermediate results in named variables instead of chaining calls, and add a short comment where a step isn't obvious.
+- **Formulas:** write LaTeX between `\(...\)` (inline) or `\[...\]` (display). MathJax renders it.
+
 ## Adding a sheet
 
-1. Create `sheets/<topic>-cheatsheet.html`. Link back with `href="../index.html"` and put images in `assets/images/` (referenced as `../assets/images/...`).
+1. Create `sheets/<topic>-cheatsheet.html` following the format above. Put images in `assets/images/` (referenced as `../assets/images/...`).
 2. Add it to the right stage in [`index.html`](index.html) as `sheets/<topic>-cheatsheet.html`.
-3. Add a row to the table above and a node to the map.
+3. Add a row to the table above, a node to the map, and a preview screenshot (1100×700, first card open) in `assets/previews/`.

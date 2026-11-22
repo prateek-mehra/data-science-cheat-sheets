@@ -46,6 +46,8 @@
     td:first-child, th:first-child { width: 37%; }
     td:last-child, th:last-child { width: 24%; }
     .hot { color: #b42318; font-weight: 700; }
+    td pre { margin: 0; padding: 8px 10px; }
+    .cell-note { margin: 4px 0 0; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -297,11 +299,21 @@
         <table>
           <tr><th>Pattern</th><th>Syntax snapshot</th><th>When it appears</th></tr>
           <tr><td>Two pointers</td><td><code class="py"><span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span></code> then move one side</td><td>sorted arrays, palindrome, pair sum</td></tr>
-          <tr><td>Sliding window</td><td><code class="py"><span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="o">...</span> <span class="k">while</span> <span class="n">bad</span><span class="p">:</span> <span class="o">...</span><span class="p">;</span> <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span></code></td><td>longest/shortest subarray, strings</td></tr>
-          <tr><td>BFS</td><td><code class="py"><span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">start</span><span class="p">]);</span> <span class="n">seen</span> <span class="o">=</span> <span class="p">{</span><span class="n">start</span><span class="p">}</span></code></td><td>shortest path unweighted, levels</td></tr>
-          <tr><td>DFS recursion</td><td><code class="py"><span class="k">def</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">u</span><span class="p">):</span> <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">u</span><span class="p">);</span> <span class="o">...</span></code></td><td>components, trees, backtracking</td></tr>
+          <tr><td>Sliding window</td><td><pre><code class="py"><span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="o">...</span>      <span class="c1"># grow: add a[r]</span>
+    <span class="k">while</span> <span class="n">bad</span><span class="p">:</span>
+        <span class="o">...</span>  <span class="c1"># shrink: drop a[l]</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span></code></pre></td><td>longest/shortest subarray, strings</td></tr>
+          <tr><td>BFS</td><td><pre><code class="py"><span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">start</span><span class="p">])</span>
+<span class="n">seen</span> <span class="o">=</span> <span class="p">{</span><span class="n">start</span><span class="p">}</span></code></pre></td><td>shortest path unweighted, levels</td></tr>
+          <tr><td>DFS recursion</td><td><pre><code class="py"><span class="k">def</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="o">...</span></code></pre></td><td>components, trees, backtracking</td></tr>
           <tr><td>Memoization</td><td><code class="py"><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cache</span></code> then <code class="py"><span class="nd">@cache</span></code></td><td>DP with state tuple</td></tr>
-          <tr><td>Prefix sum</td><td><code class="py"><span class="n">pref</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">pref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pref</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span></code></td><td>range sum, subarray count</td></tr>
+          <tr><td>Prefix sum</td><td><pre><code class="py"><span class="n">pref</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">pref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pref</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span></code></pre></td><td>range sum, subarray count</td></tr>
           <tr><td>Reverse sort</td><td><code class="py"><span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code></td><td>greedy, intervals</td></tr>
           <tr><td>Sort intervals</td><td><code class="py"><span class="n">intervals</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></code></td><td>merge, meeting rooms</td></tr>
           <tr><td>Infinity</td><td><code class="py"><span class="n">INF</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"inf"</span><span class="p">)</span></code></td><td>min distance, DP init</td></tr>
