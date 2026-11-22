@@ -1,11 +1,50 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quiz Reports</title>
-<style>
-:root{--ink:#172026;--muted:#52616b;--line:#d7dee4;--blue:#0b67b2;--soft:#f4f7f9}*{box-sizing:border-box}body{margin:0;color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:980px;margin:0 auto;padding:24px}header{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:22px}h1{margin:0 0 4px;font-size:30px;line-height:1.1}.muted{color:var(--muted)}a{color:var(--blue)}.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin:20px 0}.metric{border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--soft)}.metric strong{display:block;font-size:22px}.metric span{color:var(--muted);font-size:13px}table{width:100%;border-collapse:collapse;margin:18px 0 28px}th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft)}details{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:12px 0}summary{cursor:pointer;font-weight:700}li{margin:6px 0}@media(max-width:600px){main{padding:16px}table{font-size:13px}th,td{padding:8px 6px}}
-</style></head><body><main>
-<header><p><a href="../index.html">← Cheat sheet index</a></p><h1>Quiz Reports</h1><div class="muted">A running record of timed Python MCQ quizzes.</div></header>
-<section aria-labelledby="history-heading"><h2 id="history-heading">Quiz history</h2><table><thead><tr><th>Date</th><th>Quiz</th><th>Questions</th><th>Attempted</th><th>Accuracy</th><th>Score</th></tr></thead><tbody><tr><td>Nov 3, 2026</td><td><a href="#quiz-001">Python MCQ Quiz 001</a></td><td>45</td><td>41</td><td>65.9%</td><td>+13</td></tr><tr><td>Nov 3, 2026</td><td><a href="#quiz-002">Python MCQ Quiz 002</a></td><td>30</td><td>30</td><td>63.3%</td><td>+8</td></tr><tr><td>Nov 8, 2026</td><td><a href="#quiz-003">Python Fundamentals Quiz 003</a></td><td>15</td><td>15</td><td>86.7%</td><td>+11</td></tr><tr><td>Nov 8, 2026</td><td><a href="#quiz-004">Python Fundamentals Quiz 004</a></td><td>10</td><td>8</td><td>75.0%</td><td>+4</td></tr></tbody></table></section>
-<article id="quiz-001" aria-labelledby="quiz-001-heading"><h2 id="quiz-001-heading">Python MCQ Quiz 001</h2><p class="muted">Nov 3, 2026 · 10-minute timed quiz · 15–30 seconds per question</p><div class="summary">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Reports</title>
+  <style>
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle, .muted, .meta { color: var(--muted); }
+    a { color: var(--blue); }
+    main > section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; scroll-margin-top: 12px; }
+    h2 { margin: 0 0 4px; font-size: 18px; }
+    h3 { margin: 18px 0 4px; font-size: 15px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); font: 12.5px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    ol > li { margin: 12px 0; }
+    @media (max-width: 600px) { main { padding: 16px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    .meta { font-size: 13px; }
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 14px 0 0; }
+    .metric { padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; }
+    .metric strong { display: block; font-size: 18px; }
+    .metric span { color: var(--muted); font-size: 12px; }
+    details.card details { margin-top: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; }
+    details.card details > summary { cursor: pointer; font-weight: 600; }
+  </style>
+</head>
+<body>
+<main>
+<header>
+  <p><a href="../index.html">← Back to cheat sheets</a></p>
+  <h1>Quiz Reports</h1>
+  <div class="subtitle">A running record of timed Python MCQ quizzes. Open a quiz to see its full report.</div>
+</header>
+
+<section id="quiz-001">
+<details class="card"><summary><h2 id="quiz-001-heading">Python MCQ Quiz 001</h2><div class="meta">Nov 3, 2026 · 45 questions · 41 attempted · 65.9% accuracy · score +13</div></summary>
+<p class="muted">10-minute timed quiz · 15–30 seconds per question</p><div class="summary">
 <div class="metric"><strong>65.9%</strong><span>Accuracy of attempted questions (27/41)</span></div><div class="metric"><strong>45</strong><span>Total questions</span></div><div class="metric"><strong>41</strong><span>Attempted</span></div><div class="metric"><strong>27</strong><span>Correct</span></div><div class="metric"><strong>14</strong><span>Wrong</span></div><div class="metric"><strong>4</strong><span>Skipped or unanswered</span></div><div class="metric"><strong>+13</strong><span>Net score (+1 correct, −1 wrong, 0 skip)</span></div></div>
 <p>Correct as a share of all questions: <strong>60.0%</strong> (27/45).</p><p>Topics: Python types, collections, indexing and slicing, truthiness, functions and default arguments, operators, sorting, and built-in methods.</p>
 <section aria-labelledby="strengths"><h3 id="strengths">Strengths</h3><ul><li>Basic expressions, numeric operations, ranges, and list comprehensions.</li><li>List indexing and slicing, including negative indices and prefix slices.</li><li>Several common string operations: <code>upper</code>, <code>replace</code>, <code>strip</code>, <code>count</code>, and <code>startswith</code>.</li><li>Straightforward list and dictionary updates, plus numeric sorting.</li></ul></section>
@@ -41,8 +80,13 @@ print(f(0))</pre><p><strong>Options:</strong> A) <code>0</code>; B) <code>10</co
 <li><strong>Q34 — Exponentiation associativity:</strong><p><strong>Exact question:</strong> What does this print?</p><pre>print(2 ** 3 ** 2)</pre><p><strong>Options:</strong> A) <code>64</code>; B) <code>512</code>; C) <code>256</code>; D) <code>36</code>.</p><p><strong>Correct result:</strong> B) <code>512</code>. Exponentiation groups from the right: <code>2 ** (3 ** 2)</code>.</p></li>
 <li><strong>Q43 — <code>capitalize()</code>:</strong><p><strong>Exact question:</strong> What does this print?</p><pre>print("cat".capitalize())</pre><p><strong>Options:</strong> A) <code>Cat</code>; B) <code>CAT</code>; C) <code>cat</code>; D) It raises an error.</p><p><strong>Correct result:</strong> A) <code>Cat</code>. <code>capitalize()</code> uppercases the first character and lowercases the remaining characters.</p></li>
 </ol></details></section>
-<p class="muted">The quiz start timestamp was not captured, so exact total elapsed time could not be independently verified. Per-question time limits were used.</p></article>
-<article id="quiz-002" aria-labelledby="quiz-002-heading"><h2 id="quiz-002-heading">Python MCQ Quiz 002</h2><p class="muted">Nov 3, 2026 · 10-minute timed quiz · 15–30 seconds per question · recorded duration 8:11</p><div class="summary">
+<p class="muted">The quiz start timestamp was not captured, so exact total elapsed time could not be independently verified. Per-question time limits were used.</p>
+</details>
+</section>
+
+<section id="quiz-002">
+<details class="card"><summary><h2 id="quiz-002-heading">Python MCQ Quiz 002</h2><div class="meta">Nov 3, 2026 · 30 questions · 30 attempted · 63.3% accuracy · score +8</div></summary>
+<p class="muted">10-minute timed quiz · 15–30 seconds per question · recorded duration 8:11</p><div class="summary">
 <div class="metric"><strong>63.3%</strong><span>Accuracy of attempted questions (19/30)</span></div><div class="metric"><strong>30</strong><span>Total questions</span></div><div class="metric"><strong>30</strong><span>Attempted</span></div><div class="metric"><strong>19</strong><span>Correct</span></div><div class="metric"><strong>11</strong><span>Wrong</span></div><div class="metric"><strong>0</strong><span>Skipped</span></div><div class="metric"><strong>+8</strong><span>Net score (+1 correct, −1 wrong, 0 skip)</span></div></div>
 <p>Correct as a share of all questions: <strong>63.3%</strong> (19/30).</p><p>Topics: Python types, lists and dictionaries, indexing and slicing, truthiness, functions and default arguments, operators, sorting, and built-in methods.</p>
 <section aria-labelledby="strengths-002"><h3 id="strengths-002">Strengths</h3><ul><li>Direct list aliasing, slicing with positive and negative bounds, and basic list operations.</li><li>Dictionary lookup with a default, updates, and understanding that values can repeat.</li><li>One-item tuple syntax and simple function defaults, including when a default expression is evaluated.</li><li>Several string operations, including <code>find</code> and <code>join</code>.</li><li>Equality versus identity for separate lists, and chained comparisons.</li></ul></section>
@@ -70,9 +114,12 @@ print(a)</pre><p><strong>Options:</strong> A) <code>[[1], [2]]</code>; B) <code>
 <li><strong>Q27 — Dictionary iteration order and values</strong><p><strong>Exact question:</strong></p><pre>d = {"b": 2, "a": 1}
 print(list(d))</pre><p><strong>Options:</strong> A) <code>['a', 'b']</code>; B) <code>['b', 'a']</code>; C) <code>[2, 1]</code>; D) <code>[('b', 2), ('a', 1)]</code>.</p><p><strong>Your answer:</strong> D. <strong>Correct result:</strong> B) <code>['b', 'a']</code>.</p><p><strong>Learned:</strong> Iterating a dictionary yields its keys in insertion order. Use <code>d.values()</code> for values or <code>d.items()</code> for key-value pairs.</p></li>
 </ol></details></section>
-</article>
+</details>
+</section>
 
-<article id="quiz-003" aria-labelledby="quiz-003-heading"><h2 id="quiz-003-heading">Python Fundamentals Quiz 003</h2><p class="muted">Nov 8, 2026 · Duration: unknown · Per-question time limit: unknown</p><div class="summary">
+<section id="quiz-003">
+<details class="card"><summary><h2 id="quiz-003-heading">Python Fundamentals Quiz 003</h2><div class="meta">Nov 8, 2026 · 15 questions · 15 attempted · 86.7% accuracy · score +11</div></summary>
+<p class="muted">Duration: unknown · Per-question time limit: unknown</p><div class="summary">
 <div class="metric"><strong>86.7%</strong><span>Accuracy of attempted questions (13/15)</span></div><div class="metric"><strong>15</strong><span>Total questions</span></div><div class="metric"><strong>15</strong><span>Attempted</span></div><div class="metric"><strong>13</strong><span>Correct</span></div><div class="metric"><strong>2</strong><span>Wrong</span></div><div class="metric"><strong>0</strong><span>Skipped or unanswered</span></div><div class="metric"><strong>+11</strong><span>Net score (+1 correct, −1 wrong, 0 skip)</span></div></div>
 <p>Correct as a share of all questions: <strong>86.7%</strong> (13/15).</p><p>Topics: mutability and aliasing, function defaults, tuples, dictionaries, slicing, string search, booleans, comprehensions, shallow copying, generators, exceptions, sorting, truthiness, and enumerate. Questions reviewed prior Python fundamentals learning and extended into data preparation and ML workflows.</p>
 <section aria-labelledby="strengths-003"><h3 id="strengths-003">Strengths</h3><ul><li>Correctly identified list in-place mutation with <code>+=</code> and the shared inner objects in a shallow copy.</li><li>Applied function default behavior, tuple syntax, dictionary lookup, slicing, and missing-substring behavior accurately.</li><li>Handled Python booleans as integers, generators, exception handling, sorting with a key, truthiness, and <code>enumerate</code> in practical snippets.</li></ul></section>
@@ -82,10 +129,12 @@ print(list(d))</pre><p><strong>Options:</strong> A) <code>['a', 'b']</code>; B) 
 print(len(d), d["lr"])</pre><p><strong>Answer choices:</strong></p><ul><li>A. <code>3 0.1</code></li><li>B. <code>3 0.01</code></li><li>C. <code>2 0.01</code></li><li>D. It raises a <code>KeyError</code></li></ul><p><strong>Your answer:</strong> D. <strong>Correct result:</strong> C, <code>2 0.01</code>.</p><p><strong>Learned:</strong> A dictionary has at most one entry for a given key. A later value for the same key replaces its earlier value; the key contributes only one item to <code>len(d)</code>.</p></li>
 <li><strong>Q9 — Comprehension filter order:</strong><p><strong>Exact question:</strong> What is the value of <code>squares</code>?</p><pre>squares = [x * x for x in range(5) if x % 2 == 0]</pre><p><strong>Answer choices:</strong></p><ul><li>A. <code>[0, 1, 4, 9, 16]</code></li><li>B. <code>[0, 4, 16]</code></li><li>C. <code>[0, 2, 4]</code></li><li>D. <code>[4, 16]</code></li></ul><p><strong>Your answer:</strong> A. <strong>Correct result:</strong> B, <code>[0, 4, 16]</code>.</p><p><strong>Learned:</strong> The <code>if</code> clause filters the iteration values before the expression is evaluated. Here only 0, 2, and 4 are retained, then squared.</p></li>
 </ol></details></section>
-</article>
+</details>
+</section>
 
-
-<article id="quiz-004" aria-labelledby="quiz-004-heading"><h2 id="quiz-004-heading">Python Fundamentals Quiz 004</h2><p class="muted">Nov 8, 2026 · Duration: unknown · Per-question time limits: easy 20 seconds, medium 35 seconds, hard 60 seconds</p><div class="summary">
+<section id="quiz-004">
+<details class="card"><summary><h2 id="quiz-004-heading">Python Fundamentals Quiz 004</h2><div class="meta">Nov 8, 2026 · 10 questions · 8 attempted · 75.0% accuracy · score +4</div></summary>
+<p class="muted">Duration: unknown · Per-question time limits: easy 20 seconds, medium 35 seconds, hard 60 seconds</p><div class="summary">
 <div class="metric"><strong>75.0%</strong><span>Accuracy of attempted questions (6/8)</span></div><div class="metric"><strong>10</strong><span>Total questions</span></div><div class="metric"><strong>8</strong><span>Attempted</span></div><div class="metric"><strong>6</strong><span>Correct</span></div><div class="metric"><strong>2</strong><span>Wrong</span></div><div class="metric"><strong>2</strong><span>Skipped or unanswered</span></div><div class="metric"><strong>+4</strong><span>Net score (+1 correct, −1 wrong, 0 skip)</span></div></div>
 <p>Correct as a share of all questions: <strong>60.0%</strong> (6/10). Difficulty mix: 5 medium, 2 easy, and 3 hard. The 2 unanswered items were not counted as correct or wrong; one was answered after the timer had expired and one was skipped.</p>
 <p>Topics covered included function defaults, in-place sorting, closures, <code>zip</code>, <code>enumerate</code>, <code>try/except/else</code>, nonlocal state, iterable unpacking, generator return values, and stable sorting. Duration is unknown; per-question time limits were 20, 35, or 60 seconds based on difficulty.</p>
@@ -102,6 +151,31 @@ else:
     value += 1
 print(value)</pre><p><strong>Answer choices:</strong></p><ul><li>A. <code>2</code></li><li>B. <code>3</code></li><li>C. <code>-1</code></li><li>D. It raises a <code>TypeError</code></li></ul><p><strong>Your answer:</strong> A. <strong>Correct result:</strong> B, <code>3</code>.</p><p><strong>Learned:</strong> The <code>else</code> block runs when the <code>try</code> block completes without an exception. Here <code>12 // 5</code> is <code>2</code>, then the <code>else</code> block increments it to <code>3</code>.</p></li>
 </ol></details></section>
-</article>
+</details>
+</section>
 
-</main></body></html>
+</main>
+<script>
+  (function () {
+    function openFromHash() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var target = id && document.getElementById(id);
+      if (!target) return;
+      var section = target.closest("main > section");
+      var card = section && section.querySelector("details.card");
+      if (card && !card.open) card.open = true;
+      target.scrollIntoView();
+    }
+    window.addEventListener("hashchange", openFromHash);
+    openFromHash();
+    var opened = [];
+    window.addEventListener("beforeprint", function () {
+      document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+    });
+    window.addEventListener("afterprint", function () {
+      opened.forEach(function (d) { d.open = false; }); opened = [];
+    });
+  })();
+</script>
+</body>
+</html>
