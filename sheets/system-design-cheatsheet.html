@@ -32,7 +32,18 @@
     details.card > summary { cursor: pointer; list-style: none; }
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    /* LaTeX formulas rendered by MathJax */
+    .formula { display:inline-block; margin:1px 0; color:#111827; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
+    .formula { font-family:inherit; font-size:13px; line-height:1.5; }
+    .formula { max-width:100%; overflow-x:auto; overflow-y:hidden; vertical-align:middle; }
+    .formula mjx-container { margin:0 !important; }
+    .math-block { padding:8px 10px; border-top:1px solid var(--line); background:#fbfcfd; }
+    .math-block p { margin:4px 0; color:var(--muted); }
+    .math-block mjx-container[display="true"] { margin:4px 0 !important; overflow-x:auto; overflow-y:hidden; }
+    @media print { .formula { font-size:10px; } }
   </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -136,9 +147,9 @@
         <details class="card"><summary><h2 class="green">5. Estimation shortcuts</h2></summary>
         <table>
           <tr><th>Estimate</th><th>Formula</th></tr>
-          <tr><td>Average RPS</td><td><code>requests per day / 86,400</code></td></tr>
-          <tr><td>Peak RPS</td><td><code>average RPS × peak factor</code></td></tr>
-          <tr><td>Yearly storage</td><td><code>records/sec × bytes/record × seconds/year</code></td></tr>
+          <tr><td>Average RPS</td><td><span class="formula">\(\dfrac{\text{requests per day}}{86{,}400}\)</span></td></tr>
+          <tr><td>Peak RPS</td><td><span class="formula">\(\text{average RPS} \times \text{peak factor}\)</span></td></tr>
+          <tr><td>Yearly storage</td><td><span class="formula">\(\text{records/sec} \times \text{bytes/record} \times \text{seconds/year}\)</span></td></tr>
           <tr><td>Capacity</td><td>Measure per-instance throughput, then leave headroom for failures and bursts.</td></tr>
         </table>
         </details>
