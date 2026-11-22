@@ -30,7 +30,7 @@
   <main>
     <header>
       <h1>SQL Cheat Sheet</h1>
-      <div class="subtitle"><code>CASE WHEN</code>, joins, grouping, clause order and window functions.</div>
+      <div class="subtitle"><code>CASE WHEN</code>, joins, grouping, clause order, CTEs and window functions.</div>
     </header>
     <p><a href="index.html">← Back to cheat sheets</a></p>
     <section>
@@ -77,6 +77,19 @@ FROM orders;</code></pre>
 FROM friend_requests
 GROUP BY date
 HAVING COUNT(*) &gt; 5;</code></pre>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Multiple CTEs</h2></summary>
+      <p>You can only write <code>WITH</code> once. Separate the CTEs with a comma and drop the second <code>WITH</code>; a later CTE can reference an earlier one.</p>
+      <pre><code>WITH a AS (
+    SELECT ...
+),
+b AS (
+    SELECT ... FROM a
+)
+SELECT ...
+FROM b;</code></pre>
       </details>
     </section>
     <section>
