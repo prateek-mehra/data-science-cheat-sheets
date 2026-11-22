@@ -39,7 +39,17 @@
     details.card > summary { cursor: pointer; list-style: none; }
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    /* LaTeX formulas rendered by MathJax */
+    .formula { font-family:inherit; font-size:13px; line-height:1.5; }
+    .formula { max-width:100%; overflow-x:auto; overflow-y:hidden; vertical-align:middle; }
+    .formula mjx-container { margin:0 !important; }
+    .math-block { padding:8px 10px; border-top:1px solid var(--line); background:#fbfcfd; }
+    .math-block p { margin:4px 0; color:var(--muted); }
+    .math-block mjx-container[display="true"] { margin:4px 0 !important; overflow-x:auto; overflow-y:hidden; }
+    @media print { .formula { font-size:10px; } }
   </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -84,10 +94,10 @@ with torch.no_grad():   # no graph built
         <details class="card"><summary><h2 class="green">2. CNN building blocks: shapes, convolution &amp; parameters</h2></summary>
         <table><tr><th>Idea</th><th>Rule of thumb</th></tr>
           <tr><td>NCHW</td><td><code>(N, C, H, W)</code> = batch size, channels, height, width. A Conv2d changes channels to <code>out_channels</code>; its kernel, stride, and padding determine height and width.</td></tr>
-          <tr><td>Conv2d output size</td><td><span class="formula">H<sub>out</sub> = floor((H<sub>in</sub> + 2P<sub>h</sub> - D<sub>h</sub>(K<sub>h</sub>-1) - 1) / S<sub>h</sub>) + 1</span>, with the same formula for W. For dilation 1 and square settings: <span class="formula">floor((in + 2·padding - kernel) / stride) + 1</span>.</td></tr>
+          <tr><td>Conv2d output size</td><td><span class="formula">\(H_{\text{out}} = \left\lfloor \dfrac{H_{\text{in}} + 2P_h - D_h(K_h - 1) - 1}{S_h} \right\rfloor + 1\)</span>, with the same formula for \(W\). For dilation 1 and square settings: <span class="formula">\(\left\lfloor \dfrac{\text{in} + 2 \cdot \text{padding} - \text{kernel}}{\text{stride}} \right\rfloor + 1\)</span>.</td></tr>
           <tr><td>Conv2d weights</td><td>Weight shape is <code>(Cout, Cin, Kh, Kw)</code>. Each output channel has a filter spanning every input channel; bias adds one parameter per output channel.</td></tr>
-          <tr><td>ReLU</td><td><span class="formula">ReLU(x) = max(0, x)</span>. It acts elementwise, changes negative values to zero, and leaves the tensor shape unchanged.</td></tr>
-          <tr><td>Parameter counts</td><td><span class="formula">Conv2d = Kh·Kw·Cin·Cout + (Cout if bias else 0)</span>. ReLU and max-pooling have no trainable parameters.</td></tr>
+          <tr><td>ReLU</td><td><span class="formula">\(\mathrm{ReLU}(x) = \max(0, x)\)</span>. It acts elementwise, changes negative values to zero, and leaves the tensor shape unchanged.</td></tr>
+          <tr><td>Parameter counts</td><td><span class="formula">\(\text{Conv2d} = K_h K_w C_{\text{in}} C_{\text{out}} + (C_{\text{out}} \text{ if bias else } 0)\)</span>. ReLU and max-pooling have no trainable parameters.</td></tr>
         </table>
         <table><tr><th>Layer</th><th>Learns parameters?</th><th>Changes channels?</th><th>Changes spatial dimensions?</th></tr>
           <tr><td><code>Conv2d</code></td><td>Yes</td><td>Can</td><td>Can</td></tr>
@@ -137,8 +147,8 @@ print(count_parameters(block))  # 5,088
       <section class="full">
         <details class="card"><summary><h2 class="blue">3. Linear layers: parameter count &amp; manual forward pass</h2></summary>
         <table><tr><th>Concept</th><th>Intuition / formula</th></tr>
-          <tr><td><code>nn.Linear(in, out)</code></td><td>Each output is a weighted sum of input features plus optional bias: <span class="formula">y = xW<sup>T</sup> + b</span>. PyTorch stores <code>weight</code> as <code>(out_features, in_features)</code>, so the forward pass multiplies by <code>weight.T</code>.</td></tr>
-          <tr><td>Linear parameter count</td><td><span class="formula">in_features·out_features + (out_features if bias else 0)</span>.</td></tr>
+          <tr><td><code>nn.Linear(in, out)</code></td><td>Each output is a weighted sum of input features plus optional bias: <span class="formula">\(y = x W^{\mathsf{T}} + b\)</span>. PyTorch stores <code>weight</code> as <code>(out_features, in_features)</code>, so the forward pass multiplies by <code>weight.T</code>.</td></tr>
+          <tr><td>Linear parameter count</td><td><span class="formula">\(\text{in_features} \cdot \text{out_features} + (\text{out_features if bias else } 0)\)</span>.</td></tr>
           <tr><td>All-layer count</td><td>Sum <code>numel()</code> for every trainable parameter. This works for Linear, Conv, embeddings, and any module that registers parameters.</td></tr>
         </table>
         <pre><code>import torch
@@ -212,10 +222,10 @@ for x in (a, b, c):
       <section class="full">
         <details class="card"><summary><h2 class="green">5. The update rule - all of gradient descent</h2></summary>
         <table><tr><th>Symbol</th><th>Meaning</th></tr>
-          <tr><td><span class="formula">w &larr; w - &eta; &middot; &nabla;L(w)</span></td><td>Step the weights downhill, against the gradient of the loss</td></tr>
-          <tr><td><code>w</code></td><td>Model parameters</td></tr>
-          <tr><td><code>&eta;</code> (lr)</td><td>Learning rate - how big a step</td></tr>
-          <tr><td><code>&nabla;L(w)</code></td><td>Gradient of the loss at the current weights - the uphill direction</td></tr>
+          <tr><td><span class="formula">\(w \leftarrow w - \eta \cdot \nabla L(w)\)</span></td><td>Step the weights downhill, against the gradient of the loss</td></tr>
+          <tr><td><span class="formula">\(w\)</span></td><td>Model parameters</td></tr>
+          <tr><td><span class="formula">\(\eta\)</span> (lr)</td><td>Learning rate - how big a step</td></tr>
+          <tr><td><span class="formula">\(\nabla L(w)\)</span></td><td>Gradient of the loss at the current weights - the uphill direction</td></tr>
         </table>
         <div class="note">Every optimizer (momentum, Adam, ...) is a variation on how this step is computed and scaled. See the ML Optimizers sheet for that ladder.</div>
         </details>

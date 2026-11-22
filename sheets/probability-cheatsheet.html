@@ -188,7 +188,18 @@
     details.card > summary { cursor: pointer; list-style: none; }
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    /* LaTeX formulas rendered by MathJax */
+    .formula { display:inline-block; margin:1px 0; color:#111827; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
+    .formula { font-family:inherit; font-size:13px; line-height:1.5; }
+    .formula { max-width:100%; overflow-x:auto; overflow-y:hidden; vertical-align:middle; }
+    .formula mjx-container { margin:0 !important; }
+    .math-block { padding:8px 10px; border-top:1px solid var(--line); background:#fbfcfd; }
+    .math-block p { margin:4px 0; color:var(--muted); }
+    .math-block mjx-container[display="true"] { margin:4px 0 !important; overflow-x:auto; overflow-y:hidden; }
+    @media print { .formula { font-size:10px; } }
   </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -215,7 +226,7 @@
         <table>
           <tr><th>Idea</th><th>Meaning</th></tr>
           <tr><td>Probability</td><td>Measures the fraction of outcomes in a sample space that satisfy some condition.</td></tr>
-          <tr><td>Formula</td><td><code>P(A) = favorable outcomes / total outcomes</code></td></tr>
+          <tr><td>Formula</td><td><span class="formula">\(P(A) = \dfrac{\text{favorable outcomes}}{\text{total outcomes}}\)</span></td></tr>
         </table>
         </details>
       </section>
@@ -224,10 +235,10 @@
         <details class="card"><summary><h2 class="blue">Conditional probability</h2></summary>
         <table>
           <tr><th>Idea</th><th>Formula</th></tr>
-          <tr><td>Restrict world to B</td><td><code>P(A | B)</code></td></tr>
-          <tr><td>Favorable outcomes</td><td><code>A ∩ B</code></td></tr>
-          <tr><td>New sample space</td><td><code>B</code></td></tr>
-          <tr><td>Definition</td><td><code>P(A | B) = P(A ∩ B) / P(B)</code>, for <code>P(B) &gt; 0</code></td></tr>
+          <tr><td>Restrict world to B</td><td><span class="formula">\(P(A \mid B)\)</span></td></tr>
+          <tr><td>Favorable outcomes</td><td><span class="formula">\(A \cap B\)</span></td></tr>
+          <tr><td>New sample space</td><td><span class="formula">\(B\)</span></td></tr>
+          <tr><td>Definition</td><td><span class="formula">\(P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}\)</span>, for <span class="formula">\(P(B) \gt 0\)</span></td></tr>
         </table>
         <div class="note">Read as: among cases where B happened, what fraction also have A?</div>
         </details>
@@ -237,16 +248,10 @@
         <details class="card"><summary><h2 class="amber">Choosing k things from n</h2></summary>
         <table>
           <tr><th>Does order matter?</th><th>Name</th><th>Number of ways</th></tr>
-          <tr><td>Yes: A-B-C differs from C-B-A</td><td>Permutation</td><td><code>P(n, k) = n! / (n - k)!</code></td></tr>
-          <tr><td>No: a group is the same in any order</td><td>Combination</td><td><code>C(n, k) = n! / (k!(n - k)!)</code></td></tr>
+          <tr><td>Yes: A-B-C differs from C-B-A</td><td>Permutation</td><td><span class="formula">\(P(n, k) = \dfrac{n!}{(n-k)!}\)</span></td></tr>
+          <tr><td>No: a group is the same in any order</td><td>Combination</td><td><span class="formula">\(C(n, k) = \binom{n}{k} = \dfrac{n!}{k!\,(n-k)!}\)</span></td></tr>
         </table>
-        <pre><code>Example: choose 3 people from 10
-
-Order matters (gold, silver, bronze):
-P(10, 3) = 10 * 9 * 8 = 720
-
-Order does not matter (a 3-person team):
-C(10, 3) = 10! / (3! * 7!) = 120</code></pre>
+        <div class="math-block"><p><strong>Example:</strong> choose 3 people from 10</p><p>Order matters (gold, silver, bronze):</p>\[ P(10, 3) = 10 \cdot 9 \cdot 8 = 720 \]<p>Order does not matter (a 3-person team):</p>\[ C(10, 3) = \dfrac{10!}{3!\,7!} = 120 \]</div>
         <div class="note">Use combinations for a set or team; use permutations for a sequence, ranking, or assignment to distinct roles.</div>
         </details>
       </section>
@@ -255,8 +260,8 @@ C(10, 3) = 10! / (3! * 7!) = 120</code></pre>
         <details class="card"><summary><h2 class="green">Product rule</h2></summary>
         <table>
           <tr><th>From</th><th>Rearrange</th></tr>
-          <tr><td><code>P(A | B) = P(A ∩ B) / P(B)</code></td><td><code>P(A ∩ B) = P(A | B)P(B)</code></td></tr>
-          <tr><td><code>P(B | A) = P(A ∩ B) / P(A)</code></td><td><code>P(A ∩ B) = P(B | A)P(A)</code></td></tr>
+          <tr><td><span class="formula">\(P(A \mid B) = \frac{P(A \cap B)}{P(B)}\)</span></td><td><span class="formula">\(P(A \cap B) = P(A \mid B)\,P(B)\)</span></td></tr>
+          <tr><td><span class="formula">\(P(B \mid A) = \frac{P(A \cap B)}{P(A)}\)</span></td><td><span class="formula">\(P(A \cap B) = P(B \mid A)\,P(A)\)</span></td></tr>
         </table>
         <div class="note">Same intersection, viewed from either condition.</div>
         </details>
@@ -264,38 +269,21 @@ C(10, 3) = 10! / (3! * 7!) = 120</code></pre>
 
       <section class="full">
         <details class="card"><summary><h2 class="amber">Bayes theorem derivation</h2></summary>
-        <pre><code>Start with the definition:
-P(A | B) = P(A ∩ B) / P(B)
-
-Use the product rule on the intersection:
-P(A ∩ B) = P(B | A)P(A)
-
-Substitute:
-P(A | B) = P(B | A)P(A) / P(B)
-
-So:
-P(A | B) = [P(B | A) P(A)] / P(B)</code></pre>
+        <div class="math-block"><p>Start with the definition:</p>\[ P(A \mid B) = \dfrac{P(A \cap B)}{P(B)} \]<p>Use the product rule on the intersection:</p>\[ P(A \cap B) = P(B \mid A)\,P(A) \]<p>Substitute, so:</p>\[ P(A \mid B) = \dfrac{P(B \mid A)\,P(A)}{P(B)} \]</div>
         <table>
           <tr><th>Term</th><th>Intuitive meaning</th></tr>
-          <tr><td><code>P(A | B)</code> posterior</td><td>Updated belief in A after seeing evidence B.</td></tr>
-          <tr><td><code>P(A)</code> prior</td><td>Belief in A before seeing B.</td></tr>
-          <tr><td><code>P(B | A)</code> likelihood</td><td>How expected B is if A is true.</td></tr>
-          <tr><td><code>P(B)</code> evidence</td><td>Overall probability of seeing B.</td></tr>
+          <tr><td><span class="formula">\(P(A \mid B)\)</span> posterior</td><td>Updated belief in A after seeing evidence B.</td></tr>
+          <tr><td><span class="formula">\(P(A)\)</span> prior</td><td>Belief in A before seeing B.</td></tr>
+          <tr><td><span class="formula">\(P(B \mid A)\)</span> likelihood</td><td>How expected B is if A is true.</td></tr>
+          <tr><td><span class="formula">\(P(B)\)</span> evidence</td><td>Overall probability of seeing B.</td></tr>
         </table>
         </details>
       </section>
 
       <section class="full">
         <details class="card"><summary><h2 class="blue">Bayes with total probability</h2></summary>
-        <pre><code>If A and not-A split all possibilities:
-P(B) = P(B | A)P(A) + P(B | not A)P(not A)
-
-Therefore:
-P(A | B) =
-    P(B | A)P(A)
-    -----------------------------------------
-    P(B | A)P(A) + P(B | not A)P(not A)</code></pre>
-        <div class="note">Posterior = likelihood * prior / evidence.</div>
+        <div class="math-block"><p>If \(A\) and \(\neg A\) (not \(A\)) split all possibilities:</p>\[ P(B) = P(B \mid A)\,P(A) + P(B \mid \neg A)\,P(\neg A) \]<p>Therefore:</p>\[ P(A \mid B) = \dfrac{P(B \mid A)\,P(A)}{P(B \mid A)\,P(A) + P(B \mid \neg A)\,P(\neg A)} \]</div>
+        <div class="note">\(\text{Posterior} = \dfrac{\text{likelihood} \times \text{prior}}{\text{evidence}}\)</div>
         </details>
       </section>
 
@@ -315,9 +303,9 @@ P(A | B) =
         <details class="card"><summary><h2 class="blue">PMF</h2></summary>
         <table>
           <tr><th>Idea</th><th>Meaning</th></tr>
-          <tr><td>PMF</td><td>Probability mass function: a table or formula giving <code>P(X = x)</code> for each value.</td></tr>
-          <tr><td>Must sum to 1</td><td><code>sum_x P(X = x) = 1</code></td></tr>
-          <tr><td>Coin count</td><td>For heads in 3 fair flips: <code>0:1/8, 1:3/8, 2:3/8, 3:1/8</code></td></tr>
+          <tr><td>PMF</td><td>Probability mass function: a table or formula giving <span class="formula">\(P(X = x)\)</span> for each value.</td></tr>
+          <tr><td>Must sum to 1</td><td><span class="formula">\(\sum_x P(X = x) = 1\)</span></td></tr>
+          <tr><td>Coin count</td><td>For heads in 3 fair flips: <span class="formula">\(P(0) = P(3) = \tfrac18,\ P(1) = P(2) = \tfrac38\)</span></td></tr>
         </table>
         <div class="note">Counts like <code>1, 3, 3, 1</code> are not the PMF until divided by total outcomes.</div>
         </details>
@@ -325,12 +313,7 @@ P(A | B) =
 
       <section>
         <details class="card"><summary><h2 class="amber">Expectation</h2></summary>
-        <pre><code>For a discrete random variable:
-E[X] = sum_x x * P(X = x)
-
-Example:
-X takes 1, 2, 3 with probabilities 0.2, 0.5, 0.3
-E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 2.1</code></pre>
+        <div class="math-block"><p>For a discrete random variable:</p>\[ E[X] = \sum_x x \, P(X = x) \]<p><strong>Example:</strong> \(X\) takes 1, 2, 3 with probabilities 0.2, 0.5, 0.3</p>\[ E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 2.1 \]</div>
         <div class="note">Expectation is the long-run average, not necessarily the most likely value.</div>
         </details>
       </section>
@@ -340,9 +323,9 @@ E[X] = 1(0.2) + 2(0.5) + 3(0.3) = 2.1</code></pre>
         <table>
           <tr><th>Idea</th><th>Formula</th></tr>
           <tr><td>Meaning</td><td>One yes/no trial: click/no click, fraud/not fraud, pass/fail.</td></tr>
-          <tr><td>Values</td><td><code>X = 1</code> for success, <code>X = 0</code> for failure.</td></tr>
-          <tr><td>Probabilities</td><td>If <code>P(X = 1) = p</code>, then <code>P(X = 0) = 1 - p</code>.</td></tr>
-          <tr><td>Expectation</td><td><code>E[X] = p</code></td></tr>
+          <tr><td>Values</td><td><span class="formula">\(X = 1\)</span> for success, <span class="formula">\(X = 0\)</span> for failure.</td></tr>
+          <tr><td>Probabilities</td><td>If <span class="formula">\(P(X = 1) = p\)</span>, then <span class="formula">\(P(X = 0) = 1 - p\)</span>.</td></tr>
+          <tr><td>Expectation</td><td><span class="formula">\(E[X] = p\)</span></td></tr>
         </table>
         </details>
       </section>

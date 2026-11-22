@@ -35,7 +35,17 @@
     details.card > summary { cursor: pointer; list-style: none; }
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    /* LaTeX formulas rendered by MathJax */
+    .formula { font-family:inherit; font-size:13px; line-height:1.5; }
+    .formula { max-width:100%; overflow-x:auto; overflow-y:hidden; vertical-align:middle; }
+    .formula mjx-container { margin:0 !important; }
+    .math-block { padding:8px 10px; border-top:1px solid var(--line); background:#fbfcfd; }
+    .math-block p { margin:4px 0; color:var(--muted); }
+    .math-block mjx-container[display="true"] { margin:4px 0 !important; overflow-x:auto; overflow-y:hidden; }
+    @media print { .formula { font-size:10px; } }
   </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -58,13 +68,13 @@
       <section class="full">
         <details class="card"><summary><h2 class="blue">1. Notation you need once</h2></summary>
         <table><tr><th>Symbol</th><th>Meaning</th><th>Read it as</th></tr>
-          <tr><td><code>w<sub>t</sub></code></td><td>Model parameters at step t</td><td>Where we are</td></tr>
-          <tr><td><code>g<sub>t</sub> = ∇<sub>w</sub> L<sub>t</sub>(w<sub>t</sub>)</code></td><td>Gradient of the mini-batch loss</td><td>Local uphill direction</td></tr>
-          <tr><td><code>η</code></td><td>Learning rate</td><td>Step scale</td></tr>
-          <tr><td><code>β, β₁, β₂</code></td><td>Exponential-average decay rates</td><td>Memory of previous gradients</td></tr>
-          <tr><td><code>ε</code></td><td>Small positive stabilizer</td><td>Avoid division by zero</td></tr>
+          <tr><td><span class="formula">\(w_t\)</span></td><td>Model parameters at step \(t\)</td><td>Where we are</td></tr>
+          <tr><td><span class="formula">\(g_t = \nabla_w L_t(w_t)\)</span></td><td>Gradient of the mini-batch loss</td><td>Local uphill direction</td></tr>
+          <tr><td><span class="formula">\(\eta\)</span></td><td>Learning rate</td><td>Step scale</td></tr>
+          <tr><td><span class="formula">\(\beta,\ \beta_1,\ \beta_2\)</span></td><td>Exponential-average decay rates</td><td>Memory of previous gradients</td></tr>
+          <tr><td><span class="formula">\(\varepsilon\)</span></td><td>Small positive stabilizer</td><td>Avoid division by zero</td></tr>
         </table>
-        <div class="note">Unless noted, vectors, squares, divisions, and square roots are element-wise. <code>ḡ</code> is a batch-averaged gradient. Optimizers choose update directions; learning-rate schedules and other training tricks are separate knobs.</div>
+        <div class="note">Unless noted, vectors, squares, divisions, and square roots are element-wise. <span class="formula">\(\bar g\)</span> is a batch-averaged gradient. Optimizers choose update directions; learning-rate schedules and other training tricks are separate knobs.</div>
         </details>
       </section>
       <section class="full">
@@ -82,18 +92,18 @@
       <section class="full">
         <details class="card"><summary><h2 class="amber">3. Timeline · formula + what changed</h2></summary>
         <table><tr><th>Era</th><th>Optimizer / update</th><th>What the new step adds</th><th>Level</th></tr>
-          <tr><td>1951 / 1986</td><td><b>Gradient descent / SGD</b><br><span class="formula">w<sub>t+1</sub> = w<sub>t</sub> − η g<sub>t</sub></span></td><td>Batch GD uses the full data gradient; SGD estimates it from one example or a mini-batch. The core downhill step.</td><td>1 · Core</td></tr>
-          <tr><td>1964</td><td><b>Momentum</b><br><span class="formula">m<sub>t</sub> = βm<sub>t−1</sub> + g<sub>t</sub><br>w<sub>t+1</sub> = w<sub>t</sub> − ηm<sub>t</sub></span></td><td>Exponential memory smooths noisy gradients and builds speed in directions that persist.</td><td>2 · Memory</td></tr>
-          <tr><td>1983</td><td><b>Nesterov / NAG</b><br><span class="formula">m<sub>t</sub> = βm<sub>t−1</sub> + ∇L(w<sub>t</sub> − ηβm<sub>t−1</sub>)</span></td><td>Compute the gradient at a momentum look-ahead point, so the step can correct before overshooting.</td><td>2 · Memory</td></tr>
-          <tr><td>2011</td><td><b>AdaGrad</b><br><span class="formula">r<sub>t</sub> = r<sub>t−1</sub> + g<sub>t</sub>²<br>w<sub>t+1</sub> = w<sub>t</sub> − η g<sub>t</sub> / (√r<sub>t</sub> + ε)</span></td><td>Per-parameter rates shrink where gradients repeatedly appear; useful for sparse features. Accumulation can make steps too small over long runs.</td><td>3 · Adapt</td></tr>
-          <tr><td>2012</td><td><b>RMSProp</b><br><span class="formula">v<sub>t</sub> = ρv<sub>t−1</sub> + (1−ρ)g<sub>t</sub>²<br>w<sub>t+1</sub> = w<sub>t</sub> − ηg<sub>t</sub> / (√v<sub>t</sub> + ε)</span></td><td>Replace AdaGrad’s ever-growing sum with a moving average, so the effective rate does not decay forever.</td><td>3 · Adapt</td></tr>
-          <tr><td>2012</td><td><b>AdaDelta</b><br><span class="formula">E[g²]<sub>t</sub> = ρE[g²]<sub>t−1</sub> + (1−ρ)g<sub>t</sub>²<br>Δw<sub>t</sub> = − RMS[Δw]<sub>t−1</sub> / RMS[g]<sub>t</sub> · g<sub>t</sub></span></td><td>Uses running gradient and update magnitudes to reduce dependence on a manually chosen global learning rate.</td><td>3 · Adapt</td></tr>
-          <tr><td>2014</td><td><b>Adam</b><br><span class="formula">m<sub>t</sub>=β₁m<sub>t−1</sub>+(1−β₁)g<sub>t</sub><br>v<sub>t</sub>=β₂v<sub>t−1</sub>+(1−β₂)g<sub>t</sub>²<br>ŵ = w − η m̂<sub>t</sub>/(√v̂<sub>t</sub>+ε)</span></td><td>Combines momentum (first moment) with adaptive coordinate scaling (second moment), with bias correction early in training.</td><td>3 · Adapt</td></tr>
-          <tr><td>2017</td><td><b>AdamW</b><br><span class="formula">w<sub>t+1</sub> = w<sub>t</sub> − η[m̂<sub>t</sub>/(√v̂<sub>t</sub>+ε) + λw<sub>t</sub>]</span></td><td>Apply weight decay separately from Adam’s adaptive gradient scaling. This makes decay behave as intended for adaptive optimizers.</td><td>4 · Details</td></tr>
-          <tr><td>2018</td><td><b>AMSGrad / Adafactor</b><br><span class="formula">AMSGrad: v̂<sub>t</sub> = max(v̂<sub>t−1</sub>, v̂<sub>Adam,t</sub>)<br>Adafactor: factorize row/column second moments</span></td><td>AMSGrad keeps a non-decreasing second-moment maximum. Adafactor approximates Adam’s second-moment state with factored statistics to save memory.</td><td>4 · Details</td></tr>
-          <tr><td>2019</td><td><b>LARS / LAMB</b><br><span class="formula">u<sub>t</sub> = base optimizer update<br>w ← w − η · (‖w‖ / ‖u‖) · u</span></td><td>Scale updates by parameter-layer norms. LAMB adds Adam-style moments; designed to make large-batch training practical.</td><td>5 · Scale</td></tr>
-          <tr><td>2023</td><td><b>Lion</b><br><span class="formula">c<sub>t</sub> = β₁m<sub>t−1</sub> + (1−β₁)g<sub>t</sub><br>w ← w − η[sign(c<sub>t</sub>) + λw]<br>m<sub>t</sub> = β₂m<sub>t−1</sub> + (1−β₂)g<sub>t</sub></span></td><td>Use the sign of a momentum blend for parameter updates; stores one momentum vector and uses less optimizer state than Adam.</td><td>6 · Modern</td></tr>
-          <tr><td>2024</td><td><b>Muon</b><br><span class="formula">M<sub>t</sub> = βM<sub>t−1</sub> + G<sub>t</sub><br>W ← W − η · Ortho(M<sub>t</sub>)</span></td><td>Apply Newton–Schulz-style orthogonalization to momentum updates for 2D hidden-weight matrices. Specialized; typically paired with another optimizer for embeddings, biases, and normalization parameters.</td><td>6 · Modern</td></tr>
+          <tr><td>1951 / 1986</td><td><b>Gradient descent / SGD</b><br><span class="formula">\(w_{t+1} = w_t - \eta\, g_t\)</span></td><td>Batch GD uses the full data gradient; SGD estimates it from one example or a mini-batch. The core downhill step.</td><td>1 · Core</td></tr>
+          <tr><td>1964</td><td><b>Momentum</b><br><span class="formula">\(\begin{aligned} m_t &= \beta m_{t-1} + g_t \\ w_{t+1} &= w_t - \eta\, m_t \end{aligned}\)</span></td><td>Exponential memory smooths noisy gradients and builds speed in directions that persist.</td><td>2 · Memory</td></tr>
+          <tr><td>1983</td><td><b>Nesterov / NAG</b><br><span class="formula">\(m_t = \beta m_{t-1} + \nabla L(w_t - \eta \beta m_{t-1})\)</span></td><td>Compute the gradient at a momentum look-ahead point, so the step can correct before overshooting.</td><td>2 · Memory</td></tr>
+          <tr><td>2011</td><td><b>AdaGrad</b><br><span class="formula">\(\begin{aligned} r_t &= r_{t-1} + g_t^2 \\ w_{t+1} &= w_t - \frac{\eta\, g_t}{\sqrt{r_t} + \varepsilon} \end{aligned}\)</span></td><td>Per-parameter rates shrink where gradients repeatedly appear; useful for sparse features. Accumulation can make steps too small over long runs.</td><td>3 · Adapt</td></tr>
+          <tr><td>2012</td><td><b>RMSProp</b><br><span class="formula">\(\begin{aligned} v_t &= \rho v_{t-1} + (1-\rho) g_t^2 \\ w_{t+1} &= w_t - \frac{\eta\, g_t}{\sqrt{v_t} + \varepsilon} \end{aligned}\)</span></td><td>Replace AdaGrad’s ever-growing sum with a moving average, so the effective rate does not decay forever.</td><td>3 · Adapt</td></tr>
+          <tr><td>2012</td><td><b>AdaDelta</b><br><span class="formula">\(\begin{aligned} E[g^2]_t &= \rho E[g^2]_{t-1} + (1-\rho) g_t^2 \\ \Delta w_t &= -\frac{\mathrm{RMS}[\Delta w]_{t-1}}{\mathrm{RMS}[g]_t}\, g_t \end{aligned}\)</span></td><td>Uses running gradient and update magnitudes to reduce dependence on a manually chosen global learning rate.</td><td>3 · Adapt</td></tr>
+          <tr><td>2014</td><td><b>Adam</b><br><span class="formula">\(\begin{aligned} m_t &= \beta_1 m_{t-1} + (1-\beta_1) g_t \\ v_t &= \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \\ w_{t+1} &= w_t - \frac{\eta\, \hat m_t}{\sqrt{\hat v_t} + \varepsilon} \end{aligned}\)</span></td><td>Combines momentum (first moment) with adaptive coordinate scaling (second moment), with bias correction early in training.</td><td>3 · Adapt</td></tr>
+          <tr><td>2017</td><td><b>AdamW</b><br><span class="formula">\(w_{t+1} = w_t - \eta \left[ \frac{\hat m_t}{\sqrt{\hat v_t} + \varepsilon} + \lambda w_t \right]\)</span></td><td>Apply weight decay separately from Adam’s adaptive gradient scaling. This makes decay behave as intended for adaptive optimizers.</td><td>4 · Details</td></tr>
+          <tr><td>2018</td><td><b>AMSGrad / Adafactor</b><br><span class="formula">\(\text{AMSGrad: } \hat v_t = \max(\hat v_{t-1},\, \hat v_{\text{Adam},t})\)</span><br>Adafactor: factorize row/column second moments</td><td>AMSGrad keeps a non-decreasing second-moment maximum. Adafactor approximates Adam’s second-moment state with factored statistics to save memory.</td><td>4 · Details</td></tr>
+          <tr><td>2019</td><td><b>LARS / LAMB</b><br><span class="formula">\(\begin{aligned} u_t &= \text{base optimizer update} \\ w &\leftarrow w - \eta \cdot \frac{\|w\|}{\|u\|} \cdot u \end{aligned}\)</span></td><td>Scale updates by parameter-layer norms. LAMB adds Adam-style moments; designed to make large-batch training practical.</td><td>5 · Scale</td></tr>
+          <tr><td>2023</td><td><b>Lion</b><br><span class="formula">\(\begin{aligned} c_t &= \beta_1 m_{t-1} + (1-\beta_1) g_t \\ w &\leftarrow w - \eta \left[ \operatorname{sign}(c_t) + \lambda w \right] \\ m_t &= \beta_2 m_{t-1} + (1-\beta_2) g_t \end{aligned}\)</span></td><td>Use the sign of a momentum blend for parameter updates; stores one momentum vector and uses less optimizer state than Adam.</td><td>6 · Modern</td></tr>
+          <tr><td>2024</td><td><b>Muon</b><br><span class="formula">\(\begin{aligned} M_t &= \beta M_{t-1} + G_t \\ W &\leftarrow W - \eta \cdot \operatorname{Ortho}(M_t) \end{aligned}\)</span></td><td>Apply Newton–Schulz-style orthogonalization to momentum updates for 2D hidden-weight matrices. Specialized; typically paired with another optimizer for embeddings, biases, and normalization parameters.</td><td>6 · Modern</td></tr>
         </table>
         <div class="note">Dates are first-paper / commonly cited introduction milestones and are approximate for methods that circulated as lecture notes or preprints. They do not imply one optimizer universally replaces the earlier ones.</div>
         </details>
@@ -101,10 +111,10 @@
       <section>
         <details class="card"><summary><h2 class="blue">4. Adam bias correction</h2></summary>
         <ul>
-          <li><code>m̂<sub>t</sub> = m<sub>t</sub> / (1 − β₁<sup>t</sup>)</code></li>
-          <li><code>v̂<sub>t</sub> = v<sub>t</sub> / (1 − β₂<sup>t</sup>)</code></li>
+          <li><span class="formula">\(\hat m_t = \dfrac{m_t}{1 - \beta_1^{\,t}}\)</span></li>
+          <li><span class="formula">\(\hat v_t = \dfrac{v_t}{1 - \beta_2^{\,t}}\)</span></li>
           <li>At the beginning, moving averages start at zero and are biased low. Divide by the expected accumulated weight to correct this.</li>
-          <li>Common starting values: <code>β₁=0.9</code>, <code>β₂=0.999</code>, <code>ε=10⁻⁸</code>. Tune for the task and implementation.</li>
+          <li>Common starting values: <span class="formula">\(\beta_1 = 0.9\)</span>, <span class="formula">\(\beta_2 = 0.999\)</span>, <span class="formula">\(\varepsilon = 10^{-8}\)</span>. Tune for the task and implementation.</li>
         </ul>
         </details>
       </section>
@@ -112,8 +122,8 @@
         <details class="card"><summary><h2 class="green">5. Training optimizations that go along</h2></summary>
         <table><tr><th>Technique</th><th>What it changes</th></tr>
           <tr><td>Warmup</td><td>Ramp the learning rate up at the start to avoid unstable early updates.</td></tr>
-          <tr><td>LR schedule</td><td>Decay or vary η over training (cosine, step, linear, one-cycle); often as important as optimizer choice.</td></tr>
-          <tr><td>Gradient clipping</td><td>Cap gradient norm: <code>g ← g·min(1, τ/‖g‖)</code>; controls extreme steps.</td></tr>
+          <tr><td>LR schedule</td><td>Decay or vary \(\eta\) over training (cosine, step, linear, one-cycle); often as important as optimizer choice.</td></tr>
+          <tr><td>Gradient clipping</td><td>Cap gradient norm: <span class="formula">\(g \leftarrow g \cdot \min\!\left(1, \frac{\tau}{\|g\|}\right)\)</span>; controls extreme steps.</td></tr>
           <tr><td>Weight decay</td><td>Regularize weights; for Adam-like methods prefer decoupled decay (AdamW).</td></tr>
           <tr><td>EMA</td><td>Keep a slow moving average of model weights for smoother evaluation.</td></tr>
           <tr><td>Mixed precision</td><td>Use lower-precision math to reduce memory and improve throughput; keep sensitive accumulations stable.</td></tr>
