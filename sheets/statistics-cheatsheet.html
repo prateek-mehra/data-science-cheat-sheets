@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistics Cheat Sheet</title>
+  <style>
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle { color: var(--muted); }
+    a { color: var(--blue); }
+    section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    pre code { font-size: 12.5px; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; table-layout: fixed; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    th { color: var(--muted); font-weight: 600; }
+    .note { margin-top: 10px; color: var(--muted); }
+    @media (max-width: 600px) { main { padding: 16px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    /* LaTeX formulas rendered by MathJax */
+    .formula { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; }
+    .formula mjx-container { margin: 0 !important; }
+    .math-block { margin-top: 10px; }
+    .math-block p { margin: 4px 0; color: var(--muted); }
+    mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+    .math-block mjx-container[display="true"] { margin: 4px 0 !important; }
+    td:first-child, th:first-child { width: 32%; }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Statistics Cheat Sheet</h1>
+      <div class="subtitle">Definitions and formulas for the statistics asked in applied ML and data science interviews.</div>
+    </header>
+    <p><a href="../index.html">← Back to cheat sheets</a></p>
+
+    <section>
+      <details class="card"><summary><h2>Population vs sample</h2></summary>
+      <table>
+        <tr><th>Idea</th><th>Meaning</th></tr>
+        <tr><td>Population</td><td>Every unit you care about. Its summaries are <strong>parameters</strong>: <span class="formula">\(\mu, \sigma^2, p\)</span>.</td></tr>
+        <tr><td>Sample</td><td>The <span class="formula">\(n\)</span> units you observed. Its summaries are <strong>statistics</strong>: <span class="formula">\(\bar{x}, s^2, \hat{p}\)</span>.</td></tr>
+        <tr><td>Estimator</td><td>A rule that turns a sample into a guess of a parameter.</td></tr>
+        <tr><td>Bias</td><td><span class="formula">\(\text{Bias}(\hat\theta) = E[\hat\theta] - \theta\)</span>. Unbiased when it is 0.</td></tr>
+      </table>
+      <div class="note">Inference means using a statistic to say something about a parameter, with a measure of uncertainty.</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Descriptive statistics</h2></summary>
+      <table>
+        <tr><th>Measure</th><th>Formula or meaning</th></tr>
+        <tr><td>Mean</td><td><span class="formula">\(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)</span></td></tr>
+        <tr><td>Median</td><td>Middle value after sorting. Robust to outliers.</td></tr>
+        <tr><td>Mode</td><td>Most frequent value.</td></tr>
+        <tr><td>Sample variance</td><td><span class="formula">\(s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2\)</span></td></tr>
+        <tr><td>Standard deviation</td><td><span class="formula">\(s = \sqrt{s^2}\)</span>, in the same units as the data.</td></tr>
+        <tr><td>IQR</td><td><span class="formula">\(Q_3 - Q_1\)</span>. Outlier rule: below <span class="formula">\(Q_1 - 1.5\,\text{IQR}\)</span> or above <span class="formula">\(Q_3 + 1.5\,\text{IQR}\)</span>.</td></tr>
+        <tr><td>Skew</td><td>Right skew (long right tail): mean &gt; median. Left skew: mean &lt; median.</td></tr>
+      </table>
+      <div class="note">Dividing by \(n-1\) (Bessel's correction) makes \(s^2\) unbiased, because \(\bar{x}\) was estimated from the same data.</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Common distributions</h2></summary>
+      <table>
+        <tr><th>Distribution</th><th>Models</th><th>Mean, variance</th></tr>
+        <tr><td>Binomial <span class="formula">\((n, p)\)</span></td><td>Successes in \(n\) independent yes/no trials. <span class="formula">\(P(X=k) = \binom{n}{k}p^k(1-p)^{n-k}\)</span></td><td><span class="formula">\(np,\ np(1-p)\)</span></td></tr>
+        <tr><td>Poisson <span class="formula">\((\lambda)\)</span></td><td>Count of events in a fixed interval. <span class="formula">\(P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}\)</span></td><td><span class="formula">\(\lambda,\ \lambda\)</span></td></tr>
+        <tr><td>Geometric <span class="formula">\((p)\)</span></td><td>Trials until the first success.</td><td><span class="formula">\(\frac1p,\ \frac{1-p}{p^2}\)</span></td></tr>
+        <tr><td>Uniform <span class="formula">\((a, b)\)</span></td><td>Every value in \([a, b]\) equally likely.</td><td><span class="formula">\(\frac{a+b}{2},\ \frac{(b-a)^2}{12}\)</span></td></tr>
+        <tr><td>Exponential <span class="formula">\((\lambda)\)</span></td><td>Waiting time between Poisson events. Memoryless.</td><td><span class="formula">\(\frac1\lambda,\ \frac{1}{\lambda^2}\)</span></td></tr>
+        <tr><td>Normal <span class="formula">\((\mu, \sigma^2)\)</span></td><td>Sums and averages of many small effects.</td><td><span class="formula">\(\mu,\ \sigma^2\)</span></td></tr>
+      </table>
+      <div class="note">Binomial with large \(n\) and small \(p\) is close to Poisson with \(\lambda = np\).</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Normal distribution and z-scores</h2></summary>
+      <div class="math-block"><p>Standardize any value to see how many standard deviations it is from the mean:</p>\[ z = \dfrac{x - \mu}{\sigma} \]</div>
+      <table>
+        <tr><th>Within</th><th>Share of values</th></tr>
+        <tr><td><span class="formula">\(\mu \pm 1\sigma\)</span></td><td>about 68%</td></tr>
+        <tr><td><span class="formula">\(\mu \pm 2\sigma\)</span></td><td>about 95% (exactly \(\pm 1.96\sigma\))</td></tr>
+        <tr><td><span class="formula">\(\mu \pm 3\sigma\)</span></td><td>about 99.7%</td></tr>
+      </table>
+      <div class="note">Critical values to remember: \(z_{0.95} = 1.645\) (one-sided 5%), \(z_{0.975} = 1.96\) (two-sided 5%), \(z_{0.80} = 0.84\) (80% power).</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Law of large numbers and CLT</h2></summary>
+      <table>
+        <tr><th>Idea</th><th>Meaning</th></tr>
+        <tr><td>Law of large numbers</td><td>As \(n\) grows, the sample mean <span class="formula">\(\bar{X}\)</span> converges to <span class="formula">\(\mu\)</span>.</td></tr>
+        <tr><td>Central limit theorem</td><td>For i.i.d. data with finite variance, the sample mean is approximately normal for large \(n\), whatever the original distribution.</td></tr>
+        <tr><td>Standard error</td><td>Standard deviation of the sample mean: <span class="formula">\(SE = \dfrac{\sigma}{\sqrt{n}}\)</span></td></tr>
+        <tr><td>SE of a proportion</td><td><span class="formula">\(SE = \sqrt{\dfrac{p(1-p)}{n}}\)</span></td></tr>
+      </table>
+      <div class="math-block">\[ \bar{X} \approx \mathcal{N}\!\left(\mu,\ \dfrac{\sigma^2}{n}\right) \]</div>
+      <div class="note">To halve the standard error, you need four times the data. A common rule of thumb is \(n \ge 30\) for the CLT, more for heavily skewed data.</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Confidence intervals</h2></summary>
+      <div class="math-block"><p>General shape:</p>\[ \text{estimate} \pm \text{critical value} \times SE \]<p>Mean, \(\sigma\) unknown (t with \(n-1\) degrees of freedom):</p>\[ \bar{x} \pm t_{\alpha/2,\,n-1}\,\dfrac{s}{\sqrt{n}} \]<p>Proportion:</p>\[ \hat{p} \pm z_{\alpha/2}\sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}} \]</div>
+      <table>
+        <tr><th>Statement</th><th>Correct?</th></tr>
+        <tr><td>"If we repeated the study many times, 95% of the intervals built this way would contain \(\mu\)."</td><td>Yes</td></tr>
+        <tr><td>"There is a 95% probability that \(\mu\) is in this interval."</td><td>No. \(\mu\) is fixed; that is the Bayesian credible interval reading.</td></tr>
+      </table>
+      <div class="note">Wider interval: higher confidence, more variance, or smaller \(n\).</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Hypothesis testing</h2></summary>
+      <table>
+        <tr><th>Step</th><th>What it means</th></tr>
+        <tr><td>1. Null <span class="formula">\(H_0\)</span></td><td>No effect or no difference, e.g. <span class="formula">\(\mu_A = \mu_B\)</span>.</td></tr>
+        <tr><td>2. Alternative <span class="formula">\(H_1\)</span></td><td>The effect you look for. Two-sided <span class="formula">\(\ne\)</span>, or one-sided <span class="formula">\(\gt\)</span> / <span class="formula">\(\lt\)</span>.</td></tr>
+        <tr><td>3. Significance level <span class="formula">\(\alpha\)</span></td><td>Chosen before looking at data, usually 0.05.</td></tr>
+        <tr><td>4. Test statistic</td><td>Distance of the estimate from \(H_0\) in standard errors, e.g. <span class="formula">\(t = \dfrac{\bar{x} - \mu_0}{s/\sqrt{n}}\)</span></td></tr>
+        <tr><td>5. p-value</td><td><span class="formula">\(P(\text{data at least this extreme} \mid H_0 \text{ true})\)</span></td></tr>
+        <tr><td>6. Decide</td><td>If \(p \le \alpha\), reject \(H_0\). Otherwise, fail to reject (not "accept").</td></tr>
+      </table>
+      <div class="note">A p-value is not the probability that \(H_0\) is true, and a small p-value says nothing about how large or useful the effect is.</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Type I and II errors and power</h2></summary>
+      <table>
+        <tr><th>Decision</th><th>\(H_0\) true</th><th>\(H_0\) false</th></tr>
+        <tr><td>Reject \(H_0\)</td><td>Type I error (false positive), rate <span class="formula">\(\alpha\)</span></td><td>Correct, rate = power <span class="formula">\(1 - \beta\)</span></td></tr>
+        <tr><td>Fail to reject</td><td>Correct, rate <span class="formula">\(1 - \alpha\)</span></td><td>Type II error (false negative), rate <span class="formula">\(\beta\)</span></td></tr>
+      </table>
+      <table>
+        <tr><th>Power goes up when</th><th>Why</th></tr>
+        <tr><td>Sample size \(n\) grows</td><td>Smaller standard error.</td></tr>
+        <tr><td>True effect is larger</td><td>Easier to separate from noise.</td></tr>
+        <tr><td>Variance is lower</td><td>Less noise.</td></tr>
+        <tr><td>\(\alpha\) is larger</td><td>Easier to reject, at the cost of more false positives.</td></tr>
+      </table>
+      <div class="note">Typical targets: \(\alpha = 0.05\) and power = 0.8.</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Choosing a test</h2></summary>
+      <table>
+        <tr><th>Question</th><th>Test</th></tr>
+        <tr><td>Mean vs a value, \(\sigma\) known or \(n\) large</td><td>z-test</td></tr>
+        <tr><td>Mean vs a value, \(\sigma\) unknown</td><td>One-sample t-test</td></tr>
+        <tr><td>Means of two independent groups</td><td>Two-sample t-test (Welch's, which does not assume equal variances)</td></tr>
+        <tr><td>Same units measured twice</td><td>Paired t-test on the differences</td></tr>
+        <tr><td>Means of 3+ groups</td><td>One-way ANOVA (F-test), then post-hoc pairwise tests</td></tr>
+        <tr><td>Two proportions (conversion rates)</td><td>Two-proportion z-test, or chi-square test</td></tr>
+        <tr><td>Two categorical variables independent?</td><td>Chi-square test: <span class="formula">\(\chi^2 = \sum \frac{(O - E)^2}{E}\)</span></td></tr>
+        <tr><td>Non-normal data, small \(n\), or outliers</td><td>Mann-Whitney U (independent) or Wilcoxon signed-rank (paired)</td></tr>
+      </table>
+      <div class="math-block"><p>Welch's two-sample t statistic:</p>\[ t = \dfrac{\bar{x}_A - \bar{x}_B}{\sqrt{\dfrac{s_A^2}{n_A} + \dfrac{s_B^2}{n_B}}} \]</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>A/B testing and sample size</h2></summary>
+      <table>
+        <tr><th>Step</th><th>What to do</th></tr>
+        <tr><td>1. Metric</td><td>Pick one primary metric (e.g. conversion) and guardrail metrics (e.g. latency, churn).</td></tr>
+        <tr><td>2. Unit</td><td>Randomize by user, not by session or page view, so one person sees one variant.</td></tr>
+        <tr><td>3. MDE</td><td>Minimum detectable effect: the smallest lift worth shipping.</td></tr>
+        <tr><td>4. Sample size</td><td>Fix it from \(\alpha\), power, MDE and variance before launch.</td></tr>
+        <tr><td>5. Run</td><td>Run full weeks to cover weekly cycles. Do not stop early when it looks significant.</td></tr>
+        <tr><td>6. Analyze</td><td>Report the lift with a confidence interval, then check guardrails.</td></tr>
+      </table>
+      <div class="math-block"><p>Sample size per group for a difference of \(\delta\) in means:</p>\[ n = \dfrac{2\,(z_{1-\alpha/2} + z_{1-\beta})^2\,\sigma^2}{\delta^2} \]<p>For conversion rates, use \(\sigma^2 = p(1-p)\). With \(\alpha = 0.05\) and 80% power this is roughly:</p>\[ n \approx \dfrac{16\,\sigma^2}{\delta^2} \]<p><strong>Example:</strong> baseline \(p = 0.10\), detect \(+1\) point (\(\delta = 0.01\)):</p>\[ n \approx \dfrac{16 \times 0.1 \times 0.9}{0.01^2} = 14{,}400 \text{ per group} \]</div>
+      <div class="note">Halving the MDE needs four times the users.</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Covariance and correlation</h2></summary>
+      <div class="math-block"><p>Covariance (units of \(x\) times units of \(y\)):</p>\[ \text{cov}(x, y) = \dfrac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) \]<p>Pearson correlation (unitless, from \(-1\) to \(1\)):</p>\[ r = \dfrac{\text{cov}(x, y)}{s_x\, s_y} \]</div>
+      <table>
+        <tr><th>Idea</th><th>Meaning</th></tr>
+        <tr><td>Pearson \(r\)</td><td>Strength of a <em>linear</em> relationship. Sensitive to outliers.</td></tr>
+        <tr><td>Spearman \(\rho\)</td><td>Pearson on ranks. Captures any monotonic relationship.</td></tr>
+        <tr><td><span class="formula">\(R^2\)</span></td><td>In simple linear regression, <span class="formula">\(R^2 = r^2\)</span>: the share of variance in \(y\) explained by \(x\).</td></tr>
+      </table>
+      <div class="note">\(r = 0\) means no linear relationship, not independence: \(y = x^2\) on a symmetric range has \(r = 0\).</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Frequentist vs Bayesian inference</h2></summary>
+      <table>
+        <tr><th></th><th>Frequentist</th><th>Bayesian</th></tr>
+        <tr><td>Parameter</td><td>Fixed, unknown number</td><td>Random variable with a distribution</td></tr>
+        <tr><td>Uses a prior?</td><td>No</td><td>Yes, updated by the data</td></tr>
+        <tr><td>Output</td><td>Point estimate, p-value, confidence interval</td><td>Posterior distribution, credible interval</td></tr>
+        <tr><td>Interval reading</td><td>95% of such intervals cover \(\theta\)</td><td>95% probability \(\theta\) is in the interval</td></tr>
+      </table>
+      <div class="math-block"><p>Bayes' rule applied to a parameter \(\theta\):</p>\[ p(\theta \mid \text{data}) \propto p(\text{data} \mid \theta)\; p(\theta) \]<p>Conjugate example for a conversion rate: prior \(\text{Beta}(a, b)\), then \(k\) conversions in \(n\) users gives</p>\[ \theta \mid \text{data} \sim \text{Beta}(a + k,\ b + n - k) \]</div>
+      <div class="note">MLE maximizes \(p(\text{data} \mid \theta)\). MAP maximizes the posterior; with a Gaussian prior it is L2 regularization.</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Gotchas</h2></summary>
+      <table>
+        <tr><th>Trap</th><th>What to say</th></tr>
+        <tr><td>Multiple testing</td><td>With 20 tests at \(\alpha = 0.05\), expect one false positive. Correct with Bonferroni (<span class="formula">\(\alpha / m\)</span>) or Benjamini-Hochberg (controls the false discovery rate).</td></tr>
+        <tr><td>Peeking</td><td>Checking results daily and stopping at the first \(p &lt; 0.05\) inflates Type I error. Fix \(n\) in advance or use sequential testing.</td></tr>
+        <tr><td>Statistical vs practical significance</td><td>A huge \(n\) makes tiny effects significant. Report effect size and its interval.</td></tr>
+        <tr><td>Correlation vs causation</td><td>Confounders can drive both variables. Randomized experiments establish causation.</td></tr>
+        <tr><td>Simpson's paradox</td><td>A trend in every subgroup can reverse when groups are pooled. Check segments.</td></tr>
+        <tr><td>Sample ratio mismatch</td><td>If a 50/50 split arrives as 52/48, randomization or logging is broken. Test it with chi-square before reading results.</td></tr>
+        <tr><td>Novelty effect</td><td>Early lift may fade as users get used to the change. Look at the trend over time.</td></tr>
+      </table>
+      </details>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
+</body>
+</html>
