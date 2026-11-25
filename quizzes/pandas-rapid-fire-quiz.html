@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pandas Rapid Fire</title>
+  <style>
+    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#0b67b2; --green:#167a4a; --red:#b42318; --amber:#9a5b00; --bamboo:#7cb342; --bg:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:900px; margin:0 auto; padding:22px; }
+    header { display:flex; align-items:center; gap:14px; padding-bottom:12px; margin-bottom:16px; border-bottom:2px solid var(--ink); }
+    header .titles { flex:1; }
+    h1 { margin:0 0 2px; font-size:26px; line-height:1.05; }
+    .subtitle { color:var(--muted); font-size:13px; }
+    .back { font-size:12px; color:var(--blue); text-decoration:none; font-weight:700; }
+    code, pre, input.answer { font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; }
+    code { font-size:12.5px; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
+
+    /* panda mascot */
+    .panda { width:64px; height:64px; flex:none; transition:transform .25s; }
+    .panda.bounce { animation:bounce .5s; }
+    .panda.shake { animation:shake .45s; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+    .panda .mouth-happy, .panda .mouth-sad, .panda .mouth-o { display:none; }
+    .panda[data-mood="neutral"] .mouth-o { display:block; }
+    .panda[data-mood="happy"] .mouth-happy { display:block; }
+    .panda[data-mood="sad"] .mouth-sad { display:block; }
+    .panda .tear { display:none; }
+    .panda[data-mood="sad"] .tear { display:block; }
+
+    /* top bar: bamboo progress + score */
+    .bar { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .bamboo { flex:1; display:flex; gap:4px; }
+    .bamboo span { flex:1; height:10px; border-radius:3px; background:var(--line); position:relative; }
+    .bamboo span.correct { background:var(--bamboo); }
+    .bamboo span.wrong { background:#e57373; }
+    .bamboo span.skip { background:#cfd8dc; background-image:repeating-linear-gradient(45deg,transparent 0 3px,#fff 3px 5px); }
+    .bamboo span.current { outline:2px solid var(--ink); outline-offset:1px; }
+    .score { font-weight:800; font-size:15px; min-width:70px; text-align:right; }
+
+    .card { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; }
+    .card-head { display:flex; justify-content:space-between; align-items:center; padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); font-weight:700; font-size:13px; }
+    .timer { display:flex; align-items:center; gap:8px; font-variant-numeric:tabular-nums; }
+    .ring { width:26px; height:26px; transform:rotate(-90deg); }
+    .ring circle { fill:none; stroke-width:4; }
+    .ring .track { stroke:var(--line); }
+    .ring .prog { stroke:var(--bamboo); stroke-linecap:round; transition:stroke-dashoffset .25s linear, stroke .25s; }
+    .timer.low .prog { stroke:#e57373; }
+    .timer.low .secs { color:var(--red); }
+    .card-body { padding:14px 14px 16px; }
+    .q { font-size:16px; font-weight:700; margin:0 0 10px; }
+    pre.ctx { margin:0 0 12px; padding:9px 11px; border:1px solid var(--line); border-radius:6px; background:#fbfcfd; font-size:12px; line-height:1.4; overflow-x:auto; }
+    .prompt { display:flex; align-items:center; gap:8px; border:2px solid var(--line); border-radius:8px; padding:4px 6px 4px 10px; background:#fff; transition:border-color .15s; }
+    .prompt:focus-within { border-color:var(--blue); }
+    .prompt .ps { color:var(--muted); font-family:"SFMono-Regular",Consolas,Menlo,monospace; font-size:13px; }
+    input.answer { flex:1; border:0; outline:0; font-size:14px; padding:8px 0; background:transparent; color:var(--ink); }
+    .btns { display:flex; gap:8px; margin-top:10px; }
+    button { font:inherit; font-weight:700; font-size:13px; border-radius:7px; padding:8px 14px; cursor:pointer; border:1px solid var(--line); background:var(--soft); color:var(--ink); }
+    button.primary { background:var(--blue); border-color:var(--blue); color:#fff; }
+    button:disabled { opacity:.5; cursor:default; }
+    .kbd { color:var(--muted); font-size:11px; margin-left:auto; align-self:center; }
+
+    .feedback { margin-top:12px; border-radius:8px; padding:10px 12px; font-size:13px; display:none; }
+    .feedback.show { display:block; animation:pop .2s ease-out; }
+    @keyframes pop { from{transform:scale(.97);opacity:0} to{transform:none;opacity:1} }
+    .feedback.ok { background:#eaf6ee; border:1px solid #b7dfc4; }
+    .feedback.bad { background:#fdecea; border:1px solid #f5c2bd; }
+    .feedback.skip { background:var(--soft); border:1px solid var(--line); }
+    .feedback .verdict { font-weight:800; margin-bottom:4px; }
+    .feedback .learn { color:var(--muted); margin-top:6px; }
+
+    /* start + results */
+    .center { text-align:center; padding:26px 16px; }
+    .rules { display:inline-block; text-align:left; margin:10px auto 16px; color:var(--muted); }
+    .rules li { margin:3px 0; }
+    .metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:14px 0; }
+    .metric { border:1px solid var(--line); border-radius:8px; padding:10px; background:var(--soft); text-align:left; }
+    .metric strong { display:block; font-size:20px; }
+    .metric span { color:var(--muted); font-size:12px; }
+    h2.sec { font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:18px 0 6px; }
+    .learning { border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:8px 0; }
+    .learning .tag { font-size:11px; font-weight:800; padding:1px 7px; border-radius:10px; margin-right:6px; }
+    .tag.ok { background:#eaf6ee; color:var(--green); } .tag.bad { background:#fdecea; color:var(--red); } .tag.skip { background:var(--soft); color:var(--muted); }
+    .learning .row { margin-top:4px; font-size:13px; }
+    .learning .row b { display:inline-block; min-width:78px; color:var(--muted); font-weight:600; }
+    .toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:var(--ink); color:#fff; padding:8px 14px; border-radius:8px; font-size:13px; opacity:0; transition:opacity .2s; pointer-events:none; }
+    .toast.show { opacity:1; }
+    .hidden { display:none !important; }
+    @media (max-width:600px) { main { padding:14px; } .kbd { display:none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <svg class="panda" id="panda" data-mood="neutral" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="14" cy="14" r="9" fill="#172026"/><circle cx="50" cy="14" r="9" fill="#172026"/>
+      <circle cx="32" cy="35" r="24" fill="#fff" stroke="#172026" stroke-width="2"/>
+      <ellipse cx="22" cy="32" rx="6" ry="7.5" fill="#172026" transform="rotate(-20 22 32)"/>
+      <ellipse cx="42" cy="32" rx="6" ry="7.5" fill="#172026" transform="rotate(20 42 32)"/>
+      <circle cx="23" cy="31" r="2.2" fill="#fff"/><circle cx="41" cy="31" r="2.2" fill="#fff"/>
+      <ellipse cx="32" cy="41" rx="3.2" ry="2.2" fill="#172026"/>
+      <circle cx="17" cy="44" r="3" fill="#f8bbd0" opacity=".7"/><circle cx="47" cy="44" r="3" fill="#f8bbd0" opacity=".7"/>
+      <path class="mouth-happy" d="M26 46 Q32 52 38 46" stroke="#172026" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="mouth-sad" d="M27 50 Q32 45 37 50" stroke="#172026" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse class="mouth-o" cx="32" cy="47.5" rx="2" ry="1.6" fill="#172026"/>
+      <path class="tear" d="M19 38 q-2 4 0 5 q2 -1 0 -5z" fill="#64b5f6"/>
+    </svg>
+    <div class="titles">
+      <a class="back" href="../index.html">← Back to cheat sheets</a>
+      <h1>Pandas Rapid Fire</h1>
+      <div class="subtitle">Type the one line of pandas. Beat the clock. Feed the panda bamboo.</div>
+    </div>
+  </header>
+
+  <!-- START -->
+  <section id="start" class="card">
+    <div class="center">
+      <div class="q" style="font-size:18px">Ready? Pick a round</div>
+      <ul class="rules">
+        <li>Questions span the whole wrangling flow: load → inspect → select → clean → transform → reshape → combine → aggregate → export.</li>
+        <li>Each question has its own countdown. Type one line of pandas and press <code>Enter</code>.</li>
+        <li><strong>+1</strong> correct · <strong>0</strong> skip / timeout · <strong>−1</strong> wrong</li>
+        <li>Assume <code>import pandas as pd</code>, <code>import numpy as np</code>, and the DataFrame shown.</li>
+      </ul><br>
+      <div class="btns" style="justify-content:center">
+        <button class="primary" id="lightningBtn">⚡ Lightning · 5</button>
+        <button id="quickBtn">Quick round · 10</button>
+        <button id="fullBtn">Full round · <span id="qcount"></span></button>
+      </div>
+      <p class="subtitle" style="margin-top:14px"><a href="pandas-quiz-reports.html">Past reports →</a></p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hidden">
+    <div class="bar">
+      <div class="bamboo" id="bamboo"></div>
+      <div class="score" id="score">0 pts</div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span id="qnum">Q1</span>
+        <span class="timer" id="timer">
+          <svg class="ring" viewBox="0 0 26 26"><circle class="track" cx="13" cy="13" r="10"/><circle class="prog" id="ringProg" cx="13" cy="13" r="10" stroke-dasharray="62.83" stroke-dashoffset="0"/></svg>
+          <span class="secs" id="secs">20s</span>
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="q" id="qtext"></p>
+        <pre class="ctx" id="qctx"></pre>
+        <div class="prompt">
+          <span class="ps">&gt;&gt;&gt;</span>
+          <input class="answer" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="df.…">
+        </div>
+        <div class="btns">
+          <button class="primary" id="submitBtn">Submit</button>
+          <button id="skipBtn">Skip</button>
+          <button class="primary hidden" id="nextBtn">Next →</button>
+          <span class="kbd" id="kbdHint">Enter = submit · Esc = skip</span>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="hidden">
+    <div class="card"><div class="center" style="padding-bottom:12px">
+      <div class="q" style="font-size:20px" id="resultTitle"></div>
+      <div class="subtitle" id="resultSub"></div>
+      <div class="metrics" id="metrics"></div>
+      <div class="btns" style="justify-content:center">
+        <button class="primary" id="againBtn">Play again</button>
+        <a id="reportLink" href="pandas-quiz-reports.html"><button>View full report →</button></a>
+      </div>
+      <p class="subtitle" style="margin-top:10px" id="saveNote"></p>
+    </div></div>
+    <h2 class="sec">Learnings noted</h2>
+    <div id="learnings"></div>
+  </section>
+  <div class="toast" id="toast"></div>
+</main>
+
+<script>
+/* ---------- Question bank ----------
+   stage + difficulty are internal only (stage for coverage, difficulty sets the timer; neither is shown).
+   accept: answers in readable form; accept[0] is shown as "the" answer.
+   Grading normalises whitespace, quotes, df.col vs df['col'], keyword-argument order,
+   isnull/isna, head(5)/head(), np.sum/'sum', astype('float') forms, and an optional
+   `x = ` in front of an expression answer.                                            */
+const TIME = { easy: 20, medium: 35, hard: 60 };
+const EMP   = "df.columns → ['name', 'dept', 'salary', 'age', 'city', 'join_date']";
+const SALES = "df.columns → ['order_id', 'cust_id', 'date', 'region', 'product', 'qty', 'price']";
+const SALES_REV = "df.columns → ['order_id', 'cust_id', 'date', 'region', 'product', 'revenue']\ndf['date'].dtype → datetime64[ns]";
+
+const BANK = [
+  /* ---- load & inspect ---- */
+  { id:'read-csv', stage:'load', difficulty:'easy',
+    q:"Load 'sales.csv' into a DataFrame called df.", ctx:"import pandas as pd",
+    accept:["df = pd.read_csv('sales.csv')"],
+    learn:"pd.read_csv(path) → DataFrame. Handy args: usecols=, dtype=, parse_dates=, nrows= for a quick peek." },
+  { id:'head', stage:'inspect', difficulty:'easy',
+    q:'Show the first 5 rows of df.', ctx:EMP,
+    accept:["df.head()"],
+    learn:"df.head() defaults to n=5; df.tail() shows the last rows; df.sample(5) random rows." },
+  { id:'shape', stage:'inspect', difficulty:'easy',
+    q:'Get the number of rows and columns of df as a tuple.', ctx:EMP,
+    accept:["df.shape"],
+    learn:"df.shape is an attribute (no parentheses) → (rows, cols). len(df) gives the row count only." },
+  { id:'value-counts', stage:'inspect', difficulty:'medium',
+    q:'How many employees are in each dept?', ctx:EMP,
+    accept:["df['dept'].value_counts()", "df.groupby('dept').size()"],
+    learn:"value_counts() counts each distinct value, sorted descending; normalize=True gives shares, dropna=False counts NaN too." },
+  { id:'nulls', stage:'inspect', difficulty:'medium',
+    q:'Count the missing values in every column.', ctx:EMP,
+    accept:["df.isna().sum()"],
+    learn:"isna() returns a boolean frame; .sum() counts True per column. isnull() is an alias; .mean() gives the share missing." },
+
+  /* ---- select & filter ---- */
+  { id:'select-cols', stage:'select', difficulty:'easy',
+    q:"Select just the 'name' and 'salary' columns.", ctx:EMP,
+    accept:["df[['name', 'salary']]", "df.loc[:, ['name', 'salary']]"],
+    learn:"Double brackets: the inner list picks columns and returns a DataFrame. df['salary'] alone returns a Series." },
+  { id:'bool-filter', stage:'select', difficulty:'medium',
+    q:"Keep rows where age is over 30 and city is 'Delhi'.", ctx:EMP,
+    accept:[
+      "df[(df['age'] > 30) & (df['city'] == 'Delhi')]", "df[(df['city'] == 'Delhi') & (df['age'] > 30)]",
+      "df.loc[(df['age'] > 30) & (df['city'] == 'Delhi')]", "df.loc[(df['city'] == 'Delhi') & (df['age'] > 30)]",
+      `df.query("age > 30 and city == 'Delhi'")`, `df.query("age > 30 & city == 'Delhi'")`, `df.query("city == 'Delhi' and age > 30")`],
+    learn:"Combine masks with & / | (not and / or) and wrap each condition in parentheses — & binds tighter than > and ==. df.query() is the readable alternative." },
+  { id:'isin', stage:'select', difficulty:'medium',
+    q:"Keep rows where city is 'Delhi' or 'Mumbai', using a single membership test.", ctx:EMP,
+    accept:["df[df['city'].isin(['Delhi', 'Mumbai'])]", "df[df['city'].isin(['Mumbai', 'Delhi'])]",
+            "df.loc[df['city'].isin(['Delhi', 'Mumbai'])]", "df.loc[df['city'].isin(['Mumbai', 'Delhi'])]"],
+    learn:"Series.isin(list) is pandas' SQL IN (...): cleaner than chaining == with |. Negate with ~df['city'].isin(...)." },
+  { id:'nlargest', stage:'select', difficulty:'medium',
+    q:'Get the 3 highest-paid rows.', ctx:EMP,
+    accept:["df.nlargest(3, 'salary')", "df.sort_values('salary', ascending=False).head(3)",
+            "df.nlargest(n=3, columns='salary')", "df.sort_values(by='salary', ascending=False).head(3)"],
+    learn:"nlargest(n, col) is a fast top-n; sort_values(col, ascending=False).head(n) is the general pattern." },
+
+  /* ---- clean ---- */
+  { id:'dropna', stage:'clean', difficulty:'easy',
+    q:'Drop every row that has any missing value, keeping the result in df.', ctx:EMP,
+    accept:["df = df.dropna()", "df.dropna(inplace=True)", "df = df.dropna(how='any')"],
+    learn:"dropna() returns a new frame, so reassign it (or use inplace=True). subset=['col'] limits the check; how='all' drops only fully empty rows." },
+  { id:'fillna-median', stage:'clean', difficulty:'medium',
+    q:"Fill missing values in 'salary' with the salary median (overwrite the column).", ctx:EMP,
+    accept:["df['salary'] = df['salary'].fillna(df['salary'].median())", "df = df.fillna({'salary': df['salary'].median()})"],
+    learn:"Median imputation resists outliers. Assign the result back: df['col'].fillna(..., inplace=True) is chained assignment and is deprecated in pandas 2.x." },
+  { id:'drop-dupes', stage:'clean', difficulty:'medium',
+    q:'Remove duplicate rows, keeping the first occurrence; keep the result in df.', ctx:EMP,
+    accept:["df = df.drop_duplicates()", "df = df.drop_duplicates(keep='first')", "df.drop_duplicates(inplace=True)", "df.drop_duplicates(keep='first', inplace=True)"],
+    learn:"drop_duplicates() compares whole rows by default; subset=['col'] dedupes on a key; keep='last' or keep=False change which rows survive." },
+  { id:'to-datetime', stage:'clean', difficulty:'medium',
+    q:"'join_date' holds strings like '2024-03-15'. Convert the column to datetime.", ctx:EMP,
+    accept:["df['join_date'] = pd.to_datetime(df['join_date'])", "df['join_date'] = pd.to_datetime(df['join_date'], format='%Y-%m-%d')"],
+    learn:"pd.to_datetime turns strings into datetime64, which unlocks .dt, date filtering and resampling. errors='coerce' turns unparseable values into NaT." },
+  { id:'str-clean', stage:'clean', difficulty:'medium',
+    q:"Clean 'city': strip surrounding spaces and make it lowercase (overwrite the column).", ctx:EMP,
+    accept:["df['city'] = df['city'].str.strip().str.lower()", "df['city'] = df['city'].str.lower().str.strip()"],
+    learn:"The .str accessor vectorises string methods, and every call needs its own .str: df['c'].str.strip().str.lower()." },
+  { id:'price-clean', stage:'clean', difficulty:'hard',
+    q:"Convert 'price' to float (overwrite the column).", ctx:"df['price'].head(3) → ['$1,299.00', '$89.50', '$12.00']   dtype: object",
+    accept:["df['price'] = df['price'].str.replace('[$,]', '', regex=True).astype(float)",
+            "df['price'] = df['price'].str.replace('$', '').str.replace(',', '').astype(float)",
+            "df['price'] = df['price'].str.replace(',', '').str.replace('$', '').astype(float)"],
+    acceptRegex:[/^df\['price'\]=(pd\.to_numeric\(df\['price'\]\.str\.replace\('\[(\\?\$,|,\\?\$)\]','',regex=True\)\)|df\['price'\]\.str\.replace\('\[(\\?\$,|,\\?\$)\]','',regex=True\)\.astype\(float\))$/],
+    learn:"Strip symbols with .str.replace (regex=True for a character class like '[$,]'), then .astype(float), or pd.to_numeric(errors='coerce') to turn leftovers into NaN." },
+
+  /* ---- transform ---- */
+  { id:'revenue-col', stage:'transform', difficulty:'easy',
+    q:"Add a column 'revenue' equal to qty × price.", ctx:SALES,
+    accept:["df['revenue'] = df['qty'] * df['price']", "df['revenue'] = df['price'] * df['qty']",
+            "df = df.assign(revenue=df['qty'] * df['price'])", "df = df.assign(revenue=df['price'] * df['qty'])"],
+    learn:"Arithmetic between columns runs row by row, vectorised: no loop or apply needed. assign() returns a new frame and chains nicely." },
+  { id:'dt-year', stage:'transform', difficulty:'medium',
+    q:"Add a column 'year' holding the year from 'date'.", ctx:SALES + "\ndf['date'].dtype → datetime64[ns]",
+    accept:["df['year'] = df['date'].dt.year"],
+    learn:".dt exposes datetime parts: .year, .month, .day_name(), .to_period('M'). It only works on datetime64 columns." },
+  { id:'map-dict', stage:'transform', difficulty:'medium',
+    q:"Create 'segment_name' by translating the 'segment' codes with seg_map.", ctx:"df['segment'] → ['C', 'B', 'C', …]\nseg_map = {'C': 'Consumer', 'B': 'Business'}",
+    accept:["df['segment_name'] = df['segment'].map(seg_map)", "df['segment_name'] = df['segment'].replace(seg_map)"],
+    learn:"Series.map(dict) looks up each value and unmapped values become NaN. replace(dict) leaves unmapped values unchanged." },
+  { id:'cut-bins', stage:'transform', difficulty:'hard',
+    q:"Add 'age_band': bin 'age' with edges [0, 30, 50, 100] labelled 'young', 'mid', 'senior'.", ctx:EMP,
+    accept:["df['age_band'] = pd.cut(df['age'], bins=[0, 30, 50, 100], labels=['young', 'mid', 'senior'])",
+            "df['age_band'] = pd.cut(df['age'], [0, 30, 50, 100], labels=['young', 'mid', 'senior'])"],
+    learn:"pd.cut bins on fixed edges, right-inclusive: (30, 50]. You need one fewer label than edges. pd.qcut bins on quantiles instead." },
+
+  /* ---- reshape ---- */
+  { id:'pivot-table', stage:'reshape', difficulty:'hard',
+    q:'Total revenue with region as rows and product as columns.', ctx:SALES_REV,
+    accept:["df.pivot_table(index='region', columns='product', values='revenue', aggfunc='sum')",
+            "pd.pivot_table(df, index='region', columns='product', values='revenue', aggfunc='sum')",
+            "df.groupby(['region', 'product'])['revenue'].sum().unstack()"],
+    learn:"pivot_table aggregates duplicates, and its default aggfunc is mean, so ask for 'sum'. groupby([...]).sum().unstack() gives the same shape; fill_value=0 fills the gaps." },
+  { id:'melt', stage:'reshape', difficulty:'hard',
+    q:"Reshape to long form with columns 'id', 'month', 'sales'.", ctx:"df.columns → ['id', 'jan', 'feb', 'mar']   (wide: one column per month)",
+    accept:["df.melt(id_vars='id', var_name='month', value_name='sales')", "df.melt(id_vars=['id'], var_name='month', value_name='sales')",
+            "pd.melt(df, id_vars='id', var_name='month', value_name='sales')", "pd.melt(df, id_vars=['id'], var_name='month', value_name='sales')"],
+    learn:"melt goes wide → long, the inverse of pivot. id_vars stay fixed; the other column names go into var_name and their values into value_name." },
+
+  /* ---- combine ---- */
+  { id:'merge-left', stage:'combine', difficulty:'medium',
+    q:"Left-join customers onto orders by 'cust_id'.", ctx:"orders.columns    → ['order_id', 'cust_id', 'qty']\ncustomers.columns → ['cust_id', 'name', 'segment']",
+    accept:["orders.merge(customers, on='cust_id', how='left')", "pd.merge(orders, customers, on='cust_id', how='left')"],
+    learn:"how='left' keeps every order, even one with no matching customer (NaN-filled). validate='m:1' guards against accidental row blow-up; indicator=True shows where each row matched." },
+  { id:'concat', stage:'combine', difficulty:'medium',
+    q:'Stack df1 on top of df2 with a fresh 0…n-1 index.', ctx:"df1.columns.equals(df2.columns) → True",
+    accept:["pd.concat([df1, df2], ignore_index=True)", "pd.concat([df1, df2], axis=0, ignore_index=True)"],
+    learn:"pd.concat takes a list. ignore_index=True renumbers the rows; axis=1 places frames side by side instead." },
+
+  /* ---- aggregate ---- */
+  { id:'groupby-mean', stage:'aggregate', difficulty:'medium',
+    q:'Average salary for each dept.', ctx:EMP,
+    accept:["df.groupby('dept')['salary'].mean()", "df.groupby('dept')['salary'].agg('mean')", "df.groupby('dept').agg({'salary': 'mean'})"],
+    learn:"Split-apply-combine: groupby(key)[col].agg_fn(). Selecting the column before .mean() avoids averaging every numeric column." },
+  { id:'named-agg', stage:'aggregate', difficulty:'hard',
+    q:"Per dept, in one call: columns 'avg_salary' (mean salary) and 'headcount' (number of employees).", ctx:EMP,
+    accept:["df.groupby('dept').agg(avg_salary=('salary', 'mean'), headcount=('name', 'count'))"],
+    acceptRegex:[/^df\.groupby\('dept'\)\.agg\(avg_salary=\('salary','mean'\),headcount=\('\w+','(count|size|nunique)'\)\)$/],
+    learn:"Named aggregation, new_col=(source_col, func), gives clean flat column names, so there's no MultiIndex to tidy up afterwards." },
+  { id:'transform', stage:'aggregate', difficulty:'hard',
+    q:"Add 'dept_avg': each row's department mean salary (same length as df).", ctx:EMP,
+    accept:["df['dept_avg'] = df.groupby('dept')['salary'].transform('mean')"],
+    learn:"transform returns a result aligned to the original rows (agg collapses to one row per group). It's ideal for group-relative features like salary − dept_avg." },
+  { id:'rank-within', stage:'aggregate', difficulty:'hard',
+    q:"Add a column 'rank' ranking salary within each dept, highest salary = 1.", ctx:EMP,
+    accept:["df['rank'] = df.groupby('dept')['salary'].rank(ascending=False)"],
+    acceptRegex:[/^df\['rank'\]=df\.groupby\('dept'\)\['salary'\]\.rank\(ascending=False(,method='(dense|min|first|max|average)')?\)$/],
+    learn:"groupby().rank() keeps the original index, so it assigns straight back as a column, like SQL RANK() OVER (PARTITION BY dept ORDER BY salary DESC). method='dense' avoids gaps on ties." },
+
+  /* ---- time series ---- */
+  { id:'rolling', stage:'time-series', difficulty:'medium',
+    q:"7-day rolling mean of 'sales'.", ctx:"df: one row per day, sorted by 'date'; columns → ['date', 'sales']",
+    accept:["df['sales'].rolling(7).mean()", "df['sales'].rolling(window=7).mean()"],
+    learn:"rolling(n) builds a moving window over the previous n rows. The first n−1 results are NaN unless you pass min_periods=." },
+  { id:'resample-month', stage:'time-series', difficulty:'hard',
+    q:'Total revenue per calendar month (df has one row per order).', ctx:SALES_REV,
+    accept:["df.resample('ME', on='date')['revenue'].sum()", "df.resample('M', on='date')['revenue'].sum()",
+            "df.set_index('date').resample('ME')['revenue'].sum()", "df.set_index('date').resample('M')['revenue'].sum()",
+            "df.groupby(pd.Grouper(key='date', freq='ME'))['revenue'].sum()", "df.groupby(pd.Grouper(key='date', freq='M'))['revenue'].sum()",
+            "df.groupby(df['date'].dt.to_period('M'))['revenue'].sum()"],
+    learn:"resample is groupby for time. It needs a DatetimeIndex or on='date'. 'ME' means month-end in pandas ≥ 2.2 ('M' before). dt.to_period('M') groups by month label." },
+
+  /* ---- export ---- */
+  { id:'to-csv', stage:'export', difficulty:'easy',
+    q:"Save df to 'clean.csv' without writing the index.", ctx:EMP,
+    accept:["df.to_csv('clean.csv', index=False)"],
+    learn:"to_csv writes the index as an unnamed first column by default. index=False avoids the 'Unnamed: 0' column when you reload." },
+];
+
+/* Round sizes keep the AGENTS.md difficulty mix (~25% easy / 50% medium / 25% hard). */
+const ROUNDS = { lightning: { name:'Lightning 5', easy:1, medium:3, hard:1 }, quick: { name:'Quick 10', easy:2, medium:5, hard:3 }, full: { name:'Full', easy:7, medium:15, hard:8 } };
+
+/* ---------- Grading ---------- */
+const COLS = ['name','dept','salary','age','city','join_date','order_id','cust_id','date','region','product','qty','price',
+              'revenue','segment','segment_name','sales','id','jan','feb','mar','age_band','dept_avg'];
+function matchParen(s, i) {
+  let d = 0, q = false;
+  for (let k = i; k < s.length; k++) {
+    const c = s[k];
+    if (c === "'") { q = !q; continue; }
+    if (q) continue;
+    if ('([{'.includes(c)) d++;
+    else if (')]}'.includes(c)) { d--; if (d === 0) return c === ')' ? k : -1; }
+  }
+  return -1;
+}
+function splitTop(s) {
+  const parts = []; let d = 0, q = false, cur = '';
+  for (const c of s) {
+    if (c === "'") q = !q;
+    if (!q) {
+      if ('([{'.includes(c)) d++;
+      else if (')]}'.includes(c)) d--;
+      else if (c === ',' && d === 0) { parts.push(cur); cur = ''; continue; }
+    }
+    cur += c;
+  }
+  parts.push(cur); return parts;
+}
+const KW = /^\w+=(?!=)/;
+function reorder(inner) {        // sort trailing keyword args so their order never matters
+  if (!inner) return inner;
+  const parts = splitTop(inner), k = parts.findIndex(p => KW.test(p));
+  if (k < 0 || !parts.slice(k).every(p => KW.test(p))) return inner;
+  return [...parts.slice(0, k), ...parts.slice(k).sort()].join(',');
+}
+function sortKwargs(s) {
+  let out = '', i = 0;
+  while (i < s.length) {
+    const c = s[i];
+    if (c === "'") { const j = s.indexOf("'", i + 1); const e = j < 0 ? s.length : j + 1; out += s.slice(i, e); i = e; continue; }
+    if (c === '(') {
+      const j = matchParen(s, i);
+      if (j < 0) { out += s.slice(i); break; }
+      out += '(' + reorder(sortKwargs(s.slice(i + 1, j))) + ')'; i = j + 1; continue;
+    }
+    out += c; i++;
+  }
+  return out;
+}
+function normalise(s) {
+  let t = s.trim().replace(/;+$/, '');
+  t = t.replace(/[“”"]/g, "'").replace(/[‘’]/g, "'");
+  t = t.replace(/\s+/g, '');
+  t = t.replace(/(\d)_(?=\d)/g, '$1');                                     // 100_000 → 100000
+  t = t.replace(/([(,=\[])r'/g, "$1'");                                    // r'…' → '…'
+  t = t.replace(new RegExp(`\\.(${COLS.join('|')})(?![\\w(])`, 'g'), "['$1']");   // df.col → df['col']
+  t = t.replace(/\.isnull\(\)/g, '.isna()').replace(/\.notnull\(\)/g, '.notna()');
+  t = t.replace(/\.head\((n=)?5\)/g, '.head()');
+  t = t.replace(/np\.(sum|mean|median|max|min|size)(?![\w(])/g, "'$1'");
+  t = t.replace(/\.astype\((np\.)?'?float(64)?'?\)/g, '.astype(float)');
+  return sortKwargs(t);
+}
+function grade(input, q) {
+  const n = normalise(input);
+  const cands = [n];
+  // accept `result = <expr>` when the expected answer is a bare expression
+  const m = n.match(/^[A-Za-z_]\w*=(?!=)(.+)$/);
+  if (m && !KW.test(normalise(q.accept[0]))) cands.push(m[1]);
+  return cands.some(c => q.accept.some(a => normalise(a) === c) || (q.acceptRegex || []).some(r => r.test(c)));
+}
+
+/* ---------- State ---------- */
+const $ = id => document.getElementById(id);
+let QUESTIONS = [], round = null;
+let idx = 0, score = 0, results = [], timerId = null, remaining = 0, limit = 0, answered = false, startedAt = 0;
+const CIRC = 62.83;
+$('qcount').textContent = BANK.length;
+
+function shuffle(a) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function buildRound(kind) {
+  round = ROUNDS[kind];
+  if (kind === 'full') return shuffle(BANK);
+  const pick = d => shuffle(BANK.filter(q => q.difficulty === d)).slice(0, round[d]);
+  return shuffle([...pick('easy'), ...pick('medium'), ...pick('hard')]);
+}
+
+function setMood(m, anim) {
+  const p = $('panda'); p.dataset.mood = m;
+  p.classList.remove('bounce','shake'); void p.offsetWidth;
+  if (anim) p.classList.add(anim);
+}
+function renderBamboo() {
+  $('bamboo').innerHTML = QUESTIONS.map((_, i) => {
+    const r = results[i]; const cls = r ? r.status : (i === idx ? 'current' : '');
+    return `<span class="${cls}"></span>`;
+  }).join('');
+  $('score').textContent = `${score} pt${Math.abs(score) === 1 ? '' : 's'}`;
+}
+function start(kind) {
+  if (kind) lastKind = kind;
+  QUESTIONS = buildRound(lastKind);
+  idx = 0; score = 0; results = []; startedAt = Date.now();
+  $('start').classList.add('hidden'); $('results').classList.add('hidden'); $('quiz').classList.remove('hidden');
+  show();
+}
+let lastKind = 'quick';
+function show() {
+  const q = QUESTIONS[idx]; answered = false;
+  $('qnum').textContent = `Q${idx + 1} / ${QUESTIONS.length}`;
+  $('qtext').textContent = q.q; $('qctx').textContent = q.ctx;
+  $('answer').value = ''; $('answer').disabled = false; $('answer').focus();
+  $('feedback').className = 'feedback';
+  $('submitBtn').classList.remove('hidden'); $('skipBtn').classList.remove('hidden'); $('nextBtn').classList.add('hidden');
+  $('kbdHint').textContent = 'Enter = submit · Esc = skip';
+  setMood('neutral'); renderBamboo();
+  limit = TIME[q.difficulty]; remaining = limit; q._t0 = Date.now(); tick();
+  clearInterval(timerId); timerId = setInterval(() => { remaining--; tick(); if (remaining <= 0) finish('timeout'); }, 1000);
+}
+function tick() {
+  $('secs').textContent = `${Math.max(remaining,0)}s`;
+  $('ringProg').style.strokeDashoffset = CIRC * (1 - Math.max(remaining,0) / limit);
+  $('timer').classList.toggle('low', remaining <= 5);
+}
+function finish(kind) {
+  if (answered) return; answered = true; clearInterval(timerId);
+  const q = QUESTIONS[idx]; const input = $('answer').value.trim();
+  let status;
+  if (kind === 'submit' && input) status = grade(input, q) ? 'correct' : 'wrong';
+  else status = 'skip';
+  score += status === 'correct' ? 1 : status === 'wrong' ? -1 : 0;
+  results[idx] = { q, input, status, kind: status === 'skip' ? (kind === 'timeout' ? 'timeout' : 'skip') : kind,
+                   secs: Math.min(Math.round((Date.now() - q._t0) / 1000), limit), limit };
+  const fb = $('feedback');
+  const ans = `<code>${esc(q.accept[0])}</code>`;
+  if (status === 'correct') { fb.className = 'feedback show ok'; fb.innerHTML = `<div class="verdict">✓ Nice! +1 bamboo</div>`; setMood('happy','bounce'); }
+  else if (status === 'wrong') { fb.className = 'feedback show bad'; fb.innerHTML = `<div class="verdict">✗ Not quite (−1)</div>Expected: ${ans}`; setMood('sad','shake'); }
+  else { fb.className = 'feedback show skip'; fb.innerHTML = `<div class="verdict">${kind === 'timeout' ? '⏰ Time’s up' : '↷ Skipped'} (0)</div>Answer: ${ans}`; setMood('sad'); }
+  fb.innerHTML += `<div class="learn">💡 ${esc(q.learn)}</div>`;
+  $('answer').disabled = true;
+  $('submitBtn').classList.add('hidden'); $('skipBtn').classList.add('hidden'); $('nextBtn').classList.remove('hidden');
+  $('nextBtn').textContent = idx === QUESTIONS.length - 1 ? 'See results →' : 'Next →';
+  $('kbdHint').textContent = 'Enter = next';
+  $('nextBtn').focus(); renderBamboo();
+}
+function next() { idx++; if (idx < QUESTIONS.length) show(); else showResults(); }
+
+let lastDuration = 0;
+function stats() {
+  const total = QUESTIONS.length, c = count('correct'), w = count('wrong'), s = count('skip'), att = c + w;
+  return { total, c, w, s, att, accAtt: att ? (100 * c / att).toFixed(1) + '%' : '—', accAll: (100 * c / total).toFixed(1) + '%' };
+}
+function showResults() {
+  clearInterval(timerId);
+  $('quiz').classList.add('hidden'); $('results').classList.remove('hidden');
+  lastDuration = Math.round((Date.now() - startedAt) / 1000);
+  const { total, c, w, s, accAtt, accAll } = stats();
+  const good = c >= total / 2;
+  setMood(good ? 'happy' : 'sad', good ? 'bounce' : null);
+  $('resultTitle').textContent = c === total ? '🎋 Perfect round — the panda is stuffed!' : good ? '🐼 Solid round!' : '🐼 The panda is still hungry';
+  $('resultSub').textContent = `${round.name} · ${new Date().toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})} · total time ${fmt(lastDuration)}`;
+  const m = [[score > 0 ? `+${score}` : score, 'Net score'], [`${c}/${total}`, 'Correct'], [w, 'Wrong'],
+             [s, 'Skipped / timeout'], [accAtt, 'Accuracy (attempted)'], [accAll, 'Accuracy (all)']];
+  $('metrics').innerHTML = m.map(([v, l]) => `<div class="metric"><strong>${v}</strong><span>${l}</span></div>`).join('');
+  const order = results.map((r, i) => ({ r, i })).sort((a, b) => (a.r.status === 'correct') - (b.r.status === 'correct'));
+  $('learnings').innerHTML = order.map(({ r, i }) => {
+    const tag = r.status === 'correct' ? '<span class="tag ok">CORRECT</span>' : r.status === 'wrong' ? '<span class="tag bad">WRONG</span>' : `<span class="tag skip">${r.kind === 'timeout' ? 'TIMEOUT' : 'SKIPPED'}</span>`;
+    return `<div class="learning">${tag}<strong>Q${i + 1}. ${esc(r.q.q)}</strong>
+      <div class="row"><b>You typed</b>${r.input ? `<code>${esc(r.input)}</code>` : '<i>nothing</i>'}</div>
+      ${r.status !== 'correct' ? `<div class="row"><b>Answer</b><code>${esc(r.q.accept[0])}</code></div>` : ''}
+      <div class="row"><b>Learned</b>${esc(r.q.learn)}</div>
+      <div class="row"><b>Time</b>${r.secs}s of ${r.limit}s</div></div>`;
+  }).join('');
+  saveHistory();
+}
+function count(st) { return results.filter(r => r.status === st).length; }
+
+/* When a round ends it is posted to the local save server (tools/quiz_server.py), which appends it to
+   quizzes/pandas-rounds.js in the repo; pandas-quiz-reports.html builds a report card from that file.
+   If the server isn't running (e.g. the page was opened as a file), the round waits in browser storage
+   and is sent the next time this page is opened through the server. */
+const PENDING_KEY = 'pandasRapidFireHistory';
+const SAVE_URL = '/api/pandas-rounds';
+function pending() { try { return JSON.parse(localStorage.getItem(PENDING_KEY) || '[]'); } catch (e) { return []; } }
+function setPending(list) { try { localStorage.setItem(PENDING_KEY, JSON.stringify(list)); } catch (e) {} }
+async function flushPending() {
+  const list = pending();
+  if (!list.length || !location.protocol.startsWith('http')) return null;
+  list.forEach(r => { r.uid = r.uid || r.date; });
+  try {
+    const res = await fetch(SAVE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(list) });
+    if (!res.ok) return null;
+    const { numbers } = await res.json();
+    const sent = new Set(list.map(r => r.uid));
+    setPending(pending().filter(r => !sent.has(r.uid || r.date)));
+    return numbers;
+  } catch (e) { return null; }
+}
+async function saveHistory() {
+  const rec = { uid: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, date: new Date().toISOString(),
+    round: round.name, score, duration: lastDuration, limits: { ...TIME },
+    items: results.map(r => ({ id: r.q.id, stage: r.q.stage, difficulty: r.q.difficulty, question: r.q.q, ctx: r.q.ctx,
+      typed: r.input, status: r.status, kind: r.kind, answer: r.q.accept[0], learn: r.q.learn, secs: r.secs, limit: r.limit })) };
+  setPending([...pending(), rec]);
+  $('saveNote').textContent = 'Saving to the repo…';
+  const numbers = await flushPending();
+  if (numbers) {
+    const n = String(numbers[numbers.length - 1]).padStart(3, '0');
+    $('reportLink').href = `pandas-quiz-reports.html#pandas-${n}`;
+    $('saveNote').textContent = `Saved to the repo as Pandas Rapid Fire ${n}.`;
+  } else {
+    $('reportLink').href = 'pandas-quiz-reports.html';
+    $('saveNote').innerHTML = 'Not saved to the repo yet: the save server isn\'t running. It\'s kept in this browser and will be saved next time you open the quiz via <code>python3 tools/quiz_server.py</code>.';
+  }
+}
+flushPending();
+
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function fmt(s) { return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; }
+function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 1600); }
+
+$('lightningBtn').onclick = () => start('lightning');
+$('quickBtn').onclick = () => start('quick');
+$('fullBtn').onclick = () => start('full');
+$('againBtn').onclick = () => start();
+$('submitBtn').onclick = () => finish('submit');
+$('skipBtn').onclick = () => finish('skip');
+$('nextBtn').onclick = next;
+document.addEventListener('keydown', e => {
+  if ($('quiz').classList.contains('hidden')) return;
+  if (e.key === 'Enter') { e.preventDefault(); answered ? next() : finish('submit'); }
+  else if (e.key === 'Escape' && !answered) finish('skip');
+});
+</script>
+</body>
+</html>

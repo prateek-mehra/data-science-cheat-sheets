@@ -2,7 +2,7 @@
 
 ## Quiz report maintenance
 
-- Keep the quiz reports section in [index.html](index.html) linked to [quizzes/quiz-reports.html](quizzes/quiz-reports.html).
+- Keep the quiz reports section in [index.html](index.html) linked to [quizzes/quiz-reports.html](quizzes/quiz-reports.html) and [quizzes/pandas-quiz-reports.html](quizzes/pandas-quiz-reports.html).
 - After each quiz, add a new collapsible card to [quizzes/quiz-reports.html](quizzes/quiz-reports.html): a `<section id="quiz-NNN">` holding a `<details class="card">`. Its `<summary>` holds the quiz name as `<h2>` and a one-line `.meta` with date, questions, attempted, accuracy and score; the full report goes inside the card. Preserve all earlier quiz cards.
 - Every quiz report must include these sections: **Strengths**, **Weaknesses**, and **Learnings from weaknesses**.
 - Make the question-by-question list under **Learnings from weaknesses** collapsible with a clear summary label. For every wrong answer, include the exact question wording, code snippet, and all answer choices as shown in the quiz, plus the learner's answer, correct result, and concept learned.
@@ -20,3 +20,14 @@
 - Do not show the topic name, difficulty, category label, or any hint alongside a question. Present only the question, code or context needed to answer it, answer choices, and timer.
 - Track question difficulty internally for quiz balancing and reporting. Do not use difficulty labels to give away answers during delivery.
 - Record the per-question time limits and actual total duration in the report when available; otherwise mark unknown.
+
+## Pandas rapid fire quiz
+
+- The quiz lives at [quizzes/pandas-rapid-fire-quiz.html](quizzes/pandas-rapid-fire-quiz.html). Each answer is one typed line of pandas, graded against accepted forms. There are no answer choices.
+- The question bank covers every data wrangling stage: load, inspect, select/filter, clean, transform, reshape, combine, aggregate, time series and export. Tag each question with its `stage` and `difficulty`. Neither is shown during delivery.
+- Keep the bank's difficulty mix at about 25% easy, 50% medium and 25% hard. A lightning round samples 1 easy, 3 medium and 1 hard; a quick round samples 2 easy, 5 medium and 3 hard; a full round uses the whole bank. Time limits are 20s, 35s and 60s as above.
+- When adding a question, list every reasonable correct form in `accept` (or `acceptRegex`), put the most idiomatic form first (it is shown as the answer), and check that an obviously wrong answer is rejected.
+- Rounds are recorded automatically into the repo. Play through the local save server (`python3 tools/quiz_server.py`, then open http://localhost:8000/quizzes/pandas-rapid-fire-quiz.html). When a round ends, the quiz POSTs it to the server, which appends it to [quizzes/pandas-rounds.js](quizzes/pandas-rounds.js). [quizzes/pandas-quiz-reports.html](quizzes/pandas-quiz-reports.html) builds a `<section id="pandas-NNN">` card for each entry, following the quiz report rules above: metrics, duration, limits, Strengths, Weaknesses, and collapsible Learnings from weaknesses. Rounds finished without the server wait in browser storage and are sent the next time the quiz is opened through it.
+- Don't hand-write pandas report cards or edit `pandas-rounds.js` by hand; commit it like any other file. If the report format changes, update the renderer script on the reports page and the fields the quiz saves in `saveHistory()`.
+- Link the pandas reports page from the Quiz reports section of [index.html](index.html).
+- Fold learnings from wrong answers into a pandas cheat sheet (`sheets/pandas-cheatsheet.html`, created when the first learnings arrive), ordered by wrangling stage.
