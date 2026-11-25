@@ -24,6 +24,7 @@ mindmap
       Python DSA
       NumPy
       ML pipeline: EDA to model
+      Pandas rapid fire quiz
     SQL
       Overview
     ML fundamentals
@@ -39,6 +40,7 @@ mindmap
       System design
     Quiz reports
       Python MCQ quiz reports
+      Pandas quiz reports
 ```
 
 ## Sheets
@@ -49,6 +51,7 @@ mindmap
 | 🧩 Coding round | [Python DSA](sheets/python-dsa-data-structures-cheatsheet.html) | Quick syntax, common moves and interview traps |
 | 🧩 Coding round | [NumPy](sheets/numpy-basics-cheatsheet.html) | Creating, reshaping, indexing, math and combining arrays |
 | 🧩 Coding round | [ML pipeline](sheets/ml-pipeline-cheatsheet.html) | Timed EDA → preprocess → model round: lines to remember |
+| 🧩 Coding round | [Pandas rapid fire quiz](quizzes/pandas-rapid-fire-quiz.html) | Timed quiz: type one line of pandas per question, from loading data to exporting it |
 | 🗄️ SQL | [SQL](sheets/sql-cheatsheet.html) | `CASE WHEN`, joins, grouping, clause order, CTEs, window functions |
 | 📐 ML fundamentals | [Probability](sheets/probability-cheatsheet.html) | Conditional probability, Bayes theorem, random variables |
 | 📐 ML fundamentals | [Statistics](sheets/statistics-cheatsheet.html) | Descriptive stats, distributions, CLT, confidence intervals, hypothesis tests, A/B sample size |
@@ -59,6 +62,7 @@ mindmap
 | 🧠 Deep learning | [YOLO evolution](sheets/yolo-architecture-evolution.html) | Interactive YOLO architecture timeline |
 | 🏗️ System design round | [System design](sheets/system-design-cheatsheet.html) | Requirements, scaling, storage, reliability and trade-offs |
 | 📝 Quiz reports | [Quiz reports](quizzes/quiz-reports.html) | Python MCQ quiz history with strengths and weaknesses |
+| 📝 Quiz reports | [Pandas quiz reports](quizzes/pandas-quiz-reports.html) | Pandas Rapid Fire round history with strengths, weaknesses and learnings |
 
 ## Previews
 
@@ -92,13 +96,24 @@ mindmap
 .
 ├── index.html          # entry point: grouped index of every sheet
 ├── sheets/             # one self-contained HTML page per topic
-├── quizzes/            # quiz history and per-quiz reports
+├── quizzes/            # interactive quizzes, quiz history and per-quiz reports
+├── tools/              # quiz_server.py: local server that saves quiz rounds into the repo
 ├── assets/
 │   ├── images/         # figures embedded in the sheets
 │   └── previews/       # screenshots used in this README
 ├── AGENTS.md           # maintenance rules for quizzes and reports
 └── README.md
 ```
+
+## Pandas rapid fire quiz
+
+Start the local save server, then play. Every finished round is written into the repo (`quizzes/pandas-rounds.js`) and appears on the [Pandas quiz reports](quizzes/pandas-quiz-reports.html) page as a full report.
+
+```bash
+python3 tools/quiz_server.py --open
+```
+
+It needs only the Python standard library, listens on `localhost:8000` (`--port` to change), and stops with Ctrl+C. Commit `quizzes/pandas-rounds.js` to keep the reports in git.
 
 ## Sheet format
 

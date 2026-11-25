@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pandas Quiz Reports</title>
+  <style>
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle, .muted, .meta { color: var(--muted); }
+    a { color: var(--blue); }
+    main > section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; scroll-margin-top: 12px; }
+    h2 { margin: 0 0 4px; font-size: 18px; }
+    h3 { margin: 18px 0 4px; font-size: 15px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); font: 12.5px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    ol > li { margin: 12px 0; }
+    @media (max-width: 600px) { main { padding: 16px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    .meta { font-size: 13px; }
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 14px 0 0; }
+    .metric { padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; }
+    .metric strong { display: block; font-size: 18px; }
+    .metric span { color: var(--muted); font-size: 12px; }
+    details.card details { margin-top: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; }
+    details.card details > summary { cursor: pointer; font-weight: 600; }
+    .empty { color: var(--muted); border-style: dashed; }
+  </style>
+</head>
+<body>
+<main>
+<header>
+  <p><a href="../index.html">← Back to cheat sheets</a></p>
+  <h1>Pandas Quiz Reports</h1>
+  <div class="subtitle">A running record of timed Pandas Rapid Fire rounds, where each answer is a typed line of pandas. Open a round to see its full report. <a href="pandas-rapid-fire-quiz.html">Play a round →</a></div>
+</header>
+
+<!-- Report cards (<section id="pandas-NNN">) are built by the script below from pandas-rounds.js. See AGENTS.md. -->
+<section class="empty" id="no-reports-yet">
+<p style="margin:0">No rounds recorded yet. Start the save server with <code>python3 tools/quiz_server.py</code>, play a round, and its full report appears here automatically.</p>
+</section>
+
+</main>
+<script src="pandas-rounds.js"></script>
+<script>
+  /* Builds a report card for every Pandas Rapid Fire round in pandas-rounds.js (written to the repo by
+     tools/quiz_server.py when a round ends), plus any rounds still waiting in this browser's storage. */
+  (function () {
+    var STAGES = { load: "Load", inspect: "Inspect", select: "Select & filter", clean: "Clean", transform: "Transform",
+      reshape: "Reshape", combine: "Combine", aggregate: "Aggregate", "time-series": "Time series", export: "Export" };
+    function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function pct(a, b) { return b ? (100 * a / b).toFixed(1) + "%" : "—"; }
+    function fmt(s) { return s == null ? "unknown" : Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+    function byStage(items) {
+      var g = {};
+      items.forEach(function (it) { (g[it.stage] = g[it.stage] || []).push(it); });
+      return Object.keys(STAGES).filter(function (k) { return g[k]; }).map(function (k) { return { stage: STAGES[k], items: g[k] }; });
+    }
+    function stageList(groups) {
+      return "<ul>" + groups.map(function (g) {
+        return "<li><strong>" + esc(g.stage) + ":</strong> " + g.items.map(function (it) { return esc(it.question); }).join(" · ") + "</li>";
+      }).join("") + "</ul>";
+    }
+    function card(r, id, name) {
+      var items = r.items || [];
+      var ok = items.filter(function (i) { return i.status === "correct"; });
+      var bad = items.filter(function (i) { return i.status === "wrong"; });
+      var skip = items.filter(function (i) { return i.status === "skip"; });
+      var total = items.length, att = ok.length + bad.length;
+      var score = (r.score > 0 ? "+" : "") + r.score;
+      var date = new Date(r.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+      var lim = r.limits || { easy: 20, medium: 35, hard: 60 };
+      var title = esc(name) + " — " + esc(r.round || "round");
+      var metrics = [[pct(ok.length, att), "Accuracy of attempted questions (" + ok.length + "/" + att + ")"], [total, "Total questions"],
+        [att, "Attempted"], [ok.length, "Correct"], [bad.length, "Wrong"], [skip.length, "Skipped or unanswered"],
+        [score, "Net score (+1 correct, −1 wrong, 0 skip)"]];
+      var learn = bad.concat(skip).map(function (it) {
+        var n2 = items.indexOf(it) + 1;
+        var tag = it.status === "wrong" ? "wrong" : (it.kind === "timeout" ? "unanswered — time ran out" : "skipped");
+        return "<li><strong>Q" + n2 + " — " + esc(STAGES[it.stage] || it.stage) + " (" + tag + ")</strong>" +
+          "<p><strong>Exact question:</strong> " + esc(it.question) + "</p>" +
+          (it.ctx ? "<pre>" + esc(it.ctx) + "</pre>" : "") +
+          "<p><strong>Your answer:</strong> " + (it.typed ? "<code>" + esc(it.typed) + "</code>" : "<em>none</em>") +
+          " <strong>Correct result:</strong> <code>" + esc(it.answer) + "</code></p>" +
+          "<p><strong>Learned:</strong> " + esc(it.learn) + "</p>" +
+          "<p class=\"muted\">Time: " + it.secs + "s of " + it.limit + "s</p></li>";
+      }).join("");
+      var html =
+        "<details class=\"card\"><summary><h2 id=\"" + id + "-heading\">" + title + "</h2><div class=\"meta\">" + date + " · " + total +
+        " questions · " + att + " attempted · " + pct(ok.length, att) + " accuracy · score " + score + "</div></summary>" +
+        "<p class=\"muted\">Recorded duration " + fmt(r.duration) + " · per-question limits: easy " + lim.easy + "s, medium " + lim.medium + "s, hard " + lim.hard + "s</p>" +
+        "<div class=\"summary\">" + metrics.map(function (m) { return "<div class=\"metric\"><strong>" + m[0] + "</strong><span>" + m[1] + "</span></div>"; }).join("") + "</div>" +
+        "<p>Correct as a share of all questions: <strong>" + pct(ok.length, total) + "</strong> (" + ok.length + "/" + total + ").</p>" +
+        "<p>Stages covered: " + byStage(items).map(function (g) { return esc(g.stage); }).join(", ") + ".</p>" +
+        "<section><h3>Strengths</h3>" + (ok.length ? stageList(byStage(ok)) : "<p>No correct answers this round.</p>") + "</section>" +
+        "<section><h3>Weaknesses</h3>" + (bad.length ? stageList(byStage(bad)) : "<p>No wrong answers this round.</p>") +
+        (skip.length ? "<p class=\"muted\">Not attempted, so not counted as a strength or weakness: " + skip.map(function (i) { return esc(i.question); }).join(" · ") + "</p>" : "") + "</section>" +
+        "<section><h3>Learnings from weaknesses</h3>" + (learn ?
+          "<details><summary>Show question-by-question learnings (" + bad.length + " wrong, " + skip.length + " unanswered)</summary><ol>" + learn + "</ol></details>" :
+          "<p>Nothing to review: every question was answered correctly.</p>") + "</section>" +
+        "</details>";
+      var s = document.createElement("section");
+      s.id = id;
+      s.innerHTML = html;
+      return s;
+    }
+    // Saved rounds come from quizzes/pandas-rounds.js (in the repo). Rounds finished while the save server
+    // was off wait in this browser's storage; they are shown too, marked as not yet in the repo.
+    var saved = window.PANDAS_ROUNDS || [];
+    var local = [];
+    try { local = JSON.parse(localStorage.getItem("pandasRapidFireHistory") || "[]"); } catch (e) { local = []; }
+    var inRepo = {};
+    saved.forEach(function (r) { inRepo[r.uid || r.date] = true; });
+    local = local.filter(function (r) { return !inRepo[r.uid || r.date]; });
+    if (!saved.length && !local.length) return;
+    var empty = document.getElementById("no-reports-yet");
+    if (empty) empty.remove();
+    var main = document.querySelector("main");
+    saved.forEach(function (r, i) { main.appendChild(card(r, "pandas-" + String(i + 1).padStart(3, "0"), "Pandas Rapid Fire " + String(i + 1).padStart(3, "0"))); });
+    local.forEach(function (r, i) { main.appendChild(card(r, "pandas-local-" + (i + 1), "Unsaved round " + (i + 1) + " (only in this browser — open the quiz via tools/quiz_server.py to save it)")); });
+  })();
+</script>
+<script>
+  (function () {
+    function openFromHash() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var target = id && document.getElementById(id);
+      if (!target) return;
+      var section = target.closest("main > section");
+      var card = section && section.querySelector("details.card");
+      if (card && !card.open) card.open = true;
+      target.scrollIntoView();
+    }
+    window.addEventListener("hashchange", openFromHash);
+    openFromHash();
+    var opened = [];
+    window.addEventListener("beforeprint", function () {
+      document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+    });
+    window.addEventListener("afterprint", function () {
+      opened.forEach(function (d) { d.open = false; }); opened = [];
+    });
+  })();
+</script>
+</body>
+</html>
