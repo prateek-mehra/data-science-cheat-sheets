@@ -1,0 +1,11 @@
+{
+ "task1_fraud_rate": 0.023,
+ "task1_n_cards": 2500,
+ "task1_max_amount": 1402.49,
+ "task2_fraud_rate_by_channel": {
+  "online": 0.0483,
+  "pos": 0.0072
+ },
+ "task2_top_category": "gift_cards",
+ "task2_foreign_fraud_rate": 0.1333
+}

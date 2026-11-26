@@ -51,6 +51,18 @@
     .result-task .row { display:flex; justify-content:space-between; font-weight:700; }
     .result-task ul { margin:6px 0 0; padding-left:18px; font-size:13px; }
     .ok { color:var(--green); } .bad { color:var(--red); } .warn { color:var(--amber); }
+    .dur { display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 4px; }
+    .dur button { padding:8px 16px; font-size:14px; }
+    .dur button.on { background:var(--blue-soft); border-color:var(--blue); color:var(--blue); }
+    .dur small { font-weight:500; color:var(--muted); margin-left:4px; }
+    .setting { display:flex; gap:8px; align-items:flex-start; font-size:13px; margin:10px 0 0; color:var(--muted); }
+    .setting input { margin-top:3px; }
+    .review { border:1px solid var(--line); border-radius:10px; padding:6px 18px 12px; }
+    .review table { border-collapse:collapse; font-size:13px; margin:8px 0; }
+    .review th, .review td { border:1px solid var(--line); padding:4px 8px; text-align:left; vertical-align:top; }
+    .review h1 { font-size:20px; } .review h2 { font-size:16px; margin-top:18px; } .review h3 { font-size:14px; }
+    .review li { margin:3px 0; }
+    .lock { color:var(--muted); font-weight:600; }
     pre.path { background:var(--soft); border:1px solid var(--line); border-radius:6px; padding:9px 11px; font-size:12.5px; white-space:pre-wrap; word-break:break-all; }
 
     /* ---------- IDE */
@@ -171,6 +183,7 @@
   <div id="test-list"></div>
   <h2 class="sec">Past submissions</h2>
   <div id="history"><p class="muted">None yet.</p></div>
+  <label class="setting"><input type="checkbox" id="reveal-setting"> <span>Show the auto-score as soon as I submit. When this is off (the default, as in a real assessment), the score stays hidden until a review is written to <code>REVIEW.md</code> in the submission folder.</span></label>
 </div>
 
 <!-- ============ INTRO ============ -->
@@ -182,6 +195,9 @@
   </header>
   <p id="intro-summary"></p>
   <div class="big-meta" id="intro-meta"></div>
+  <h2 class="sec">Time limit</h2>
+  <div class="dur" id="intro-dur"></div>
+  <div class="muted" style="font-size:12.5px">The standard length is marked. Pick a shorter one to practise under more pressure; the tasks stay the same.</div>
   <h2 class="sec">Before you start</h2>
   <ol class="rules">
     <li>The timer starts when you press <b>Start test</b> and <b>cannot be paused</b>. Refreshing the page or closing the tab does not stop it.</li>
@@ -202,12 +218,13 @@
     <div class="muted" id="result-sub"></div>
   </header>
   <div class="big-meta" id="result-meta"></div>
-  <h2 class="sec">Auto-graded breakdown</h2>
+  <div id="result-review-wrap" class="hidden"><h2 class="sec">Review</h2><div class="review" id="result-review"></div></div>
+  <h2 class="sec" id="result-tasks-h">Auto-graded breakdown</h2>
   <div id="result-tasks"></div>
   <h2 class="sec">Saved for review</h2>
-  <p>Your notebook, predictions, captured variables and this grade were saved to:</p>
+  <p>Your notebook, predictions, captured variables and the grade were saved to:</p>
   <pre class="path" id="result-path"></pre>
-  <p class="muted">To get a code review, commit and push that folder (or run Claude Code in this repo) and ask: <i>“Review my submission in <span id="result-path2"></span>.”</i></p>
+  <p class="muted" id="result-howto">To get a review, commit and push that folder (or run Claude Code in this repo) and ask: <i>“Review my submission in <span id="result-path2"></span>.”</i> The review is written to <code>REVIEW.md</code> there and shows up on this page, together with the score.</p>
 </div>
 
 <!-- ============ IDE ============ -->
@@ -319,15 +336,20 @@ async function loadLobby() {
       <div class="test-card"><div class="info"><h3>${esc(t.title)}</h3><div class="muted">${esc(t.company)}</div>
         <div style="margin-top:6px;font-size:13.5px">${esc(t.summary)}</div>
         <div class="chips"><span class="chip">⏱ ${fmtMins(t.duration_minutes * 60)}</span><span class="chip">${t.tasks.length} tasks</span>
+        <span class="chip">${esc(METRIC_NAMES[t.model.metric] || t.model.metric)}</span>
         <span class="chip">${t.tasks.reduce((a, x) => a + x.points, 0)} points</span><span class="chip">${esc(t.framework)}</span></div></div>
         <button class="primary" data-id="${esc(t.id)}">Open</button></div>`).join("") || "<p class='muted'>No tests found in assessments/tests/.</p>";
     $("#test-list").querySelectorAll("button[data-id]").forEach(b => b.onclick = () => openIntro(b.dataset.id));
     const { submissions } = await api("history");
     if (submissions.length) {
-      $("#history").innerHTML = `<table class="hist"><tr><th>Started</th><th>Test</th><th>Time used</th><th>Score</th><th>Folder</th></tr>` +
+      $("#history").innerHTML = `<table class="hist"><tr><th>Started</th><th>Test</th><th>Time used</th><th>Score</th><th>Review</th></tr>` +
         submissions.map(s => `<tr><td>${esc(s.started.replace("T", " ").slice(0, 16))}</td><td>${esc(s.title)}</td>
           <td>${fmtTime(s.elapsed_seconds)} / ${fmtMins(s.duration_limit_seconds)}${s.reason.startsWith("timeout") ? " <span class='warn'>(timed out)</span>" : ""}</td>
-          <td><b>${s.score}</b> / ${s.max_score}</td><td><code>${esc(s.dir)}</code></td></tr>`).join("") + "</table>";
+          <td>${s.reviewed || revealScores() ? `<b>${s.score}</b> / ${s.max_score}` : "<span class='lock'>🔒 hidden</span>"}</td>
+          <td>${s.reviewed ? `<button data-key="${esc(s.key)}">Open review</button>` : `<span class="muted">awaiting review</span> <button class="ghost" data-key="${esc(s.key)}">Details</button>`}</td></tr>`).join("") + "</table>";
+      $("#history").querySelectorAll("button[data-key]").forEach(b => b.onclick = async () => {
+        try { showResult(await api("submission?key=" + encodeURIComponent(b.dataset.key)), true); } catch (e) { toast(e.message, "err"); }
+      });
     }
   } catch (e) {
     $("#server-msg").innerHTML = `<div class="notice err"><b>The practice server isn't reachable.</b> This page needs the local server to run Python.
@@ -335,6 +357,11 @@ async function loadLobby() {
       <code>http://localhost:8010/assessments/ds-framework.html</code>.</div>`;
   }
 }
+
+const METRIC_NAMES = { f1: "F1", roc_auc: "ROC AUC", rmse: "RMSE", macro_f1: "Macro F1" };
+function revealScores() { try { return localStorage.getItem("dsf-reveal") === "1"; } catch (e) { return false; } }
+$("#reveal-setting").checked = revealScores();
+$("#reveal-setting").onchange = e => { try { localStorage.setItem("dsf-reveal", e.target.checked ? "1" : "0"); } catch (err) { /* storage blocked */ } loadLobby(); };
 
 function openIntro(id) {
   const t = STATE.tests.find(x => x.id === id);
@@ -345,17 +372,24 @@ function openIntro(id) {
   $("#intro-meta").innerHTML = `<div><strong>${fmtMins(t.duration_minutes * 60)}</strong><span>total time</span></div>
     <div><strong>${t.tasks.length}</strong><span>tasks</span></div>
     <div><strong>${t.tasks.reduce((a, x) => a + x.points, 0)}</strong><span>points</span></div>
-    <div><strong>${t.data_files.length}</strong><span>data files</span></div>`;
+    <div><strong>${esc(METRIC_NAMES[t.model.metric] || t.model.metric)}</strong><span>model metric</span></div>`;
+  const opts = [...new Set([...(t.duration_options || []), t.duration_minutes])].sort((a, b) => a - b);
+  STATE.duration = t.duration_minutes;
+  const drawDur = () => {
+    $("#intro-dur").innerHTML = opts.map(m => `<button data-m="${m}" class="${m === STATE.duration ? "on" : ""}">${fmtMins(m * 60)}${m === t.duration_minutes ? "<small>standard</small>" : ""}</button>`).join("");
+    $("#intro-dur").querySelectorAll("button").forEach(b => b.onclick = () => { STATE.duration = +b.dataset.m; drawDur(); });
+  };
+  drawDur();
   show("intro");
 }
 
 $("#intro-back").onclick = e => { e.preventDefault(); loadLobby(); };
 $("#result-back").onclick = e => { e.preventDefault(); loadLobby(); };
 $("#start-btn").onclick = async () => {
-  const ok = await modal({ title: "Start the timer?", html: `<p>You'll have <b>${fmtMins(STATE.test.duration_minutes * 60)}</b>. The timer can't be paused.</p>`, ok: "Start test" });
+  const ok = await modal({ title: "Start the timer?", html: `<p>You'll have <b>${fmtMins(STATE.duration * 60)}</b>. The timer can't be paused.</p>`, ok: "Start test" });
   if (!ok) return;
   $("#start-btn").disabled = true;
-  try { const st = await api("start", { test_id: STATE.test.id }); await enterIDE(st.active); }
+  try { const st = await api("start", { test_id: STATE.test.id, duration_minutes: STATE.duration }); await enterIDE(st.active); }
   catch (e) { toast(e.message, "err", 5000); }
   finally { $("#start-btn").disabled = false; }
 };
@@ -412,8 +446,16 @@ function mdToHtml(src) {
     .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
     .replace(/(^|[^\w*])[*_]([^*_]+)[*_](?=[^\w*]|$)/g, "$1<i>$2</i>")
     .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-  const out = []; let list = null;
+  const out = []; let list = null; let table = null;
+  const flushTable = () => { if (!table) return; out.push("<table>" + table.map((cells, i) => "<tr>" + cells.map(c => i === 0 ? `<th>${inline(c)}</th>` : `<td>${inline(c)}</td>`).join("") + "</tr>").join("") + "</table>"); table = null; };
   for (const line of src.split("\n")) {
+    if (/^\s*\|.*\|\s*$/.test(line)) {
+      if (list) { out.push("</" + list + ">"); list = null; }
+      if (/^\s*\|[\s:|-]+\|\s*$/.test(line)) continue;
+      (table = table || []).push(line.trim().slice(1, -1).split("|").map(c => c.trim()));
+      continue;
+    }
+    flushTable();
     const m = line.match(/^\u0000(\d+)\u0000$/);
     if (m) { if (list) { out.push("</" + list + ">"); list = null; } out.push(blocks[+m[1]]); continue; }
     const h = line.match(/^(#{1,4})\s+(.*)/);
@@ -427,6 +469,7 @@ function mdToHtml(src) {
     if (h) out.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`);
     else if (line.trim()) out.push("<p>" + inline(line) + "</p>");
   }
+  flushTable();
   if (list) out.push("</" + list + ">");
   return out.join("");
 }
@@ -852,24 +895,43 @@ $("#submit-btn").onclick = async () => {
 
 window.addEventListener("beforeunload", e => { if (STATE.attempt && !STATE.submitting) { if (DIRTY) save(); e.preventDefault(); e.returnValue = ""; } });
 
-function showResult(r) {
+function showResult(r, fromHistory = false) {
   const g = r.grade, m = r.meta;
-  $("#result-sub").textContent = `${m.title} · ${m.reason.startsWith("timeout") ? "auto-submitted when time ran out" : "submitted"} at ${m.submitted.replace("T", " ").slice(0, 19)}`;
-  $("#result-meta").innerHTML = `<div><strong>${g.score} / ${g.max_score}</strong><span>auto score</span></div>
-    <div><strong>${fmtTime(m.elapsed_seconds)}</strong><span>time used of ${fmtMins(m.duration_limit_seconds)}</span></div>
+  const visible = !!r.review || revealScores();
+  const timedOut = m.reason.startsWith("timeout");
+  $("#result").querySelector("h1").textContent = fromHistory ? (r.review ? "Reviewed submission" : "Submission") : "Submitted";
+  $("#result-sub").textContent = `${m.title} · ${timedOut ? "auto-submitted when time ran out" : "submitted"} at ${m.submitted.replace("T", " ").slice(0, 19)}`;
+  const shorter = m.standard_duration_seconds && m.duration_limit_seconds !== m.standard_duration_seconds
+    ? ` (standard ${fmtMins(m.standard_duration_seconds)})` : "";
+  $("#result-meta").innerHTML = (visible ? `<div><strong>${g.score} / ${g.max_score}</strong><span>auto score</span></div>`
+      : `<div><strong class="lock">🔒 Hidden</strong><span>score is shown once the review is in</span></div>`) +
+    `<div><strong>${fmtTime(m.elapsed_seconds)}</strong><span>time used of ${fmtMins(m.duration_limit_seconds)}${shorter}</span></div>
     <div><strong>${m.cells_run}</strong><span>cells run (${m.cells_with_errors} with errors)</span></div>`;
+  $("#result-review-wrap").classList.toggle("hidden", !r.review);
+  $("#result-review").innerHTML = r.review ? mdToHtml(r.review) : "";
+  $("#result-tasks-h").textContent = visible ? "Auto-graded breakdown" : "Submission file checks";
   $("#result-tasks").innerHTML = g.tasks.map(t => {
     let items = "";
-    if (t.checks) items = t.checks.map(c => `<li class="${c.passed ? "ok" : "bad"}">${c.passed ? "✓" : "✗"} <code>${esc(c.var)}</code> ${esc(c.note)}</li>`).join("");
     if (t.model) {
       const md = t.model;
-      if (md.f1 !== undefined) items += `<li>F1 <b>${md.f1}</b> · accuracy ${md.accuracy} · predicted churn rate ${md.predicted_positive_rate} · ${md.rows} rows</li>`;
+      if (!md.file_found) items += `<li class="bad">✗ submission.csv was not submitted</li>`;
+      else if (visible && md.value !== undefined) {
+        items += `<li>${esc(METRIC_NAMES[md.metric] || md.metric)} <b>${md.value}</b>` +
+          (md.accuracy !== undefined ? ` · accuracy ${md.accuracy}` : "") +
+          (md.predicted_positive_rate !== undefined ? ` · predicted positive rate ${md.predicted_positive_rate}` : "") + ` · ${md.rows} rows</li>`;
+      } else if (md.rows !== undefined) items += `<li>${md.rows} of ${md.expected_rows} test rows have a valid prediction</li>`;
       items += (md.problems || []).map(p => `<li class="warn">⚠ ${esc(p)}</li>`).join("");
+      if (md.file_found && !(md.problems || []).length && !visible) items += `<li class="ok">✓ format looks right</li>`;
+    } else if (visible) {
+      items = t.checks.map(c => `<li class="${c.passed ? "ok" : "bad"}">${c.passed ? "✓" : "✗"} <code>${esc(c.var)}</code> ${esc(c.note)}</li>`).join("");
+    } else {
+      return "";
     }
-    return `<div class="result-task"><div class="row"><span>Task ${t.id} · ${esc(t.title)}</span><span>${t.points} / ${t.max}</span></div><ul>${items}</ul></div>`;
+    return `<div class="result-task"><div class="row"><span>Task ${t.id} · ${esc(t.title)}</span><span>${visible ? t.points + " / " + t.max : ""}</span></div><ul>${items}</ul></div>`;
   }).join("");
   $("#result-path").textContent = r.submission_dir + "/";
   $("#result-path2").textContent = r.submission_dir;
+  $("#result-howto").classList.toggle("hidden", !!r.review);
   show("result");
 }
 

@@ -1,0 +1,55 @@
+<h2>Overview</h2>
+<p><b>Harbor Homes</b> lists apartments for rent across four boroughs. Landlords type their listings by hand, so the data is messy. The pricing team wants a model that suggests a monthly rent for new listings.</p>
+<p>Tasks 1–3 are graded from the <b>variables</b> you leave in the notebook (read from the live kernel when you submit). Task 4 is graded from <code>submission.csv</code>.</p>
+
+<h3>Files</h3>
+<ul>
+  <li><code>listings_train.csv</code> — listings with the label <code>rent</code> (USD per month).</li>
+  <li><code>listings_test.csv</code> — the same columns without <code>rent</code>.</li>
+  <li><code>neighbourhoods.csv</code> — <code>neighbourhood, borough, median_income, transit_score</code> for all 24 neighbourhoods.</li>
+</ul>
+
+<h3>Listing columns</h3>
+<table>
+  <tr><th>column</th><th>notes</th></tr>
+  <tr><td><code>listing_id</code></td><td>integer key</td></tr>
+  <tr><td><code>neighbourhood</code></td><td>casing and trailing spaces vary; matches <code>neighbourhoods.csv</code> once cleaned to Title Case</td></tr>
+  <tr><td><code>bedrooms</code></td><td><code>Studio</code>, <code>1</code> … <code>4</code></td></tr>
+  <tr><td><code>bathrooms</code></td><td>float</td></tr>
+  <tr><td><code>sqft</code></td><td>text: <code>850</code>, <code>850 sq ft</code>, <code>850sqft</code>, <code>1,250 sq ft</code></td></tr>
+  <tr><td><code>floor</code></td><td><code>G</code> (ground) or a number</td></tr>
+  <tr><td><code>year_built</code></td><td>int</td></tr>
+  <tr><td><code>furnished</code></td><td><code>yes</code> / <code>no</code></td></tr>
+  <tr><td><code>amenities</code></td><td>semicolon-separated list, e.g. <code>gym;LAUNDRY; doorman</code>; empty or missing means none</td></tr>
+  <tr><td><code>listed_date</code></td><td>ISO date, 2026</td></tr>
+</table>
+
+<h2>Task 1 · Clean the listings <span class="pts">15 pts</span></h2>
+<p>Load the training listings. Convert <code>sqft</code> to an integer, <code>bedrooms</code> to an integer (<code>Studio</code> = 0) and <code>floor</code> to an integer (<code>G</code> = 0). Some rents are data-entry typos: <b>keep only listings with 300 ≤ rent ≤ 50,000</b>. Store, on the cleaned training data:</p>
+<ul>
+  <li><code>task1_n_rows</code> — the number of listings kept (int).</li>
+  <li><code>task1_median_rent_by_bedrooms</code> — dict of bedrooms (0–4) → median rent, rounded to 1 decimal.</li>
+  <li><code>task1_median_rent_per_sqft</code> — the median of <code>rent / sqft</code> across listings, rounded to 3 decimals.</li>
+</ul>
+
+<h2>Task 2 · Amenities <span class="pts">10 pts</span></h2>
+<p>Split <code>amenities</code> into individual amenities, lower-cased and stripped (a listing lists each amenity at most once). Using the cleaned training data, store:</p>
+<ul>
+  <li><code>task2_amenity_counts</code> — dict of amenity → the number of listings that have it.</li>
+  <li><code>task2_doorman_premium</code> — median rent of listings with a doorman minus median rent of listings without, rounded to 1 decimal.</li>
+</ul>
+
+<h2>Task 3 · Neighbourhoods <span class="pts">15 pts</span></h2>
+<p>Clean <code>neighbourhood</code> (strip spaces, Title Case) and join <code>neighbourhoods.csv</code>. Every listing should match. Store:</p>
+<ul>
+  <li><code>task3_median_rent_by_borough</code> — dict of borough → median rent, rounded to 1 decimal.</li>
+  <li><code>task3_corr_income_rent</code> — the Pearson correlation between <code>median_income</code> and <code>rent</code> across training listings, rounded to 3 decimals.</li>
+</ul>
+
+<h2>Task 4 · Predict rent <span class="pts">60 pts</span></h2>
+<p>Train a regression model and predict <code>rent</code> for every listing in <code>listings_test.csv</code> (it contains no typos). Save <code>submission.csv</code>:</p>
+<pre>listing_id,rent
+123456,2450.0
+654321,3810.5
+...</pre>
+<p><b>Scoring:</b> RMSE against the hidden rents. 0 points at RMSE ≥ 620, full points at RMSE ≤ 330, linear in between. Report a validation RMSE in your notebook. Rents are right-skewed, so consider modelling <code>log(rent)</code>.</p>

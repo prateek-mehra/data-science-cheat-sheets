@@ -1,0 +1,52 @@
+<h2>Overview</h2>
+<p><b>Helix Software</b> sells a project-management app and, to some customers, on-site hardware. Every support ticket is triaged by hand to one of four teams: <code>billing</code>, <code>technical</code>, <code>account</code> or <code>shipping</code>. You'll analyse the ticket log and build a model that routes new tickets automatically.</p>
+<p>Tasks 1–3 are graded from the <b>variables</b> you leave in the notebook (read from the live kernel when you submit). Task 4 is graded from <code>submission.csv</code>.</p>
+
+<h3>Files</h3>
+<ul>
+  <li><code>tickets_train.csv</code> — tickets with the label <code>team</code>.</li>
+  <li><code>tickets_test.csv</code> — the same columns without <code>team</code>.</li>
+  <li><code>customers.csv</code> — <code>customer_id, plan, country, signup_date, has_hardware</code>. <code>plan</code> is <code>free</code>, <code>pro</code> or <code>enterprise</code>.</li>
+</ul>
+
+<h3>Ticket columns</h3>
+<table>
+  <tr><th>column</th><th>notes</th></tr>
+  <tr><td><code>ticket_id</code></td><td>string key</td></tr>
+  <tr><td><code>customer_id</code></td><td>joins to <code>customers.customer_id</code></td></tr>
+  <tr><td><code>created_at</code>, <code>first_response_at</code></td><td><code>YYYY-MM-DD HH:MM</code>; <code>first_response_at</code> is empty if nobody has replied</td></tr>
+  <tr><td><code>channel</code></td><td>email / chat / phone</td></tr>
+  <tr><td><code>priority</code></td><td>typed by agents: <code>High</code>, <code>P1</code>, <code>med</code>, <code>p3</code>, …</td></tr>
+  <tr><td><code>subject</code></td><td>free text; casing varies; a few are missing or blank</td></tr>
+  <tr><td><code>n_attachments</code></td><td>int</td></tr>
+</table>
+
+<h2>Task 1 · Clean the tickets <span class="pts">15 pts</span></h2>
+<p>Load the training tickets. Drop tickets whose <code>subject</code> is missing or contains only whitespace. Map <code>priority</code> to exactly <code>high</code>, <code>medium</code> or <code>low</code> (case-insensitive: <code>P1</code> = high, <code>P2</code> and <code>med</code> = medium, <code>P3</code> = low). Store, on the cleaned training data:</p>
+<ul>
+  <li><code>task1_n_rows</code> — the number of tickets (int).</li>
+  <li><code>task1_priority_counts</code> — dict of priority → count.</li>
+  <li><code>task1_team_share</code> — dict of team → share of tickets, rounded to 3 decimals.</li>
+</ul>
+
+<h2>Task 2 · Response times <span class="pts">15 pts</span></h2>
+<p>Parse both timestamps. The <b>response time</b> is the hours between <code>created_at</code> and <code>first_response_at</code> (fractional hours, e.g. 90 minutes = 1.5). Using the cleaned training tickets, store:</p>
+<ul>
+  <li><code>task2_median_response_hours_by_team</code> — dict of team → median response time in hours, ignoring unanswered tickets, rounded to 2 decimals.</li>
+  <li><code>task2_pct_unanswered</code> — the share of tickets with no first response, rounded to 4 decimals.</li>
+</ul>
+
+<h2>Task 3 · Customer plans <span class="pts">15 pts</span></h2>
+<p>Join <code>customers.csv</code> onto the cleaned training tickets. Store:</p>
+<ul>
+  <li><code>task3_top_team_by_plan</code> — dict of plan → the team that receives the most tickets from customers on that plan.</li>
+  <li><code>task3_enterprise_high_share</code> — the share of enterprise-plan tickets with priority <code>high</code>, rounded to 4 decimals.</li>
+</ul>
+
+<h2>Task 4 · Route the test tickets <span class="pts">55 pts</span></h2>
+<p>Train a classifier and predict <code>team</code> for every ticket in <code>tickets_test.csv</code>. The subject line is the strongest signal, so you'll want to turn text into features (e.g. <code>TfidfVectorizer</code> or <code>CountVectorizer</code>); the metadata and the customer's plan help too. Save <code>submission.csv</code>:</p>
+<pre>ticket_id,team
+TK123456,billing
+TK654321,technical
+...</pre>
+<p><b>Scoring:</b> macro-averaged F1 over the four teams (each team counts equally, so the small <code>shipping</code> class matters). 0 points at macro F1 ≤ 0.55, full points at ≥ 0.90, linear in between. Report a validation score in your notebook.</p>

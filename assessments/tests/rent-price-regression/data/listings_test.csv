@@ -1,0 +1,1525 @@
+listing_id,neighbourhood,bedrooms,bathrooms,sqft,floor,year_built,furnished,amenities,listed_date
+978133,westlea,1,1.0,780,16,1957,no, pets_allowed;laundry,2026-08-16
+878667,OAKHURST,Studio,1.0,259,21,1928,no,balcony;gym;laundry; parking,2026-06-12
+294770,Canal Quarter,2,2.0,1028,13,1988,no,pets_allowed;balcony;gym;laundry;dishwasher;parking,2026-01-04
+304009,Oakhurst,Studio,1.0,312 sq ft,7,1965,no,gym;laundry;dishwasher,2026-04-04
+902567,Elm Park,2,1.5,1156,G,1948,no,parking;dishwasher;balcony;gym;LAUNDRY,2026-06-05
+357858,MILL HILL,3,1.0,1355,23,1981,yes,dishwasher; elevator;laundry;parking;doorman,2026-02-19
+159527,Ashton,1,1.0,766 sq ft,14,1947,no,laundry;parking;pets_allowed,2026-02-20
+504466,Stonebridge,3,1.0,1646,G,1954,no,parking;pets_allowed;laundry,2026-07-05
+960449,Northcross,Studio,1.0,305,24,2007,no,doorman;dishwasher;laundry,2026-01-10
+176095,riverside,2,1.5,1090 sq ft,G,2005,yes, balcony;laundry;elevator,2026-08-23
+163386,Mill Hill,Studio,1.0,428sqft,18,1943,no,balcony;laundry,2026-06-16
+806807,Larkspur,2,1.5,878 sq ft,34,1997,no,doorman;gym;DISHWASHER,2026-09-05
+837204,Quayside ,Studio,1.0,349 sq ft,G,1992,no,laundry;pets_allowed;balcony,2026-02-16
+906511,Mill Hill,2,1.0,920,G,1995,yes,laundry;PETS_ALLOWED;dishwasher;doorman;balcony;elevator,2026-01-30
+359943,Elm Park,1,1.0,637 sq ft,27,1965,no,balcony;dishwasher;pets_allowed,2026-05-21
+571304,Brookvale,Studio,1.0,267,G,1971,no,parking,2026-03-21
+257446,Quayside,1,1.0,768 sq ft,G,1964,yes,PARKING;elevator;pets_allowed;gym,2026-07-05
+371559,Quayside ,1,1.0,701 sq ft,4,1960,no,laundry;BALCONY;parking,2026-06-01
+299170,pier row,Studio,1.0,426 sq ft,2,1966,no,LAUNDRY;dishwasher,2026-08-16
+676613,Heathside,3,1.0,1850,19,1994,no,doorman;dishwasher,2026-09-24
+853052,Larkspur,2,1.5,1299,33,1985,yes,pets_allowed;GYM;laundry;elevator,2026-04-15
+735423,lighthouse,Studio,1.0,528sqft,G,1969,yes,PETS_ALLOWED;gym;dishwasher;elevator,2026-06-03
+324280,Ashton,3,2.0,1162sqft,18,1946,no,elevator;dishwasher;balcony;pets_allowed,2026-02-15
+359626,canal quarter,1,1.0,671 sq ft,13,2005,no,laundry;gym;dishwasher;pets_allowed,2026-03-30
+854802,Anchor Bay,2,1.5,1156,13,1957,no,elevator;balcony,2026-08-17
+834420,fernwood,3,2.0,1478 sq ft,34,1946,no,parking;gym;dishwasher;laundry,2026-04-11
+321395,Foundry,2,1.0,1023,7,1936,yes,parking;pets_allowed;laundry,2026-04-06
+733946,foundry,2,1.0,780,19,1977,no,laundry;elevator,2026-09-06
+355426,mill hill,3,1.5,1647,19,1954,no,doorman;LAUNDRY;dishwasher,2026-02-26
+769784,Riverside,3,1.0,1477 sq ft,28,2009,yes, dishwasher;BALCONY;laundry;gym;pets_allowed,2026-02-23
+526791,Lighthouse,1,1.0,642,32,2007,yes,doorman,2026-06-07
+501938,Elm Park,2,1.5,887 sq ft,19,1930,no,laundry;pets_allowed;elevator,2026-01-11
+603938,Heathside,2,2.0,953 sq ft,20,2020,no,elevator;doorman;pets_allowed;balcony,2026-06-24
+507973,ashton,2,2.0,1212 sq ft,5,2021,yes,elevator,2026-03-06
+383599,brickworks,3,2.5,857,23,1995,yes,laundry;dishwasher;doorman,2026-09-03
+146631,marlow,3,1.0,1363 sq ft,G,1982,no,laundry,2026-07-14
+817915,Mill Hill,2,2.0,827,6,1952,no,dishwasher;balcony,2026-06-11
+522317,Lighthouse,2,1.0,1397,2,1996,yes,pets_allowed; elevator;dishwasher;doorman,2026-07-15
+318036,Lighthouse,1,1.0,601sqft,31,1991,no,gym;pets_allowed;dishwasher,2026-09-13
+384847,Lighthouse,4,1.5,"1,874 sq ft",G,1948,no,doorman;PARKING;laundry;dishwasher,2026-03-13
+676030,briar hill,3,1.0,1267,G,1970,no,parking; pets_allowed;laundry;balcony;DISHWASHER,2026-08-19
+980873,oakhurst,2,2.0,1268,21,1988,no,elevator;gym,2026-08-05
+484482,Brickworks,Studio,1.0,351 sq ft,10,1966,yes,PETS_ALLOWED;laundry,2026-02-07
+771130,Briar Hill,3,2.0,1263 sq ft,G,1952,no,laundry; parking;pets_allowed,2026-07-12
+619773,Ashton ,1,1.0,579,G,1938,no, balcony;elevator,2026-01-30
+320791,Heathside,1,1.0,566,G,1992,yes,laundry;elevator,2026-02-27
+665402,Northcross,3,1.0,1246 sq ft,30,1980,no,gym;DISHWASHER,2026-09-16
+801119,Elm Park,2,2.0,1275,16,1938,yes,laundry;elevator;doorman;gym,2026-04-05
+789793,Westlea,3,1.0,1175 sq ft,32,1991,yes,laundry;elevator;parking,2026-01-14
+785131,canal quarter,2,2.0,821sqft,3,1981,no,pets_allowed;BALCONY;laundry;gym,2026-03-23
+676258,Briar Hill ,2,2.0,958,13,1954,no,laundry;PETS_ALLOWED,2026-01-22
+512621,lighthouse,Studio,1.0,250,25,1939,yes,gym; balcony; pets_allowed,2026-07-23
+622509,Heathside,1,1.0,590,9,1955,yes,PETS_ALLOWED;elevator; laundry,2026-09-02
+521687,Northcross,2,1.0,1103,12,1964,no,elevator;laundry;doorman,2026-05-24
+514346,Ashton,Studio,1.0,364,14,2016,no,balcony;elevator;gym;laundry,2026-03-19
+650988,Pier Row,1,1.0,622sqft,34,1927,no,elevator; pets_allowed,2026-09-26
+592479,Marlow,Studio,1.0,405 sq ft,2,1941,no,PARKING;laundry;elevator,2026-08-01
+301930,Elm Park,Studio,1.0,299,G,1976,yes,balcony;elevator;pets_allowed;laundry;parking,2026-09-17
+411728,Saltmarsh,3,2.0,1432sqft,20,1985,no,doorman; elevator;dishwasher;gym,2026-09-11
+478334,Westlea,1,1.0,661,31,1979,yes, elevator;parking; pets_allowed;laundry,2026-05-28
+495955,Larkspur,2,2.0,1014,28,1982,no,laundry;parking,2026-09-21
+189779,Foundry,4,2.5,1499sqft,4,1948,no,dishwasher;laundry,2026-06-22
+211501,pier row,2,1.0,979sqft,G,1948,no,parking;dishwasher,2026-06-28
+597258,quayside,Studio,1.0,500,5,2015,no,gym;elevator;parking,2026-01-15
+183005,Westlea,2,2.0,1397sqft,24,1946,yes,,2026-09-10
+997081,Oakhurst,Studio,1.0,418 sq ft,32,1976,no,,2026-06-26
+680013,BRICKWORKS,2,2.0,1011,G,1951,no,pets_allowed;elevator;laundry;balcony;DOORMAN,2026-01-17
+919202,Oakhurst,2,2.0,910,30,1939,no,laundry;pets_allowed;dishwasher,2026-06-21
+441191,Pier Row,1,1.0,706,26,2005,no,elevator;parking;dishwasher;laundry,2026-03-12
+971039,Stonebridge,1,1.0,730 sq ft,13,2004,no,dishwasher,2026-07-15
+558843,Oakhurst,3,1.5,"1,296 sq ft",9,1968,no,dishwasher; laundry,2026-02-16
+556276,Kingsfield,2,2.0,1018,23,2022,no, dishwasher;elevator;gym;balcony,2026-05-17
+808347,Elm Park,Studio,1.0,367,18,1925,no,dishwasher;GYM;doorman;parking,2026-09-05
+455027,Anchor Bay,3,3.0,1417,19,1950,no,dishwasher;parking;laundry;doorman,2026-03-04
+513348,Foundry,1,1.0,876,10,1990,no,parking;laundry;elevator,2026-01-12
+885565,Mill Hill,1,1.0,785,26,1959,no,laundry; parking;elevator;dishwasher,2026-07-16
+689938,Quayside,2,1.0,951 sq ft,G,1998,no,parking;laundry;pets_allowed,2026-06-13
+479584,Ashton,1,1.0,477,24,1942,no,doorman;dishwasher;gym,2026-08-12
+900027,canal quarter,Studio,1.0,350 sq ft,6,1973,no,dishwasher,2026-02-28
+129379,Canal Quarter,4,2.0,1488sqft,G,1976,no, doorman;laundry;dishwasher;pets_allowed,2026-05-31
+927449,Heathside,Studio,1.0,357,31,2006,no,dishwasher;doorman;elevator,2026-03-06
+805537,RIVERSIDE,Studio,1.0,316 sq ft,G,1993,no,laundry;balcony;parking,2026-05-24
+906313,Elm Park,2,2.0,991 sq ft,21,1946,no,laundry;dishwasher; balcony;pets_allowed,2026-02-15
+679303,Lighthouse,Studio,1.0,409,G,2015,yes,balcony;elevator,2026-08-01
+761933,Lighthouse,4,2.5,1353,32,1936,no,pets_allowed;laundry,2026-06-18
+850917,STONEBRIDGE,4,2.0,1996,13,1961,yes,elevator; gym;DISHWASHER,2026-05-06
+419736,Elm Park,2,1.0,1047 sq ft,6,1940,no,parking;laundry;doorman;elevator;gym,2026-04-16
+657470,oakhurst,3,2.0,1441 sq ft,19,1928,no,laundry;GYM;doorman,2026-06-26
+369830,Elm Park,1,1.0,610sqft,23,1966,yes,elevator;gym;pets_allowed;laundry,2026-01-04
+543667,Northcross,1,1.0,707,20,1953,no,laundry;balcony;parking;pets_allowed,2026-08-31
+857198,kingsfield,2,2.0,931 sq ft,20,2012,no,DISHWASHER; laundry;pets_allowed,2026-01-07
+402865,riverside,1,1.0,713sqft,G,2001,no,parking;laundry;gym,2026-06-08
+793619,Elm Park,Studio,1.0,275 sq ft,25,1944,yes,laundry; doorman;dishwasher,2026-07-06
+949908,Stonebridge,1,1.0,828 sq ft,22,1983,no, gym;DISHWASHER;pets_allowed,2026-01-06
+547724,Fernwood,4,2.0,"1,980 sq ft",28,1960,yes,PETS_ALLOWED;laundry; balcony,2026-01-27
+627649,Quayside ,2,2.0,972 sq ft,32,1935,no,laundry,2026-01-23
+181558,quayside,Studio,1.0,326 sq ft,20,1962,no,,2026-03-22
+779332,Oakhurst,1,1.0,586 sq ft,34,1974,no,gym;elevator;parking,2026-04-15
+368704,Marlow,2,1.0,1087,G,1978,no,LAUNDRY;balcony;doorman;parking;elevator;gym,2026-09-07
+324239,Pier Row,1,1.0,712sqft,18,2019,no,elevator;pets_allowed;dishwasher;laundry,2026-03-20
+141985,Stonebridge,2,2.0,1201 sq ft,G,1989,no, dishwasher;laundry,2026-01-29
+448649,Heathside,1,1.0,958,18,1998,no,pets_allowed;elevator;gym,2026-03-02
+251012,Mill Hill,1,1.0,700,11,2009,no,balcony;pets_allowed; elevator;dishwasher,2026-02-22
+542830,Foundry,1,1.0,518,24,1960,no,laundry;elevator,2026-02-08
+281376,Pier Row,2,1.5,1071sqft,1,2019,no,elevator;dishwasher,2026-04-28
+859451,Kingsfield,1,1.0,527,13,1925,no,pets_allowed; gym,2026-02-24
+970160,Elm Park,3,2.0,1374 sq ft,21,1935,no,balcony;doorman;elevator;laundry,2026-05-06
+881953,Ashton,1,1.0,900,17,1936,yes,balcony;dishwasher;pets_allowed,2026-06-15
+813575,Westlea,1,1.0,448,11,1927,yes,balcony;dishwasher,2026-05-18
+615251,Larkspur,2,1.0,926sqft,G,2004,no,elevator;balcony;GYM,2026-04-06
+570439,Lighthouse,Studio,1.0,361 sq ft,31,2006,no,,2026-09-03
+902116,Heathside,1,1.0,570,8,1956,no,parking;balcony,2026-04-14
+937585,Brickworks,Studio,1.0,377,29,1936,yes,gym,2026-04-14
+230093,foundry,2,1.5,958,6,1996,yes,elevator;PARKING,2026-01-24
+770360,ashton,2,2.0,1154,G,1965,no,dishwasher; pets_allowed,2026-06-03
+220257,larkspur,2,2.0,1255sqft,6,1959,no,pets_allowed;balcony;gym;elevator,2026-07-10
+620646,Canal Quarter,2,1.0,1170 sq ft,17,1963,no, laundry;parking;elevator;balcony;doorman,2026-01-07
+773975,Ashton,Studio,1.0,523,10,1981,no,pets_allowed;laundry;parking,2026-08-20
+382688,Kingsfield,1,1.0,789,29,2005,yes,dishwasher;balcony;laundry,2026-08-15
+491891,anchor bay,1,1.0,825,G,1997,no,laundry;parking;gym;dishwasher,2026-07-29
+795131,Briar Hill,1,1.0,895sqft,17,1955,no,pets_allowed;elevator,2026-08-12
+672968,Oakhurst,1,1.0,783,18,1993,no,laundry;parking;elevator,2026-02-08
+588733,Ashton,1,1.0,778,2,1965,yes,elevator;dishwasher,2026-06-11
+610428,northcross,Studio,1.0,496 sq ft,34,1945,no,laundry;elevator;PARKING,2026-04-26
+126838,Larkspur,2,1.0,905,18,2002,no,pets_allowed;laundry;gym;dishwasher,2026-06-19
+540618,Elm Park,2,1.0,1024,21,1975,yes,pets_allowed; dishwasher;laundry,2026-03-09
+448853,Briar Hill,2,2.0,1169,10,1951,no, dishwasher;laundry,2026-05-12
+122967,Westlea,2,2.0,893 sq ft,12,1928,yes,elevator; pets_allowed;dishwasher;doorman,2026-07-31
+800021,MARLOW,1,1.0,596,16,1971,no,balcony;parking;gym;dishwasher,2026-06-03
+527705,Anchor Bay,Studio,1.0,347sqft,27,2015,no,elevator;pets_allowed,2026-03-20
+890406,Canal Quarter,Studio,1.0,296 sq ft,3,1942,no, gym; elevator;balcony;pets_allowed,2026-09-18
+437682,Riverside,1,1.0,690,4,1965,no,parking; elevator; dishwasher;gym,2026-04-24
+937385,Heathside,1,1.0,621,16,1964,no,elevator,2026-04-14
+915242,ashton,3,2.0,1390,25,1960,no,laundry;dishwasher;parking;balcony;elevator,2026-03-15
+907315,QUAYSIDE,2,2.0,633,20,1987,no,parking; laundry,2026-05-08
+175968,Quayside ,1,1.0,673,16,1986,no,laundry;elevator,2026-08-17
+543539,Larkspur,2,2.0,877,17,1931,no, laundry,2026-06-17
+275180,Ashton,Studio,1.0,324,23,1939,no,dishwasher;gym;elevator;laundry,2026-09-01
+821523,Stonebridge,2,1.0,959,34,2015,no,elevator; laundry;dishwasher;gym,2026-06-25
+959460,riverside,Studio,1.0,389,19,1969,no,balcony;laundry;parking;pets_allowed;elevator,2026-06-22
+782561,Brickworks,2,2.0,1206 sq ft,32,1999,no,laundry;pets_allowed;dishwasher;balcony;elevator,2026-09-08
+627060,Riverside,3,2.0,1396 sq ft,G,1988,no,balcony;parking;pets_allowed; laundry,2026-05-11
+807154,Riverside,1,1.0,827 sq ft,9,1926,no,balcony;elevator; laundry;pets_allowed;gym,2026-03-14
+825749,Marlow,3,1.0,1606,9,1928,no,pets_allowed;laundry;elevator,2026-08-02
+409638,Heathside,Studio,1.0,267 sq ft,27,1965,no,laundry,2026-04-29
+108371,Old Docks,1,1.0,710sqft,19,1996,no,laundry;GYM;dishwasher;balcony,2026-05-06
+774150,Old Docks,2,2.0,1137 sq ft,G,2024,no,elevator;dishwasher,2026-09-03
+976081,Old Docks,2,1.5,953,13,1951,no,PARKING; gym;elevator;dishwasher,2026-06-12
+637700,Brookvale,4,2.5,1746,4,1989,no,elevator,2026-08-08
+707139,Larkspur ,1,1.0,691 sq ft,3,1943,yes,laundry;parking; doorman,2026-05-24
+736751,Quayside,1,1.0,700,2,2001,yes,balcony;dishwasher,2026-05-21
+885738,Brickworks ,1,1.0,758 sq ft,24,1957,yes,pets_allowed;doorman;elevator,2026-07-10
+188689,Larkspur,1,1.0,650 sq ft,9,2024,no,elevator; dishwasher;balcony,2026-08-04
+640034,PIER ROW,1,1.0,665sqft,G,1977,no,PARKING;laundry;dishwasher,2026-05-02
+131214,Quayside,3,2.5,1147,27,1981,no,gym,2026-09-13
+984134,Fernwood,1,1.0,861sqft,10,1988,yes,dishwasher;PETS_ALLOWED;laundry;parking,2026-04-29
+147919,pier row,2,1.0,963,G,1959,no,parking;elevator;PETS_ALLOWED,2026-04-15
+394220,Larkspur,1,1.0,558 sq ft,21,1943,no,elevator;doorman,2026-05-05
+474422,Saltmarsh,3,2.0,1331,G,1992,no,dishwasher;elevator;parking; pets_allowed;doorman,2026-07-02
+309277,Old Docks,1,1.0,941sqft,9,1960,no,pets_allowed; dishwasher;balcony;laundry,2026-05-21
+713731,Oakhurst,3,3.0,1520sqft,1,1941,no,doorman;laundry,2026-02-07
+903985,Elm Park,3,1.5,1291,29,1996,no,dishwasher;pets_allowed,2026-07-09
+426634,Pier Row,3,1.0,1325,G,1978,no,elevator;doorman;pets_allowed,2026-08-24
+791378,Fernwood,3,1.5,1249 sq ft,16,1982,no,PETS_ALLOWED;balcony;elevator,2026-05-23
+723091,Kingsfield,2,1.0,789sqft,G,1935,no,laundry;elevator;pets_allowed; dishwasher,2026-03-19
+758865,heathside,1,1.0,778 sq ft,27,1997,yes,dishwasher;parking; laundry; balcony,2026-02-04
+481848,Foundry,1,1.0,669,21,2007,no,pets_allowed;laundry;parking;GYM,2026-09-21
+997193,Canal Quarter,Studio,1.0,376,33,2003,no,dishwasher;parking;LAUNDRY;BALCONY,2026-04-02
+619898,Briar Hill,2,2.0,1046 sq ft,29,1958,yes,dishwasher;gym;elevator;balcony,2026-06-21
+405152,NORTHCROSS,1,1.0,751 sq ft,12,1981,no,doorman;balcony;gym;elevator,2026-07-05
+960475,Elm Park ,1,1.0,820sqft,26,2015,no,PETS_ALLOWED;gym,2026-09-11
+963580,Brickworks,2,2.0,1182 sq ft,9,2024,no,pets_allowed;laundry,2026-07-22
+329884,Saltmarsh,3,1.5,1457sqft,10,1962,yes,balcony;doorman;laundry,2026-08-29
+743082,BRIAR HILL,1,1.0,969,25,1961,no,laundry;balcony;gym; elevator;dishwasher,2026-07-06
+783110,Stonebridge,2,1.0,1007,18,1956,no,PARKING;dishwasher;pets_allowed;laundry;balcony,2026-09-18
+524762,saltmarsh,2,1.5,1175 sq ft,28,2022,no,laundry;dishwasher,2026-08-02
+606557,Stonebridge,2,1.0,1088sqft,19,2010,no,doorman;balcony;laundry;dishwasher,2026-02-12
+453818,Canal Quarter,1,1.0,613 sq ft,18,2017,no,DISHWASHER,2026-01-02
+809423,Marlow,2,1.5,756 sq ft,11,1962,no,BALCONY;dishwasher,2026-03-13
+451603,Brickworks,3,2.5,1614 sq ft,14,1969,no,elevator;dishwasher,2026-03-09
+272029,Quayside ,1,1.0,539 sq ft,2,1970,no,laundry;elevator;parking;gym;dishwasher,2026-09-16
+783935,Kingsfield ,2,1.0,931 sq ft,4,1974,no,doorman;LAUNDRY;elevator;gym;dishwasher;balcony,2026-07-17
+267498,Briar Hill ,2,2.0,1147,18,2014,no,pets_allowed;DISHWASHER;laundry,2026-05-21
+832852,marlow,1,1.0,615 sq ft,25,1933,no,elevator;GYM,2026-01-17
+866244,Mill Hill,1,1.0,651sqft,7,1983,no,dishwasher;elevator;pets_allowed;parking,2026-01-02
+285609,Pier Row,4,1.5,1558,2,1978,no,LAUNDRY;doorman;pets_allowed,2026-05-16
+564671,oakhurst,3,2.0,1534sqft,31,1969,no,laundry; balcony;elevator;dishwasher,2026-04-21
+146822,Kingsfield,1,1.0,562 sq ft,8,1955,no, laundry;pets_allowed;elevator,2026-06-16
+839414,Saltmarsh,1,1.0,658 sq ft,28,2010,no,dishwasher,2026-03-12
+628218,Brickworks,4,2.0,1721,23,1944,yes,,2026-04-14
+239631,Elm Park,3,3.0,1459,13,1962,no,gym;balcony,2026-08-01
+849342,Larkspur,1,1.0,737sqft,G,1936,no,laundry,2026-04-16
+347611,Westlea,1,1.0,551 sq ft,32,1953,yes,dishwasher;balcony; laundry,2026-04-12
+310121,Oakhurst,2,1.5,986 sq ft,26,1980,no,parking;pets_allowed,2026-09-08
+979942,LARKSPUR,2,2.0,1065 sq ft,14,1986,no,balcony;laundry;elevator;parking,2026-05-04
+965998,Brickworks,1,1.0,601,20,2003,no,laundry;balcony;gym,2026-09-04
+532172,Pier Row ,1,1.0,875,11,1982,no,laundry,2026-08-21
+865646,Foundry,3,2.0,1162 sq ft,28,1983,no,LAUNDRY,2026-01-20
+452334,anchor bay,1,1.0,804 sq ft,30,1932,no,PARKING;pets_allowed;laundry,2026-01-24
+919396,Old Docks,1,1.0,756,4,1941,no,elevator;laundry;balcony,2026-06-24
+762572,Riverside,Studio,1.0,265 sq ft,25,2002,no,pets_allowed;elevator;balcony;dishwasher,2026-07-08
+527001,Saltmarsh,2,1.5,1046,G,1969,no,LAUNDRY;dishwasher;pets_allowed;elevator,2026-09-05
+950813,Old Docks,1,1.0,823 sq ft,17,1943,no,laundry;PETS_ALLOWED,2026-04-17
+500637,Old Docks,3,1.0,1333 sq ft,4,1978,no,laundry;dishwasher;ELEVATOR;parking,2026-07-05
+694371,Northcross,2,1.5,840sqft,21,1951,no,balcony;doorman,2026-04-18
+408320,Elm Park,2,1.0,968,14,1979,no,laundry;dishwasher;balcony;parking;elevator,2026-04-13
+393252,old docks,Studio,1.0,265,23,2002,no,pets_allowed;elevator,2026-03-22
+230344,Northcross ,Studio,1.0,336,22,1936,no,laundry;BALCONY;pets_allowed,2026-02-13
+966752,Quayside ,2,1.0,1190 sq ft,17,2013,no,balcony;doorman; laundry;dishwasher;pets_allowed,2026-07-13
+286343,Fernwood,1,1.0,807,15,1978,no,parking,2026-09-06
+101320,Heathside,2,2.0,886 sq ft,18,1960,no,laundry;balcony;doorman;pets_allowed;dishwasher;gym,2026-02-12
+236878,Heathside,1,1.0,680 sq ft,17,2007,no,,2026-07-15
+475938,Oakhurst,2,1.0,844,4,1965,no,pets_allowed;elevator,2026-09-11
+431240,Anchor Bay,2,2.0,1038,28,1985,no,ELEVATOR; laundry;doorman;balcony,2026-05-08
+992205,Elm Park,1,1.0,565sqft,22,1996,yes,doorman;pets_allowed;laundry;dishwasher,2026-09-10
+620288,Brickworks,2,1.0,1104,17,2021,no,pets_allowed;laundry;balcony,2026-09-04
+510766,Foundry ,3,1.0,"1,258 sq ft",21,1991,yes,pets_allowed;elevator,2026-02-25
+715494,riverside,1,1.0,624,16,1948,no,parking;elevator;dishwasher,2026-01-19
+581344,northcross,2,1.0,915 sq ft,28,1964,yes,gym;dishwasher,2026-04-29
+652319,Stonebridge,2,2.0,1017sqft,13,1967,no, laundry;doorman,2026-03-01
+782245,Pier Row ,1,1.0,598 sq ft,29,2005,no, dishwasher;laundry;gym;parking;doorman,2026-04-09
+788404,Larkspur,2,2.0,1278 sq ft,20,1960,no,laundry,2026-07-08
+691781,Brookvale,2,2.0,1057 sq ft,23,1997,no,dishwasher;balcony,2026-07-25
+621253,Briar Hill,1,1.0,643sqft,11,1992,no,gym;laundry;elevator;pets_allowed,2026-08-11
+989558,Heathside,1,1.0,662 sq ft,34,1955,no,parking; elevator,2026-07-05
+723666,Pier Row,1,1.0,850 sq ft,6,1927,yes,dishwasher;pets_allowed;gym,2026-07-17
+940335,Mill Hill,2,2.0,1108,25,1962,no,pets_allowed;parking,2026-07-14
+749986,Marlow ,1,1.0,703sqft,G,1957,yes,elevator; gym,2026-03-23
+268947,Marlow,3,1.0,1298,5,2024,no,doorman;gym,2026-06-10
+643045,Marlow,1,1.0,707sqft,30,2002,no,laundry;pets_allowed;dishwasher;doorman,2026-07-26
+977649,stonebridge,3,1.0,1140 sq ft,13,1995,no,DOORMAN;gym;pets_allowed,2026-09-25
+425864,Lighthouse,2,2.0,879 sq ft,G,1976,no,elevator;dishwasher,2026-05-15
+630551,stonebridge,1,1.0,880 sq ft,20,1969,no,dishwasher;elevator,2026-07-29
+427977,Stonebridge,4,1.0,1766,G,2006,no,laundry;dishwasher; doorman;gym;balcony,2026-08-06
+551419,Oakhurst,1,1.0,745,27,1934,yes,dishwasher;gym;balcony,2026-05-19
+584197,Pier Row,2,2.0,913,9,1964,no,laundry,2026-08-11
+618565,Briar Hill,2,2.0,985 sq ft,G,1925,yes,gym;parking;dishwasher,2026-08-22
+553586,Brookvale,2,1.5,1079 sq ft,14,1930,yes,,2026-01-21
+546767,HEATHSIDE,2,2.0,1145,12,1969,no,parking;dishwasher;balcony;elevator,2026-04-16
+476154,Stonebridge,2,1.5,1220 sq ft,14,2018,yes, dishwasher;PETS_ALLOWED;gym,2026-01-23
+237781,Westlea,3,1.0,1533,5,1969,no,pets_allowed;laundry,2026-03-04
+825570,oakhurst,3,2.0,1735 sq ft,33,1967,no,laundry;elevator;balcony;pets_allowed,2026-05-18
+139038,OAKHURST,Studio,1.0,358 sq ft,18,1970,no,,2026-08-09
+832477,Northcross,3,3.0,1403sqft,9,1942,no,laundry;elevator;gym; balcony,2026-01-01
+573912,Heathside,Studio,1.0,432 sq ft,31,1985,yes, dishwasher;gym;laundry;elevator,2026-01-12
+620553,Pier Row ,1,1.0,1030,20,2022,no,ELEVATOR;LAUNDRY; dishwasher;parking,2026-03-21
+584970,Mill Hill,1,1.0,658 sq ft,4,2013,no,ELEVATOR;parking;dishwasher,2026-06-19
+723108,Northcross,1,1.0,668 sq ft,33,1928,no,balcony;laundry;doorman;pets_allowed,2026-01-05
+865793,Quayside,1,1.0,767,20,1974,no,laundry;pets_allowed; elevator;doorman;balcony;dishwasher,2026-01-17
+788133,Anchor Bay ,Studio,1.0,435 sq ft,29,1981,no,LAUNDRY;BALCONY;dishwasher,2026-08-06
+476608,Old Docks,3,1.0,1308,G,1978,no, dishwasher;gym,2026-08-15
+671204,QUAYSIDE,1,1.0,869 sq ft,8,1962,no,elevator;dishwasher,2026-09-02
+226667,Fernwood,1,1.0,819,G,1928,no,doorman; laundry;balcony;dishwasher,2026-09-24
+615353,Brickworks,3,1.5,1324sqft,G,1947,no,elevator;laundry;parking,2026-06-22
+642211,old docks,2,2.0,963 sq ft,G,1956,no,parking;elevator;dishwasher;laundry;balcony,2026-08-25
+876832,Larkspur,3,3.0,1496,18,1975,no,parking;elevator;laundry;BALCONY;gym,2026-04-12
+440017,kingsfield,4,2.0,1597,26,1991,no,dishwasher;parking;laundry,2026-03-17
+894844,Saltmarsh,3,1.5,972,33,1963,no,dishwasher;gym;laundry,2026-03-13
+286805,Riverside,1,1.0,791 sq ft,17,1995,yes,dishwasher;LAUNDRY,2026-01-14
+964124,Kingsfield,2,1.0,1008 sq ft,17,1945,no, gym;balcony;elevator,2026-01-29
+292582,marlow,4,3.0,1730 sq ft,30,1930,yes,laundry;dishwasher;balcony;parking;DOORMAN,2026-04-04
+338666,OLD DOCKS,2,2.0,1072sqft,23,1936,no,PARKING;gym;PETS_ALLOWED;elevator;dishwasher,2026-01-19
+664702,Ashton,4,2.0,1622,34,2022,no,pets_allowed;laundry,2026-04-16
+805623,Fernwood,4,2.0,2035,17,1991,no,pets_allowed;parking;laundry,2026-05-14
+951949,Old Docks ,2,2.0,923 sq ft,29,2000,no,laundry;elevator;balcony;DOORMAN;dishwasher;pets_allowed,2026-03-10
+966961,Kingsfield,Studio,1.0,381 sq ft,11,1960,no,pets_allowed;gym;dishwasher,2026-04-01
+486565,Briar Hill,2,2.0,1106 sq ft,12,1930,no,balcony; parking;pets_allowed,2026-09-18
+674387,Old Docks,3,2.0,1477 sq ft,33,2011,yes,dishwasher;balcony; gym;laundry; elevator,2026-03-31
+992384,Heathside,4,1.5,1752sqft,27,2008,yes,elevator;doorman;dishwasher,2026-01-22
+134448,Fernwood ,1,1.0,739 sq ft,13,1939,no,gym; dishwasher,2026-02-19
+190656,lighthouse,Studio,1.0,389 sq ft,10,2023,yes,elevator;dishwasher;balcony;GYM,2026-06-26
+325556,Saltmarsh,1,1.0,538 sq ft,11,1954,no,elevator;dishwasher;gym,2026-06-02
+686173,kingsfield,1,1.0,616,34,1925,no,pets_allowed; laundry,2026-08-01
+239086,Riverside ,2,2.0,1005sqft,31,2001,no,pets_allowed;parking,2026-09-15
+611410,Westlea,2,2.0,1053 sq ft,9,2011,no,ELEVATOR;balcony;GYM,2026-09-25
+857521,Quayside,3,2.0,954 sq ft,G,1933,no,pets_allowed;elevator,2026-06-05
+138914,Larkspur,2,2.0,1131,15,2015,yes, pets_allowed; dishwasher;laundry,2026-06-09
+377295,Westlea,2,1.0,907sqft,20,1989,no,laundry;dishwasher,2026-08-08
+499152,elm park,1,1.0,692 sq ft,3,1980,no,laundry;balcony; pets_allowed;dishwasher,2026-05-07
+758799,Briar Hill,1,1.0,599 sq ft,22,1944,no,elevator; laundry; dishwasher;pets_allowed;balcony;parking;gym,2026-04-22
+199550,KINGSFIELD,1,1.0,805,28,1985,no,laundry;balcony;PARKING,2026-03-05
+771839,Fernwood,2,1.5,846 sq ft,3,1972,yes,dishwasher;doorman; elevator;balcony,2026-09-20
+791674,Ashton,Studio,1.0,386 sq ft,2,1983,yes, balcony;PARKING;ELEVATOR;doorman,2026-05-15
+481295,Mill Hill,1,1.0,536 sq ft,16,2000,no,gym;dishwasher;doorman,2026-06-06
+909313,Anchor Bay,3,2.5,1463sqft,23,1983,no,dishwasher;gym;pets_allowed;balcony; parking,2026-09-20
+590023,Briar Hill,Studio,1.0,375 sq ft,2,1999,yes,laundry;parking;balcony,2026-05-09
+259643,Pier Row,1,1.0,555 sq ft,G,1993,no,doorman;balcony;dishwasher;elevator,2026-03-03
+999628,Westlea,1,1.0,809,13,1933,no,pets_allowed;dishwasher;gym,2026-06-30
+498823,Pier Row,3,3.0,1232sqft,2,1980,no,elevator;parking;balcony;doorman;pets_allowed;laundry,2026-05-14
+625482,Riverside,1,1.0,537 sq ft,8,1948,yes,elevator;gym,2026-09-10
+582861,Mill Hill ,2,2.0,1270 sq ft,11,1988,no,doorman;dishwasher,2026-03-10
+431874,Canal Quarter,1,1.0,690sqft,4,2001,no, elevator,2026-03-05
+700568,lighthouse,1,1.0,534 sq ft,3,1926,yes,pets_allowed;dishwasher,2026-04-07
+960851,Oakhurst,1,1.0,731 sq ft,17,2016,no, doorman;dishwasher,2026-07-18
+563276,Kingsfield ,2,2.0,1039sqft,11,1979,no,doorman;laundry,2026-02-28
+449419,Mill Hill,3,1.0,1588,3,1986,yes,balcony,2026-09-14
+468406,Westlea,1,1.0,606sqft,21,1934,yes,dishwasher;doorman; balcony,2026-01-21
+682884,Anchor Bay,Studio,1.0,309sqft,G,1971,no,elevator;laundry;pets_allowed; doorman,2026-05-23
+186149,Stonebridge,1,1.0,926,32,1927,yes,parking;laundry;gym;DISHWASHER;elevator,2026-03-25
+348798,Old Docks,1,1.0,904,2,2010,no,gym;laundry;balcony,2026-03-10
+745593,anchor bay,3,1.0,1249,29,1998,no,elevator;dishwasher;doorman;balcony,2026-09-03
+773130,Marlow,Studio,1.0,421,29,1936,no,BALCONY;doorman,2026-08-22
+100353,Elm Park ,4,3.0,1602 sq ft,20,1981,no,dishwasher; pets_allowed;elevator;PARKING;laundry,2026-03-03
+614461,Brickworks,2,1.0,767 sq ft,31,1985,no,elevator;dishwasher;pets_allowed;doorman,2026-09-06
+319654,Westlea,2,1.5,858 sq ft,25,1935,yes, gym;dishwasher,2026-05-01
+876751,foundry,2,2.0,1004sqft,22,2006,yes,laundry; parking;elevator;BALCONY;gym;dishwasher,2026-06-06
+949625,saltmarsh,1,1.0,839 sq ft,5,2023,yes, laundry;gym,2026-06-18
+947666,Stonebridge,3,1.5,1892 sq ft,18,1928,no,gym,2026-02-13
+823309,Oakhurst ,Studio,1.0,342,31,1934,yes,elevator;pets_allowed;LAUNDRY;dishwasher,2026-09-05
+344529,Heathside,2,2.0,1077,16,1940,no,laundry;doorman;elevator;dishwasher;PETS_ALLOWED,2026-07-15
+449518,MARLOW,1,1.0,731,15,1963,no,gym;dishwasher;laundry,2026-01-10
+546194,Westlea,1,1.0,669sqft,G,1994,no,dishwasher,2026-08-05
+472601,Ashton,3,2.0,1404 sq ft,3,1927,no,dishwasher;pets_allowed,2026-05-23
+949607,Lighthouse,1,1.0,971sqft,17,1990,yes,balcony,2026-01-23
+297451,ANCHOR BAY,Studio,1.0,459 sq ft,34,2017,no,balcony;PARKING;pets_allowed,2026-09-27
+430226,foundry,2,1.0,1212 sq ft,28,1932,no,pets_allowed;dishwasher,2026-06-19
+870142,Riverside,1,1.0,638,19,1928,no,elevator;dishwasher,2026-05-25
+453815,quayside,4,2.5,2054,33,1929,no,pets_allowed;gym,2026-07-11
+526262,brickworks,1,1.0,600 sq ft,G,1927,no,laundry;ELEVATOR;gym; parking;BALCONY,2026-04-13
+870103,brookvale,1,1.0,581sqft,27,1964,no,gym,2026-05-06
+137858,Mill Hill,3,2.5,1233,G,1934,no,dishwasher;balcony;laundry,2026-09-12
+563746,kingsfield,2,2.0,828 sq ft,3,2009,no,dishwasher;doorman;pets_allowed;elevator,2026-06-07
+563017,Heathside,3,1.0,1371,7,1943,no,PARKING;balcony;laundry;pets_allowed,2026-08-03
+763992,Marlow,4,2.0,1686,8,1983,no, elevator; doorman;pets_allowed,2026-07-26
+671396,Brookvale,Studio,1.0,508 sq ft,7,1954,no,dishwasher;laundry;ELEVATOR;balcony;pets_allowed,2026-05-18
+294015,Old Docks,2,1.0,1116 sq ft,14,1970,no,doorman;elevator;pets_allowed;DISHWASHER,2026-07-04
+248708,Westlea,Studio,1.0,527 sq ft,1,1950,yes, balcony;doorman;dishwasher,2026-09-22
+101802,Ashton ,Studio,1.0,307 sq ft,G,2023,no,parking;laundry;balcony,2026-07-31
+734785,Marlow,1,1.0,598 sq ft,11,1940,no,pets_allowed;laundry,2026-06-25
+251947,marlow,1,1.0,692 sq ft,18,1982,no,balcony;elevator;parking;dishwasher,2026-07-06
+149946,Larkspur,Studio,1.0,250 sq ft,7,1941,no,parking;elevator;DISHWASHER;balcony;laundry,2026-05-28
+102693,Fernwood,2,1.0,1046,13,1978,no,laundry; dishwasher;pets_allowed,2026-05-09
+673888,Canal Quarter,1,1.0,756,G,2011,no, parking;doorman;laundry;gym;elevator,2026-04-12
+516306,Larkspur ,2,2.0,967 sq ft,G,1948,yes,balcony;gym; parking;laundry,2026-07-23
+854320,Lighthouse ,1,1.0,860sqft,G,1941,no,dishwasher;balcony;elevator,2026-08-29
+245017,Elm Park,1,1.0,855sqft,28,2006,yes,pets_allowed;laundry;elevator,2026-09-15
+329483,Larkspur,1,1.0,834 sq ft,24,1966,no,elevator,2026-05-17
+187308,Anchor Bay,2,2.0,1200sqft,G,2009,yes,balcony;pets_allowed,2026-05-16
+685358,Stonebridge,2,1.5,1423,34,1994,no,gym;LAUNDRY;elevator;dishwasher,2026-03-03
+147755,Saltmarsh,1,1.0,612sqft,5,1960,no,parking;gym;laundry,2026-07-30
+977185,Ashton,2,2.0,949 sq ft,28,2009,yes,pets_allowed; laundry;gym;elevator;doorman,2026-05-25
+631334,Riverside,2,1.0,998 sq ft,27,2022,no, dishwasher;doorman,2026-05-17
+598628,mill hill,2,1.5,968 sq ft,22,2018,no,laundry;dishwasher;parking,2026-08-22
+868990,Elm Park,2,2.0,1126,7,1938,no,laundry;elevator;DISHWASHER;PARKING;balcony,2026-01-04
+835491,Heathside,1,1.0,647 sq ft,18,1966,yes,elevator;gym,2026-07-28
+765970,Brookvale,3,2.0,1586 sq ft,28,1981,no,doorman;pets_allowed;dishwasher;gym,2026-05-02
+705335,NORTHCROSS,Studio,1.0,299,24,1931,no, parking;balcony;GYM,2026-01-03
+639244,Lighthouse,3,1.0,1226 sq ft,9,1997,yes,ELEVATOR;laundry;BALCONY,2026-03-13
+417758,Canal Quarter,1,1.0,573 sq ft,33,1933,no,balcony;pets_allowed;laundry;gym,2026-06-27
+618072,Pier Row ,1,1.0,562 sq ft,17,1974,no,dishwasher; gym,2026-06-18
+272540,riverside,2,1.0,904,22,1993,no,doorman;dishwasher,2026-08-12
+466102,Riverside,2,2.0,1103,G,1952,no,gym;parking;laundry,2026-07-22
+498294,Anchor Bay,1,1.0,736,24,1957,no,elevator;dishwasher;laundry;parking,2026-01-02
+947951,Anchor Bay,2,2.0,1093sqft,2,1933,no,dishwasher;balcony,2026-02-24
+824867,Old Docks,2,1.0,795 sq ft,G,1932,no,,2026-05-27
+515573,Fernwood,Studio,1.0,465,32,1972,no,parking; pets_allowed;laundry;dishwasher,2026-04-20
+386222,Pier Row,1,1.0,726 sq ft,G,1979,no, laundry;pets_allowed;dishwasher;elevator,2026-03-19
+224264,ashton,Studio,1.0,286,G,2014,no,elevator,2026-09-05
+351504,Briar Hill,1,1.0,483sqft,33,1938,no,pets_allowed;gym,2026-05-27
+995993,Foundry,2,2.0,1145 sq ft,22,2003,no, dishwasher; laundry;balcony,2026-09-04
+940628,Brickworks,3,1.0,1572 sq ft,G,1993,no,pets_allowed;parking;gym;laundry;doorman,2026-01-06
+981143,Canal Quarter,Studio,1.0,302sqft,6,1986,no,laundry;ELEVATOR;doorman;pets_allowed;dishwasher,2026-03-10
+773752,Quayside ,1,1.0,643,12,2010,no,pets_allowed;dishwasher,2026-06-14
+414229,Stonebridge,1,1.0,740sqft,24,2011,no,doorman;pets_allowed,2026-09-07
+936671,Briar Hill,1,1.0,627 sq ft,9,1971,yes,balcony;parking;laundry,2026-01-31
+186622,Saltmarsh,1,1.0,565 sq ft,30,1964,no, gym;doorman,2026-07-25
+952357,Lighthouse,Studio,1.0,422,3,1963,no,dishwasher;pets_allowed,2026-07-08
+184278,BRICKWORKS,2,2.0,950,23,2021,yes, dishwasher; doorman;gym;elevator,2026-04-18
+909167,anchor bay,2,1.5,1135 sq ft,3,2021,no,dishwasher;laundry;balcony;pets_allowed,2026-04-07
+433561,riverside,1,1.0,496sqft,10,2000,no,PETS_ALLOWED;elevator,2026-01-19
+969375,Stonebridge,1,1.0,723 sq ft,26,1967,no,dishwasher; doorman,2026-02-18
+683448,Fernwood,2,2.0,967,20,1964,yes,balcony;dishwasher,2026-08-30
+644277,Quayside,3,1.5,1254 sq ft,11,2017,no,dishwasher;laundry,2026-02-19
+240381,Marlow,2,2.0,1029,22,1972,yes,dishwasher,2026-01-16
+367024,Kingsfield,1,1.0,676sqft,29,1945,yes,elevator;parking;doorman;laundry,2026-02-02
+874875,Marlow,1,1.0,724 sq ft,12,2008,no,dishwasher; doorman;laundry;parking,2026-04-01
+823962,elm park,Studio,1.0,266,23,1962,no,balcony;pets_allowed;dishwasher;elevator,2026-08-15
+637135,Westlea,1,1.0,881 sq ft,26,1942,no,PARKING;doorman;pets_allowed,2026-03-19
+554047,Marlow,1,1.0,764 sq ft,23,1963,no,,2026-01-21
+198417,Elm Park ,1,1.0,612 sq ft,G,1997,no,balcony;dishwasher;elevator;laundry;gym,2026-05-12
+881545,Northcross,1,1.0,467 sq ft,13,1947,no,gym;laundry,2026-08-12
+372270,Saltmarsh,4,2.5,1759 sq ft,14,1964,no, parking;laundry;dishwasher;balcony,2026-07-09
+231528,Brickworks,2,1.0,1056,17,1976,no, dishwasher;LAUNDRY,2026-05-09
+950938,brookvale,2,2.0,855sqft,26,2015,yes,dishwasher;elevator;pets_allowed,2026-08-21
+292553,brookvale,Studio,1.0,505,7,1948,no,dishwasher,2026-08-19
+373452,Brookvale,1,1.0,634,27,1948,no,pets_allowed,2026-01-04
+749663,Stonebridge,Studio,1.0,333,33,1971,no,LAUNDRY;parking,2026-01-25
+698823,northcross,1,1.0,833 sq ft,11,1943,no,elevator;pets_allowed;dishwasher;laundry; doorman,2026-09-11
+568728,Old Docks,2,2.0,991 sq ft,14,1971,yes,doorman;pets_allowed;elevator;parking,2026-03-02
+938931,Old Docks,2,1.0,1014,28,1942,no,laundry;elevator;pets_allowed;dishwasher,2026-07-16
+831554,fernwood,Studio,1.0,428,10,1948,no,LAUNDRY,2026-07-11
+409533,marlow,1,1.0,757sqft,22,1987,no,gym;laundry;elevator;parking;dishwasher,2026-03-22
+967995,Riverside,1,1.0,594,G,1978,yes,gym;parking;elevator;laundry; balcony;dishwasher,2026-09-19
+927746,Lighthouse,1,1.0,616 sq ft,4,1947,no,pets_allowed;parking;dishwasher,2026-04-02
+636007,anchor bay,2,1.0,945 sq ft,26,2015,no,parking;laundry;balcony;gym;dishwasher,2026-02-09
+435862,Oakhurst,2,1.0,1050 sq ft,22,2018,no,doorman;balcony; elevator;dishwasher,2026-03-23
+893902,Fernwood,Studio,1.0,377,8,1961,no,pets_allowed;dishwasher;balcony;laundry;gym,2026-04-10
+702617,Stonebridge,3,1.0,1363,G,2019,no,pets_allowed;doorman;elevator;laundry;dishwasher,2026-02-09
+701324,Mill Hill,2,2.0,1027sqft,6,1944,no,balcony;dishwasher,2026-04-16
+951928,Heathside,2,1.5,1213,1,1926,yes,parking;elevator;balcony,2026-09-21
+193425,Stonebridge,1,1.0,580,22,1934,no,elevator;parking; laundry; dishwasher,2026-05-09
+841146,Briar Hill,1,1.0,614 sq ft,32,1932,no, dishwasher;laundry;elevator;PETS_ALLOWED,2026-08-14
+375597,Riverside,1,1.0,572,18,1996,no, elevator;pets_allowed,2026-05-31
+399702,Brookvale ,3,2.0,1298 sq ft,G,1939,no,dishwasher;elevator;pets_allowed,2026-02-27
+814365,Mill Hill,2,1.0,1051,30,1943,no,gym;laundry,2026-09-07
+619027,Heathside,2,2.0,814sqft,28,2015,yes,PETS_ALLOWED,2026-06-23
+381723,briar hill,2,1.0,1191,29,1984,no,elevator; parking;dishwasher;laundry,2026-01-07
+656458,Riverside,3,2.0,1893 sq ft,G,1982,no,gym;parking,2026-08-02
+584160,briar hill,2,2.0,864,28,1927,yes, doorman;balcony,2026-09-15
+567053,Old Docks ,3,1.0,1173 sq ft,20,1936,yes,balcony;parking;laundry,2026-08-15
+860770,Stonebridge,2,2.0,1104 sq ft,2,1989,no,balcony; pets_allowed;doorman;DISHWASHER;parking;elevator,2026-05-08
+934442,Quayside,1,1.0,975,7,1946,no, doorman;pets_allowed;laundry,2026-09-05
+479051,brickworks,2,2.0,789,26,1927,no,parking; balcony;elevator,2026-03-10
+934606,Foundry,2,1.0,985 sq ft,21,2023,yes,balcony;elevator;doorman,2026-04-01
+436016,STONEBRIDGE,Studio,1.0,412,12,1982,no,dishwasher,2026-05-04
+619913,Anchor Bay,3,2.0,1266,G,2022,no,laundry;balcony;parking; pets_allowed,2026-07-09
+773720,MARLOW,3,1.5,1486,24,1958,no,pets_allowed; balcony;gym;parking,2026-03-30
+798706,Canal Quarter,Studio,1.0,370,3,1967,no,gym;LAUNDRY;dishwasher,2026-05-01
+712855,Ashton ,1,1.0,681sqft,28,1980,yes,laundry,2026-05-17
+166694,Mill Hill,Studio,1.0,448,14,1968,no,balcony;parking;DISHWASHER,2026-09-25
+611442,Westlea ,Studio,1.0,272 sq ft,34,1931,no,pets_allowed;dishwasher;balcony;laundry,2026-08-19
+756675,Stonebridge,2,1.0,1224 sq ft,7,1964,yes,elevator;dishwasher,2026-05-25
+938807,Heathside,2,2.0,1156,7,1986,no,dishwasher;gym;laundry;doorman,2026-01-13
+398161,Marlow,Studio,1.0,407,G,1933,yes,,2026-01-12
+463611,Larkspur,1,1.0,543sqft,2,1940,no,pets_allowed;doorman;ELEVATOR,2026-03-24
+266260,Fernwood ,Studio,1.0,422sqft,9,2010,no,dishwasher;elevator;pets_allowed;balcony;doorman;PARKING,2026-04-04
+833179,brickworks,2,2.0,1045,G,1996,no,laundry;elevator;gym;DISHWASHER,2026-09-11
+166307,Brookvale,1,1.0,550 sq ft,30,1930,no,parking;laundry;doorman;balcony,2026-02-02
+952084,larkspur,1,1.0,815 sq ft,2,1949,no, laundry;DISHWASHER,2026-08-04
+429090,Canal Quarter,2,1.5,1126,10,1932,no,doorman,2026-09-17
+969294,canal quarter,2,1.0,1171,4,2011,no,dishwasher; balcony;parking;elevator,2026-03-01
+703274,RIVERSIDE,2,1.0,989 sq ft,2,1939,yes,pets_allowed;parking;balcony;elevator,2026-06-04
+104272,Westlea,2,2.0,1226sqft,18,2009,no,dishwasher;laundry,2026-06-07
+533067,Foundry ,1,1.0,564,15,1948,no,laundry;parking;elevator,2026-03-15
+805535,stonebridge,4,2.0,1461,7,1936,no,parking;DISHWASHER;pets_allowed;elevator;DOORMAN;gym,2026-04-02
+465796,Mill Hill ,2,2.0,924sqft,24,1925,no,pets_allowed; dishwasher,2026-03-10
+813509,Oakhurst,1,1.0,694 sq ft,3,1925,no,gym;laundry,2026-06-19
+627436,Old Docks ,2,2.0,1235 sq ft,26,2021,no,laundry;dishwasher; pets_allowed;parking,2026-07-19
+780560,northcross,3,1.0,1270 sq ft,G,1997,no,elevator;dishwasher;balcony; pets_allowed,2026-06-01
+187834,ELM PARK,1,1.0,562sqft,16,2016,no,elevator;dishwasher;gym;balcony,2026-01-31
+490146,Ashton,2,2.0,1117 sq ft,11,1984,no,balcony; dishwasher; laundry; doorman,2026-04-28
+242033,Brookvale,1,1.0,830 sq ft,24,1936,no,pets_allowed;balcony,2026-01-24
+140107,Pier Row,1,1.0,671 sq ft,G,2004,no,elevator;balcony;dishwasher;pets_allowed;laundry,2026-02-02
+647652,mill hill,2,2.0,781 sq ft,31,1968,no,elevator; pets_allowed;gym,2026-06-04
+546361,Lighthouse,4,1.5,1272,26,2011,no, elevator;balcony;doorman,2026-03-21
+256131,Pier Row,2,2.0,1329,G,1934,no,laundry,2026-03-27
+684855,Mill Hill ,2,2.0,1209,G,2011,no, pets_allowed;ELEVATOR;balcony;parking,2026-09-23
+237312,Anchor Bay,2,1.0,923 sq ft,10,1956,no, balcony;elevator;doorman;dishwasher,2026-01-13
+571264,kingsfield,3,1.0,"1,167 sq ft",14,1934,no,laundry,2026-07-31
+963134,Ashton,1,1.0,637,25,1927,no,dishwasher;BALCONY;PETS_ALLOWED,2026-06-30
+209055,Old Docks,4,2.0,1556 sq ft,10,1984,no,parking;PETS_ALLOWED;doorman,2026-02-14
+615847,Riverside,4,3.0,1568sqft,14,1935,no,dishwasher,2026-05-04
+242643,Anchor Bay,2,1.0,998,16,1985,no,parking;LAUNDRY;doorman,2026-09-11
+660801,anchor bay,1,1.0,738,G,2022,yes,parking;balcony;laundry;dishwasher,2026-09-01
+725960,Saltmarsh,1,1.0,841 sq ft,17,1939,no,balcony;laundry;doorman,2026-02-20
+889250,Anchor Bay,1,1.0,809 sq ft,G,1941,no,balcony;parking;dishwasher;doorman;laundry,2026-09-25
+941005,Elm Park ,2,2.0,1076 sq ft,27,1956,yes,pets_allowed;elevator; laundry;dishwasher;PARKING,2026-07-27
+972191,Brickworks,1,1.0,645,32,1927,no,laundry;pets_allowed,2026-04-25
+157488,Quayside,1,1.0,841,3,1972,no,laundry;balcony;parking;elevator;pets_allowed,2026-09-03
+636487,marlow,2,2.0,1104 sq ft,2,1987,no,dishwasher;laundry;elevator,2026-06-24
+366177,marlow,2,2.0,1170,11,1970,no,BALCONY;dishwasher;parking,2026-06-06
+504795,Larkspur,Studio,1.0,431,20,1960,no,elevator;gym,2026-01-09
+165556,Stonebridge,2,1.0,"1,231 sq ft",17,1927,no,parking;laundry; pets_allowed;dishwasher;balcony,2026-09-16
+434660,Elm Park,3,1.5,1214 sq ft,27,1956,no,parking;elevator;pets_allowed,2026-01-27
+546082,SALTMARSH,2,2.0,880,18,1990,no,laundry;elevator;pets_allowed;PARKING;dishwasher,2026-04-28
+385687,Northcross,2,2.0,886sqft,G,1954,no, laundry;dishwasher;doorman;elevator,2026-01-18
+763709,Foundry,1,1.0,832,4,1945,no,dishwasher;elevator,2026-08-20
+400037,briar hill,Studio,1.0,634 sq ft,6,2017,no,laundry;parking;dishwasher,2026-09-06
+610415,Marlow,3,1.0,1308,26,1933,no,parking;DOORMAN,2026-06-25
+285590,Kingsfield,3,1.0,1338 sq ft,G,2019,no,gym,2026-09-23
+653642,Old Docks,3,2.0,1469,G,1964,no,pets_allowed;gym;laundry;dishwasher,2026-08-15
+977447,Foundry,Studio,1.0,286 sq ft,34,1980,no,balcony; parking;laundry;pets_allowed;elevator,2026-07-03
+770873,Saltmarsh,Studio,1.0,451 sq ft,11,2003,yes,balcony;laundry; gym,2026-08-05
+420870,Northcross,2,2.0,779 sq ft,31,2001,no,elevator;dishwasher,2026-02-20
+824614,Kingsfield,1,1.0,782 sq ft,3,1975,no,elevator; gym;laundry;doorman;dishwasher;balcony;parking,2026-05-07
+942141,Pier Row,1,1.0,661,G,1979,yes,elevator;dishwasher;PETS_ALLOWED;laundry,2026-06-15
+928799,Brickworks,Studio,1.0,361,31,2016,no,parking;dishwasher;balcony,2026-06-08
+964596,Ashton ,2,2.0,1036 sq ft,10,1998,no,laundry;dishwasher,2026-07-12
+274867,BROOKVALE,4,2.5,1314 sq ft,2,1944,no,doorman;parking;dishwasher;elevator,2026-02-08
+573952,Briar Hill,2,1.5,1282,16,1968,yes,laundry,2026-08-19
+242847,larkspur,Studio,1.0,481 sq ft,G,1946,no,balcony;dishwasher;doorman;elevator,2026-01-19
+950975,Elm Park,4,2.5,1701,G,1961,yes,balcony;elevator,2026-09-11
+316819,Canal Quarter ,Studio,1.0,386,17,1956,no,,2026-02-26
+923983,old docks,1,1.0,778 sq ft,14,1968,no,balcony;parking;pets_allowed;laundry;gym;dishwasher,2026-07-30
+945020,westlea,1,1.0,796,15,1982,no,ELEVATOR;laundry;dishwasher;pets_allowed,2026-08-12
+495665,Riverside ,4,2.0,1545 sq ft,21,1967,no,,2026-06-05
+477342,Anchor Bay,1,1.0,466sqft,23,1952,no,laundry;parking;elevator;pets_allowed;dishwasher,2026-09-15
+662521,Westlea,1,1.0,562 sq ft,31,1993,no,dishwasher;balcony;doorman;pets_allowed,2026-01-17
+429128,Ashton,1,1.0,960sqft,18,1926,no,gym;elevator,2026-07-11
+327802,Briar Hill,4,2.0,1850 sq ft,8,1968,no,balcony; dishwasher,2026-06-05
+385962,Canal Quarter,1,1.0,738 sq ft,30,1928,no, pets_allowed;PARKING,2026-01-16
+213825,Lighthouse,4,2.5,1905,13,1944,no,pets_allowed;laundry;gym;DISHWASHER;parking,2026-08-29
+652486,Foundry,Studio,1.0,633sqft,4,1993,no,gym; dishwasher;parking,2026-07-02
+285144,Stonebridge,4,1.5,1643 sq ft,G,2015,no,laundry;dishwasher,2026-04-10
+224381,Mill Hill,3,2.0,1682,8,2012,no,DOORMAN;balcony,2026-02-03
+715063,Quayside,3,1.0,1331 sq ft,25,1958,no,parking;laundry;pets_allowed; elevator;gym,2026-08-13
+658310,Brookvale,2,1.0,832 sq ft,18,1937,no,doorman;elevator;laundry;dishwasher,2026-01-25
+126938,Fernwood,3,1.0,1122 sq ft,12,1971,no,dishwasher;laundry;elevator;pets_allowed;balcony;parking,2026-03-07
+879504,Lighthouse,2,1.0,1090 sq ft,7,2003,no, gym;elevator,2026-03-11
+642353,lighthouse,1,1.0,693,G,1937,no,laundry;balcony;elevator,2026-07-18
+999746,Old Docks,1,1.0,698,9,2022,yes,laundry;elevator;balcony;parking,2026-04-21
+949132,Elm Park,3,1.5,1265sqft,1,2021,no,elevator;laundry;dishwasher,2026-06-08
+339951,Lighthouse,2,2.0,821,G,1952,no,doorman;pets_allowed;laundry;PARKING,2026-09-01
+743515,Anchor Bay ,2,2.0,652 sq ft,14,1942,no,dishwasher;pets_allowed;laundry,2026-07-03
+119415,Saltmarsh,1,1.0,596 sq ft,12,1945,no,elevator;laundry,2026-04-24
+960772,Foundry,2,1.0,961sqft,34,2020,no,gym;balcony;doorman;laundry,2026-06-04
+100707,saltmarsh,1,1.0,600 sq ft,27,1974,no,,2026-08-31
+669611,Marlow,1,1.0,652sqft,2,2011,no,balcony;pets_allowed;dishwasher;elevator,2026-07-09
+841930,Heathside ,4,2.0,1845,10,1986,no,laundry,2026-07-17
+371662,Marlow,2,1.5,1028 sq ft,30,1951,no,laundry;dishwasher;balcony,2026-04-15
+821573,Canal Quarter,1,1.0,777,21,1975,no,laundry; dishwasher;balcony;gym;doorman,2026-04-03
+903120,Heathside,2,2.0,1015,34,1982,no,parking;gym; dishwasher,2026-09-11
+136421,Foundry ,2,1.5,1296,15,1988,no,dishwasher;GYM; doorman; pets_allowed,2026-03-11
+945928,Mill Hill,1,1.0,699 sq ft,21,1937,no,dishwasher;balcony;pets_allowed;laundry,2026-05-24
+110493,Mill Hill,2,2.0,999 sq ft,33,1966,yes,dishwasher;balcony,2026-06-15
+164062,Oakhurst,1,1.0,769sqft,G,1983,no,doorman;dishwasher;laundry,2026-04-13
+790543,CANAL QUARTER,1,1.0,631 sq ft,23,1973,no,elevator; pets_allowed;laundry,2026-08-13
+127242,Oakhurst,2,1.5,999 sq ft,G,1940,no,doorman;gym,2026-09-16
+425167,Canal Quarter,1,1.0,728 sq ft,24,1945,no,parking;laundry;dishwasher;balcony; gym;elevator,2026-08-22
+357921,anchor bay,2,1.0,971sqft,26,2013,no,pets_allowed;parking;elevator;gym,2026-06-17
+463633,oakhurst,4,2.0,1749,28,1978,no,parking;gym;pets_allowed;elevator,2026-07-24
+865131,Stonebridge,1,1.0,856 sq ft,6,1975,no,PARKING;elevator;balcony;PETS_ALLOWED,2026-08-05
+801972,Westlea ,1,1.0,644sqft,8,1967,no,elevator;gym;dishwasher;pets_allowed,2026-08-20
+503874,Brookvale ,2,2.0,906 sq ft,34,1933,no, laundry;dishwasher;elevator;PARKING,2026-06-30
+221151,Brickworks,2,1.5,1125 sq ft,G,1931,no,dishwasher;parking;doorman,2026-05-10
+625819,Briar Hill,1,1.0,657,2,1925,no, elevator;pets_allowed,2026-07-07
+239253,anchor bay,3,1.0,1490 sq ft,14,1992,yes,dishwasher;balcony,2026-05-22
+511254,OAKHURST,1,1.0,484 sq ft,G,1936,yes,gym;parking;balcony;PETS_ALLOWED;doorman,2026-08-08
+516666,oakhurst,3,2.0,1500,G,2004,no,parking;elevator; laundry,2026-01-05
+920064,Westlea,2,2.0,940sqft,23,1975,no, parking;dishwasher;laundry,2026-02-24
+330499,Riverside,1,1.0,783 sq ft,G,2007,no,gym;elevator; dishwasher,2026-01-27
+489573,STONEBRIDGE,Studio,1.0,478 sq ft,6,1987,no,pets_allowed;dishwasher;laundry,2026-07-21
+959266,Pier Row,1,1.0,535 sq ft,16,1991,no,laundry;balcony;doorman;DISHWASHER,2026-04-04
+513812,Anchor Bay,1,1.0,677sqft,23,1970,no,dishwasher; laundry,2026-08-12
+969645,kingsfield,Studio,1.0,527sqft,G,1996,no,parking; laundry;balcony,2026-09-18
+949736,Brookvale,1,1.0,890,29,1957,no,laundry;doorman;balcony;pets_allowed,2026-07-31
+950978,Saltmarsh,3,2.0,1400 sq ft,13,1938,no,dishwasher;doorman,2026-03-10
+452426,Canal Quarter,2,2.0,1210 sq ft,G,2004,no,doorman;laundry;gym,2026-06-14
+443471,Brickworks,1,1.0,658sqft,30,2022,no,laundry;pets_allowed; balcony;elevator;doorman; gym,2026-04-27
+420263,Canal Quarter,2,1.5,903,9,1989,yes,,2026-01-10
+950697,Briar Hill,Studio,1.0,322,34,1955,no,pets_allowed;parking;laundry;balcony,2026-06-14
+644234,Elm Park,2,2.0,815,30,1975,no,pets_allowed;laundry;BALCONY; elevator; dishwasher;gym;doorman,2026-04-01
+906326,Pier Row,Studio,1.0,336 sq ft,14,2016,yes,LAUNDRY;doorman;parking;balcony;elevator;dishwasher,2026-08-01
+998594,marlow,3,1.0,1145,13,1949,no,elevator,2026-07-04
+142421,Ashton,3,1.0,1636 sq ft,G,1947,yes,LAUNDRY,2026-01-13
+943563,Elm Park,2,1.5,1011,32,1980,no,laundry;doorman;gym,2026-04-18
+414840,Northcross,1,1.0,723 sq ft,31,2024,no,dishwasher,2026-07-05
+574836,Saltmarsh,Studio,1.0,425,G,1971,no,balcony;laundry;elevator;pets_allowed;parking;dishwasher,2026-03-06
+766404,Pier Row,1,1.0,702 sq ft,15,1980,no, dishwasher;parking;balcony,2026-08-14
+251041,Foundry ,2,1.0,1011,5,1945,yes,gym;laundry;parking,2026-04-07
+989599,Riverside,1,1.0,695 sq ft,G,1971,no,laundry;pets_allowed;balcony;gym,2026-02-12
+417303,Canal Quarter,Studio,1.0,250,32,1952,no,dishwasher;parking;gym; laundry; balcony,2026-07-27
+697450,Lighthouse,Studio,1.0,437,12,2008,no,dishwasher;elevator; parking;LAUNDRY;pets_allowed,2026-07-17
+884272,Elm Park,2,2.0,871,G,2012,no,laundry;gym;parking;balcony,2026-02-17
+828182,Mill Hill,1,1.0,796 sq ft,G,1993,no,laundry;pets_allowed;dishwasher;elevator,2026-09-02
+818710,Ashton,1,1.0,1048,19,1967,no,dishwasher;doorman; parking;laundry,2026-01-20
+713154,Briar Hill,2,2.0,743,29,1958,no, elevator;parking;gym;LAUNDRY,2026-05-04
+905554,Briar Hill,2,2.0,950 sq ft,25,1965,no,laundry;doorman;elevator,2026-07-03
+942285,Brickworks,1,1.0,809,1,1940,no,pets_allowed;laundry,2026-06-17
+970652,Kingsfield,Studio,1.0,359,4,1973,yes,dishwasher;gym;elevator,2026-06-07
+745517,Oakhurst,3,2.0,1457 sq ft,13,2022,yes,dishwasher;pets_allowed;laundry,2026-07-27
+262939,Oakhurst,3,1.5,1090,3,2006,no,dishwasher;pets_allowed,2026-05-13
+817235,Saltmarsh,3,1.0,1477sqft,30,1979,no,elevator;balcony;pets_allowed;dishwasher,2026-08-22
+955666,Ashton,3,1.5,1280,G,1939,no,elevator;PARKING;dishwasher; laundry,2026-08-20
+463953,Riverside,4,1.0,1713sqft,3,1930,no,parking;pets_allowed;LAUNDRY,2026-05-11
+140911,ashton,4,1.5,1420 sq ft,21,2020,no,dishwasher;elevator;laundry; gym,2026-05-02
+775825,Old Docks,4,2.5,1943,G,1949,no,dishwasher;pets_allowed;laundry; elevator,2026-05-27
+885373,Briar Hill,1,1.0,745sqft,14,1955,no,parking;elevator;balcony;pets_allowed;dishwasher;laundry,2026-07-23
+963648,Pier Row ,Studio,1.0,270sqft,11,2019,no,laundry; parking; doorman;gym; pets_allowed,2026-06-25
+932010,Lighthouse,Studio,1.0,369 sq ft,18,1965,no,laundry;dishwasher;balcony;parking,2026-07-16
+893192,Lighthouse ,2,2.0,1087 sq ft,15,1999,no,balcony;laundry;pets_allowed;parking,2026-06-30
+199342,Elm Park,1,1.0,693sqft,G,1984,no,pets_allowed,2026-01-16
+280003,Brookvale,2,2.0,1032 sq ft,G,2019,no, dishwasher;balcony;elevator,2026-04-01
+293731,Canal Quarter,1,1.0,565 sq ft,19,1978,no,gym;elevator;parking;dishwasher,2026-03-10
+194911,Old Docks,1,1.0,801,G,1982,no,elevator;laundry;balcony,2026-01-15
+980983,Marlow,4,1.5,1278,9,1959,yes,elevator;GYM;laundry;parking,2026-01-02
+266590,Larkspur,3,2.0,1740,21,1962,no,dishwasher;laundry,2026-08-26
+620480,lighthouse,2,2.0,1645 sq ft,21,1948,yes,pets_allowed;BALCONY;laundry,2026-05-14
+212780,Saltmarsh,3,2.0,1428 sq ft,13,1952,no,dishwasher;elevator,2026-04-01
+224454,QUAYSIDE,Studio,1.0,390,21,2005,no,elevator,2026-02-11
+473457,Anchor Bay,2,2.0,901 sq ft,34,1958,no,parking; elevator;laundry;balcony,2026-08-13
+563854,oakhurst,4,1.5,1705,15,1960,no,doorman;balcony,2026-03-26
+419825,Larkspur,2,2.0,1153,16,1953,no,gym,2026-07-24
+649376,Canal Quarter ,3,1.0,"1,404 sq ft",3,1986,no,elevator;laundry;balcony;parking;pets_allowed;dishwasher,2026-08-17
+852569,Westlea,2,1.5,1056,4,2014,yes,elevator;doorman;pets_allowed;dishwasher,2026-03-30
+797131,Riverside,2,2.0,1069 sq ft,24,2005,no,GYM;pets_allowed;dishwasher,2026-07-11
+513852,Elm Park,3,2.0,1732,G,1943,no,elevator;LAUNDRY;dishwasher,2026-02-10
+530633,Oakhurst ,Studio,1.0,321sqft,G,1989,no,gym;elevator;pets_allowed;dishwasher;parking,2026-09-02
+508525,Saltmarsh,2,1.0,1017,27,1955,yes,LAUNDRY; doorman;gym,2026-02-25
+183833,pier row,1,1.0,517 sq ft,34,1972,no,elevator;dishwasher;doorman,2026-06-04
+577605,elm park,1,1.0,722,8,1939,no,DISHWASHER; parking,2026-04-12
+379860,Canal Quarter,Studio,1.0,339sqft,28,1975,no,elevator; pets_allowed;dishwasher,2026-01-13
+317440,Heathside,3,2.5,1418sqft,10,1955,no,gym;pets_allowed;laundry; parking;dishwasher,2026-03-31
+246216,Marlow,2,1.0,1238 sq ft,17,1978,no,dishwasher;parking;elevator;laundry,2026-08-08
+315518,Old Docks,1,1.0,624,33,1938,no,balcony;dishwasher,2026-09-18
+431822,fernwood,Studio,1.0,342 sq ft,34,1958,no,dishwasher;elevator;gym;doorman,2026-07-15
+617671,Foundry,2,2.0,777,34,1940,no,laundry;dishwasher;elevator,2026-01-20
+641692,oakhurst,1,1.0,671,8,1933,no,pets_allowed;dishwasher;gym;elevator;parking,2026-08-29
+976132,quayside,4,2.0,1854,G,2006,yes,gym;dishwasher,2026-07-31
+310474,brookvale,Studio,1.0,348sqft,10,1937,no,parking;gym,2026-02-06
+802857,Lighthouse,1,1.0,627,3,1936,yes,LAUNDRY;pets_allowed,2026-08-17
+967139,Foundry,4,2.0,1742 sq ft,21,1989,no,elevator;dishwasher,2026-06-13
+968519,Old Docks,2,1.5,1046 sq ft,G,1955,no,DISHWASHER;pets_allowed;elevator,2026-08-14
+755955,Oakhurst ,1,1.0,986 sq ft,G,2009,yes,elevator;balcony,2026-03-07
+827287,Northcross,1,1.0,781 sq ft,8,2015,no,pets_allowed;dishwasher;doorman,2026-01-07
+769385,Briar Hill,1,1.0,777sqft,17,1935,no, pets_allowed;elevator; laundry,2026-02-19
+570470,Oakhurst,1,1.0,945,29,2005,yes,dishwasher;elevator,2026-03-28
+433703,Riverside,2,2.0,1093,19,1965,yes,elevator;DISHWASHER;pets_allowed,2026-09-08
+906265,Brookvale,1,1.0,842,10,1968,no,pets_allowed;balcony;dishwasher;elevator; parking,2026-04-17
+327273,pier row,1,1.0,512,19,2023,no, elevator;balcony;dishwasher,2026-09-20
+116952,Brookvale,4,1.5,1880,34,1978,yes,gym;laundry;dishwasher,2026-08-30
+316639,Brickworks,4,1.0,1455 sq ft,13,1943,no,laundry;doorman,2026-09-11
+754133,Marlow,1,1.0,781,G,1975,no,dishwasher;balcony;pets_allowed,2026-05-23
+739082,stonebridge,3,2.0,1159,9,2014,no,elevator;BALCONY;dishwasher,2026-03-19
+235024,Larkspur,1,1.0,708 sq ft,28,1969,no,GYM; dishwasher;doorman,2026-06-17
+962482,Brookvale,2,1.0,1054sqft,20,2002,no,laundry;balcony;dishwasher;doorman;gym,2026-04-23
+803097,Brookvale ,1,1.0,714sqft,15,1934,no,pets_allowed;laundry; elevator;PARKING,2026-01-15
+786487,Brickworks ,1,1.0,751sqft,18,1969,no,balcony;dishwasher;laundry,2026-03-18
+761593,canal quarter,2,1.5,944sqft,34,1958,no, dishwasher;balcony,2026-09-17
+626599,Quayside,Studio,1.0,250sqft,9,1943,no, dishwasher;laundry,2026-08-12
+931990,Stonebridge,3,2.0,1300 sq ft,4,2008,yes,LAUNDRY;balcony;parking,2026-04-10
+110016,pier row,1,1.0,643sqft,G,1935,no,elevator;dishwasher;laundry;balcony,2026-06-03
+810039,Mill Hill,Studio,1.0,410,33,1973,no,balcony;doorman;elevator;laundry,2026-03-09
+779189,Anchor Bay ,1,1.0,697sqft,G,1962,no,laundry;dishwasher; gym;parking;elevator,2026-03-18
+369447,briar hill,1,1.0,771 sq ft,29,1946,no,laundry;dishwasher;doorman,2026-06-27
+554774,Oakhurst,1,1.0,672,2,1983,no,pets_allowed;elevator;balcony,2026-08-06
+393306,Briar Hill ,Studio,1.0,323 sq ft,29,2017,no,balcony;PETS_ALLOWED;laundry;elevator,2026-05-26
+835224,Stonebridge,1,1.0,813,5,1937,no,doorman;elevator;dishwasher;laundry,2026-01-26
+604544,Heathside,Studio,1.0,466 sq ft,8,1981,no,laundry;gym,2026-01-04
+726765,Heathside,1,1.0,806,G,2012,no,pets_allowed;laundry;elevator; dishwasher,2026-06-12
+441827,Marlow,1,1.0,945 sq ft,G,2019,no,balcony;gym;elevator,2026-07-30
+226850,Canal Quarter,1,1.0,869,4,2017,no,balcony,2026-09-01
+411026,old docks,1,1.0,698 sq ft,19,1944,no,laundry;pets_allowed; dishwasher,2026-05-19
+966333,quayside,2,1.0,763 sq ft,19,1993,yes,doorman;pets_allowed;balcony,2026-03-17
+878806,Saltmarsh,4,1.0,1668 sq ft,26,1976,yes,laundry;dishwasher;pets_allowed,2026-08-09
+994611,oakhurst,3,1.0,1744sqft,G,1961,no,,2026-08-28
+427050,Ashton ,3,2.0,1315 sq ft,G,2006,yes, dishwasher;doorman;elevator,2026-05-22
+456964,larkspur,1,1.0,674 sq ft,20,1968,yes,elevator;dishwasher,2026-09-10
+739209,Pier Row,1,1.0,718sqft,8,1962,no,doorman;laundry;PETS_ALLOWED;elevator,2026-03-14
+281145,Westlea,3,1.5,"1,390 sq ft",G,1982,no,dishwasher;pets_allowed;gym;balcony,2026-07-09
+281843,Old Docks ,2,2.0,962 sq ft,3,1977,yes,laundry;parking;balcony;gym,2026-05-23
+917198,Elm Park,1,1.0,802 sq ft,10,2006,no,gym;dishwasher;elevator;laundry,2026-07-14
+524770,HEATHSIDE,2,1.5,1083,12,2011,no,parking;gym; laundry;elevator,2026-01-10
+516705,Larkspur,1,1.0,728 sq ft,21,2009,no,doorman;elevator;laundry;gym,2026-05-22
+710489,Brookvale,2,2.0,1320,G,1933,no,balcony;elevator;PETS_ALLOWED,2026-07-10
+959846,Heathside,3,1.0,1635,30,1973,no,laundry;parking,2026-06-07
+180526,Brookvale,1,1.0,609 sq ft,3,1931,no, dishwasher;elevator,2026-04-04
+679732,briar hill,2,2.0,909 sq ft,18,2009,yes,balcony;elevator;laundry,2026-03-31
+467336,Larkspur,4,3.0,1565 sq ft,26,1953,no,LAUNDRY;dishwasher;parking;elevator,2026-05-18
+916590,Lighthouse,2,2.0,912sqft,4,1947,yes,elevator;dishwasher;LAUNDRY,2026-07-06
+640784,Old Docks ,1,1.0,776 sq ft,1,2017,no,GYM;dishwasher,2026-07-29
+166944,Anchor Bay,Studio,1.0,351 sq ft,G,1966,yes,PARKING,2026-05-21
+515428,Northcross,Studio,1.0,442 sq ft,2,2005,yes,parking;LAUNDRY;dishwasher,2026-09-03
+300011,Riverside,2,2.0,1192,12,2008,no,doorman;laundry;gym,2026-06-01
+666228,mill hill,1,1.0,687 sq ft,27,1989,no,elevator;pets_allowed;doorman,2026-04-17
+977114,riverside,2,2.0,893,26,1939,no, doorman;laundry;dishwasher;gym,2026-09-10
+643668,Brickworks,2,2.0,844 sq ft,17,1926,yes,dishwasher;elevator;pets_allowed;laundry,2026-02-04
+751092,Saltmarsh,3,1.5,1417,G,1980,no,laundry; dishwasher,2026-05-08
+752190,Riverside,2,1.0,982 sq ft,21,1972,yes,elevator;laundry;doorman,2026-02-11
+437666,Brickworks,1,1.0,627,6,2001,no,parking;pets_allowed;elevator;balcony;dishwasher,2026-03-03
+679879,heathside,1,1.0,926,5,1981,no,gym;DISHWASHER;parking;pets_allowed,2026-03-07
+973221,LARKSPUR,3,1.0,1568,3,1960,no,dishwasher;parking,2026-06-03
+143009,northcross,4,2.5,2001,1,1991,no,elevator;laundry,2026-09-06
+910221,Larkspur,3,1.0,1274,16,2006,yes,doorman,2026-09-01
+475581,QUAYSIDE,2,1.0,1160 sq ft,19,1997,no,pets_allowed;laundry;doorman;dishwasher;balcony,2026-04-28
+963310,Kingsfield,2,2.0,1005,19,1972,no,laundry,2026-02-09
+241917,Larkspur,Studio,1.0,378sqft,2,2019,no,BALCONY;dishwasher;doorman;gym;pets_allowed;parking,2026-06-25
+861318,Ashton,3,1.5,1052,2,1954,no,elevator,2026-02-25
+518214,fernwood,1,1.0,568sqft,17,2003,no,elevator;dishwasher; laundry,2026-05-20
+374193,Westlea,1,1.0,643 sq ft,27,1955,no,pets_allowed;balcony;laundry;gym; doorman,2026-04-09
+225498,Northcross,1,1.0,669,30,1990,no,laundry;ELEVATOR;balcony;parking,2026-01-27
+834113,Ashton,Studio,1.0,392,11,2010,no,laundry;pets_allowed;balcony;elevator,2026-06-29
+642156,Oakhurst,1,1.0,724sqft,34,1979,no,LAUNDRY;balcony;dishwasher;parking,2026-07-01
+233779,Westlea,3,2.5,1536sqft,8,1990,no,gym;pets_allowed;dishwasher,2026-04-11
+406291,lighthouse,1,1.0,544 sq ft,9,1942,no,DISHWASHER; pets_allowed,2026-07-20
+269263,briar hill,2,2.0,1094,22,1987,no,gym;ELEVATOR; dishwasher,2026-06-15
+192488,Mill Hill,1,1.0,843,31,1930,no,doorman;laundry;pets_allowed,2026-06-19
+541913,Oakhurst ,2,2.0,1036,27,1958,no,parking;dishwasher; pets_allowed;balcony;laundry;elevator,2026-08-01
+915341,Saltmarsh ,3,1.0,1325,11,2004,no,gym;pets_allowed,2026-03-14
+676341,elm park,3,1.0,1177 sq ft,14,2020,no,dishwasher; parking;LAUNDRY,2026-01-05
+205039,Quayside ,1,1.0,827,28,1995,no,dishwasher;pets_allowed;laundry;balcony;gym,2026-04-27
+677356,Lighthouse,1,1.0,728,32,2020,no,laundry;elevator;doorman,2026-03-21
+600838,old docks,3,2.5,1261 sq ft,32,1927,no,,2026-03-14
+881701,Quayside,Studio,1.0,517 sq ft,17,1966,no,parking;laundry,2026-03-17
+453095,stonebridge,1,1.0,595 sq ft,19,1959,no, dishwasher;laundry;pets_allowed,2026-02-19
+417819,Old Docks,2,2.0,1046 sq ft,4,2001,no,parking;balcony;laundry;doorman,2026-08-06
+626829,Briar Hill,2,2.0,1107,18,1932,no,pets_allowed;elevator;balcony;doorman,2026-06-24
+137510,Heathside ,Studio,1.0,413,2,1999,no,,2026-01-28
+216168,Foundry,3,1.5,1370sqft,14,1929,yes,laundry;elevator;DISHWASHER,2026-08-11
+551491,northcross,2,2.0,922sqft,5,1953,no,balcony;dishwasher;gym,2026-03-04
+113575,ANCHOR BAY,3,1.0,1380 sq ft,25,1966,no,parking; gym; pets_allowed;BALCONY;doorman,2026-01-17
+675812,Pier Row,1,1.0,704sqft,9,2006,yes,dishwasher;elevator;parking;gym,2026-05-24
+145195,Oakhurst,2,1.0,1159 sq ft,1,2012,no,gym; laundry;dishwasher;elevator,2026-02-01
+947463,CANAL QUARTER,1,1.0,722sqft,6,2010,no,gym;balcony; dishwasher;elevator; parking;doorman,2026-03-31
+804561,Larkspur,1,1.0,836,18,2000,no,dishwasher;doorman;ELEVATOR,2026-04-12
+872725,Larkspur,1,1.0,554,24,2001,no,PETS_ALLOWED;elevator;dishwasher;doorman,2026-03-18
+731948,heathside,4,2.0,1620,15,2022,yes,laundry;pets_allowed;doorman;parking,2026-02-01
+814123,Brickworks,1,1.0,533 sq ft,30,2005,no,dishwasher;gym; balcony;parking;laundry;elevator,2026-01-19
+972148,Stonebridge ,2,2.0,1179 sq ft,1,1928,no,elevator;pets_allowed;balcony;dishwasher;gym,2026-02-26
+141131,SALTMARSH,Studio,1.0,383 sq ft,G,2009,yes,elevator,2026-02-13
+668937,Brookvale,3,2.5,1462,G,1942,no,BALCONY;DISHWASHER,2026-05-09
+542206,Old Docks,2,2.0,1109,30,1941,no,pets_allowed;balcony; dishwasher,2026-08-30
+649349,Riverside,Studio,1.0,452 sq ft,31,1997,yes,pets_allowed;balcony;gym;laundry,2026-01-11
+495996,FOUNDRY,3,2.0,1681,29,1996,no,dishwasher;pets_allowed;laundry,2026-04-20
+507805,mill hill,3,2.0,1228,34,2022,no,elevator;dishwasher;pets_allowed;balcony;laundry;DOORMAN,2026-05-16
+507310,Stonebridge,3,1.0,1290,1,1987,yes,dishwasher;DOORMAN; elevator; balcony,2026-06-15
+632313,canal quarter,2,1.5,1100 sq ft,20,1973,no,parking;dishwasher,2026-05-31
+539221,Canal Quarter,2,1.5,1085,29,1976,no,balcony; elevator;GYM;doorman,2026-02-07
+331515,Quayside,1,1.0,682,G,1990,yes,gym; doorman;parking,2026-04-04
+605253,Briar Hill ,1,1.0,786,2,1987,no,elevator;dishwasher;gym;laundry,2026-03-18
+267935,Marlow,1,1.0,688sqft,22,2003,no,gym;parking;dishwasher;laundry;BALCONY;elevator,2026-07-26
+573088,Old Docks,2,2.0,1257,15,2012,no,DISHWASHER;elevator;DOORMAN;BALCONY,2026-09-21
+327938,brickworks,1,1.0,674sqft,29,2016,no,elevator;PETS_ALLOWED;gym;laundry;parking;dishwasher;doorman,2026-01-26
+272551,Oakhurst,2,1.5,1309,31,1941,no,elevator;gym,2026-08-25
+673780,Saltmarsh,1,1.0,808,26,2013,no,dishwasher;laundry,2026-07-28
+865122,Anchor Bay,2,1.0,879 sq ft,G,1994,no,dishwasher;laundry; elevator;doorman,2026-02-05
+271496,Anchor Bay,2,1.0,1014 sq ft,3,2013,no,balcony;laundry;elevator;dishwasher,2026-09-19
+920579,Ashton ,Studio,1.0,289,15,1969,no,doorman;laundry; elevator;dishwasher;balcony,2026-07-01
+302953,Marlow ,2,2.0,1263,29,1991,no,doorman;dishwasher;gym;balcony; parking,2026-07-30
+921043,NORTHCROSS,1,1.0,549,25,1997,no,elevator;dishwasher; laundry;pets_allowed,2026-04-27
+661769,Canal Quarter,3,2.0,1294,28,1953,no,parking;elevator;laundry;balcony;gym,2026-04-15
+335603,Briar Hill,1,1.0,877,G,1962,no,elevator;balcony;laundry;pets_allowed;gym,2026-03-17
+259160,Northcross,1,1.0,870,31,1979,no,pets_allowed;parking;balcony,2026-02-04
+486343,Saltmarsh,2,2.0,1017 sq ft,10,2000,no,ELEVATOR; pets_allowed; dishwasher;laundry,2026-09-22
+376543,Kingsfield,1,1.0,886 sq ft,9,2004,no,elevator,2026-08-16
+314844,marlow,3,2.0,1424 sq ft,7,1942,no,laundry;dishwasher;gym;balcony;pets_allowed,2026-04-28
+729204,Elm Park,1,1.0,817,G,2022,no,balcony;doorman;elevator;parking,2026-07-09
+255525,Fernwood ,2,1.0,981,7,1962,no,elevator;DISHWASHER;laundry,2026-04-29
+108872,Oakhurst,1,1.0,1058,17,1983,yes,parking;elevator,2026-03-10
+672260,Heathside ,1,1.0,875 sq ft,13,1986,no,laundry;parking;elevator;dishwasher,2026-03-30
+853973,Saltmarsh,Studio,1.0,265 sq ft,25,1962,no,PETS_ALLOWED;dishwasher; parking;doorman,2026-07-26
+290213,marlow,2,2.0,1105,G,1938,no,pets_allowed;dishwasher;elevator; laundry,2026-06-19
+499616,Mill Hill,3,2.0,1350sqft,32,1960,no,,2026-03-31
+225289,Larkspur,1,1.0,887 sq ft,G,2020,yes,parking;PETS_ALLOWED,2026-03-17
+617667,Elm Park,2,1.0,1050 sq ft,22,1938,no,gym;dishwasher;laundry;elevator,2026-07-27
+569702,Foundry,2,2.0,1351sqft,14,1959,no,doorman;elevator;pets_allowed; balcony;dishwasher,2026-08-25
+388301,Riverside,1,1.0,664 sq ft,G,2018,no,laundry;elevator,2026-01-23
+188444,BRICKWORKS,1,1.0,821,16,1989,no,dishwasher;parking;gym;ELEVATOR,2026-09-14
+612524,Marlow,3,1.0,1306 sq ft,20,1941,no,doorman; dishwasher;laundry,2026-02-20
+910093,elm park,2,2.0,1252 sq ft,18,1967,no, doorman;parking,2026-08-12
+179842,Elm Park,3,1.0,979 sq ft,9,2012,no, balcony;pets_allowed;laundry,2026-04-28
+590556,Mill Hill,3,3.0,1158 sq ft,33,1959,no,pets_allowed;elevator,2026-08-14
+205054,Anchor Bay ,Studio,1.0,250 sq ft,5,1991,yes,balcony;laundry;pets_allowed,2026-07-14
+968831,Foundry ,1,1.0,658 sq ft,27,1975,no,gym;elevator;dishwasher,2026-02-12
+131678,Pier Row,3,1.5,1315,30,2023,no,dishwasher,2026-09-23
+131352,Briar Hill,4,2.5,1900,19,2004,no,dishwasher;balcony;ELEVATOR,2026-09-10
+850258,Oakhurst,2,2.0,1121 sq ft,9,1978,no,elevator;balcony,2026-06-02
+376079,Pier Row,2,1.5,1196sqft,18,1951,no,dishwasher,2026-01-16
+883295,brickworks,Studio,1.0,255 sq ft,G,2017,no,balcony;gym;elevator;DISHWASHER; laundry,2026-07-05
+270878,Briar Hill,1,1.0,608 sq ft,G,2022,no,balcony,2026-06-23
+569588,Canal Quarter,1,1.0,807 sq ft,28,2021,no,PARKING;laundry;doorman;gym,2026-08-17
+148281,Stonebridge,2,1.0,713 sq ft,10,1970,yes,parking;laundry; dishwasher; gym,2026-09-23
+919557,brookvale,2,2.0,813,27,1952,no,elevator;laundry;dishwasher,2026-02-09
+102512,Northcross,2,2.0,861 sq ft,11,2003,no,LAUNDRY;PETS_ALLOWED;dishwasher;balcony;elevator,2026-03-21
+632425,Foundry,Studio,1.0,250sqft,17,2006,no,parking,2026-01-23
+564124,fernwood,Studio,1.0,341,G,1992,no,laundry;dishwasher,2026-02-07
+452535,Fernwood ,2,1.0,690 sq ft,G,1942,no,balcony;doorman;pets_allowed,2026-08-04
+456425,Mill Hill,2,2.0,1392 sq ft,27,1959,yes,doorman;laundry;BALCONY;parking,2026-07-29
+327710,Anchor Bay,1,1.0,749,1,2000,no, balcony;elevator;dishwasher;laundry;gym,2026-05-09
+412111,Marlow,2,2.0,"1,321 sq ft",3,2011,no,doorman;pets_allowed;gym,2026-06-28
+737365,Stonebridge,1,1.0,927sqft,13,1995,yes,GYM;balcony,2026-02-08
+962367,Foundry,1,1.0,642sqft,3,1944,no,dishwasher;laundry;ELEVATOR;pets_allowed,2026-06-03
+495882,Brickworks,2,2.0,1152 sq ft,5,2003,no,parking;pets_allowed;balcony;elevator;laundry;dishwasher,2026-09-06
+923105,Brookvale,1,1.0,639,11,2021,no,elevator;DISHWASHER; laundry;gym;pets_allowed,2026-04-04
+679953,FERNWOOD,1,1.0,808sqft,22,1936,yes,elevator;pets_allowed;dishwasher;balcony,2026-05-21
+173086,Marlow,3,2.0,1035 sq ft,30,1961,no,LAUNDRY;dishwasher;parking,2026-07-07
+730390,Saltmarsh,4,1.5,1533 sq ft,14,2007,yes,elevator;balcony;laundry;pets_allowed,2026-09-15
+331778,Old Docks,2,1.5,966 sq ft,5,2024,no,PETS_ALLOWED;laundry,2026-07-17
+306952,Canal Quarter,4,2.0,1728sqft,24,1953,no,gym;doorman;elevator,2026-08-29
+614121,Quayside,1,1.0,738 sq ft,13,1976,yes,doorman;elevator; pets_allowed;parking,2026-01-06
+335711,Anchor Bay,2,2.0,1045sqft,G,2006,no,parking;elevator;laundry,2026-01-21
+938323,Heathside,2,1.5,1120 sq ft,3,1925,no, dishwasher;elevator;parking;laundry,2026-02-17
+444763,Stonebridge,2,2.0,1096,20,1989,no,laundry;dishwasher;gym,2026-04-04
+754888,Ashton,1,1.0,632sqft,G,2015,no,BALCONY;pets_allowed,2026-07-09
+986971,Foundry,1,1.0,511,14,1959,no,dishwasher;doorman,2026-06-08
+376373,Larkspur,2,1.0,1031 sq ft,8,1959,yes,dishwasher;elevator,2026-02-06
+904818,riverside,4,1.0,1477,22,1987,no,laundry;dishwasher;parking;pets_allowed,2026-03-19
+500564,Elm Park ,2,1.0,865,G,1995,no,laundry;elevator;dishwasher;balcony,2026-03-08
+267161,Briar Hill,2,2.0,1185,30,2005,no,parking;laundry;pets_allowed;balcony,2026-07-03
+794985,Quayside,1,1.0,738,24,2020,yes,doorman;dishwasher,2026-03-12
+497614,Fernwood,1,1.0,634,1,1932,no,ELEVATOR;DISHWASHER;laundry;parking,2026-01-17
+965621,Oakhurst,3,1.5,1455sqft,25,1941,no,DISHWASHER;pets_allowed,2026-06-08
+276545,Mill Hill,1,1.0,723,7,2015,no,pets_allowed; parking;gym;dishwasher,2026-09-25
+375224,Brookvale,1,1.0,947 sq ft,G,1992,no,DISHWASHER;pets_allowed;BALCONY;elevator;parking,2026-08-30
+904389,Old Docks ,1,1.0,681 sq ft,32,1984,no,elevator;balcony;dishwasher,2026-05-04
+667980,Mill Hill,4,2.0,1606 sq ft,22,1955,no, laundry,2026-02-13
+192909,Fernwood,1,1.0,911,17,1935,no,pets_allowed;dishwasher,2026-04-22
+165878,Fernwood,1,1.0,576 sq ft,32,1957,no,pets_allowed;balcony;dishwasher,2026-05-28
+865216,Stonebridge,2,2.0,1222sqft,32,1942,no,gym,2026-04-25
+745286,ashton,1,1.0,720,27,1930,no,dishwasher,2026-09-21
+724983,Brickworks,4,1.5,1506 sq ft,29,1969,no,laundry;GYM,2026-06-04
+537486,Mill Hill,3,1.0,1588 sq ft,19,1955,no,pets_allowed;elevator;gym,2026-04-27
+648657,lighthouse,2,2.0,1094 sq ft,29,2007,no,elevator;balcony;DOORMAN; laundry,2026-01-16
+176180,Foundry,2,2.0,1017,29,1982,no,laundry,2026-06-16
+432967,Anchor Bay,2,2.0,1126 sq ft,5,1946,no,pets_allowed;balcony;gym,2026-03-22
+859584,Foundry,4,1.5,1416 sq ft,12,1971,yes,parking;PETS_ALLOWED,2026-09-11
+349411,canal quarter,1,1.0,508,23,1937,no,DISHWASHER;doorman;elevator,2026-07-21
+736703,Briar Hill,2,2.0,958 sq ft,18,2007,yes,pets_allowed;laundry;parking,2026-05-29
+359059,Elm Park,2,2.0,1020 sq ft,29,1967,no,,2026-08-02
+972014,Saltmarsh,1,1.0,751 sq ft,32,1932,no,dishwasher,2026-09-19
+916898,Larkspur,2,1.0,1290 sq ft,34,1934,yes, dishwasher; doorman;elevator,2026-02-25
+669622,Saltmarsh,4,1.5,1668,2,1976,no,PETS_ALLOWED;balcony;laundry,2026-05-02
+494256,Anchor Bay,3,1.0,1528,G,1989,no, parking;dishwasher;balcony,2026-09-24
+667268,Canal Quarter,2,2.0,774,G,1940,no,elevator;balcony;laundry,2026-04-03
+189810,Westlea ,2,1.0,1111 sq ft,G,1943,no,,2026-06-21
+814695,Saltmarsh,1,1.0,615,33,1969,no,gym;dishwasher; parking,2026-01-13
+198351,Old Docks,2,2.0,1047sqft,18,1967,yes, balcony;elevator,2026-04-29
+660338,Kingsfield,1,1.0,711,15,1992,no,doorman;laundry;balcony;DISHWASHER,2026-03-13
+393583,Marlow,1,1.0,854sqft,24,2007,yes,laundry,2026-04-10
+969383,Ashton,Studio,1.0,323,27,1980,no,elevator;pets_allowed; dishwasher;laundry,2026-01-09
+505866,lighthouse,2,1.5,1205,29,1972,yes,pets_allowed;balcony;elevator,2026-06-28
+918267,Mill Hill,2,1.0,873sqft,28,1970,yes,parking;balcony,2026-09-02
+855121,Old Docks,1,1.0,888,26,2012,no,balcony;laundry,2026-07-05
+717121,Ashton,2,1.0,952 sq ft,G,2004,no, laundry;dishwasher;parking,2026-03-11
+250345,Heathside,2,2.0,"1,070 sq ft",G,2001,no,elevator;laundry,2026-01-23
+436880,Lighthouse,1,1.0,731sqft,32,1990,yes, pets_allowed;parking;laundry,2026-02-22
+650143,Stonebridge,3,1.0,1259,31,1978,no,parking;pets_allowed;dishwasher;doorman;elevator,2026-07-04
+595997,Foundry,2,2.0,952,34,2016,no,laundry;balcony,2026-02-17
+457945,Foundry,1,1.0,603,32,1936,no,gym;dishwasher;laundry,2026-07-03
+117785,Mill Hill,3,1.0,1027 sq ft,34,1968,no,balcony;elevator; laundry,2026-03-01
+697037,Lighthouse,3,1.5,1057,G,2001,yes,parking;doorman; elevator;laundry;balcony,2026-08-14
+168047,foundry,Studio,1.0,250,23,2024,no,balcony;parking,2026-09-20
+524870,Quayside,1,1.0,772 sq ft,G,1933,no,ELEVATOR;doorman,2026-01-01
+762301,Riverside,3,1.5,1368 sq ft,13,1976,yes,dishwasher;balcony;doorman;elevator; pets_allowed,2026-06-29
+599112,Westlea,3,2.5,1627 sq ft,19,2006,yes,pets_allowed; dishwasher;balcony;elevator,2026-05-13
+818325,Lighthouse,1,1.0,774 sq ft,G,1992,yes,dishwasher;balcony;PARKING;pets_allowed,2026-03-21
+609930,Saltmarsh,1,1.0,733 sq ft,30,1958,no,dishwasher;gym; laundry;elevator,2026-08-13
+325622,Briar Hill,2,2.0,1138,12,1989,yes, elevator;balcony;parking;laundry,2026-08-11
+241955,Kingsfield ,2,2.0,1109,14,1971,no,dishwasher;balcony;elevator,2026-09-01
+163457,Kingsfield,1,1.0,576,G,2020,no,pets_allowed; parking;laundry,2026-05-31
+427914,Oakhurst,3,1.0,1429 sq ft,16,2005,yes,pets_allowed;LAUNDRY; dishwasher,2026-08-26
+547223,Mill Hill,1,1.0,613sqft,3,1997,no, dishwasher;gym,2026-05-17
+848265,oakhurst,Studio,1.0,442sqft,19,1943,no,dishwasher;balcony;gym;laundry,2026-05-24
+737219,foundry,Studio,1.0,310,22,2000,no,laundry;elevator;gym;dishwasher; parking,2026-09-24
+615748,heathside,1,1.0,905 sq ft,33,2007,no,elevator;laundry;doorman,2026-02-15
+432093,Brookvale,3,1.5,1207,4,1965,no,gym,2026-04-04
+920767,Elm Park,1,1.0,831 sq ft,17,2020,no,laundry,2026-06-19
+888275,Kingsfield,Studio,1.0,406,28,1934,no,DISHWASHER;elevator; laundry,2026-01-26
+420481,Brookvale,3,1.0,1633,14,2015,yes,elevator;gym,2026-06-02
+134568,heathside,Studio,1.0,302,10,1940,yes,dishwasher;parking;elevator;balcony,2026-07-25
+342195,Old Docks,1,1.0,592,34,1952,no,pets_allowed;elevator;dishwasher,2026-04-08
+365971,Marlow,1,1.0,723 sq ft,4,1929,no,elevator;dishwasher;pets_allowed;parking,2026-06-19
+475636,Oakhurst,2,2.0,1390sqft,10,1992,no,pets_allowed;gym,2026-09-19
+757518,Pier Row ,1,1.0,601,2,1999,no,balcony;elevator,2026-04-14
+275940,Canal Quarter,3,2.0,1444 sq ft,1,1942,no,laundry;parking,2026-09-01
+159037,kingsfield,3,2.0,1491,G,1987,no,DISHWASHER;balcony;gym,2026-02-19
+564802,Foundry,3,1.5,1484 sq ft,31,2013,yes,doorman;elevator; laundry;parking,2026-05-23
+923672,BRIAR HILL,3,2.0,1721,8,1945,no,dishwasher;gym;LAUNDRY,2026-09-18
+531088,Old Docks,1,1.0,823sqft,33,2005,no,laundry;elevator;pets_allowed;dishwasher,2026-05-18
+487833,Larkspur,2,2.0,1011,21,1945,no,balcony,2026-07-29
+981681,Northcross,1,1.0,741,29,2004,no,elevator;balcony;dishwasher,2026-08-24
+215591,Anchor Bay,1,1.0,540,3,1993,no,laundry; elevator;balcony;pets_allowed,2026-01-27
+640800,brookvale,4,1.0,1570sqft,18,1969,no,laundry;parking;doorman,2026-03-23
+880929,Elm Park,1,1.0,501,3,1933,no,LAUNDRY;doorman,2026-05-14
+780918,Kingsfield,3,2.0,1672,26,2003,no,laundry;gym,2026-01-06
+727870,Saltmarsh,3,2.0,1451 sq ft,12,1975,no,balcony;doorman;PETS_ALLOWED;laundry; dishwasher;elevator,2026-05-21
+705374,Canal Quarter,3,2.0,1520,G,1963,no,gym;parking;PETS_ALLOWED;doorman,2026-04-30
+538693,larkspur,2,2.0,1277,G,1954,no,doorman;elevator,2026-09-20
+418555,Saltmarsh,2,2.0,1115 sq ft,12,1969,yes,balcony; dishwasher;laundry;doorman;parking,2026-08-16
+350588,Brickworks,1,1.0,549 sq ft,20,1989,yes,laundry,2026-08-30
+677314,Northcross,4,1.5,1430 sq ft,G,1932,no,balcony;elevator;dishwasher;laundry,2026-07-28
+289045,Larkspur,3,1.5,1332,33,1926,no,parking;dishwasher;elevator,2026-06-08
+609599,Northcross,1,1.0,583,G,2014,no,pets_allowed;laundry,2026-05-16
+301734,Old Docks,3,1.5,1533sqft,20,1989,no,elevator;dishwasher;parking,2026-02-11
+272273,Oakhurst ,1,1.0,760,20,2006,no,pets_allowed;GYM;LAUNDRY;dishwasher,2026-03-24
+972304,Heathside ,1,1.0,836sqft,G,1940,no,gym; dishwasher;pets_allowed,2026-01-16
+105457,Northcross,3,2.5,1394 sq ft,G,2015,no,PARKING;laundry;pets_allowed;balcony,2026-08-31
+123308,Quayside,1,1.0,826 sq ft,13,1962,no,elevator;dishwasher;pets_allowed;laundry,2026-01-19
+927818,KINGSFIELD,3,1.5,1590sqft,16,1956,yes,laundry;pets_allowed;parking;dishwasher,2026-02-15
+764865,Riverside,3,3.0,1680 sq ft,27,1984,no,laundry;dishwasher;pets_allowed,2026-07-22
+557130,Brookvale,1,1.0,776,18,1996,yes,dishwasher;doorman,2026-01-08
+286665,Brickworks,Studio,1.0,318sqft,G,1952,no,balcony;dishwasher;doorman;elevator;laundry,2026-01-23
+887420,Mill Hill,3,2.0,1330,29,1925,no,gym;elevator;parking;doorman,2026-05-24
+262372,Larkspur,Studio,1.0,404 sq ft,25,1989,no,dishwasher,2026-04-21
+141166,Larkspur,2,1.0,1480,4,1927,no,elevator;pets_allowed;doorman;dishwasher,2026-04-08
+605485,Canal Quarter ,Studio,1.0,292 sq ft,3,1966,no,parking;elevator,2026-07-18
+283320,ELM PARK,3,2.0,1608,G,1989,no,doorman;laundry;dishwasher;gym;pets_allowed;parking;balcony,2026-08-12
+643814,Anchor Bay,Studio,1.0,433sqft,21,1963,no, dishwasher;balcony;elevator;parking;gym;pets_allowed,2026-01-29
+838458,Ashton,2,2.0,1047,10,1962,no,balcony;laundry;PARKING,2026-03-26
+209578,MARLOW,3,1.5,1339,12,1997,yes, doorman; laundry;ELEVATOR;pets_allowed,2026-06-05
+620711,Marlow,1,1.0,875,17,1929,no,pets_allowed;doorman;laundry,2026-02-19
+446152,Marlow,Studio,1.0,266 sq ft,G,1930,no,gym; elevator;laundry;pets_allowed,2026-07-23
+734649,brickworks,2,1.5,1297sqft,13,1953,no,doorman;PETS_ALLOWED;dishwasher;balcony; parking;gym,2026-07-26
+766595,pier row,1,1.0,747 sq ft,16,1972,no,dishwasher;elevator,2026-06-02
+458364,kingsfield,3,2.5,1589 sq ft,26,2011,no,balcony; dishwasher;pets_allowed,2026-03-09
+955320,Elm Park,1,1.0,749sqft,18,1964,no,elevator;DISHWASHER;LAUNDRY,2026-05-07
+181963,Ashton,Studio,1.0,496,5,2014,no,laundry;pets_allowed;parking; dishwasher;gym,2026-08-09
+188446,Lighthouse,3,2.0,1231 sq ft,15,1977,yes,PARKING;balcony; dishwasher; laundry; gym,2026-06-27
+482980,Oakhurst,1,1.0,545,7,1935,no,dishwasher;doorman;parking;pets_allowed,2026-01-01
+695881,Brickworks,3,1.0,1611,G,1994,no, parking;doorman;gym;laundry,2026-07-07
+320917,Foundry,Studio,1.0,381sqft,33,1940,no,balcony;dishwasher,2026-03-19
+486669,anchor bay,2,1.5,1284,10,1946,no,PARKING;balcony; laundry;PETS_ALLOWED,2026-03-10
+769543,Westlea,1,1.0,612 sq ft,3,1986,no,parking;doorman;dishwasher,2026-03-23
+708744,Riverside,1,1.0,581,24,1956,no,balcony,2026-01-20
+838672,Fernwood,Studio,1.0,286sqft,12,2018,yes, laundry,2026-05-11
+673224,Briar Hill,Studio,1.0,427sqft,G,1946,yes,,2026-06-23
+130235,Quayside,3,1.0,1428,4,1961,yes,laundry;pets_allowed;elevator,2026-07-27
+938423,Briar Hill,2,1.0,931 sq ft,11,1962,no,doorman,2026-01-13
+816901,Foundry,2,1.0,1002,20,2019,no,gym;laundry;elevator,2026-02-17
+779633,Ashton,3,1.0,1478 sq ft,G,1960,no,doorman,2026-03-17
+352822,Foundry,Studio,1.0,522sqft,26,2003,no,pets_allowed;gym;balcony;laundry,2026-02-23
+177817,Old Docks,4,2.0,"1,857 sq ft",13,1985,no,doorman;dishwasher;ELEVATOR;parking,2026-04-16
+589755,Riverside ,3,2.0,1243 sq ft,19,1971,no,BALCONY;laundry,2026-06-23
+382167,Saltmarsh,Studio,1.0,586 sq ft,27,1934,no,PETS_ALLOWED;balcony;elevator,2026-03-04
+760705,Northcross,1,1.0,745,12,2019,no,laundry;BALCONY;PARKING;dishwasher;elevator,2026-07-08
+825295,Fernwood,Studio,1.0,501sqft,15,1959,yes,dishwasher;LAUNDRY;pets_allowed;parking,2026-04-20
+384527,Kingsfield,Studio,1.0,456 sq ft,2,2023,no, gym;dishwasher;parking,2026-03-31
+762433,Anchor Bay,1,1.0,763 sq ft,8,2006,no, elevator;GYM,2026-03-28
+159867,Larkspur,3,3.0,1270,5,1944,yes,parking;PETS_ALLOWED; gym;laundry;elevator,2026-07-23
+741746,Brookvale,2,2.0,798 sq ft,G,1999,no,parking;balcony;dishwasher,2026-06-07
+916770,Brickworks,3,2.5,1255,34,1932,yes,elevator;parking;laundry;pets_allowed;doorman,2026-03-26
+719481,Kingsfield,1,1.0,893,27,1942,no,dishwasher;pets_allowed;laundry,2026-04-30
+388059,Foundry,Studio,1.0,320 sq ft,G,1965,no,dishwasher;laundry,2026-06-20
+688655,Stonebridge,2,2.0,1016 sq ft,G,2015,no,PETS_ALLOWED;laundry;elevator,2026-08-21
+864671,Larkspur,1,1.0,640 sq ft,15,1959,no,LAUNDRY;elevator,2026-04-27
+451258,Briar Hill,2,2.0,821 sq ft,4,1936,no,dishwasher;pets_allowed;elevator;LAUNDRY,2026-09-21
+151580,Anchor Bay ,1,1.0,950 sq ft,33,1977,no,doorman;GYM;pets_allowed,2026-08-23
+857520,Canal Quarter,3,2.5,1302,27,1931,no,laundry;dishwasher;gym,2026-07-16
+641437,Oakhurst,2,2.0,1137 sq ft,11,1950,no, pets_allowed;parking;gym;dishwasher;laundry,2026-08-25
+221638,Elm Park,Studio,1.0,250 sq ft,16,2008,yes,pets_allowed;elevator;doorman;laundry,2026-03-04
+394493,Anchor Bay,2,1.5,822 sq ft,5,2017,no,laundry,2026-05-04
+270975,Foundry,2,2.0,994,30,2014,no,laundry;pets_allowed;balcony;dishwasher,2026-04-07
+912581,fernwood,3,1.0,1448 sq ft,15,1960,no,balcony;pets_allowed;dishwasher;laundry,2026-08-13
+397308,Fernwood,2,1.5,947 sq ft,15,1944,no,elevator;dishwasher;laundry,2026-01-30
+413828,Pier Row,1,1.0,689 sq ft,24,1957,no,dishwasher;ELEVATOR,2026-06-09
+404194,Briar Hill,1,1.0,791,G,1944,no,elevator;laundry;dishwasher;pets_allowed,2026-04-24
+867615,Old Docks,3,2.0,"1,209 sq ft",G,2018,yes,dishwasher,2026-03-11
+310099,Stonebridge,2,1.0,1149,G,1997,yes,laundry;doorman;balcony;elevator,2026-09-12
+745479,Saltmarsh,Studio,1.0,424 sq ft,G,1958,no,laundry,2026-04-20
+348372,Briar Hill,Studio,1.0,472 sq ft,8,1983,yes,elevator;dishwasher,2026-02-24
+818980,QUAYSIDE,1,1.0,933,10,1951,no,doorman;dishwasher;gym,2026-06-17
+214929,Stonebridge ,1,1.0,605 sq ft,21,1992,no, parking;laundry; dishwasher;gym,2026-06-01
+679231,Canal Quarter,1,1.0,551 sq ft,G,1931,no,parking;dishwasher; laundry;elevator; gym,2026-09-07
+335166,old docks,Studio,1.0,272 sq ft,31,1996,yes,elevator,2026-06-28
+865693,Quayside ,1,1.0,766 sq ft,G,1936,yes,parking;pets_allowed;balcony;doorman,2026-06-06
+883072,Anchor Bay ,1,1.0,653,26,2006,no,laundry; doorman;pets_allowed,2026-04-15
+724186,Pier Row,2,1.0,897 sq ft,22,1959,yes,elevator;gym;doorman;laundry;pets_allowed,2026-02-18
+174157,Lighthouse,2,1.0,1050,15,1989,no, laundry;DISHWASHER; elevator,2026-05-24
+972644,Ashton,1,1.0,799 sq ft,9,1983,yes,gym; elevator;dishwasher,2026-08-06
+244761,lighthouse,2,2.0,1189,G,1935,no,PETS_ALLOWED;doorman;parking;laundry;elevator,2026-07-04
+889811,Quayside,1,1.0,771,24,1965,no,laundry;balcony;pets_allowed,2026-01-25
+230926,Saltmarsh,2,1.0,1146 sq ft,23,1974,no,elevator;balcony;doorman,2026-07-05
+909661,Briar Hill ,2,2.0,"1,039 sq ft",9,1999,no,gym;LAUNDRY;balcony;parking,2026-06-12
+336020,Ashton,1,1.0,663,G,1988,no,gym;pets_allowed,2026-09-02
+619312,old docks,2,2.0,960 sq ft,G,2022,no,elevator;parking;dishwasher;laundry;doorman,2026-02-15
+750976,Briar Hill,2,2.0,1183sqft,27,2021,yes, doorman;dishwasher,2026-07-01
+754175,HEATHSIDE,2,2.0,1008,2,1985,no, laundry; gym;dishwasher,2026-05-06
+844995,Anchor Bay,3,2.0,1239,7,1958,yes,laundry,2026-03-07
+607045,Larkspur,1,1.0,724 sq ft,8,2010,no,,2026-03-29
+439284,Riverside,Studio,1.0,436,G,1957,no,pets_allowed;elevator;parking;dishwasher,2026-03-31
+106564,Mill Hill,2,1.0,1198sqft,31,1928,no,parking;pets_allowed;elevator,2026-09-05
+961545,Canal Quarter ,1,1.0,690,23,1960,no,DISHWASHER;laundry,2026-01-14
+241972,saltmarsh,2,1.0,1313,16,2006,no,doorman;elevator,2026-03-18
+551780,Fernwood,1,1.0,850 sq ft,14,1925,no, elevator;laundry,2026-01-07
+900598,brickworks,1,1.0,822 sq ft,G,1943,yes,laundry;gym; elevator,2026-01-24
+252327,stonebridge,2,2.0,927,6,1987,no,pets_allowed; laundry;elevator;dishwasher,2026-07-03
+253369,Westlea ,3,1.0,1402,2,1972,no,doorman;parking;pets_allowed;balcony,2026-06-23
+418258,Westlea,2,2.0,801 sq ft,12,1925,no,parking;pets_allowed,2026-05-31
+907839,Briar Hill ,2,2.0,1206sqft,13,1936,no,BALCONY;doorman;dishwasher,2026-06-24
+199738,old docks,1,1.0,868,16,1951,no,gym;doorman,2026-04-15
+370500,brickworks,Studio,1.0,300 sq ft,6,1981,no,dishwasher;parking,2026-05-04
+326933,anchor bay,3,1.5,1382 sq ft,G,1967,no,laundry;pets_allowed;dishwasher,2026-06-12
+320796,marlow,3,2.0,1335 sq ft,20,1982,no,balcony;gym;pets_allowed; parking,2026-06-06
+564934,stonebridge,1,1.0,734sqft,20,1986,no,dishwasher;laundry,2026-02-26
+482617,elm park,2,2.0,920 sq ft,27,2022,no,pets_allowed; balcony;dishwasher;laundry,2026-08-11
+275121,Pier Row ,1,1.0,692 sq ft,8,1930,no,parking;dishwasher,2026-03-02
+580317,Ashton ,1,1.0,564 sq ft,12,2012,no,elevator;balcony,2026-03-15
+391395,Marlow,2,1.0,805,G,1966,no,pets_allowed;elevator; dishwasher;parking,2026-01-20
+878393,Kingsfield,Studio,1.0,250 sq ft,28,1962,no,laundry;gym;balcony; dishwasher,2026-07-29
+277633,Stonebridge,3,1.0,1636 sq ft,10,1989,yes,parking;laundry;elevator,2026-08-05
+852392,Marlow,1,1.0,575 sq ft,17,1991,no,dishwasher;pets_allowed,2026-09-04
+275422,Pier Row,3,1.0,1335 sq ft,G,1965,no,elevator;laundry;dishwasher,2026-03-03
+728261,Oakhurst,2,2.0,854 sq ft,33,1979,yes,laundry;gym,2026-06-18
+712817,Quayside,3,2.0,1645,16,2004,no,gym;pets_allowed;parking;dishwasher,2026-03-06
+700815,Westlea,2,2.0,1280 sq ft,29,1958,no,gym;pets_allowed;parking;dishwasher;laundry;doorman,2026-09-11
+819420,Westlea,1,1.0,693,G,2012,yes,parking;elevator;laundry;dishwasher;pets_allowed,2026-03-30
+886359,Kingsfield,1,1.0,796 sq ft,20,2019,no,elevator;parking;balcony,2026-07-25
+335146,Brookvale,1,1.0,627 sq ft,G,1967,no,pets_allowed;laundry,2026-06-08
+228185,Brookvale,1,1.0,595 sq ft,31,1989,yes,gym;laundry; parking;balcony,2026-03-15
+429746,Pier Row,1,1.0,701,16,2022,no,laundry;elevator;pets_allowed,2026-06-23
+211214,elm park,1,1.0,845,4,1997,no,laundry,2026-03-29
+173560,Fernwood,1,1.0,742 sq ft,17,2000,no,PETS_ALLOWED;elevator;laundry,2026-03-16
+657711,Briar Hill,3,2.0,1563,11,1935,no,laundry;parking; dishwasher;pets_allowed,2026-09-21
+110307,Larkspur,1,1.0,799 sq ft,28,1961,no, elevator;PETS_ALLOWED;parking; gym;laundry,2026-05-18
+944610,Elm Park,2,2.0,1115 sq ft,21,1929,no,gym;balcony;elevator;pets_allowed,2026-06-27
+132243,Marlow,2,1.0,1146,7,2001,no,gym;dishwasher,2026-02-22
+729137,Foundry,1,1.0,729,34,2023,no,pets_allowed;elevator;parking;dishwasher,2026-09-07
+340267,Old Docks,2,1.0,1017 sq ft,9,1997,yes,gym;LAUNDRY; pets_allowed,2026-06-05
+671560,NORTHCROSS,1,1.0,796 sq ft,G,1998,no,elevator;pets_allowed;GYM;parking;dishwasher,2026-08-07
+140463,Larkspur,2,1.5,1002 sq ft,5,1989,no,LAUNDRY;pets_allowed; parking;dishwasher;elevator,2026-08-07
+308662,FERNWOOD,1,1.0,666 sq ft,23,2014,no,balcony;elevator;pets_allowed;laundry,2026-01-01
+247525,Stonebridge,1,1.0,813 sq ft,26,1975,no,dishwasher;balcony;elevator,2026-08-06
+192481,Larkspur,4,1.0,1941 sq ft,G,1970,no, gym,2026-04-30
+468238,Anchor Bay,1,1.0,848sqft,G,1944,no,laundry;balcony;parking;dishwasher,2026-09-14
+803938,Foundry,4,3.0,1458 sq ft,34,1998,no,pets_allowed;gym,2026-08-01
+854087,Quayside,2,1.0,1046sqft,5,1984,no,dishwasher;laundry;gym,2026-07-05
+243699,Larkspur,2,1.0,1222 sq ft,27,2010,no,doorman; balcony;elevator;parking,2026-06-10
+291733,Fernwood,2,1.0,1120,2,1925,no,gym;dishwasher,2026-06-27
+400552,northcross,2,1.5,912 sq ft,15,1942,no,elevator,2026-08-12
+672023,Ashton,2,2.0,983sqft,28,1970,yes,pets_allowed;gym,2026-06-13
+419929,Saltmarsh,1,1.0,761,G,1998,no,dishwasher;parking,2026-04-17
+219316,Elm Park,2,2.0,1071sqft,13,2021,no,BALCONY; pets_allowed;dishwasher,2026-04-22
+336936,pier row,2,2.0,1162 sq ft,14,1964,no,elevator;pets_allowed; dishwasher;balcony,2026-03-03
+534097,larkspur,1,1.0,749 sq ft,22,2005,no,dishwasher;laundry,2026-09-07
+387241,Briar Hill ,2,2.0,1145 sq ft,16,1984,yes,pets_allowed,2026-09-13
+549470,Brickworks,2,1.5,1177,31,1954,no, balcony;gym,2026-05-24
+403558,Oakhurst,2,1.0,1180 sq ft,34,1960,no,laundry;gym;elevator;parking,2026-08-20
+403723,Stonebridge,Studio,1.0,428 sq ft,20,1947,no,elevator; pets_allowed;dishwasher;laundry,2026-05-20
+967665,Elm Park,1,1.0,745,16,2009,no,LAUNDRY;ELEVATOR;parking,2026-03-01
+774209,saltmarsh,3,1.5,1422 sq ft,3,1975,yes,balcony; elevator;LAUNDRY,2026-02-16
+175385,Quayside,1,1.0,720 sq ft,5,1953,yes,parking,2026-04-13
+421708,Ashton,1,1.0,822,G,1938,no,laundry;parking;dishwasher;balcony,2026-04-08
+722788,Riverside,1,1.0,778 sq ft,G,1982,yes,dishwasher;ELEVATOR;laundry,2026-01-24
+325889,pier row,1,1.0,464,18,1945,no,gym;elevator,2026-05-07
+333731,Oakhurst,2,1.0,861,16,1973,no,laundry;pets_allowed;balcony,2026-07-21
+653321,Mill Hill,2,2.0,1122,4,2015,no,gym;pets_allowed,2026-02-10
+414579,Old Docks,1,1.0,624sqft,G,1934,no,pets_allowed,2026-03-07
+613713,Oakhurst ,2,2.0,990 sq ft,G,2004,no,DOORMAN,2026-02-22
+119469,KINGSFIELD,1,1.0,1013 sq ft,28,1931,no,parking;gym;doorman,2026-07-01
+536064,Ashton ,2,1.0,1199 sq ft,23,1931,no,dishwasher;parking;gym;pets_allowed;laundry,2026-01-05
+655280,Quayside,1,1.0,693,3,1990,no, gym;dishwasher;parking,2026-09-22
+719331,foundry,3,2.0,1441 sq ft,15,1987,no,laundry;gym,2026-03-12
+332592,Larkspur,3,2.0,1099,24,1960,no,laundry;parking;balcony; gym; doorman,2026-05-06
+631682,Kingsfield,1,1.0,828,3,1980,no,DISHWASHER;pets_allowed,2026-05-12
+712502,old docks,2,1.0,1027 sq ft,3,1947,no,gym;dishwasher,2026-03-14
+526445,Mill Hill,2,1.0,1064 sq ft,4,1939,no,parking;laundry;balcony;pets_allowed,2026-08-14
+938725,Foundry,4,3.0,1766 sq ft,G,1996,no,laundry;gym,2026-03-03
+342365,quayside,1,1.0,714 sq ft,31,1965,no,doorman;balcony;laundry;DISHWASHER,2026-04-27
+634814,Larkspur,1,1.0,755,9,2024,yes,pets_allowed;doorman;dishwasher,2026-04-05
+741288,Saltmarsh ,1,1.0,663 sq ft,3,2016,yes,pets_allowed;laundry;parking;dishwasher;balcony,2026-03-12
+318104,Brookvale,1,1.0,843sqft,16,1925,no,balcony;doorman;ELEVATOR;laundry,2026-06-21
+733971,Briar Hill,2,2.0,1139,G,1928,no,,2026-03-02
+450810,Foundry,1,1.0,352 sq ft,20,2014,no,laundry;balcony;gym; doorman,2026-06-05
+426439,pier row,1,1.0,770,32,1969,yes,GYM;LAUNDRY;dishwasher,2026-03-10
+165269,Foundry,Studio,1.0,433 sq ft,27,1980,no,elevator;dishwasher;gym,2026-09-24
+711138,Mill Hill,1,1.0,697 sq ft,11,1928,no,doorman;balcony;pets_allowed;parking,2026-01-05
+837165,Lighthouse,1,1.0,650 sq ft,G,1963,no,doorman;PETS_ALLOWED;laundry;dishwasher,2026-02-07
+805512,Fernwood,2,2.0,857 sq ft,11,1962,no,pets_allowed;LAUNDRY,2026-04-23
+939956,Stonebridge,3,2.0,1474 sq ft,22,1980,no, gym;doorman;balcony,2026-03-26
+629937,quayside,2,2.0,897sqft,G,1927,no,LAUNDRY,2026-01-18
+952465,Larkspur,1,1.0,639,2,1976,no,elevator; dishwasher,2026-03-09
+351073,Riverside,2,1.0,921 sq ft,22,1969,no,dishwasher;laundry;pets_allowed,2026-08-29
+707534,foundry,1,1.0,598 sq ft,1,1953,yes,doorman;pets_allowed;parking;laundry;dishwasher,2026-07-16
+591370,Brookvale ,4,1.5,1948,3,2023,no,pets_allowed;gym,2026-04-18
+731175,FOUNDRY,1,1.0,788 sq ft,15,2003,yes,doorman;laundry;parking;balcony,2026-02-14
+338160,kingsfield,3,2.0,1393,7,1951,no,gym,2026-08-01
+618024,Mill Hill,2,1.5,1112 sq ft,22,1933,no, pets_allowed;parking;laundry;gym;balcony;elevator,2026-09-09
+261234,Foundry ,1,1.0,861sqft,33,2002,no,,2026-02-28
+188981,brookvale,2,1.0,781 sq ft,29,2007,no,PETS_ALLOWED;parking;elevator;doorman;gym;dishwasher,2026-07-22
+928903,Lighthouse,4,2.0,"2,073 sq ft",3,1928,no,balcony;PARKING;dishwasher,2026-07-24
+564911,canal quarter,Studio,1.0,566sqft,4,2010,no,laundry;parking,2026-05-01
+678379,anchor bay,Studio,1.0,270 sq ft,G,2024,no,doorman;elevator;parking,2026-04-17
+657119,Canal Quarter,1,1.0,625sqft,7,2013,yes,elevator;dishwasher;laundry;gym,2026-09-10
+758433,Westlea,2,1.0,999 sq ft,29,1939,no,elevator;gym;pets_allowed;parking,2026-02-22
+835468,Larkspur,2,1.0,974 sq ft,9,1989,no, dishwasher;DOORMAN;parking,2026-08-12
+787364,Riverside,3,2.0,1365sqft,10,1986,no,laundry;dishwasher,2026-02-23
+323626,kingsfield,2,1.0,1467 sq ft,G,1930,yes,BALCONY;dishwasher;parking;laundry,2026-07-06
+396010,Old Docks,4,3.0,1412 sq ft,5,2021,yes,,2026-07-11
+400686,Anchor Bay ,Studio,1.0,281 sq ft,8,1970,yes,doorman;pets_allowed;PARKING;elevator,2026-07-27
+957305,Canal Quarter,1,1.0,658 sq ft,23,1967,no,dishwasher; laundry;DOORMAN;balcony,2026-06-20
+633735,Canal Quarter,1,1.0,655,10,2017,yes,gym;pets_allowed;dishwasher;laundry;parking,2026-01-22
+149883,Larkspur,1,1.0,825 sq ft,13,1954,yes, elevator;balcony;dishwasher,2026-08-16
+901577,Pier Row,3,1.5,"1,143 sq ft",7,1947,no,dishwasher;balcony; elevator;gym,2026-04-10
+697841,Brickworks,3,2.5,1295,11,1946,no,balcony;laundry;dishwasher,2026-07-08
+904456,Kingsfield,1,1.0,830sqft,19,1991,no, elevator;balcony,2026-05-05
+944689,Riverside,1,1.0,860,25,1928,yes,dishwasher;gym;doorman,2026-04-27
+798648,ASHTON,1,1.0,927,G,2003,no,laundry;elevator;gym;doorman,2026-05-11
+588295,Canal Quarter,2,1.5,933 sq ft,5,1940,no, elevator;laundry;dishwasher,2026-06-03
+835952,Northcross,Studio,1.0,437,31,2003,yes,elevator,2026-05-26
+384805,Kingsfield,Studio,1.0,452,25,1977,no,pets_allowed;gym;balcony,2026-02-17
+959816,Saltmarsh,4,1.0,1771,29,1944,no,dishwasher;laundry; balcony;DOORMAN,2026-03-06
+239450,Anchor Bay,3,1.0,"1,364 sq ft",8,1994,no,pets_allowed;parking;balcony;laundry,2026-04-09
+221682,Old Docks,2,2.0,1095sqft,22,1985,no,DISHWASHER;laundry;gym,2026-01-18
+916367,Foundry,Studio,1.0,416,G,1993,no,BALCONY;laundry;pets_allowed,2026-04-13
+323384,Mill Hill,1,1.0,731,11,1986,yes,pets_allowed;parking;laundry;elevator;gym,2026-07-31
+370167,Pier Row,2,1.5,1075 sq ft,G,1974,yes,elevator;dishwasher,2026-09-15
+628234,Elm Park ,4,2.0,1405 sq ft,9,1947,no,LAUNDRY;elevator;gym,2026-07-23
+720538,Brookvale,3,1.0,1285 sq ft,G,1980,no,pets_allowed,2026-02-19
+968225,Brickworks ,Studio,1.0,427 sq ft,G,2002,no,laundry;dishwasher,2026-01-14
+856781,Brickworks ,1,1.0,711,28,1963,no,,2026-05-01
+761333,Mill Hill,1,1.0,718,G,1925,no,dishwasher;balcony;laundry,2026-01-20
+736551,Canal Quarter,Studio,1.0,465,30,1960,no,dishwasher;balcony;laundry;gym,2026-05-08
+765593,Saltmarsh ,1,1.0,574 sq ft,G,1933,no,laundry,2026-02-21
+694395,KINGSFIELD,2,2.0,991,27,1966,no,gym;balcony;pets_allowed,2026-03-19
+408207,Canal Quarter ,3,1.5,1237 sq ft,28,2024,no,pets_allowed;dishwasher; balcony;parking,2026-07-19
+146308,Anchor Bay ,Studio,1.0,363 sq ft,14,2008,no,laundry,2026-01-20
+873950,Anchor Bay,1,1.0,611 sq ft,34,2009,yes,laundry;elevator,2026-05-08
+671785,Lighthouse,2,1.0,992 sq ft,22,1969,no,laundry;balcony,2026-08-28
+253945,Mill Hill ,1,1.0,499sqft,21,1999,no,gym;pets_allowed;laundry;doorman; dishwasher;elevator,2026-03-07
+810684,quayside,1,1.0,757sqft,19,1977,no,dishwasher;balcony,2026-06-15
+187226,Foundry,2,1.5,904 sq ft,G,1946,no,balcony,2026-05-19
+493620,Heathside,2,2.0,951,34,2002,no,doorman;dishwasher,2026-09-06
+516689,Northcross,1,1.0,644,22,1992,no,dishwasher;elevator;laundry,2026-09-09
+123428,Briar Hill,1,1.0,572 sq ft,12,1948,no,elevator;PETS_ALLOWED;DISHWASHER,2026-05-27
+201093,Riverside,Studio,1.0,477,22,1988,no,LAUNDRY,2026-08-03
+595639,Heathside,2,2.0,"1,072 sq ft",G,1936,no,laundry;dishwasher;elevator,2026-08-10
+718612,Saltmarsh,2,2.0,1069,13,1930,no,parking;dishwasher;laundry;BALCONY,2026-06-18
+493647,Heathside,1,1.0,714 sq ft,10,2014,no,balcony;elevator;dishwasher;pets_allowed,2026-02-12
+127044,Lighthouse,2,2.0,943,G,1973,no,dishwasher;balcony,2026-06-06
+324124,LARKSPUR,1,1.0,763 sq ft,2,1936,no,pets_allowed;balcony;laundry,2026-01-30
+144360,canal quarter,2,2.0,1266sqft,33,2012,no,,2026-05-10
+921987,Old Docks,1,1.0,552,25,1934,no,PETS_ALLOWED;balcony;laundry,2026-01-04
+985646,Old Docks,2,2.0,894sqft,1,1991,no,elevator;laundry;balcony,2026-03-19
+604748,Saltmarsh,1,1.0,659sqft,33,2004,no,gym;laundry,2026-06-23
+153352,Lighthouse,1,1.0,720 sq ft,13,1978,no,gym; dishwasher;balcony,2026-09-23
+512734,Oakhurst,Studio,1.0,474,3,1992,no,elevator;balcony;pets_allowed,2026-01-24
+227122,Westlea,2,2.0,858,28,2004,no,pets_allowed;elevator,2026-03-02
+755039,Saltmarsh,Studio,1.0,307 sq ft,26,1961,no,laundry,2026-02-20
+851627,Canal Quarter,Studio,1.0,396,26,1943,no,parking;balcony,2026-03-18
+944127,Lighthouse,3,1.5,1240 sq ft,2,1950,no,pets_allowed;dishwasher;elevator;laundry,2026-05-31
+635527,Kingsfield,3,1.5,1092sqft,13,1933,yes,pets_allowed,2026-02-11
+850324,Saltmarsh,2,2.0,1076 sq ft,27,1951,no,balcony;elevator;DISHWASHER;laundry;doorman,2026-01-24
+853388,Heathside,Studio,1.0,316,G,2003,no,parking;dishwasher;doorman;pets_allowed,2026-07-23
+344581,Fernwood,Studio,1.0,420 sq ft,1,2003,no,balcony; gym;elevator,2026-03-12
+903439,Mill Hill,1,1.0,728,34,2004,no,balcony;parking;LAUNDRY,2026-08-09
+844850,Old Docks ,1,1.0,796,25,1974,no,dishwasher;elevator;gym,2026-06-26
+132117,Fernwood,3,1.0,1527sqft,6,1984,yes,gym;laundry;parking;dishwasher,2026-01-09
+322685,Riverside,Studio,1.0,336 sq ft,20,1991,no, dishwasher;laundry,2026-09-26
+917759,Oakhurst,3,2.0,1118,13,1958,no,gym;pets_allowed;dishwasher,2026-09-12
+166345,Lighthouse,Studio,1.0,488,32,1996,no, doorman;laundry;dishwasher,2026-04-05
+276578,Pier Row,2,2.0,928,11,1987,no,doorman;laundry;GYM;dishwasher,2026-06-22
+464545,Brookvale,1,1.0,828,G,1931,no, pets_allowed;elevator;parking,2026-05-13
+485797,Northcross,2,2.0,1197 sq ft,7,2003,yes,laundry;elevator,2026-01-10
+709577,Briar Hill,2,2.0,967,15,1982,yes,dishwasher;gym,2026-08-30
+611814,Stonebridge,3,2.0,1418,G,2023,no,laundry;dishwasher;parking,2026-08-17
+233396,Larkspur,1,1.0,599 sq ft,30,1950,no,elevator;GYM;dishwasher,2026-03-11
+773940,Canal Quarter ,4,2.0,1935,G,2023,no,,2026-04-17
+371356,brookvale,Studio,1.0,441 sq ft,33,1973,no,balcony; elevator;dishwasher;laundry,2026-06-17
+253221,Ashton,4,2.5,1763 sq ft,4,1948,no,laundry;dishwasher; balcony;parking,2026-01-18
+115755,Marlow ,3,1.5,1451 sq ft,31,1963,no,PETS_ALLOWED;elevator; laundry,2026-06-15
+499889,Brookvale,4,1.0,1824,10,1939,no,laundry;pets_allowed,2026-05-08
+968746,Oakhurst ,1,1.0,661,30,1960,no,pets_allowed;DOORMAN,2026-02-26
+891932,SALTMARSH,2,2.0,1178,7,2012,no,pets_allowed;dishwasher;balcony,2026-05-02
+674161,Ashton,2,1.0,930sqft,G,1984,no,pets_allowed;laundry;dishwasher;gym;elevator,2026-09-01
+370590,Ashton,2,1.5,1055 sq ft,20,1970,no,laundry;pets_allowed;elevator;parking;balcony,2026-04-06
+947537,Westlea,Studio,1.0,431,21,1976,no,pets_allowed;dishwasher;doorman,2026-03-16
+732474,Mill Hill,2,1.5,1267 sq ft,G,1935,no,laundry; dishwasher,2026-09-07
+717181,Old Docks,3,2.0,1269 sq ft,30,2001,no,pets_allowed,2026-03-06
+479450,Briar Hill,2,2.0,936sqft,5,1940,no,parking;pets_allowed;laundry,2026-07-23
+359426,Pier Row,2,2.0,922,7,1965,no,pets_allowed;dishwasher; laundry,2026-05-01
+944609,Westlea,2,1.5,755 sq ft,G,1992,no,elevator,2026-09-25
+234684,Anchor Bay,Studio,1.0,389 sq ft,G,2007,yes,dishwasher;balcony;gym,2026-07-15
+350860,Briar Hill,3,1.0,1190 sq ft,20,2021,no,gym;pets_allowed,2026-04-21
+597726,Fernwood,1,1.0,776 sq ft,7,1956,yes,balcony,2026-03-29
+904268,Quayside,2,2.0,692sqft,19,2005,no,pets_allowed;elevator,2026-01-23
+424375,Pier Row,1,1.0,570 sq ft,19,1927,yes,pets_allowed;elevator,2026-04-01
+460121,Westlea,3,3.0,1355sqft,31,1963,no,elevator;doorman;parking;dishwasher;pets_allowed,2026-08-07
+831849,Quayside,3,2.0,1457 sq ft,9,1955,no,doorman;laundry;dishwasher;pets_allowed,2026-03-31
+658679,Westlea,2,2.0,1243,G,1935,no,laundry;parking; dishwasher,2026-01-23
+768203,Fernwood,1,1.0,599 sq ft,G,1963,no,balcony;parking;LAUNDRY,2026-05-09
+910680,Foundry,Studio,1.0,449,33,2020,no,elevator;parking;dishwasher,2026-07-31
+188760,Brickworks,1,1.0,803sqft,26,1944,no,doorman;pets_allowed;dishwasher;GYM,2026-04-05
+770000,Mill Hill,2,2.0,961,30,1991,no,dishwasher;laundry;gym,2026-01-22
+138645,Canal Quarter ,Studio,1.0,513,19,1970,no,balcony;pets_allowed,2026-09-27
+456901,heathside,4,1.5,1858 sq ft,2,1976,no, elevator;balcony;laundry,2026-09-10
+852216,Oakhurst,2,1.5,1388sqft,5,1953,no,laundry;doorman,2026-02-18
+422197,Larkspur ,2,1.5,"1,155 sq ft",6,1934,no,parking;laundry;elevator;gym;pets_allowed,2026-07-08
+583929,Stonebridge,Studio,1.0,437 sq ft,G,1967,no,balcony;pets_allowed;dishwasher,2026-01-30
+254524,Briar Hill,3,2.5,1133,27,1995,no,gym;dishwasher;parking,2026-05-17
+576321,Mill Hill,Studio,1.0,397,25,1999,no,gym;parking,2026-01-13
+746698,larkspur,1,1.0,634sqft,3,1992,no,balcony;pets_allowed;elevator,2026-06-02
+716726,Pier Row,3,2.0,1236,12,1998,no,pets_allowed,2026-02-25
+916538,Anchor Bay ,1,1.0,720,17,2017,no,parking,2026-08-09
+966569,Quayside ,1,1.0,632 sq ft,8,1929,yes,gym;balcony;dishwasher;elevator,2026-03-22
+599526,Brickworks,Studio,1.0,250,22,1974,no,balcony;dishwasher;ELEVATOR,2026-03-28
+570655,BROOKVALE,2,2.0,1180,3,2015,no,balcony;elevator; pets_allowed,2026-08-01
+538902,Marlow,1,1.0,789 sq ft,12,1960,no,balcony;parking;laundry;doorman,2026-04-04
+819193,Saltmarsh,2,1.5,1030 sq ft,21,2007,no,balcony;pets_allowed;laundry;parking;doorman,2026-08-30
+961204,Briar Hill,2,2.0,1185sqft,32,2006,no,dishwasher;elevator; parking,2026-03-21
+319492,Fernwood,2,2.0,1234 sq ft,13,1932,yes,elevator;doorman,2026-06-18
+326941,Westlea,2,1.5,1282 sq ft,1,1975,no,laundry;parking;dishwasher,2026-08-03
+384353,Saltmarsh,2,2.0,1102,10,1933,no,gym;balcony;dishwasher,2026-08-30
+571265,Ashton,1,1.0,658 sq ft,G,1932,no,elevator; laundry;dishwasher,2026-09-08
+967986,Kingsfield,1,1.0,661 sq ft,15,1992,no,doorman;balcony,2026-07-02
+569516,Marlow,1,1.0,607,17,1960,no,gym;dishwasher;laundry;pets_allowed,2026-01-08
+444280,Lighthouse,1,1.0,627,2,1982,no,laundry;balcony;elevator;pets_allowed,2026-09-05
+894107,HEATHSIDE,2,1.0,1138sqft,21,1952,yes,parking;laundry;balcony;pets_allowed,2026-01-22
+731546,brickworks,Studio,1.0,549sqft,G,2013,yes,dishwasher;elevator,2026-09-20
+918401,quayside,Studio,1.0,490,15,1951,no,laundry;elevator,2026-02-19
+977268,Lighthouse,3,3.0,1456 sq ft,24,1986,yes,dishwasher;elevator,2026-06-12
+991569,Kingsfield,2,1.0,1192 sq ft,20,1926,no,parking;laundry;elevator;balcony,2026-03-25
+735341,Westlea,2,2.0,1128 sq ft,G,1955,no,elevator,2026-02-03
+715907,NORTHCROSS,3,3.0,1250,29,2008,no,elevator;balcony;dishwasher,2026-04-26
+113644,Canal Quarter,4,1.5,1338 sq ft,5,1976,no,dishwasher;doorman,2026-08-02
+465404,fernwood,4,1.0,1367,G,2013,no,dishwasher;elevator;gym;laundry;balcony;doorman,2026-08-19
+809238,Elm Park,4,2.5,1287 sq ft,15,1974,no,laundry;doorman;PETS_ALLOWED;dishwasher,2026-09-18
+609689,Kingsfield,2,2.0,862 sq ft,33,1950,no,LAUNDRY;gym,2026-06-07
+101588,brickworks,3,2.0,1548 sq ft,28,1989,no,dishwasher;laundry,2026-04-10
+932157,Pier Row,1,1.0,594 sq ft,G,1936,no,doorman;laundry,2026-01-14
+252627,Stonebridge,3,1.0,1608 sq ft,10,1975,no,doorman; gym;pets_allowed;parking;laundry,2026-09-22
+384051,Oakhurst,3,1.0,"1,236 sq ft",27,2016,no,doorman;laundry;pets_allowed; elevator;balcony,2026-09-20
+523657,Northcross,Studio,1.0,283,28,1948,yes, dishwasher;gym;laundry;elevator;balcony;PETS_ALLOWED,2026-03-13
+451030,Westlea,2,1.5,1029 sq ft,G,1941,no, dishwasher,2026-03-05
+652618,Mill Hill,3,2.0,1273 sq ft,15,2017,no,balcony;laundry;pets_allowed; elevator;dishwasher;gym,2026-01-14
+523017,Brickworks,2,1.5,1118sqft,G,1959,no,DISHWASHER;gym;pets_allowed,2026-07-26
+604632,Mill Hill,1,1.0,893 sq ft,12,2016,no,laundry;elevator;doorman,2026-03-04
+224377,briar hill,Studio,1.0,414,G,1993,no,dishwasher;laundry,2026-04-15
+570059,Elm Park,2,1.0,1186 sq ft,17,1959,no,balcony;gym,2026-04-04
+921948,Old Docks,Studio,1.0,461sqft,22,1948,no,dishwasher;laundry;doorman;pets_allowed,2026-03-29
+463706,Ashton,2,1.0,1096,3,1960,no,DISHWASHER;laundry;GYM,2026-07-24
+622939,Saltmarsh ,1,1.0,710,17,1986,yes,laundry,2026-07-03
+507298,Ashton,3,1.5,1630,6,1938,no, elevator;laundry,2026-04-01
+355437,Anchor Bay,3,1.0,1307,18,2016,no,laundry;balcony;pets_allowed;elevator,2026-02-07
+344516,Brookvale,1,1.0,633 sq ft,11,1976,no,laundry;elevator,2026-06-02
+278874,fernwood,2,2.0,864,11,2004,no,,2026-08-01
+512002,Northcross,2,1.0,1017,8,2000,no, laundry;elevator;PETS_ALLOWED,2026-05-05
+328911,Elm Park,3,2.0,1535,29,1946,no,gym;balcony,2026-02-08
+782258,Old Docks,Studio,1.0,434 sq ft,7,2004,no,balcony;dishwasher;pets_allowed,2026-03-13
+868801,Larkspur,1,1.0,860 sq ft,G,1952,yes,GYM;laundry;ELEVATOR;DOORMAN;pets_allowed,2026-05-05
+394991,foundry,3,1.0,1338 sq ft,28,1934,no,pets_allowed,2026-03-12
+758961,Canal Quarter,3,1.0,1228,21,1936,no,pets_allowed;elevator;laundry;balcony,2026-01-30
+562028,Lighthouse,3,1.0,1581sqft,G,1996,yes,doorman;dishwasher;BALCONY;pets_allowed;parking,2026-06-21
+276811,Marlow,2,2.0,820,27,1980,yes,balcony;dishwasher; laundry,2026-02-28
+652413,larkspur,1,1.0,579 sq ft,G,1964,no,elevator;dishwasher,2026-04-21
+620331,Larkspur,1,1.0,701sqft,G,1987,no,laundry;pets_allowed;GYM,2026-06-04
+648579,Northcross,2,1.0,971 sq ft,17,1990,no,dishwasher;elevator;pets_allowed;balcony,2026-05-25
+111717,larkspur,3,1.0,1395 sq ft,17,1990,no, pets_allowed;laundry;gym,2026-06-16
+454687,Northcross,2,2.0,1346,34,1957,yes,laundry; dishwasher;gym;ELEVATOR,2026-09-09
+238242,Northcross,1,1.0,789 sq ft,32,1968,yes,laundry;dishwasher;pets_allowed,2026-08-04
+919897,Brookvale,1,1.0,629 sq ft,26,2020,no,parking;doorman;gym;laundry,2026-09-12
+105908,Northcross,2,2.0,1091,5,1962,no,doorman;dishwasher;elevator;PETS_ALLOWED,2026-07-15
+732460,Riverside ,Studio,1.0,451 sq ft,13,1927,no,PARKING;laundry;DISHWASHER;elevator,2026-05-18
+931762,Ashton,2,2.0,835,32,1932,no,,2026-04-10
+409931,Old Docks,3,1.0,1778 sq ft,G,1967,no,doorman;laundry;pets_allowed,2026-05-09
+682286,Pier Row,3,1.5,1337,34,2018,no,parking;gym;balcony,2026-05-01
+434006,OLD DOCKS,Studio,1.0,407,1,1979,no,elevator;gym;dishwasher,2026-04-09
+763456,canal quarter,1,1.0,805 sq ft,7,1944,no,parking;laundry;gym,2026-05-10
+859498,Elm Park,1,1.0,622 sq ft,G,1992,no,parking;ELEVATOR;dishwasher,2026-04-16
+986481,Oakhurst,2,1.0,1093,G,1929,yes,laundry,2026-02-09
+986597,Ashton ,3,2.5,1547,22,2016,no,dishwasher;balcony;ELEVATOR;gym,2026-09-27
+477032,Stonebridge,3,3.0,1348sqft,22,1991,no, gym;DISHWASHER;LAUNDRY,2026-02-01
+578283,Saltmarsh,2,1.0,1225sqft,17,2021,no,gym;dishwasher;laundry,2026-07-14
+469570,Kingsfield,3,1.0,1584sqft,14,1931,yes,dishwasher;gym;elevator,2026-03-07
+879622,Briar Hill,2,1.5,1048,13,2000,yes,dishwasher;balcony,2026-07-20
+481052,Brickworks,Studio,1.0,338sqft,8,1956,no,doorman;pets_allowed;parking,2026-05-04
+800484,Northcross,2,1.5,1011 sq ft,24,1926,no,doorman;ELEVATOR,2026-01-30
+698310,Ashton,2,1.0,966,6,1953,no,pets_allowed,2026-06-11
+472081,Saltmarsh,Studio,1.0,419 sq ft,12,1997,no,LAUNDRY;dishwasher; balcony,2026-02-01
+764846,canal quarter,1,1.0,810 sq ft,2,1996,no,balcony;parking;pets_allowed;laundry;dishwasher,2026-08-16
+118854,Northcross,1,1.0,655,19,1933,no,doorman;DISHWASHER,2026-04-17
+226979,stonebridge,4,2.5,1498 sq ft,G,1952,yes,doorman;pets_allowed;balcony;laundry; dishwasher,2026-04-10
+767673,Anchor Bay,1,1.0,886 sq ft,25,1978,no,doorman;parking;pets_allowed; dishwasher;laundry,2026-08-30
+620544,Larkspur,Studio,1.0,594,2,2010,no,balcony;parking,2026-07-13
+367610,PIER ROW,Studio,1.0,250sqft,31,2003,no,laundry;gym;elevator,2026-06-26
+357032,Pier Row,2,1.5,971 sq ft,26,1937,no,gym;pets_allowed,2026-07-09
+140881,Saltmarsh ,2,1.0,1220 sq ft,27,1988,yes,parking;laundry;DISHWASHER;doorman,2026-05-04
+687216,Brookvale,1,1.0,746,30,2008,no,elevator;dishwasher;doorman,2026-01-10
+533210,Mill Hill,1,1.0,787 sq ft,18,1996,no,dishwasher;gym; laundry; parking,2026-01-25
+164863,Foundry ,2,2.0,1075,14,1954,yes,parking;laundry,2026-04-12
+889023,Quayside,1,1.0,751 sq ft,34,1998,no,gym;dishwasher,2026-06-08
+923772,BROOKVALE,3,2.0,964 sq ft,5,1949,no,elevator;pets_allowed;laundry,2026-06-05
+474391,CANAL QUARTER,Studio,1.0,477sqft,G,1928,no, balcony; dishwasher;elevator,2026-05-09
+757349,northcross,1,1.0,488,17,1970,yes,doorman;dishwasher;gym,2026-06-02
+779309,Heathside,4,1.5,1601sqft,20,1951,no,laundry;gym;parking,2026-04-09
+962734,Quayside,2,2.0,1013 sq ft,13,1951,yes, balcony;parking,2026-06-16
+129476,Larkspur,3,2.0,1228 sq ft,2,1973,no,dishwasher; elevator; pets_allowed;PARKING;laundry,2026-02-13
+515166,Briar Hill,2,1.0,1124 sq ft,33,1930,no,dishwasher;laundry,2026-01-28
+261777,Canal Quarter,2,2.0,1024,28,2014,no,laundry;pets_allowed;GYM;dishwasher;doorman,2026-09-14
+229175,Briar Hill,3,3.0,1397,G,2018,no,laundry;pets_allowed,2026-03-04
+861512,Mill Hill ,1,1.0,724 sq ft,19,1967,yes, doorman;gym,2026-07-07
+185072,old docks,Studio,1.0,333,20,1933,no,laundry;parking;pets_allowed,2026-04-26
+902971,Lighthouse,4,2.0,1581sqft,15,1977,no, parking;dishwasher;laundry;gym,2026-07-07
+324237,Oakhurst,2,2.0,1093 sq ft,14,1983,yes,dishwasher;doorman;balcony,2026-07-03
+410434,Fernwood,2,2.0,1089 sq ft,16,1998,yes,dishwasher;pets_allowed;LAUNDRY;balcony;elevator,2026-08-21
+262441,Pier Row,3,1.5,1181 sq ft,26,1975,no,,2026-04-18
+691198,Lighthouse,1,1.0,660 sq ft,5,1945,yes,BALCONY;laundry;parking;pets_allowed;elevator,2026-09-05
+723541,Anchor Bay,1,1.0,577 sq ft,G,2018,yes,,2026-07-06
+364651,Old Docks ,Studio,1.0,459,32,1974,no,elevator,2026-01-14
+928536,Brickworks,Studio,1.0,458,2,1981,no,gym;dishwasher;parking,2026-01-20
+627417,Brookvale,3,2.0,1479sqft,2,1951,no,pets_allowed;laundry;balcony,2026-07-09
+854485,Briar Hill,1,1.0,878,20,1977,no,dishwasher;pets_allowed; laundry,2026-01-27
+519062,Elm Park,3,1.5,1184 sq ft,G,1959,yes,laundry;balcony,2026-04-30
+830119,Old Docks,2,2.0,931 sq ft,12,1925,yes,elevator,2026-07-01
+701969,Marlow,3,1.0,1117,7,1927,no,elevator;dishwasher;laundry;pets_allowed,2026-08-05
+961133,Lighthouse,Studio,1.0,396,G,2003,no,elevator;parking,2026-03-04
+490499,marlow,3,2.0,1504 sq ft,8,1940,yes,doorman;gym;elevator; pets_allowed,2026-08-18
+687681,Foundry ,Studio,1.0,413 sq ft,13,2015,yes,laundry;parking;dishwasher;PETS_ALLOWED;doorman,2026-09-20
+509522,Stonebridge,1,1.0,589sqft,G,1996,no,balcony;laundry,2026-04-06
+439085,heathside,3,1.5,1509 sq ft,30,1934,no, pets_allowed;dishwasher;PARKING; balcony,2026-06-21
+213316,Briar Hill,3,1.0,1400,33,1932,no,dishwasher,2026-03-13
+149814,BROOKVALE,3,1.0,1325,G,1941,no,LAUNDRY;balcony;dishwasher;pets_allowed,2026-09-13
+394324,Briar Hill,2,2.0,1168 sq ft,18,1989,no,laundry;elevator;doorman;dishwasher,2026-01-13
+674286,Brookvale ,2,2.0,1015,10,1948,yes,gym;laundry;parking;dishwasher,2026-09-18
+290048,Mill Hill,Studio,1.0,533sqft,G,2023,no,elevator;dishwasher;parking,2026-07-08
+956367,Kingsfield,1,1.0,612 sq ft,30,2003,yes,elevator;doorman;gym;dishwasher,2026-02-28
+577392,Stonebridge ,Studio,1.0,258,G,1981,no,balcony;pets_allowed; elevator;laundry,2026-08-27
+407987,Riverside,4,3.0,1979 sq ft,G,1952,no,laundry;elevator;balcony,2026-07-01
+240966,fernwood,Studio,1.0,398 sq ft,8,1992,no,PETS_ALLOWED;gym; dishwasher;laundry,2026-07-24
+439863,Northcross,1,1.0,692,28,1932,yes,laundry;dishwasher; balcony;pets_allowed,2026-04-06
+530979,Foundry ,1,1.0,725,20,2018,no,laundry;doorman,2026-09-02
+787300,fernwood,2,2.0,1212,25,2004,no,laundry;pets_allowed;balcony;doorman; elevator,2026-04-09
+455654,Brookvale,3,1.5,"1,557 sq ft",27,1998,no,balcony;doorman;PARKING;pets_allowed,2026-05-02
+888250,Brickworks ,4,1.5,1926,19,2008,no,gym,2026-09-23
+964606,Stonebridge,2,1.0,985sqft,32,1936,no,pets_allowed;doorman;elevator;parking;dishwasher,2026-08-08
+297877,Briar Hill,1,1.0,666sqft,22,2021,no,balcony;laundry,2026-06-26
+990574,Saltmarsh,Studio,1.0,429 sq ft,28,2007,no,pets_allowed;elevator;laundry,2026-02-21
+749219,Lighthouse,1,1.0,598sqft,8,1939,no,gym,2026-07-03
+639937,LARKSPUR,2,1.5,793,15,1944,no,parking;gym;balcony;dishwasher,2026-05-04
+805171,Larkspur,1,1.0,676,G,2019,yes,balcony;parking;doorman;laundry;elevator,2026-08-25
+758569,Anchor Bay ,Studio,1.0,394 sq ft,13,1999,no,laundry;balcony;parking,2026-04-09
+321145,Larkspur,3,2.5,1596,6,2021,no,pets_allowed;dishwasher;parking;gym;LAUNDRY,2026-07-23
+976780,Anchor Bay,2,1.0,890sqft,24,1970,no,balcony;laundry,2026-02-18
+100170,Kingsfield,Studio,1.0,451 sq ft,14,1951,no,laundry;doorman;dishwasher;gym;elevator,2026-02-11
+745388,marlow,2,1.5,871 sq ft,14,1967,yes,LAUNDRY,2026-01-27
+506587,Saltmarsh,2,2.0,816sqft,21,2012,no,BALCONY;elevator; parking;laundry,2026-05-26
+981959,Fernwood,2,1.5,1026 sq ft,22,1958,no,BALCONY;laundry,2026-01-08
+417985,Kingsfield,2,1.5,1110,24,1984,no,laundry;pets_allowed,2026-02-22
+909381,Kingsfield ,2,2.0,1000,25,1970,no,DOORMAN;dishwasher;gym;parking;elevator,2026-07-09
+790506,Anchor Bay,1,1.0,569,4,1945,no,laundry,2026-09-08
+700950,lighthouse,1,1.0,776 sq ft,10,2011,no,laundry;elevator;DOORMAN,2026-05-12
+996838,briar hill,1,1.0,665 sq ft,24,1956,no,gym;DOORMAN;laundry,2026-03-17
+425523,Ashton,1,1.0,932,G,1959,no,elevator;parking;doorman;pets_allowed;dishwasher,2026-07-09
+469185,Heathside,2,2.0,1029,30,2012,no,pets_allowed;doorman;gym;PARKING;dishwasher,2026-01-12
+436593,Briar Hill ,1,1.0,804 sq ft,31,1979,no,laundry;balcony;DOORMAN,2026-05-22
+181901,Kingsfield,Studio,1.0,535sqft,30,1985,yes,elevator;PETS_ALLOWED;GYM;LAUNDRY;dishwasher,2026-03-15
+258120,Marlow,2,2.0,886 sq ft,2,1989,yes,laundry; pets_allowed,2026-01-13
+847195,Northcross,1,1.0,540,32,1943,no,dishwasher; doorman;laundry;elevator;parking,2026-07-08
+822271,Saltmarsh,1,1.0,828sqft,16,1933,no,laundry;pets_allowed;parking;dishwasher;gym,2026-01-17
+560308,OLD DOCKS,2,2.0,1189,5,2002,no,laundry;dishwasher;elevator,2026-05-13
+439623,Brickworks,2,1.0,988,25,1963,no,pets_allowed;dishwasher;laundry;elevator;doorman; balcony,2026-02-01
+911529,Larkspur,1,1.0,907,34,2011,no,elevator;dishwasher,2026-02-06
+716993,Ashton,2,1.0,944,G,1925,no,laundry,2026-01-08
+529650,kingsfield,Studio,1.0,580,33,1929,no,LAUNDRY;PARKING; balcony,2026-02-06
+303527,Brickworks,2,2.0,967,20,1967,yes,laundry;dishwasher,2026-07-23
+200311,Oakhurst,2,1.5,976sqft,G,1943,yes,gym;pets_allowed;doorman,2026-03-08
+444849,elm park,1,1.0,886 sq ft,31,1964,no,elevator;balcony;doorman,2026-02-15
+748349,Kingsfield,3,2.0,1545,G,2000,no,laundry; pets_allowed,2026-06-06
+402528,canal quarter,3,1.0,1138,22,1997,no,ELEVATOR;parking; pets_allowed;doorman,2026-07-05
+891335,Briar Hill,1,1.0,783 sq ft,26,1937,no,gym;laundry;pets_allowed,2026-01-13
+847536,Westlea,2,2.0,718sqft,14,2016,no,pets_allowed;doorman;gym; laundry,2026-01-23
+433147,Stonebridge ,2,1.0,1042,9,1997,no,parking;balcony;doorman;laundry;pets_allowed,2026-03-04
+312899,lighthouse,Studio,1.0,363,7,1962,yes,LAUNDRY; dishwasher,2026-04-22
+869238,Stonebridge,1,1.0,681 sq ft,6,1941,yes,dishwasher,2026-09-01
+225531,CANAL QUARTER,1,1.0,739 sq ft,20,1964,no,ELEVATOR,2026-08-04
+710287,Marlow ,1,1.0,740 sq ft,G,1970,no,laundry;PARKING;balcony;elevator,2026-01-05
+939176,Fernwood,1,1.0,606,26,1933,no,pets_allowed;laundry;dishwasher,2026-07-02
+798142,Quayside,3,2.5,1606 sq ft,17,1928,no,elevator;parking;dishwasher;LAUNDRY,2026-03-25
+452366,Larkspur,1,1.0,833 sq ft,8,1977,no,laundry;doorman;dishwasher;parking;pets_allowed,2026-01-15
+997201,Saltmarsh,3,1.0,1473 sq ft,32,1931,no,laundry;parking;balcony,2026-04-01
+102843,Briar Hill,Studio,1.0,288,5,1964,no,elevator;parking;dishwasher;balcony,2026-03-03
+917395,fernwood,3,1.0,1095 sq ft,G,1955,no,elevator;balcony;parking,2026-05-27
+738017,Saltmarsh,3,1.0,1343 sq ft,22,1957,no,,2026-08-05
+907412,Kingsfield,2,2.0,750,11,1938,no,doorman;balcony;gym;elevator,2026-03-27
+267045,northcross,Studio,1.0,427,16,1928,yes,balcony;ELEVATOR;LAUNDRY;pets_allowed,2026-01-10
+695643,ashton,Studio,1.0,478 sq ft,G,2006,no,pets_allowed,2026-01-08
+768999,Pier Row,1,1.0,655sqft,7,1935,no,LAUNDRY;dishwasher,2026-05-29
+388740,mill hill,1,1.0,699 sq ft,16,2011,no,gym;elevator;pets_allowed,2026-09-09
+904968,Mill Hill,1,1.0,758,21,2023,no,doorman;gym;laundry;pets_allowed;balcony;elevator,2026-05-01
+930209,Stonebridge,3,1.5,1123,G,1959,no,laundry;balcony;pets_allowed,2026-03-07
+650314,Larkspur ,3,2.0,"1,390 sq ft",31,1970,no, dishwasher,2026-06-04
+938395,Foundry ,Studio,1.0,260,17,1984,no,balcony;DISHWASHER;laundry;pets_allowed,2026-09-07
+955926,Canal Quarter,2,2.0,811,30,1936,no,dishwasher;balcony;laundry,2026-04-29
+194022,mill hill,4,2.0,1893 sq ft,20,1927,yes,dishwasher;laundry,2026-05-02
+952833,Marlow,2,1.0,992,16,1991,no,PARKING;doorman;balcony,2026-01-07
+336056,Saltmarsh,3,1.5,1309,4,1988,yes,pets_allowed;doorman,2026-06-24
+976140,Fernwood,1,1.0,826 sq ft,16,1931,yes,elevator;laundry;GYM;dishwasher;doorman,2026-07-03
+393570,anchor bay,1,1.0,656 sq ft,12,1993,no,dishwasher;doorman,2026-03-27
+336677,Oakhurst,1,1.0,674 sq ft,G,2013,no,laundry;elevator;balcony,2026-06-02
+553558,Northcross,2,2.0,948,13,1994,no,pets_allowed;balcony;laundry,2026-03-09
+426373,ashton,3,2.0,"1,635 sq ft",31,1940,no,parking; dishwasher;laundry,2026-04-26
+908467,Saltmarsh ,4,1.0,1129,25,2007,no,dishwasher;laundry;balcony;gym,2026-01-14
+955503,Pier Row,2,1.5,1208 sq ft,22,2017,no,gym;dishwasher,2026-03-12
+380523,Ashton,2,2.0,"1,191 sq ft",G,1943,no,laundry;pets_allowed; elevator;DISHWASHER,2026-09-20
+362305,oakhurst,2,1.0,1074sqft,27,1972,no,laundry; pets_allowed,2026-07-09
+593424,Westlea,3,1.5,"1,332 sq ft",21,1925,no,laundry;gym,2026-06-27
+632770,Westlea,1,1.0,801 sq ft,8,1974,no,elevator; doorman;dishwasher,2026-03-01
+584199,Briar Hill,1,1.0,695,3,1940,no,elevator;dishwasher;GYM;balcony,2026-06-08
+368410,Larkspur,Studio,1.0,434 sq ft,25,1994,no,pets_allowed,2026-08-06
+333449,Briar Hill,1,1.0,624,19,2023,no,parking;balcony;pets_allowed;dishwasher;laundry,2026-09-09
+839059,Brookvale,2,2.0,1047sqft,18,1927,no, balcony;dishwasher,2026-07-19
+988934,kingsfield,3,1.0,"1,128 sq ft",12,1992,no,,2026-05-13
+632323,Brickworks,1,1.0,623 sq ft,1,2012,yes,gym;elevator;dishwasher;laundry; balcony,2026-08-07
+599572,stonebridge,Studio,1.0,250 sq ft,4,1965,yes,pets_allowed; gym,2026-03-01
+173052,Mill Hill,2,2.0,1088,34,2002,no,dishwasher;laundry;gym;pets_allowed,2026-03-07
+422138,Quayside,Studio,1.0,370 sq ft,33,2014,no,balcony; laundry;pets_allowed;dishwasher;elevator,2026-03-17
+614017,Stonebridge,2,2.0,998 sq ft,G,1952,no,pets_allowed;gym;laundry,2026-02-22
+486342,Stonebridge,2,2.0,1177 sq ft,6,1986,no,doorman,2026-09-09
+447721,heathside,1,1.0,768,G,1933,yes,PETS_ALLOWED;gym;laundry,2026-01-18
+963420,Heathside,Studio,1.0,360sqft,9,2012,no,laundry;pets_allowed;doorman; elevator,2026-04-16
+144699,Briar Hill,Studio,1.0,358 sq ft,25,1960,no,laundry; elevator,2026-05-21
+846305,Anchor Bay,2,2.0,1150,5,1957,yes,laundry,2026-09-10
+636798,Larkspur,1,1.0,889,6,2015,no,balcony,2026-05-22
+656596,Westlea,3,1.5,1199 sq ft,G,1945,no, dishwasher;elevator;laundry,2026-06-09
+779908,Oakhurst,3,2.5,1328 sq ft,30,2002,no,BALCONY;pets_allowed,2026-01-27
+383402,Oakhurst,1,1.0,805,33,1946,yes,balcony;gym,2026-03-31
+377502,Kingsfield,1,1.0,745,G,2020,no,gym;pets_allowed; balcony;dishwasher;parking,2026-03-18
+542171,ELM PARK,2,1.5,935,13,1951,no,dishwasher;laundry,2026-08-25
+616363,Saltmarsh,1,1.0,674 sq ft,3,1941,no,DOORMAN; pets_allowed;laundry,2026-09-08
+116836,Briar Hill,1,1.0,584,25,1950,yes, laundry; pets_allowed; balcony; dishwasher;PARKING;gym,2026-05-18
+487730,Pier Row,1,1.0,655 sq ft,29,1946,no,laundry;pets_allowed;dishwasher;gym,2026-04-08
+166064,Kingsfield ,Studio,1.0,354,19,1940,yes,balcony;pets_allowed;doorman;dishwasher,2026-07-07
+373878,Westlea,3,2.0,1374 sq ft,8,1998,no, doorman;laundry,2026-03-09
+686198,Fernwood,3,2.0,1581sqft,G,1956,no,doorman;balcony,2026-03-21
+609217,Riverside,1,1.0,799,31,1965,no,elevator;dishwasher;laundry;balcony; parking,2026-05-10
+932172,Northcross,1,1.0,613,33,1991,no,balcony; laundry; elevator;dishwasher,2026-01-01
+552791,Canal Quarter,1,1.0,718 sq ft,29,1958,yes,elevator;gym,2026-07-18
+979539,Lighthouse,1,1.0,736,G,1948,no,,2026-06-21
+225935,Brookvale,Studio,1.0,399 sq ft,27,1981,yes,gym;doorman;parking,2026-06-26
+312177,Saltmarsh,Studio,1.0,280,3,1933,no,laundry;BALCONY,2026-08-19
+143690,Northcross,3,2.0,1348 sq ft,11,2013,no, dishwasher;laundry;gym,2026-03-09
+345297,foundry,4,1.0,1487,12,1998,yes,doorman;laundry;dishwasher,2026-06-17
+674845,Brickworks,2,2.0,1177 sq ft,22,1975,no,laundry;pets_allowed;parking;dishwasher,2026-04-23
+517638,Elm Park,1,1.0,672,31,2006,no,balcony;dishwasher,2026-09-06
+382347,Briar Hill,Studio,1.0,275,6,1936,no,pets_allowed;doorman;laundry,2026-09-03
+647795,Lighthouse,3,1.0,1251,15,1989,no, dishwasher;laundry,2026-02-23
+469771,Briar Hill,Studio,1.0,352,22,2008,no,gym;dishwasher;pets_allowed,2026-06-23
+467053,Foundry,2,1.0,1309,G,1968,no,DISHWASHER;elevator,2026-04-26
+397415,Brookvale,3,2.5,1051,G,1950,no,elevator;laundry; gym; dishwasher,2026-05-05
+269495,ashton,3,2.0,1739 sq ft,14,2022,no, pets_allowed;elevator,2026-01-19
+517488,Heathside,2,1.5,1276 sq ft,33,1958,yes,dishwasher;elevator;pets_allowed,2026-03-24
+637213,oakhurst,3,1.5,1257 sq ft,G,1935,no,elevator,2026-04-08
+535671,Elm Park,3,2.0,1607sqft,16,1949,yes, pets_allowed;laundry,2026-08-20
+486103,Saltmarsh,3,2.0,1355 sq ft,12,2012,no,dishwasher;parking;doorman;balcony,2026-02-12
+565146,stonebridge,2,1.0,816sqft,19,1933,no,dishwasher;balcony,2026-04-05
+789030,Pier Row,1,1.0,545,28,1937,no,pets_allowed;dishwasher;laundry,2026-04-12
+950053,Riverside,1,1.0,802 sq ft,3,1927,no,,2026-08-24
+121342,elm park,3,1.0,1276 sq ft,7,1958,no,GYM;parking;pets_allowed;balcony,2026-07-18
+331372,Quayside,2,2.0,1317,G,1944,yes, dishwasher;elevator;pets_allowed,2026-05-26
+882200,Oakhurst ,3,1.0,1269 sq ft,18,2017,no,pets_allowed;laundry,2026-02-02
+976868,Foundry,3,2.0,"1,432 sq ft",16,1938,no,doorman;elevator;laundry,2026-09-15
+708896,Brookvale ,2,1.5,1033,1,2015,yes,elevator;dishwasher;balcony;parking;pets_allowed;gym,2026-09-23
+348887,Elm Park ,3,2.5,1579,7,1979,no,parking;gym;dishwasher,2026-01-21
+784401,Anchor Bay,1,1.0,666,G,2014,no,gym;elevator;laundry,2026-03-17
+292349,Elm Park,1,1.0,573 sq ft,5,1938,no,dishwasher;elevator,2026-09-07
+151700,Foundry,3,1.5,1484 sq ft,24,1978,no,balcony;laundry; parking,2026-05-11
+385540,Foundry,2,1.0,1013,16,2018,no,laundry; pets_allowed;elevator,2026-01-02
+501330,Riverside,3,2.0,1140,16,1945,no,laundry;dishwasher;doorman;PETS_ALLOWED,2026-05-29
+407286,Ashton,3,3.0,1388 sq ft,14,1971,no,balcony; gym;dishwasher,2026-06-04
+847750,mill hill,2,1.0,892 sq ft,G,1952,yes,balcony;gym;laundry,2026-04-11
+884543,Elm Park,2,2.0,1168,7,1985,no,PETS_ALLOWED;DISHWASHER;elevator,2026-06-13
+444361,Elm Park,Studio,1.0,359sqft,G,1933,no, laundry;elevator,2026-03-30
+585221,Marlow,3,2.0,1622sqft,28,1999,no,elevator; laundry;pets_allowed;gym,2026-06-18
+398313,Brookvale,2,1.5,835 sq ft,29,1976,no,elevator;balcony,2026-02-03
+979347,westlea,4,1.0,1931 sq ft,12,1985,yes,doorman;elevator;PETS_ALLOWED,2026-07-16
+531443,Riverside,1,1.0,586sqft,33,1977,no, laundry;pets_allowed;doorman;dishwasher,2026-02-26
+807991,Lighthouse,1,1.0,633 sq ft,32,1925,no,doorman;dishwasher;laundry;balcony,2026-02-09
+210486,Foundry,1,1.0,1003,G,2011,no,elevator,2026-08-24
+489809,Elm Park,4,2.5,2110 sq ft,27,1975,yes,gym;dishwasher;balcony;elevator;pets_allowed;doorman,2026-01-31
+722309,Anchor Bay,1,1.0,595,7,1930,yes,balcony;laundry;elevator,2026-08-28
+432260,Riverside,1,1.0,780 sq ft,1,1975,no,dishwasher;laundry;balcony;elevator;pets_allowed,2026-02-12
+736848,Elm Park ,Studio,1.0,326,14,1964,no,PETS_ALLOWED;elevator,2026-07-23
+451461,Quayside,1,1.0,579 sq ft,18,1963,no,dishwasher;laundry;balcony,2026-03-09
+492411,Fernwood,1,1.0,667 sq ft,16,1953,no,laundry;gym,2026-08-22
+806960,Brookvale,1,1.0,729,15,1947,no,gym;dishwasher; pets_allowed,2026-03-30
+975537,kingsfield,3,1.0,1401 sq ft,5,2023,no, parking;balcony,2026-04-06
+686467,Northcross,1,1.0,818 sq ft,G,1986,no,parking;dishwasher;pets_allowed;laundry,2026-06-01
+306498,Brookvale,Studio,1.0,406 sq ft,33,1974,no,gym;balcony;ELEVATOR,2026-03-23
+125627,Westlea,2,1.5,"1,116 sq ft",1,1984,no,doorman;laundry;elevator,2026-02-11
+444656,Briar Hill,Studio,1.0,465,31,1945,no,balcony;doorman;pets_allowed,2026-05-19
+787523,Briar Hill,2,1.5,1223sqft,6,2008,no,balcony;pets_allowed,2026-01-06
+681400,Anchor Bay,1,1.0,597sqft,32,2011,no,parking;elevator;laundry,2026-09-14
+731576,Brickworks,1,1.0,723,6,2006,no,balcony;parking;DISHWASHER;laundry,2026-01-13
+218547,anchor bay,Studio,1.0,291sqft,15,1950,yes, elevator;BALCONY;pets_allowed; laundry; gym,2026-04-24
+947067,Ashton,2,1.0,1367,25,1952,no,,2026-02-14
+993807,Oakhurst ,1,1.0,1021,33,1991,yes,elevator;laundry;dishwasher;balcony,2026-07-28
+654095,Brickworks,Studio,1.0,389sqft,33,1929,no,gym;pets_allowed;laundry; dishwasher;elevator,2026-06-15
+547750,MILL HILL,3,1.5,1167,18,2013,yes,laundry;BALCONY;dishwasher,2026-08-04
+540251,Foundry,3,2.0,1439 sq ft,33,1974,yes,elevator;dishwasher;laundry,2026-07-22
+400094,Briar Hill,2,2.0,1190 sq ft,15,1974,no,balcony;dishwasher;laundry;pets_allowed;elevator,2026-03-03
+956970,Saltmarsh,2,2.0,1123,9,2020,yes,dishwasher;balcony;pets_allowed,2026-03-19
+404394,Oakhurst,1,1.0,523sqft,8,1980,no, balcony;laundry,2026-03-04
+706676,STONEBRIDGE,2,2.0,1291sqft,16,1991,yes,gym;PARKING;dishwasher,2026-02-21
+956967,Larkspur,2,2.0,1068 sq ft,28,1966,no,laundry;ELEVATOR;balcony,2026-01-11
+326036,Canal Quarter,2,1.5,974,8,1985,no,pets_allowed;ELEVATOR; parking,2026-05-25
+289390,Ashton,1,1.0,593 sq ft,7,2022,no,dishwasher;laundry,2026-02-04
+231232,Lighthouse,3,2.0,1194 sq ft,G,1947,no,dishwasher;ELEVATOR,2026-02-17
+534902,Westlea,2,1.5,1060,29,1964,no,doorman;balcony;parking;laundry,2026-05-26
+820808,marlow,3,1.0,1241sqft,4,2007,no,balcony;pets_allowed;elevator,2026-09-11
+646972,Ashton,Studio,1.0,336,16,1935,no,laundry;gym,2026-01-27
+306971,Brookvale ,1,1.0,731 sq ft,21,1932,no,laundry,2026-03-19
+134150,ELM PARK,2,2.0,1225 sq ft,27,1946,no,elevator;laundry;dishwasher,2026-02-12
+272214,canal quarter,2,1.0,919sqft,31,1939,no, dishwasher;elevator;parking,2026-03-27
+612124,Pier Row,2,2.0,845sqft,G,2001,yes,elevator;pets_allowed;balcony;gym,2026-02-09
+325439,Heathside,3,2.0,1453 sq ft,8,1987,no,laundry,2026-08-22
+905789,Stonebridge,1,1.0,671sqft,4,1939,no,dishwasher;balcony;pets_allowed,2026-08-17
+202145,Westlea,2,1.0,1054 sq ft,19,2002,no,laundry;gym;elevator;doorman;dishwasher,2026-04-17
+108333,Ashton,2,2.0,1349 sq ft,14,1956,no,balcony;parking; pets_allowed;DISHWASHER;laundry,2026-02-22
+532273,RIVERSIDE,1,1.0,644sqft,G,1930,no,parking; elevator;PETS_ALLOWED;dishwasher,2026-08-12
+816581,Stonebridge,4,2.0,1916sqft,2,1960,no,dishwasher;pets_allowed;LAUNDRY,2026-08-28
+289814,Fernwood,Studio,1.0,404 sq ft,G,1929,no,balcony;elevator,2026-06-20
+392447,Brookvale ,2,1.0,927 sq ft,30,1988,no,laundry;dishwasher;BALCONY,2026-07-02
+328314,Brookvale,2,2.0,1050,16,1937,no,dishwasher;doorman;pets_allowed,2026-08-07
+105623,Westlea ,2,2.0,1052,34,1959,no,dishwasher;laundry,2026-08-05
+491196,larkspur,1,1.0,917sqft,28,2014,yes,parking;pets_allowed;gym;laundry,2026-03-11
+607072,BROOKVALE,3,1.5,1210,29,2013,no,pets_allowed;dishwasher;elevator,2026-01-20
+394200,Lighthouse ,2,2.0,899,G,1952,no,gym;dishwasher;elevator;BALCONY,2026-06-23
+654913,oakhurst,3,2.0,1602,G,2010,yes,gym;elevator;laundry;dishwasher;doorman,2026-01-03
+745946,MILL HILL,Studio,1.0,314,28,1985,yes,parking;gym;dishwasher; laundry,2026-01-28
+671687,Pier Row,1,1.0,651 sq ft,12,1950,yes,dishwasher;laundry;elevator,2026-04-13
+524075,Foundry,4,1.0,"1,981 sq ft",2,1974,no,elevator;pets_allowed;parking,2026-08-02
+926033,Oakhurst,2,1.0,868 sq ft,14,2007,no,PETS_ALLOWED,2026-02-21
+713003,Old Docks,1,1.0,564,G,1959,no, dishwasher;laundry;doorman;PETS_ALLOWED,2026-02-12
+242511,Foundry,3,1.5,1458 sq ft,G,1994,no,elevator;doorman;gym,2026-07-06
+627770,Heathside ,2,2.0,933 sq ft,1,1932,yes,gym;balcony;dishwasher,2026-08-30
+343296,heathside,1,1.0,748 sq ft,G,2020,yes,dishwasher; laundry,2026-03-16
+221563,anchor bay,3,1.0,1454 sq ft,10,1932,no,ELEVATOR;pets_allowed;dishwasher;parking,2026-03-12
+836766,Foundry,1,1.0,690 sq ft,1,1947,no, parking,2026-07-12
+524109,Northcross,1,1.0,707,34,1960,no,pets_allowed;doorman,2026-07-20
+626958,Marlow,2,1.0,880 sq ft,16,2024,yes,laundry;doorman;parking;gym; elevator;dishwasher,2026-06-27
+367649,Kingsfield,2,2.0,828 sq ft,28,1995,no, dishwasher;elevator,2026-09-27
+214818,stonebridge,3,2.5,1223sqft,32,2004,no,dishwasher,2026-02-21
+145373,Saltmarsh,4,1.0,1738 sq ft,16,2005,yes,elevator;laundry;parking,2026-01-08
+427700,Marlow,2,2.0,1121,29,1982,no,PARKING;laundry,2026-09-11
+714132,Heathside,2,2.0,1271 sq ft,18,2008,no,elevator;pets_allowed;parking; doorman; dishwasher;BALCONY,2026-01-23
+908686,Briar Hill,2,1.0,"1,067 sq ft",G,2006,no,DOORMAN,2026-06-18
+921534,Canal Quarter,1,1.0,560 sq ft,G,1932,no,pets_allowed;gym;dishwasher,2026-01-04
+227135,Canal Quarter,2,2.0,1058,12,1938,yes,balcony;pets_allowed;elevator; dishwasher,2026-06-08
+711611,Ashton ,1,1.0,836sqft,30,2013,no,elevator;dishwasher;pets_allowed,2026-09-17
+515830,Northcross,1,1.0,747sqft,27,1969,no,balcony;gym;pets_allowed,2026-03-05
+476446,Riverside ,1,1.0,800,G,1928,no,dishwasher,2026-04-16
+181922,Kingsfield,2,2.0,1028 sq ft,6,2017,no, pets_allowed;dishwasher;gym;elevator;balcony,2026-01-06
+133004,Heathside ,1,1.0,640 sq ft,11,1988,no,balcony;dishwasher;laundry,2026-05-29
+457690,Elm Park,3,1.0,1500,3,1997,no,parking;laundry,2026-08-25
+306586,Oakhurst,3,1.0,1432 sq ft,17,1959,yes,balcony;parking;laundry,2026-06-09
+883574,ashton,2,2.0,733,31,1946,no,elevator; doorman;DISHWASHER,2026-04-11
+810603,Anchor Bay,3,2.5,1430 sq ft,31,2020,no,pets_allowed;laundry;elevator,2026-04-05
+737320,Fernwood,Studio,1.0,574 sq ft,G,2023,no,balcony;elevator;laundry,2026-03-01
+711880,Briar Hill,3,2.0,1103 sq ft,29,2006,no,elevator;laundry,2026-02-18
+643635,Marlow,1,1.0,659sqft,28,1966,no,parking,2026-05-25
+222198,Fernwood,1,1.0,605,G,1947,no,elevator;laundry;gym,2026-09-19
+769455,Lighthouse,2,2.0,1331,G,2021,no,parking; pets_allowed;balcony;LAUNDRY,2026-04-16
+583430,PIER ROW,Studio,1.0,394,2,1951,no,dishwasher;laundry;parking;gym,2026-06-27
+347958,Pier Row ,1,1.0,707,G,1944,no,elevator; dishwasher;parking,2026-02-26
+490326,pier row,2,1.0,1056 sq ft,29,1936,no,elevator;pets_allowed,2026-04-20

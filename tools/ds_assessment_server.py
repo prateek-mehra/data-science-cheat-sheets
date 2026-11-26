@@ -191,13 +191,17 @@ class Manager:
         a["notebook"] = read_json(os.path.join(self.workspace(), "notebook.ipynb"))
         return {"active": a}
 
-    def start(self, test_id):
+    def start(self, test_id, duration_minutes=None):
         with self.lock:
             if self.running():
                 raise ValueError("An attempt is already running. Submit it first.")
             test = load_test(test_id)
             if not test:
                 raise ValueError("Unknown test %r" % test_id)
+            options = test.get("duration_options") or [test["duration_minutes"]]
+            minutes = int(duration_minutes or test["duration_minutes"])
+            if minutes not in options and minutes != test["duration_minutes"]:
+                raise ValueError("Duration must be one of %s minutes" % options)
             stamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
             attempt_id = "%s-%s" % (test_id, stamp)
             ws = os.path.join(ATTEMPTS_DIR, attempt_id)
@@ -209,8 +213,8 @@ class Manager:
             started = now()
             self.attempt = {"attempt_id": attempt_id, "test_id": test_id, "title": test["title"],
                             "status": "running", "started_at": started, "started_iso": iso(started),
-                            "duration_seconds": test["duration_minutes"] * 60,
-                            "deadline": started + test["duration_minutes"] * 60,
+                            "duration_seconds": minutes * 60, "standard_minutes": test["duration_minutes"],
+                            "deadline": started + minutes * 60,
                             "cells_run": 0, "errors": 0, "uploads": []}
             self.persist()
             self.kernel.start(ws)
@@ -304,13 +308,18 @@ class Manager:
             if os.path.exists(sub_src):
                 shutil.copy2(sub_src, os.path.join(out, "submission.csv"))
             write_json(os.path.join(out, "answers.json"), values)
-            grade = ds_grade.grade(a["test_id"], values, os.path.join(out, "submission.csv"))
+            try:
+                grade = ds_grade.grade(a["test_id"], values, os.path.join(out, "submission.csv"))
+            except Exception as e:  # noqa: BLE001 - never lose a submission to a grader bug
+                grade = {"test_id": a["test_id"], "score": 0, "max_score": sum(t["points"] for t in test["tasks"]),
+                         "tasks": [], "error": "grader failed: %r (re-grade with tools/ds_grade.py)" % e}
             write_json(os.path.join(out, "grade.json"), grade)
             data_files = set(test["data_files"]) | {"notebook.ipynb"}
             meta = {
                 "test_id": a["test_id"], "title": a["title"], "attempt_id": a["attempt_id"],
                 "started": iso(a["started_at"]), "submitted": iso(submitted),
                 "reason": reason, "duration_limit_seconds": a["duration_seconds"],
+                "standard_duration_seconds": a.get("standard_minutes", a["duration_seconds"] // 60) * 60,
                 "elapsed_seconds": round(elapsed), "time_left_seconds": round(max(0, a["deadline"] - submitted)),
                 "cells_run": a["cells_run"], "cells_with_errors": a["errors"],
                 "uploads": a["uploads"], "kernel_at_submit": kernel_state,
@@ -319,7 +328,7 @@ class Manager:
                 "score": grade["score"], "max_score": grade["max_score"],
             }
             write_json(os.path.join(out, "meta.json"), meta)
-            with open(os.path.join(out, "REVIEW.md"), "w", encoding="utf-8") as f:
+            with open(os.path.join(out, "AUTOGRADE.md"), "w", encoding="utf-8") as f:
                 f.write(review_md(meta, grade))
             self.kernel.stop()
             a["status"] = "submitted"
@@ -345,7 +354,7 @@ def fmt_secs(s):
 
 
 def review_md(meta, grade):
-    lines = ["# %s — submission review" % meta["title"], "",
+    lines = ["# %s — auto-grade" % meta["title"], "",
              "| | |", "|---|---|",
              "| Test | `%s` |" % meta["test_id"],
              "| Started | %s |" % meta["started"],
@@ -360,7 +369,9 @@ def review_md(meta, grade):
             lines.append("- %s `%s` %s" % ("✅" if c["passed"] else "❌", c["var"], c["note"]))
         m = t.get("model")
         if m is not None:
-            for k in ("f1", "accuracy", "predicted_positive_rate", "rows", "missing_ids"):
+            if "value" in m:
+                lines.append("- %s: %s" % (m["metric"], m["value"]))
+            for k in ("accuracy", "predicted_positive_rate", "rows", "expected_rows", "missing_ids", "invalid_values"):
                 if k in m:
                     lines.append("- %s: %s" % (k, m[k]))
             for p in m.get("problems", []):
@@ -369,8 +380,25 @@ def review_md(meta, grade):
     lines += ["## For the reviewer", "",
               "Read `notebook.ipynb` and assess, beyond the auto score: correctness of the cleaning and joins, "
               "leakage (fitting on test, using the label in features), validation approach, feature choices, "
-              "code clarity, and the Task 3 interpretation. Variables captured from the kernel are in `answers.json`.", ""]
+              "code clarity, and any written interpretation. Variables captured from the kernel are in `answers.json`. "
+              "Write the review to `REVIEW.md` in this folder; the practice page then shows it and reveals the score.", ""]
     return "\n".join(lines)
+
+
+def submission_detail(key):
+    parts = (key or "").split("/")
+    if len(parts) != 2 or not all(SAFE_NAME.match(p) and ".." not in p for p in parts):
+        return None
+    d = os.path.join(SUBMISSIONS_DIR, *parts)
+    meta = read_json(os.path.join(d, "meta.json"))
+    if not meta:
+        return None
+    review = None
+    if os.path.exists(os.path.join(d, "REVIEW.md")):
+        with open(os.path.join(d, "REVIEW.md"), encoding="utf-8") as f:
+            review = f.read()
+    return {"meta": meta, "grade": read_json(os.path.join(d, "grade.json")), "review": review,
+            "submission_dir": os.path.relpath(d, REPO_ROOT)}
 
 
 def history():
@@ -385,6 +413,8 @@ def history():
             meta = read_json(os.path.join(d, stamp, "meta.json"))
             if meta:
                 meta["dir"] = os.path.relpath(os.path.join(d, stamp), REPO_ROOT)
+                meta["key"] = "%s/%s" % (test_id, stamp)
+                meta["reviewed"] = os.path.exists(os.path.join(d, stamp, "REVIEW.md"))
                 out.append(meta)
     out.sort(key=lambda m: m.get("started", ""), reverse=True)
     return out
@@ -444,6 +474,9 @@ class Handler(SimpleHTTPRequestHandler):
                 return self._json(404, {"error": "unknown test"})
             with open(os.path.join(TESTS_DIR, test["id"], test["task_html"]), encoding="utf-8") as f:
                 return self._json(200, {"html": f.read()})
+        if path == "/api/ds/submission":
+            detail = submission_detail(q.get("key", [""])[0])
+            return self._json(200, detail) if detail else self._json(404, {"error": "no such submission"})
         if path == "/api/ds/files":
             if not m.running():
                 return self._json(200, {"files": []})
@@ -485,7 +518,7 @@ class Handler(SimpleHTTPRequestHandler):
             raw = self._body()
             payload = json.loads(raw) if raw else {}
             if path == "/api/ds/start":
-                return self._json(200, m.start(payload.get("test_id")))
+                return self._json(200, m.start(payload.get("test_id"), payload.get("duration_minutes")))
             if path == "/api/ds/execute":
                 return self._json(200, m.execute(payload.get("code", "")))
             if path == "/api/ds/complete":

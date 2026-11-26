@@ -5,7 +5,11 @@
   "framework": "Data Science Framework · Pandas + scikit-learn",
   "duration_minutes": 60,
   "summary": "Clean a messy customer table, engineer features from an orders log, answer three analysis questions, and train a classifier that predicts churn.",
-  "data_files": ["train.csv", "test.csv", "orders.csv"],
+  "data_files": [
+    "train.csv",
+    "test.csv",
+    "orders.csv"
+  ],
   "starter": "starter.ipynb",
   "task_html": "task.html",
   "submission": {
@@ -13,28 +17,87 @@
     "id_column": "customer_id",
     "prediction_column": "churned",
     "labels_file": "_hidden/test_labels.csv",
-    "label_column": "churned"
+    "label_column": "churned",
+    "kind": "binary"
   },
   "tasks": [
-    {"id": 1, "title": "Clean the customer table", "points": 15,
-     "checks": [
-       {"var": "task1_n_rows", "kind": "number", "tol": 0},
-       {"var": "task1_plan_counts", "kind": "dict", "tol": 0},
-       {"var": "task1_mean_fee", "kind": "number", "tol": 0.011}
-     ]},
-    {"id": 2, "title": "Features from the orders log", "points": 20,
-     "checks": [
-       {"var": "task2_no_orders", "kind": "number", "tol": 0},
-       {"var": "task2_top_customer", "kind": "number", "tol": 0},
-       {"var": "task2_late_rate_by_region", "kind": "dict", "tol": 0.0015}
-     ]},
-    {"id": 3, "title": "Churn analysis", "points": 15,
-     "checks": [
-       {"var": "task3_churn_by_plan", "kind": "dict", "tol": 0.0015},
-       {"var": "task3_churn_rate_no_orders", "kind": "number", "tol": 0.0015}
-     ]},
-    {"id": 4, "title": "Predict churn", "points": 50, "model": true}
+    {
+      "id": 1,
+      "title": "Clean the customer table",
+      "points": 15,
+      "checks": [
+        {
+          "var": "task1_n_rows",
+          "kind": "number",
+          "tol": 0
+        },
+        {
+          "var": "task1_plan_counts",
+          "kind": "dict",
+          "tol": 0
+        },
+        {
+          "var": "task1_mean_fee",
+          "kind": "number",
+          "tol": 0.011
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Features from the orders log",
+      "points": 20,
+      "checks": [
+        {
+          "var": "task2_no_orders",
+          "kind": "number",
+          "tol": 0
+        },
+        {
+          "var": "task2_top_customer",
+          "kind": "number",
+          "tol": 0
+        },
+        {
+          "var": "task2_late_rate_by_region",
+          "kind": "dict",
+          "tol": 0.0015
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Churn analysis",
+      "points": 15,
+      "checks": [
+        {
+          "var": "task3_churn_by_plan",
+          "kind": "dict",
+          "tol": 0.0015
+        },
+        {
+          "var": "task3_churn_rate_no_orders",
+          "kind": "number",
+          "tol": 0.0015
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Predict churn",
+      "points": 50,
+      "model": true
+    }
   ],
-  "model": {"metric": "f1", "floor": 0.52, "target": 0.70,
-            "note": "0 points at or below F1 0.52 (predicting everyone churns); full points at F1 0.70 or more; linear in between."}
+  "model": {
+    "metric": "f1",
+    "floor": 0.52,
+    "target": 0.7,
+    "note": "0 points at or below F1 0.52 (predicting everyone churns); full points at F1 0.70 or more; linear in between."
+  },
+  "duration_options": [
+    40,
+    60,
+    75
+  ]
 }
