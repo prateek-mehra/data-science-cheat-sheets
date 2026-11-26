@@ -56,6 +56,19 @@
         <li><code>df.groupby("dept").size()</code> gives the same counts, sorted by dept.</li>
         <li><code>df["dept"].nunique()</code> is the number of distinct values.</li>
       </ul>
+      <h3><code>groupby().count()</code> vs <code>value_counts()</code></h3>
+      <pre><code>per_dept = df.groupby("dept")["salary"].count()   # non-null salaries in each dept, sorted by dept
+dept_counts = df["dept"].value_counts()            # rows per dept, most common first</code></pre>
+      <table>
+        <thead><tr><th style="width:26%">Aspect</th><th><code>groupby().count()</code></th><th><code>value_counts()</code></th></tr></thead>
+        <tbody>
+          <tr><td>What it counts</td><td>Non-null values in the selected column</td><td>Occurrences of each unique value</td></tr>
+          <tr><td>Nulls in the grouping column</td><td>Excluded by default (<code>dropna=False</code> keeps them)</td><td>Excluded by default (<code>dropna=False</code> keeps them)</td></tr>
+          <tr><td>Nulls in the counted column</td><td>Excluded</td><td>Not applicable</td></tr>
+          <tr><td>Sorting</td><td>By group key</td><td>By frequency, descending</td></tr>
+        </tbody>
+      </table>
+      <p class="note">To count rows per group including those with a missing value in the counted column, use <code>df.groupby("dept").size()</code>.</p>
       </details>
     </section>
     <section>
