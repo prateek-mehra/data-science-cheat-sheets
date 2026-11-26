@@ -1,0 +1,29 @@
+{
+ "task1_n_rows": 5431,
+ "task1_median_rent_by_bedrooms": {
+  "0": 1365.0,
+  "1": 2117.5,
+  "2": 2890.0,
+  "3": 3567.5,
+  "4": 4215.0
+ },
+ "task1_median_rent_per_sqft": 2.925,
+ "task2_amenity_counts": {
+  "laundry": 2966,
+  "dishwasher": 2640,
+  "elevator": 2410,
+  "pets_allowed": 2226,
+  "balcony": 1892,
+  "gym": 1632,
+  "parking": 1566,
+  "doorman": 1318
+ },
+ "task2_doorman_premium": 390.0,
+ "task3_median_rent_by_borough": {
+  "Eastbank": 2355.0,
+  "Harbourside": 2980.0,
+  "Northgate": 2715.0,
+  "Westmoor": 2100.0
+ },
+ "task3_corr_income_rent": 0.402
+}

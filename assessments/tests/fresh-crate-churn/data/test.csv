@@ -1,0 +1,1001 @@
+customer_id,signup_date,plan,region,age,monthly_fee,discount_pct,payment_method,referred,avg_rating
+610443,2025-12-21,BASIC,South,18.0,$18.99,0,card,Yes,3.5
+592892,2024-10-26,premium,East,32.0,$47.24,15,paypal,No,4.7
+952134,2024-05-05,Standard ,West,46.0,$32.99,20,paypal,Y,5.0
+914645,2025-07-02, Basic,South,30.0,$18.99,0,paypal,No,3.2
+476288,2025-04-23,Premium,South,47.0,$42.74,0,card,No,2.9
+820296,2026-02-11,Standard,East,40.0,$31.49,0,card,Yes,4.0
+439334,2025-12-07,Premium,North,25.0,$44.99,0,bank_transfer,No,4.0
+326814,2024-11-26,Basic,West,33.0,21.99,10,card,Yes,4.4
+502437,2025-04-11,basic,South,42.0,18.99,5,paypal,No,4.3
+405503,2024-09-29,standard,North,29.0,$29.99,0,card,N,5.0
+932428,2026-02-25,Standard,South,44.0,28.49,0,card,No,5.0
+418369,2025-04-28,Basic,East,41.0,20.99,0,card,,4.4
+829983,2025-04-09,Standard,West,,$32.99,5,paypal,N,3.0
+191420,2025-01-23,Standard,West,42.0,$32.99,10,card,Y,3.6
+206544,2025-11-05,Basic,North,34.0,$19.99,0,bank_transfer,N,4.0
+230966,2024-11-12,Premium,North,40.0,$44.99,0,paypal,No,3.6
+776608,2025-07-02,Standard,South,28.0,28.49,5,paypal,Yes,4.8
+110493,2024-12-19,Standard,North,53.0,29.99,15,card,Yes,4.4
+129635,2024-03-12,STANDARD,South,35.0,$28.49,0,paypal,Yes,4.1
+657314,2026-05-30,Basic,South,50.0,18.99,5,card,N,3.9
+219098,2025-04-05,Standard,South,60.0,28.49,0,paypal,N,4.6
+922489,2026-04-26,Basic,South,55.0,18.99,0,card,,3.2
+668358,2024-08-27,Basic,North,38.0,$19.99,0,card,No,2.9
+107363,2025-09-08,Standard,East,40.0,31.49,20,card,No,
+722191,2025-08-22,Basic,North,38.0,$19.99,0,paypal,Yes,3.0
+953977,2025-12-29,Basic,North,41.0,$19.99,5,paypal,Yes,
+261152,2025-12-15,Standard,East,29.0,$31.49,0,card,Y,1.8
+788144,2025-02-11,Premium,North,19.0,44.99,5,card,Yes,3.8
+516992,2025-08-02,basic,North,41.0,$19.99,10,card,,3.3
+183194,2025-08-01,Basic,North,,$19.99,0,paypal,N,4.4
+554604,2025-11-28,Basic,East,54.0,$20.99,10,card,Yes,
+555713,2024-12-31,Standard,North,57.0,29.99,15,card,No,4.3
+698045,2025-03-14,Standard,East,,$31.49,10,bank_transfer,No,2.5
+977615,2025-11-06,Standard,East,28.0,$31.49,20,card,Yes,4.0
+731896,2024-10-23,Basic,South,46.0,$18.99,10,paypal,N,4.1
+363301,2024-07-09,Standard,West,50.0,$32.99,10,card,No,2.9
+960389,2025-10-13,Standard,East,39.0,$31.49,15,paypal,,4.2
+671660,2025-08-31,Standard,North,39.0,29.99,15,card,No,3.1
+204394,2024-09-27,Standard,North,19.0,$29.99,20,card,No,2.6
+569723,2025-09-24,premium,North,62.0,44.99,20,card,Y,4.2
+717656,2025-03-12,Basic,East,31.0,$20.99,20,card,Yes,3.4
+602892,2024-07-25,Premium ,North,44.0,$44.99,0,paypal,N,5.0
+866422,2024-07-09,Basic,South,42.0,$18.99,20,paypal,N,4.0
+903371,2025-10-25,Standard,North,29.0,29.99,15,card,No,3.4
+162316,2024-08-07,Basic,West,47.0,$21.99,0,paypal,N,
+218827,2026-01-26,Basic,East,53.0,$20.99,20,bank_transfer,no,3.8
+532446,2024-03-03,Premium,East,38.0,$47.24,10,paypal,No,3.7
+545369,2024-10-03,Premium,East,40.0,$47.24,0,card,No,3.1
+160009,2024-10-11,Standard,South,45.0,$28.49,15,paypal,No,3.2
+554083,2024-03-08,Basic,North,48.0,$19.99,15,card,No,5.0
+776202,2026-04-06,BASIC,North,47.0,$19.99,10,paypal,No,3.2
+214920,2025-04-19,Premium,South,29.0,$42.74,10,paypal,No,5.0
+335072,2025-08-06,Basic,West,28.0,21.99,5,bank_transfer,No,3.2
+589949,2025-03-27,basic,North,32.0,$19.99,10,card,No,4.5
+250296,2025-06-20,Premium,North,18.0,$44.99,0,card,Y,3.8
+981711,2026-01-19,Standard,South,24.0,$28.49,0,card,Yes,4.9
+283366,2024-05-02,Basic,North,36.0,19.99,20,bank_transfer,No,3.9
+758632,2025-05-01, PREMIUM,North,31.0,$44.99,0,bank_transfer,Yes,3.9
+580564,2024-05-07,Standard,East,29.0,$31.49,0,paypal,No,3.4
+779013,2024-11-04,Basic,North,47.0,$19.99,0,paypal,No,4.0
+150857,2025-11-24,Premium ,South,42.0,$42.74,0,card,No,4.3
+161733,2025-02-12,Standard,North,47.0,$29.99,0,card,Yes,4.5
+517654,2024-04-10, Basic,North,36.0,19.99,10,card,N,3.7
+862560,2025-03-19,Premium,West,34.0,$49.49,0,card,No,3.8
+754997,2025-06-05,Basic,West,29.0,$21.99,5,card,no,
+946445,2026-02-14,Standard ,East,41.0,$31.49,0,card,No,2.2
+854619,2024-10-23,standard,North,19.0,29.99,15,card,N,4.0
+260066,2025-02-23,Basic,North,29.0,19.99,15,card,Yes,
+247738,2024-10-27,premium,East,44.0,$47.24,0,card,No,3.8
+603182,2025-11-22,Standard,East,47.0,$31.49,0,card,No,
+978129,2025-05-22,Basic,West,37.0,21.99,20,paypal,No,3.4
+128615,2025-10-29,Standard,North,26.0,$29.99,0,paypal,no,3.8
+204667,2025-01-28,Basic,North,44.0,$19.99,15,bank_transfer,No,2.8
+859472,2025-11-11,Premium,South,,$42.74,0,paypal,yes,3.8
+709395,2025-04-17,Standard ,South,37.0,$28.49,10,bank_transfer,Y,5.0
+538860,2025-12-02,Basic,West,28.0,$21.99,0,paypal,No,5.0
+460718,2024-10-14,Standard,North,57.0,29.99,20,card,,5.0
+276813,2024-07-25,Standard,North,54.0,$29.99,10,card,Y,4.8
+284607,2024-06-12,Standard,North,29.0,$29.99,0,card,No,4.2
+308063,2024-04-02,Basic,West,26.0,$21.99,15,card,No,5.0
+707985,2025-02-13,basic ,East,37.0,$20.99,0,paypal,No,3.8
+366685,2025-11-08,Premium,West,45.0,$49.49,20,card,Yes,
+514550,2024-04-28,Premium,South,51.0,$42.74,15,paypal,No,4.3
+820140,2025-09-25,Basic,South,37.0,$18.99,20,bank_transfer,No,4.0
+517621,2025-03-20, Basic,West,25.0,$21.99,0,paypal,N,3.2
+330509,2026-03-18,basic,North,41.0,$19.99,0,card,No,4.1
+226639,2026-04-15,BASIC,West,41.0,21.99,0,card,no,5.0
+455459,2024-05-13,Premium,East,21.0,$47.24,5,bank_transfer,No,4.1
+551713,2024-12-29,Standard,South,35.0,$28.49,5,card,Yes,3.6
+282004,2026-01-11,Standard,East,35.0,31.49,0,card,N,4.0
+179485,2025-08-23,Standard,East,28.0,$31.49,15,card,no,3.6
+478792,2025-04-23,basic ,North,40.0,$19.99,0,paypal,No,3.8
+586171,2024-08-28,Basic,West,49.0,$21.99,5,card,No,3.2
+815227,2024-03-11,Basic,West,49.0,$21.99,15,card,Yes,4.4
+920524,2025-09-26,STANDARD,North,29.0,$29.99,0,card,No,3.6
+451518,2026-01-11,STANDARD,West,32.0,$32.99,20,paypal,No,3.7
+755753,2024-11-17,Premium,South,45.0,$42.74,15,bank_transfer,Yes,3.8
+844421,2025-06-25,premium,South,35.0,$42.74,5,card,no,2.6
+504709,2025-12-15,Standard,East,34.0,$31.49,20,paypal,Yes,5.0
+629649,2026-03-24,Basic,West,61.0,$21.99,5,card,Y,5.0
+493450,2024-11-13,Basic,North,18.0,19.99,5,paypal,,3.3
+116686,2024-07-25,Standard,North,31.0,$29.99,15,card,Yes,5.0
+329329,2024-12-24,Basic,West,29.0,$21.99,0,paypal,yes,3.9
+921386,2024-05-22,Standard ,South,37.0,28.49,0,card,No,3.5
+303666,2024-10-06,Standard,East,,$31.49,0,card,Yes,4.1
+293940,2024-07-03,Basic,South,37.0,$18.99,20,card,No,4.2
+370328,2026-05-03,Premium,West,,$49.49,0,bank_transfer,No,3.4
+364859,2024-08-24,Basic,East,40.0,$20.99,0,card,No,4.2
+839858,2025-05-04,Basic,East,35.0,$20.99,20,card,No,2.8
+795997,2025-06-15,Premium,East,42.0,$47.24,0,card,Yes,4.4
+846789,2024-08-21,Standard,North,65.0,$29.99,0,bank_transfer,N,3.3
+519288,2026-05-16,Premium,East,31.0,$47.24,20,card,Yes,2.6
+755323,2025-05-08,Premium,East,36.0,$47.24,0,card,Yes,3.8
+781628,2024-07-26,Basic,North,,$19.99,20,paypal,Yes,2.8
+177676,2025-09-19,Standard ,North,18.0,29.99,10,bank_transfer,No,4.6
+542437,2024-05-19,Basic,North,,19.99,20,card,N,5.0
+549156,2024-08-14,Basic,South,37.0,$18.99,0,paypal,Yes,2.9
+465278,2024-04-15,Basic,East,18.0,20.99,5,card,Yes,3.4
+206857,2024-10-19,basic ,North,35.0,$19.99,15,card,Yes,2.9
+262289,2025-08-30,Standard,West,40.0,32.99,20,card,No,2.9
+252824,2025-05-11,Standard,North,29.0,$29.99,15,card,yes,3.1
+338149,2024-08-14,Premium,South,49.0,$42.74,0,card,No,3.7
+855052,2024-05-29, Basic,North,32.0,$19.99,0,card,No,2.7
+424823,2025-06-23,Standard,West,,$32.99,20,card,Y,4.4
+758283,2024-10-18,basic ,North,46.0,19.99,5,card,,5.0
+693747,2025-01-07,basic ,West,,21.99,10,card,No,3.0
+207021,2024-01-17,standard,South,39.0,28.49,0,card,Yes,3.8
+965419,2024-09-28,BASIC,North,,$19.99,0,paypal,No,3.4
+852595,2024-11-05,premium,South,23.0,$42.74,20,paypal,No,1.8
+501971,2026-01-21,Basic,North,27.0,$19.99,20,bank_transfer,Yes,2.2
+763205,2024-02-11, Basic,East,36.0,$20.99,20,card,Y,5.0
+725863,2025-11-14,Premium,East,37.0,$47.24,20,paypal,N,3.8
+694454,2024-08-28,premium,South,52.0,$42.74,0,card,No,5.0
+133684,2024-03-26,Basic,East,54.0,$20.99,20,card,No,3.9
+652866,2025-05-05,Basic,East,39.0,20.99,0,card,no,4.5
+163290,2024-10-01,Standard,East,37.0,31.49,20,card,No,4.7
+574420,2026-05-24,Basic,East,58.0,20.99,10,card,No,3.4
+524792,2025-01-02,Basic,South,39.0,$18.99,0,card,No,4.9
+226902,2024-08-29,Standard,North,49.0,$29.99,20,paypal,No,4.9
+454757,2024-02-17,Standard,South,33.0,$28.49,0,paypal,N,3.6
+541838,2025-05-23,BASIC,South,37.0,$18.99,10,card,No,3.9
+672579,2024-05-27,Basic,North,35.0,$19.99,20,paypal,Y,2.9
+326525,2024-05-10,basic,East,31.0,20.99,0,card,No,5.0
+314577,2026-03-16,Standard,South,42.0,$28.49,20,bank_transfer,Y,3.1
+840487,2024-04-22,BASIC,East,,20.99,5,card,Yes,3.9
+113563,2025-07-10,premium,North,37.0,44.99,20,card,No,3.4
+498959,2024-06-06,basic,North,42.0,$19.99,15,bank_transfer,N,3.5
+404333,2026-03-26,standard,North,60.0,$29.99,0,card,N,4.6
+761683,2025-02-09,Standard,West,18.0,$32.99,10,card,No,4.0
+809253,2026-05-24,Premium,East,39.0,$47.24,0,paypal,N,4.8
+999116,2024-11-28,Standard ,South,45.0,$28.49,10,paypal,N,3.8
+472124,2025-05-27,Premium ,North,34.0,44.99,0,card,Yes,4.7
+619652,2024-11-19,Standard,South,47.0,28.49,0,card,No,
+403639,2026-01-15,basic ,East,44.0,$20.99,0,card,No,3.2
+933627,2025-05-08,Basic,West,43.0,$21.99,0,bank_transfer,No,1.1
+524394,2026-03-30,Standard,North,34.0,29.99,20,card,No,4.8
+558762,2025-06-16,Standard,West,,$32.99,20,card,No,4.7
+782956,2026-01-06,Standard,North,36.0,29.99,20,bank_transfer,no,2.7
+398237,2024-01-31,Standard,North,28.0,$29.99,0,card,No,3.0
+970626,2025-04-05,Basic,North,40.0,$19.99,5,card,No,3.7
+233067,2026-05-30,Standard,North,27.0,$29.99,0,bank_transfer,No,3.0
+290656,2024-12-01,Standard,North,28.0,$29.99,10,card,no,4.9
+353674,2024-05-07,Basic,East,23.0,$20.99,0,card,No,5.0
+722036,2026-02-02,Basic,South,,18.99,20,card,No,
+185910,2026-02-06,Standard,East,32.0,$31.49,20,paypal,Yes,4.1
+385818,2026-04-19,Standard,North,29.0,$29.99,20,card,,3.6
+111414,2026-02-23,Basic,East,46.0,20.99,0,card,No,2.8
+499320,2024-05-03,Standard,North,34.0,29.99,20,card,No,2.6
+818906,2024-07-31,Standard,South,42.0,$28.49,0,card,No,3.2
+556466,2025-09-05,BASIC,West,36.0,21.99,0,paypal,Y,3.7
+952861,2026-05-19,Basic,East,42.0,$20.99,0,card,No,4.8
+111160,2026-03-14,Standard,East,40.0,$31.49,0,card,yes,3.3
+157853,2024-11-02,Premium ,East,18.0,47.24,20,card,N,4.1
+931954,2026-01-05,Standard,South,53.0,$28.49,0,paypal,No,5.0
+984379,2025-11-03,Basic,East,49.0,20.99,0,card,N,5.0
+712757,2024-08-17,Standard,South,23.0,$28.49,0,bank_transfer,No,4.6
+898822,2024-05-15,Standard,East,47.0,31.49,5,card,N,4.6
+709744,2025-09-24,Premium,East,36.0,47.24,0,card,No,
+499904,2025-01-25,Basic,West,39.0,$21.99,15,card,No,3.5
+433176,2025-09-21,Standard,West,51.0,$32.99,0,card,No,
+890587,2025-11-13,Standard,West,,$32.99,0,card,no,3.8
+666030,2025-09-27,Premium ,North,48.0,$44.99,0,card,Yes,4.5
+816645,2025-01-09,Standard,North,59.0,29.99,5,bank_transfer,yes,4.6
+362429,2025-12-26,BASIC,South,49.0,$18.99,10,bank_transfer,No,4.3
+439005,2024-09-01,Standard,West,32.0,32.99,20,paypal,Y,3.0
+224832,2025-07-05,Standard,East,25.0,$31.49,0,paypal,No,
+864988,2024-05-23,Basic,East,47.0,$20.99,15,card,Yes,
+216400,2024-09-20,Basic,West,20.0,$21.99,0,card,No,
+591522,2026-05-15,Basic,East,34.0,$20.99,20,card,No,4.1
+481154,2024-08-03,Standard,North,34.0,$29.99,5,card,yes,4.9
+429778,2024-03-18,Standard,South,31.0,28.49,0,card,No,4.0
+123492,2025-10-17,Basic,West,52.0,$21.99,15,card,No,3.0
+935797,2024-06-13,Basic,West,41.0,$21.99,0,bank_transfer,No,
+484183,2024-11-25,Standard,North,36.0,$29.99,0,card,,3.0
+920837,2025-11-10,standard,West,47.0,$32.99,0,bank_transfer,No,2.7
+529422,2026-02-25,STANDARD,South,34.0,28.49,0,card,No,
+151454,2024-12-24,Basic,North,51.0,$19.99,20,card,no,4.6
+100589,2026-04-05,Basic,South,59.0,18.99,15,card,no,3.6
+595526,2025-03-02,Standard,West,37.0,$32.99,0,card,Yes,2.9
+323174,2025-10-15,Basic,West,36.0,$21.99,0,card,Yes,3.3
+393331,2024-12-20,Basic,South,50.0,18.99,0,paypal,,3.8
+854910,2025-02-12,Basic,East,18.0,20.99,5,bank_transfer,,3.7
+655627,2025-10-31,Standard,North,25.0,$29.99,0,card,No,3.6
+774891,2024-05-10,Basic,East,27.0,$20.99,15,card,No,
+557518,2024-03-19,Premium,North,21.0,$44.99,0,bank_transfer,No,4.4
+676908,2025-01-27,Basic,East,38.0,$20.99,10,card,Yes,3.5
+595329,2024-09-24,Basic,South,41.0,$18.99,15,card,N,5.0
+938791,2024-12-14,Standard ,North,38.0,29.99,5,paypal,No,3.1
+691438,2025-01-24,Basic,North,,19.99,10,paypal,Yes,1.6
+824249,2025-02-09,basic,West,48.0,21.99,5,card,No,3.1
+103845,2024-02-27,Basic,North,49.0,19.99,10,card,Y,4.2
+948208,2026-03-03,Basic,South,51.0,18.99,0,paypal,No,4.0
+398266,2025-07-13,standard,North,36.0,$29.99,0,card,No,
+239809,2025-04-11, Basic,South,38.0,$18.99,20,paypal,No,4.4
+569122,2025-02-18,standard,West,53.0,32.99,10,card,No,5.0
+768315,2026-02-25,basic,North,42.0,$19.99,15,card,No,3.4
+725658,2024-11-27,standard,East,52.0,$31.49,20,paypal,Y,4.7
+866682,2025-07-30,Premium,South,33.0,42.74,5,paypal,Y,4.0
+501428,2024-12-11,Standard,North,38.0,$29.99,0,bank_transfer,Y,3.7
+214143,2026-03-20,Premium,West,31.0,$49.49,0,paypal,No,5.0
+434022,2025-08-13,Standard,South,38.0,$28.49,15,paypal,no,5.0
+401206,2025-06-19,Basic,East,42.0,$20.99,5,card,No,2.6
+126132,2024-12-30,Basic,West,33.0,21.99,5,card,No,4.6
+924381,2025-09-03,Standard,East,59.0,$31.49,10,bank_transfer,No,4.5
+964592,2025-05-24,Basic,South,22.0,$18.99,0,card,No,2.8
+198228,2025-04-04,Standard,East,47.0,$31.49,0,card,Yes,3.2
+664812,2024-09-06,BASIC,East,27.0,$20.99,15,card,N,3.6
+773180,2024-01-19,Premium,North,41.0,$44.99,15,card,No,3.7
+335691,2025-07-20,basic,West,30.0,21.99,0,card,N,
+584808,2024-08-18,Basic,North,39.0,$19.99,15,paypal,No,4.8
+483999,2025-05-05,Basic,North,39.0,19.99,5,paypal,Yes,2.8
+718045,2025-10-29,Standard,South,30.0,28.49,10,bank_transfer,No,1.7
+247902,2025-01-04,Premium ,South,25.0,42.74,10,bank_transfer,N,
+361199,2025-11-03,standard,North,31.0,$29.99,0,bank_transfer,N,4.1
+565122,2025-12-21,Standard,South,38.0,28.49,5,card,No,4.1
+319221,2025-11-29,Standard,North,46.0,$29.99,15,card,No,4.9
+175999,2025-02-10,Basic,West,55.0,21.99,5,card,no,4.9
+339352,2025-05-21,Standard,South,20.0,28.49,0,paypal,N,4.8
+949063,2024-04-27,Standard,South,43.0,$28.49,0,paypal,N,
+156271,2024-01-15,Standard,North,33.0,$29.99,0,card,,5.0
+775568,2024-10-04,Basic,West,38.0,$21.99,0,card,No,3.1
+520704,2024-04-14,Basic,North,,19.99,0,card,No,5.0
+767728,2025-03-22, Basic,East,46.0,$20.99,20,card,No,4.6
+355722,2025-02-22,BASIC,East,42.0,20.99,15,card,Yes,
+779142,2026-02-08,Basic,South,38.0,18.99,0,card,Yes,4.5
+310516,2025-03-20,Basic,South,54.0,$18.99,0,card,Yes,4.3
+609047,2025-01-16,standard,East,41.0,$31.49,15,card,Yes,3.7
+920815,2025-10-03,Premium,East,38.0,$47.24,20,paypal,Yes,2.8
+294708,2025-06-07,standard,North,50.0,$29.99,0,card,N,4.6
+777466,2025-11-01,Standard,North,26.0,$29.99,5,card,Yes,4.3
+989860,2025-07-09,Standard,North,28.0,$29.99,0,paypal,Yes,4.3
+998725,2025-06-14,Basic,North,53.0,$19.99,0,card,no,3.6
+348082,2024-09-15,Basic,East,36.0,20.99,15,paypal,no,
+811963,2025-10-13,Standard ,West,19.0,$32.99,0,card,N,3.4
+468986,2024-02-03,Standard,North,46.0,$29.99,5,bank_transfer,No,2.8
+772700,2024-08-07,Standard,West,51.0,$32.99,5,card,no,4.7
+554570,2025-03-07,Premium,South,,$42.74,10,paypal,No,3.7
+891607,2025-05-30,Standard,West,24.0,$32.99,0,card,No,
+196341,2025-12-21,premium,North,37.0,$44.99,5,paypal,No,3.5
+776667,2025-05-26,Basic,South,42.0,$18.99,0,card,No,
+488849,2024-10-18, PREMIUM,West,32.0,$49.49,15,card,No,4.1
+131599,2024-03-02,Standard,West,,$32.99,0,bank_transfer,No,3.5
+348193,2025-05-04,Standard,West,,32.99,20,card,Yes,3.0
+994416,2025-05-24,Standard,East,43.0,$31.49,0,bank_transfer,No,3.2
+957190,2024-05-21,BASIC,South,21.0,18.99,5,card,No,3.7
+752154,2025-02-19,Basic,West,26.0,$21.99,15,card,No,2.7
+843959,2024-08-13, PREMIUM,East,,$47.24,15,card,No,3.6
+242435,2024-09-03,Standard,West,31.0,$32.99,5,card,No,3.6
+696929,2025-07-26,Premium,South,40.0,42.74,15,bank_transfer,No,2.9
+402618,2026-04-02,Basic,West,,$21.99,0,card,No,3.5
+578503,2024-06-14,Standard,East,57.0,31.49,5,card,no,3.1
+712257,2025-08-31,Standard,East,42.0,$31.49,5,paypal,Y,
+664523,2025-02-21,Basic,North,47.0,$19.99,20,card,No,5.0
+352039,2025-10-26,standard,South,22.0,$28.49,0,card,N,
+198471,2024-09-23,Basic,North,31.0,$19.99,0,paypal,No,3.0
+645857,2024-06-28,Basic,South,49.0,$18.99,15,card,no,3.7
+674798,2026-04-08,Basic,East,23.0,$20.99,5,card,No,4.3
+559128,2024-03-02,standard,North,52.0,29.99,10,paypal,Yes,3.5
+319145,2025-10-02,Standard,North,44.0,$29.99,5,bank_transfer,no,2.6
+409011,2024-02-06,Premium,South,39.0,42.74,0,paypal,no,3.2
+642881,2024-05-17,Premium,East,37.0,$47.24,0,bank_transfer,Yes,3.1
+112081,2024-07-28,Premium,South,26.0,$42.74,15,card,No,2.9
+681801,2026-05-13,Premium,East,27.0,$47.24,0,card,No,4.0
+847747,2026-02-04,Standard,South,32.0,$28.49,5,card,no,3.8
+968244,2024-10-11,Basic,South,33.0,18.99,10,paypal,No,
+758812,2024-05-26,Standard,South,51.0,$28.49,20,bank_transfer,No,5.0
+645393,2024-03-17, Basic,North,,$19.99,0,card,Y,3.6
+179307,2025-10-30,Standard,East,31.0,$31.49,0,paypal,No,5.0
+795417,2024-05-28,Basic,South,20.0,18.99,20,paypal,N,
+708808,2026-05-31,standard,East,,31.49,0,card,No,4.0
+491139,2026-01-19,Standard,East,38.0,$31.49,20,paypal,No,3.5
+517803,2024-03-31,Basic,East,49.0,20.99,0,card,No,
+861076,2026-02-10,Premium,South,58.0,$42.74,0,card,N,3.0
+802149,2024-08-04, Basic,North,43.0,$19.99,20,card,N,2.8
+155377,2025-07-08,standard,North,29.0,$29.99,0,card,N,3.0
+756995,2024-12-07,Basic,South,,18.99,20,card,no,4.4
+227119,2026-04-09,Basic,East,41.0,20.99,15,bank_transfer,No,4.5
+242715,2025-09-16,Standard,West,37.0,$32.99,15,card,Yes,4.5
+920311,2024-12-13,basic ,West,27.0,21.99,20,card,No,
+734529,2025-07-24,Basic,East,41.0,$20.99,0,card,N,
+771149,2024-11-05,Premium,East,25.0,$47.24,10,card,No,4.1
+260813,2026-05-15,Basic,North,37.0,$19.99,0,paypal,No,3.0
+462042,2024-10-15,Premium,East,35.0,$47.24,10,card,No,3.6
+843091,2024-11-04,standard,North,18.0,29.99,5,bank_transfer,Yes,
+951436,2024-06-12,Basic,West,44.0,$21.99,15,bank_transfer,No,4.0
+781884,2026-01-03,Basic,North,60.0,$19.99,0,card,no,2.2
+521568,2025-08-26,premium,South,34.0,42.74,0,card,Yes,2.6
+787547,2026-01-23, Basic,North,31.0,19.99,10,card,N,4.3
+704327,2026-05-19,Standard,North,47.0,29.99,15,card,No,4.2
+197727,2024-05-31,Standard,East,24.0,31.49,0,card,No,3.0
+178049,2025-12-27,Standard,North,38.0,$29.99,0,card,Yes,3.7
+734199,2025-04-29,Basic,South,40.0,$18.99,0,card,No,4.5
+584836,2024-06-16,Basic,North,32.0,$19.99,5,paypal,No,3.8
+358182,2025-01-11,basic ,West,37.0,$21.99,5,card,No,3.5
+985359,2026-01-23,Standard,West,29.0,32.99,20,bank_transfer,No,2.4
+663556,2025-05-24,Standard,South,32.0,$28.49,15,card,No,2.9
+117584,2026-02-28,Basic,West,45.0,21.99,0,card,No,4.1
+547753,2025-09-23,standard,North,29.0,29.99,20,paypal,N,3.8
+290725,2024-10-11,Basic,North,32.0,$19.99,5,card,No,4.1
+969331,2025-04-07,Standard ,East,31.0,$31.49,0,paypal,N,2.9
+627190,2024-12-17,Basic,North,43.0,$19.99,0,card,No,1.8
+525452,2026-05-18,BASIC,West,34.0,$21.99,0,card,Yes,3.3
+868851,2024-03-25,Basic,West,29.0,21.99,0,bank_transfer,N,3.4
+596667,2026-02-01,Premium,North,41.0,$44.99,0,bank_transfer,N,3.5
+700983,2024-06-25, PREMIUM,South,18.0,$42.74,0,card,No,
+635655,2025-03-05,Basic,South,18.0,18.99,5,card,Yes,4.8
+202609,2024-04-28,Standard ,West,41.0,$32.99,15,card,No,4.0
+161744,2025-03-02,Basic,West,57.0,$21.99,20,card,Yes,3.8
+689079,2024-04-07,Basic,North,33.0,19.99,20,card,No,4.0
+761446,2025-01-28,Premium,West,41.0,49.49,20,card,Yes,
+468073,2026-05-21,Basic,East,23.0,$20.99,20,card,No,4.7
+366301,2025-04-27,Standard,South,39.0,$28.49,20,card,Yes,2.5
+276312,2024-02-25,Premium ,South,40.0,$42.74,0,bank_transfer,No,4.4
+178880,2024-05-20,Basic,West,44.0,$21.99,0,paypal,Yes,4.1
+129885,2025-10-14, PREMIUM,North,30.0,$44.99,0,card,Yes,3.6
+320768,2026-05-29,Standard,South,58.0,28.49,20,paypal,Yes,2.5
+948168,2026-03-11,Basic,North,,$19.99,15,bank_transfer,No,
+522814,2024-10-31,Basic,South,54.0,$18.99,10,card,N,2.9
+184700,2024-04-06,basic,West,27.0,$21.99,5,card,Yes,
+885264,2025-10-27,BASIC,West,46.0,$21.99,0,card,N,3.7
+806027,2025-09-15,Basic,North,52.0,$19.99,10,card,Y,3.6
+240753,2024-10-16, Basic,North,60.0,19.99,5,card,No,3.7
+518428,2026-01-26,basic,East,37.0,$20.99,5,card,No,3.2
+322105,2024-12-02,BASIC,North,21.0,$19.99,20,card,No,3.7
+871499,2025-01-24,Basic,North,47.0,$19.99,15,card,No,5.0
+565535,2025-06-01,Standard,West,30.0,$32.99,0,card,No,3.8
+542700,2024-06-11,STANDARD,North,27.0,29.99,5,card,No,3.0
+863779,2026-04-05,Standard,West,32.0,$32.99,20,card,Yes,
+711001,2025-08-22,standard,East,28.0,$31.49,0,card,Yes,3.3
+327401,2025-01-31,Premium,South,46.0,$42.74,0,bank_transfer,N,
+566384,2024-05-16,Standard ,South,40.0,$28.49,5,card,No,4.2
+941129,2025-11-22,basic ,South,45.0,$18.99,5,card,Yes,4.9
+610249,2024-02-09,Basic,West,47.0,$21.99,10,card,no,4.1
+811841,2025-11-29,Standard,East,34.0,$31.49,0,bank_transfer,N,
+633639,2025-02-21,Standard,North,45.0,$29.99,20,card,Yes,2.3
+193127,2024-09-05,Basic,East,50.0,$20.99,20,card,No,2.5
+782100,2025-11-12,standard,South,57.0,28.49,0,paypal,Y,
+187344,2024-06-16,Premium,West,40.0,$49.49,10,paypal,Y,
+538482,2025-09-14,Standard,North,35.0,$29.99,10,card,N,
+321190,2026-04-05,basic ,South,28.0,18.99,0,card,No,3.5
+213333,2026-01-05,Premium,North,34.0,44.99,0,card,No,3.4
+440028,2024-11-14,Basic,North,38.0,19.99,0,paypal,No,4.3
+290712,2025-05-12,Basic,East,40.0,$20.99,5,card,N,3.1
+281734,2024-11-30,Basic,East,24.0,$20.99,0,card,Yes,2.9
+149307,2025-06-20, PREMIUM,West,34.0,49.49,20,paypal,No,3.3
+726062,2025-11-14,Basic,North,36.0,$19.99,20,bank_transfer,Yes,3.1
+563632,2025-09-20,Standard,South,32.0,28.49,5,bank_transfer,No,3.9
+662868,2026-04-04,basic ,North,32.0,19.99,10,card,,
+732630,2025-06-14,Basic,East,42.0,$20.99,0,paypal,no,4.4
+664210,2026-04-26,Basic,North,28.0,19.99,10,card,yes,3.3
+894084,2025-10-16,Basic,West,43.0,$21.99,0,card,No,3.4
+848738,2025-06-06,Basic,South,,$18.99,0,card,No,3.1
+268087,2024-05-15,Basic,South,40.0,$18.99,5,card,No,5.0
+652440,2025-02-26,Standard,South,26.0,$28.49,20,card,No,3.1
+939249,2024-03-26,standard,South,50.0,28.49,10,bank_transfer,No,
+639053,2024-01-14,Basic,West,46.0,$21.99,0,card,No,
+776425,2025-05-18,Premium,East,52.0,$47.24,20,card,N,3.0
+252995,2026-02-10,Premium,South,29.0,$42.74,0,card,yes,4.4
+831181,2026-02-19,Standard,West,24.0,$32.99,20,card,Yes,4.1
+374245,2024-08-22,BASIC,South,24.0,18.99,0,paypal,N,3.2
+358090,2025-09-18,basic,North,36.0,19.99,0,card,No,2.5
+322380,2025-08-25,Basic,North,49.0,$19.99,0,card,no,3.4
+886919,2024-10-13,Basic,South,45.0,18.99,10,card,No,3.4
+446517,2026-04-20,BASIC,South,45.0,18.99,0,paypal,Yes,2.9
+212704,2024-01-30,Premium,North,25.0,$44.99,20,card,no,
+492119,2024-04-22,Standard,East,,31.49,0,paypal,N,4.1
+853475,2024-08-12,BASIC,North,46.0,19.99,15,card,Yes,3.1
+816832,2024-03-24,standard,East,32.0,$31.49,20,card,No,2.9
+865887,2026-04-04,Basic,South,18.0,$18.99,0,bank_transfer,No,3.9
+145148,2024-05-29,Premium,East,30.0,$47.24,0,paypal,No,4.8
+785358,2025-08-02,Standard ,West,37.0,$32.99,0,card,No,2.9
+196396,2024-10-28,Standard ,East,54.0,31.49,20,card,No,2.8
+707162,2026-04-03,Basic,East,40.0,$20.99,10,card,,4.8
+275535,2025-12-13,Standard,East,37.0,$31.49,15,bank_transfer,Yes,2.1
+884082,2025-01-28,Standard,South,54.0,$28.49,20,card,no,3.5
+439971,2025-12-24,BASIC,West,54.0,$21.99,0,paypal,No,4.8
+784680,2025-06-22,Basic,West,42.0,$21.99,15,paypal,Y,3.7
+540309,2024-04-25,Standard,North,44.0,29.99,5,bank_transfer,Yes,3.3
+737199,2025-05-08,Premium,North,51.0,44.99,15,card,Y,3.8
+507301,2025-01-10,Standard,South,30.0,$28.49,0,card,No,4.3
+421421,2025-09-25,Premium,West,42.0,$49.49,15,card,No,3.2
+228660,2026-03-30,Standard,North,33.0,29.99,20,bank_transfer,Y,3.7
+144958,2026-03-15,Premium,North,,$44.99,5,card,No,3.4
+412331,2025-05-13,basic ,West,,21.99,15,card,Yes,4.1
+298797,2024-07-19,STANDARD,East,49.0,31.49,0,paypal,No,4.0
+783889,2024-11-29,Standard,South,57.0,$28.49,5,bank_transfer,Y,3.2
+968112,2025-08-05,Basic,North,46.0,$19.99,0,card,No,
+907251,2026-03-15,Premium,North,50.0,44.99,5,card,No,3.9
+842177,2026-03-31,Basic,South,36.0,$18.99,20,bank_transfer,yes,4.8
+488858,2026-01-04,Standard,North,22.0,29.99,5,paypal,No,3.7
+671059,2025-12-07,Basic,West,31.0,21.99,0,bank_transfer,No,3.1
+578344,2025-05-16,premium,South,42.0,42.74,0,paypal,No,3.8
+691099,2026-04-18,Standard,South,32.0,$28.49,0,paypal,N,
+383898,2024-04-16,Basic,East,58.0,$20.99,5,card,No,4.8
+593887,2024-05-01,Basic,South,51.0,$18.99,10,card,Y,4.9
+734155,2026-04-26, Basic,North,36.0,19.99,15,paypal,No,2.7
+466303,2026-01-02,Basic,East,56.0,$20.99,20,card,No,5.0
+473838,2025-11-19,Premium,East,45.0,$47.24,0,card,No,
+823463,2024-03-06,Premium,West,55.0,$49.49,5,paypal,No,4.0
+896712,2024-11-16,Standard,South,36.0,$28.49,0,bank_transfer,No,3.8
+157880,2024-02-06, Basic,North,46.0,$19.99,10,paypal,Yes,4.2
+307068,2025-06-19,STANDARD,West,36.0,32.99,5,card,No,2.2
+121172,2026-02-14,Standard,North,38.0,$29.99,10,card,No,4.6
+469798,2024-08-07,Premium ,North,50.0,$44.99,0,card,No,2.7
+191927,2024-07-14,Basic,East,,20.99,10,card,No,5.0
+129606,2024-11-02,basic,West,39.0,21.99,20,paypal,No,4.0
+432128,2025-11-25,Standard,West,41.0,$32.99,0,paypal,No,
+619771,2024-08-29,Basic,East,29.0,$20.99,10,card,No,3.0
+989888,2024-09-19,Premium,North,36.0,44.99,0,card,No,
+150256,2025-03-23,Basic,North,43.0,19.99,20,card,No,5.0
+690667,2024-02-11,premium,East,25.0,$47.24,5,card,Yes,
+278394,2025-06-29,Basic,East,34.0,$20.99,0,paypal,N,
+764228,2025-04-23,Basic,North,26.0,19.99,0,paypal,No,3.1
+373261,2025-07-06,Basic,East,40.0,$20.99,15,paypal,Yes,
+866059,2025-11-25,Standard ,West,47.0,$32.99,10,bank_transfer,No,3.6
+739246,2025-01-11,Premium,North,42.0,$44.99,5,bank_transfer,No,3.2
+285006,2024-11-04,Standard,East,35.0,$31.49,15,bank_transfer,No,4.1
+972508,2024-11-05,Premium,South,27.0,$42.74,5,paypal,Yes,
+440392,2024-12-18,Premium,East,21.0,47.24,5,card,Yes,3.6
+842850,2025-03-18,Premium,North,38.0,44.99,0,paypal,no,2.4
+861607,2025-11-01,basic,West,54.0,$21.99,0,bank_transfer,N,2.5
+194506,2026-04-23,Standard,North,35.0,29.99,15,card,No,
+277971,2025-02-17,Basic,East,37.0,$20.99,0,card,No,3.1
+833842,2024-02-02,Basic,North,33.0,19.99,0,card,,
+789030,2025-03-16,Basic,North,26.0,$19.99,0,bank_transfer,N,4.1
+292408,2025-11-08,Basic,West,49.0,$21.99,10,paypal,No,
+279717,2025-06-08,Premium,North,46.0,$44.99,20,card,No,4.3
+156652,2024-04-06,Basic,West,23.0,$21.99,15,card,no,4.6
+693010,2025-07-11,Basic,West,25.0,$21.99,10,card,Y,3.7
+442454,2025-06-24,Basic,East,52.0,$20.99,0,card,No,3.5
+438978,2024-03-20,Basic,East,,$20.99,0,card,No,4.6
+820056,2025-09-02,standard,North,,$29.99,0,bank_transfer,No,2.9
+617673,2024-11-03,STANDARD,East,27.0,$31.49,0,card,Y,
+690400,2024-08-31,Standard,East,41.0,$31.49,0,card,No,2.8
+320135,2025-06-08,Basic,East,30.0,$20.99,15,paypal,No,3.1
+420796,2025-08-07, PREMIUM,West,32.0,$49.49,10,paypal,No,4.8
+740013,2025-01-26,Basic,South,26.0,$18.99,5,card,N,4.9
+609961,2025-01-14,standard,South,58.0,28.49,10,card,Yes,3.4
+425381,2024-12-02,Standard,East,65.0,$31.49,0,paypal,No,2.6
+601418,2025-05-16,Premium ,South,40.0,$42.74,0,card,yes,3.2
+846969,2024-05-05,Premium,East,45.0,$47.24,5,card,No,3.9
+458151,2025-07-14,Premium,North,44.0,$44.99,5,paypal,No,5.0
+903138,2025-05-05, Basic,North,38.0,$19.99,0,card,no,
+141059,2025-04-04,Premium,North,37.0,44.99,20,card,No,4.5
+231163,2024-06-22,Premium,West,34.0,49.49,15,bank_transfer,No,4.4
+651004,2026-02-20,Basic,West,46.0,$21.99,10,card,yes,2.6
+437773,2026-01-14,Premium,West,,$49.49,15,card,No,
+233100,2024-01-20,Premium,East,29.0,47.24,20,card,Yes,4.8
+139228,2024-09-04,Standard,East,46.0,$31.49,20,card,No,
+271061,2024-10-04,Standard,North,23.0,$29.99,15,paypal,No,
+180910,2024-09-28,Premium,South,55.0,$42.74,10,card,Yes,4.8
+508651,2024-09-14,Premium,West,35.0,$49.49,5,paypal,No,4.2
+372549,2026-05-21,Standard,North,,29.99,0,card,N,3.9
+115064,2024-11-28,Basic,North,52.0,19.99,0,paypal,Y,
+600229,2024-11-17, Basic,South,38.0,$18.99,5,card,No,5.0
+793465,2024-12-21,Basic,East,39.0,20.99,0,card,No,3.0
+730182,2026-03-28,Standard,West,32.0,32.99,15,card,No,3.6
+367650,2024-05-26,BASIC,North,44.0,19.99,0,bank_transfer,No,3.4
+741916,2024-04-01,Standard,East,45.0,$31.49,20,card,yes,4.0
+781210,2025-12-02,Premium,West,29.0,$49.49,10,card,no,3.9
+919756,2025-02-03,Premium,West,,49.49,0,card,Yes,3.5
+520644,2025-05-09,BASIC,West,48.0,21.99,20,card,N,4.0
+524216,2026-01-21,Standard,East,43.0,$31.49,20,bank_transfer,No,3.7
+382396,2026-01-07,Basic,West,30.0,$21.99,15,card,no,4.8
+210268,2024-09-02,Premium,South,48.0,$42.74,10,card,,4.7
+760212,2024-01-24,Basic,East,53.0,$20.99,0,paypal,Yes,3.8
+489744,2025-10-06,Basic,South,33.0,$18.99,0,paypal,N,3.9
+299165,2026-03-07,basic ,South,19.0,$18.99,0,card,No,3.5
+817508,2026-04-01,Basic,South,31.0,$18.99,10,card,No,3.1
+320541,2025-02-21,Standard,East,38.0,$31.49,0,card,,4.1
+586030,2025-01-28,Basic,North,,19.99,20,bank_transfer,No,4.6
+210029,2026-01-19,Standard,West,51.0,$32.99,20,bank_transfer,no,2.3
+938324,2024-07-05, PREMIUM,East,45.0,47.24,20,card,No,3.0
+112586,2026-04-27,Standard,North,31.0,29.99,10,card,N,4.7
+230326,2024-09-17,Standard,South,46.0,$28.49,20,card,No,4.9
+325735,2024-07-18,Premium,West,38.0,49.49,0,paypal,Y,
+261520,2024-07-02,Basic,South,27.0,$18.99,10,paypal,No,2.9
+309800,2025-05-19,Premium,West,19.0,49.49,0,bank_transfer,No,2.6
+424066,2024-09-20,Standard,South,49.0,$28.49,10,bank_transfer,N,4.6
+978483,2024-05-02,Basic,West,21.0,21.99,15,card,Yes,3.9
+599110,2025-06-30,Basic,South,51.0,$18.99,0,paypal,No,3.7
+218987,2024-04-06,Standard,West,62.0,$32.99,0,bank_transfer,No,3.1
+857166,2025-11-23,Basic,South,38.0,$18.99,10,paypal,No,4.4
+719970,2026-03-02,Premium,South,29.0,42.74,5,card,Yes,3.4
+559809,2025-08-10, PREMIUM,North,31.0,$44.99,10,paypal,No,4.9
+377179,2026-05-29,Standard,East,31.0,31.49,0,paypal,,3.6
+429038,2024-06-06,Premium,North,,$44.99,5,card,No,4.5
+227111,2024-09-08,standard,East,49.0,31.49,20,card,N,
+452736,2026-05-11,Premium,South,30.0,42.74,20,paypal,Yes,3.9
+861820,2025-09-16,Standard,West,35.0,$32.99,0,card,No,3.5
+962245,2026-03-25,BASIC,East,31.0,$20.99,0,paypal,Y,5.0
+437770,2025-06-03,Standard,West,50.0,$32.99,15,paypal,No,4.8
+140034,2024-03-23,Standard,South,48.0,$28.49,0,card,No,3.0
+296491,2024-10-26,Basic,North,29.0,$19.99,20,bank_transfer,No,5.0
+429437,2026-05-23,basic,West,,$21.99,10,card,Yes,2.8
+848258,2025-01-02,Basic,West,40.0,21.99,5,bank_transfer,No,4.2
+226814,2025-02-03,basic,West,19.0,$21.99,0,bank_transfer,Y,4.4
+226101,2025-08-21,Standard,East,32.0,$31.49,20,card,no,3.8
+810584,2024-04-12,Standard,North,40.0,29.99,10,card,,3.0
+425105,2024-08-28,Standard,North,23.0,$29.99,0,paypal,No,
+637187,2025-03-04,Premium,West,40.0,$49.49,0,card,no,4.5
+288568,2026-02-16,Basic,East,39.0,$20.99,15,card,No,3.2
+432311,2024-08-22,Basic,South,32.0,$18.99,0,card,No,3.8
+529303,2025-12-08,Premium,South,49.0,$42.74,0,card,No,4.0
+923731,2026-05-05,Basic,East,28.0,$20.99,20,card,No,3.3
+581894,2024-11-03,Standard,North,43.0,29.99,15,card,No,
+248034,2024-08-27,standard,North,35.0,$29.99,5,paypal,N,2.8
+350412,2026-01-29,Standard,North,50.0,$29.99,10,paypal,No,3.5
+160512,2024-12-10,Standard ,West,30.0,32.99,0,card,No,4.6
+761075,2025-08-16,Standard,North,44.0,$29.99,5,card,No,3.7
+713943,2024-11-27,Basic,West,45.0,21.99,5,bank_transfer,No,3.6
+258491,2025-08-10,Basic,North,50.0,$19.99,15,paypal,No,5.0
+706403,2025-10-04,Premium,East,55.0,$47.24,5,bank_transfer,Yes,4.9
+586453,2024-03-11,Premium,South,22.0,$42.74,20,paypal,Yes,4.5
+896989,2024-12-17,Standard,South,37.0,$28.49,0,card,N,4.1
+962577,2025-06-17,Standard,North,27.0,$29.99,10,paypal,No,4.3
+839286,2024-08-06,Basic,East,48.0,$20.99,0,card,Yes,4.6
+617128,2024-08-12,Standard,East,53.0,$31.49,15,card,No,4.0
+210605,2024-05-27,Standard,West,35.0,$32.99,15,paypal,No,4.6
+522911,2024-12-31,Standard,West,41.0,32.99,10,card,No,4.0
+824169,2026-03-25, Basic,West,52.0,$21.99,0,card,Yes,4.6
+909440,2024-12-05,Basic,North,40.0,$19.99,20,bank_transfer,No,2.7
+711304,2024-04-21,Premium,West,37.0,49.49,15,card,,2.9
+997149,2026-04-21,Premium,South,21.0,42.74,20,paypal,No,5.0
+865101,2024-09-19,Basic,West,31.0,$21.99,0,paypal,Y,4.8
+517872,2026-03-11,Premium,West,49.0,$49.49,0,card,N,3.1
+971614,2025-02-11, PREMIUM,North,23.0,$44.99,0,paypal,N,2.9
+221448,2025-06-04,BASIC,South,41.0,$18.99,10,card,,4.6
+375928,2024-08-29,Premium,South,40.0,$42.74,0,card,N,3.6
+681075,2026-01-09,basic,East,38.0,20.99,5,paypal,N,3.9
+284724,2024-08-19,basic ,West,47.0,$21.99,0,card,No,4.9
+545258,2025-11-20,Basic,North,30.0,$19.99,0,card,N,4.3
+653240,2025-02-06,Standard,East,53.0,$31.49,0,card,Yes,3.9
+210339,2026-04-03,Standard,South,33.0,$28.49,5,paypal,yes,4.8
+126499,2024-05-14,standard,North,49.0,29.99,15,card,N,2.5
+902830,2025-12-23,Basic,East,32.0,$20.99,0,paypal,No,3.3
+108477,2024-05-01,Standard,East,41.0,$31.49,20,card,Yes,5.0
+604022,2025-10-08,Basic,North,35.0,$19.99,0,paypal,No,4.4
+485318,2024-06-27,Basic,North,56.0,$19.99,0,bank_transfer,No,5.0
+436843,2025-07-20,Standard,South,,$28.49,20,card,No,
+714785,2025-11-20,Basic,West,31.0,$21.99,0,paypal,Yes,5.0
+823532,2025-11-02,Premium,West,54.0,49.49,0,card,Yes,2.8
+472913,2025-06-29,Standard,East,47.0,$31.49,0,card,No,4.3
+631936,2025-12-01,STANDARD,South,38.0,28.49,0,card,yes,4.1
+685033,2024-03-22,Basic,West,35.0,$21.99,10,paypal,No,3.1
+992753,2025-02-18,Basic,South,24.0,$18.99,0,card,N,4.3
+125025,2025-01-24,Basic,North,35.0,$19.99,20,card,N,1.4
+169865,2026-02-25,basic ,East,42.0,$20.99,20,card,,4.4
+378349,2026-01-04, Basic,North,51.0,$19.99,20,bank_transfer,No,3.8
+798793,2024-02-03,standard,West,48.0,32.99,20,card,No,3.3
+982551,2024-06-29,Standard,South,53.0,$28.49,15,card,No,2.6
+257969,2025-05-30,Premium,East,42.0,$47.24,5,card,Yes,2.7
+766279,2025-12-30,Basic,West,31.0,$21.99,15,card,Yes,
+876676,2026-04-30,Basic,East,34.0,20.99,20,card,Yes,2.9
+811878,2024-02-13,Basic,East,54.0,20.99,0,paypal,No,3.8
+510907,2025-08-14,Premium,East,39.0,$47.24,0,card,No,2.6
+696477,2024-11-03, Basic,South,53.0,$18.99,0,card,No,3.2
+127144,2025-09-09,Standard,North,21.0,$29.99,0,bank_transfer,Y,2.3
+506968,2024-02-27,Standard,North,33.0,$29.99,0,card,No,5.0
+284095,2025-08-01, Basic,East,30.0,$20.99,20,card,No,4.2
+795411,2025-09-01,Premium,South,41.0,$42.74,15,bank_transfer,Yes,1.7
+403710,2025-08-08,premium,West,30.0,$49.49,5,card,Yes,4.3
+312087,2024-04-24,Basic,South,24.0,$18.99,20,card,Y,5.0
+904020,2025-06-30,Basic,East,37.0,$20.99,0,paypal,N,4.0
+760144,2025-09-07,Standard,North,18.0,$29.99,5,paypal,No,4.2
+400558,2024-03-10,Standard,South,32.0,28.49,10,paypal,yes,4.2
+610430,2026-03-26,Standard,West,43.0,$32.99,0,paypal,No,5.0
+280517,2024-11-19,Standard,West,26.0,$32.99,20,card,No,5.0
+129390,2024-08-13,Premium,North,38.0,$44.99,0,card,No,4.0
+827317,2025-07-28,Standard,West,29.0,$32.99,15,card,No,
+468917,2024-03-12,Basic,West,34.0,$21.99,20,bank_transfer,,3.7
+301742,2026-04-11,Standard ,North,41.0,$29.99,20,card,no,2.4
+221723,2024-03-19, Basic,West,43.0,$21.99,10,paypal,No,2.6
+511715,2024-02-17,Premium,North,43.0,44.99,0,card,No,
+704832,2026-02-04,Standard,East,30.0,$31.49,0,bank_transfer,N,3.6
+665494,2024-12-18,basic,West,54.0,21.99,15,paypal,N,3.5
+475353,2025-02-02,Premium,North,42.0,$44.99,15,paypal,Yes,
+880632,2025-07-31,Basic,East,31.0,20.99,5,bank_transfer,No,4.4
+144675,2024-10-28,Premium,North,52.0,$44.99,0,paypal,no,3.1
+723945,2025-02-05,Standard,East,34.0,$31.49,10,bank_transfer,No,5.0
+341848,2025-08-31,Standard ,South,59.0,$28.49,0,bank_transfer,No,3.1
+831610,2024-01-15,Standard,East,47.0,$31.49,0,card,No,4.3
+547739,2024-09-03,Premium,East,37.0,$47.24,0,card,Y,3.6
+803413,2025-05-11,Premium,North,33.0,$44.99,0,paypal,No,
+928928,2025-07-08,Standard,North,29.0,29.99,20,card,yes,3.5
+390050,2025-05-08,Basic,North,30.0,19.99,20,card,No,4.6
+608344,2024-05-08,Standard,South,35.0,28.49,15,paypal,Yes,
+565013,2025-08-14,Basic,North,53.0,$19.99,5,paypal,No,
+362790,2025-01-27,Basic,North,40.0,$19.99,10,card,Yes,4.7
+925691,2025-12-02,Standard,East,37.0,$31.49,0,card,N,2.7
+881891,2025-05-23,Basic,East,43.0,$20.99,0,bank_transfer,no,4.1
+311500,2025-04-25,basic ,North,35.0,$19.99,15,card,No,2.7
+115280,2025-03-22,basic,East,25.0,$20.99,10,card,yes,1.6
+906220,2024-10-29,Basic,East,,20.99,0,paypal,no,2.5
+734246,2025-06-05,Basic,South,53.0,$18.99,10,bank_transfer,N,4.5
+367014,2025-05-27,Standard,North,,$29.99,10,card,No,
+674345,2025-04-05,Basic,North,55.0,$19.99,10,paypal,No,3.9
+946007,2025-05-28,Basic,East,59.0,$20.99,0,card,Yes,3.1
+313953,2024-10-01,Basic,North,41.0,$19.99,0,paypal,No,
+730417,2025-01-01,Standard,South,47.0,28.49,15,bank_transfer,Yes,2.8
+268036,2025-08-18,Basic,South,34.0,$18.99,15,paypal,No,3.7
+919257,2024-07-24,Basic,South,37.0,18.99,0,card,No,
+318143,2026-05-11,Premium,East,39.0,$47.24,0,card,No,3.8
+302886,2026-03-07, Basic,North,,19.99,10,paypal,N,3.7
+886556,2024-10-17,Premium,South,54.0,$42.74,0,card,No,3.6
+824366,2025-09-28,BASIC,South,37.0,$18.99,0,bank_transfer,No,3.9
+800638,2025-05-05, Basic,South,48.0,$18.99,10,paypal,N,4.3
+991972,2026-01-03,STANDARD,East,40.0,$31.49,0,card,No,3.1
+912489,2024-05-10,Basic,North,45.0,19.99,0,paypal,no,4.2
+509163,2024-02-28,Premium,West,58.0,$49.49,5,card,No,4.7
+877737,2026-05-12,Basic,West,22.0,$21.99,15,card,No,2.7
+868525,2025-01-06,Premium ,North,51.0,$44.99,15,card,No,3.2
+180922,2024-08-03,Standard,South,32.0,28.49,20,card,N,3.5
+662565,2025-11-03,Standard,South,40.0,$28.49,15,card,No,2.9
+458372,2025-09-11,BASIC,South,35.0,$18.99,0,card,No,3.4
+885429,2026-04-28,Premium,North,33.0,$44.99,20,card,No,
+810094,2024-06-21,Standard,South,24.0,$28.49,10,card,Yes,5.0
+841432,2024-04-11,Basic,West,18.0,21.99,20,card,No,4.0
+826549,2025-08-24,basic ,North,61.0,$19.99,0,card,Y,
+825572,2025-05-07,Basic,East,48.0,$20.99,5,paypal,No,
+887653,2026-02-14,Premium,East,36.0,$47.24,15,card,Y,3.8
+110750,2024-01-29,Premium,East,18.0,47.24,10,card,No,
+966309,2024-11-15,Basic,West,46.0,21.99,10,bank_transfer,yes,3.6
+468618,2024-09-03,Standard,East,55.0,$31.49,0,card,N,5.0
+368426,2025-11-28,Standard,East,43.0,31.49,10,card,No,4.8
+437144,2024-06-22,standard,West,20.0,$32.99,5,card,No,
+567004,2024-07-06,Standard,West,33.0,$32.99,10,bank_transfer,No,2.1
+389376,2024-06-26,Standard,East,41.0,$31.49,0,card,N,3.4
+187070,2025-02-04,basic ,North,38.0,$19.99,15,card,No,4.6
+369374,2025-03-21,Standard ,East,50.0,$31.49,0,paypal,N,4.1
+376332,2024-05-21,Basic,East,28.0,$20.99,0,card,No,3.6
+367151,2025-04-21,standard,East,31.0,$31.49,20,card,No,4.5
+751742,2024-10-22,Basic,South,,18.99,0,card,Yes,
+612959,2024-09-26,Premium,East,51.0,$47.24,0,card,N,3.2
+934537,2025-05-03,Basic,South,45.0,$18.99,5,paypal,No,4.0
+206676,2024-02-25,Standard,North,34.0,$29.99,0,paypal,Yes,
+137729,2024-12-23,Standard ,West,19.0,32.99,0,paypal,Yes,4.4
+551244,2025-08-04,Basic,West,48.0,$21.99,5,card,N,3.7
+489103,2026-04-13,Premium,South,23.0,$42.74,15,paypal,No,3.3
+547632,2025-09-13,Basic,East,24.0,20.99,0,paypal,No,
+425146,2026-03-05,basic,North,18.0,19.99,0,card,no,4.3
+158506,2025-05-15,Basic,West,23.0,$21.99,0,card,no,4.0
+897605,2025-10-26,Standard,South,28.0,$28.49,10,bank_transfer,Yes,4.7
+138861,2025-05-04,Standard,East,26.0,$31.49,0,card,No,3.5
+618663,2025-03-10,Standard,North,50.0,$29.99,20,paypal,Yes,3.8
+175332,2025-08-30,premium,North,46.0,44.99,0,card,Yes,3.7
+740171,2024-04-11,basic ,East,39.0,$20.99,20,card,Yes,4.1
+889181,2024-03-21,Standard,East,32.0,$31.49,0,paypal,No,2.9
+251424,2026-05-24,Basic,West,38.0,$21.99,20,bank_transfer,Yes,4.8
+848900,2024-02-16,Standard,East,24.0,$31.49,5,paypal,No,3.6
+689003,2025-10-15,Standard,East,,31.49,0,card,Yes,4.9
+891062,2024-03-24,Basic,East,28.0,20.99,5,bank_transfer,No,5.0
+404334,2026-03-14,Basic,North,32.0,$19.99,20,bank_transfer,No,
+515579,2025-06-18,Basic,South,42.0,$18.99,20,card,N,
+981215,2024-06-17,BASIC,East,28.0,20.99,10,card,Yes,4.3
+824927,2024-12-20,Basic,North,23.0,$19.99,10,bank_transfer,yes,3.8
+195133,2024-04-22,Basic,South,,$18.99,0,card,No,4.3
+378396,2025-08-18,Standard,North,19.0,29.99,20,card,No,3.1
+476433,2025-02-04,Basic,North,24.0,$19.99,0,paypal,No,4.6
+926910,2025-09-29,Premium,South,25.0,$42.74,15,bank_transfer,Yes,4.0
+263508,2025-11-22, Basic,South,30.0,18.99,20,card,No,3.6
+244691,2025-01-04,basic ,East,36.0,$20.99,20,bank_transfer,Yes,1.8
+213135,2024-06-12,Basic,South,18.0,$18.99,20,paypal,No,4.4
+899520,2024-09-09,Premium ,North,32.0,$44.99,0,paypal,Y,2.7
+784051,2025-08-16,STANDARD,West,54.0,$32.99,5,card,No,
+616181,2024-02-08,Premium,North,51.0,$44.99,0,bank_transfer,Yes,4.7
+614777,2024-12-10,Basic,North,48.0,$19.99,15,bank_transfer,yes,2.7
+171826,2025-05-28,premium,North,37.0,$44.99,15,card,No,2.6
+299234,2024-07-09,basic ,East,40.0,$20.99,0,paypal,No,4.1
+616692,2024-07-26,Premium,South,32.0,$42.74,0,card,No,4.8
+113519,2025-08-10,Basic,West,20.0,21.99,5,card,N,4.0
+708992,2024-12-31, PREMIUM,South,42.0,$42.74,0,card,No,4.0
+395322,2025-11-26,STANDARD,South,,28.49,0,paypal,No,3.9
+445084,2024-05-06,Standard,East,41.0,$31.49,0,card,No,5.0
+531750,2026-04-01,Basic,West,38.0,$21.99,0,card,No,4.2
+352105,2024-08-21,basic,West,48.0,21.99,0,bank_transfer,No,2.8
+362827,2024-03-23,BASIC,South,42.0,$18.99,0,card,No,4.9
+779747,2024-08-27,Basic,East,50.0,$20.99,20,card,Yes,
+275403,2026-04-30,Standard,North,33.0,$29.99,0,card,,3.8
+357222,2024-10-16,Basic,East,18.0,20.99,10,bank_transfer,No,3.7
+726405,2024-06-17,Basic,East,43.0,$20.99,15,card,N,5.0
+195553,2024-11-13,basic,North,48.0,$19.99,0,paypal,Yes,4.3
+959035,2024-03-08,Basic,East,29.0,$20.99,0,bank_transfer,No,3.6
+378718,2026-01-26,basic ,South,41.0,18.99,10,card,no,4.8
+900498,2025-06-03,Standard,East,46.0,31.49,10,paypal,No,3.5
+729524,2024-07-28, PREMIUM,North,18.0,44.99,0,card,Yes,3.7
+566943,2026-02-03,Standard,South,65.0,$28.49,0,card,No,2.4
+693795,2025-03-25,Standard ,West,47.0,$32.99,0,paypal,No,3.5
+255014,2024-10-10,BASIC,East,36.0,$20.99,15,paypal,No,5.0
+363897,2024-11-10,Standard ,West,25.0,$32.99,15,bank_transfer,Yes,2.5
+624397,2025-12-11,Premium,West,20.0,$49.49,0,card,No,
+694156,2026-04-30,Premium,East,75.0,47.24,0,card,N,4.6
+932435,2025-05-16,standard,West,34.0,$32.99,0,card,N,3.2
+697035,2025-01-01,Standard,East,46.0,$31.49,10,bank_transfer,No,4.6
+810599,2025-08-17,premium,South,31.0,42.74,10,card,No,5.0
+178314,2025-11-15,BASIC,East,34.0,$20.99,0,card,,3.5
+604635,2024-09-05,standard,East,45.0,31.49,10,card,No,3.3
+180022,2024-08-21,Standard,West,28.0,$32.99,5,paypal,yes,
+981960,2024-08-19,Standard ,North,37.0,$29.99,10,card,No,
+820579,2025-12-27,Basic,North,36.0,19.99,5,paypal,Y,5.0
+414532,2024-12-09,Basic,South,43.0,$18.99,15,card,Y,3.7
+820155,2024-09-10,BASIC,East,48.0,20.99,0,bank_transfer,No,
+511972,2025-03-15,Standard,South,36.0,$28.49,15,paypal,Yes,3.3
+390359,2025-12-04,Basic,South,54.0,$18.99,5,paypal,No,2.9
+556422,2024-08-26,premium,North,33.0,$44.99,15,card,No,3.0
+135232,2024-12-09,Basic,East,34.0,$20.99,15,card,Yes,3.0
+595840,2025-12-25,Premium,West,39.0,$49.49,10,card,No,5.0
+552155,2025-01-31,Standard,East,35.0,$31.49,20,card,No,4.5
+537714,2025-12-06,BASIC,North,47.0,$19.99,0,card,Yes,3.9
+392475,2024-03-03,Basic,East,18.0,$20.99,0,card,N,
+349235,2026-01-01,Basic,South,18.0,18.99,0,card,N,3.7
+636518,2025-06-13,Basic,South,,$18.99,0,card,No,4.8
+433476,2025-12-16,Basic,North,54.0,19.99,0,paypal,No,3.8
+572411,2024-03-20,Basic,East,47.0,$20.99,10,paypal,N,2.4
+396631,2025-05-02,Premium ,North,30.0,$44.99,5,paypal,N,3.7
+900292,2025-09-14,Basic,West,42.0,$21.99,10,paypal,N,
+621409,2026-01-27,Standard,North,18.0,$29.99,15,card,no,3.4
+281051,2024-02-13,STANDARD,East,35.0,31.49,10,card,Yes,3.1
+259506,2024-03-16,Basic,South,55.0,$18.99,10,card,Yes,2.4
+218821,2024-06-17,Premium,South,45.0,$42.74,5,card,N,2.4
+884463,2026-03-31,Basic,South,62.0,18.99,15,bank_transfer,N,3.8
+777344,2024-06-12,basic ,North,32.0,$19.99,5,card,Yes,4.2
+220402,2024-03-11,Basic,North,51.0,$19.99,0,card,no,4.2
+852427,2025-01-11,Basic,East,39.0,20.99,0,bank_transfer,yes,3.1
+568998,2024-07-10,basic ,West,42.0,21.99,20,card,Yes,3.0
+402395,2024-05-04,Standard ,North,,29.99,0,card,No,3.9
+277402,2025-02-04,Standard,North,47.0,$29.99,0,bank_transfer,No,4.6
+454506,2026-05-15,Basic,West,53.0,$21.99,5,card,Yes,
+819306,2025-02-28,Premium,East,39.0,47.24,10,card,No,
+530500,2025-08-11,Standard,West,42.0,$32.99,20,card,Yes,3.0
+893448,2024-07-07,Standard,South,37.0,$28.49,20,card,No,4.3
+695307,2024-03-05,Premium,East,41.0,47.24,10,bank_transfer,Yes,
+880472,2025-08-19,Standard,East,29.0,$31.49,15,paypal,No,3.3
+939559,2024-05-23, Basic,East,49.0,20.99,0,card,No,
+306679,2024-06-23,Standard,South,46.0,$28.49,10,card,N,3.4
+839080,2025-08-05,Premium,North,42.0,$44.99,5,bank_transfer,Yes,4.7
+327134,2025-05-21,Basic,South,38.0,$18.99,20,card,No,4.8
+515856,2024-06-14,Standard,North,31.0,29.99,0,card,N,3.5
+314866,2024-07-02,Basic,North,28.0,$19.99,5,card,No,3.9
+247204,2024-10-27,Premium,South,,42.74,15,card,Yes,5.0
+978957,2025-03-08,Basic,West,29.0,$21.99,5,bank_transfer,No,2.7
+991802,2025-12-15,Premium,South,,$42.74,10,card,No,3.4
+834112,2024-02-02,Basic,East,43.0,20.99,10,card,,
+506595,2025-02-21,Standard,West,22.0,32.99,10,card,Y,4.1
+332003,2024-12-12,Standard,North,27.0,$29.99,10,card,Yes,2.4
+805934,2025-03-12,STANDARD,South,53.0,$28.49,0,card,No,4.1
+262848,2024-11-18,Basic,South,57.0,$18.99,0,paypal,N,2.6
+569464,2024-09-08,Standard,East,48.0,$31.49,5,card,Yes,4.5
+979343,2025-11-09,Basic,West,62.0,$21.99,15,card,Y,3.7
+708049,2026-04-04,Basic,North,31.0,$19.99,20,bank_transfer,yes,3.4
+789487,2024-01-14,Basic,South,43.0,$18.99,5,paypal,Yes,4.5
+679207,2026-03-19,Basic,North,31.0,$19.99,20,card,N,
+602361,2026-04-06, PREMIUM,South,63.0,$42.74,15,card,No,3.0
+490840,2026-01-27,Standard,South,43.0,28.49,10,card,N,4.5
+477133,2026-05-09,Basic,North,43.0,$19.99,5,card,Yes,3.6
+648740,2026-04-26,standard,South,43.0,$28.49,0,card,No,4.0
+723911,2025-07-26,Basic,South,31.0,$18.99,0,bank_transfer,no,4.8
+533457,2025-09-28,Basic,South,38.0,$18.99,0,card,Yes,2.6
+129101,2024-01-29,Standard,North,18.0,29.99,20,card,Y,4.4
+588939,2024-12-26,Standard ,South,34.0,$28.49,0,card,Y,4.5
+127193,2025-10-16,Standard,North,,29.99,0,card,No,5.0
+891765,2025-02-28,Premium,South,47.0,42.74,0,card,N,2.3
+285601,2026-04-02, PREMIUM,East,54.0,$47.24,0,card,No,4.4
+712575,2024-04-04,Premium,North,42.0,$44.99,0,card,Yes,5.0
+478122,2025-08-25,Standard,West,27.0,$32.99,5,paypal,No,4.1
+797105,2025-05-13,Standard ,North,26.0,29.99,0,paypal,No,3.8
+941910,2024-08-04,Basic,East,47.0,20.99,0,paypal,No,3.5
+570087,2025-12-13, PREMIUM,North,36.0,44.99,10,card,No,2.4
+279945,2024-07-13,Basic,North,36.0,$19.99,0,paypal,No,4.9
+865377,2026-02-12,Premium,East,27.0,47.24,0,card,Yes,2.8
+447614,2026-03-25,basic ,East,41.0,20.99,0,card,No,2.3
+629764,2026-02-20,Standard,North,,$29.99,5,paypal,no,4.4
+118887,2025-06-03,Standard,South,48.0,$28.49,10,paypal,No,
+326630,2026-03-28,Premium,West,28.0,$49.49,0,bank_transfer,No,4.5
+995922,2025-05-23,Standard,East,38.0,$31.49,15,card,No,4.5
+993499,2025-12-12,Premium,North,23.0,$44.99,0,paypal,No,3.0
+459249,2026-01-01,Standard,North,41.0,$29.99,15,paypal,,3.7
+204606,2024-11-05,Standard,East,39.0,$31.49,0,card,No,3.5
+470978,2026-01-22,Premium,North,,$44.99,5,card,N,3.1
+420170,2024-09-01,Basic,North,49.0,$19.99,0,card,,4.1
+370451,2025-08-25,Premium,West,,$49.49,10,paypal,No,2.9
+769465,2024-06-04,Standard,East,56.0,$31.49,10,card,No,3.6
+808992,2025-07-01,Standard,North,43.0,$29.99,10,paypal,N,4.9
+712460,2024-11-22,standard,South,45.0,28.49,0,paypal,N,3.7
+673859,2024-12-21,Basic,South,42.0,$18.99,15,card,Yes,3.6
+211870,2025-11-19,Standard,East,31.0,$31.49,5,card,No,4.4
+214821,2024-11-09,Premium,South,33.0,$42.74,15,bank_transfer,Yes,2.8
+901131,2026-02-17,Standard,North,50.0,$29.99,15,card,No,4.0
+695636,2024-12-14,Premium,West,39.0,$49.49,0,card,Y,4.7
+437932,2026-04-06,Basic,North,42.0,19.99,0,card,No,4.3
+455862,2025-05-29,Standard,East,35.0,31.49,20,card,No,3.2
+520809,2025-08-18,STANDARD,North,48.0,29.99,0,card,N,4.5
+543364,2025-12-31,Basic,East,46.0,20.99,0,card,N,3.4
+958308,2024-07-09,Basic,North,24.0,$19.99,0,bank_transfer,No,4.4
+503299,2026-02-23,Standard,West,61.0,$32.99,15,card,No,3.0
+871144,2025-01-07,standard,South,51.0,28.49,0,card,No,2.9
+479150,2026-02-01,Basic,East,48.0,$20.99,15,card,no,5.0
+217489,2025-08-04,Basic,East,43.0,20.99,20,card,No,3.6
+906128,2024-08-31,Premium,South,38.0,42.74,15,card,No,3.6
+568653,2025-12-06,Standard,South,49.0,$28.49,5,card,Yes,2.7
+855956,2025-12-16,Premium ,North,68.0,$44.99,10,paypal,no,
+432754,2025-01-25,Premium,South,38.0,42.74,5,card,N,4.9
+845879,2025-04-14,Basic,South,27.0,$18.99,20,card,No,4.2
+369159,2024-10-25,Standard,West,39.0,$32.99,5,bank_transfer,No,3.7
+697765,2025-10-30,Standard,South,40.0,28.49,5,card,No,2.2
+854546,2025-11-27,basic ,North,50.0,$19.99,15,card,No,4.4
+841577,2025-10-13,Basic,South,25.0,$18.99,20,paypal,No,4.1
+321683,2026-03-06,standard,East,34.0,31.49,0,paypal,Yes,4.7
+969351,2024-08-22,premium,North,,$44.99,5,card,No,3.4
+915999,2026-05-24,Standard ,North,50.0,$29.99,15,card,No,4.2
+774551,2024-07-14,Basic,West,51.0,21.99,0,paypal,Yes,3.3
+349931,2024-06-10,Standard,East,41.0,$31.49,20,bank_transfer,yes,2.6
+309105,2025-02-18,standard,East,51.0,31.49,15,card,N,2.2
+904011,2024-09-26,Basic,South,40.0,$18.99,5,bank_transfer,No,
+722445,2024-12-04,Standard,North,40.0,$29.99,20,card,No,3.5
+208787,2025-01-20,Standard,East,18.0,$31.49,0,card,Yes,3.7
+601100,2024-11-25,Standard,North,29.0,$29.99,0,paypal,Yes,2.4
+112778,2024-07-21,Basic,South,26.0,$18.99,10,paypal,Yes,5.0
+625908,2024-07-06,Standard,North,44.0,$29.99,20,card,Yes,3.3
+123730,2025-06-20,Basic,West,40.0,$21.99,0,card,No,2.3
+747328,2026-05-30,Premium,South,27.0,42.74,0,card,No,2.7
+898907,2024-10-03,Standard,East,39.0,$31.49,20,card,no,3.2
+871419,2025-10-10,Premium,North,37.0,$44.99,0,card,No,4.5
+869494,2024-07-18,Premium,East,43.0,47.24,0,card,yes,4.1
+698239,2024-07-10,basic,North,32.0,19.99,0,card,Yes,
+363580,2024-08-20,basic,North,31.0,$19.99,5,card,No,3.2
+830565,2024-01-13,Standard,South,52.0,$28.49,20,paypal,,4.4
+792713,2024-07-31,Basic,North,36.0,$19.99,15,card,yes,3.7
+202908,2024-09-29,Premium,East,50.0,$47.24,5,bank_transfer,No,4.6
+390886,2024-05-23,standard,East,29.0,$31.49,20,paypal,yes,3.1
+253683,2024-06-13,BASIC,West,36.0,$21.99,0,card,No,3.2
+691815,2024-04-29,Standard,North,35.0,$29.99,10,card,No,
+148770,2025-12-22,Basic,South,28.0,$18.99,0,card,no,
+901413,2025-01-19,Standard,West,46.0,32.99,20,paypal,No,3.1
+162435,2026-04-29,Premium,South,24.0,$42.74,20,card,Yes,4.1
+105152,2025-01-30,Basic,North,,$19.99,0,card,Yes,3.4
+302393,2024-03-06,Premium,East,18.0,47.24,0,paypal,Y,2.5
+572684,2024-02-18,Basic,North,46.0,$19.99,20,card,No,3.4
+785510,2025-11-01,Basic,East,39.0,$20.99,15,paypal,yes,3.2
+613386,2024-05-13,Premium,South,51.0,$42.74,15,paypal,No,2.4
+547215,2025-10-03,Standard,West,,32.99,10,card,yes,3.9
+983368,2024-09-25,Basic,South,31.0,18.99,10,card,Yes,3.8
+883518,2024-11-25,Premium,East,39.0,$47.24,5,paypal,Yes,3.7
+718223,2025-04-03,Basic,North,24.0,19.99,0,card,No,4.9
+665054,2025-03-09,Standard,West,33.0,$32.99,0,card,No,2.5
+985949,2026-04-13,Standard,North,39.0,29.99,0,paypal,No,4.2
+638729,2024-05-27,premium,West,39.0,49.49,0,card,No,3.9
+368805,2024-11-20,basic ,East,,20.99,20,paypal,No,2.9
+542863,2025-11-03,Basic,South,44.0,18.99,10,card,No,4.8
+615497,2025-07-16,standard,South,49.0,$28.49,0,paypal,N,2.8
+903681,2025-12-29,Basic,North,31.0,$19.99,5,card,No,3.9
+174903,2026-05-31,Standard,East,40.0,$31.49,0,paypal,Yes,4.2
+208005,2026-03-24,Premium,North,27.0,$44.99,20,card,No,3.5
+282211,2025-12-11,Premium,West,36.0,$49.49,0,card,no,3.2
+634641,2024-07-12, Basic,West,18.0,$21.99,0,card,no,4.5
+873997,2024-04-06,standard,North,37.0,29.99,20,card,Yes,
+287235,2024-11-09,Premium,North,39.0,44.99,0,paypal,No,
+430134,2026-01-17,Basic,East,33.0,$20.99,10,card,No,4.8
+102222,2024-10-19,Standard,East,34.0,31.49,0,card,Yes,4.0
+399862,2025-08-29,basic,North,19.0,19.99,5,paypal,No,2.8
+286474,2025-10-11,Premium,West,31.0,$49.49,0,bank_transfer,No,4.4
+914048,2026-03-02,Standard,West,32.0,$32.99,5,paypal,No,3.7
+132507,2025-12-10,Premium,East,41.0,47.24,20,paypal,No,3.4
+799781,2025-09-16,Basic,West,43.0,$21.99,0,bank_transfer,No,4.1
+854766,2024-09-05,Standard,West,33.0,$32.99,0,bank_transfer,No,4.0
+329572,2025-08-27,Basic,North,37.0,19.99,15,card,N,3.1
+292551,2024-07-03,Basic,West,42.0,21.99,0,paypal,,3.3
+273323,2026-05-14,Basic,West,28.0,21.99,0,card,Yes,4.3
+836139,2025-09-23,Standard,East,49.0,$31.49,5,paypal,Yes,4.4
+459617,2025-01-23,Standard,North,61.0,$29.99,0,card,No,5.0
+835381,2025-08-31,Standard,West,,$32.99,0,bank_transfer,No,3.7
+738877,2026-05-09,BASIC,East,33.0,$20.99,10,card,Yes,3.9
+365554,2024-07-10,standard,South,41.0,$28.49,15,card,N,3.1
+238378,2025-05-04,Basic,South,51.0,18.99,5,paypal,Y,5.0
+173472,2024-07-01,Premium,West,52.0,$49.49,10,card,No,4.0
+248412,2024-02-21,Premium ,North,23.0,$44.99,0,paypal,No,4.1
+163749,2026-01-02,Basic,West,42.0,$21.99,0,card,no,4.8
+887619,2024-10-17,Standard,South,30.0,$28.49,20,card,N,4.4
+717082,2025-10-16,Basic,East,33.0,$20.99,15,card,No,3.2
+940850,2026-04-02,Standard,West,41.0,$32.99,5,card,Yes,3.5
+482207,2024-08-09,basic,North,,$19.99,20,card,No,4.7
+407121,2025-11-13,Premium,North,35.0,44.99,0,paypal,No,
+640993,2024-09-24,Basic,North,29.0,$19.99,0,paypal,No,3.4
+780938,2024-01-27,Basic,South,36.0,$18.99,0,paypal,No,3.6
+464930,2025-07-04,Basic,North,27.0,19.99,10,card,No,
+379206,2024-04-21,Premium,West,57.0,49.49,0,card,Yes,2.8
+672768,2024-07-05,Basic,East,21.0,$20.99,0,card,No,3.7
+663498,2025-11-16,Basic,East,45.0,20.99,0,bank_transfer,no,4.7
+792234,2024-10-08, PREMIUM,North,39.0,44.99,15,card,yes,4.6
+700623,2024-03-17,Standard,North,38.0,$29.99,10,card,no,2.9
+675043,2025-05-17,BASIC,East,27.0,20.99,5,card,No,3.7
+507910,2026-03-27,BASIC,West,33.0,21.99,10,card,Y,4.1
+350008,2025-03-25,Basic,West,34.0,$21.99,5,paypal,Y,4.0
+774691,2024-04-02,Basic,West,32.0,21.99,0,card,No,3.6
+799658,2025-11-30,Premium,South,35.0,$42.74,0,paypal,N,3.3
+638776,2026-05-23,Standard,East,39.0,$31.49,5,card,No,3.6
+674904,2025-06-12,premium,South,33.0,$42.74,10,card,No,3.9
+272465,2026-03-14, PREMIUM,East,43.0,47.24,0,bank_transfer,No,3.8
+221203,2026-02-22, PREMIUM,East,46.0,$47.24,0,card,No,5.0
+942549,2024-06-21,Basic,North,,$19.99,20,card,No,
+488432,2025-03-09,Basic,North,46.0,19.99,0,paypal,Yes,4.4
+425416,2024-08-16,Standard,South,39.0,$28.49,0,card,No,4.3
+498485,2026-03-29,standard,North,32.0,$29.99,0,card,No,3.5
+215856,2025-11-13,Premium,West,43.0,49.49,5,card,No,4.5
+856864,2026-05-23,Premium,South,50.0,$42.74,5,bank_transfer,No,3.3
+192211,2025-08-17,BASIC,North,35.0,$19.99,0,card,No,
+449820,2024-02-14,Standard ,East,18.0,$31.49,0,card,No,4.3
+565383,2026-03-27,basic ,West,47.0,$21.99,5,paypal,Yes,3.4
+348639,2026-02-02,Standard,South,49.0,$28.49,0,paypal,No,
+264798,2024-08-21,Basic,North,26.0,$19.99,0,card,yes,3.4
+586583,2025-08-26,Premium,West,,$49.49,0,card,No,4.4
+689092,2026-03-16,STANDARD,East,43.0,$31.49,15,card,No,3.0
+731086,2024-04-23,basic,East,18.0,20.99,20,card,Yes,4.0
+232662,2025-08-21,Basic,South,47.0,$18.99,20,card,No,4.9
+692736,2026-03-20,Basic,East,46.0,$20.99,0,paypal,No,3.3
+378371,2024-03-06,Standard,East,47.0,31.49,0,paypal,No,2.2
+201019,2025-01-15,premium,South,54.0,42.74,15,bank_transfer,No,3.1
+468218,2025-08-04,Premium,South,26.0,$42.74,15,bank_transfer,Yes,4.2
+926477,2025-03-23,Standard,East,48.0,$31.49,0,card,No,3.7
+781729,2025-05-19,Basic,West,63.0,$21.99,0,card,No,2.5
+660606,2025-01-06,Premium,North,18.0,44.99,0,paypal,N,3.3
+640776,2024-09-26,Premium,North,34.0,$44.99,20,card,N,3.4
+275417,2024-11-08,Basic,North,46.0,$19.99,10,paypal,No,2.2
+588672,2025-07-15,Standard,West,30.0,$32.99,0,paypal,No,3.4
+947969,2025-03-25,Standard,East,18.0,$31.49,0,card,N,3.6
+844612,2024-06-19,STANDARD,South,41.0,28.49,20,bank_transfer,No,3.4
+201481,2024-04-07,STANDARD,West,40.0,$32.99,5,card,No,
+570202,2025-09-21,basic ,West,30.0,$21.99,10,card,no,
+568967,2024-11-19,Basic,South,40.0,$18.99,20,paypal,Yes,2.6
+631354,2025-01-29,Basic,South,48.0,$18.99,15,bank_transfer,N,3.3
+196961,2026-01-16,Standard ,South,49.0,$28.49,5,card,No,4.7
+146970,2024-12-11,Basic,East,42.0,$20.99,0,bank_transfer,Yes,3.9
+596285,2025-01-13,Basic,West,24.0,$21.99,20,card,no,2.6
+789876,2025-12-05,Basic,West,34.0,21.99,0,paypal,No,4.1
+836365,2026-04-16,BASIC,North,,$19.99,0,card,yes,1.8
+609874,2024-08-26,Standard ,West,26.0,32.99,0,bank_transfer,Yes,3.4
+765030,2025-10-16,Basic,North,40.0,$19.99,10,bank_transfer,no,
+368891,2024-10-06,STANDARD,North,44.0,$29.99,0,card,No,2.7
+704048,2024-04-06,Basic,South,37.0,$18.99,0,card,No,4.3
+321739,2024-09-20,standard,North,38.0,$29.99,0,bank_transfer,No,3.8
+484911,2026-04-13,BASIC,South,18.0,$18.99,0,card,No,3.7
+356653,2025-05-12,Standard,North,24.0,29.99,0,card,N,5.0
+879013,2025-08-06,Standard ,West,25.0,$32.99,0,card,No,4.4
+860581,2025-04-23,BASIC,East,31.0,$20.99,0,card,Yes,3.9
+359777,2026-04-02,basic ,North,31.0,$19.99,10,card,No,2.4
+246129,2025-09-25,Basic,South,62.0,$18.99,5,bank_transfer,No,2.5
+759760,2024-04-14,standard,South,49.0,28.49,5,paypal,no,3.4
+784125,2024-09-15,Standard,West,,32.99,5,paypal,N,3.8
+897794,2026-04-12,BASIC,North,30.0,$19.99,0,card,No,4.3
+893115,2024-10-26,Basic,North,32.0,$19.99,15,paypal,no,3.0
+630183,2025-01-26,Standard ,East,31.0,$31.49,10,card,N,3.4
+785982,2026-05-10,Basic,East,32.0,20.99,0,paypal,No,4.2
+274993,2025-04-25,Premium,East,18.0,47.24,20,card,Yes,2.5
+360202,2025-09-19,Basic,North,50.0,19.99,0,card,N,3.7
+909942,2024-04-24,BASIC,North,45.0,$19.99,20,bank_transfer,No,4.5
+773523,2025-07-30,Standard,West,45.0,32.99,0,paypal,,3.5
+737046,2026-04-20,Basic,West,39.0,$21.99,0,paypal,No,3.9
+606116,2024-02-09,Premium ,North,43.0,$44.99,15,card,Y,3.8
+561946,2026-05-18,Premium,South,34.0,$42.74,0,card,No,4.1
+817681,2024-09-16,Premium,South,18.0,42.74,0,card,Yes,4.1
+485236,2024-06-13,Premium,North,39.0,$44.99,0,bank_transfer,No,3.6
+408416,2024-04-11,Basic,North,38.0,$19.99,5,bank_transfer,No,3.4
+334823,2025-12-23,basic,North,23.0,$19.99,0,card,No,
+242765,2025-11-09,basic,West,18.0,21.99,5,paypal,No,4.2
+376004,2025-05-15,Basic,South,50.0,$18.99,10,paypal,no,3.1
+494519,2025-02-17,Basic,North,26.0,19.99,0,paypal,No,4.8
+875670,2024-03-30,Standard,North,35.0,29.99,20,card,Y,1.7
+385001,2024-04-19,Standard,East,30.0,$31.49,0,bank_transfer,No,4.2
+628709,2025-08-28,Standard,West,56.0,$32.99,0,card,no,5.0
+441620,2024-05-27,Premium,North,21.0,$44.99,10,paypal,No,3.9
+305681,2025-11-27,Standard,East,49.0,$31.49,15,card,No,4.3
+420334,2025-09-28,Premium,North,18.0,$44.99,20,card,Yes,4.1
+772896,2024-06-12, Basic,North,48.0,$19.99,20,card,Yes,5.0
+190101,2024-04-21,Basic,East,32.0,20.99,20,card,No,4.5
+217136,2024-07-02,Standard,North,18.0,$29.99,20,card,N,5.0
+503969,2024-02-18,Premium,South,38.0,$42.74,0,card,No,3.3
+842350,2024-01-18,Basic,South,37.0,18.99,5,card,N,3.9
+560583,2024-03-27,Basic,North,20.0,19.99,0,card,Yes,3.4
+875328,2024-07-11,Basic,West,41.0,$21.99,0,card,Yes,
+989879,2025-02-06,Basic,East,37.0,$20.99,10,paypal,N,3.3

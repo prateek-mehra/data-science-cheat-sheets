@@ -1,0 +1,61 @@
+<h2>Overview</h2>
+<p><b>Fresh Crate</b> sells weekly meal-kit subscriptions. The retention team wants to know which customers are about to cancel. You have a snapshot of the customer base taken on <b>2026-06-30</b> and the full order history up to that date.</p>
+<p>Work in the notebook on the right. The tasks build on each other, but each is graded separately. Tasks 1–3 are graded from the <b>variables</b> you leave in the notebook; Task 4 is graded from <code>submission.csv</code>. Variables are read from the live kernel when you submit, so make sure the cells that set them have been run.</p>
+
+<h3>Files</h3>
+<ul>
+  <li><code>train.csv</code> — one row per customer with the label <code>churned</code> (1 = cancelled within 60 days of the snapshot).</li>
+  <li><code>test.csv</code> — the same columns without <code>churned</code>. You predict these.</li>
+  <li><code>orders.csv</code> — every order placed by any customer: <code>order_id, customer_id, order_date, amount, delivered_late, status</code>.</li>
+</ul>
+
+<h3>Columns in train / test</h3>
+<table>
+  <tr><th>column</th><th>notes</th></tr>
+  <tr><td><code>customer_id</code></td><td>integer key; joins to <code>orders.customer_id</code></td></tr>
+  <tr><td><code>signup_date</code></td><td>ISO date string</td></tr>
+  <tr><td><code>plan</code></td><td>Basic / Standard / Premium — entered by hand, so casing and spacing vary</td></tr>
+  <tr><td><code>region</code></td><td>North / South / East / West</td></tr>
+  <tr><td><code>age</code></td><td>years; some missing</td></tr>
+  <tr><td><code>monthly_fee</code></td><td>text, sometimes with a leading <code>$</code></td></tr>
+  <tr><td><code>discount_pct</code></td><td>0–20</td></tr>
+  <tr><td><code>payment_method</code></td><td>card / paypal / bank_transfer</td></tr>
+  <tr><td><code>referred</code></td><td>Yes / No in several spellings; some missing</td></tr>
+  <tr><td><code>avg_rating</code></td><td>1–5 average recipe rating; missing if the customer never rated</td></tr>
+</table>
+
+<h2>Task 1 · Clean the customer table <span class="pts">15 pts</span></h2>
+<p>Load <code>train.csv</code>. Some rows were exported twice: remove rows that are <b>exact duplicates</b> across all columns. Then standardise <code>plan</code> to exactly <code>Basic</code>, <code>Standard</code> or <code>Premium</code>, and convert <code>monthly_fee</code> to a float.</p>
+<p>Store, using the de-duplicated, cleaned training data:</p>
+<ul>
+  <li><code>task1_n_rows</code> — the number of rows (int).</li>
+  <li><code>task1_plan_counts</code> — a dict mapping each plan name to its row count, e.g. <code>{"Basic": 10, ...}</code>.</li>
+  <li><code>task1_mean_fee</code> — mean <code>monthly_fee</code>, rounded to 2 decimals.</li>
+</ul>
+
+<h2>Task 2 · Features from the orders log <span class="pts">20 pts</span></h2>
+<p>Use only orders whose <code>status</code> is <code>"completed"</code>. For every customer compute the number of completed orders, their total <code>amount</code>, and their <b>late rate</b> (the mean of <code>delivered_late</code> over their completed orders). Join these onto the cleaned training table from Task 1. Customers with no completed orders get 0 orders and 0 total spend; leave their late rate missing.</p>
+<p>Store:</p>
+<ul>
+  <li><code>task2_no_orders</code> — how many training customers have no completed orders (int).</li>
+  <li><code>task2_top_customer</code> — the <code>customer_id</code> of the training customer with the highest total completed spend (int).</li>
+  <li><code>task2_late_rate_by_region</code> — dict of region → average late rate across that region's training customers (customers with no completed orders are skipped), rounded to 3 decimals.</li>
+</ul>
+
+<h2>Task 3 · Churn analysis <span class="pts">15 pts</span></h2>
+<p>Using the cleaned training table with the Task 2 features, store:</p>
+<ul>
+  <li><code>task3_churn_by_plan</code> — dict of plan → churn rate (mean of <code>churned</code>), rounded to 3 decimals.</li>
+  <li><code>task3_churn_rate_no_orders</code> — the churn rate among customers with no completed orders, rounded to 3 decimals.</li>
+</ul>
+<p>Add a markdown cell with one or two sentences on what these numbers suggest for the retention team.</p>
+
+<h2>Task 4 · Predict churn <span class="pts">50 pts</span></h2>
+<p>Train a classifier on the training data (logistic regression, a decision tree, random forest, gradient boosting — your choice) and predict <code>churned</code> for every customer in <code>test.csv</code>. Build the same features for the test set as for training.</p>
+<p>Save <code>submission.csv</code> in the working directory with exactly two columns and one row per test customer:</p>
+<pre>customer_id,churned
+610443,0
+592892,1
+...</pre>
+<p><code>churned</code> must be 0 or 1. You can write the file from the notebook (<code>sub.to_csv("submission.csv", index=False)</code>) or upload it from the <b>Files</b> tab.</p>
+<p><b>Scoring:</b> F1 score on the positive class against hidden labels. 0 points at F1 ≤ 0.52 (the score of predicting that everyone churns), full points at F1 ≥ 0.70, linear in between. A short validation step (hold-out split or cross-validation) in your notebook is expected.</p>

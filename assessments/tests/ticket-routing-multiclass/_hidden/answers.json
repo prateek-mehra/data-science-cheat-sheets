@@ -1,0 +1,27 @@
+{
+ "task1_n_rows": 6635,
+ "task1_priority_counts": {
+  "medium": 2935,
+  "high": 1975,
+  "low": 1725
+ },
+ "task1_team_share": {
+  "account": 0.335,
+  "technical": 0.297,
+  "billing": 0.261,
+  "shipping": 0.107
+ },
+ "task2_median_response_hours_by_team": {
+  "account": 2.96,
+  "billing": 4.28,
+  "shipping": 11.58,
+  "technical": 7.45
+ },
+ "task2_pct_unanswered": 0.0588,
+ "task3_top_team_by_plan": {
+  "enterprise": "billing",
+  "free": "account",
+  "pro": "technical"
+ },
+ "task3_enterprise_high_share": 0.4843
+}

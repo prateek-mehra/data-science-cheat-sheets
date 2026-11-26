@@ -1,0 +1,23 @@
+{
+ "task1_n_rows": 3200,
+ "task1_plan_counts": {
+  "Basic": 1448,
+  "Standard": 1098,
+  "Premium": 654
+ },
+ "task1_mean_fee": 29.14,
+ "task2_no_orders": 427,
+ "task2_top_customer": 378331,
+ "task2_late_rate_by_region": {
+  "East": 0.178,
+  "North": 0.175,
+  "South": 0.178,
+  "West": 0.23
+ },
+ "task3_churn_by_plan": {
+  "Basic": 0.458,
+  "Premium": 0.237,
+  "Standard": 0.341
+ },
+ "task3_churn_rate_no_orders": 0.885
+}

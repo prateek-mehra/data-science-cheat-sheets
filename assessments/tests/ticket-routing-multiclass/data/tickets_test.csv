@@ -1,0 +1,2206 @@
+ticket_id,customer_id,created_at,first_response_at,channel,priority,subject,n_attachments
+TK944604,65965,2026-03-01 00:37,2026-03-01 04:58,email,Medium,Problem with workspace,0
+TK983242,38176,2026-03-01 01:21,2026-03-01 08:51,chat,med,invoice,1
+TK938550,96978,2026-03-01 03:00,2026-03-01 17:24,email,med,Urgent wrong address,1
+TK570765,23488,2026-03-01 04:52,2026-03-01 09:35,email,High,card declined,0
+TK201105,79109,2026-03-01 04:57,2026-03-01 10:31,phone,HIGH,Overcharged,0
+TK829240,87689,2026-03-01 07:02,2026-03-01 11:30,chat,Low,again error,0
+TK313206,92238,2026-03-01 07:44,2026-03-01 13:25,email,P3,Follow up billing contact,0
+TK727221,99750,2026-03-01 09:04,2026-03-01 12:41,email,med,nan,0
+TK398521,71623,2026-03-01 11:12,2026-03-01 12:33,phone,P2,add user,1
+TK692959,85713,2026-03-01 12:45,2026-03-01 14:25,phone,Medium,again two-factor api timeout,0
+TK349512,72385,2026-03-01 13:31,2026-03-01 20:40,phone,HIGH,Again billing contact,0
+TK627721,55463,2026-03-01 14:25,2026-03-01 17:41,chat,high,question about device,2
+TK647951,24322,2026-03-01 14:53,2026-03-01 19:40,chat,med,Follow up billing contact,0
+TK152263,86247,2026-03-01 15:26,2026-03-01 19:07,email,low,add user login,0
+TK974822,59125,2026-03-01 16:00,2026-03-01 21:26,email,Low,Urgent billing cycle workspace,1
+TK749867,96093,2026-03-01 16:30,2026-03-01 17:02,phone,High,Please advise permissions,0
+TK210849,81360,2026-03-01 18:00,2026-03-01 23:31,email,med,password reset billing contact,0
+TK378169,34040,2026-03-01 18:54,2026-03-02 04:29,chat,low,please advise login,0
+TK289229,50729,2026-03-01 19:13,2026-03-02 12:34,chat,low,Urgent device,2
+TK203833,49641,2026-03-01 20:20,2026-03-02 03:38,email,med,Billing cycle,0
+TK969935,77996,2026-03-01 20:30,,email,medium,Billing cycle crash,0
+TK532854,29670,2026-03-01 20:54,2026-03-01 23:45,phone,Medium,Refund device not arrived,1
+TK313856,76718,2026-03-01 21:32,2026-03-02 02:42,chat,Low,problem with api timeout,1
+TK954520,93733,2026-03-01 22:52,2026-03-02 04:07,chat,Low,Again app freezes overcharged,1
+TK354708,20171,2026-03-02 00:21,2026-03-02 06:47,email,medium,urgent device not arrived api timeout,1
+TK526670,32327,2026-03-02 00:30,2026-03-02 11:34,email,P2,issue with payment page,1
+TK904263,81877,2026-03-02 02:00,2026-03-02 23:02,chat,medium,Question about shipment delayed,2
+TK523432,62729,2026-03-02 02:20,,chat,medium,Export broken,1
+TK901665,30767,2026-03-02 05:03,2026-03-02 05:19,email,p1,Api timeout,1
+TK442521,55483,2026-03-02 05:52,2026-03-03 01:54,phone,medium,help not loading login,1
+TK282765,99444,2026-03-02 09:43,2026-03-02 13:08,chat,low,Bug,0
+TK488147,25802,2026-03-02 09:47,2026-03-02 11:16,chat,HIGH,locked out,0
+TK816357,76439,2026-03-02 10:27,2026-03-03 04:12,chat,low,package,2
+TK607382,24373,2026-03-02 10:55,2026-03-02 17:35,chat,low,TWO-FACTOR LOGIN UPGRADE COST,0
+TK959613,98422,2026-03-02 11:18,,email,Medium,Subscription price account,0
+TK714333,87629,2026-03-02 12:07,2026-03-02 17:41,email,Medium,ADD USER,0
+TK648639,42601,2026-03-02 13:48,2026-03-02 16:50,email,P1,help login,0
+TK727628,23854,2026-03-02 14:10,2026-03-02 20:00,phone,med,again sync failed,3
+TK985827,49641,2026-03-02 14:41,2026-03-03 02:20,phone,P3,help device,2
+TK293265,89528,2026-03-02 15:14,2026-03-02 22:29,chat,low,Question about overcharged,0
+TK267589,85842,2026-03-02 16:31,2026-03-02 23:00,chat,P3,sync failed,1
+TK196067,92102,2026-03-02 16:58,2026-03-02 19:23,email,High,Question about device,0
+TK332233,78551,2026-03-02 17:08,2026-03-02 20:45,email,med,overcharged,0
+TK909291,39525,2026-03-02 17:41,2026-03-02 21:22,phone,med,TAX,0
+TK145495,57131,2026-03-02 17:42,2026-03-02 20:10,chat,HIGH,export broken,1
+TK626618,48186,2026-03-02 17:52,,chat,medium,Two-factor,0
+TK280504,48979,2026-03-02 18:14,2026-03-02 21:22,email,P1,urgent refund replacement unit,0
+TK234211,54838,2026-03-02 19:47,2026-03-03 05:36,email,med,credit note,0
+TK672829,32796,2026-03-02 21:48,2026-03-03 09:06,chat,P1,Crash payment page,3
+TK805670,91395,2026-03-02 23:01,2026-03-03 09:12,email,HIGH,shipment delayed,0
+TK723341,56568,2026-03-02 23:07,2026-03-03 01:26,email,high,Urgent workspace,0
+TK240045,45626,2026-03-03 00:10,2026-03-03 03:55,chat,p1,Again integration,1
+TK229721,36084,2026-03-03 00:12,2026-03-03 15:46,phone,medium,overcharged,1
+TK953728,31527,2026-03-03 01:14,2026-03-03 07:07,email,P2,help tax upgrade,1
+TK243218,47438,2026-03-03 01:20,2026-03-03 08:51,phone,Medium,delivery refund,1
+TK788664,41311,2026-03-03 03:49,2026-03-03 08:27,email,P2,follow up two-factor,1
+TK599089,93058,2026-03-03 03:51,2026-03-03 10:01,chat,p1,Issue with wrong address invoice charged twice,1
+TK569714,89732,2026-03-03 04:01,,email,HIGH,Login loop,3
+TK147273,37621,2026-03-03 04:47,2026-03-03 07:36,chat,P2,Change email,0
+TK395314,95898,2026-03-03 08:02,2026-03-03 21:20,email,Low,Help device,1
+TK219035,34760,2026-03-03 09:11,,email,Medium,Urgent login,0
+TK258249,59091,2026-03-03 09:24,2026-03-03 14:05,chat,P1,Integration,3
+TK372092,37210,2026-03-03 09:32,2026-03-03 12:25,email,medium,Change email billing cycle,0
+TK997711,76858,2026-03-03 11:01,2026-03-03 15:26,chat,med,urgent account,3
+TK566659,44884,2026-03-03 12:14,2026-03-03 18:30,chat,p1,integration,0
+TK365991,40049,2026-03-03 13:10,2026-03-04 02:06,email,Low,issue with overcharged,1
+TK981164,38301,2026-03-03 14:59,2026-03-03 18:47,email,High,Question about slow upgrade cost,2
+TK565083,36246,2026-03-03 15:13,2026-03-03 16:46,chat,Medium,problem with device,1
+TK118318,33526,2026-03-03 15:58,2026-03-04 06:25,chat,high,bug tracking number,2
+TK929118,79956,2026-03-03 16:58,2026-03-05 19:37,email,Medium,courier locked out,1
+TK924298,24381,2026-03-03 19:18,2026-03-04 04:15,email,Medium,Help credit note,0
+TK326364,99177,2026-03-03 20:01,2026-03-03 22:52,phone,med,help account,0
+TK288884,43955,2026-03-03 20:21,2026-03-04 08:33,email,high,Crash,2
+TK122132,33621,2026-03-03 20:55,2026-03-03 23:01,email,high,question about locked out login,0
+TK787665,90209,2026-03-03 23:35,2026-03-04 00:44,phone,medium,Please advise login,0
+TK348973,81360,2026-03-03 23:40,2026-03-04 06:47,email,medium,question about account,1
+TK708285,63771,2026-03-03 23:52,2026-03-04 02:42,email,medium,again change email billing contact,0
+TK234163,59379,2026-03-03 23:56,2026-03-04 17:58,chat,High,Error,1
+TK426672,27351,2026-03-04 02:31,2026-03-04 08:27,chat,medium,Upgrade cost,0
+TK619669,64112,2026-03-04 03:11,2026-03-04 04:34,phone,P1,Help crash payment page,0
+TK198193,48768,2026-03-04 03:53,2026-03-04 06:22,phone,Medium,Please advise login,0
+TK372861,63557,2026-03-04 04:59,2026-03-04 13:46,email,low,issue with delivery,3
+TK929332,54085,2026-03-04 05:09,2026-03-04 11:47,chat,HIGH,problem with api timeout,0
+TK704026,70273,2026-03-04 05:19,2026-03-04 08:11,phone,P1,delete account,0
+TK459171,94990,2026-03-04 05:56,2026-03-04 08:44,email,low,Again account,1
+TK321764,60219,2026-03-04 06:24,2026-03-04 06:41,email,low,question about charged twice remove user,1
+TK463715,92814,2026-03-04 07:48,2026-03-04 10:06,chat,med,Locked out,1
+TK719051,73453,2026-03-04 08:15,2026-03-04 14:26,chat,p1,Problem with error,1
+TK204594,55595,2026-03-04 09:07,2026-03-04 16:08,chat,med,Sso setup,0
+TK187019,66648,2026-03-04 09:15,2026-03-04 16:21,phone,med,Problem with device,4
+TK159179,54642,2026-03-04 13:17,2026-03-04 13:28,chat,Low,Help upgrade,1
+TK795129,56928,2026-03-04 14:06,2026-03-05 06:02,phone,HIGH,Follow up integration login,1
+TK927809,47790,2026-03-04 14:50,,chat,P2,Permissions,0
+TK490054,26355,2026-03-04 16:05,2026-03-05 00:08,chat,P2,Help device,1
+TK725410,92103,2026-03-04 17:06,2026-03-05 03:25,phone,medium,follow up permissions,1
+TK446651,54416,2026-03-04 17:24,2026-03-04 20:29,chat,Medium,password reset,0
+TK536880,45894,2026-03-04 18:14,2026-03-04 23:48,email,P2,Add user,2
+TK263497,99936,2026-03-04 19:51,2026-03-05 01:25,phone,P2,Problem with password reset,0
+TK455037,79759,2026-03-04 20:32,2026-03-05 00:21,email,p1,error shipment delayed,0
+TK941326,64356,2026-03-04 20:43,2026-03-04 22:53,email,P3,return label,1
+TK568141,32740,2026-03-04 21:10,2026-03-04 22:27,email,med,help sso setup,0
+TK209877,40222,2026-03-04 22:07,2026-03-05 01:17,chat,p1,problem with password reset login,0
+TK637157,48415,2026-03-04 22:31,2026-03-05 05:03,email,High,Urgent api timeout,3
+TK592994,78622,2026-03-04 22:59,2026-03-04 23:37,chat,medium,urgent error,0
+TK304181,70963,2026-03-04 23:00,2026-03-05 02:23,email,p1,issue with upgrade,1
+TK180331,44240,2026-03-04 23:29,2026-03-05 02:20,chat,P2,problem with change email,0
+TK364504,80520,2026-03-05 00:19,2026-03-05 20:36,phone,Medium,error,3
+TK291208,40158,2026-03-05 02:30,2026-03-05 04:16,email,Medium,Please advise error,0
+TK331517,43252,2026-03-05 04:04,,email,High,Question about sync failed,1
+TK796251,54416,2026-03-05 05:36,2026-03-05 11:00,phone,HIGH,again payment page,2
+TK735004,27583,2026-03-05 06:34,2026-03-05 10:39,email,low,please advise change email api timeout,1
+TK395004,50939,2026-03-05 07:02,2026-03-05 09:03,chat,Low,question about remove user,1
+TK418620,61225,2026-03-05 07:35,2026-03-05 09:16,email,low,help sso setup,0
+TK610056,25710,2026-03-05 07:55,2026-03-05 10:31,email,P2,Question about sso setup export broken,0
+TK369219,50005,2026-03-05 08:42,,email,low,Problem with password reset billing contact,0
+TK705465,69928,2026-03-05 08:55,2026-03-05 16:00,chat,P2,500 error,1
+TK939519,65042,2026-03-05 09:47,2026-03-05 11:40,email,P1,Error,0
+TK920970,76858,2026-03-05 10:02,2026-03-05 10:19,chat,p1,Urgent password reset login,1
+TK910900,59043,2026-03-05 11:35,2026-03-05 14:44,chat,Low,please advise shipment delayed,0
+TK254571,28401,2026-03-05 12:10,2026-03-05 19:47,chat,p1,Please advise payment page,0
+TK439915,27366,2026-03-05 12:23,2026-03-05 18:02,email,P2,issue with upgrade,0
+TK950051,69865,2026-03-05 14:30,2026-03-06 00:14,phone,Medium,Problem with billing contact,0
+TK163988,45942,2026-03-05 15:53,2026-03-05 17:49,email,P3,problem with login,0
+TK333688,58858,2026-03-05 15:57,2026-03-05 21:17,chat,medium,Urgent error,0
+TK987986,75172,2026-03-05 16:01,2026-03-05 18:13,phone,low,Help workspace,0
+TK856964,36016,2026-03-05 16:19,2026-03-05 20:17,chat,low,issue with login,0
+TK494728,63197,2026-03-05 16:37,2026-03-05 18:21,email,high,Issue with upgrade,0
+TK725337,81848,2026-03-05 17:29,2026-03-05 23:10,email,med,Problem with workspace,0
+TK194996,25950,2026-03-05 19:33,,chat,medium,please advise login,1
+TK486103,35965,2026-03-05 20:59,2026-03-05 22:02,email,High,Remove user error,1
+TK786110,47174,2026-03-05 22:28,2026-03-06 05:58,phone,P1,question about account,0
+TK324877,93621,2026-03-05 22:43,2026-03-06 05:23,email,Medium,Wrong address refund,1
+TK406266,27833,2026-03-05 23:25,2026-03-06 02:00,email,P3,overcharged,0
+TK642944,20052,2026-03-06 01:22,2026-03-06 10:46,chat,p1,charged twice workspace permissions,0
+TK882219,23062,2026-03-06 02:04,2026-03-07 11:21,phone,High,Again invoice,1
+TK835733,59558,2026-03-06 02:30,2026-03-06 21:06,email,medium,Receipt,1
+TK962286,71080,2026-03-06 02:52,2026-03-06 12:51,email,P2,Damaged box refund,1
+TK501953,79677,2026-03-06 04:11,2026-03-06 15:08,email,P2,Question about receipt,0
+TK318616,38827,2026-03-06 04:23,,phone,med,issue with credit note,0
+TK436148,89533,2026-03-06 04:27,2026-03-06 07:52,phone,Medium,please advise invoice,0
+TK403587,81784,2026-03-06 04:31,2026-03-06 10:43,email,P1,wrong address,0
+TK409481,76105,2026-03-06 04:32,2026-03-06 10:03,email,Low,Urgent upgrade,0
+TK447083,52304,2026-03-06 05:53,2026-03-06 06:24,chat,medium,Issue with permissions,0
+TK701802,39882,2026-03-06 06:03,2026-03-06 11:59,email,high,please advise payment failed workspace,1
+TK886757,55129,2026-03-06 08:13,2026-03-06 14:06,email,medium,Help overcharged workspace,0
+TK906699,51446,2026-03-06 08:39,2026-03-06 17:41,email,P3,urgent workspace,2
+TK982898,83840,2026-03-06 09:11,2026-03-06 10:12,email,High,credit note upgrade,0
+TK276510,48766,2026-03-06 09:43,2026-03-06 09:45,email,Low,UPGRADE COST,0
+TK991831,35600,2026-03-06 10:10,2026-03-06 21:28,chat,p1,Question about sync failed payment page courier,0
+TK902867,36178,2026-03-06 10:37,2026-03-06 13:09,chat,Low,Help billing contact,1
+TK847663,47690,2026-03-06 11:50,2026-03-06 16:17,chat,P2,Again login loop,2
+TK903409,42415,2026-03-06 11:55,2026-03-06 13:53,chat,High,Issue with login loop overcharged,1
+TK557259,21392,2026-03-06 12:03,,email,P3,problem with locked out,0
+TK883414,31853,2026-03-06 17:10,2026-03-06 20:04,email,HIGH,follow up invoice workspace damaged box,0
+TK566410,21020,2026-03-06 17:32,2026-03-06 22:20,email,medium,PLEASE ADVISE UPGRADE,1
+TK593610,71519,2026-03-06 18:47,,chat,P2,tax,0
+TK894024,35137,2026-03-06 19:16,2026-03-07 03:12,chat,med,DELETE ACCOUNT DEVICE NOT ARRIVED,0
+TK770204,45806,2026-03-06 20:02,2026-03-06 21:00,phone,High,urgent remove user billing contact,0
+TK444917,54027,2026-03-06 20:25,2026-03-07 16:00,email,high,device not arrived,0
+TK139467,58685,2026-03-06 21:08,2026-03-06 22:35,email,HIGH,issue with subscription price workspace,0
+TK206225,67462,2026-03-06 21:28,2026-03-07 02:15,chat,low,Please advise two-factor,0
+TK950130,54934,2026-03-06 21:29,2026-03-06 23:54,email,P1,Follow up error,0
+TK763318,42538,2026-03-06 22:52,2026-03-07 11:58,email,med,follow up login,5
+TK788734,44961,2026-03-06 23:11,2026-03-07 01:48,email,high,issue with change email,0
+TK980657,97924,2026-03-06 23:22,,phone,P3,password reset billing contact,0
+TK939195,69743,2026-03-07 00:37,2026-03-07 04:10,email,med,Again refund,0
+TK570346,69621,2026-03-07 00:58,2026-03-07 05:09,email,Medium,billing cycle,0
+TK963313,44953,2026-03-07 01:14,2026-03-07 07:43,phone,P3,follow up payment page,1
+TK894819,56305,2026-03-07 07:02,2026-03-07 13:37,email,medium,ISSUE WITH DEVICE,0
+TK379277,87707,2026-03-07 07:50,2026-03-07 14:50,phone,HIGH,tracking number,0
+TK722383,47705,2026-03-07 09:14,2026-03-07 16:02,chat,p1,integration payment page,1
+TK341590,60547,2026-03-07 10:42,2026-03-07 15:10,chat,p1,api timeout overcharged,1
+TK953843,40216,2026-03-07 11:37,2026-03-07 16:08,email,HIGH,problem with login,1
+TK748459,38232,2026-03-07 12:14,2026-03-07 20:59,phone,P3,urgent bug device,3
+TK430865,83251,2026-03-07 14:38,2026-03-07 20:20,email,Medium,Upgrade cost,0
+TK571287,23445,2026-03-07 14:45,2026-03-07 16:48,email,HIGH,problem with billing contact,0
+TK415016,99944,2026-03-07 15:19,2026-03-07 18:32,email,P1,Follow up app freezes,2
+TK185373,96928,2026-03-07 15:33,2026-03-07 18:56,email,medium,permissions card declined,0
+TK258060,49304,2026-03-07 16:55,2026-03-08 07:38,phone,Medium,error,2
+TK334718,45948,2026-03-07 17:31,2026-03-07 20:05,email,high,Billing cycle account,2
+TK167296,65441,2026-03-07 17:40,2026-03-07 21:26,email,Medium,Help workspace,0
+TK961034,23193,2026-03-07 18:56,2026-03-07 22:28,email,High,delivery,1
+TK697195,99936,2026-03-07 19:22,2026-03-07 22:44,phone,HIGH,500 error device,2
+TK936852,56928,2026-03-07 19:55,2026-03-08 01:22,chat,High,please advise api timeout,3
+TK483910,98240,2026-03-07 21:06,2026-03-07 23:03,email,medium,again api timeout login damaged box,0
+TK451238,50232,2026-03-07 21:22,2026-03-08 00:13,email,medium,DEVICE NOT ARRIVED,0
+TK758757,26692,2026-03-07 21:55,2026-03-07 23:10,email,medium,sso setup,1
+TK885956,32933,2026-03-07 21:55,2026-03-08 03:43,email,HIGH,urgent replacement unit,2
+TK156471,69743,2026-03-07 22:11,2026-03-08 02:34,email,P2,overcharged app freezes,1
+TK230245,31853,2026-03-07 22:11,2026-03-07 23:24,chat,P1,please advise billing contact,0
+TK583798,45336,2026-03-07 22:14,2026-03-08 08:15,chat,low,please advise login,1
+TK663418,67723,2026-03-07 22:50,2026-03-08 14:35,chat,P3,delivery,0
+TK587362,99824,2026-03-07 22:51,2026-03-08 04:04,email,P2,follow up payment failed,0
+TK987932,29670,2026-03-07 23:14,2026-03-08 16:22,chat,High,slow payment page charged twice,3
+TK374745,85555,2026-03-08 00:40,2026-03-08 14:10,phone,low,device not arrived,0
+TK604078,43972,2026-03-08 01:50,2026-03-09 02:12,chat,P3,Api timeout login,2
+TK234538,49242,2026-03-08 02:01,2026-03-08 17:31,email,Medium,urgent delivery,0
+TK114241,35614,2026-03-08 02:24,2026-03-08 10:20,email,P2,question about credit note upgrade package,1
+TK827446,47354,2026-03-08 02:27,2026-03-08 09:30,email,med,PLEASE ADVISE WORKSPACE,0
+TK140057,33142,2026-03-08 02:59,2026-03-08 06:18,email,Low,Follow up subscription price,0
+TK661514,36025,2026-03-08 03:29,2026-03-08 09:08,chat,p1,bug delivery,0
+TK910940,25750,2026-03-08 03:49,2026-03-08 13:12,email,high,nan,0
+TK889670,46729,2026-03-08 04:01,2026-03-08 06:22,email,low,Please advise error,0
+TK217891,79550,2026-03-08 04:11,2026-03-08 04:23,email,Medium,tracking number device,0
+TK326703,56447,2026-03-08 04:50,2026-03-08 05:37,email,High,Urgent permissions,0
+TK402938,57306,2026-03-08 05:16,2026-03-08 10:23,chat,high,delivery,3
+TK258246,92203,2026-03-08 05:29,2026-03-09 14:56,phone,P2,again package receipt,0
+TK545231,20645,2026-03-08 06:02,2026-03-08 07:02,email,high,Again rename workspace billing contact courier,0
+TK729450,81819,2026-03-08 06:39,2026-03-08 07:18,email,P1,Rename workspace login loop,0
+TK980530,80764,2026-03-08 07:28,2026-03-08 12:02,phone,P1,question about api timeout,4
+TK945505,42949,2026-03-08 07:29,2026-03-08 11:15,email,low,Again error,1
+TK878347,95648,2026-03-08 07:34,2026-03-08 21:30,chat,med,again login,1
+TK830238,49837,2026-03-08 08:09,,email,P3,urgent change email error,0
+TK691838,49370,2026-03-08 11:13,2026-03-08 12:40,email,med,Overcharged account,1
+TK633593,70081,2026-03-08 12:31,2026-03-08 17:18,email,med,card declined username,0
+TK873248,78160,2026-03-08 12:36,2026-03-08 13:17,email,P3,Question about upgrade,0
+TK281239,60438,2026-03-08 14:11,2026-03-08 18:50,phone,HIGH,Issue with payment page,1
+TK268536,29226,2026-03-08 14:29,2026-03-08 18:39,email,Medium,Urgent app freezes device,0
+TK941964,95260,2026-03-08 14:33,,chat,P1,problem with payment page,0
+TK945037,52353,2026-03-08 14:45,2026-03-08 22:11,email,high,error permissions,1
+TK157279,66151,2026-03-08 15:54,2026-03-08 16:58,email,medium,please advise password reset,0
+TK655493,32241,2026-03-08 16:09,2026-03-08 20:08,chat,medium,Remove user upgrade cost,0
+TK801562,55217,2026-03-08 17:23,2026-03-09 01:44,email,Medium,Help account,1
+TK954532,20171,2026-03-08 17:58,2026-03-08 21:23,phone,med,add user,0
+TK251635,27456,2026-03-08 18:47,2026-03-09 01:28,phone,P3,username,1
+TK526718,98947,2026-03-08 18:50,2026-03-08 20:58,email,Medium,Question about login,0
+TK670245,50846,2026-03-08 18:54,2026-03-10 12:06,email,Low,Urgent integration payment page,1
+TK175410,29791,2026-03-08 20:07,2026-03-09 12:43,phone,low,problem with device,1
+TK552492,51195,2026-03-08 20:14,2026-03-09 08:02,email,low,Urgent api timeout,1
+TK387960,87575,2026-03-08 20:47,2026-03-09 10:28,email,P2,issue with courier device,1
+TK252196,93081,2026-03-08 21:05,2026-03-09 07:08,chat,p1,problem with payment page,1
+TK359955,31233,2026-03-08 21:36,2026-03-10 03:53,phone,P2,URGENT SLOW LOGIN,2
+TK537486,36799,2026-03-08 22:38,2026-03-08 23:30,chat,med,issue with credit note account,0
+TK861041,24636,2026-03-08 22:53,2026-03-09 00:03,phone,Low,QUESTION ABOUT BILLING CONTACT,0
+TK435668,52573,2026-03-09 00:21,2026-03-09 03:21,email,high,Problem with subscription price account,1
+TK202117,50005,2026-03-09 00:45,2026-03-09 14:29,chat,HIGH,Again integration,1
+TK897250,55474,2026-03-09 00:53,2026-03-09 03:56,chat,med,Locked out,2
+TK454199,46729,2026-03-09 01:57,2026-03-09 11:45,chat,medium,FOLLOW UP REFUND,0
+TK790922,29892,2026-03-09 02:04,2026-03-09 08:02,email,high,follow up workspace,0
+TK229340,23377,2026-03-09 04:31,,email,P3,issue with payment failed upgrade,0
+TK755841,65042,2026-03-09 04:40,2026-03-09 13:56,email,low,payment failed,0
+TK143547,72385,2026-03-09 06:17,2026-03-09 09:48,chat,med,problem with password reset,2
+TK609633,58874,2026-03-09 06:21,2026-03-10 15:49,phone,low,Again login,1
+TK812770,51914,2026-03-09 07:32,2026-03-09 21:50,phone,med,Overcharged account,0
+TK463887,56806,2026-03-09 07:49,2026-03-09 09:30,email,Medium,Help login,0
+TK173266,85186,2026-03-09 09:23,2026-03-09 18:49,phone,P2,Issue with courier,0
+TK289031,89273,2026-03-09 10:19,2026-03-09 10:46,email,HIGH,app freezes payment page,0
+TK458199,27772,2026-03-09 10:31,2026-03-09 11:00,email,Medium,remove user login,0
+TK913598,50476,2026-03-09 12:17,2026-03-09 16:01,chat,Medium,permissions,0
+TK776353,85713,2026-03-09 13:29,2026-03-09 15:24,phone,P1,Urgent device,3
+TK764305,45727,2026-03-09 13:33,2026-03-09 18:06,email,High,Receipt,0
+TK698782,35937,2026-03-09 13:39,2026-03-09 23:38,chat,Medium,problem with integration,2
+TK368611,41770,2026-03-09 14:22,,chat,HIGH,permissions,0
+TK327638,47790,2026-03-09 16:19,2026-03-09 18:32,email,HIGH,urgent account,0
+TK571780,37695,2026-03-09 17:36,2026-03-10 02:05,phone,medium,Crash,1
+TK929186,36246,2026-03-09 18:10,2026-03-10 02:22,chat,medium,export broken,0
+TK490239,95067,2026-03-09 18:29,2026-03-09 21:32,chat,med,Question about error,0
+TK668140,82415,2026-03-09 19:33,2026-03-09 23:53,chat,med,Urgent error,0
+TK384156,54672,2026-03-09 19:50,2026-03-10 00:03,email,medium,question about card declined,0
+TK310764,26094,2026-03-09 21:18,2026-03-10 02:39,email,medium,nan,1
+TK460556,52388,2026-03-09 23:16,2026-03-10 04:04,email,P1,FOLLOW UP UPGRADE,1
+TK435600,35408,2026-03-09 23:39,2026-03-10 00:14,chat,low,sso setup,1
+TK573148,75424,2026-03-10 00:46,2026-03-10 05:35,email,med,Follow up change email login,0
+TK754634,62073,2026-03-10 00:57,,email,Low,Bug,0
+TK310236,72069,2026-03-10 01:55,2026-03-10 04:03,email,HIGH,Help locked out,0
+TK830542,78094,2026-03-10 02:21,2026-03-10 04:23,chat,Low,PLEASE ADVISE DEVICE NOT ARRIVED,0
+TK438744,75326,2026-03-10 03:01,2026-03-10 18:30,email,low,urgent payment page,3
+TK471811,23735,2026-03-10 03:36,2026-03-10 10:57,email,high,Subscription price account,0
+TK988143,57067,2026-03-10 03:51,2026-03-10 11:11,email,P3,Password reset,0
+TK501675,84659,2026-03-10 04:26,2026-03-10 05:13,email,high,please advise username,0
+TK377894,66107,2026-03-10 08:01,2026-03-10 13:52,email,high,Tax,0
+TK134727,48381,2026-03-10 08:07,2026-03-10 14:52,chat,P3,charged twice workspace,1
+TK860156,55697,2026-03-10 08:14,2026-03-10 16:47,chat,Medium,Again account,0
+TK860244,72717,2026-03-10 09:13,2026-03-10 11:55,phone,p1,Issue with api timeout,0
+TK701033,52010,2026-03-10 09:27,2026-03-10 12:09,phone,med,Urgent billing contact,0
+TK906377,24098,2026-03-10 09:44,2026-03-10 18:28,email,medium,Please advise payment failed account,0
+TK910072,66009,2026-03-10 10:07,2026-03-10 13:36,email,P2,Remove user login,0
+TK227623,51733,2026-03-10 10:18,2026-03-10 19:00,chat,medium,urgent overcharged remove user,0
+TK559557,49870,2026-03-10 10:37,2026-03-10 16:10,email,P2,overcharged,0
+TK529675,69211,2026-03-10 11:56,2026-03-10 21:20,phone,P3,Follow up payment failed,0
+TK226383,76574,2026-03-10 12:17,2026-03-10 14:23,email,p1,remove user error,0
+TK663097,37528,2026-03-10 13:57,2026-03-11 00:15,email,low,Please advise payment page,0
+TK432992,72096,2026-03-10 14:55,2026-03-10 17:19,chat,low,HELP USERNAME API TIMEOUT,0
+TK139452,53326,2026-03-10 15:33,2026-03-10 21:04,email,P2,Again receipt workspace,0
+TK267050,86720,2026-03-10 15:55,2026-03-10 21:39,email,P2,Card declined,0
+TK835112,35993,2026-03-10 16:03,2026-03-10 20:52,chat,medium,username,0
+TK708594,40482,2026-03-10 16:12,2026-03-11 01:15,chat,med,again billing contact,2
+TK371028,96510,2026-03-10 17:05,2026-03-10 20:55,chat,p1,Sso setup billing contact,1
+TK279390,84132,2026-03-10 18:27,2026-03-10 23:32,phone,P2,Permissions,0
+TK757009,46607,2026-03-10 18:50,,phone,P1,Username,0
+TK536663,48940,2026-03-10 18:58,2026-03-11 04:21,phone,medium,AGAIN REMOVE USER,0
+TK490016,92995,2026-03-10 20:49,2026-03-11 05:51,chat,P3,add user,0
+TK163285,51728,2026-03-10 21:31,2026-03-11 02:58,chat,low,Question about login,0
+TK235452,23668,2026-03-10 22:08,2026-03-11 04:51,email,P2,urgent rename workspace,0
+TK719175,81944,2026-03-10 22:39,2026-03-11 13:38,phone,Medium,please advise bug,0
+TK774421,30591,2026-03-10 22:42,,email,P2,help upgrade,1
+TK930624,92597,2026-03-11 01:02,2026-03-11 23:49,email,P2,Help error,2
+TK765599,49487,2026-03-11 01:43,2026-03-11 10:17,email,P2,nan,2
+TK378350,93897,2026-03-11 02:35,2026-03-11 02:58,email,HIGH,Rename workspace login,0
+TK952075,59379,2026-03-11 02:51,2026-03-11 11:15,phone,HIGH,PROBLEM WITH NOT LOADING DEVICE,0
+TK993472,77458,2026-03-11 03:16,2026-03-11 12:00,phone,High,question about login loop login,1
+TK725304,23587,2026-03-11 03:31,2026-03-12 03:08,phone,med,Tax account return label,0
+TK718210,41419,2026-03-11 03:56,2026-03-11 04:35,chat,High,Urgent sync failed,0
+TK997493,29271,2026-03-11 03:58,2026-03-11 15:07,email,medium,Please advise workspace,0
+TK441804,44381,2026-03-11 04:09,2026-03-12 05:27,email,medium,Again refund,1
+TK206970,59026,2026-03-11 04:17,2026-03-11 06:11,email,low,Help error,0
+TK972593,72396,2026-03-11 04:19,2026-03-11 11:35,chat,P2,Rename workspace,0
+TK533150,61842,2026-03-11 05:23,2026-03-11 08:48,chat,low,follow up username shipment delayed,1
+TK363815,34500,2026-03-11 05:31,2026-03-12 02:12,email,Low,Overcharged,1
+TK864560,20979,2026-03-11 07:27,2026-03-11 09:03,chat,Low,Urgent delete account,0
+TK307900,67453,2026-03-11 07:34,2026-03-11 08:43,email,high,PROBLEM WITH COURIER,0
+TK612563,60553,2026-03-11 08:43,,email,low,please advise api timeout,1
+TK293677,72909,2026-03-11 09:40,2026-03-11 14:24,email,P3,Rename workspace,1
+TK659036,86819,2026-03-11 10:10,2026-03-11 12:37,phone,P1,urgent error,0
+TK331266,34265,2026-03-11 10:55,2026-03-11 18:40,email,P3,Issue with rename workspace,0
+TK452556,20861,2026-03-11 11:42,2026-03-11 18:43,phone,HIGH,issue with device,0
+TK647805,58154,2026-03-11 11:43,2026-03-11 13:42,email,med,Again workspace,0
+TK921926,81944,2026-03-11 12:26,2026-03-11 14:22,chat,p1,rename workspace,0
+TK168242,41311,2026-03-11 12:36,2026-03-11 17:23,email,high,follow up payment page,1
+TK593758,31233,2026-03-11 14:57,2026-03-11 18:19,email,low,Again upgrade,0
+TK749075,97823,2026-03-11 14:58,2026-03-12 02:21,email,P2,Help upgrade,2
+TK902751,65550,2026-03-11 15:19,2026-03-11 18:30,email,med,Permissions,0
+TK913544,39899,2026-03-11 19:51,2026-03-11 20:57,email,med,problem with add user,0
+TK610662,99170,2026-03-11 20:13,2026-03-11 23:22,email,P3,Follow up login,0
+TK185307,64349,2026-03-11 20:34,2026-03-11 22:41,chat,P1,Api timeout,1
+TK388767,40482,2026-03-11 21:02,2026-03-11 23:01,email,med,Question about error,0
+TK824464,35971,2026-03-11 21:27,2026-03-11 23:39,email,High,charged twice upgrade,0
+TK677549,38176,2026-03-11 22:01,2026-03-11 22:56,chat,P1,Delete account,0
+TK444832,68212,2026-03-11 22:04,2026-03-12 07:14,chat,medium,follow up error,0
+TK876751,96666,2026-03-11 22:32,2026-03-12 02:16,chat,med,Help login,1
+TK223018,58820,2026-03-11 23:00,2026-03-12 14:08,email,medium,Change email package,1
+TK716539,88680,2026-03-11 23:03,2026-03-12 02:21,chat,HIGH,Remove user login,0
+TK645884,96177,2026-03-11 23:59,2026-03-12 05:09,email,med,URGENT ADD USER,1
+TK315388,79550,2026-03-12 00:13,2026-03-12 00:52,chat,p1,Please advise billing contact,1
+TK339925,40471,2026-03-12 02:10,2026-03-12 03:22,chat,low,urgent login,0
+TK566248,89722,2026-03-12 02:15,2026-03-12 05:09,email,HIGH,urgent username,0
+TK564374,61908,2026-03-12 02:18,2026-03-12 03:30,email,high,question about account,0
+TK310388,26700,2026-03-12 04:44,2026-03-12 09:46,phone,Medium,Again charged twice,1
+TK910930,50331,2026-03-12 04:54,,chat,Medium,Problem with login,1
+TK223761,94374,2026-03-12 05:15,2026-03-12 06:12,phone,high,follow up password reset login,0
+TK518845,39852,2026-03-12 05:15,2026-03-12 10:24,phone,high,DELETE ACCOUNT TRACKING NUMBER,0
+TK273800,99177,2026-03-12 05:23,2026-03-12 06:50,chat,P1,issue with username,0
+TK526433,69162,2026-03-12 05:54,2026-03-12 08:24,email,med,issue with login,2
+TK201486,38615,2026-03-12 06:43,,phone,high,please advise tax,0
+TK260754,90895,2026-03-12 07:48,2026-03-12 10:13,email,p1,question about payment page,2
+TK384762,65909,2026-03-12 08:24,2026-03-12 10:38,email,Medium,Crash device refund,3
+TK718920,40051,2026-03-12 09:17,2026-03-12 11:09,phone,low,Password reset,0
+TK904620,98947,2026-03-12 11:00,2026-03-12 11:15,email,P1,Problem with overcharged,1
+TK591019,63101,2026-03-12 15:18,2026-03-12 22:15,chat,med,Tax,0
+TK585144,76480,2026-03-12 15:55,2026-03-12 22:28,email,Medium,Receipt,0
+TK958398,90180,2026-03-12 16:29,2026-03-12 22:20,email,Low,again api timeout,0
+TK630556,99898,2026-03-12 19:35,2026-03-13 06:54,chat,p1,export broken login remove user,3
+TK469537,77430,2026-03-12 19:42,2026-03-13 02:01,chat,med,ISSUE WITH INTEGRATION DEVICE PERMISSIONS,1
+TK892137,45951,2026-03-12 20:04,,phone,P2,sync failed two-factor,2
+TK100841,77458,2026-03-12 20:38,2026-03-12 23:19,chat,P2,again workspace,1
+TK104938,54416,2026-03-12 20:45,2026-03-12 22:18,email,high,Question about charged twice account tracking number,0
+TK991711,97201,2026-03-12 20:48,2026-03-13 04:12,chat,Low,500 error,2
+TK770682,48186,2026-03-12 21:14,2026-03-13 00:14,email,p1,again bug,3
+TK238846,29691,2026-03-12 22:08,2026-03-13 00:52,email,low,tax,1
+TK658372,21937,2026-03-12 23:20,2026-03-13 16:17,chat,P2,Follow up payment page,1
+TK759326,86605,2026-03-13 02:40,2026-03-13 12:31,email,HIGH,integration,3
+TK491674,49837,2026-03-13 02:41,2026-03-13 08:22,email,P2,Password reset,0
+TK809273,72273,2026-03-13 03:14,2026-03-13 08:34,chat,HIGH,Urgent 500 error login,0
+TK219738,33737,2026-03-13 03:32,2026-03-13 09:36,chat,P2,please advise credit note upgrade,3
+TK546007,82156,2026-03-13 06:42,,email,P3,Help billing contact,0
+TK480399,66524,2026-03-13 09:48,,chat,P3,question about sso setup integration,0
+TK725628,77443,2026-03-13 10:05,2026-03-13 10:42,chat,P1,issue with add user integration,0
+TK630979,32494,2026-03-13 10:32,2026-03-13 21:40,chat,Low,Issue with crash,1
+TK974791,57370,2026-03-13 11:01,2026-03-13 16:49,chat,Low,Please advise error,0
+TK915997,80499,2026-03-13 11:33,2026-03-13 16:24,email,P2,issue with 500 error,0
+TK801063,41504,2026-03-13 12:09,2026-03-13 19:56,email,med,BILLING CYCLE,0
+TK257466,37210,2026-03-13 13:51,2026-03-13 18:20,chat,low,Delete account error,0
+TK178723,44368,2026-03-13 14:10,2026-03-13 20:16,chat,P3,Remove user billing contact card declined,0
+TK338282,46940,2026-03-13 14:18,2026-03-14 00:20,email,P3,Follow up 500 error,5
+TK318046,44095,2026-03-13 15:25,2026-03-13 17:42,email,Medium,Urgent locked out,0
+TK992756,92701,2026-03-13 16:31,2026-03-13 20:53,email,med,Question about workspace,1
+TK865363,63040,2026-03-13 17:09,2026-03-13 23:53,email,high,Error,0
+TK268957,83855,2026-03-13 17:10,2026-03-13 17:38,chat,P2,Urgent billing contact,0
+TK695167,79274,2026-03-13 17:41,2026-03-13 21:59,chat,Low,Password reset,0
+TK587586,57791,2026-03-13 17:44,2026-03-13 20:25,chat,High,500 error login delivery,1
+TK981694,32494,2026-03-13 18:06,2026-03-13 19:18,email,low,Help overcharged,0
+TK980826,24535,2026-03-13 19:06,2026-03-13 20:28,phone,medium,change email,1
+TK300355,76033,2026-03-13 19:12,2026-03-13 21:44,phone,Medium,problem with refund,4
+TK703631,58270,2026-03-13 21:28,2026-03-14 00:47,email,Low,issue with billing cycle,0
+TK674349,26648,2026-03-13 21:48,2026-03-14 06:53,phone,P2,problem with replacement unit invoice,3
+TK734996,54422,2026-03-13 22:10,,phone,P3,issue with receipt,0
+TK472047,68141,2026-03-13 22:11,2026-03-14 05:39,chat,medium,question about wrong address change email,0
+TK937558,77180,2026-03-13 23:38,2026-03-14 09:39,chat,P1,sync failed,0
+TK714122,78751,2026-03-14 00:23,2026-03-14 11:21,chat,p1,Follow up 500 error login,2
+TK546080,67294,2026-03-14 01:52,2026-03-14 10:28,chat,Medium,rename workspace error payment failed,0
+TK607756,48450,2026-03-14 01:52,2026-03-14 04:43,chat,Low,Invoice,1
+TK873152,93366,2026-03-14 03:11,2026-03-14 05:23,email,Medium,PROBLEM WITH PAYMENT FAILED,0
+TK156188,33493,2026-03-14 04:09,2026-03-14 11:44,email,medium,again refund,0
+TK837406,76510,2026-03-14 05:30,2026-03-14 08:39,chat,P3,again username,1
+TK657057,74367,2026-03-14 05:31,2026-03-14 19:15,email,low,Follow up device,0
+TK538672,60961,2026-03-14 07:39,2026-03-14 10:22,chat,Low,follow up error,1
+TK361219,97854,2026-03-14 07:45,2026-03-14 10:15,email,High,Follow up login,1
+TK713090,75033,2026-03-14 09:32,2026-03-14 18:03,email,P1,URGENT INTEGRATION,3
+TK777752,54253,2026-03-14 10:20,2026-03-14 10:57,email,Low,problem with login,0
+TK770185,80635,2026-03-14 11:01,2026-03-14 13:17,email,med,Error,0
+TK586606,26979,2026-03-14 11:12,2026-03-14 11:38,email,HIGH,urgent workspace,1
+TK569379,51933,2026-03-14 12:39,2026-03-14 18:35,email,med,refund,0
+TK978718,25402,2026-03-14 13:30,2026-03-14 14:33,email,Medium,Two-factor,0
+TK269116,78304,2026-03-14 13:45,2026-03-14 15:00,chat,Low,Problem with delete account credit note,0
+TK294347,99701,2026-03-14 13:48,2026-03-14 18:46,phone,high,Problem with integration overcharged,1
+TK298300,40051,2026-03-14 15:37,2026-03-14 18:36,phone,low,please advise invoice,0
+TK268585,90895,2026-03-14 18:22,2026-03-15 08:14,email,Medium,again refund,0
+TK139836,67039,2026-03-14 19:00,2026-03-15 01:23,email,low,ERROR PAYMENT PAGE,1
+TK875958,83515,2026-03-14 19:01,2026-03-15 01:06,phone,P2,Question about login,0
+TK451473,77212,2026-03-14 21:09,2026-03-15 20:59,email,medium,Urgent refund,2
+TK602840,39696,2026-03-14 21:14,2026-03-15 00:50,chat,med,please advise remove user,0
+TK168382,81509,2026-03-14 21:45,2026-03-15 19:19,phone,P2,FOLLOW UP DEVICE,1
+TK716628,61919,2026-03-14 22:34,2026-03-15 11:36,phone,medium,urgent refund,2
+TK390199,50846,2026-03-15 00:24,2026-03-15 03:01,email,high,Urgent upgrade,0
+TK918907,52965,2026-03-15 00:28,2026-03-15 03:04,email,High,Subscription price account,0
+TK555760,62354,2026-03-15 02:20,2026-03-15 14:36,chat,medium,sync failed,0
+TK482278,84633,2026-03-15 03:19,2026-03-15 06:17,email,Medium,Help locked out return label,0
+TK670107,23653,2026-03-15 03:25,2026-03-15 07:10,email,High,integration,0
+TK362461,64155,2026-03-15 04:16,,chat,HIGH,PLEASE ADVISE ERROR,0
+TK268365,89352,2026-03-15 04:36,2026-03-15 08:54,chat,P2,question about username login,0
+TK930352,63597,2026-03-15 05:49,2026-03-15 12:25,chat,Low,Help login,0
+TK877041,56329,2026-03-15 07:29,2026-03-15 10:04,chat,medium,problem with app freezes,2
+TK162378,45954,2026-03-15 07:33,2026-03-15 08:27,email,Low,issue with card declined,0
+TK636901,78160,2026-03-15 08:07,2026-03-15 08:43,chat,P1,Billing cycle account,0
+TK565732,99844,2026-03-15 08:29,2026-03-15 11:13,chat,Medium,issue with permissions billing contact,0
+TK146881,84873,2026-03-15 09:07,2026-03-15 14:19,chat,medium,help rename workspace,0
+TK293413,30128,2026-03-15 11:27,2026-03-15 17:43,email,HIGH,Problem with payment page,1
+TK112791,67016,2026-03-15 12:56,2026-03-15 21:17,email,med,500 error permissions,3
+TK724613,56326,2026-03-15 14:48,2026-03-15 16:13,email,P2,Permissions,0
+TK595810,46550,2026-03-15 15:47,2026-03-15 21:49,phone,P2,wrong address device,4
+TK920817,89908,2026-03-15 16:03,,email,P1,Question about delete account,0
+TK322890,96604,2026-03-15 16:24,2026-03-15 20:12,email,Medium,problem with workspace,0
+TK413496,58102,2026-03-15 16:34,2026-03-16 07:34,chat,med,Please advise login,1
+TK441066,82137,2026-03-15 16:49,2026-03-16 06:22,email,med,PROBLEM WITH SYNC FAILED LOGIN,1
+TK611693,90437,2026-03-15 19:25,2026-03-16 07:43,email,Medium,help refund account,0
+TK578244,39946,2026-03-15 19:33,2026-03-16 01:58,chat,med,question about overcharged rename workspace,0
+TK654634,75424,2026-03-15 19:58,2026-03-16 03:23,phone,High,urgent bug login,0
+TK271894,81079,2026-03-15 20:17,2026-03-15 21:39,chat,Low,change email,0
+TK255478,93711,2026-03-15 21:04,2026-03-15 23:39,email,Medium,sso setup,0
+TK929527,33119,2026-03-15 23:08,2026-03-16 00:37,email,P1,Problem with receipt login loop,1
+TK476869,56506,2026-03-15 23:33,2026-03-16 02:44,email,P3,Password reset error,0
+TK909772,80783,2026-03-15 23:52,2026-03-16 02:11,phone,HIGH,Crash device not arrived,0
+TK571673,89811,2026-03-16 00:00,2026-03-16 08:56,phone,High,Wrong address,0
+TK230767,42362,2026-03-16 00:15,2026-03-16 04:43,chat,P2,PERMISSIONS ERROR,0
+TK240117,36766,2026-03-16 00:24,2026-03-16 10:51,phone,p1,Shipment delayed,0
+TK832477,72600,2026-03-16 01:35,2026-03-16 05:33,email,med,please advise credit note,0
+TK812436,85535,2026-03-16 04:09,2026-03-16 11:06,email,medium,Overcharged,0
+TK738487,57443,2026-03-16 04:16,2026-03-16 07:47,email,high,Username error,0
+TK850904,25770,2026-03-16 05:29,2026-03-17 02:56,chat,P2,Issue with courier device,0
+TK808293,60794,2026-03-16 07:36,2026-03-16 15:40,email,Low,PROBLEM WITH LOGIN,0
+TK592940,50005,2026-03-16 08:34,2026-03-17 02:04,email,P3,Question about invoice,1
+TK514650,39625,2026-03-16 09:05,2026-03-16 14:20,email,HIGH,Issue with device,1
+TK586323,57791,2026-03-16 09:11,2026-03-16 10:38,chat,P1,question about account,0
+TK595500,91429,2026-03-16 09:49,2026-03-16 16:23,chat,Medium,please advise account,0
+TK286297,53947,2026-03-16 10:57,2026-03-16 13:29,chat,high,question about login,1
+TK468326,87065,2026-03-16 12:21,2026-03-16 23:49,phone,P3,help billing contact,0
+TK261141,90766,2026-03-16 12:43,2026-03-16 18:20,email,high,api timeout,2
+TK200034,66777,2026-03-16 12:44,2026-03-16 18:02,email,p1,follow up error,0
+TK718385,42275,2026-03-16 13:12,2026-03-16 22:00,phone,P3,delete account,0
+TK740412,73702,2026-03-16 13:20,2026-03-16 15:26,phone,med,problem with add user,0
+TK861111,67464,2026-03-16 13:41,2026-03-16 17:09,email,Low,Please advise remove user,2
+TK588819,39625,2026-03-16 14:44,2026-03-17 00:59,email,low,Change email not loading,0
+TK612027,90269,2026-03-16 15:01,2026-03-16 16:13,chat,High,slow courier,2
+TK144764,88280,2026-03-16 15:02,2026-03-16 18:43,chat,Medium,export broken device,0
+TK834036,20809,2026-03-16 15:57,2026-03-17 15:42,email,P3,Please advise integration payment page,2
+TK686067,82463,2026-03-16 17:36,2026-03-16 21:39,chat,high,URGENT LOGIN LOOP,1
+TK686896,73495,2026-03-16 18:10,2026-03-17 00:17,email,med,FOLLOW UP UPGRADE COST UPGRADE,1
+TK715944,62202,2026-03-16 19:21,2026-03-17 04:11,chat,HIGH,500 error,2
+TK101346,62526,2026-03-16 20:31,2026-03-17 11:29,chat,Medium,problem with invoice,1
+TK579522,53230,2026-03-16 20:55,2026-03-17 03:31,email,med,Please advise permissions refund,0
+TK570188,89597,2026-03-16 20:59,2026-03-17 09:13,chat,P3,issue with device,1
+TK747646,98737,2026-03-16 21:20,2026-03-17 16:22,email,Low,please advise 500 error,0
+TK215831,84488,2026-03-16 23:43,2026-03-17 10:18,chat,med,Follow up device,0
+TK429612,78361,2026-03-17 00:23,2026-03-17 13:36,email,HIGH,please advise shipment delayed device,0
+TK331872,83530,2026-03-17 00:50,2026-03-17 08:41,chat,P2,Overcharged,0
+TK669105,41403,2026-03-17 01:16,2026-03-17 14:54,email,medium,Follow up login,3
+TK791819,36178,2026-03-17 01:18,2026-03-17 19:03,phone,low,follow up damaged box,2
+TK412147,52080,2026-03-17 03:10,2026-03-17 20:35,email,low,Replacement unit invoice subscription price,2
+TK128538,80704,2026-03-17 03:15,2026-03-17 19:06,chat,medium,help wrong address,0
+TK713062,82156,2026-03-17 03:16,2026-03-17 09:31,chat,HIGH,Urgent api timeout,2
+TK580685,72560,2026-03-17 03:22,2026-03-17 06:29,email,Low,Urgent username,0
+TK469371,84488,2026-03-17 06:09,2026-03-17 10:00,chat,high,Please advise payment page,4
+TK781477,43511,2026-03-17 08:06,2026-03-18 06:39,chat,medium,again device not arrived device,0
+TK147066,23514,2026-03-17 13:11,2026-03-18 02:00,email,P2,please advise login,2
+TK613671,55877,2026-03-17 14:28,2026-03-18 00:30,chat,Low,courier device,1
+TK209802,51733,2026-03-17 14:28,2026-03-17 21:22,email,med,follow up receipt,0
+TK781231,97414,2026-03-17 16:51,2026-03-17 19:25,email,high,Login loop,3
+TK605227,47252,2026-03-17 17:12,2026-03-17 22:41,email,medium,follow up courier device,0
+TK425442,81421,2026-03-17 18:06,,chat,P1,issue with workspace,0
+TK907865,23801,2026-03-17 20:11,2026-03-17 23:58,phone,HIGH,Tax,1
+TK104427,68610,2026-03-17 21:25,2026-03-18 04:43,phone,Low,follow up integration payment page delete account,4
+TK431598,52353,2026-03-17 22:02,2026-03-18 03:03,email,Medium,problem with workspace,2
+TK562948,74375,2026-03-17 22:25,2026-03-18 07:10,chat,Medium,question about login,0
+TK390708,84553,2026-03-17 22:25,2026-03-18 10:30,email,P1,Login loop payment page,1
+TK622977,59379,2026-03-17 22:55,,chat,high,slow,1
+TK487445,35600,2026-03-17 22:57,2026-03-18 06:12,email,Medium,Problem with login,0
+TK348345,36470,2026-03-18 01:46,2026-03-18 19:48,email,medium,replacement unit,1
+TK460835,71395,2026-03-18 02:18,2026-03-18 10:37,email,Low,tracking number invoice,0
+TK440296,98947,2026-03-18 03:22,2026-03-18 10:12,email,High,not loading change email,0
+TK785251,95227,2026-03-18 04:37,2026-03-18 07:52,email,P2,please advise rename workspace damaged box,0
+TK860001,64050,2026-03-18 04:53,2026-03-18 13:25,phone,medium,URGENT BILLING CONTACT,0
+TK275201,25750,2026-03-18 05:10,2026-03-18 10:36,phone,P3,Login loop,2
+TK621659,25950,2026-03-18 05:46,2026-03-18 07:24,chat,HIGH,Again change email,0
+TK147930,76857,2026-03-18 08:31,,chat,P2,Change email payment failed,0
+TK714808,52980,2026-03-18 08:38,2026-03-18 18:28,email,P3,PROBLEM WITH LOGIN,3
+TK511566,50846,2026-03-18 09:15,2026-03-18 10:25,email,med,Problem with billing contact,0
+TK805091,23481,2026-03-18 09:30,2026-03-18 21:16,email,medium,please advise payment failed,0
+TK424825,89891,2026-03-18 10:50,2026-03-18 21:53,email,low,problem with login,2
+TK940099,94379,2026-03-18 11:32,2026-03-19 03:29,chat,p1,QUESTION ABOUT DEVICE,0
+TK735273,99844,2026-03-18 11:56,2026-03-18 23:40,chat,High,issue with payment page,4
+TK535239,99444,2026-03-18 12:12,2026-03-18 13:01,email,high,nan,0
+TK319419,22279,2026-03-18 15:32,2026-03-18 21:24,chat,P2,Card declined damaged box,1
+TK874223,87537,2026-03-18 16:30,2026-03-18 17:31,email,medium,Help permissions login,0
+TK165003,49659,2026-03-18 16:50,2026-03-18 23:00,phone,Low,two-factor,0
+TK199922,97613,2026-03-18 16:54,2026-03-19 01:40,email,p1,urgent login,2
+TK903670,84761,2026-03-18 16:54,2026-03-19 11:41,phone,P3,Issue with device not arrived refund,0
+TK356155,59624,2026-03-18 17:12,2026-03-18 18:27,email,high,subscription price upgrade,0
+TK696320,98263,2026-03-18 17:16,2026-03-19 03:17,email,HIGH,help error,2
+TK379477,23488,2026-03-18 17:35,2026-03-19 02:10,chat,Medium,receipt,0
+TK366266,90103,2026-03-18 17:40,2026-03-18 22:55,chat,low,again export broken,1
+TK433301,30429,2026-03-18 17:41,2026-03-18 21:20,phone,med,Again device,1
+TK989367,21590,2026-03-18 18:16,2026-03-18 19:52,email,P2,help invoice,1
+TK591669,87674,2026-03-18 18:19,2026-03-19 07:11,email,Medium,follow up crash,2
+TK166963,24373,2026-03-18 18:51,2026-03-18 20:13,chat,Low,help sso setup error not loading,0
+TK101770,21965,2026-03-18 20:28,2026-03-19 00:44,email,P3,problem with two-factor,0
+TK744816,64731,2026-03-18 23:28,2026-03-19 01:50,email,p1,follow up upgrade,1
+TK725582,39316,2026-03-19 00:07,2026-03-19 01:28,email,P1,Question about device,2
+TK260794,57442,2026-03-19 02:49,2026-03-19 08:10,chat,p1,Follow up login,2
+TK938207,58228,2026-03-19 03:05,2026-03-19 08:27,email,P3,issue with change email error,0
+TK443599,49608,2026-03-19 03:41,,chat,med,question about payment page,2
+TK985694,34265,2026-03-19 04:15,2026-03-19 06:45,email,Low,Urgent locked out error,1
+TK135408,96378,2026-03-19 05:59,2026-03-19 17:28,email,low,issue with api timeout payment page,2
+TK211020,44381,2026-03-19 06:50,2026-03-19 08:53,email,Medium,Change email tracking number,1
+TK887738,81204,2026-03-19 06:51,2026-03-19 07:28,email,Low,SYNC FAILED,3
+TK664539,71833,2026-03-19 07:26,2026-03-19 14:06,email,med,please advise credit note,0
+TK303806,35498,2026-03-19 08:00,2026-03-19 18:53,email,P3,export broken,0
+TK499798,72164,2026-03-19 09:22,2026-03-19 11:31,phone,HIGH,Help 500 error,1
+TK359065,99669,2026-03-19 09:30,2026-03-19 12:11,chat,High,Integration,2
+TK934603,61529,2026-03-19 10:46,2026-03-19 11:49,chat,Medium,please advise change email,0
+TK384881,31285,2026-03-19 10:54,2026-03-19 13:27,email,high,question about error,0
+TK646005,84568,2026-03-19 14:05,2026-03-19 20:07,chat,HIGH,Urgent bug,4
+TK383317,85808,2026-03-19 14:12,2026-03-19 15:44,email,P2,urgent rename workspace device not arrived,1
+TK557464,84419,2026-03-19 14:22,2026-03-20 02:42,chat,P3,Sync failed,0
+TK470729,35406,2026-03-19 14:56,2026-03-20 03:12,phone,medium,Problem with package,0
+TK188976,21688,2026-03-19 15:05,2026-03-19 16:20,chat,medium,upgrade cost locked out,1
+TK224298,71635,2026-03-19 17:43,2026-03-20 02:28,chat,P1,Question about login,2
+TK122430,99701,2026-03-19 18:42,2026-03-19 23:07,email,P3,question about payment failed return label,0
+TK228451,34835,2026-03-19 18:54,2026-03-19 20:22,chat,HIGH,Issue with slow invoice,1
+TK740631,78361,2026-03-19 20:07,2026-03-20 06:53,email,Low,again account,0
+TK423976,66630,2026-03-19 20:58,2026-03-20 17:16,email,P2,issue with invoice,1
+TK720502,77534,2026-03-19 21:26,,chat,High,SLOW DEVICE PERMISSIONS,1
+TK556977,37706,2026-03-19 21:59,2026-03-20 05:50,chat,High,Follow up login,2
+TK672937,40185,2026-03-19 22:10,2026-03-20 02:13,chat,P3,follow up change email wrong address,0
+TK953699,75915,2026-03-19 22:24,2026-03-20 00:15,email,Medium,Again tracking number device,0
+TK952669,36134,2026-03-19 23:34,2026-03-20 03:12,chat,Medium,Two-factor,0
+TK271886,49274,2026-03-20 02:42,2026-03-20 18:54,email,med,please advise courier,3
+TK425055,25190,2026-03-20 03:23,2026-03-20 16:10,chat,Medium,not loading,0
+TK609005,58228,2026-03-20 03:55,2026-03-20 06:45,email,P2,Add user,0
+TK671583,41504,2026-03-20 04:58,,chat,Low,Receipt,1
+TK465342,71042,2026-03-20 05:00,2026-03-20 22:02,chat,P3,error,0
+TK519495,85493,2026-03-20 06:01,2026-03-20 13:54,chat,Low,app freezes charged twice,1
+TK305040,63924,2026-03-20 06:44,2026-03-20 14:57,email,med,Issue with charged twice,2
+TK240662,49659,2026-03-20 07:59,2026-03-20 13:04,chat,low,Please advise username,0
+TK643011,32301,2026-03-20 08:07,2026-03-20 10:31,chat,Low,rename workspace,1
+TK683835,65619,2026-03-20 10:16,2026-03-20 12:36,email,Low,issue with tax,0
+TK330284,45150,2026-03-20 10:52,2026-03-20 16:34,email,medium,HELP RECEIPT ACCOUNT,0
+TK728199,74375,2026-03-20 10:58,2026-03-20 23:30,chat,Low,error,1
+TK793084,75359,2026-03-20 11:25,2026-03-21 07:26,chat,med,charged twice workspace,0
+TK192400,66524,2026-03-20 11:39,2026-03-20 16:59,email,Medium,again invoice upgrade login loop,2
+TK361319,35600,2026-03-20 11:56,2026-03-20 13:38,chat,High,PROBLEM WITH PAYMENT PAGE,0
+TK994832,38450,2026-03-20 12:29,2026-03-20 15:58,email,Low,Problem with rename workspace subscription price,0
+TK868912,65534,2026-03-20 14:12,2026-03-21 00:48,chat,med,Issue with slow refund,1
+TK865643,82639,2026-03-20 14:34,2026-03-20 18:26,email,low,add user,0
+TK351788,94665,2026-03-20 14:37,2026-03-20 16:57,chat,Medium,problem with locked out error wrong address,0
+TK762273,87530,2026-03-20 15:44,2026-03-20 19:56,phone,medium,charged twice,0
+TK346413,70296,2026-03-20 16:09,2026-03-20 22:38,email,P1,Problem with overcharged workspace,2
+TK185074,63797,2026-03-20 17:05,2026-03-20 21:46,chat,HIGH,Issue with device,2
+TK684189,25412,2026-03-20 19:35,2026-03-21 03:56,phone,low,again payment page,0
+TK180165,62654,2026-03-20 19:51,2026-03-20 20:53,email,P2,Please advise tax,0
+TK578162,82214,2026-03-20 20:08,2026-03-20 21:59,email,P2,Upgrade cost bug,1
+TK549050,30188,2026-03-20 21:25,2026-03-21 06:03,email,medium,CARD DECLINED WORKSPACE WRONG ADDRESS,0
+TK869214,43373,2026-03-20 21:28,,chat,med,Api timeout,3
+TK552483,68141,2026-03-20 22:37,2026-03-21 01:08,email,Medium,Question about add user,0
+TK249742,93760,2026-03-20 23:32,2026-03-21 02:12,phone,Low,urgent billing contact,0
+TK924553,70543,2026-03-21 00:31,2026-03-21 02:14,chat,HIGH,please advise add user,0
+TK543284,65435,2026-03-21 04:06,2026-03-21 08:19,phone,medium,follow up app freezes charged twice,2
+TK749675,59790,2026-03-21 04:57,2026-03-21 19:09,email,med,ISSUE WITH DEVICE,1
+TK937749,33142,2026-03-21 08:36,2026-03-21 15:02,chat,P1,Follow up integration payment page shipment delayed,0
+TK658727,73147,2026-03-21 09:03,2026-03-21 16:32,chat,High,Question about shipment delayed,0
+TK765784,42096,2026-03-21 10:29,2026-03-21 11:29,email,high,again billing contact,1
+TK300619,54085,2026-03-21 10:40,2026-03-21 17:48,email,Low,urgent card declined bug,1
+TK286343,46265,2026-03-21 11:25,2026-03-21 14:10,phone,HIGH,Again error,0
+TK197519,24373,2026-03-21 11:26,2026-03-22 00:25,phone,P2,Crash,2
+TK847844,23668,2026-03-21 11:28,2026-03-21 16:14,chat,high,ISSUE WITH LOGIN,2
+TK685376,49608,2026-03-21 12:01,2026-03-21 14:51,chat,HIGH,login loop,0
+TK359458,89195,2026-03-21 13:08,2026-03-21 16:51,email,P2,question about login,1
+TK944077,35133,2026-03-21 13:38,2026-03-21 17:16,email,high,AGAIN DEVICE,3
+TK475341,42019,2026-03-21 15:02,2026-03-21 15:39,email,med,Add user subscription price,0
+TK275458,48075,2026-03-21 15:24,2026-03-21 17:29,email,medium,help login,0
+TK537771,92103,2026-03-21 16:20,2026-03-21 20:03,email,high,Issue with card declined upgrade,0
+TK618838,32796,2026-03-21 17:42,2026-03-21 19:53,phone,High,please advise login,0
+TK621180,94903,2026-03-21 18:24,2026-03-22 01:45,email,P3,Again error,1
+TK646652,46996,2026-03-21 18:48,2026-03-21 20:11,phone,medium,Follow up remove user,0
+TK774099,59510,2026-03-21 19:34,2026-03-22 14:17,email,medium,app freezes device,1
+TK849089,63771,2026-03-21 19:53,2026-03-21 22:24,chat,med,problem with refund,2
+TK997147,79179,2026-03-21 20:19,2026-03-22 00:11,email,Low,Issue with card declined,0
+TK549481,60420,2026-03-21 20:21,2026-03-22 03:33,email,low,please advise add user,0
+TK813949,32241,2026-03-21 20:44,2026-03-22 00:44,phone,P2,QUESTION ABOUT RECEIPT,0
+TK655429,22737,2026-03-21 20:47,2026-03-21 23:31,chat,P2,ISSUE WITH LOCKED OUT BILLING CONTACT CARD DECLINED,0
+TK411704,52294,2026-03-21 21:34,2026-03-22 02:20,chat,Low,help charged twice upgrade tracking number,0
+TK615316,95132,2026-03-21 22:04,2026-03-22 00:46,chat,P2,Follow up integration,0
+TK755298,26692,2026-03-21 22:37,2026-03-22 07:36,phone,med,again overcharged,0
+TK604800,68945,2026-03-21 22:48,2026-03-22 01:00,email,P2,again change email error wrong address,0
+TK481581,99852,2026-03-21 22:48,2026-03-21 23:58,email,medium,help account,0
+TK101049,77818,2026-03-21 23:11,,email,low,problem with login,0
+TK941365,41543,2026-03-22 03:13,2026-03-22 05:14,chat,med,Permissions delivery,0
+TK382955,76185,2026-03-22 05:26,2026-03-22 07:58,email,low,Rename workspace,0
+TK489198,83431,2026-03-22 06:24,2026-03-22 20:47,email,P2,help tax,0
+TK227067,74133,2026-03-22 06:35,2026-03-22 10:42,chat,Low,sso setup error,0
+TK149698,92731,2026-03-22 07:37,2026-03-22 23:36,chat,P2,export broken login device not arrived,0
+TK523935,95100,2026-03-22 09:00,2026-03-22 22:08,chat,low,receipt account,0
+TK389457,81204,2026-03-22 09:32,2026-03-22 15:27,phone,p1,Issue with app freezes payment page,0
+TK959851,39696,2026-03-22 09:39,2026-03-22 12:30,email,P1,upgrade cost,1
+TK486798,43511,2026-03-22 09:43,2026-03-22 10:50,chat,Medium,follow up remove user,0
+TK220212,57777,2026-03-22 10:02,,chat,P2,HELP ERROR,0
+TK551388,21871,2026-03-22 10:20,2026-03-22 12:46,chat,Medium,URGENT PASSWORD RESET,0
+TK192484,81204,2026-03-22 13:51,2026-03-22 17:16,email,P1,Payment failed,0
+TK106422,35727,2026-03-22 14:03,2026-03-22 17:01,chat,High,Error,2
+TK940184,52573,2026-03-22 14:42,2026-03-22 17:21,email,P3,Urgent error,0
+TK668126,84163,2026-03-22 15:00,2026-03-22 17:45,chat,med,Question about error,1
+TK194604,87472,2026-03-22 15:25,2026-03-22 18:14,email,low,Issue with billing contact,1
+TK148955,23965,2026-03-22 15:26,2026-03-22 19:33,email,high,again login loop payment page,1
+TK134653,96788,2026-03-22 16:16,2026-03-22 17:54,chat,Low,permissions api timeout,0
+TK362857,85555,2026-03-22 16:34,2026-03-23 08:21,email,P2,Help app freezes login,1
+TK965526,39715,2026-03-22 16:41,2026-03-22 17:39,email,High,Please advise bug login,1
+TK240232,50798,2026-03-22 17:41,2026-03-23 06:20,chat,HIGH,not loading payment page,1
+TK806590,99852,2026-03-22 18:06,2026-03-22 19:10,phone,med,Locked out,0
+TK727007,23965,2026-03-22 19:10,2026-03-23 00:30,phone,medium,urgent two-factor,0
+TK628951,24586,2026-03-22 19:58,2026-03-23 06:40,chat,Low,tracking number slow,0
+TK358744,83229,2026-03-22 21:22,2026-03-22 22:14,email,P1,Urgent upgrade,0
+TK575853,40425,2026-03-22 21:44,2026-03-23 03:35,email,P2,TWO-FACTOR,0
+TK477381,48708,2026-03-22 22:53,2026-03-23 08:22,chat,P2,follow up login,0
+TK421926,58228,2026-03-23 01:07,2026-03-23 12:31,email,p1,problem with device,1
+TK898387,75915,2026-03-23 02:26,2026-03-23 04:56,chat,low,delete account billing contact login loop,0
+TK435325,87831,2026-03-23 02:47,2026-03-23 06:05,email,P3,change email,0
+TK109200,23441,2026-03-23 03:16,2026-03-23 14:30,chat,high,Not loading login,2
+TK639474,39359,2026-03-23 03:27,,chat,P2,Billing cycle,1
+TK543241,70963,2026-03-23 04:24,2026-03-23 08:37,email,high,Bug payment page,0
+TK573306,51820,2026-03-23 05:10,2026-03-23 06:46,chat,medium,question about password reset app freezes,1
+TK280865,84633,2026-03-23 05:32,2026-03-23 14:55,chat,P2,URGENT ACCOUNT,1
+TK459932,88516,2026-03-23 05:57,2026-03-23 15:52,chat,Medium,remove user login,0
+TK887079,89851,2026-03-23 06:00,2026-03-23 07:59,phone,p1,Follow up device,2
+TK776551,57918,2026-03-23 07:28,2026-03-23 08:55,email,P3,problem with invoice,2
+TK849168,40102,2026-03-23 10:11,2026-03-23 17:00,phone,medium,Overcharged,0
+TK637740,49641,2026-03-23 13:23,2026-03-23 23:30,email,Low,device not arrived,1
+TK936622,66011,2026-03-23 14:24,2026-03-24 01:07,phone,P2,Slow,0
+TK934631,41591,2026-03-23 16:36,2026-03-23 19:50,email,medium,again login,2
+TK221462,41504,2026-03-23 16:41,2026-03-23 19:00,chat,p1,locked out billing contact tracking number,0
+TK232391,39233,2026-03-23 17:51,2026-03-23 18:36,chat,Low,DELETE ACCOUNT BILLING CONTACT,0
+TK116409,21138,2026-03-23 18:19,2026-03-23 23:32,email,P2,Follow up refund,1
+TK625655,39852,2026-03-23 18:54,2026-03-24 07:51,phone,Medium,delivery,0
+TK643784,71808,2026-03-23 21:09,,email,Medium,AGAIN SLOW,0
+TK685818,42275,2026-03-23 21:17,2026-03-24 04:54,phone,Low,again delivery refund two-factor,0
+TK264974,34405,2026-03-23 23:12,2026-03-24 03:59,email,p1,ISSUE WITH DEVICE,2
+TK112551,72215,2026-03-23 23:40,2026-03-24 00:51,email,High,issue with billing contact,0
+TK174465,80499,2026-03-24 00:08,2026-03-24 06:28,phone,P2,question about charged twice,0
+TK966719,48768,2026-03-24 01:18,,email,medium,help credit note locked out,0
+TK294856,83229,2026-03-24 01:49,2026-03-24 10:52,chat,med,Follow up workspace,0
+TK165721,26421,2026-03-24 01:50,2026-03-24 05:02,email,Medium,again slow,2
+TK659130,48768,2026-03-24 01:54,,email,low,overcharged,0
+TK691096,83969,2026-03-24 02:27,2026-03-24 08:10,phone,high,again invoice account,0
+TK547935,56797,2026-03-24 05:35,2026-03-24 10:18,phone,Medium,Help 500 error payment page,1
+TK563896,33505,2026-03-24 08:59,2026-03-24 12:38,email,HIGH,QUESTION ABOUT SUBSCRIPTION PRICE,1
+TK398093,80704,2026-03-24 09:30,,chat,medium,Follow up error,0
+TK110278,70664,2026-03-24 09:58,2026-03-24 18:34,email,High,problem with device,3
+TK896316,48793,2026-03-24 10:03,2026-03-24 23:38,phone,Low,Problem with export broken,6
+TK755309,47877,2026-03-24 10:33,2026-03-24 11:38,chat,P1,please advise change email tax,0
+TK522927,43681,2026-03-24 12:22,2026-03-24 19:11,email,P1,urgent login loop,2
+TK827375,33762,2026-03-24 12:52,2026-03-24 20:30,email,low,again credit note,0
+TK773799,94263,2026-03-24 12:59,2026-03-24 15:23,email,low,URGENT LOCKED OUT,0
+TK952552,95260,2026-03-24 13:19,2026-03-24 18:54,email,med,Urgent workspace,0
+TK652178,49058,2026-03-24 17:38,2026-03-25 08:45,email,med,follow up upgrade cost,0
+TK383636,45948,2026-03-24 17:38,2026-03-24 22:18,email,Low,upgrade cost shipment delayed,0
+TK407926,74168,2026-03-24 18:32,2026-03-25 06:08,email,med,Urgent card declined,0
+TK115243,43727,2026-03-24 19:08,2026-03-24 19:31,email,Medium,urgent account,0
+TK348015,90209,2026-03-24 19:31,2026-03-25 20:11,chat,medium,Help sync failed,1
+TK323638,48428,2026-03-24 20:23,2026-03-25 11:18,phone,Low,Help return label not loading,0
+TK266175,26692,2026-03-24 21:18,2026-03-24 22:02,chat,Low,please advise add user,0
+TK523241,86730,2026-03-24 22:02,2026-03-24 23:25,phone,HIGH,not loading,0
+TK648019,79274,2026-03-24 22:02,2026-03-25 11:47,email,med,replacement unit device,1
+TK662403,65185,2026-03-24 22:11,2026-03-25 00:42,phone,low,Delete account billing contact,1
+TK897266,35937,2026-03-24 23:58,2026-03-25 03:00,phone,p1,Please advise refund,0
+TK869720,64300,2026-03-25 00:08,2026-03-26 00:23,chat,Medium,Login loop device,2
+TK627814,85030,2026-03-25 02:45,2026-03-25 03:49,email,Low,problem with billing contact,0
+TK419832,43955,2026-03-25 02:48,2026-03-25 07:37,email,P3,Question about card declined sync failed,0
+TK770262,73099,2026-03-25 03:53,2026-03-25 11:34,email,medium,again login,0
+TK357364,31617,2026-03-25 03:57,2026-03-25 05:24,email,HIGH,CRASH TRACKING NUMBER,0
+TK603522,20052,2026-03-25 04:19,2026-03-25 06:52,email,High,issue with upgrade,1
+TK505255,92103,2026-03-25 04:54,2026-03-25 05:29,email,medium,Urgent billing contact,1
+TK574989,81053,2026-03-25 06:58,2026-03-25 11:08,email,Low,username,0
+TK151904,91907,2026-03-25 07:04,2026-03-26 05:15,phone,med,Device not arrived,1
+TK356705,64475,2026-03-25 07:17,2026-03-25 11:29,phone,medium,Subscription price upgrade,0
+TK247160,71524,2026-03-25 07:39,2026-03-25 12:35,email,medium,invoice,2
+TK326011,98277,2026-03-25 08:23,2026-03-25 13:10,email,High,Wrong address device remove user,0
+TK761395,85840,2026-03-25 09:30,2026-03-25 17:55,email,P2,payment failed,0
+TK952796,61842,2026-03-25 09:33,2026-03-25 11:00,chat,med,Help api timeout login,0
+TK442915,92102,2026-03-25 10:53,2026-03-25 13:26,chat,P3,help locked out,0
+TK623751,56950,2026-03-25 12:10,2026-03-25 16:11,email,P2,problem with delivery,0
+TK982660,44444,2026-03-25 12:40,2026-03-25 21:01,email,P2,change email,1
+TK657346,60371,2026-03-25 14:47,2026-03-26 01:42,email,Medium,issue with 500 error,3
+TK318829,40983,2026-03-25 16:18,2026-03-26 10:34,email,low,urgent payment page,1
+TK734871,65711,2026-03-25 16:49,,phone,P3,Sso setup,0
+TK978545,32907,2026-03-25 17:40,2026-03-25 20:11,email,P1,Again sso setup billing contact,0
+TK194795,62013,2026-03-25 19:03,2026-03-26 06:08,chat,medium,help receipt,0
+TK263681,95898,2026-03-25 20:20,2026-03-25 23:18,chat,Medium,Help add user login shipment delayed,0
+TK834248,93764,2026-03-25 20:31,2026-03-25 23:20,email,med,Sync failed,1
+TK636185,80013,2026-03-25 20:38,2026-03-26 07:01,email,P3,Follow up return label,1
+TK936159,74579,2026-03-25 22:52,2026-03-26 06:03,email,Medium,Rename workspace,0
+TK644351,47240,2026-03-25 23:00,2026-03-26 02:10,email,p1,Issue with payment failed upgrade,0
+TK498191,87846,2026-03-25 23:07,2026-03-26 11:01,chat,low,question about login,6
+TK888499,74691,2026-03-26 00:06,2026-03-27 22:56,chat,P2,again wrong address refund,0
+TK583331,38768,2026-03-26 00:42,2026-03-26 07:50,phone,Low,please advise sso setup error,0
+TK742477,91326,2026-03-26 01:08,2026-03-27 02:49,email,Medium,Delivery,3
+TK583373,70664,2026-03-26 01:39,2026-03-26 03:35,chat,low,help charged twice upgrade,1
+TK231253,42601,2026-03-26 02:14,2026-03-26 10:30,chat,medium,Problem with integration,3
+TK859889,68243,2026-03-26 02:14,2026-03-26 02:38,email,P3,again two-factor login,0
+TK547473,56831,2026-03-26 04:09,2026-03-26 12:04,email,Low,rename workspace,0
+TK845033,89609,2026-03-26 04:44,2026-03-26 06:23,email,High,Two-factor,1
+TK290829,78876,2026-03-26 05:00,,email,p1,Damaged box,0
+TK300671,84529,2026-03-26 06:12,2026-03-26 06:49,email,P2,username upgrade cost,1
+TK638572,58992,2026-03-26 06:15,,email,med,issue with change email,1
+TK989041,55387,2026-03-26 07:35,2026-03-26 10:18,chat,High,Tax,1
+TK965472,82959,2026-03-26 07:39,2026-03-26 16:42,chat,Medium,Problem with device,2
+TK779653,63597,2026-03-26 08:40,,email,HIGH,sync failed overcharged,5
+TK683766,69575,2026-03-26 10:53,2026-03-26 11:49,phone,med,help courier invoice,0
+TK662895,42096,2026-03-26 11:19,2026-03-26 16:22,email,High,help error device,2
+TK975684,91714,2026-03-26 11:44,2026-03-27 00:11,phone,Medium,Follow up invoice,0
+TK762099,72215,2026-03-26 12:41,2026-03-26 16:34,chat,Low,question about login,0
+TK244831,21771,2026-03-26 12:54,2026-03-27 06:44,email,Medium,again not loading login,1
+TK619331,96494,2026-03-26 14:07,2026-03-26 19:49,chat,P2,nan,0
+TK374216,95336,2026-03-26 14:18,2026-03-27 14:58,email,P2,Problem with device,4
+TK734631,75667,2026-03-26 17:40,2026-03-27 06:09,chat,low,subscription price account sync failed,0
+TK372017,75326,2026-03-26 20:02,2026-03-27 01:46,email,Low,tax,0
+TK868473,77443,2026-03-26 20:57,2026-03-28 09:43,email,Low,500 error,0
+TK455593,92005,2026-03-26 21:34,2026-03-27 06:37,phone,HIGH,Problem with export broken,2
+TK834772,56920,2026-03-26 21:39,2026-03-27 03:33,email,P1,Export broken device,0
+TK817397,44381,2026-03-26 22:07,2026-03-27 00:26,phone,Medium,permissions login,2
+TK602781,61842,2026-03-26 22:22,2026-03-27 02:50,email,P2,help sso setup,0
+TK685717,68302,2026-03-26 23:01,2026-03-27 17:55,email,Medium,Payment failed,1
+TK227071,47174,2026-03-26 23:25,2026-03-27 01:34,email,high,urgent account,0
+TK283436,73110,2026-03-27 00:26,2026-03-27 07:53,chat,HIGH,Question about device,0
+TK182208,66524,2026-03-27 01:11,2026-03-27 02:58,email,HIGH,invoice,0
+TK413079,78622,2026-03-27 04:58,2026-03-27 12:15,chat,HIGH,ERROR,0
+TK937214,65965,2026-03-27 05:13,2026-03-27 11:25,email,high,slow,6
+TK357865,23268,2026-03-27 06:42,2026-03-27 12:11,chat,high,please advise device,0
+TK527225,95676,2026-03-27 07:23,2026-03-27 13:58,email,medium,please advise charged twice,2
+TK204569,88410,2026-03-27 08:08,2026-03-27 20:31,chat,low,Receipt,1
+TK783177,77157,2026-03-27 08:19,2026-03-27 13:15,chat,P1,follow up slow tracking number,1
+TK841285,62591,2026-03-27 08:50,2026-03-27 12:35,phone,med,follow up rename workspace,0
+TK924877,87530,2026-03-27 10:42,2026-03-27 12:19,phone,HIGH,Bug,2
+TK149116,55525,2026-03-27 12:29,2026-03-27 13:05,chat,High,remove user,0
+TK825232,92216,2026-03-27 12:52,2026-03-27 21:54,email,P2,issue with workspace,1
+TK755077,93489,2026-03-27 13:12,2026-03-27 14:09,email,High,change email,0
+TK962494,56529,2026-03-27 13:40,2026-03-27 18:59,chat,P3,Question about login,0
+TK973962,70366,2026-03-27 14:32,2026-03-27 15:33,email,High,again login,1
+TK813997,75026,2026-03-27 14:33,2026-03-28 08:10,chat,Low,AGAIN 500 ERROR,0
+TK663198,75762,2026-03-27 16:21,2026-03-27 20:47,email,Medium,Please advise login,0
+TK997018,83530,2026-03-27 17:08,2026-03-28 07:45,phone,P2,Please advise error payment page,2
+TK954191,70229,2026-03-27 21:08,2026-03-28 00:24,email,P2,Please advise charged twice,0
+TK226521,83229,2026-03-27 21:30,2026-03-27 23:27,chat,p1,Two-factor,0
+TK683097,93760,2026-03-27 23:26,2026-03-28 10:36,phone,HIGH,Error payment page shipment delayed,1
+TK184779,33737,2026-03-27 23:48,2026-03-28 01:40,email,High,charged twice,1
+TK238917,55674,2026-03-28 09:53,2026-03-28 11:35,email,Medium,problem with remove user,0
+TK615518,20561,2026-03-28 10:07,,email,high,charged twice error,1
+TK991035,79208,2026-03-28 10:12,2026-03-28 19:53,email,Medium,help upgrade,1
+TK993054,96836,2026-03-28 10:44,2026-03-28 17:22,email,HIGH,again api timeout payment page charged twice,0
+TK576739,33435,2026-03-28 10:58,2026-03-28 15:06,email,Low,delete account,0
+TK440844,70366,2026-03-28 11:16,2026-03-29 00:46,phone,med,question about sync failed invoice,5
+TK322468,90702,2026-03-28 11:17,2026-03-28 14:55,phone,med,Follow up charged twice,0
+TK520996,29945,2026-03-28 11:45,2026-03-28 16:57,chat,Medium,ADD USER ERROR,0
+TK160709,64600,2026-03-28 12:42,2026-03-28 14:36,email,P1,follow up login,3
+TK666844,23958,2026-03-28 12:50,2026-03-28 14:45,email,P2,again account,0
+TK601775,54560,2026-03-28 13:42,2026-03-29 09:40,chat,low,PROBLEM WITH LOGIN LOOP,1
+TK864074,59043,2026-03-28 14:13,2026-03-28 14:49,email,p1,billing cycle,0
+TK677490,94315,2026-03-28 15:52,2026-03-29 03:08,chat,P1,Login loop login receipt,1
+TK169801,27366,2026-03-28 15:54,2026-03-29 15:48,chat,Low,slow,0
+TK456590,78859,2026-03-28 17:26,2026-03-28 19:05,chat,p1,Problem with billing contact,0
+TK168160,99735,2026-03-28 18:09,2026-03-28 19:46,chat,med,Question about change email,0
+TK790868,32866,2026-03-28 18:11,2026-03-28 21:36,email,Medium,tax account,0
+TK243186,32241,2026-03-28 18:35,2026-03-28 21:46,chat,Medium,Help slow,2
+TK431707,63913,2026-03-28 19:43,2026-03-28 19:52,phone,p1,Help rename workspace billing contact,0
+TK439289,75026,2026-03-28 20:28,2026-03-29 04:56,phone,medium,sync failed,1
+TK531227,90603,2026-03-28 20:41,2026-03-29 03:03,phone,P3,Refund,0
+TK385533,77987,2026-03-28 20:57,2026-03-28 22:09,chat,p1,PERMISSIONS,0
+TK392947,22647,2026-03-28 21:09,2026-03-28 23:34,chat,Medium,question about change email,0
+TK970784,99170,2026-03-28 22:20,2026-03-29 01:36,email,P2,Problem with workspace,1
+TK209295,60794,2026-03-28 22:53,2026-03-29 00:53,chat,med,Follow up login,1
+TK682810,41517,2026-03-28 23:03,2026-03-29 04:32,phone,low,Urgent rename workspace,0
+TK919810,90702,2026-03-28 23:49,2026-03-29 09:28,chat,Medium,Problem with login,2
+TK595120,36421,2026-03-29 00:00,2026-03-29 01:40,chat,P2,Question about refund,0
+TK834216,70628,2026-03-29 00:14,2026-03-29 06:25,chat,High,Follow up app freezes,3
+TK260199,23488,2026-03-29 00:32,2026-03-29 15:31,email,Medium,EXPORT BROKEN,0
+TK575719,85535,2026-03-29 00:35,2026-03-29 03:30,chat,P3,problem with delete account,0
+TK244365,53331,2026-03-29 00:50,2026-03-29 02:49,email,p1,device not arrived,1
+TK110156,90241,2026-03-29 02:25,2026-03-29 07:02,chat,Low,problem with workspace,0
+TK167432,59451,2026-03-29 03:08,2026-03-29 09:05,email,P1,please advise login,0
+TK175450,45389,2026-03-29 03:52,2026-03-29 10:05,email,P3,question about error,0
+TK289017,35388,2026-03-29 04:52,2026-03-29 20:43,chat,Medium,export broken,4
+TK153249,52261,2026-03-29 05:18,2026-03-29 11:00,email,high,question about payment page,1
+TK136154,83767,2026-03-29 05:48,2026-03-29 13:30,email,Medium,problem with credit note sso setup,1
+TK884534,47438,2026-03-29 06:12,2026-03-29 07:21,chat,P1,ISSUE WITH ERROR,0
+TK562978,40051,2026-03-29 07:25,,email,P3,username error,0
+TK995627,75349,2026-03-29 07:28,2026-03-30 03:32,email,P3,Wrong address,1
+TK435341,99775,2026-03-29 08:17,2026-03-29 11:06,email,Low,DELETE ACCOUNT,1
+TK246449,48793,2026-03-29 08:24,2026-03-29 13:06,chat,med,api timeout,2
+TK365753,43589,2026-03-29 08:52,2026-03-29 13:34,phone,P2,again workspace,0
+TK266913,26971,2026-03-29 08:59,2026-03-30 20:22,email,P2,Help shipment delayed device,0
+TK294169,83211,2026-03-29 09:37,,email,med,Question about two-factor,0
+TK134029,88695,2026-03-29 10:15,2026-03-30 08:51,phone,P2,Urgent invoice,1
+TK434365,30869,2026-03-29 10:54,2026-03-29 20:25,chat,Low,integration credit note,1
+TK256471,55351,2026-03-29 11:32,2026-03-29 15:36,email,medium,please advise two-factor,0
+TK984191,50525,2026-03-29 11:39,2026-03-29 16:33,chat,med,slow,2
+TK176993,59091,2026-03-29 11:46,2026-03-29 16:09,email,P2,Locked out billing contact,0
+TK963907,33759,2026-03-29 13:37,2026-03-29 16:50,email,Medium,Issue with upgrade,1
+TK772800,24373,2026-03-29 15:23,2026-03-29 16:35,email,med,delete account,1
+TK839420,71553,2026-03-29 16:06,,phone,med,problem with error,0
+TK333640,66351,2026-03-29 16:47,2026-03-30 00:21,phone,p1,App freezes payment page wrong address,2
+TK979651,44288,2026-03-29 19:47,2026-03-29 21:51,chat,P2,Delete account,0
+TK567752,45329,2026-03-29 20:05,2026-03-30 01:03,chat,P1,Not loading,2
+TK849892,48216,2026-03-29 20:45,2026-03-30 05:26,chat,med,issue with login,2
+TK882793,95583,2026-03-29 21:13,2026-03-30 10:52,chat,medium,issue with app freezes device change email,0
+TK336628,30865,2026-03-29 21:38,2026-03-30 06:06,chat,low,question about payment failed,0
+TK615785,53778,2026-03-29 23:12,2026-03-30 08:26,email,med,urgent login loop,1
+TK610847,24338,2026-03-29 23:20,2026-03-30 01:08,email,HIGH,problem with login,0
+TK355520,55810,2026-03-29 23:49,2026-03-30 01:49,phone,med,Urgent workspace,0
+TK168347,93398,2026-03-29 23:57,2026-03-30 15:05,chat,P2,Again refund,1
+TK744665,41638,2026-03-30 01:04,2026-03-30 12:22,chat,High,follow up login,0
+TK534385,25273,2026-03-30 01:28,2026-03-30 06:41,email,Low,problem with workspace,1
+TK572223,53613,2026-03-30 01:31,2026-03-30 06:45,chat,P2,Follow up credit note,0
+TK521759,54619,2026-03-30 02:25,2026-03-30 04:43,email,HIGH,Api timeout,0
+TK756191,87618,2026-03-30 04:01,,chat,low,sync failed package,0
+TK771711,64045,2026-03-30 04:29,2026-03-31 05:22,email,p1,nan,1
+TK297822,68368,2026-03-30 06:38,2026-03-30 08:18,email,P2,Invoice,0
+TK135168,52208,2026-03-30 08:01,2026-03-30 16:07,email,P1,Question about sso setup billing contact,1
+TK921802,56819,2026-03-30 08:13,2026-03-31 11:13,email,Medium,Again refund account,1
+TK740686,80704,2026-03-30 10:45,2026-03-30 15:18,chat,medium,Follow up login,0
+TK782394,58621,2026-03-30 11:07,2026-03-30 15:18,chat,Medium,FOLLOW UP ERROR,1
+TK538192,21582,2026-03-30 11:18,,phone,P2,problem with invoice workspace,0
+TK619308,64828,2026-03-30 12:06,2026-03-30 14:36,email,High,sso setup,1
+TK309952,66384,2026-03-30 13:27,2026-03-30 14:25,email,P3,follow up billing contact,0
+TK943267,99969,2026-03-30 13:47,2026-03-30 20:41,email,HIGH,Problem with login,2
+TK447158,43360,2026-03-30 15:52,,chat,med,ISSUE WITH PASSWORD RESET,0
+TK536846,42444,2026-03-30 18:12,2026-03-30 21:32,phone,medium,help invoice,1
+TK132146,48513,2026-03-30 19:24,2026-03-31 00:27,chat,high,Please advise invoice,0
+TK693802,59824,2026-03-30 20:14,2026-03-30 22:18,chat,medium,nan,2
+TK380559,82137,2026-03-30 20:16,2026-03-31 01:45,email,Medium,charged twice,0
+TK497955,37695,2026-03-30 20:18,,chat,Medium,permissions login,0
+TK285871,20912,2026-03-30 20:41,2026-03-31 07:06,email,Medium,Problem with api timeout device,3
+TK517574,63622,2026-03-30 21:25,2026-03-30 22:02,email,P2,question about remove user login,2
+TK271586,83713,2026-03-30 21:37,2026-03-31 01:46,chat,medium,Crash,1
+TK960257,24098,2026-03-30 22:40,2026-04-01 11:34,email,P3,Help invoice,0
+TK574172,38176,2026-03-30 22:43,,email,med,again invoice,2
+TK889242,57932,2026-03-30 23:28,2026-03-31 16:28,email,med,urgent device not arrived invoice,0
+TK609063,99452,2026-03-31 00:33,2026-03-31 02:06,email,med,Please advise billing contact,1
+TK693376,60062,2026-03-31 01:03,2026-03-31 08:43,phone,Low,help login loop,1
+TK604868,59333,2026-03-31 05:03,2026-04-01 00:15,phone,P3,Problem with tracking number,0
+TK394070,82417,2026-03-31 07:34,2026-03-31 19:12,email,P1,problem with crash,1
+TK662130,90992,2026-03-31 09:39,2026-03-31 10:19,phone,Low,problem with locked out,0
+TK404831,57932,2026-03-31 12:30,2026-03-31 13:24,chat,high,again crash,1
+TK754504,59404,2026-03-31 13:07,2026-03-31 15:15,email,med,Follow up login,0
+TK218105,77995,2026-03-31 14:13,2026-03-31 15:24,chat,p1,issue with 500 error payment page,1
+TK904055,33396,2026-03-31 14:15,2026-03-31 19:35,email,Medium,refund,0
+TK970122,65965,2026-03-31 14:30,2026-03-31 16:06,phone,med,please advise remove user error,0
+TK455835,57067,2026-03-31 15:40,2026-03-31 19:57,email,P3,500 error login,2
+TK650668,78735,2026-03-31 17:26,2026-04-01 03:55,chat,High,help device,1
+TK673857,76568,2026-03-31 17:45,2026-03-31 19:08,email,P1,overcharged sync failed,0
+TK234554,63101,2026-03-31 18:04,2026-03-31 19:25,chat,Medium,change email,0
+TK984452,41517,2026-03-31 18:45,2026-03-31 20:14,chat,p1,urgent billing contact,0
+TK516570,82927,2026-03-31 20:00,2026-04-01 00:41,chat,med,export broken,0
+TK643289,74508,2026-03-31 21:14,2026-04-01 07:54,chat,P3,login loop,2
+TK455367,54690,2026-03-31 21:20,2026-04-01 08:35,email,low,issue with tax account,0
+TK363063,94986,2026-03-31 22:31,2026-03-31 23:58,email,p1,Follow up remove user error receipt,1
+TK924083,28496,2026-03-31 23:29,2026-04-01 00:44,email,Low,Follow up device,3
+TK928763,48363,2026-04-01 00:18,2026-04-01 05:32,email,Medium,Device not arrived,1
+TK970754,58481,2026-04-01 01:02,2026-04-01 07:10,email,HIGH,Follow up device,2
+TK540857,53947,2026-04-01 01:11,2026-04-01 05:31,chat,P2,app freezes,1
+TK558935,70354,2026-04-01 02:06,2026-04-01 11:45,email,medium,follow up workspace,0
+TK373526,44117,2026-04-01 02:29,2026-04-01 03:54,email,medium,Please advise device,2
+TK693554,91326,2026-04-01 02:45,,email,med,ERROR,2
+TK348255,49274,2026-04-01 02:48,2026-04-01 19:16,email,low,Please advise invoice,1
+TK959288,70229,2026-04-01 02:55,2026-04-01 11:57,chat,Low,Again export broken,0
+TK822637,49585,2026-04-01 04:08,2026-04-01 21:10,chat,Medium,Urgent crash,0
+TK318489,37252,2026-04-01 05:03,2026-04-01 08:02,phone,P3,CHARGED TWICE TWO-FACTOR,1
+TK935239,85586,2026-04-01 06:43,2026-04-01 10:10,email,HIGH,Please advise payment page,1
+TK128907,29260,2026-04-01 07:59,2026-04-01 14:24,chat,Medium,Help username error,0
+TK697601,29236,2026-04-01 10:10,2026-04-01 13:43,chat,P2,question about device,2
+TK855454,62802,2026-04-01 11:36,2026-04-01 17:46,email,medium,again login,2
+TK149486,63076,2026-04-01 11:53,2026-04-01 16:50,phone,Medium,Follow up workspace,0
+TK102291,64056,2026-04-01 11:55,2026-04-01 15:54,chat,medium,Help username,0
+TK525605,63557,2026-04-01 12:10,2026-04-01 14:45,email,P2,RECEIPT USERNAME,0
+TK386634,72470,2026-04-01 12:39,2026-04-02 02:58,email,Low,crash,1
+TK694885,96842,2026-04-01 12:39,2026-04-01 12:48,phone,med,again upgrade,0
+TK899838,34492,2026-04-01 12:50,2026-04-01 17:11,email,high,question about upgrade,0
+TK931862,63509,2026-04-01 15:38,2026-04-01 17:48,chat,P1,SUBSCRIPTION PRICE,0
+TK637039,55483,2026-04-01 16:16,2026-04-01 22:02,email,low,Urgent upgrade,0
+TK395895,87537,2026-04-01 17:14,2026-04-01 17:36,phone,p1,Help locked out,0
+TK335417,37766,2026-04-01 17:31,2026-04-01 18:10,email,Low,payment failed,1
+TK602444,39821,2026-04-01 18:23,2026-04-01 20:54,chat,HIGH,AGAIN EXPORT BROKEN,3
+TK521202,38486,2026-04-01 19:51,2026-04-01 21:26,phone,medium,PLEASE ADVISE UPGRADE COST,1
+TK310983,99409,2026-04-01 20:48,2026-04-02 10:28,email,P3,integration overcharged,0
+TK608221,89546,2026-04-01 21:43,2026-04-02 15:28,email,P2,Again courier,0
+TK930599,70296,2026-04-01 21:57,2026-04-03 05:45,chat,P2,please advise payment page,1
+TK861964,39359,2026-04-01 22:29,2026-04-02 16:40,phone,low,again error,0
+TK487358,54085,2026-04-01 23:01,2026-04-02 01:41,email,medium,URGENT LOGIN,0
+TK141714,67007,2026-04-02 00:06,2026-04-02 04:17,phone,P3,urgent sso setup,0
+TK365201,83518,2026-04-02 05:11,2026-04-02 08:11,email,high,Not loading username,0
+TK923886,58561,2026-04-02 05:34,2026-04-02 11:02,email,med,Follow up username,0
+TK648521,37368,2026-04-02 05:47,2026-04-02 11:29,email,low,Issue with subscription price account,1
+TK709348,63875,2026-04-02 06:08,2026-04-02 18:48,email,med,again workspace,0
+TK408372,45128,2026-04-02 07:05,2026-04-02 19:51,email,Low,Again change email,0
+TK569905,22855,2026-04-02 07:23,2026-04-02 08:16,email,P1,issue with tax courier,1
+TK540244,86195,2026-04-02 08:37,2026-04-02 09:14,chat,low,Problem with remove user courier,0
+TK164103,66407,2026-04-02 09:40,2026-04-02 15:06,chat,high,Urgent api timeout login,3
+TK819575,61094,2026-04-02 10:25,2026-04-02 16:56,chat,Low,Urgent upgrade,0
+TK947262,49040,2026-04-02 11:57,2026-04-02 13:19,chat,P3,Problem with wrong address rename workspace,1
+TK301381,45944,2026-04-02 12:32,2026-04-03 07:47,email,Low,issue with payment failed password reset,0
+TK553914,99207,2026-04-02 14:55,2026-04-02 22:27,chat,P3,again billing contact,0
+TK868270,79451,2026-04-02 15:58,2026-04-05 04:38,email,P2,please advise refund,0
+TK112693,57370,2026-04-02 17:47,,email,P1,Question about remove user error crash,2
+TK384280,98128,2026-04-02 19:49,2026-04-03 02:28,phone,med,username login,0
+TK740881,20979,2026-04-02 20:27,2026-04-03 08:59,phone,low,integration,0
+TK197515,37252,2026-04-02 20:40,2026-04-03 01:30,email,P3,PERMISSIONS,0
+TK543565,94951,2026-04-02 21:54,2026-04-03 18:37,chat,P3,api timeout device,0
+TK404815,93760,2026-04-02 22:08,2026-04-02 23:43,email,P1,again billing contact,1
+TK683768,62524,2026-04-02 22:55,2026-04-03 06:24,chat,low,follow up upgrade,0
+TK628424,83142,2026-04-03 00:20,2026-04-03 04:40,email,low,sso setup,0
+TK252785,42949,2026-04-03 00:45,2026-04-03 22:48,chat,Medium,Error device,3
+TK832586,70148,2026-04-03 01:54,2026-04-03 19:08,chat,low,crash,1
+TK537014,46729,2026-04-03 02:25,2026-04-03 12:17,chat,low,help upgrade,1
+TK263171,75539,2026-04-03 02:44,2026-04-04 00:46,email,Medium,Please advise device,1
+TK611292,74193,2026-04-03 03:28,2026-04-03 04:29,chat,high,issue with error,0
+TK861628,87539,2026-04-03 06:10,2026-04-03 18:22,email,Medium,Add user,0
+TK419202,34835,2026-04-03 07:36,2026-04-03 17:03,email,high,tax upgrade,1
+TK178327,57429,2026-04-03 08:03,2026-04-03 19:10,chat,Low,Help bug,2
+TK672714,78735,2026-04-03 08:25,2026-04-03 14:50,email,Low,Follow up error,0
+TK707066,63370,2026-04-03 09:35,2026-04-03 10:38,chat,High,please advise refund,1
+TK700388,21410,2026-04-03 10:46,2026-04-05 01:04,phone,P2,Again refund,0
+TK127703,20912,2026-04-03 11:49,2026-04-03 13:31,email,P1,app freezes login,0
+TK411290,35137,2026-04-03 11:52,2026-04-03 14:56,email,med,issue with card declined,0
+TK727944,45942,2026-04-03 12:17,2026-04-03 13:21,email,med,Help sso setup device not arrived,0
+TK867929,79759,2026-04-03 12:45,2026-04-03 16:47,chat,High,please advise upgrade,3
+TK701941,41179,2026-04-03 12:52,2026-04-03 17:01,phone,Medium,Problem with rename workspace error api timeout,0
+TK517847,73147,2026-04-03 13:07,2026-04-03 14:53,chat,p1,Again change email error shipment delayed,0
+TK211211,55810,2026-04-03 14:13,2026-04-03 18:02,email,high,Question about billing cycle,0
+TK171295,32345,2026-04-03 16:12,2026-04-03 20:32,email,medium,charged twice,0
+TK636208,51547,2026-04-03 16:48,2026-04-03 21:29,email,high,Follow up refund workspace,0
+TK829802,23868,2026-04-03 16:59,2026-04-04 07:58,chat,P2,AGAIN CRASH LOGIN,0
+TK516206,71553,2026-04-03 18:02,2026-04-04 01:07,email,med,please advise workspace,0
+TK966895,39304,2026-04-03 19:00,2026-04-04 01:55,email,P2,Upgrade cost,0
+TK474620,57964,2026-04-03 19:23,2026-04-04 11:30,email,P2,Problem with bug,0
+TK920753,40701,2026-04-03 20:00,2026-04-04 00:08,chat,P2,follow up billing contact,0
+TK928682,60118,2026-04-03 20:29,2026-04-04 02:59,email,medium,urgent tracking number,1
+TK189264,35993,2026-04-03 21:55,2026-04-04 00:20,chat,Medium,Username login,0
+TK130846,46090,2026-04-03 22:44,2026-04-04 08:27,chat,HIGH,export broken,1
+TK357178,33142,2026-04-03 22:50,,chat,high,please advise login,0
+TK302485,98183,2026-04-03 22:53,2026-04-04 02:41,phone,high,help payment page,0
+TK127923,48216,2026-04-03 23:52,2026-04-04 01:36,chat,Medium,change email,0
+TK477664,29333,2026-04-04 01:03,2026-04-04 02:20,email,low,ISSUE WITH CHANGE EMAIL,1
+TK825392,35727,2026-04-04 04:08,2026-04-04 07:42,chat,med,two-factor login,1
+TK382562,79451,2026-04-04 06:33,2026-04-04 20:39,email,Medium,Delivery invoice slow,0
+TK412107,56119,2026-04-04 07:51,2026-04-04 09:37,chat,P3,RENAME WORKSPACE,0
+TK525156,92701,2026-04-04 08:42,2026-04-04 18:49,chat,P1,Help package,0
+TK592613,95016,2026-04-04 09:23,2026-04-04 13:57,phone,med,Problem with remove user,0
+TK382581,91497,2026-04-04 10:31,2026-04-04 19:47,chat,high,question about integration tax,1
+TK151222,62661,2026-04-04 10:33,2026-04-04 13:05,email,high,Follow up payment page,1
+TK372050,42683,2026-04-04 10:43,2026-04-04 13:15,email,medium,Problem with billing cycle workspace,1
+TK244734,84656,2026-04-04 11:01,2026-04-04 12:55,chat,P3,problem with login,0
+TK198946,97674,2026-04-04 13:07,2026-04-04 14:56,phone,Medium,question about workspace,1
+TK861883,59091,2026-04-04 13:26,2026-04-04 20:21,chat,p1,question about overcharged,0
+TK280788,61807,2026-04-04 13:57,2026-04-04 15:04,email,med,problem with error,0
+TK502839,59091,2026-04-04 14:28,2026-04-05 08:17,chat,med,Help login loop locked out,2
+TK414449,69162,2026-04-04 14:34,2026-04-04 15:54,chat,High,card declined,0
+TK301750,66841,2026-04-04 15:24,2026-04-05 06:58,email,low,follow up refund,1
+TK368412,72215,2026-04-04 15:49,2026-04-04 18:57,phone,Medium,Delete account billing cycle,0
+TK853058,53846,2026-04-04 16:04,2026-04-04 17:02,phone,P1,billing cycle,0
+TK952946,84529,2026-04-04 17:51,2026-04-05 00:29,email,P1,issue with workspace,2
+TK305904,62312,2026-04-04 18:32,2026-04-04 23:01,email,med,subscription price,1
+TK311949,96456,2026-04-04 18:48,2026-04-05 05:21,email,P2,AGAIN LOGIN LOOP DEVICE NOT ARRIVED,2
+TK557809,85120,2026-04-04 18:52,2026-04-04 20:42,email,P1,Issue with billing contact,0
+TK177223,70153,2026-04-04 19:20,2026-04-04 21:28,email,p1,question about remove user login refund,0
+TK433755,89699,2026-04-04 19:25,,email,Medium,Payment failed,0
+TK736796,24370,2026-04-04 21:43,2026-04-05 03:22,chat,p1,subscription price workspace,1
+TK762737,83593,2026-04-04 22:02,2026-04-05 07:33,email,P3,help overcharged upgrade add user,1
+TK596139,42029,2026-04-04 22:05,2026-04-05 18:50,phone,P2,follow up app freezes tracking number,2
+TK209082,85073,2026-04-04 22:20,2026-04-05 04:07,chat,P3,Follow up overcharged,1
+TK359962,21771,2026-04-05 00:23,2026-04-05 03:43,chat,low,api timeout,1
+TK180316,35590,2026-04-05 00:48,2026-04-05 01:47,phone,P2,question about account,1
+TK449327,94166,2026-04-05 01:39,2026-04-05 07:22,email,P2,help login,1
+TK993153,90895,2026-04-05 01:53,,chat,medium,Urgent workspace,1
+TK455546,44458,2026-04-05 02:14,2026-04-05 19:31,chat,P3,issue with package device,1
+TK129699,90702,2026-04-05 03:07,2026-04-05 10:01,email,med,card declined,1
+TK153072,20861,2026-04-05 04:02,2026-04-05 12:31,email,Low,Problem with workspace,0
+TK364395,80704,2026-04-05 05:49,2026-04-05 11:13,chat,P2,500 error login,0
+TK381832,28580,2026-04-05 06:35,2026-04-05 10:20,chat,high,app freezes,1
+TK716710,93711,2026-04-05 07:30,2026-04-05 09:31,chat,p1,Question about login,0
+TK770027,88010,2026-04-05 07:30,2026-04-05 10:20,chat,P1,rename workspace login,0
+TK705473,97548,2026-04-05 07:31,2026-04-05 13:14,email,HIGH,delivery slow,0
+TK904297,99816,2026-04-05 07:38,2026-04-05 08:12,chat,Low,password reset error,0
+TK984003,22764,2026-04-05 08:06,2026-04-05 10:43,email,low,Rename workspace,1
+TK890588,99376,2026-04-05 08:53,2026-04-05 13:19,chat,low,URGENT PERMISSIONS,0
+TK395295,71519,2026-04-05 09:47,2026-04-05 13:35,email,high,issue with invoice,0
+TK765267,88134,2026-04-05 10:09,2026-04-05 12:59,email,medium,issue with upgrade,0
+TK676009,38232,2026-04-05 10:26,2026-04-05 11:15,email,low,Again sync failed upgrade cost,0
+TK661550,69162,2026-04-05 10:33,2026-04-05 13:01,email,Medium,refund,0
+TK604193,74129,2026-04-05 11:39,2026-04-05 13:28,chat,HIGH,Follow up device,1
+TK179951,64828,2026-04-05 11:56,2026-04-05 14:04,email,med,Problem with billing contact,0
+TK415461,38827,2026-04-05 12:34,2026-04-06 04:56,chat,P2,refund,1
+TK929905,58228,2026-04-05 13:07,2026-04-05 14:54,chat,P2,help error,0
+TK632307,22279,2026-04-05 13:20,2026-04-05 22:58,email,P2,Damaged box,2
+TK600700,93711,2026-04-05 15:48,2026-04-06 00:40,email,medium,urgent tax,0
+TK304697,51933,2026-04-05 15:50,,chat,Medium,export broken delete account,1
+TK436864,72923,2026-04-05 16:05,2026-04-05 19:56,email,Medium,help error,0
+TK233762,52300,2026-04-05 17:46,2026-04-05 18:50,email,P1,Follow up workspace,1
+TK772777,67295,2026-04-05 18:30,2026-04-05 21:54,phone,p1,Problem with billing contact,0
+TK272132,54002,2026-04-05 18:57,2026-04-06 12:47,chat,Low,not loading,2
+TK111575,69621,2026-04-05 19:48,2026-04-05 21:00,chat,P3,Problem with password reset login,0
+TK426461,26737,2026-04-05 20:20,2026-04-06 01:34,chat,medium,PLEASE ADVISE LOGIN,2
+TK963775,34992,2026-04-05 20:50,2026-04-06 03:49,email,HIGH,urgent receipt change email,0
+TK397396,55463,2026-04-05 20:55,2026-04-05 22:19,email,Medium,Locked out login,0
+TK531612,31254,2026-04-05 20:59,2026-04-06 12:09,chat,P2,subscription price,2
+TK125545,53880,2026-04-05 21:22,2026-04-06 04:49,email,P3,Username,2
+TK770457,86195,2026-04-05 21:40,2026-04-06 05:30,chat,P2,Follow up remove user,0
+TK919887,25217,2026-04-05 22:06,2026-04-06 01:06,chat,P2,delete account api timeout,0
+TK976163,78038,2026-04-06 01:39,,email,High,Follow up username,1
+TK677595,24878,2026-04-06 01:46,2026-04-06 05:44,chat,med,Issue with workspace,3
+TK994274,35623,2026-04-06 02:12,2026-04-06 07:24,email,Medium,Question about billing contact,0
+TK896602,55674,2026-04-06 02:42,2026-04-06 06:59,email,medium,Help delete account login,0
+TK998791,25770,2026-04-06 03:50,2026-04-06 07:57,email,Low,again invoice,2
+TK145353,43642,2026-04-06 05:21,2026-04-06 07:10,chat,p1,Help error,0
+TK517604,52965,2026-04-06 05:38,2026-04-06 22:26,chat,medium,Problem with crash damaged box,2
+TK786342,32621,2026-04-06 05:51,2026-04-06 19:29,email,P3,Bug payment page,4
+TK280004,24381,2026-04-06 07:07,,email,P2,tax account,1
+TK860102,66107,2026-04-06 07:26,2026-04-06 17:11,email,Medium,Please advise workspace,0
+TK406042,74375,2026-04-06 10:26,2026-04-06 12:57,email,med,urgent device,1
+TK663088,23965,2026-04-06 13:05,2026-04-06 17:12,chat,High,Overcharged,1
+TK449038,54484,2026-04-06 13:08,2026-04-06 17:57,email,low,follow up upgrade,0
+TK965946,71042,2026-04-06 13:51,2026-04-06 17:43,phone,low,urgent upgrade cost,1
+TK956676,31527,2026-04-06 14:05,2026-04-06 19:35,email,medium,card declined,1
+TK105862,85535,2026-04-06 14:16,2026-04-08 02:16,chat,P2,Question about login,0
+TK694758,98245,2026-04-06 15:05,2026-04-06 19:57,email,P2,Issue with device,0
+TK712299,39703,2026-04-06 16:11,2026-04-06 20:57,email,Low,issue with two-factor billing contact refund,0
+TK637142,82137,2026-04-06 16:17,2026-04-07 01:26,email,Low,question about login,2
+TK296131,37158,2026-04-06 17:03,2026-04-07 04:33,phone,P2,ISSUE WITH REFUND,0
+TK397815,93184,2026-04-06 18:04,2026-04-06 19:00,phone,HIGH,Issue with remove user billing cycle,0
+TK539150,50222,2026-04-06 19:00,2026-04-07 02:13,email,P3,Help app freezes payment page,1
+TK825698,98154,2026-04-06 19:14,2026-04-06 21:38,chat,p1,problem with receipt,0
+TK328170,75826,2026-04-06 19:16,2026-04-06 22:27,chat,high,RECEIPT,0
+TK327185,44157,2026-04-06 19:25,2026-04-06 23:00,chat,HIGH,problem with login,0
+TK556888,55674,2026-04-06 20:27,2026-04-07 15:21,phone,med,crash,0
+TK650876,98318,2026-04-06 20:31,2026-04-06 22:48,phone,P2,help permissions billing contact charged twice,0
+TK950841,53778,2026-04-06 21:33,2026-04-08 00:53,email,P3,error replacement unit,1
+TK229487,62202,2026-04-06 22:51,2026-04-06 23:38,phone,high,question about delete account,1
+TK689550,79712,2026-04-07 02:20,2026-04-07 03:13,email,medium,problem with upgrade cost remove user,1
+TK403186,45381,2026-04-07 02:57,2026-04-07 06:23,phone,medium,add user billing contact,0
+TK297300,43897,2026-04-07 03:09,2026-04-07 08:47,chat,P3,issue with workspace,0
+TK685597,43972,2026-04-07 03:35,2026-04-07 11:44,email,P3,urgent workspace,0
+TK907797,73070,2026-04-07 05:50,,chat,high,Problem with sso setup,0
+TK959907,77785,2026-04-07 06:27,,phone,P3,Password reset,0
+TK110924,88130,2026-04-07 08:27,,chat,p1,Issue with two-factor,0
+TK742937,72096,2026-04-07 09:16,2026-04-07 14:02,email,Low,urgent upgrade,0
+TK832866,35851,2026-04-07 09:49,2026-04-07 14:14,email,P1,issue with card declined,1
+TK404633,34405,2026-04-07 13:20,,email,p1,Urgent tax,0
+TK635178,52337,2026-04-07 13:22,2026-04-07 15:30,email,P1,Again login,0
+TK615508,25710,2026-04-07 14:24,2026-04-07 14:57,chat,med,please advise remove user billing contact billing cycle,0
+TK506830,21647,2026-04-07 14:45,2026-04-08 11:00,chat,med,Permissions,0
+TK700575,25543,2026-04-07 15:16,2026-04-07 17:45,email,Low,PLEASE ADVISE RECEIPT ACCOUNT CHANGE EMAIL,0
+TK313323,95507,2026-04-07 16:48,2026-04-07 20:48,chat,low,please advise error,0
+TK959385,26225,2026-04-07 16:54,2026-04-07 21:40,email,P2,again charged twice,0
+TK645018,82927,2026-04-07 17:09,2026-04-07 21:03,chat,Medium,follow up credit note change email,1
+TK200820,77430,2026-04-07 17:57,2026-04-07 23:44,phone,medium,Please advise device,2
+TK160463,78299,2026-04-07 19:40,2026-04-07 21:27,email,Medium,question about upgrade cost,1
+TK405827,45829,2026-04-07 20:14,2026-04-07 23:01,chat,med,Two-factor billing contact,1
+TK583883,88427,2026-04-07 20:31,2026-04-07 21:35,chat,High,Billing cycle,0
+TK923812,44117,2026-04-07 23:34,2026-04-08 08:58,email,med,Urgent export broken,1
+TK835278,36246,2026-04-08 00:09,2026-04-08 02:49,email,HIGH,Sso setup,0
+TK560290,55351,2026-04-08 00:15,2026-04-08 04:03,email,Medium,follow up workspace,1
+TK903672,23868,2026-04-08 00:50,2026-04-09 07:32,email,P2,question about refund,0
+TK530217,51255,2026-04-08 01:03,2026-04-08 11:05,email,Medium,follow up refund,0
+TK245207,78615,2026-04-08 01:11,2026-04-08 05:55,chat,High,problem with login,2
+TK771777,63557,2026-04-08 01:13,2026-04-08 19:50,email,medium,help invoice,1
+TK600784,35705,2026-04-08 01:52,2026-04-08 02:37,email,p1,permissions,0
+TK724010,91241,2026-04-08 03:07,2026-04-08 04:41,email,p1,UPGRADE COST UPGRADE,3
+TK795136,84493,2026-04-08 03:53,2026-04-08 05:09,email,high,follow up upgrade,1
+TK994694,84529,2026-04-08 04:46,2026-04-08 09:30,email,HIGH,AGAIN UPGRADE,0
+TK740591,57777,2026-04-08 05:25,2026-04-08 07:53,chat,Low,Issue with login,0
+TK847847,27356,2026-04-08 06:03,2026-04-08 21:51,chat,HIGH,HELP DEVICE,2
+TK535228,77534,2026-04-08 06:16,2026-04-09 02:42,chat,medium,urgent error,4
+TK765579,93974,2026-04-08 06:18,2026-04-08 12:57,chat,P3,Follow up invoice,2
+TK664522,72544,2026-04-08 06:21,2026-04-08 10:10,email,High,Package invoice,1
+TK621700,56669,2026-04-08 06:55,2026-04-08 08:58,phone,high,Urgent subscription price,1
+TK460248,38221,2026-04-08 07:20,2026-04-08 23:10,chat,Low,PLEASE ADVISE DEVICE NOT ARRIVED API TIMEOUT,1
+TK580107,21874,2026-04-08 07:26,2026-04-08 12:49,email,Medium,problem with payment page,1
+TK210392,77480,2026-04-08 07:59,2026-04-08 12:16,chat,med,Locked out,0
+TK539355,56035,2026-04-08 09:21,2026-04-08 11:50,email,low,Urgent upgrade,2
+TK863032,48494,2026-04-08 09:54,2026-04-08 19:58,email,low,Credit note,0
+TK164110,20000,2026-04-08 10:17,2026-04-09 02:51,email,med,urgent device,3
+TK954055,29025,2026-04-08 12:09,2026-04-08 18:19,email,P2,Please advise bug payment page,2
+TK289632,25117,2026-04-08 12:34,,email,med,Urgent password reset,0
+TK689701,60371,2026-04-08 14:52,2026-04-08 17:40,email,high,500 error,2
+TK270322,89851,2026-04-08 15:16,2026-04-08 21:59,email,P3,Please advise billing cycle workspace,0
+TK989599,46741,2026-04-08 15:17,2026-04-08 19:58,email,med,Api timeout,0
+TK861260,33870,2026-04-08 15:33,2026-04-08 18:51,email,Low,again change email billing contact,0
+TK610339,50005,2026-04-08 15:54,2026-04-08 23:05,email,low,please advise device not arrived error,2
+TK249557,54672,2026-04-08 16:36,2026-04-08 20:35,email,high,Issue with payment page,2
+TK143466,40639,2026-04-08 17:50,2026-04-08 19:06,chat,high,QUESTION ABOUT BUG DAMAGED BOX,1
+TK784856,55810,2026-04-08 18:18,2026-04-08 19:18,chat,high,crash device,1
+TK580252,36025,2026-04-08 19:31,2026-04-09 23:35,phone,Low,Return label,1
+TK142766,81170,2026-04-08 19:37,2026-04-08 20:48,email,Medium,Follow up locked out,0
+TK703198,63875,2026-04-08 20:13,2026-04-09 03:50,chat,med,please advise credit note,0
+TK807436,91759,2026-04-08 20:32,2026-04-08 23:18,chat,HIGH,Follow up upgrade cost workspace,1
+TK578935,35297,2026-04-08 21:25,2026-04-09 03:43,email,P1,payment failed,0
+TK281733,49585,2026-04-08 23:05,2026-04-09 01:43,email,high,issue with subscription price,0
+TK128801,27382,2026-04-08 23:31,2026-04-09 00:40,email,p1,Again login,0
+TK997544,88359,2026-04-08 23:38,2026-04-09 03:54,phone,low,Password reset,1
+TK452058,96456,2026-04-08 23:53,2026-04-09 04:45,email,P3,SUBSCRIPTION PRICE,1
+TK476296,64045,2026-04-09 00:08,2026-04-09 04:45,chat,p1,Question about billing contact,0
+TK781602,52697,2026-04-09 00:48,2026-04-09 13:05,chat,medium,urgent device,1
+TK513963,62005,2026-04-09 01:15,2026-04-09 17:17,chat,low,Again payment page,3
+TK428065,99437,2026-04-09 03:14,,email,Low,Follow up account,0
+TK792523,80783,2026-04-09 03:16,2026-04-09 07:09,email,low,urgent login,0
+TK221570,88747,2026-04-09 04:54,2026-04-09 16:23,chat,Medium,urgent billing contact,0
+TK356581,56928,2026-04-09 05:03,2026-04-09 09:04,email,low,Issue with account,1
+TK732584,20000,2026-04-09 05:30,2026-04-09 07:16,chat,P1,Follow up error,2
+TK695355,41832,2026-04-09 05:48,2026-04-09 09:20,chat,P2,nan,0
+TK227295,30412,2026-04-09 07:48,2026-04-09 10:20,chat,Medium,card declined,0
+TK634940,55697,2026-04-09 08:54,2026-04-09 10:13,chat,Medium,help locked out,0
+TK402327,86613,2026-04-09 09:14,2026-04-09 17:22,chat,Low,Problem with crash password reset,0
+TK804620,76715,2026-04-09 09:57,,chat,High,Follow up login,4
+TK236860,55490,2026-04-09 12:25,2026-04-09 19:20,chat,High,Question about sync failed login,1
+TK268565,54085,2026-04-09 12:40,2026-04-09 20:49,email,P2,card declined,1
+TK134860,59406,2026-04-09 12:50,2026-04-10 00:50,phone,high,help error device not arrived,2
+TK313264,42849,2026-04-09 13:16,2026-04-09 16:17,chat,med,Urgent billing contact,0
+TK105681,75883,2026-04-09 13:39,2026-04-10 02:28,phone,Low,question about refund,0
+TK765547,88405,2026-04-09 15:45,2026-04-09 21:04,phone,medium,add user login delivery,0
+TK490969,85842,2026-04-09 17:57,,email,high,add user bug,0
+TK925506,25770,2026-04-09 19:15,2026-04-10 04:39,email,P2,Please advise device not arrived,0
+TK853412,67071,2026-04-09 21:16,2026-04-10 03:20,email,medium,Sso setup,0
+TK123968,61368,2026-04-09 21:42,2026-04-10 02:02,email,med,Problem with billing contact,0
+TK202452,95016,2026-04-09 21:57,2026-04-10 09:58,chat,low,Issue with password reset,0
+TK223378,90004,2026-04-09 22:56,2026-04-10 01:01,email,medium,Please advise username,1
+TK209431,54977,2026-04-09 23:06,2026-04-10 09:11,email,low,SSO SETUP OVERCHARGED,0
+TK893952,76562,2026-04-09 23:07,2026-04-10 03:56,email,P2,issue with rename workspace login,0
+TK439251,87886,2026-04-10 00:29,,email,medium,Again device,1
+TK286143,75568,2026-04-10 01:50,2026-04-10 22:10,chat,medium,Follow up wrong address remove user,0
+TK826675,35406,2026-04-10 02:37,,email,High,please advise courier,1
+TK347048,35590,2026-04-10 03:40,2026-04-10 09:09,chat,P2,please advise rename workspace error,0
+TK460354,98245,2026-04-10 04:05,2026-04-10 06:35,email,High,question about export broken,1
+TK782562,57791,2026-04-10 04:29,2026-04-10 17:03,chat,high,Urgent payment page,2
+TK537358,45583,2026-04-10 05:16,2026-04-10 16:05,chat,P3,Question about workspace,0
+TK783420,28116,2026-04-10 05:20,2026-04-10 07:22,chat,low,Problem with login,1
+TK508939,24106,2026-04-10 05:37,2026-04-10 16:27,email,medium,urgent account,0
+TK289254,39625,2026-04-10 05:52,2026-04-10 07:22,email,Medium,question about invoice upgrade,0
+TK678202,86888,2026-04-10 06:19,,email,Medium,EXPORT BROKEN REPLACEMENT UNIT,2
+TK737513,24106,2026-04-10 07:05,2026-04-10 10:50,email,high,Again account,2
+TK810917,77430,2026-04-10 07:17,2026-04-10 14:43,chat,low,Again device,1
+TK493553,75033,2026-04-10 07:41,2026-04-10 12:58,chat,Medium,Again device,1
+TK297741,88037,2026-04-10 08:46,2026-04-10 21:51,email,med,sync failed,0
+TK172156,58476,2026-04-10 09:03,2026-04-10 16:17,email,HIGH,not loading,1
+TK226096,81509,2026-04-10 09:31,2026-04-11 03:57,email,high,Error,3
+TK971452,51741,2026-04-10 10:12,2026-04-10 15:08,email,P2,Issue with account,0
+TK910245,65700,2026-04-10 10:27,2026-04-10 16:40,email,Medium,payment failed delete account,0
+TK913021,42422,2026-04-10 11:12,2026-04-10 17:49,email,Medium,question about overcharged,1
+TK616121,34535,2026-04-10 11:35,,email,p1,Error,1
+TK825535,23531,2026-04-10 11:53,2026-04-11 12:33,chat,low,urgent payment page,1
+TK682956,55217,2026-04-10 12:45,2026-04-10 21:09,chat,low,Follow up device,3
+TK802788,95067,2026-04-10 12:52,2026-04-11 01:27,chat,med,crash payment page,1
+TK174771,20070,2026-04-10 13:07,2026-04-10 16:10,chat,medium,please advise billing contact,0
+TK774441,21647,2026-04-10 14:04,2026-04-10 22:38,chat,high,URGENT LOGIN,1
+TK791607,45944,2026-04-10 14:50,2026-04-11 05:55,phone,med,Integration device,0
+TK209806,51820,2026-04-10 16:13,2026-04-10 18:26,email,low,Problem with error,0
+TK921501,80385,2026-04-10 17:41,2026-04-11 04:49,chat,high,integration payment page,0
+TK747574,65599,2026-04-10 17:41,2026-04-11 02:28,chat,Low,again upgrade,0
+TK530344,72069,2026-04-10 18:28,2026-04-11 03:21,email,P2,api timeout device,3
+TK359453,58181,2026-04-10 20:22,2026-04-11 11:43,email,medium,sync failed,0
+TK393300,51914,2026-04-10 20:55,2026-04-11 01:16,email,HIGH,follow up error,4
+TK387862,20645,2026-04-10 21:09,2026-04-12 08:07,chat,Medium,Again integration,3
+TK813245,83515,2026-04-10 21:24,2026-04-11 04:34,email,P2,Help login,0
+TK314110,38221,2026-04-10 22:45,2026-04-10 23:37,email,high,two-factor invoice,1
+TK548863,36233,2026-04-10 22:47,2026-04-11 09:47,chat,P3,Please advise login,0
+TK906940,52403,2026-04-10 23:22,2026-04-11 03:28,email,low,Question about workspace,0
+TK332770,78622,2026-04-11 01:40,2026-04-11 10:20,chat,High,Integration,1
+TK399250,81509,2026-04-11 01:53,2026-04-11 06:46,phone,medium,help password reset billing contact,0
+TK980740,33493,2026-04-11 01:57,2026-04-11 05:59,phone,P2,help change email billing contact return label,0
+TK361065,39525,2026-04-11 03:41,2026-04-11 05:20,chat,P3,two-factor crash,0
+TK415314,23269,2026-04-11 04:11,2026-04-11 07:06,email,P2,please advise remove user login package,0
+TK180801,22273,2026-04-11 04:54,2026-04-11 07:04,chat,HIGH,Question about delete account login,0
+TK405318,27351,2026-04-11 05:27,2026-04-11 07:11,email,Medium,Password reset,1
+TK472729,99879,2026-04-11 05:48,2026-04-11 08:58,chat,medium,Change email,0
+TK301112,92171,2026-04-11 06:30,2026-04-11 07:30,phone,Low,Invoice slow,0
+TK239787,91008,2026-04-11 06:53,2026-04-11 12:57,phone,P2,Api timeout,1
+TK537012,24322,2026-04-11 07:07,2026-04-11 08:20,email,High,Add user,0
+TK466793,34535,2026-04-11 08:14,2026-04-11 10:03,email,Low,again billing cycle,1
+TK326109,35498,2026-04-11 08:15,2026-04-11 09:59,phone,high,delete account,1
+TK521503,56020,2026-04-11 09:03,,phone,Medium,damaged box,1
+TK588554,58879,2026-04-11 09:10,2026-04-11 13:47,email,med,tax,1
+TK178137,43742,2026-04-11 09:14,2026-04-11 15:57,chat,P2,problem with username,0
+TK158768,80461,2026-04-11 09:23,2026-04-12 03:37,phone,P2,Help payment page,1
+TK660026,21874,2026-04-11 09:59,2026-04-11 13:13,phone,high,App freezes,2
+TK173603,64785,2026-04-11 10:05,2026-04-11 12:16,email,medium,Again overcharged upgrade,0
+TK140988,99059,2026-04-11 10:55,2026-04-12 18:42,chat,P2,Urgent app freezes delivery,2
+TK102455,50729,2026-04-11 11:25,2026-04-11 13:01,phone,P2,nan,0
+TK463060,82417,2026-04-11 11:26,2026-04-11 15:28,chat,High,Integration,1
+TK969323,32866,2026-04-11 11:49,2026-04-11 13:37,phone,medium,Help login,0
+TK742040,72164,2026-04-11 12:02,2026-04-11 16:55,chat,Low,problem with account,0
+TK626165,91008,2026-04-11 12:03,2026-04-12 02:37,chat,Low,Help integration,0
+TK530900,53731,2026-04-11 12:30,2026-04-11 12:54,email,P2,Issue with two-factor,0
+TK646155,53804,2026-04-11 12:33,2026-04-11 13:09,email,HIGH,Question about billing contact,0
+TK300469,96280,2026-04-11 13:28,2026-04-12 08:19,email,High,Again device,2
+TK206675,93974,2026-04-11 13:33,2026-04-11 15:50,phone,low,Follow up receipt upgrade,1
+TK859163,33435,2026-04-11 13:34,2026-04-11 16:14,phone,low,password reset,1
+TK915582,41461,2026-04-11 14:54,2026-04-13 14:40,chat,P3,help error login,1
+TK464237,48266,2026-04-11 15:01,,chat,High,help api timeout,1
+TK389254,41615,2026-04-11 15:59,2026-04-12 12:38,chat,P2,Login loop,1
+TK288506,65794,2026-04-11 16:01,2026-04-11 16:47,email,Medium,problem with upgrade,0
+TK564076,85354,2026-04-11 16:32,2026-04-12 09:23,email,low,Tax,2
+TK476450,80044,2026-04-11 17:17,2026-04-11 18:18,chat,medium,Urgent rename workspace sync failed,0
+TK324992,86229,2026-04-11 17:58,2026-04-11 21:01,chat,P3,not loading,0
+TK411036,72358,2026-04-11 21:55,2026-04-12 06:14,email,medium,billing cycle,0
+TK300138,72062,2026-04-11 23:14,2026-04-12 04:10,chat,low,Please advise login,0
+TK130158,30242,2026-04-12 00:13,2026-04-12 04:23,email,HIGH,card declined upgrade sso setup,1
+TK513891,37252,2026-04-12 00:46,2026-04-12 14:09,email,medium,follow up error device not arrived,3
+TK392059,77278,2026-04-12 00:47,2026-04-12 04:15,email,med,Question about login,0
+TK960857,65441,2026-04-12 02:23,2026-04-12 07:59,email,med,two-factor,0
+TK522875,55426,2026-04-12 02:43,2026-04-12 05:43,email,med,Invoice,0
+TK694838,52261,2026-04-12 03:20,2026-04-12 08:32,phone,Medium,QUESTION ABOUT LOGIN,0
+TK593368,82693,2026-04-12 03:30,2026-04-12 07:03,chat,HIGH,login loop,1
+TK664936,94951,2026-04-12 04:57,2026-04-12 07:34,phone,P3,question about payment page,1
+TK950405,32907,2026-04-12 05:00,2026-04-12 07:06,chat,med,PLEASE ADVISE SUBSCRIPTION PRICE ADD USER,0
+TK289999,82744,2026-04-12 05:20,,phone,high,please advise workspace,1
+TK944266,84461,2026-04-12 05:34,2026-04-12 08:05,email,med,issue with billing contact,0
+TK860598,92238,2026-04-12 05:35,2026-04-12 22:42,chat,med,again slow,0
+TK247750,45947,2026-04-12 05:37,,email,P2,AGAIN DEVICE,1
+TK685809,24897,2026-04-12 05:38,2026-04-12 12:22,phone,low,Crash,0
+TK975103,83142,2026-04-12 05:56,2026-04-12 06:55,chat,Medium,Again error,1
+TK785248,48362,2026-04-12 06:43,2026-04-12 13:20,email,HIGH,NOT LOADING PAYMENT PAGE DELIVERY,1
+TK924772,45715,2026-04-12 07:09,2026-04-12 14:21,chat,Medium,urgent account,0
+TK986552,92203,2026-04-12 07:36,2026-04-12 12:00,email,low,sync failed payment page,1
+TK899095,55368,2026-04-12 07:52,2026-04-12 09:06,chat,Medium,Change email error,0
+TK580929,29410,2026-04-12 07:54,2026-04-12 11:23,email,P3,question about add user,2
+TK184917,41414,2026-04-12 08:02,2026-04-12 14:54,chat,P3,problem with not loading login,1
+TK645561,83586,2026-04-12 09:25,2026-04-12 10:17,phone,HIGH,issue with add user,0
+TK678286,78551,2026-04-12 09:27,2026-04-12 09:52,email,Low,please advise upgrade,1
+TK323516,33861,2026-04-12 10:22,2026-04-12 17:30,chat,Medium,AGAIN LOGIN LOOP SSO SETUP,1
+TK166230,45393,2026-04-12 11:23,2026-04-13 05:53,chat,low,App freezes tax,1
+TK599524,79396,2026-04-12 14:39,2026-04-12 23:02,phone,P2,question about charged twice account,1
+TK417474,80385,2026-04-12 14:40,,chat,Medium,URGENT ACCOUNT,0
+TK308741,92385,2026-04-12 14:56,2026-04-12 15:31,email,High,Change email,0
+TK585328,50514,2026-04-12 15:40,2026-04-12 16:25,email,low,Please advise error,0
+TK960076,26225,2026-04-12 16:28,2026-04-12 19:38,chat,medium,follow up permissions,0
+TK126608,76716,2026-04-12 17:00,2026-04-12 17:54,email,HIGH,issue with overcharged upgrade,0
+TK120572,42985,2026-04-12 17:58,2026-04-12 18:11,email,High,Question about error,0
+TK850636,54253,2026-04-12 18:40,2026-04-13 03:47,chat,P3,help sso setup billing contact,1
+TK859976,94394,2026-04-12 19:27,2026-04-12 22:02,email,low,card declined return label,1
+TK168199,73110,2026-04-12 19:38,2026-04-13 14:11,email,Medium,shipment delayed,0
+TK865620,98128,2026-04-12 19:43,,phone,P1,issue with login,1
+TK188283,37210,2026-04-12 19:44,2026-04-13 17:29,phone,medium,tracking number,0
+TK896146,86987,2026-04-12 19:51,2026-04-12 20:54,phone,High,Card declined,1
+TK138034,95132,2026-04-12 19:56,,chat,P3,billing cycle,1
+TK801068,24878,2026-04-12 21:00,2026-04-13 02:20,phone,Low,Issue with billing contact,0
+TK574557,30767,2026-04-12 21:54,2026-04-13 03:28,email,P2,QUESTION ABOUT LOGIN,1
+TK435282,47020,2026-04-12 22:45,2026-04-13 00:24,phone,High,Please advise upgrade,0
+TK932322,88933,2026-04-12 23:07,2026-04-13 02:59,chat,medium,problem with workspace,1
+TK759990,55490,2026-04-13 00:36,,email,HIGH,PLEASE ADVISE ACCOUNT,1
+TK805296,39233,2026-04-13 01:16,2026-04-13 22:30,email,medium,sync failed,0
+TK519275,53326,2026-04-13 03:34,2026-04-13 05:52,email,medium,please advise refund,1
+TK969891,25720,2026-04-13 06:04,2026-04-13 10:37,email,P1,Follow up integration payment page,1
+TK929917,41543,2026-04-13 06:20,2026-04-13 09:43,chat,med,change email billing contact,0
+TK579081,85030,2026-04-13 06:38,2026-04-13 15:46,chat,med,please advise error,1
+TK888930,93407,2026-04-13 07:14,2026-04-13 17:20,email,P3,urgent device,3
+TK737489,64150,2026-04-13 07:15,2026-04-14 03:15,chat,Medium,login loop,2
+TK517234,40714,2026-04-13 08:13,2026-04-13 12:07,chat,med,two-factor,0
+TK853488,67544,2026-04-13 10:15,2026-04-13 15:48,chat,medium,tax workspace,0
+TK925622,43955,2026-04-13 10:47,2026-04-13 19:35,chat,high,QUESTION ABOUT BILLING CYCLE,0
+TK933647,58270,2026-04-13 11:54,,chat,Medium,urgent remove user,0
+TK197448,54810,2026-04-13 12:08,2026-04-13 16:21,email,Medium,Receipt api timeout,0
+TK933437,45948,2026-04-13 12:21,2026-04-13 12:53,email,Medium,question about add user,0
+TK856398,90209,2026-04-13 12:56,2026-04-13 19:36,email,P1,integration,1
+TK831862,70081,2026-04-13 13:35,2026-04-13 17:53,email,Low,two-factor,0
+TK540598,48610,2026-04-13 14:29,2026-04-13 22:45,chat,Low,please advise remove user upgrade cost,0
+TK612782,34458,2026-04-13 15:30,2026-04-13 19:51,email,low,urgent sso setup,1
+TK185335,74168,2026-04-13 15:55,2026-04-13 21:32,email,Medium,Refund tracking number,2
+TK445525,91254,2026-04-13 16:16,2026-04-14 02:04,email,P1,Help workspace,1
+TK944741,45897,2026-04-13 16:49,2026-04-13 17:51,email,low,Issue with login,0
+TK605523,89053,2026-04-13 17:20,2026-04-14 02:51,chat,medium,Replacement unit,1
+TK645357,20052,2026-04-13 17:31,2026-04-13 20:13,chat,low,Again device,3
+TK395667,67626,2026-04-13 18:09,2026-04-14 00:16,chat,high,Urgent payment failed,0
+TK118300,82415,2026-04-13 18:23,2026-04-13 19:33,email,High,Follow up charged twice,0
+TK213200,71343,2026-04-13 19:17,2026-04-13 23:31,email,Low,follow up add user receipt,1
+TK268689,55810,2026-04-13 20:54,,chat,Medium,question about payment page,4
+TK711105,66645,2026-04-13 22:12,2026-04-14 12:17,chat,low,urgent receipt,2
+TK757962,78053,2026-04-13 22:18,2026-04-14 04:58,phone,high,Again app freezes,1
+TK249182,95676,2026-04-13 22:31,2026-04-14 16:20,chat,high,Export broken,2
+TK724020,76499,2026-04-13 22:50,,email,Medium,Problem with charged twice,0
+TK767304,82806,2026-04-13 23:20,2026-04-13 23:53,phone,med,follow up billing contact,0
+TK491665,56928,2026-04-13 23:39,2026-04-14 04:23,chat,HIGH,issue with workspace,0
+TK567218,53593,2026-04-14 00:03,2026-04-14 07:55,phone,P2,Urgent permissions,0
+TK180788,77635,2026-04-14 00:04,2026-04-14 07:43,email,Medium,Again bug device,2
+TK968578,73099,2026-04-14 00:06,2026-04-14 01:36,phone,med,Please advise password reset login,1
+TK371700,53222,2026-04-14 00:49,2026-04-14 03:49,chat,P2,follow up billing contact,0
+TK382324,51255,2026-04-14 02:45,2026-04-14 18:06,phone,low,urgent refund,1
+TK911223,84817,2026-04-14 04:45,2026-04-14 15:53,email,low,AGAIN TAX 500 ERROR,0
+TK381184,25658,2026-04-14 05:11,2026-04-14 14:23,chat,P2,Follow up payment failed account,0
+TK315664,76689,2026-04-14 05:13,2026-04-14 13:55,email,HIGH,please advise device,0
+TK700520,32902,2026-04-14 05:31,2026-04-14 17:52,email,P3,Problem with bug,1
+TK785723,77034,2026-04-14 05:53,2026-04-14 14:05,chat,P3,Question about overcharged account,0
+TK389948,35965,2026-04-14 08:30,2026-04-14 14:07,email,med,problem with device,1
+TK476170,80272,2026-04-14 08:44,2026-04-14 14:22,chat,HIGH,help 500 error,0
+TK534240,97548,2026-04-14 10:23,2026-04-14 14:29,email,high,Question about upgrade,1
+TK434991,88516,2026-04-14 10:49,2026-04-14 19:26,chat,p1,Follow up bug login,3
+TK961168,49597,2026-04-14 11:02,2026-04-14 12:41,chat,High,problem with sso setup billing contact,0
+TK751086,36603,2026-04-14 11:24,2026-04-14 13:48,phone,Medium,charged twice account,1
+TK440923,49758,2026-04-14 12:08,2026-04-14 18:13,chat,p1,Tracking number,1
+TK800032,56096,2026-04-14 12:33,2026-04-14 16:21,chat,P2,question about upgrade cost,0
+TK899005,55187,2026-04-14 12:37,2026-04-14 15:02,chat,med,urgent receipt upgrade return label,1
+TK950982,66777,2026-04-14 15:34,2026-04-14 17:58,chat,med,password reset login,0
+TK381027,77368,2026-04-14 15:57,2026-04-15 12:30,chat,Low,Question about sync failed,1
+TK967038,74168,2026-04-14 17:41,2026-04-14 18:52,chat,P3,Follow up username integration,0
+TK783970,36178,2026-04-14 18:58,2026-04-15 01:52,email,p1,urgent billing cycle replacement unit,2
+TK203596,45191,2026-04-14 20:37,2026-04-15 01:53,chat,Medium,two-factor error,0
+TK871876,36766,2026-04-14 22:07,2026-04-14 22:59,email,HIGH,Charged twice upgrade,0
+TK730324,83142,2026-04-14 23:50,2026-04-15 00:23,email,P1,Urgent login,1
+TK112844,40049,2026-04-15 00:13,,chat,P2,Replacement unit invoice,3
+TK327335,95540,2026-04-15 00:29,2026-04-15 03:32,email,HIGH,Integration,0
+TK784060,60300,2026-04-15 00:56,2026-04-15 05:11,email,Medium,Device not arrived delete account,1
+TK531340,48610,2026-04-15 01:03,2026-04-15 03:46,phone,High,problem with app freezes billing cycle,4
+TK584059,89533,2026-04-15 03:19,2026-04-15 09:02,chat,medium,payment failed account username,0
+TK275955,29410,2026-04-15 04:29,2026-04-15 14:00,chat,med,Issue with delivery invoice crash,1
+TK349376,92416,2026-04-15 05:20,2026-04-15 08:34,phone,high,Login loop payment page,2
+TK890846,24160,2026-04-15 05:50,2026-04-15 12:35,email,P3,nan,0
+TK616747,39233,2026-04-15 06:42,2026-04-15 18:28,email,P2,please advise username,1
+TK551264,57306,2026-04-15 08:17,2026-04-15 09:59,email,Medium,Urgent card declined,1
+TK829494,89143,2026-04-15 09:12,2026-04-15 22:43,email,Low,Login loop,2
+TK830979,96827,2026-04-15 09:20,2026-04-15 14:47,chat,medium,Issue with change email credit note,0
+TK957676,96109,2026-04-15 10:42,2026-04-15 13:22,chat,P1,again rename workspace,0
+TK602801,33586,2026-04-15 11:08,2026-04-15 13:27,phone,HIGH,login loop,1
+TK988257,85842,2026-04-15 13:01,2026-04-15 14:24,email,low,Please advise billing contact,0
+TK643153,48940,2026-04-15 13:10,2026-04-15 16:54,chat,med,sso setup login,0
+TK772759,60190,2026-04-15 14:04,2026-04-15 20:27,phone,medium,password reset,1
+TK228702,38392,2026-04-15 14:09,2026-04-16 07:00,chat,low,error,2
+TK986326,75802,2026-04-15 14:40,2026-04-15 15:54,chat,P2,Problem with error,0
+TK987347,68243,2026-04-15 16:04,2026-04-16 00:24,email,med,Credit note,2
+TK562648,22533,2026-04-15 19:39,2026-04-16 05:34,email,med,urgent bug device,2
+TK319486,94971,2026-04-15 20:02,2026-04-16 00:17,phone,medium,Locked out,0
+TK694112,69157,2026-04-15 20:53,2026-04-15 21:35,phone,p1,500 error,0
+TK553069,56142,2026-04-15 21:42,2026-04-16 00:37,email,P1,Question about payment page,2
+TK658823,65477,2026-04-16 00:48,2026-04-17 11:40,phone,P3,urgent invoice,0
+TK162289,70366,2026-04-16 02:00,2026-04-17 00:55,chat,med,again replacement unit invoice username,0
+TK366093,79677,2026-04-16 02:46,2026-04-16 08:28,email,low,Receipt,0
+TK805987,31583,2026-04-16 03:46,2026-04-16 10:33,chat,P2,follow up refund,0
+TK947055,25543,2026-04-16 04:42,2026-04-16 07:03,phone,Low,remove user,0
+TK365874,48317,2026-04-16 05:05,2026-04-16 16:31,chat,low,not loading payment page,5
+TK343813,40482,2026-04-16 05:55,2026-04-16 16:48,chat,medium,question about slow overcharged,1
+TK534595,72646,2026-04-16 06:05,2026-04-16 21:53,chat,high,Export broken,2
+TK143372,50005,2026-04-16 06:32,2026-04-16 06:49,chat,P2,add user,0
+TK672624,64885,2026-04-16 08:04,,phone,med,Again login,0
+TK690527,24485,2026-04-16 09:03,2026-04-16 10:42,chat,medium,Sso setup,0
+TK330663,96425,2026-04-16 10:56,2026-04-16 13:08,email,P1,invoice,0
+TK273975,40983,2026-04-16 11:28,2026-04-16 20:00,email,low,help permissions,0
+TK881900,52300,2026-04-16 11:47,2026-04-16 23:47,chat,P2,Urgent overcharged,0
+TK709474,85178,2026-04-16 12:01,2026-04-16 13:17,chat,medium,Issue with permissions error,0
+TK319157,56489,2026-04-16 13:31,2026-04-17 03:09,chat,p1,integration,3
+TK171089,84494,2026-04-16 16:51,2026-04-16 19:05,chat,P3,nan,1
+TK310001,84817,2026-04-16 18:13,,chat,Medium,Please advise device,2
+TK899075,77368,2026-04-16 18:27,,chat,P2,Two-factor,0
+TK856690,57443,2026-04-16 19:11,2026-04-17 02:02,email,HIGH,Please advise device,3
+TK111550,44913,2026-04-16 19:18,2026-04-17 03:46,email,P2,follow up export broken payment page,2
+TK907112,39834,2026-04-16 19:29,2026-04-16 22:42,email,High,help overcharged,2
+TK944842,67096,2026-04-16 20:33,2026-04-17 04:14,chat,High,Please advise device,0
+TK627899,50365,2026-04-16 20:50,2026-04-18 12:23,phone,medium,Device not arrived,1
+TK219944,97591,2026-04-16 22:03,2026-04-17 19:46,email,med,again damaged box,1
+TK699385,64223,2026-04-16 22:05,2026-04-17 02:30,phone,med,Again delivery payment failed,0
+TK121942,59017,2026-04-16 22:14,2026-04-17 01:27,email,High,slow device,0
+TK488644,45948,2026-04-16 23:03,2026-04-17 02:54,email,medium,Follow up rename workspace,0
+TK624271,78361,2026-04-16 23:53,2026-04-17 09:48,chat,HIGH,question about device,1
+TK734416,28496,2026-04-17 00:01,2026-04-17 11:49,email,high,problem with error payment page,3
+TK135621,54265,2026-04-17 00:04,2026-04-17 06:59,email,low,Question about upgrade cost,0
+TK830362,83840,2026-04-17 01:43,2026-04-17 02:07,email,high,overcharged,1
+TK372162,37490,2026-04-17 01:57,2026-04-17 03:09,email,Medium,permissions bug,0
+TK163949,42452,2026-04-17 02:18,2026-04-17 12:47,email,medium,Urgent error,1
+TK134706,40337,2026-04-17 02:47,2026-04-17 05:15,chat,low,Please advise billing contact,0
+TK114146,46410,2026-04-17 02:48,,email,Medium,question about app freezes,3
+TK599904,88332,2026-04-17 02:59,2026-04-17 09:22,email,p1,Problem with invoice add user,0
+TK399197,55068,2026-04-17 03:26,2026-04-17 04:28,chat,med,payment failed upgrade,0
+TK347771,86150,2026-04-17 04:27,2026-04-17 09:30,chat,P1,Again device,1
+TK260832,83311,2026-04-17 04:28,2026-04-17 08:04,email,low,follow up username,0
+TK443276,23653,2026-04-17 04:36,2026-04-17 06:15,email,HIGH,issue with add user,0
+TK564630,99594,2026-04-17 04:37,2026-04-17 09:50,phone,P1,500 error device,2
+TK241046,72215,2026-04-17 05:00,2026-04-17 07:35,email,medium,ISSUE WITH LOGIN,0
+TK120228,55317,2026-04-17 05:34,2026-04-17 07:03,email,High,urgent upgrade,0
+TK156830,34992,2026-04-17 06:44,2026-04-17 08:20,chat,P2,problem with api timeout device,2
+TK170393,97674,2026-04-17 08:31,2026-04-17 15:52,chat,med,again app freezes,1
+TK550165,44605,2026-04-17 09:29,2026-04-17 15:31,chat,P3,please advise billing cycle password reset,0
+TK326064,90513,2026-04-17 11:59,2026-04-17 15:21,email,low,problem with change email login,0
+TK386148,20568,2026-04-17 12:35,2026-04-17 16:39,chat,P2,issue with change email,0
+TK751129,60332,2026-04-17 13:00,2026-04-17 14:22,chat,P3,Question about add user,0
+TK323631,63991,2026-04-17 14:16,2026-04-17 17:08,email,medium,Again rename workspace,0
+TK787312,42911,2026-04-17 14:41,2026-04-17 23:17,email,low,Please advise package,0
+TK539641,90004,2026-04-17 14:49,2026-04-17 17:50,email,med,problem with payment failed add user,0
+TK155199,63875,2026-04-17 16:56,2026-04-18 04:17,chat,high,follow up error,1
+TK178321,81033,2026-04-17 18:18,2026-04-18 03:02,email,HIGH,Wrong address,1
+TK968991,89533,2026-04-17 18:39,2026-04-18 05:21,email,High,sync failed device,1
+TK987445,84671,2026-04-17 18:51,2026-04-18 07:40,chat,med,Follow up card declined,0
+TK337337,57760,2026-04-17 19:24,2026-04-18 05:07,phone,p1,Please advise bug payment page,2
+TK913023,72269,2026-04-17 20:54,2026-04-18 03:59,email,P3,remove user,0
+TK213897,77312,2026-04-17 21:17,2026-04-17 23:41,phone,high,Please advise subscription price,0
+TK398689,21647,2026-04-17 23:33,2026-04-18 00:30,email,High,two-factor,0
+TK449022,43219,2026-04-17 23:50,2026-04-18 06:40,phone,High,issue with tax upgrade,1
+TK914947,55058,2026-04-18 02:32,2026-04-18 16:47,chat,P3,Help error,2
+TK591063,74969,2026-04-18 02:47,2026-04-18 09:19,phone,medium,Help error,0
+TK378560,97823,2026-04-18 03:02,2026-04-18 10:32,phone,Medium,again billing cycle workspace rename workspace,1
+TK568346,57646,2026-04-18 03:03,2026-04-18 09:13,chat,high,PROBLEM WITH LOGIN,2
+TK431989,79064,2026-04-18 05:28,2026-04-18 20:07,chat,Low,export broken,1
+TK123454,46097,2026-04-18 05:58,2026-04-18 07:14,email,high,remove user,1
+TK384139,26648,2026-04-18 07:11,2026-04-18 11:44,chat,high,nan,0
+TK302234,35388,2026-04-18 07:16,2026-04-18 07:21,phone,high,Again two-factor app freezes,0
+TK250755,65435,2026-04-18 07:23,2026-04-18 13:20,chat,Low,help payment failed,2
+TK344344,70148,2026-04-18 08:02,2026-04-18 12:46,email,medium,again account,0
+TK880802,49608,2026-04-18 08:42,2026-04-18 13:02,chat,High,Issue with sync failed payment page,0
+TK842592,97642,2026-04-18 09:13,2026-04-18 18:57,chat,medium,wrong address,1
+TK977104,38968,2026-04-18 09:29,2026-04-18 23:57,email,Medium,integration,2
+TK771158,72294,2026-04-18 09:51,2026-04-18 12:29,email,P3,Question about courier,2
+TK274436,60407,2026-04-18 10:35,2026-04-18 14:08,email,P1,question about upgrade,0
+TK531782,28970,2026-04-18 10:51,2026-04-18 12:20,chat,P3,Issue with login,0
+TK311679,54085,2026-04-18 10:59,2026-04-18 22:17,chat,HIGH,Help login,1
+TK422496,29260,2026-04-18 11:13,2026-04-18 12:38,email,P2,problem with add user,0
+TK824095,66247,2026-04-18 11:49,2026-04-18 15:04,email,P3,issue with login,0
+TK357012,47303,2026-04-18 11:56,2026-04-19 00:21,email,P2,Refund account,1
+TK734014,62929,2026-04-18 13:05,2026-04-18 15:35,email,P3,refund account,0
+TK947486,56576,2026-04-18 16:30,2026-04-19 08:31,chat,P2,sync failed payment page wrong address,2
+TK766530,33610,2026-04-18 16:53,2026-04-18 17:28,email,p1,please advise login loop refund,1
+TK351508,72887,2026-04-18 17:14,2026-04-19 03:18,email,Medium,two-factor billing contact,1
+TK937347,54703,2026-04-18 18:35,2026-04-19 10:30,email,Low,question about slow,1
+TK321022,26403,2026-04-18 18:43,2026-04-18 20:34,phone,medium,Please advise password reset device not arrived,0
+TK365853,63991,2026-04-18 19:38,2026-04-18 21:23,email,medium,urgent account,1
+TK193999,22014,2026-04-18 21:00,2026-04-19 04:43,chat,med,500 error payment page,2
+TK858533,31617,2026-04-18 22:02,2026-04-18 23:19,chat,p1,Courier,2
+TK494528,47303,2026-04-18 22:39,2026-04-19 00:02,chat,P1,credit note permissions,0
+TK891886,23735,2026-04-19 00:19,2026-04-20 05:18,email,P3,problem with login,1
+TK516934,86154,2026-04-19 03:02,2026-04-19 15:52,phone,P1,question about refund,1
+TK610903,71947,2026-04-19 04:14,2026-04-19 05:02,phone,HIGH,Add user,1
+TK500359,53804,2026-04-19 06:41,2026-04-19 11:45,email,Low,Question about permissions,1
+TK250504,71576,2026-04-19 07:27,2026-04-19 20:20,phone,P3,Add user return label,0
+TK670850,57709,2026-04-19 07:44,,email,P2,question about app freezes,3
+TK302064,63597,2026-04-19 08:56,2026-04-19 22:05,email,p1,help crash payment page,4
+TK710800,27356,2026-04-19 10:57,2026-04-19 17:58,chat,p1,login loop device,1
+TK470213,57469,2026-04-19 11:16,2026-04-19 17:34,chat,P2,problem with subscription price account rename workspace,0
+TK996000,46213,2026-04-19 11:48,2026-04-19 18:29,chat,medium,Delete account,0
+TK221233,33435,2026-04-19 14:43,2026-04-19 16:59,phone,HIGH,Sync failed remove user,2
+TK656084,65711,2026-04-19 15:32,2026-04-20 00:11,email,P1,Again payment page,1
+TK407130,58481,2026-04-19 17:13,2026-04-19 19:05,chat,P2,AGAIN RENAME WORKSPACE BUG,0
+TK690248,62731,2026-04-19 17:17,2026-04-19 20:09,email,p1,follow up billing contact,0
+TK623360,91800,2026-04-19 17:50,2026-04-19 18:44,email,P2,Help error,0
+TK268444,48317,2026-04-19 18:02,2026-04-20 16:06,email,medium,help device,1
+TK310787,48520,2026-04-19 20:32,2026-04-19 23:24,chat,medium,again remove user,0
+TK410786,81876,2026-04-19 20:55,2026-04-20 05:37,chat,med,Help billing contact,0
+TK514383,87707,2026-04-19 21:04,2026-04-20 01:11,phone,P3,urgent payment page,0
+TK362588,85586,2026-04-19 21:58,,chat,P1,help upgrade cost,0
+TK491504,68014,2026-04-19 22:59,2026-04-20 01:03,email,med,Again username,0
+TK153255,89600,2026-04-20 00:30,2026-04-20 06:13,email,low,delete account login,0
+TK752280,79086,2026-04-20 00:52,2026-04-20 09:06,chat,Medium,Urgent rename workspace,0
+TK426105,83486,2026-04-20 01:39,2026-04-20 02:02,chat,P1,username login,0
+TK636868,73099,2026-04-20 02:47,2026-04-20 06:20,email,HIGH,nan,0
+TK155584,45283,2026-04-20 02:53,2026-04-20 06:09,email,low,please advise billing contact,0
+TK669135,62427,2026-04-20 03:05,2026-04-20 06:26,email,high,Permissions,0
+TK727099,21605,2026-04-20 03:08,2026-04-20 11:14,email,Medium,slow,0
+TK502395,63913,2026-04-20 03:30,2026-04-20 10:38,email,P2,help workspace,0
+TK881070,48766,2026-04-20 03:32,2026-04-20 11:51,email,P2,rename workspace,0
+TK776415,57918,2026-04-20 06:11,2026-04-20 09:43,chat,High,Sync failed,0
+TK169654,26598,2026-04-20 06:40,2026-04-20 12:11,email,p1,app freezes payment page,3
+TK946298,56146,2026-04-20 07:26,2026-04-20 14:21,chat,medium,question about device,2
+TK755593,76105,2026-04-20 07:44,,chat,Low,two-factor login,1
+TK523745,56189,2026-04-20 08:47,2026-04-20 13:59,chat,low,Login loop,2
+TK712754,72938,2026-04-20 08:52,2026-04-20 13:38,email,Medium,error,2
+TK448676,99879,2026-04-20 08:55,2026-04-20 12:11,chat,low,not loading,1
+TK401649,54085,2026-04-20 09:34,2026-04-21 03:53,email,Low,Again slow device not arrived,2
+TK801460,28516,2026-04-20 09:42,2026-04-20 15:25,chat,HIGH,bug,0
+TK132738,23248,2026-04-20 10:25,2026-04-20 19:16,email,high,Question about login,1
+TK518516,35911,2026-04-20 11:20,2026-04-21 02:49,email,HIGH,PLEASE ADVISE REPLACEMENT UNIT,0
+TK241445,64516,2026-04-20 11:23,2026-04-20 16:52,chat,Medium,Follow up app freezes device permissions,2
+TK982737,67294,2026-04-20 11:35,2026-04-20 13:42,email,med,follow up billing contact,0
+TK741968,27366,2026-04-20 12:36,2026-04-20 13:05,chat,high,500 error device,2
+TK304205,84219,2026-04-20 13:35,2026-04-20 14:03,chat,med,help locked out login,1
+TK186282,48083,2026-04-20 15:31,2026-04-20 23:13,email,med,Locked out,0
+TK652769,67730,2026-04-20 16:30,2026-04-20 18:26,email,Medium,receipt,0
+TK741207,31611,2026-04-20 19:15,2026-04-21 02:26,chat,P2,question about upgrade,0
+TK573232,62354,2026-04-20 20:39,2026-04-21 08:37,phone,med,integration locked out,0
+TK749189,47737,2026-04-20 22:24,2026-04-21 04:29,email,Medium,issue with charged twice,0
+TK208790,20341,2026-04-20 22:57,2026-04-20 23:48,email,P2,Help error,0
+TK741063,74210,2026-04-20 23:10,2026-04-21 05:04,email,high,please advise wrong address,2
+TK427583,83840,2026-04-21 00:14,2026-04-21 13:49,email,P2,question about device,0
+TK230572,59624,2026-04-21 00:26,2026-04-22 01:42,chat,P3,Package refund,3
+TK265813,31715,2026-04-21 00:35,2026-04-21 08:19,email,Low,Sync failed,1
+TK520239,40938,2026-04-21 00:37,2026-04-21 07:53,email,high,urgent device,1
+TK982703,42911,2026-04-21 01:38,2026-04-21 07:17,email,med,Follow up damaged box device,2
+TK604895,37920,2026-04-21 01:57,2026-04-21 05:16,email,Low,password reset,0
+TK647040,28496,2026-04-21 03:03,2026-04-21 05:25,email,high,follow up login,0
+TK168459,46092,2026-04-21 03:32,2026-04-21 08:48,phone,Medium,Help error,0
+TK462054,42549,2026-04-21 04:00,2026-04-21 05:16,phone,p1,PROBLEM WITH PERMISSIONS ERROR,0
+TK529880,89203,2026-04-21 04:26,2026-04-21 05:45,phone,P1,help login,0
+TK759355,80425,2026-04-21 05:07,2026-04-21 08:54,phone,P3,rename workspace,1
+TK817614,40334,2026-04-21 06:04,2026-04-21 09:56,chat,P1,help error,0
+TK966601,83229,2026-04-21 06:08,2026-04-21 20:14,email,P3,problem with invoice,1
+TK170382,74416,2026-04-21 06:30,2026-04-21 08:13,chat,med,Urgent billing contact,0
+TK173200,83431,2026-04-21 06:39,2026-04-21 07:56,chat,P3,Locked out error,0
+TK990592,78285,2026-04-21 06:41,2026-04-21 15:10,email,P1,500 error,1
+TK430568,83433,2026-04-21 09:57,2026-04-23 03:16,phone,Low,Help return label,0
+TK676164,23188,2026-04-21 12:33,2026-04-21 19:28,phone,P3,please advise refund remove user,2
+TK762984,59419,2026-04-21 13:07,2026-04-21 15:53,email,med,follow up subscription price account,1
+TK596717,30282,2026-04-21 13:20,2026-04-21 18:23,chat,HIGH,question about credit note,0
+TK499030,97591,2026-04-21 13:22,2026-04-22 03:22,chat,P3,device not arrived refund,0
+TK333041,62526,2026-04-21 14:05,2026-04-22 18:56,chat,Low,Integration,0
+TK557821,22716,2026-04-21 14:28,2026-04-21 14:52,phone,P1,change email,0
+TK738584,98516,2026-04-21 14:40,2026-04-22 17:40,chat,med,login loop,2
+TK553530,92491,2026-04-21 15:14,,email,High,issue with workspace,0
+TK362757,63436,2026-04-21 15:51,2026-04-21 20:34,email,Low,Problem with shipment delayed invoice,2
+TK733218,36178,2026-04-21 15:57,2026-04-21 18:42,phone,P2,billing cycle,1
+TK876736,49488,2026-04-21 17:27,2026-04-21 19:38,email,med,billing cycle,1
+TK671629,39135,2026-04-21 18:08,2026-04-21 21:27,chat,Medium,Credit note,0
+TK625320,84777,2026-04-21 18:18,2026-04-21 20:25,email,Medium,Not loading device,1
+TK590956,40049,2026-04-21 19:07,2026-04-21 21:33,email,p1,Follow up tracking number invoice integration,1
+TK203802,49143,2026-04-21 19:29,,email,HIGH,again login,1
+TK190672,97655,2026-04-21 19:54,2026-04-22 03:33,chat,p1,please advise overcharged,1
+TK633873,41542,2026-04-21 21:04,,email,HIGH,Issue with crash,2
+TK144255,96373,2026-04-21 21:11,2026-04-22 07:10,email,medium,subscription price,0
+TK320596,35600,2026-04-22 00:54,2026-04-22 07:05,email,high,help 500 error login,1
+TK483861,58187,2026-04-22 02:10,2026-04-22 14:18,chat,High,follow up login,1
+TK423199,94394,2026-04-22 03:31,2026-04-22 06:57,phone,P3,please advise rename workspace billing contact api timeout,0
+TK815880,65477,2026-04-22 03:58,2026-04-22 18:02,phone,Low,return label invoice,2
+TK113731,52031,2026-04-22 07:06,2026-04-22 19:58,email,medium,question about invoice,0
+TK934250,88747,2026-04-22 07:30,2026-04-22 08:09,email,P3,Permissions,0
+TK609355,73101,2026-04-22 07:43,2026-04-22 22:27,email,high,Please advise bug,2
+TK167849,31179,2026-04-22 08:33,2026-04-22 13:30,email,P1,rename workspace,0
+TK824202,39135,2026-04-22 08:40,2026-04-22 10:16,email,HIGH,follow up remove user,0
+TK529179,63197,2026-04-22 08:59,2026-04-22 09:43,email,P3,Payment failed workspace,0
+TK341401,37706,2026-04-22 09:20,2026-04-22 12:00,phone,High,export broken,0
+TK255343,69605,2026-04-22 12:09,,email,medium,Urgent account,0
+TK449650,30767,2026-04-22 16:04,2026-04-23 04:47,chat,medium,Issue with device,3
+TK414638,31853,2026-04-22 16:21,2026-04-23 08:05,email,low,follow up account,0
+TK626311,57760,2026-04-22 16:22,2026-04-22 16:50,chat,med,problem with not loading receipt,1
+TK969762,71920,2026-04-22 16:24,2026-04-23 02:09,email,med,again courier,1
+TK222733,21059,2026-04-22 16:44,2026-04-23 02:11,phone,high,please advise device not arrived bug,0
+TK360700,44232,2026-04-22 17:21,2026-04-23 03:30,chat,P3,API TIMEOUT DEVICE,1
+TK655054,43373,2026-04-22 19:16,2026-04-22 20:10,email,p1,follow up add user,0
+TK848058,58154,2026-04-22 20:55,2026-04-23 03:31,chat,high,Not loading,0
+TK756336,72332,2026-04-22 22:15,2026-04-23 04:40,email,med,question about workspace,0
+TK123556,58992,2026-04-22 23:47,2026-04-23 03:59,chat,med,please advise login,0
+TK815887,95183,2026-04-23 00:18,2026-04-23 04:56,email,Low,Question about refund,1
+TK668594,49309,2026-04-23 00:38,2026-04-23 01:17,email,P2,locked out login,0
+TK337130,42949,2026-04-23 01:30,2026-04-23 09:58,phone,P2,Please advise login,2
+TK313601,20725,2026-04-23 02:14,2026-04-23 02:42,email,High,please advise api timeout,1
+TK770914,74703,2026-04-23 02:54,2026-04-23 04:52,chat,high,Question about not loading payment page,1
+TK830217,26541,2026-04-23 03:01,2026-04-23 16:30,phone,P2,please advise delivery device,3
+TK660759,72358,2026-04-23 06:09,2026-04-23 12:59,phone,P3,payment failed workspace,0
+TK276787,86695,2026-04-23 06:15,2026-04-23 16:17,email,P2,issue with workspace,0
+TK729005,82476,2026-04-23 08:21,2026-04-23 10:24,email,High,Help 500 error login,2
+TK287676,25720,2026-04-23 09:20,2026-04-24 16:09,chat,Medium,crash,1
+TK421548,37490,2026-04-23 09:37,2026-04-23 10:26,chat,P3,Username,1
+TK773648,87438,2026-04-23 11:34,2026-04-23 19:39,phone,P3,again receipt,0
+TK190652,95100,2026-04-23 12:11,2026-04-23 13:01,email,high,two-factor,0
+TK571917,43657,2026-04-23 13:04,2026-04-23 16:33,phone,P3,Credit note,0
+TK316842,66009,2026-04-23 13:25,,phone,med,AGAIN LOGIN,0
+TK743691,83713,2026-04-23 14:13,2026-04-23 16:32,phone,P1,overcharged workspace,1
+TK465261,51255,2026-04-23 14:30,2026-04-25 16:33,email,low,courier device remove user,0
+TK807782,70776,2026-04-23 14:47,2026-04-23 18:23,chat,p1,REMOVE USER,0
+TK614399,24307,2026-04-23 15:25,2026-04-24 17:57,chat,High,please advise slow,2
+TK122581,46996,2026-04-23 15:28,2026-04-23 21:19,chat,P2,question about workspace,3
+TK425013,53613,2026-04-23 15:48,2026-04-24 14:40,email,Low,Sync failed device,1
+TK577333,79179,2026-04-23 15:54,2026-04-23 21:30,email,low,Refund,0
+TK914421,83211,2026-04-23 17:22,2026-04-23 18:40,chat,high,Problem with login loop payment page,0
+TK866510,40857,2026-04-23 18:50,2026-04-24 01:42,chat,P3,change email,0
+TK302831,55474,2026-04-23 19:18,2026-04-23 22:18,email,P2,Please advise error,0
+TK808149,49058,2026-04-23 19:36,2026-04-24 01:42,chat,med,problem with login,0
+TK331683,97854,2026-04-23 20:02,2026-04-23 21:17,email,P2,Please advise refund,0
+TK398969,60957,2026-04-23 20:27,2026-04-24 13:25,chat,Low,Damaged box,1
+TK355806,71042,2026-04-23 21:16,2026-04-23 23:28,chat,p1,invoice upgrade,1
+TK261441,91759,2026-04-23 21:17,2026-04-24 04:58,chat,Medium,follow up error payment page,0
+TK602430,40458,2026-04-23 22:01,2026-04-24 08:02,email,med,Help payment page,0
+TK564547,25217,2026-04-23 22:40,2026-04-25 04:23,chat,Medium,bug payment page permissions,5
+TK954242,57646,2026-04-23 23:23,2026-04-24 12:00,email,medium,urgent delivery,1
+TK926060,81033,2026-04-24 00:25,2026-04-24 02:32,email,P3,SUBSCRIPTION PRICE UPGRADE,0
+TK608878,80044,2026-04-24 01:44,2026-04-24 14:19,email,medium,again device,1
+TK448753,76602,2026-04-24 02:30,2026-04-24 10:21,chat,High,follow up crash login,5
+TK301566,70366,2026-04-24 07:16,2026-04-24 09:47,email,High,Problem with locked out,0
+TK444167,45347,2026-04-24 08:00,2026-04-24 09:12,chat,P2,Card declined,0
+TK936317,23668,2026-04-24 08:53,2026-04-24 11:25,chat,medium,two-factor billing contact replacement unit,0
+TK985530,24878,2026-04-24 09:49,2026-04-24 12:59,email,HIGH,Problem with login,0
+TK146382,44458,2026-04-24 09:59,2026-04-24 14:13,email,medium,remove user billing contact,1
+TK109938,23271,2026-04-24 10:20,2026-04-24 14:30,email,low,urgent account,1
+TK977525,57095,2026-04-24 10:30,2026-04-24 11:29,phone,Medium,follow up two-factor,0
+TK840891,37539,2026-04-24 10:46,,email,High,Please advise not loading,3
+TK221029,95676,2026-04-24 11:48,2026-04-24 14:35,phone,Medium,Issue with locked out login receipt,0
+TK523030,87463,2026-04-24 12:07,2026-04-25 14:13,email,low,crash,0
+TK694081,30668,2026-04-24 12:10,2026-04-24 12:46,email,p1,sso setup billing contact,0
+TK305370,52851,2026-04-24 12:39,2026-04-24 19:15,email,Medium,again login,0
+TK311606,76311,2026-04-24 13:09,2026-04-24 15:05,chat,Low,delete account,0
+TK970150,26198,2026-04-24 13:40,2026-04-24 17:13,email,Medium,follow up payment page,3
+TK437024,47690,2026-04-24 14:07,2026-04-25 07:18,chat,med,Question about device,1
+TK709654,74210,2026-04-24 15:16,2026-04-25 00:17,email,Medium,help login,0
+TK343017,89851,2026-04-24 17:38,2026-04-24 18:34,phone,P2,please advise receipt workspace,2
+TK313538,85478,2026-04-24 17:45,2026-04-25 04:22,email,P2,export broken,1
+TK168126,48186,2026-04-24 17:53,2026-04-24 19:01,phone,P2,follow up billing contact,0
+TK822999,74934,2026-04-24 20:10,2026-04-24 21:15,chat,medium,Again error,1
+TK150996,85555,2026-04-24 20:25,2026-04-24 22:09,email,low,Username tracking number,0
+TK857743,84488,2026-04-24 20:58,2026-04-25 01:56,email,HIGH,Help upgrade,0
+TK215491,65263,2026-04-24 21:28,2026-04-25 10:07,email,high,Urgent return label,0
+TK460917,75172,2026-04-25 00:06,2026-04-25 01:52,chat,P1,Please advise locked out replacement unit,0
+TK343319,36901,2026-04-25 00:55,,email,Low,Problem with password reset,0
+TK451042,77396,2026-04-25 01:59,2026-04-25 06:32,email,P3,Issue with invoice,0
+TK400028,97846,2026-04-25 03:38,2026-04-25 09:56,email,Low,Please advise upgrade,1
+TK615762,93221,2026-04-25 04:29,2026-04-25 13:25,chat,low,rename workspace billing cycle,0
+TK945208,90766,2026-04-25 05:18,2026-04-25 07:19,email,med,problem with device,2
+TK546769,48362,2026-04-25 05:26,2026-04-25 18:39,chat,P2,Crash,4
+TK475325,69575,2026-04-25 06:35,2026-04-25 11:39,email,Medium,overcharged,1
+TK523767,38968,2026-04-25 08:24,2026-04-25 11:27,email,P1,Help login loop,0
+TK188445,23964,2026-04-25 08:41,2026-04-25 12:05,email,low,Change email,0
+TK190090,77305,2026-04-25 08:57,,email,medium,PLEASE ADVISE LOGIN,0
+TK854579,97796,2026-04-25 09:46,,phone,P1,follow up device,0
+TK655288,72306,2026-04-25 10:29,2026-04-25 15:03,email,P2,Question about permissions,0
+TK206176,37095,2026-04-25 11:37,2026-04-25 16:58,email,medium,Refund,0
+TK482971,60371,2026-04-25 11:53,2026-04-25 15:47,chat,Low,question about invoice workspace add user,2
+TK321412,40991,2026-04-25 13:04,2026-04-25 15:38,email,p1,follow up upgrade,0
+TK990971,93818,2026-04-25 15:04,2026-04-25 16:56,email,P3,please advise refund,1
+TK692965,73831,2026-04-25 15:04,2026-04-25 16:17,chat,Low,problem with error,0
+TK565109,29129,2026-04-25 15:12,2026-04-25 16:41,phone,P3,QUESTION ABOUT LOGIN,0
+TK343623,55387,2026-04-25 15:32,2026-04-26 04:35,chat,Low,app freezes,2
+TK264188,68683,2026-04-25 16:03,2026-04-26 00:27,email,med,Export broken password reset,1
+TK284175,81360,2026-04-25 16:13,2026-04-25 21:24,phone,Low,Please advise export broken card declined,0
+TK685146,31285,2026-04-25 16:31,2026-04-25 21:30,email,Medium,Follow up device,0
+TK241001,78859,2026-04-25 17:08,,chat,P2,again bug,0
+TK116358,32010,2026-04-25 18:15,2026-04-26 04:57,chat,P1,error,2
+TK311845,23193,2026-04-25 18:37,2026-04-25 20:13,phone,medium,two-factor,0
+TK563928,27773,2026-04-25 19:31,2026-04-25 23:34,chat,low,follow up workspace,0
+TK732000,35851,2026-04-25 20:46,2026-04-26 05:27,phone,medium,Problem with credit note account,0
+TK598946,66213,2026-04-25 21:18,2026-04-26 01:05,chat,HIGH,Problem with replacement unit invoice,0
+TK681591,99207,2026-04-25 22:47,2026-04-26 03:21,email,Low,Please advise account,0
+TK231225,48513,2026-04-25 22:51,2026-04-26 03:12,chat,p1,again card declined,0
+TK866052,66083,2026-04-26 01:06,2026-04-26 05:48,chat,medium,charged twice,0
+TK950811,61389,2026-04-26 01:55,2026-04-27 07:33,phone,P2,device not arrived invoice,2
+TK954856,62978,2026-04-26 02:17,2026-04-26 07:34,email,medium,problem with delete account error,0
+TK759356,32678,2026-04-26 02:19,2026-04-26 06:08,chat,P2,Remove user,0
+TK186400,56529,2026-04-26 02:44,2026-04-26 06:08,chat,high,change email,0
+TK234187,22647,2026-04-26 03:44,2026-04-26 04:39,email,Low,issue with password reset login card declined,1
+TK985188,73453,2026-04-26 04:35,2026-04-26 16:28,chat,P3,sync failed payment page,1
+TK801544,22669,2026-04-26 05:29,2026-04-26 10:16,phone,P2,Problem with payment page,2
+TK402527,81817,2026-04-26 07:29,2026-04-26 11:03,chat,medium,PROBLEM WITH BILLING CONTACT,0
+TK729894,81170,2026-04-26 08:07,2026-04-26 09:28,email,P1,Again username,2
+TK695356,44368,2026-04-26 11:34,2026-04-26 12:05,chat,P2,Please advise add user,0
+TK170928,84943,2026-04-26 12:03,2026-04-27 00:49,email,low,Card declined,0
+TK327477,52300,2026-04-26 13:13,2026-04-26 15:22,chat,P3,PAYMENT FAILED,1
+TK122760,29254,2026-04-26 14:01,2026-04-26 15:23,chat,P1,Login loop payment page rename workspace,0
+TK353071,65619,2026-04-26 15:09,2026-04-26 16:23,phone,high,question about account,0
+TK416446,35318,2026-04-26 15:55,2026-04-26 16:34,email,low,Question about billing contact,0
+TK198508,61467,2026-04-26 16:17,2026-04-26 17:11,email,P1,please advise upgrade,1
+TK498374,65965,2026-04-26 16:40,2026-04-27 03:09,email,P1,Urgent login,0
+TK715982,29638,2026-04-26 17:01,2026-04-26 21:03,email,med,follow up password reset,0
+TK759305,94330,2026-04-26 20:10,2026-04-27 20:00,email,med,damaged box,0
+TK759952,73453,2026-04-26 20:11,2026-04-26 21:50,email,Low,question about two-factor,0
+TK315752,55908,2026-04-26 21:37,2026-04-27 03:09,email,high,locked out,0
+TK468900,23841,2026-04-27 00:22,2026-04-28 00:28,chat,P2,Package,0
+TK404906,92276,2026-04-27 03:26,,phone,low,follow up upgrade,1
+TK495939,68683,2026-04-27 03:47,2026-04-27 13:34,chat,med,follow up subscription price damaged box,0
+TK375649,26648,2026-04-27 04:39,2026-04-27 06:46,email,medium,Question about refund,1
+TK230615,36976,2026-04-27 04:41,,email,high,please advise api timeout login,0
+TK851898,69108,2026-04-27 04:45,2026-04-27 15:42,phone,medium,issue with invoice,1
+TK372748,87537,2026-04-27 04:52,2026-04-27 18:57,chat,High,Problem with replacement unit device,1
+TK624894,31250,2026-04-27 06:21,2026-04-27 09:43,chat,Low,Problem with login,0
+TK310508,50476,2026-04-27 08:13,2026-04-27 14:20,phone,high,billing cycle account courier,0
+TK940824,66630,2026-04-27 08:46,2026-04-27 14:34,chat,P3,Problem with crash,2
+TK137962,31027,2026-04-27 09:36,2026-04-27 11:49,phone,HIGH,Login loop login,1
+TK659098,74511,2026-04-27 10:36,2026-04-27 16:46,chat,High,upgrade cost,0
+TK617522,42096,2026-04-27 10:51,2026-04-27 18:42,email,P2,slow,0
+TK893456,48216,2026-04-27 11:21,2026-04-27 14:27,phone,HIGH,nan,2
+TK903105,53778,2026-04-27 11:31,,chat,P2,Not loading payment page,0
+TK831001,60073,2026-04-27 12:25,2026-04-27 13:14,chat,med,help tax,0
+TK608292,92385,2026-04-27 12:35,2026-04-27 13:04,email,high,Again subscription price account two-factor,0
+TK370910,73495,2026-04-27 12:53,,phone,P1,help tracking number password reset,2
+TK383799,50433,2026-04-27 12:58,2026-04-27 17:45,email,Low,Urgent error,0
+TK241394,42444,2026-04-27 16:47,2026-04-27 20:24,email,P3,Remove user return label,0
+TK919294,45829,2026-04-27 17:39,2026-04-27 22:10,chat,Medium,Courier,1
+TK104095,88933,2026-04-27 18:20,2026-04-28 01:44,email,High,Urgent device,0
+TK595137,64605,2026-04-27 18:45,2026-04-27 20:45,email,medium,Problem with permissions login integration,0
+TK281970,99540,2026-04-27 19:18,2026-04-27 21:10,email,med,urgent payment page,2
+TK501889,64731,2026-04-27 19:27,2026-04-27 20:41,chat,p1,Again error,0
+TK727965,26635,2026-04-27 20:33,2026-04-28 01:07,email,P2,500 ERROR,2
+TK359117,76510,2026-04-27 22:30,2026-04-28 00:28,email,p1,urgent subscription price account,0
+TK291262,87539,2026-04-27 23:23,2026-04-28 02:21,email,HIGH,login loop login subscription price,2
+TK424905,95540,2026-04-27 23:24,2026-04-28 13:23,email,Low,Courier device,1
+TK436403,46077,2026-04-27 23:46,2026-04-28 02:15,email,high,Issue with workspace,0
+TK778972,73147,2026-04-27 23:56,2026-04-28 03:44,chat,medium,please advise sync failed device,1
+TK835788,38827,2026-04-28 00:20,2026-04-28 07:56,email,low,problem with change email,0
+TK848313,93733,2026-04-28 01:19,,email,P2,device not arrived,0
+TK233297,84338,2026-04-28 01:58,2026-04-28 20:09,email,Medium,URGENT WORKSPACE,0
+TK242011,56616,2026-04-28 02:20,,chat,P1,problem with delete account,0
+TK725755,54977,2026-04-28 02:22,,email,P2,Issue with invoice,0
+TK899046,24426,2026-04-28 02:44,2026-04-28 15:38,chat,med,question about permissions,0
+TK475449,59498,2026-04-28 03:09,2026-04-28 05:13,email,HIGH,rename workspace integration,0
+TK332574,23841,2026-04-28 03:44,2026-04-28 17:57,email,medium,follow up payment page,0
+TK770196,55674,2026-04-28 03:54,2026-04-28 08:36,email,P2,help username billing contact,0
+TK358877,73739,2026-04-28 04:41,2026-04-28 08:14,email,P2,Follow up billing contact,0
+TK752263,93198,2026-04-28 06:42,2026-04-28 09:17,email,med,problem with payment failed account,0
+TK266084,96696,2026-04-28 06:49,2026-04-28 09:06,chat,P1,Please advise upgrade,0
+TK329969,31617,2026-04-28 07:19,2026-04-28 14:00,chat,high,Please advise upgrade,0
+TK660580,48643,2026-04-28 07:58,2026-04-28 12:02,email,Low,tax,1
+TK356423,89528,2026-04-28 08:11,2026-04-29 01:44,email,med,App freezes,0
+TK442109,43240,2026-04-28 08:45,2026-04-28 12:39,phone,Low,password reset error,0
+TK723543,63942,2026-04-28 09:55,2026-04-28 11:43,email,P2,Payment failed upgrade,0
+TK348776,77635,2026-04-28 09:56,2026-04-28 16:18,chat,high,please advise device,3
+TK446818,98515,2026-04-28 09:58,2026-04-28 18:45,email,P2,Urgent billing contact,0
+TK334732,71386,2026-04-28 11:38,2026-04-28 20:49,chat,P1,question about account,1
+TK760183,62731,2026-04-28 11:58,2026-04-29 00:45,email,Medium,Problem with device not arrived invoice,1
+TK950729,44454,2026-04-28 12:59,2026-04-29 01:48,email,HIGH,Wrong address,1
+TK725575,62073,2026-04-28 14:26,2026-04-28 23:28,chat,low,Help upgrade,0
+TK894404,59419,2026-04-28 16:03,2026-04-28 19:30,chat,Medium,Again tax account,0
+TK937371,90777,2026-04-28 16:22,,email,medium,tax,0
+TK336895,51446,2026-04-28 17:20,,phone,medium,Follow up replacement unit invoice,1
+TK847098,59624,2026-04-28 17:24,2026-04-29 14:05,chat,med,Urgent app freezes,2
+TK652674,93830,2026-04-28 19:08,2026-04-29 00:25,email,high,question about device,2
+TK763549,68683,2026-04-28 19:52,2026-04-29 02:03,email,P2,Help billing contact,0
+TK979149,98318,2026-04-28 20:26,2026-04-28 20:57,email,medium,HELP BILLING CONTACT,1
+TK394167,24274,2026-04-28 20:48,2026-04-29 01:00,chat,Medium,issue with two-factor,0
+TK356843,46550,2026-04-28 20:59,2026-04-29 02:31,chat,Medium,please advise crash,0
+TK557016,74833,2026-04-28 20:59,2026-04-30 00:54,phone,med,500 error,3
+TK733039,52851,2026-04-28 21:07,2026-04-29 01:02,chat,med,change email error,0
+TK227358,99816,2026-04-28 21:23,2026-04-29 11:51,email,low,Help login loop password reset,3
+TK109617,82088,2026-04-28 21:36,2026-04-30 02:08,email,Low,Return label refund,2
+TK423290,58476,2026-04-28 22:04,2026-04-29 08:22,chat,medium,Issue with shipment delayed,0
+TK615384,87464,2026-04-28 22:58,2026-04-29 07:02,chat,p1,issue with device,3
+TK115004,60219,2026-04-28 23:07,2026-04-29 07:28,chat,P1,Issue with device,2
+TK356153,68856,2026-04-29 00:24,2026-04-29 10:27,phone,Medium,ISSUE WITH INVOICE,2
+TK315875,74351,2026-04-29 01:25,2026-04-29 08:05,email,High,Problem with payment page,1
+TK865193,68051,2026-04-29 04:12,2026-04-29 06:07,chat,Medium,problem with refund,0
+TK894868,84897,2026-04-29 04:53,2026-04-29 06:18,chat,P1,Problem with login,0
+TK544079,78123,2026-04-29 05:16,2026-04-29 09:30,email,Medium,help slow,2
+TK516985,56529,2026-04-29 05:58,2026-04-30 02:27,phone,P2,Help courier upgrade cost,1
+TK587743,34836,2026-04-29 05:59,2026-04-29 07:19,email,HIGH,Please advise password reset billing contact,0
+TK138216,49641,2026-04-29 06:28,2026-04-29 11:13,email,low,again charged twice delivery,0
+TK297812,29271,2026-04-29 06:36,2026-04-29 10:54,email,p1,question about login loop,3
+TK959495,76574,2026-04-29 06:44,2026-04-29 23:38,phone,P2,Error,3
+TK122147,40337,2026-04-29 06:59,2026-04-29 12:13,chat,medium,Help device,2
+TK108030,57315,2026-04-29 07:27,2026-04-29 19:10,email,P1,Help login,0
+TK743465,51247,2026-04-29 08:13,2026-04-29 15:06,email,Medium,Issue with workspace,2
+TK775569,44953,2026-04-29 09:09,2026-04-29 10:23,chat,HIGH,again api timeout,1
+TK759595,21225,2026-04-29 09:49,2026-04-29 12:47,chat,P2,CHANGE EMAIL BILLING CONTACT,0
+TK888264,40075,2026-04-29 11:38,2026-04-29 13:57,email,high,RETURN LABEL,5
+TK884732,73383,2026-04-29 11:55,2026-04-30 09:09,chat,High,follow up device,1
+TK590972,88037,2026-04-29 12:31,2026-04-29 18:02,phone,High,Help payment page,2
+TK575213,96425,2026-04-29 13:34,2026-04-29 16:59,chat,P2,follow up workspace,0
+TK460656,77396,2026-04-29 13:49,2026-04-30 08:26,phone,medium,Integration change email,1
+TK685829,55877,2026-04-29 14:13,2026-04-30 18:17,email,low,Help return label,0
+TK690052,67464,2026-04-29 14:31,2026-04-29 16:10,chat,p1,urgent login,4
+TK515902,36311,2026-04-29 15:24,2026-04-29 20:38,email,Medium,urgent delete account login loop,0
+TK658614,70354,2026-04-29 17:00,2026-04-29 18:52,email,High,Urgent credit note upgrade slow,0
+TK782392,38392,2026-04-29 18:27,2026-04-30 02:04,phone,P3,permissions,1
+TK403645,27337,2026-04-29 18:39,2026-04-30 04:28,phone,Medium,export broken login,1
+TK101364,23346,2026-04-29 18:42,2026-04-29 19:08,chat,High,urgent billing contact,0
+TK116025,60059,2026-04-29 19:10,2026-04-29 21:05,phone,HIGH,rename workspace billing contact,0
+TK297467,81819,2026-04-29 19:40,2026-04-29 20:34,chat,p1,login loop,1
+TK432054,26208,2026-04-29 19:54,2026-04-30 03:55,chat,low,problem with remove user damaged box,0
+TK816976,36937,2026-04-29 19:56,2026-04-30 01:39,phone,P2,change email,1
+TK661304,45944,2026-04-29 20:39,,chat,High,Slow payment page,2
+TK189322,62967,2026-04-29 22:01,,email,P2,Bug locked out,1
+TK139163,23828,2026-04-30 00:44,2026-04-30 06:38,chat,med,Export broken payment page,3
+TK588043,40714,2026-04-30 01:16,2026-04-30 02:36,chat,High,problem with login,0
+TK917631,77312,2026-04-30 01:33,2026-04-30 05:10,email,high,Charged twice crash,1
+TK560969,34405,2026-04-30 01:42,2026-04-30 02:58,email,High,problem with permissions login,1
+TK114509,48520,2026-04-30 02:19,2026-04-30 04:51,phone,Low,Question about billing contact,0
+TK873376,33737,2026-04-30 02:19,2026-04-30 05:17,phone,P1,password reset,0
+TK242148,67125,2026-04-30 02:34,2026-04-30 11:31,chat,Medium,Again workspace,0
+TK815603,99410,2026-04-30 02:47,2026-04-30 08:40,chat,P1,export broken,2
+TK598145,62890,2026-04-30 05:45,2026-04-30 16:33,chat,P1,Bug payment page tracking number,1
+TK130937,65041,2026-04-30 06:50,2026-04-30 11:32,email,P3,change email,1
+TK779810,74364,2026-04-30 06:59,2026-04-30 19:56,chat,low,Urgent login,3
+TK559581,58855,2026-04-30 07:38,2026-04-30 11:44,phone,medium,again sso setup error,0
+TK916289,66011,2026-04-30 08:23,2026-04-30 14:04,chat,High,Please advise integration device,2
+TK961303,92731,2026-04-30 09:31,2026-04-30 15:19,email,P3,QUESTION ABOUT PAYMENT PAGE,2
+TK671826,24689,2026-04-30 09:31,2026-04-30 10:42,chat,Low,question about account,1
+TK345339,82156,2026-04-30 10:03,2026-04-30 12:18,email,Medium,issue with login,0
+TK410622,55185,2026-04-30 10:15,2026-04-30 17:08,phone,P2,error device,0
+TK546267,86520,2026-04-30 10:18,2026-04-30 18:34,email,med,Replacement unit invoice,1
+TK654887,30865,2026-04-30 10:39,2026-05-01 12:50,email,medium,Issue with delivery,0
+TK671397,85586,2026-04-30 10:42,2026-05-01 04:30,email,Medium,Again api timeout payment page,2
+TK283242,99381,2026-04-30 11:12,2026-04-30 13:08,email,med,Locked out,0
+TK170727,94392,2026-04-30 14:01,2026-05-02 07:01,chat,med,urgent replacement unit,1
+TK554392,82156,2026-04-30 16:02,2026-04-30 20:15,chat,P3,Rename workspace,0
+TK538937,89811,2026-04-30 16:20,2026-04-30 20:21,email,High,rename workspace login,0
+TK437410,97854,2026-04-30 17:24,2026-04-30 18:17,email,HIGH,urgent receipt workspace delivery,0
+TK363664,27322,2026-04-30 18:19,2026-04-30 23:30,email,P1,Urgent courier,0
+TK210987,82927,2026-04-30 19:06,2026-05-01 00:22,email,medium,password reset 500 error,0
+TK811415,94689,2026-04-30 19:20,2026-05-01 00:30,phone,Low,Problem with upgrade cost upgrade,1
+TK211675,88516,2026-04-30 21:25,2026-05-01 19:48,chat,P2,Not loading login,0
+TK859930,66615,2026-04-30 21:49,2026-05-01 06:52,phone,P3,Question about export broken,2
+TK101693,47354,2026-04-30 22:12,2026-05-01 09:34,phone,medium,Follow up payment page,0
+TK356793,36246,2026-04-30 22:22,2026-05-01 01:40,chat,HIGH,problem with login,1
+TK964240,60891,2026-04-30 22:35,2026-04-30 22:44,chat,P1,Follow up billing cycle sync failed,1
+TK794097,56367,2026-05-01 01:12,2026-05-01 04:22,chat,P3,follow up refund account delivery,0
+TK149954,60219,2026-05-01 01:56,2026-05-01 15:31,chat,high,issue with bug payment page,1
+TK872497,86613,2026-05-01 02:13,2026-05-01 04:53,email,P2,FOLLOW UP BILLING CONTACT,1
+TK256251,59203,2026-05-01 04:21,2026-05-01 06:10,chat,high,again app freezes sso setup,1
+TK531860,20912,2026-05-01 04:24,2026-05-01 09:03,chat,Medium,question about locked out,0
+TK151161,54996,2026-05-01 04:30,2026-05-01 05:52,chat,med,help device,1
+TK516722,92159,2026-05-01 05:14,,phone,high,CRASH LOGIN,1
+TK901675,77150,2026-05-01 05:17,2026-05-01 09:39,email,P3,issue with tax,1
+TK972542,80534,2026-05-01 05:26,2026-05-01 07:18,chat,p1,follow up workspace,1
+TK613641,72069,2026-05-01 06:16,2026-05-01 08:25,chat,High,again error,0
+TK730435,64045,2026-05-01 06:44,2026-05-01 07:53,chat,HIGH,Tax bug,2
+TK970289,34323,2026-05-01 09:45,2026-05-01 13:28,email,medium,Please advise device,1
+TK495230,96177,2026-05-01 10:09,2026-05-01 13:10,chat,P3,Follow up two-factor overcharged,0
+TK102572,55351,2026-05-01 11:01,2026-05-01 11:54,email,P1,please advise sso setup,0
+TK592079,54977,2026-05-01 12:00,2026-05-01 20:19,phone,Low,Locked out,0
+TK476085,24322,2026-05-01 12:16,2026-05-01 22:15,chat,P2,Api timeout login,0
+TK893913,54062,2026-05-01 12:46,2026-05-01 23:04,email,med,Please advise sso setup,1
+TK346452,76896,2026-05-01 12:48,2026-05-01 17:28,chat,High,Payment failed upgrade,0
+TK154141,32385,2026-05-01 14:02,2026-05-01 14:56,email,low,again charged twice,0
+TK834229,31935,2026-05-01 14:11,2026-05-01 20:50,email,P2,Issue with login,2
+TK506462,34836,2026-05-01 15:19,2026-05-01 20:13,email,low,help upgrade,0
+TK315473,48513,2026-05-01 16:36,2026-05-01 23:48,phone,HIGH,App freezes,3
+TK999244,82653,2026-05-01 16:53,2026-05-01 23:10,phone,Low,Locked out,0
+TK444391,93398,2026-05-01 17:24,2026-05-01 21:49,email,low,problem with login,1
+TK527719,75326,2026-05-01 17:54,2026-05-02 14:15,chat,P1,SYNC FAILED PAYMENT PAGE,0
+TK432061,92216,2026-05-01 20:08,2026-05-01 23:09,phone,high,follow up payment page,3
+TK384992,84493,2026-05-01 21:17,2026-05-03 04:29,phone,low,URGENT PACKAGE,0
+TK249920,88072,2026-05-01 21:37,2026-05-02 02:17,email,Low,change email,0
+TK191800,49683,2026-05-01 23:29,2026-05-02 00:52,email,low,Question about billing contact,1
+TK268599,25154,2026-05-02 00:58,2026-05-02 01:53,email,P1,HELP CHANGE EMAIL BILLING CONTACT APP FREEZES,0
+TK364578,25543,2026-05-02 01:14,2026-05-02 02:34,chat,high,Problem with add user return label,0
+TK218946,38827,2026-05-02 02:29,2026-05-02 18:03,email,P3,follow up refund,0
+TK759728,23072,2026-05-02 02:32,2026-05-02 03:24,email,P2,Question about receipt,1
+TK440575,65794,2026-05-02 02:47,2026-05-02 10:17,email,P2,credit note,2
+TK760167,49837,2026-05-02 02:58,2026-05-02 03:41,chat,Medium,Username,0
+TK496911,56797,2026-05-02 02:58,2026-05-02 06:23,email,P3,again 500 error,0
+TK774798,60957,2026-05-02 04:22,2026-05-02 20:30,chat,low,question about permissions wrong address,0
+TK323599,94374,2026-05-02 04:35,2026-05-02 05:55,phone,P2,Add user billing contact,0
+TK146129,89701,2026-05-02 06:33,2026-05-02 19:18,email,P2,Urgent workspace,0
+TK258339,43093,2026-05-02 09:24,2026-05-02 13:03,phone,med,follow up login,0
+TK647417,69621,2026-05-02 09:58,2026-05-02 13:26,email,medium,urgent upgrade cost,0
+TK117340,21680,2026-05-02 10:10,2026-05-03 04:57,chat,P2,Question about app freezes,0
+TK213631,53326,2026-05-02 10:17,2026-05-02 16:01,chat,low,problem with sso setup,0
+TK476019,71414,2026-05-02 11:11,2026-05-02 18:58,email,P3,question about account,1
+TK435456,39703,2026-05-02 11:23,2026-05-02 17:18,chat,P1,Question about payment page,1
+TK893235,86195,2026-05-02 11:38,2026-05-02 13:48,email,P1,question about invoice account,1
+TK730599,48642,2026-05-02 12:01,2026-05-02 16:05,chat,P2,issue with integration,0
+TK838748,29926,2026-05-02 12:34,2026-05-02 20:20,email,High,Replacement unit device,1
+TK337591,28580,2026-05-02 13:48,2026-05-02 22:49,email,p1,Please advise damaged box,0
+TK219783,62013,2026-05-02 14:19,2026-05-02 21:19,chat,Low,api timeout device,2
+TK997932,47844,2026-05-02 15:05,2026-05-02 21:18,chat,P2,Remove user login,0
+TK753378,20725,2026-05-02 15:24,2026-05-02 17:34,email,P2,charged twice,0
+TK802270,79109,2026-05-02 15:30,2026-05-02 23:06,phone,med,Refund,0
+TK150286,99374,2026-05-02 16:18,2026-05-02 20:03,email,low,follow up workspace,0
+TK554494,62013,2026-05-02 16:19,2026-05-02 18:32,email,medium,invoice upgrade locked out,2
+TK680229,40049,2026-05-02 16:24,2026-05-02 21:39,email,Medium,Again login,2
+TK296715,73495,2026-05-02 17:18,,chat,P2,remove user billing contact,0
+TK387166,58102,2026-05-02 18:11,2026-05-03 03:15,email,high,issue with device,2
+TK703013,65042,2026-05-02 18:20,2026-05-02 20:17,email,medium,ISSUE WITH BILLING CONTACT,0
+TK991800,89528,2026-05-02 18:30,2026-05-03 03:29,email,P2,Problem with app freezes device not arrived,1
+TK940341,23964,2026-05-02 18:41,2026-05-02 21:22,email,Medium,Permissions,0
+TK843754,75805,2026-05-02 19:03,2026-05-03 00:00,email,low,card declined account,2
+TK768812,65185,2026-05-02 19:05,2026-05-03 15:59,phone,Low,Api timeout payment page,0
+TK214644,72062,2026-05-02 19:14,2026-05-02 22:47,email,High,Urgent device,0
+TK592789,86046,2026-05-02 21:25,2026-05-03 07:42,email,p1,issue with 500 error payment page,0
+TK424646,64737,2026-05-02 21:30,2026-05-03 20:10,email,medium,tax,0
+TK537644,92203,2026-05-02 23:30,2026-05-03 04:42,email,P1,Again login,1
+TK696057,37187,2026-05-03 00:10,2026-05-03 06:57,email,p1,Question about app freezes,0
+TK408994,74168,2026-05-03 00:20,2026-05-03 01:46,chat,P3,Slow,0
+TK947869,56395,2026-05-03 01:22,2026-05-03 03:08,chat,low,please advise payment page,2
+TK181407,50222,2026-05-03 03:48,2026-05-03 08:34,phone,Low,Invoice,0
+TK271280,32010,2026-05-03 03:54,2026-05-03 13:03,chat,P3,Question about refund,2
+TK847149,68945,2026-05-03 04:12,2026-05-03 08:10,chat,p1,Bug rename workspace,3
+TK142947,69211,2026-05-03 06:31,2026-05-03 07:37,chat,Low,urgent rename workspace,1
+TK242006,58175,2026-05-03 07:21,2026-05-03 08:47,email,med,remove user login device not arrived,0
+TK866811,28401,2026-05-03 07:40,2026-05-03 10:59,email,P2,Question about receipt workspace,1
+TK428913,36223,2026-05-03 08:01,2026-05-03 09:22,chat,Medium,Urgent login,1
+TK591694,32902,2026-05-03 11:39,2026-05-03 15:43,email,Low,follow up error,0
+TK855385,32796,2026-05-03 11:58,2026-05-03 16:42,email,low,issue with login,0
+TK813287,58885,2026-05-03 13:20,2026-05-03 19:56,email,low,Username,0
+TK912985,76689,2026-05-03 13:48,2026-05-03 15:29,email,P3,card declined account integration,0
+TK484183,21464,2026-05-03 16:11,2026-05-03 18:03,chat,low,please advise two-factor login,0
+TK508564,80385,2026-05-03 16:14,2026-05-04 04:46,phone,P1,Issue with payment page,2
+TK111679,71474,2026-05-03 17:39,2026-05-04 03:59,email,p1,question about integration login return label,3
+TK378441,26971,2026-05-03 17:40,2026-05-03 20:13,chat,med,delete account error,2
+TK145501,44596,2026-05-03 20:04,2026-05-04 01:18,phone,P1,refund workspace,0
+TK396929,74845,2026-05-03 20:05,2026-05-04 01:47,email,med,question about rename workspace,0
+TK472977,48266,2026-05-03 21:39,2026-05-04 01:52,email,med,Upgrade cost workspace,0
+TK872988,37099,2026-05-03 21:58,2026-05-03 23:06,chat,HIGH,urgent account,1
+TK535695,20719,2026-05-03 23:28,2026-05-04 04:27,chat,Medium,Follow up upgrade,0
+TK689904,87674,2026-05-04 01:20,2026-05-04 04:12,email,medium,Two-factor error,0
+TK849652,23193,2026-05-04 03:57,2026-05-04 09:17,phone,p1,Charged twice,0
+TK574752,44666,2026-05-04 04:25,2026-05-04 06:49,chat,p1,Permissions,2
+TK617662,51574,2026-05-04 05:50,2026-05-04 14:46,chat,P3,Crash,1
+TK889468,74833,2026-05-04 06:22,2026-05-05 00:59,chat,low,question about api timeout payment page credit note,2
+TK343197,72596,2026-05-04 07:16,2026-05-04 09:14,email,low,Refund,1
+TK431892,34502,2026-05-04 08:49,2026-05-04 10:40,phone,P2,overcharged account,1
+TK398540,35498,2026-05-04 09:10,2026-05-04 20:40,email,medium,Issue with subscription price workspace,0
+TK791157,29236,2026-05-04 09:43,2026-05-05 00:42,email,medium,question about payment page,1
+TK299941,71808,2026-05-04 11:40,2026-05-04 16:24,chat,HIGH,PERMISSIONS,0
+TK670519,59863,2026-05-04 11:55,2026-05-04 19:44,chat,Medium,issue with courier refund change email,0
+TK114452,60020,2026-05-04 14:18,2026-05-04 17:34,phone,Medium,invoice upgrade,1
+TK673472,95413,2026-05-04 16:44,2026-05-05 05:25,email,P3,Help crash shipment delayed,2
+TK303486,97455,2026-05-04 17:52,2026-05-05 02:44,phone,Medium,tax,0
+TK204234,48520,2026-05-04 19:50,2026-05-04 22:11,email,Medium,again account,0
+TK622401,41504,2026-05-04 20:38,2026-05-05 05:08,email,p1,follow up device,0
+TK140357,71234,2026-05-04 21:00,2026-05-04 23:13,email,Medium,again account,2
+TK847084,62676,2026-05-04 23:15,,chat,Medium,Login loop,0
+TK357296,96425,2026-05-05 00:28,2026-05-05 02:34,chat,p1,follow up invoice workspace,0
+TK509381,28085,2026-05-05 01:39,,email,High,Issue with device not arrived,3
+TK210538,24106,2026-05-05 03:05,2026-05-05 04:53,chat,Medium,Question about login,1
+TK510926,66645,2026-05-05 03:12,2026-05-05 11:54,email,HIGH,Question about integration,3
+TK678847,67016,2026-05-05 03:41,2026-05-05 07:46,email,Low,locked out,0
+TK903398,56576,2026-05-05 04:47,2026-05-05 11:27,email,med,Credit note upgrade,0
+TK416419,25273,2026-05-05 05:59,2026-05-05 07:30,chat,HIGH,Follow up delete account,1
+TK240652,41425,2026-05-05 13:04,2026-05-05 20:18,chat,medium,Question about error,0
+TK108844,80499,2026-05-05 15:40,2026-05-05 16:17,email,p1,urgent sync failed,2
+TK155086,24381,2026-05-05 16:07,2026-05-05 21:20,email,Low,problem with upgrade cost error,1
+TK814912,57646,2026-05-05 16:51,2026-05-05 20:01,email,med,please advise rename workspace login courier,1
+TK322581,68243,2026-05-05 17:35,2026-05-06 18:16,email,Medium,AGAIN NOT LOADING DEVICE RECEIPT,1
+TK685111,78361,2026-05-05 17:58,2026-05-06 02:13,email,low,Urgent workspace,1
+TK308607,56447,2026-05-05 19:55,2026-05-06 00:39,chat,Medium,PASSWORD RESET,0
+TK569742,57370,2026-05-05 20:05,2026-05-06 08:46,email,Medium,Urgent upgrade,1
+TK809059,62360,2026-05-05 22:26,2026-05-06 03:17,chat,HIGH,Follow up export broken replacement unit,3
+TK567539,92285,2026-05-05 23:14,2026-05-06 02:04,chat,high,URGENT LOGIN,0
+TK670290,48083,2026-05-05 23:17,,email,Medium,Issue with payment page,1
+TK308231,68060,2026-05-05 23:24,2026-05-06 14:20,chat,HIGH,Again integration device,0
+TK549773,44596,2026-05-05 23:27,2026-05-06 06:03,phone,High,Please advise export broken,1
+TK617796,48266,2026-05-05 23:36,2026-05-06 01:07,email,Low,Again billing cycle,1
+TK481672,34992,2026-05-05 23:44,2026-05-06 01:20,email,low,please advise payment page,2
+TK528502,84440,2026-05-06 00:28,2026-05-06 04:24,chat,P2,Sso setup,0
+TK745900,91379,2026-05-06 00:42,2026-05-06 02:43,chat,P2,Subscription price remove user,0
+TK499321,82693,2026-05-06 00:56,2026-05-06 04:43,email,high,problem with password reset,0
+TK349903,37074,2026-05-06 01:04,2026-05-06 15:28,email,P2,again tracking number 500 error,0
+TK890606,24370,2026-05-06 01:12,2026-05-06 02:48,chat,p1,FOLLOW UP LOGIN LOOP,0
+TK947618,58561,2026-05-06 02:34,2026-05-06 08:48,phone,High,app freezes login,3
+TK916027,23197,2026-05-06 04:01,2026-05-06 13:56,email,P1,Again slow,1
+TK263916,33142,2026-05-06 04:02,2026-05-06 10:39,email,med,Urgent account,1
+TK838362,73822,2026-05-06 04:59,2026-05-06 14:36,chat,med,Please advise card declined,0
+TK520277,78963,2026-05-06 08:11,2026-05-06 19:53,chat,medium,Credit note,1
+TK156239,28907,2026-05-06 09:08,2026-05-07 07:44,email,P3,urgent sync failed,1
+TK368507,66215,2026-05-06 10:32,2026-05-06 15:20,chat,P2,follow up damaged box invoice,1
+TK435705,21871,2026-05-06 11:49,2026-05-06 20:45,chat,medium,Subscription price return label,1
+TK630688,76920,2026-05-06 12:04,2026-05-06 20:27,email,Low,Upgrade cost workspace,0
+TK533446,68589,2026-05-06 14:11,,email,Medium,Help crash device,3
+TK458377,28580,2026-05-06 14:32,2026-05-07 01:51,chat,med,again error,1
+TK518227,36089,2026-05-06 14:46,2026-05-06 16:15,phone,med,username,0
+TK476764,84163,2026-05-06 16:15,2026-05-06 17:29,email,med,again refund 500 error,1
+TK774630,79105,2026-05-06 16:18,2026-05-06 21:06,email,P3,upgrade cost,0
+TK831697,47705,2026-05-06 16:35,2026-05-06 19:10,email,high,problem with billing contact,0
+TK235320,37074,2026-05-06 17:08,2026-05-07 04:26,chat,P3,api timeout return label,2
+TK793079,38621,2026-05-06 17:10,2026-05-06 20:36,email,med,Again upgrade,0
+TK944305,40162,2026-05-06 17:48,2026-05-06 21:46,chat,P1,Follow up permissions,0
+TK291257,83855,2026-05-06 19:19,2026-05-07 01:59,email,med,Two-factor,0
+TK583168,77534,2026-05-06 19:30,2026-05-07 17:15,email,P2,Error,0
+TK331907,88695,2026-05-06 19:56,2026-05-07 04:08,email,med,please advise integration device,2
+TK934025,72294,2026-05-06 20:11,2026-05-06 20:46,chat,Low,Help permissions billing contact,0
+TK178322,26225,2026-05-06 20:32,2026-05-06 21:03,phone,High,Locked out login,0
+TK385065,76596,2026-05-06 20:51,2026-05-07 04:46,email,P2,Help payment page,1
+TK379032,91337,2026-05-06 21:31,2026-05-07 05:29,email,HIGH,question about tracking number api timeout,0
+TK655287,76311,2026-05-06 22:30,2026-05-07 01:26,email,P2,help error,0
+TK792081,51574,2026-05-06 23:10,2026-05-07 04:11,chat,med,issue with account,0
+TK364409,29663,2026-05-06 23:19,2026-05-07 17:39,phone,med,DEVICE NOT ARRIVED REFUND,2
+TK278688,20675,2026-05-06 23:25,2026-05-07 00:50,chat,High,issue with workspace,0
+TK330858,49370,2026-05-07 00:24,2026-05-07 15:03,phone,low,Charged twice,1
+TK850261,40471,2026-05-07 00:42,2026-05-07 01:09,phone,P2,Question about billing contact,0
+TK350604,64828,2026-05-07 04:36,2026-05-07 15:34,email,P3,problem with workspace,2
+TK203706,25208,2026-05-07 05:22,2026-05-07 07:18,email,P2,Problem with subscription price,1
+TK457335,50281,2026-05-07 05:22,2026-05-07 15:43,email,HIGH,Issue with sync failed payment page change email,0
+TK474893,51555,2026-05-07 05:52,2026-05-07 08:23,chat,Medium,rename workspace error,0
+TK905446,86712,2026-05-07 07:02,2026-05-07 08:40,chat,P2,problem with locked out,0
+TK240403,45616,2026-05-07 07:57,2026-05-07 10:45,chat,P3,Locked out,1
+TK489770,45486,2026-05-07 09:36,2026-05-07 13:46,chat,Medium,question about locked out billing contact,0
+TK158206,87920,2026-05-07 11:31,2026-05-08 09:42,phone,med,Return label,0
+TK656704,66841,2026-05-07 13:24,,email,Medium,urgent login,1
+TK544593,26391,2026-05-07 14:12,2026-05-08 07:51,chat,med,Again account,1
+TK951337,70606,2026-05-07 15:30,2026-05-07 20:57,email,P1,overcharged,0
+TK668283,91268,2026-05-07 16:28,2026-05-07 19:33,email,P3,Urgent subscription price,1
+TK732823,97591,2026-05-07 16:41,2026-05-07 22:32,phone,P3,please advise return label login loop,1
+TK343190,62591,2026-05-07 17:03,2026-05-07 19:31,phone,Medium,Urgent login,0
+TK273709,89533,2026-05-07 17:37,2026-05-07 23:19,email,P3,locked out credit note,0
+TK303416,60020,2026-05-07 18:25,2026-05-07 21:18,email,Low,Remove user card declined,0
+TK862065,46265,2026-05-07 20:34,2026-05-08 11:26,email,Medium,help device,4
+TK794492,37099,2026-05-07 23:00,2026-05-08 04:42,chat,Medium,login loop,2
+TK433367,25779,2026-05-07 23:21,2026-05-08 19:52,chat,Medium,Question about login,1
+TK799664,76560,2026-05-07 23:45,2026-05-08 06:18,email,Low,CHARGED TWICE API TIMEOUT,0
+TK385912,35727,2026-05-08 00:02,2026-05-08 15:14,email,Medium,slow,1
+TK121503,62073,2026-05-08 00:14,2026-05-08 05:50,email,Medium,please advise billing contact,0
+TK617346,54821,2026-05-08 00:29,2026-05-08 14:25,email,low,Question about device,0
+TK671677,81881,2026-05-08 00:48,2026-05-08 04:13,email,low,AGAIN LOCKED OUT BILLING CONTACT,0
+TK574493,50476,2026-05-08 00:55,2026-05-08 01:32,email,HIGH,problem with add user billing contact,0
+TK711290,38392,2026-05-08 01:13,2026-05-08 03:24,phone,P1,Urgent username,0
+TK468269,58281,2026-05-08 02:04,2026-05-08 03:19,chat,med,issue with billing contact,1
+TK311617,92285,2026-05-08 02:19,2026-05-08 05:48,chat,HIGH,Follow up slow payment page package,4
+TK227658,77534,2026-05-08 03:28,2026-05-08 06:32,email,Low,Question about error,2
+TK472309,20719,2026-05-08 04:14,2026-05-08 12:32,email,low,tracking number,0
+TK445715,60443,2026-05-08 04:35,2026-05-08 07:37,chat,P2,Follow up upgrade,0
+TK966227,29741,2026-05-08 05:34,2026-05-08 07:57,email,P3,Two-factor,0
+TK528991,62748,2026-05-08 05:44,2026-05-08 08:04,email,medium,Problem with sync failed,0
+TK834495,49162,2026-05-08 05:50,2026-05-08 08:13,phone,High,Subscription price,0
+TK521146,85073,2026-05-08 07:57,2026-05-08 11:00,chat,Medium,follow up locked out,0
+TK975094,86464,2026-05-08 08:07,2026-05-08 13:42,email,p1,please advise credit note tracking number,0
+TK889064,73453,2026-05-08 08:37,2026-05-09 02:44,phone,low,again login,1
+TK649743,70605,2026-05-08 08:39,2026-05-08 18:55,chat,P2,error,1
+TK418330,34423,2026-05-08 10:29,2026-05-09 00:55,chat,medium,again integration,1
+TK499785,73352,2026-05-08 11:21,2026-05-08 12:52,email,med,help delete account,0
+TK278057,85998,2026-05-08 11:37,2026-05-09 03:26,phone,med,Question about integration tax,2
+TK519303,90777,2026-05-08 11:43,2026-05-09 04:06,chat,med,Upgrade cost,1
+TK436524,74703,2026-05-08 12:13,2026-05-08 14:45,email,medium,question about upgrade cost,0
+TK628619,84493,2026-05-08 14:01,,phone,HIGH,urgent replacement unit,0
+TK413156,74039,2026-05-08 14:48,2026-05-09 09:16,email,P3,export broken device,2
+TK629691,75805,2026-05-08 16:02,2026-05-08 20:20,email,P1,Please advise username,0
+TK864820,73637,2026-05-08 17:44,2026-05-08 18:52,phone,medium,help billing contact,0
+TK425432,82447,2026-05-08 18:25,2026-05-08 20:28,email,Medium,locked out,0
+TK524591,85043,2026-05-08 21:25,2026-05-09 16:42,email,med,Problem with billing cycle account,0
+TK735185,87248,2026-05-08 21:30,2026-05-08 23:39,email,med,again payment failed,1
+TK578923,54690,2026-05-08 22:06,2026-05-09 02:11,email,med,issue with locked out,0
+TK306707,63918,2026-05-08 23:24,2026-05-09 00:35,phone,medium,Username,0
+TK287337,37706,2026-05-08 23:24,2026-05-08 23:38,chat,P1,permissions billing contact,0
+TK408950,52293,2026-05-09 00:24,2026-05-09 01:28,chat,HIGH,Again error,0
+TK557453,86154,2026-05-09 01:27,2026-05-09 08:55,email,high,Problem with refund,0
+TK694743,46403,2026-05-09 01:41,2026-05-09 10:13,chat,P2,error,1
+TK359875,85441,2026-05-09 03:03,,email,P1,urgent payment failed account bug,0
+TK932118,57488,2026-05-09 03:56,2026-05-10 00:12,email,low,Follow up tax upgrade integration,1
+TK180194,52353,2026-05-09 04:43,,phone,P1,urgent delete account bug,0
+TK148853,57918,2026-05-09 05:45,2026-05-09 16:46,chat,P2,Please advise login,1
+TK728700,46791,2026-05-09 05:55,2026-05-09 10:44,chat,medium,500 error,2
+TK791649,92701,2026-05-09 06:46,2026-05-10 05:19,phone,P2,help device,1
+TK103974,58187,2026-05-09 06:56,2026-05-09 08:58,chat,medium,PASSWORD RESET,1
+TK676281,91193,2026-05-09 07:45,2026-05-09 11:56,email,high,Question about workspace,0
+TK577892,85073,2026-05-09 08:39,2026-05-09 22:17,email,HIGH,please advise login,1
+TK497464,66083,2026-05-09 08:51,2026-05-09 20:15,email,P3,help courier,0
+TK316564,67389,2026-05-09 10:24,2026-05-09 13:15,email,P1,again upgrade,2
+TK595288,33493,2026-05-09 12:04,2026-05-09 19:37,email,Low,urgent username,0
+TK841648,58181,2026-05-09 13:53,2026-05-10 00:20,chat,low,card declined workspace,3
+TK692956,30128,2026-05-09 14:16,2026-05-10 01:22,phone,low,Error,3
+TK907636,39625,2026-05-09 14:37,2026-05-09 20:03,email,HIGH,follow up payment failed,0
+TK493054,26012,2026-05-09 15:37,2026-05-09 16:39,email,medium,locked out,1
+TK178796,64865,2026-05-09 16:39,2026-05-10 07:06,chat,medium,help device,3
+TK902258,92794,2026-05-09 18:00,2026-05-09 22:52,chat,Low,please advise integration payment page,2
+TK732941,73495,2026-05-09 18:01,2026-05-10 03:20,phone,HIGH,replacement unit,1
+TK509444,69537,2026-05-09 18:04,2026-05-09 23:44,email,P2,Again upgrade cost workspace,0
+TK605818,47556,2026-05-09 18:13,2026-05-09 21:12,phone,P1,Question about add user,0
+TK816950,91907,2026-05-09 19:07,2026-05-10 01:38,email,P2,problem with payment page,1
+TK784604,20861,2026-05-09 19:42,2026-05-10 18:07,email,Medium,please advise device,3
+TK162774,38827,2026-05-09 20:07,2026-05-10 02:38,email,medium,overcharged upgrade two-factor,1
+TK995420,23668,2026-05-09 22:09,2026-05-10 05:06,email,Low,please advise credit note,1
+TK285714,91907,2026-05-09 22:36,2026-05-10 02:19,chat,High,Problem with crash,1
+TK462143,46097,2026-05-09 23:28,2026-05-10 08:00,chat,HIGH,Question about app freezes,3
+TK599167,87519,2026-05-10 00:56,2026-05-10 09:44,phone,p1,Help overcharged upgrade,1
+TK669397,59695,2026-05-10 01:26,2026-05-10 06:21,email,P3,Delete account,0
+TK333823,23445,2026-05-10 01:47,2026-05-10 06:46,chat,p1,follow up login,1
+TK728356,62035,2026-05-10 02:28,2026-05-10 02:54,chat,medium,AGAIN SSO SETUP,0
+TK245467,61225,2026-05-10 03:01,2026-05-10 22:34,email,low,question about slow overcharged,0
+TK531553,61353,2026-05-10 04:13,2026-05-10 07:29,phone,med,Issue with sso setup login,0
+TK564130,97854,2026-05-10 04:33,2026-05-10 11:35,email,HIGH,Help subscription price,0
+TK148036,42911,2026-05-10 04:46,2026-05-10 13:11,chat,medium,Issue with account,1
+TK856066,54690,2026-05-10 05:12,2026-05-10 11:23,email,Low,Question about device,0
+TK805655,72332,2026-05-10 06:25,2026-05-10 07:55,chat,low,issue with billing contact,0
+TK938608,95003,2026-05-10 06:40,2026-05-10 09:06,email,P2,add user,0
+TK836461,71553,2026-05-10 08:14,2026-05-10 08:58,phone,P2,two-factor billing contact,1
+TK644726,61368,2026-05-10 09:39,2026-05-11 08:33,email,P2,again courier,1
+TK352235,40075,2026-05-10 09:46,2026-05-10 12:09,chat,Low,Sso setup billing contact,0
+TK119031,92103,2026-05-10 10:40,2026-05-10 14:58,email,P2,change email tracking number,0
+TK555532,35911,2026-05-10 11:04,2026-05-10 12:52,email,low,follow up locked out damaged box,0
+TK196859,52733,2026-05-10 11:29,2026-05-10 16:59,email,Low,Please advise upgrade cost,0
+TK670054,49242,2026-05-10 12:13,2026-05-10 17:34,phone,P1,issue with damaged box remove user,0
+TK404630,81725,2026-05-10 12:31,2026-05-10 15:09,email,med,Urgent device,0
+TK816094,39957,2026-05-10 13:42,2026-05-10 15:17,email,high,DELETE ACCOUNT SHIPMENT DELAYED,0
+TK926495,23352,2026-05-10 14:21,2026-05-10 19:45,chat,P2,issue with billing contact,0
+TK858719,62427,2026-05-10 15:13,2026-05-11 06:21,email,Medium,HELP DEVICE,2
+TK834363,49608,2026-05-10 15:50,2026-05-10 18:56,email,high,Question about overcharged,0
+TK452911,92814,2026-05-10 15:57,2026-05-10 17:43,phone,P3,Refund,2
+TK858171,33142,2026-05-10 16:53,2026-05-11 08:47,email,Medium,app freezes payment page,0
+TK352800,49040,2026-05-10 17:45,2026-05-10 17:58,email,medium,help upgrade cost workspace,0
+TK648868,27630,2026-05-10 20:21,2026-05-10 22:05,email,Low,Permissions,0
+TK521986,77218,2026-05-10 20:57,2026-05-10 23:55,chat,Low,PROBLEM WITH REMOVE USER BILLING CONTACT,0
+TK867878,93060,2026-05-10 21:25,,chat,med,Change email billing contact,0
+TK409727,23377,2026-05-10 21:29,2026-05-11 04:16,email,Medium,Api timeout payment page charged twice,0
+TK737479,26706,2026-05-10 22:28,2026-05-11 04:48,email,med,Problem with payment failed,0
+TK822866,30562,2026-05-10 23:01,2026-05-11 21:51,phone,Medium,DEVICE NOT ARRIVED,1
+TK702851,48949,2026-05-10 23:15,2026-05-11 01:51,email,high,slow payment page package,1
+TK262296,55185,2026-05-11 01:09,2026-05-11 10:11,phone,P1,again login,2
+TK569190,53613,2026-05-11 01:30,2026-05-11 02:29,chat,P1,Refund remove user,2
+TK615066,61278,2026-05-11 03:08,2026-05-12 06:31,chat,med,Follow up sync failed,2
+TK547942,23801,2026-05-11 04:57,2026-05-11 09:35,email,med,QUESTION ABOUT RECEIPT LOCKED OUT,1
+TK420698,30766,2026-05-11 04:59,2026-05-11 06:45,email,Low,help login,0
+TK278882,85353,2026-05-11 05:22,2026-05-11 07:58,email,HIGH,Again overcharged,0
+TK408764,32699,2026-05-11 05:28,2026-05-12 04:47,chat,P3,urgent account,1
+TK656198,81360,2026-05-11 06:01,2026-05-11 11:08,chat,Low,help login,1
+TK786715,97421,2026-05-11 06:04,2026-05-11 09:31,email,p1,question about error,0
+TK298670,94166,2026-05-11 07:40,2026-05-11 13:35,email,P3,charged twice workspace,0
+TK733244,31824,2026-05-11 07:56,2026-05-12 06:58,email,medium,Sync failed,3
+TK967216,81249,2026-05-11 10:24,2026-05-11 14:48,chat,P3,again upgrade,1
+TK978671,75424,2026-05-11 11:01,,phone,HIGH,Upgrade cost,0
+TK892519,85535,2026-05-11 11:34,2026-05-11 21:00,email,med,urgent login,0
+TK259526,34263,2026-05-11 11:42,2026-05-11 18:57,email,High,login loop,3
+TK326740,30591,2026-05-11 12:00,2026-05-11 15:11,chat,Low,Urgent integration device,3
+TK920618,35851,2026-05-11 12:15,2026-05-11 23:49,email,med,credit note workspace login loop,0
+TK304161,75915,2026-05-11 13:19,2026-05-11 20:33,phone,high,problem with delivery,0
+TK871199,63396,2026-05-11 14:36,2026-05-12 00:31,email,high,invoice upgrade,0
+TK729578,85063,2026-05-11 15:06,2026-05-11 18:36,chat,low,username return label,0
+TK850549,58621,2026-05-11 16:57,2026-05-11 20:55,chat,med,Delete account,0
+TK180704,52261,2026-05-11 18:04,2026-05-12 01:08,chat,med,follow up device,5
+TK938827,99735,2026-05-11 18:14,2026-05-12 05:17,phone,medium,Issue with export broken,0
+TK134566,68981,2026-05-11 21:02,2026-05-11 22:10,phone,high,PLEASE ADVISE WORKSPACE,0
+TK886386,95933,2026-05-11 21:36,2026-05-12 02:23,chat,Medium,Username,0
+TK128935,90314,2026-05-11 21:59,2026-05-12 01:14,email,P2,Billing cycle account delivery,1
+TK213598,88060,2026-05-11 23:15,2026-05-12 00:25,email,P2,Urgent account,0
+TK466881,22367,2026-05-12 00:29,2026-05-12 04:32,chat,Low,Question about api timeout two-factor,2
+TK344704,74833,2026-05-12 01:33,2026-05-12 09:08,email,med,Urgent credit note,0
+TK272501,77729,2026-05-12 01:49,2026-05-12 03:05,chat,P2,Locked out error,2
+TK671766,84656,2026-05-12 02:30,2026-05-12 07:26,email,Medium,again device not arrived subscription price,0
+TK645599,47978,2026-05-12 05:30,2026-05-12 08:11,phone,high,integration refund,2
+TK339760,99452,2026-05-12 05:46,2026-05-12 12:32,email,low,permissions overcharged,0
+TK389111,84777,2026-05-12 06:40,2026-05-12 11:15,chat,HIGH,PROBLEM WITH SYNC FAILED,5
+TK526184,35406,2026-05-12 09:17,2026-05-12 14:51,chat,medium,question about add user error,0
+TK181193,86150,2026-05-12 10:05,2026-05-12 13:31,email,p1,again workspace,0
+TK733472,78751,2026-05-12 10:50,2026-05-12 14:17,phone,high,Please advise error,0
+TK500733,69621,2026-05-12 11:16,2026-05-12 21:45,phone,p1,again export broken,1
+TK530296,66495,2026-05-12 11:56,2026-05-12 12:48,chat,P1,Again login,0
+TK557541,35388,2026-05-12 12:16,2026-05-12 17:15,chat,HIGH,follow up login,1
+TK513983,47764,2026-05-12 12:28,2026-05-12 18:19,email,medium,Credit note account,0
+TK635299,47175,2026-05-12 13:19,2026-05-12 16:11,phone,Medium,Please advise rename workspace,1
+TK699810,78904,2026-05-12 14:04,2026-05-12 18:14,email,Medium,please advise login,1
+TK656942,65477,2026-05-12 14:49,2026-05-13 08:09,phone,Low,Help delivery,1
+TK642166,92731,2026-05-12 16:07,2026-05-12 18:10,email,P3,Question about workspace,0
+TK563155,78551,2026-05-12 17:21,2026-05-12 18:05,chat,P1,Again crash payment page,3
+TK940939,96425,2026-05-12 18:39,2026-05-12 22:06,chat,P3,again workspace,2
+TK564972,80044,2026-05-12 19:36,2026-05-12 22:27,chat,p1,Remove user wrong address,0
+TK379334,56210,2026-05-12 19:41,2026-05-13 00:37,chat,High,help export broken,2
+TK891717,36470,2026-05-12 19:46,2026-05-13 07:16,email,med,Follow up subscription price account,1
+TK738729,99130,2026-05-12 21:02,2026-05-13 03:41,chat,medium,remove user not loading,0
+TK360552,51674,2026-05-12 21:34,2026-05-12 22:13,chat,P3,permissions billing contact,0
+TK445878,86261,2026-05-12 22:04,2026-05-13 04:28,email,P2,Package payment failed,2
+TK106905,55185,2026-05-12 23:56,2026-05-13 05:26,email,low,delete account refund,1
+TK438302,55490,2026-05-13 00:38,2026-05-13 10:49,phone,Medium,help payment page,1
+TK941319,21680,2026-05-13 01:31,2026-05-13 07:11,chat,medium,again login,0
+TK654502,61842,2026-05-13 01:56,2026-05-13 08:26,email,High,package invoice,0
+TK154294,70919,2026-05-13 02:20,2026-05-13 05:24,chat,Medium,password reset,0
+TK481071,42683,2026-05-13 02:50,2026-05-13 09:48,chat,med,please advise payment failed,1
+TK949490,91429,2026-05-13 04:01,2026-05-13 05:11,chat,Medium,Problem with error,0
+TK895455,39135,2026-05-13 04:03,2026-05-13 20:31,chat,Medium,Problem with payment page,1
+TK447381,41264,2026-05-13 06:24,2026-05-13 08:01,phone,P3,Sync failed,1
+TK991567,40529,2026-05-13 06:43,,email,Low,500 error,0
+TK843206,85842,2026-05-13 07:00,2026-05-14 02:32,phone,P2,PLEASE ADVISE APP FREEZES,5
+TK588864,84761,2026-05-13 08:14,2026-05-13 11:30,email,medium,Password reset login,1
+TK392117,82744,2026-05-13 08:15,2026-05-13 13:53,email,Medium,urgent tax,0
+TK822467,77396,2026-05-13 09:11,2026-05-13 22:26,chat,Medium,Question about error,0
+TK653262,52934,2026-05-13 09:29,,phone,medium,follow up refund,0
+TK937509,40983,2026-05-13 10:05,,email,Low,billing cycle,0
+TK478027,32542,2026-05-13 10:32,2026-05-13 16:58,chat,P2,delete account billing contact,0
+TK295026,65943,2026-05-13 11:19,2026-05-13 13:34,email,low,issue with permissions,1
+TK179479,94880,2026-05-13 11:34,2026-05-13 20:36,email,P2,please advise tax bug,0
+TK212635,29791,2026-05-13 11:58,2026-05-13 16:42,email,P2,issue with workspace,0
+TK602868,35133,2026-05-13 12:03,2026-05-13 15:16,chat,P2,question about billing contact,0
+TK639636,25217,2026-05-13 14:41,2026-05-13 19:33,chat,medium,subscription price,1
+TK100138,46996,2026-05-13 15:11,2026-05-13 18:43,phone,P2,Follow up upgrade cost,1
+TK610749,95263,2026-05-13 16:58,2026-05-13 23:34,chat,Medium,Delivery,0
+TK968191,20645,2026-05-13 17:09,2026-05-13 18:12,chat,High,Username billing contact,1
+TK116316,76480,2026-05-13 17:40,2026-05-13 19:14,email,low,please advise billing contact,0
+TK736638,59418,2026-05-13 18:25,,chat,P2,help device not arrived card declined,0
+TK718481,93830,2026-05-13 19:02,2026-05-13 23:48,chat,P3,Question about error,0
+TK964243,52978,2026-05-13 19:15,2026-05-14 03:44,email,P2,issue with charged twice,0
+TK921515,72887,2026-05-13 20:09,2026-05-13 22:06,email,p1,problem with account,0
+TK887439,90992,2026-05-13 20:32,2026-05-13 23:57,email,p1,Issue with password reset,0
+TK476370,72259,2026-05-13 21:19,,email,Medium,question about workspace,0
+TK340301,84494,2026-05-13 21:37,2026-05-14 01:44,email,high,Follow up invoice,0
+TK879788,48083,2026-05-13 22:45,2026-05-14 05:17,email,Low,Refund workspace,0
+TK162462,93793,2026-05-13 23:01,2026-05-14 00:10,chat,med,please advise login,0
+TK307990,36937,2026-05-14 00:10,2026-05-14 00:53,email,Medium,Help password reset,0
+TK152519,96109,2026-05-14 01:06,2026-05-14 09:02,chat,medium,Urgent remove user,0
+TK267155,35614,2026-05-14 01:42,2026-05-14 03:08,email,high,Question about tax,0
+TK376670,95100,2026-05-14 02:12,2026-05-14 03:19,email,Low,follow up delete account login,0
+TK798321,72385,2026-05-14 03:26,,chat,p1,OVERCHARGED UPGRADE,0
+TK724130,68060,2026-05-14 04:36,2026-05-14 09:17,phone,P1,follow up refund,1
+TK957816,51544,2026-05-14 05:15,2026-05-14 11:21,phone,high,Question about upgrade,0
+TK421828,68097,2026-05-14 06:30,2026-05-14 12:59,email,med,issue with workspace,0
+TK808954,45603,2026-05-14 08:59,,chat,medium,Credit note account,0
+TK668848,42442,2026-05-14 09:22,2026-05-14 16:32,phone,P1,QUESTION ABOUT PAYMENT PAGE,2
+TK652900,53804,2026-05-14 10:04,2026-05-14 11:52,email,p1,problem with login,0
+TK651424,55426,2026-05-14 10:58,2026-05-14 20:30,email,Low,problem with account,0
+TK676113,24822,2026-05-14 12:13,2026-05-14 17:25,phone,high,Issue with login loop replacement unit,2
+TK277666,61115,2026-05-14 13:23,2026-05-14 23:34,email,P2,Device not arrived refund,0
+TK392677,47992,2026-05-14 13:46,2026-05-14 18:13,email,P2,Issue with password reset,0
+TK286252,22649,2026-05-14 14:01,2026-05-15 03:28,chat,medium,Help payment page,3
+TK299604,59406,2026-05-14 15:23,2026-05-14 17:13,email,Low,rename workspace login,1
+TK322341,56797,2026-05-14 15:31,,email,P2,Please advise sync failed,0
+TK774955,85840,2026-05-14 16:12,2026-05-14 19:01,email,med,Help account,1
+TK292554,37730,2026-05-14 16:27,2026-05-15 12:43,phone,Low,urgent crash,0
+TK425710,66384,2026-05-14 18:22,2026-05-14 22:40,email,Low,urgent tax,1
+TK808549,93398,2026-05-14 18:55,2026-05-14 20:45,email,medium,rename workspace,0
+TK665964,57932,2026-05-14 19:17,2026-05-14 21:29,email,Medium,urgent payment failed,0
+TK277384,32866,2026-05-14 19:18,,email,low,Two-factor return label,1
+TK148562,89732,2026-05-14 19:47,,email,Low,urgent delete account subscription price,0
+TK330945,68352,2026-05-14 19:53,2026-05-15 01:49,email,p1,app freezes device,4
+TK138978,56576,2026-05-14 20:37,2026-05-15 03:28,email,Low,Help permissions error shipment delayed,0
+TK837866,99852,2026-05-14 20:57,2026-05-15 01:25,chat,P2,payment failed workspace,1
+TK691757,41806,2026-05-14 21:30,2026-05-15 00:59,email,med,URGENT WORKSPACE,0
+TK397750,94392,2026-05-14 22:13,,email,Medium,Please advise charged twice,0
+TK473335,71623,2026-05-14 23:30,2026-05-15 00:37,email,high,rename workspace,0

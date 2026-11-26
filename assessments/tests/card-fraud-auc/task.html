@@ -1,0 +1,47 @@
+<h2>Overview</h2>
+<p><b>Northwind Pay</b> issues debit, credit and prepaid cards. The fraud team reviews a fixed number of flagged transactions a day, so what matters is <b>ranking</b>: fraudulent transactions should get higher scores than legitimate ones. Fraud is rare, which makes accuracy a useless measure here.</p>
+<p>Tasks 1–2 are graded from the <b>variables</b> you leave in the notebook (read from the live kernel when you submit). Task 3 is graded from <code>submission.csv</code>.</p>
+
+<h3>Files</h3>
+<ul>
+  <li><code>transactions_train.csv</code> — January to April 2026, with the label <code>is_fraud</code> (1 = confirmed fraud).</li>
+  <li><code>transactions_test.csv</code> — May 2026, same columns without <code>is_fraud</code>.</li>
+  <li><code>cards.csv</code> — one row per card: <code>card_id, card_type, card_country, issue_date, credit_limit</code> (<code>credit_limit</code> is empty for debit and prepaid cards).</li>
+</ul>
+
+<h3>Transaction columns</h3>
+<table>
+  <tr><th>column</th><th>notes</th></tr>
+  <tr><td><code>tx_id</code></td><td>string key</td></tr>
+  <tr><td><code>card_id</code></td><td>joins to <code>cards.card_id</code></td></tr>
+  <tr><td><code>timestamp</code></td><td><code>YYYY-MM-DD HH:MM:SS</code></td></tr>
+  <tr><td><code>amount</code></td><td>text; amounts of 1,000 or more often contain a thousands comma</td></tr>
+  <tr><td><code>merchant_category</code></td><td>casing and leading spaces vary</td></tr>
+  <tr><td><code>country</code></td><td>where the transaction happened; some missing</td></tr>
+  <tr><td><code>channel</code></td><td><code>online</code> or <code>pos</code> (in store)</td></tr>
+</table>
+
+<h2>Task 1 · Clean and profile <span class="pts">15 pts</span></h2>
+<p>Load the training transactions. Convert <code>amount</code> to a float and normalise <code>merchant_category</code> to lower case with no surrounding spaces. Store:</p>
+<ul>
+  <li><code>task1_fraud_rate</code> — the share of training transactions that are fraud, rounded to 4 decimals.</li>
+  <li><code>task1_n_cards</code> — the number of distinct cards in the training data (int).</li>
+  <li><code>task1_max_amount</code> — the largest amount, rounded to 2 decimals.</li>
+</ul>
+
+<h2>Task 2 · Where fraud concentrates <span class="pts">20 pts</span></h2>
+<p>Join <code>cards.csv</code> onto the training transactions. A transaction is <b>foreign</b> when its <code>country</code> is known and differs from the card's <code>card_country</code> (a missing country is not foreign). Store:</p>
+<ul>
+  <li><code>task2_fraud_rate_by_channel</code> — dict of channel → fraud rate, rounded to 4 decimals.</li>
+  <li><code>task2_top_category</code> — among cleaned merchant categories with <b>at least 500</b> training transactions, the one with the highest fraud rate (a string).</li>
+  <li><code>task2_foreign_fraud_rate</code> — the fraud rate of foreign transactions, rounded to 4 decimals.</li>
+</ul>
+
+<h2>Task 3 · Score May's transactions <span class="pts">65 pts</span></h2>
+<p>Train a model on the training data and predict, for every row in <code>transactions_test.csv</code>, the probability that it is fraud. Save <code>submission.csv</code> with exactly these columns and one row per test transaction:</p>
+<pre>tx_id,fraud_probability
+T1234567,0.0123
+T7654321,0.8810
+...</pre>
+<p>Values must be between 0 and 1: use <code>predict_proba(...)[:, 1]</code>, not <code>predict</code>.</p>
+<p><b>Scoring:</b> ROC AUC against the hidden labels. 0 points at AUC ≤ 0.80, full points at AUC ≥ 0.90, linear in between. Think about features that describe the card's behaviour, not only the single transaction, and validate in a way that respects time (train on earlier months, check on a later one).</p>

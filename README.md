@@ -27,6 +27,7 @@ mindmap
       Pandas
       ML pipeline: EDA to model
       Pandas rapid fire quiz
+      Data Science Framework practice
     SQL
       Overview
     ML fundamentals
