@@ -20,6 +20,7 @@ mindmap
   root((Cheat sheets))
     Python fundamentals
       Overview
+      Python rapid fire quiz
     Coding round
       Python DSA
       NumPy
@@ -42,6 +43,7 @@ mindmap
       System design
     Quiz reports
       Python MCQ quiz reports
+      Python rapid fire quiz reports
       Pandas quiz reports
 ```
 
@@ -50,6 +52,7 @@ mindmap
 | Stage | Sheet | What it covers |
 | --- | --- | --- |
 | 🐍 Python fundamentals | [Python fundamentals](sheets/python-fundamentals.html) | Python fundamentals overview |
+| 🐍 Python fundamentals | [Python rapid fire quiz](quizzes/python-rapid-fire-quiz.html) | Timed quiz drawing from 163 questions: read a snippet and type what it prints (or write one line), from types and strings to closures, classes, generators and exceptions |
 | 🧩 Coding round | [Python DSA](sheets/python-dsa-data-structures-cheatsheet.html) | Quick syntax, common moves and interview traps |
 | 🧩 Coding round | [NumPy](sheets/numpy-basics-cheatsheet.html) | Creating, reshaping, indexing, math and combining arrays |
 | 🧩 Coding round | [Pandas](sheets/pandas-cheatsheet.html) | Data wrangling syntax by stage: value counts, dates and times, map, pivot table, melt, concat, groupby, rolling means |
@@ -65,6 +68,7 @@ mindmap
 | 🧠 Deep learning | [YOLO evolution](sheets/yolo-architecture-evolution.html) | Interactive YOLO architecture timeline |
 | 🏗️ System design round | [System design](sheets/system-design-cheatsheet.html) | Requirements, scaling, storage, reliability and trade-offs |
 | 📝 Quiz reports | [Quiz reports](quizzes/quiz-reports.html) | Python MCQ quiz history with strengths and weaknesses |
+| 📝 Quiz reports | [Python rapid fire reports](quizzes/python-quiz-reports.html) | Python Rapid Fire round history with strengths, weaknesses and learnings |
 | 📝 Quiz reports | [Pandas quiz reports](quizzes/pandas-quiz-reports.html) | Pandas Rapid Fire round history with strengths, weaknesses and learnings |
 
 ## Previews
@@ -101,7 +105,7 @@ mindmap
 ├── index.html          # entry point: grouped index of every sheet
 ├── sheets/             # one self-contained HTML page per topic
 ├── quizzes/            # interactive quizzes, quiz history and per-quiz reports
-├── tools/              # quiz_server.py: local server that saves quiz rounds into the repo
+├── tools/              # quiz_server.py saves quiz rounds into the repo; check_python_bank.py verifies the Python bank
 ├── assets/
 │   ├── images/         # figures embedded in the sheets
 │   └── previews/       # screenshots used in this README
@@ -109,15 +113,15 @@ mindmap
 └── README.md
 ```
 
-## Pandas rapid fire quiz
+## Rapid fire quizzes (Python and Pandas)
 
-Start the local save server, then play. Every finished round is written into the repo (`quizzes/pandas-rounds.js`) and appears on the [Pandas quiz reports](quizzes/pandas-quiz-reports.html) page as a full report.
+Start the local save server, then play. Every finished round is written into the repo (`quizzes/python-rounds.js` or `quizzes/pandas-rounds.js`) and appears on the [Python](quizzes/python-quiz-reports.html) or [Pandas](quizzes/pandas-quiz-reports.html) reports page as a full report.
 
 ```bash
 python3 tools/quiz_server.py --open
 ```
 
-It needs only the Python standard library, listens on `localhost:8000` (`--port` to change), and stops with Ctrl+C. Commit `quizzes/pandas-rounds.js` to keep the reports in git.
+It needs only the Python standard library, listens on `localhost:8000` (`--port` to change), and stops with Ctrl+C. Open http://localhost:8000/quizzes/python-rapid-fire-quiz.html for the Python quiz. Commit the `*-rounds.js` files to keep the reports in git. After editing the Python bank, run `python3 tools/check_python_bank.py`: it executes every snippet and checks the stored answers.
 
 ## Sheet format
 
