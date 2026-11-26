@@ -1,0 +1,25 @@
+neighbourhood,borough,median_income,transit_score
+Pier Row,Harbourside,80100,87
+Old Docks,Harbourside,95300,51
+Lighthouse,Harbourside,125700,69
+Saltmarsh,Harbourside,119700,45
+Anchor Bay,Harbourside,82200,41
+Quayside,Harbourside,110000,56
+Elm Park,Northgate,82700,63
+Mill Hill,Northgate,74100,96
+Kingsfield,Northgate,96200,98
+Northcross,Northgate,86900,94
+Fernwood,Northgate,57800,72
+Brookvale,Northgate,94600,86
+Riverside,Eastbank,66400,89
+Foundry,Eastbank,54300,47
+Canal Quarter,Eastbank,77700,76
+Brickworks,Eastbank,67200,40
+Ashton,Eastbank,55100,49
+Marlow,Eastbank,82300,54
+Heathside,Westmoor,49600,80
+Stonebridge,Westmoor,64400,78
+Westlea,Westmoor,49900,57
+Oakhurst,Westmoor,64600,44
+Briar Hill,Westmoor,54900,88
+Larkspur,Westmoor,47600,53

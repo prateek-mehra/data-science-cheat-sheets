@@ -1,0 +1,41 @@
+{
+  "id": "ticket-routing-multiclass",
+  "title": "Support Ticket Routing",
+  "company": "Helix Software (fictional SaaS + hardware company)",
+  "framework": "Data Science Framework · Pandas + scikit-learn",
+  "duration_minutes": 60,
+  "duration_options": [40, 60, 75],
+  "summary": "Multi-class classification with text: standardise messy ticket fields, measure response times, join customer plans, and route tickets to one of four teams (macro F1).",
+  "data_files": ["tickets_train.csv", "tickets_test.csv", "customers.csv"],
+  "starter": "starter.ipynb",
+  "task_html": "task.html",
+  "submission": {
+    "file": "submission.csv",
+    "id_column": "ticket_id",
+    "prediction_column": "team",
+    "kind": "class",
+    "labels_file": "_hidden/test_labels.csv",
+    "label_column": "team"
+  },
+  "tasks": [
+    {"id": 1, "title": "Clean the tickets", "points": 15,
+     "checks": [
+       {"var": "task1_n_rows", "kind": "number", "tol": 0},
+       {"var": "task1_priority_counts", "kind": "dict", "tol": 0},
+       {"var": "task1_team_share", "kind": "dict", "tol": 0.0015}
+     ]},
+    {"id": 2, "title": "Response times", "points": 15,
+     "checks": [
+       {"var": "task2_median_response_hours_by_team", "kind": "dict", "tol": 0.011},
+       {"var": "task2_pct_unanswered", "kind": "number", "tol": 0.00015}
+     ]},
+    {"id": 3, "title": "Customer plans", "points": 15,
+     "checks": [
+       {"var": "task3_top_team_by_plan", "kind": "dict_str"},
+       {"var": "task3_enterprise_high_share", "kind": "number", "tol": 0.00015}
+     ]},
+    {"id": 4, "title": "Route the test tickets", "points": 55, "model": true}
+  ],
+  "model": {"metric": "macro_f1", "floor": 0.55, "target": 0.90,
+            "note": "0 points at macro F1 0.55 or below; full points at 0.90 or more; linear in between."}
+}

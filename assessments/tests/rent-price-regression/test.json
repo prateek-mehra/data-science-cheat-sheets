@@ -1,0 +1,41 @@
+{
+  "id": "rent-price-regression",
+  "title": "Rental Price Prediction",
+  "company": "Harbor Homes (fictional rental platform)",
+  "framework": "Data Science Framework · Pandas + scikit-learn",
+  "duration_minutes": 75,
+  "duration_options": [40, 60, 75],
+  "summary": "Regression: parse messy listing fields, remove data-entry typos, expand a multi-value amenities column, join neighbourhood data, and predict monthly rent (RMSE).",
+  "data_files": ["listings_train.csv", "listings_test.csv", "neighbourhoods.csv"],
+  "starter": "starter.ipynb",
+  "task_html": "task.html",
+  "submission": {
+    "file": "submission.csv",
+    "id_column": "listing_id",
+    "prediction_column": "rent",
+    "kind": "number",
+    "labels_file": "_hidden/test_labels.csv",
+    "label_column": "rent"
+  },
+  "tasks": [
+    {"id": 1, "title": "Clean the listings", "points": 15,
+     "checks": [
+       {"var": "task1_n_rows", "kind": "number", "tol": 0},
+       {"var": "task1_median_rent_by_bedrooms", "kind": "dict", "tol": 0.051},
+       {"var": "task1_median_rent_per_sqft", "kind": "number", "tol": 0.0011}
+     ]},
+    {"id": 2, "title": "Amenities", "points": 10,
+     "checks": [
+       {"var": "task2_amenity_counts", "kind": "dict", "tol": 0},
+       {"var": "task2_doorman_premium", "kind": "number", "tol": 0.051}
+     ]},
+    {"id": 3, "title": "Neighbourhoods", "points": 15,
+     "checks": [
+       {"var": "task3_median_rent_by_borough", "kind": "dict", "tol": 0.051},
+       {"var": "task3_corr_income_rent", "kind": "number", "tol": 0.0011}
+     ]},
+    {"id": 4, "title": "Predict rent", "points": 60, "model": true}
+  ],
+  "model": {"metric": "rmse", "floor": 620, "target": 330,
+            "note": "0 points at RMSE 620 or above (about what square footage alone gives); full points at 330 or below; linear in between."}
+}
