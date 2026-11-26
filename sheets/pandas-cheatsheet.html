@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pandas Cheat Sheet</title>
+  <style>
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle { color: var(--muted); }
+    a { color: var(--blue); }
+    section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    pre code { font-size: 12.5px; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; table-layout: fixed; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    th { color: var(--muted); font-weight: 600; }
+    .note { margin-top: 10px; color: var(--muted); }
+    @media (max-width: 600px) { main { padding: 16px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
+    figure { margin: 10px 0 0; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+    figcaption { margin-top: 6px; color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Pandas Cheat Sheet</h1>
+      <div class="subtitle">Data wrangling syntax, ordered by stage: inspect, clean, transform, reshape, combine, aggregate, time series.</div>
+    </header>
+    <p><a href="../index.html">← Back to cheat sheets</a></p>
+    <section>
+      <details class="card"><summary><h2>Value counts</h2></summary>
+      <p>Count how often each distinct value appears in a column, sorted from most to least common.</p>
+      <pre><code>dept_counts = df["dept"].value_counts()</code></pre>
+      <p>Shares instead of counts, with missing values counted too:</p>
+      <pre><code>dept_shares = df["dept"].value_counts(normalize=True, dropna=False)</code></pre>
+      <p>Counts of each combination of several columns:</p>
+      <pre><code>pair_counts = df.value_counts(["dept", "city"])</code></pre>
+      <ul>
+        <li><code>NaN</code> is left out by default; <code>dropna=False</code> includes it.</li>
+        <li><code>sort=False</code> keeps first-seen order; <code>.sort_index()</code> orders by value instead of count.</li>
+        <li><code>df.groupby("dept").size()</code> gives the same counts, sorted by dept.</li>
+        <li><code>df["dept"].nunique()</code> is the number of distinct values.</li>
+      </ul>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Dates and times</h2></summary>
+      <p><strong>Parse first.</strong> The <code>.dt</code> accessor only works on <code>datetime64</code> columns, so convert strings before anything else.</p>
+      <pre><code>df["date"] = pd.to_datetime(df["date"])                      # "2024-03-15" → Timestamp
+df["date"] = pd.to_datetime(df["date"], format="%d/%m/%Y")   # explicit format: faster, no guessing
+df["date"] = pd.to_datetime(df["date"], errors="coerce")     # unparseable values → NaT
+df = pd.read_csv("sales.csv", parse_dates=["date"])          # parse while loading</code></pre>
+      <p><strong>Extract parts</strong> with <code>.dt</code>:</p>
+      <pre><code>df["year"] = df["date"].dt.year
+df["month"] = df["date"].dt.month
+df["month_name"] = df["date"].dt.month_name()
+df["weekday"] = df["date"].dt.day_name()
+df["is_weekend"] = df["date"].dt.dayofweek &gt;= 5</code></pre>
+      <table>
+        <thead><tr><th style="width:42%">Syntax</th><th style="width:26%">Result for 2024-03-15 14:30</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td><code>.dt.year</code></td><td><code>2024</code></td><td></td></tr>
+          <tr><td><code>.dt.month</code></td><td><code>3</code></td><td>1–12</td></tr>
+          <tr><td><code>.dt.day</code></td><td><code>15</code></td><td>day of the month</td></tr>
+          <tr><td><code>.dt.quarter</code></td><td><code>1</code></td><td>1–4</td></tr>
+          <tr><td><code>.dt.isocalendar().week</code></td><td><code>11</code></td><td>ISO week; <code>.dt.week</code> was removed</td></tr>
+          <tr><td><code>.dt.dayofweek</code></td><td><code>4</code></td><td>Monday = 0, Sunday = 6</td></tr>
+          <tr><td><code>.dt.day_name()</code></td><td><code>'Friday'</code></td><td>a method: needs <code>()</code></td></tr>
+          <tr><td><code>.dt.month_name()</code></td><td><code>'March'</code></td><td>a method: needs <code>()</code></td></tr>
+          <tr><td><code>.dt.dayofyear</code></td><td><code>75</code></td><td></td></tr>
+          <tr><td><code>.dt.hour</code>, <code>.dt.minute</code></td><td><code>14</code>, <code>30</code></td><td></td></tr>
+          <tr><td><code>.dt.date</code></td><td><code>2024-03-15</code></td><td>Python <code>date</code> objects (dtype object)</td></tr>
+          <tr><td><code>.dt.normalize()</code></td><td><code>2024-03-15 00:00</code></td><td>drops the time, stays datetime64</td></tr>
+          <tr><td><code>.dt.to_period("M")</code></td><td><code>2024-03</code></td><td>month label; <code>"Q"</code>, <code>"Y"</code>, <code>"W"</code> too</td></tr>
+          <tr><td><code>.dt.strftime("%Y-%m")</code></td><td><code>'2024-03'</code></td><td>formatted string</td></tr>
+          <tr><td><code>.dt.is_month_end</code></td><td><code>False</code></td><td>also <code>is_month_start</code>, <code>is_quarter_end</code></td></tr>
+        </tbody>
+      </table>
+      <p><strong>Date arithmetic:</strong> subtracting dates gives a <code>Timedelta</code>.</p>
+      <pre><code>df["days_to_ship"] = (df["shipped"] - df["ordered"]).dt.days
+df["due"] = df["ordered"] + pd.Timedelta(days=7)
+df["next_month"] = df["ordered"] + pd.DateOffset(months=1)   # calendar-aware: Jan 31 → Feb 29
+df["age_days"] = (pd.Timestamp("today") - df["joined"]).dt.days</code></pre>
+      <p><strong>Filter by date:</strong> compare against date strings.</p>
+      <pre><code>recent = df[df["date"] &gt;= "2024-01-01"]
+q1 = df[df["date"].between("2024-01-01", "2024-03-31")]
+march = df[(df["date"].dt.year == 2024) &amp; (df["date"].dt.month == 3)]</code></pre>
+      <p><strong>Totals per month:</strong></p>
+      <pre><code>monthly = df.resample("ME", on="date")["revenue"].sum()                 # one row per calendar month
+monthly = df.groupby(df["date"].dt.to_period("M"))["revenue"].sum()    # same, labelled 2024-03
+by_month = df.groupby(df["date"].dt.month)["revenue"].sum()            # 1–12, all years pooled</code></pre>
+      <ul>
+        <li><code>"ME"</code> means month-end in pandas ≥ 2.2; older versions use <code>"M"</code>. Also <code>"D"</code>, <code>"W"</code>, <code>"QE"</code>, <code>"YE"</code>.</li>
+        <li>Grouping by <code>.dt.month</code> pools every year together; use <code>to_period("M")</code> or <code>resample</code> to keep years apart.</li>
+        <li>With <code>df.set_index("date")</code>, partial strings select ranges: <code>df.loc["2024-03"]</code> or <code>df.loc["2024-01":"2024-06"]</code> (sort the index first).</li>
+        <li>Time zones: <code>.dt.tz_localize("UTC")</code> attaches one; <code>.dt.tz_convert("Asia/Kolkata")</code> converts.</li>
+      </ul>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Map</h2></summary>
+      <p>Translate each value of a column through a dictionary (or a function).</p>
+      <pre><code>seg_map = {"C": "Consumer", "B": "Business"}
+df["segment_name"] = df["segment"].map(seg_map)</code></pre>
+      <p>With a function, applied to each value:</p>
+      <pre><code>df["name_length"] = df["name"].map(len)</code></pre>
+      <ul>
+        <li>Values missing from the dictionary become <code>NaN</code>.</li>
+        <li><code>replace(seg_map)</code> swaps only the values it finds and leaves the rest unchanged.</li>
+        <li><code>map</code> works on a Series. For element-wise work on a whole DataFrame, use <code>df.map(func)</code> (pandas ≥ 2.1, formerly <code>applymap</code>).</li>
+      </ul>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Pivot table</h2></summary>
+      <p>Reshape long rows into a grid: one row per <code>index</code> value, one column per <code>columns</code> value, cells filled by <code>aggfunc</code> over <code>values</code>.</p>
+      <pre><code>pivot = df.pivot_table(
+    index="region",      # row labels
+    columns="product",   # column labels
+    values="revenue",    # what to aggregate
+    aggfunc="sum",       # default is "mean"
+    fill_value=0,        # empty cells become 0 instead of NaN
+)</code></pre>
+      <p>The same grid with <code>groupby</code>: aggregate, then move the inner key into columns.</p>
+      <pre><code>totals = df.groupby(["region", "product"])["revenue"].sum()
+pivot = totals.unstack(fill_value=0)</code></pre>
+      <ul>
+        <li><code>aggfunc</code> defaults to <code>"mean"</code>, so ask for <code>"sum"</code> when you want totals.</li>
+        <li><code>pivot_table</code> aggregates duplicate keys; <code>df.pivot(...)</code> doesn't and raises an error if a key repeats.</li>
+        <li><code>margins=True</code> adds an <code>All</code> row and column with grand totals.</li>
+        <li>The inverse, wide → long, is <code>melt</code> (next card).</li>
+      </ul>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Melt</h2></summary>
+      <p>Reshape wide → long: one row per id-and-month pair. Starting from columns <code>id, jan, feb, mar</code>, produce columns <code>id, month, sales</code>.</p>
+      <pre><code>long = df.melt(
+    id_vars="id",          # columns kept as they are
+    var_name="month",      # new column holding the old column names
+    value_name="sales",    # new column holding their values
+)</code></pre>
+      <pre><code>   id jan feb mar          id month sales
+0   1  10  12   9   →   0   1   jan    10
+1   2   7   8  11       1   2   jan     7
+                        2   1   feb    12
+                        …</code></pre>
+      <ul>
+        <li>Every column not in <code>id_vars</code> is melted; <code>value_vars=["jan", "feb"]</code> limits which ones.</li>
+        <li>Rows come out grouped by month. <code>.sort_values(["id", "month"])</code> groups them by id instead.</li>
+        <li>The inverse, long → wide, is <code>long.pivot(index="id", columns="month", values="sales")</code>.</li>
+      </ul>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Concat</h2></summary>
+      <p>Stack DataFrames with the same columns on top of each other. <code>pd.concat</code> takes a <em>list</em>.</p>
+      <pre><code>combined = pd.concat([df1, df2], ignore_index=True)  # renumber rows 0…n-1</code></pre>
+      <p>Place frames side by side instead, aligned on the index:</p>
+      <pre><code>wide = pd.concat([features, labels], axis=1)</code></pre>
+      <ul>
+        <li>Without <code>ignore_index=True</code>, the original row labels are kept, so the result can have duplicate index values.</li>
+        <li>Columns missing from one frame are filled with <code>NaN</code>; pass <code>join="inner"</code> to keep only shared columns.</li>
+        <li><code>keys=["2024", "2025"]</code> labels where each row came from, as an outer index level.</li>
+        <li>Concat stacks; to match rows on a key column, use <code>merge</code>.</li>
+      </ul>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Groupby: aggregation and transform</h2></summary>
+      <p><strong>Aggregation</strong> collapses each group to one row.</p>
+      <pre><code>avg_salary = df.groupby("dept")["salary"].mean()</code></pre>
+      <p>Several statistics at once, with named output columns:</p>
+      <pre><code>dept_stats = df.groupby("dept").agg(
+    avg_salary=("salary", "mean"),
+    max_salary=("salary", "max"),
+    headcount=("name", "count"),
+)</code></pre>
+      <p>Group by several keys, keeping them as ordinary columns:</p>
+      <pre><code>by_dept_city = df.groupby(["dept", "city"], as_index=False)["salary"].sum()</code></pre>
+      <p><strong>Transform</strong> returns one value per original row, aligned to the original index, so it can be assigned straight back as a column.</p>
+      <pre><code>df["dept_avg"] = df.groupby("dept")["salary"].transform("mean")
+df["salary_vs_dept"] = df["salary"] - df["dept_avg"]</code></pre>
+      <p>Share of the department total, and rank within the department:</p>
+      <pre><code>dept_total = df.groupby("dept")["salary"].transform("sum")
+df["salary_share"] = df["salary"] / dept_total
+df["dept_rank"] = df.groupby("dept")["salary"].rank(ascending=False)</code></pre>
+      <ul>
+        <li><code>agg</code> → one row per group; <code>transform</code> → same length as <code>df</code>.</li>
+        <li>Select the column before aggregating (<code>["salary"]</code>) so other columns aren't aggregated too.</li>
+        <li>Group keys become the index after <code>agg</code>; <code>as_index=False</code> or <code>.reset_index()</code> turns them back into columns.</li>
+        <li>Missing keys are dropped from groups by default; <code>dropna=False</code> keeps a <code>NaN</code> group.</li>
+      </ul>
+      </details>
+    </section>
+    <section>
+      <details class="card"><summary><h2>Rolling mean</h2></summary>
+      <p>A moving average over the previous <code>n</code> rows. Sort by date first, because the window follows row order.</p>
+      <pre><code>daily = df.sort_values("date")
+daily["sales_7d"] = daily["sales"].rolling(7).mean()  # mean of this row and the 6 before it</code></pre>
+      <p>A time-based window uses calendar days, so gaps in the dates are handled correctly:</p>
+      <pre><code>daily = daily.set_index("date")
+daily["sales_7d"] = daily["sales"].rolling("7D").mean()</code></pre>
+      <p>Rolling within each group, such as per store:</p>
+      <pre><code>by_store = daily.groupby("store")["sales"]
+daily["store_sales_7d"] = by_store.transform(lambda s: s.rolling(7).mean())</code></pre>
+      <ul>
+        <li>The first <code>n − 1</code> results are <code>NaN</code>; <code>min_periods=1</code> averages whatever rows exist so far.</li>
+        <li><code>center=True</code> centres the window on each row instead of looking back.</li>
+        <li>Swap <code>.mean()</code> for <code>.sum()</code>, <code>.std()</code>, <code>.max()</code> and so on.</li>
+      </ul>
+      </details>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Data Science Cheat Sheets
 
-![Sheets](https://img.shields.io/badge/cheat%20sheets-13-0b67b2)
+![Sheets](https://img.shields.io/badge/cheat%20sheets-14-0b67b2)
 ![HTML](https://img.shields.io/badge/built%20with-plain%20HTML%20%2B%20CSS-e34f26?logo=html5&logoColor=white)
 ![No build](https://img.shields.io/badge/build%20step-none-2ea44f)
 ![Printable](https://img.shields.io/badge/printable-yes-6f42c1)
@@ -23,6 +23,7 @@ mindmap
     Coding round
       Python DSA
       NumPy
+      Pandas
       ML pipeline: EDA to model
       Pandas rapid fire quiz
     SQL
@@ -50,6 +51,7 @@ mindmap
 | 🐍 Python fundamentals | [Python fundamentals](sheets/python-fundamentals.html) | Python fundamentals overview |
 | 🧩 Coding round | [Python DSA](sheets/python-dsa-data-structures-cheatsheet.html) | Quick syntax, common moves and interview traps |
 | 🧩 Coding round | [NumPy](sheets/numpy-basics-cheatsheet.html) | Creating, reshaping, indexing, math and combining arrays |
+| 🧩 Coding round | [Pandas](sheets/pandas-cheatsheet.html) | Data wrangling syntax by stage: value counts, dates and times, map, pivot table, melt, concat, groupby, rolling means |
 | 🧩 Coding round | [ML pipeline](sheets/ml-pipeline-cheatsheet.html) | Timed EDA → preprocess → model round: lines to remember |
 | 🧩 Coding round | [Pandas rapid fire quiz](quizzes/pandas-rapid-fire-quiz.html) | Timed quiz: type one line of pandas per question, from loading data to exporting it |
 | 🗄️ SQL | [SQL](sheets/sql-cheatsheet.html) | `CASE WHEN`, joins, grouping, clause order, CTEs, window functions |
@@ -87,6 +89,7 @@ mindmap
 | <img src="assets/previews/probability-cheatsheet.jpg" width="360" alt="Probability"><br><sub>Probability</sub> | <img src="assets/previews/ml-losses-cheatsheet.jpg" width="360" alt="ML losses"><br><sub>ML losses</sub> |
 | <img src="assets/previews/yolo-architecture-cheatsheet.jpg" width="360" alt="YOLO architecture"><br><sub>YOLO architecture</sub> | <img src="assets/previews/system-design-cheatsheet.jpg" width="360" alt="System design"><br><sub>System design</sub> |
 | <img src="assets/previews/quiz-reports.jpg" width="360" alt="Quiz reports"><br><sub>Quiz reports</sub> | <img src="assets/previews/statistics-cheatsheet.jpg" width="360" alt="Statistics"><br><sub>Statistics</sub> |
+| <img src="assets/previews/pandas-cheatsheet.jpg" width="360" alt="Pandas"><br><sub>Pandas</sub> | |
 
 </details>
 
