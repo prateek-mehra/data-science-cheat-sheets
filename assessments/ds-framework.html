@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DS Framework Practice</title>
+  <link rel="stylesheet" href="vendor/codemirror/codemirror.css">
+  <link rel="stylesheet" href="vendor/codemirror/show-hint.css">
+  <style>
+    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#0b67b2; --blue-soft:#e8f1fa; --green:#167a4a; --red:#b42318; --amber:#9a5b00;
+            --bar:#14202b; --bar-ink:#e9eef2; --bg:#fff; --panel:#fbfcfd; --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace; }
+    * { box-sizing:border-box; }
+    html, body { height:100%; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    button { font:inherit; font-weight:650; font-size:13px; border-radius:6px; padding:6px 12px; cursor:pointer; border:1px solid var(--line); background:var(--soft); color:var(--ink); white-space:nowrap; }
+    button:hover:not(:disabled) { border-color:#b9c4cd; }
+    button.primary { background:var(--blue); border-color:var(--blue); color:#fff; }
+    button.danger { background:var(--red); border-color:var(--red); color:#fff; }
+    button.ghost { background:transparent; border-color:transparent; }
+    button.ghost:hover:not(:disabled) { background:var(--soft); border-color:var(--line); }
+    button:disabled { opacity:.45; cursor:default; }
+    code { font-family:var(--mono); font-size:12.5px; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:0 4px; }
+    pre { font-family:var(--mono); }
+    .hidden { display:none !important; }
+    .muted { color:var(--muted); }
+
+    /* ---------- lobby / intro / result pages */
+    .page { max-width:920px; margin:0 auto; padding:26px 22px 60px; }
+    .page header { padding-bottom:12px; margin-bottom:18px; border-bottom:2px solid var(--ink); }
+    .page h1 { margin:0 0 4px; font-size:26px; line-height:1.1; }
+    .page .back { font-size:12px; color:var(--blue); text-decoration:none; font-weight:700; }
+    h2.sec { font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:24px 0 8px; }
+    .test-card { border:1px solid var(--line); border-radius:10px; padding:16px 18px; display:flex; gap:18px; align-items:center; }
+    .test-card + .test-card { margin-top:10px; }
+    .test-card .info { flex:1; }
+    .test-card h3 { margin:0 0 3px; font-size:17px; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+    .chip { font-size:12px; font-weight:650; padding:2px 9px; border-radius:20px; background:var(--soft); border:1px solid var(--line); color:var(--muted); }
+    table.hist { width:100%; border-collapse:collapse; font-size:13px; }
+    table.hist th, table.hist td { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); }
+    table.hist th { color:var(--muted); font-weight:650; font-size:12px; }
+    .notice { border:1px solid #f0d9a8; background:#fff8e8; border-radius:8px; padding:12px 14px; font-size:13px; }
+    .notice.err { border-color:#f3c3bf; background:#fdf1f0; }
+    .rules { border:1px solid var(--line); border-radius:10px; padding:4px 18px; }
+    .rules li { margin:8px 0; }
+    .big-meta { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0; }
+    .big-meta div { border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+    .big-meta strong { display:block; font-size:20px; }
+    .big-meta span { color:var(--muted); font-size:12px; }
+    .result-task { border:1px solid var(--line); border-radius:8px; padding:10px 14px; margin-bottom:8px; }
+    .result-task .row { display:flex; justify-content:space-between; font-weight:700; }
+    .result-task ul { margin:6px 0 0; padding-left:18px; font-size:13px; }
+    .ok { color:var(--green); } .bad { color:var(--red); } .warn { color:var(--amber); }
+    pre.path { background:var(--soft); border:1px solid var(--line); border-radius:6px; padding:9px 11px; font-size:12.5px; white-space:pre-wrap; word-break:break-all; }
+
+    /* ---------- IDE */
+    #ide { position:fixed; inset:0; display:flex; flex-direction:column; }
+    .topbar { height:48px; flex:none; display:flex; align-items:center; gap:14px; padding:0 14px; background:var(--bar); color:var(--bar-ink); }
+    .topbar .brand { font-weight:800; font-size:13px; letter-spacing:.02em; }
+    .topbar .brand span { color:#8fb8dd; font-weight:600; }
+    .topbar .title { flex:1; font-size:13px; color:#b8c4cd; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .timer { display:flex; align-items:center; gap:8px; font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:16px; font-weight:700; background:#22313d; border-radius:6px; padding:4px 12px; }
+    .timer small { font-family:Inter,system-ui,sans-serif; font-size:11px; font-weight:600; color:#8fa1ae; }
+    .timer.warn { background:#5c3d00; color:#ffd88a; }
+    .timer.crit { background:#7a1d14; color:#ffd2cc; animation:pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity:.75; } }
+    .kstat { display:flex; align-items:center; gap:6px; font-size:12px; color:#b8c4cd; }
+    .dot { width:9px; height:9px; border-radius:50%; background:#5fbf7f; }
+    .dot.busy { background:#f0b429; }
+    .dot.dead { background:#e5484d; }
+    .topbar button.primary { padding:6px 16px; }
+    .main { flex:1; display:flex; min-height:0; }
+    .left { width:38%; min-width:260px; max-width:70%; display:flex; flex-direction:column; border-right:1px solid var(--line); background:var(--panel); }
+    .tabs { display:flex; border-bottom:1px solid var(--line); flex:none; background:#fff; }
+    .tabs button { border:0; border-radius:0; background:transparent; padding:10px 16px; border-bottom:2px solid transparent; color:var(--muted); }
+    .tabs button.on { color:var(--ink); border-bottom-color:var(--blue); }
+    .pane { flex:1; overflow:auto; padding:14px 18px 40px; }
+    .task h2 { font-size:16px; margin:22px 0 6px; padding-top:14px; border-top:1px solid var(--line); }
+    .task h2:first-child { margin-top:0; padding-top:0; border-top:0; }
+    .task h3 { font-size:14px; margin:14px 0 4px; }
+    .task p, .task li { font-size:13.5px; }
+    .task ul { padding-left:20px; }
+    .task table { border-collapse:collapse; font-size:12.5px; margin:6px 0; }
+    .task th, .task td { border:1px solid var(--line); padding:4px 8px; text-align:left; vertical-align:top; }
+    .task pre { background:#fff; border:1px solid var(--line); border-radius:6px; padding:8px 10px; font-size:12px; }
+    .task .pts { float:right; font-size:12px; font-weight:700; color:var(--muted); background:var(--soft); border:1px solid var(--line); border-radius:20px; padding:1px 8px; }
+    .splitter { width:6px; flex:none; cursor:col-resize; background:transparent; margin-left:-3px; margin-right:-3px; z-index:2; }
+    .splitter:hover, .splitter.drag { background:var(--blue-soft); }
+    .right { flex:1; display:flex; flex-direction:column; min-width:0; }
+    .nbbar { flex:none; display:flex; align-items:center; gap:4px; padding:6px 10px; border-bottom:1px solid var(--line); background:#fff; flex-wrap:wrap; }
+    .nbbar .sep { width:1px; height:20px; background:var(--line); margin:0 4px; }
+    .nbbar select { font:inherit; font-size:13px; padding:4px 6px; border:1px solid var(--line); border-radius:6px; background:#fff; }
+    .nbbar .saved { margin-left:auto; font-size:12px; color:var(--muted); }
+    .nbbar .ico { font-size:14px; line-height:1; }
+    .banner { flex:none; padding:7px 14px; font-size:13px; background:#fff8e8; border-bottom:1px solid #f0d9a8; display:flex; gap:10px; align-items:center; }
+    .nb { flex:1; overflow:auto; padding:14px 18px 50vh 8px; background:#fff; }
+
+    .cell { display:flex; gap:6px; padding:5px 6px 5px 0; border:1px solid transparent; border-left:4px solid transparent; border-radius:4px; margin-bottom:6px; }
+    .cell.sel { border-left-color:#9fbedd; background:#fbfdff; }
+    .cell.sel.edit { border-left-color:var(--blue); border-color:#cfe0f1; border-left-color:var(--blue); }
+    .prompt { width:62px; flex:none; text-align:right; font-family:var(--mono); font-size:12px; color:#7d8b95; padding-top:7px; user-select:none; }
+    .prompt.run { color:var(--amber); }
+    .cbody { flex:1; min-width:0; }
+    .editor { border:1px solid var(--line); border-radius:4px; background:#f7f9fb; }
+    .cell.md .editor { background:#fff; }
+    .CodeMirror { height:auto; font-family:var(--mono); font-size:13px; line-height:1.45; background:transparent; border-radius:4px; }
+    .CodeMirror-scroll { min-height:24px; }
+    .CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like { padding:0 8px; }
+    .CodeMirror-lines { padding:6px 0; }
+    textarea.plain { width:100%; border:0; background:transparent; resize:none; font-family:var(--mono); font-size:13px; line-height:1.45; padding:6px 8px; outline:0; overflow:hidden; color:var(--ink); }
+    .md-render { padding:2px 10px; cursor:text; min-height:24px; }
+    .md-render h1 { font-size:22px; margin:8px 0; } .md-render h2 { font-size:18px; margin:8px 0; } .md-render h3 { font-size:15px; margin:6px 0; }
+    .md-render p { margin:6px 0; }
+    .md-render pre { background:var(--soft); border:1px solid var(--line); border-radius:6px; padding:8px; font-size:12.5px; overflow:auto; }
+    .md-render:empty::before { content:"Double-click to write markdown"; color:#9aa6af; font-style:italic; }
+    .outputs { margin-top:4px; }
+    .out { padding:2px 4px; overflow:auto; max-height:520px; }
+    .out pre { margin:0; font-size:12.5px; line-height:1.4; white-space:pre-wrap; word-break:break-word; }
+    .out.stderr { background:#fff5f4; }
+    .out.error pre { color:#8a1c12; background:#fff0ee; padding:6px 8px; border-radius:4px; }
+    .out img { max-width:100%; }
+    .out table.dataframe { border-collapse:collapse; font-size:12px; font-variant-numeric:tabular-nums; margin:2px 0; }
+    .out table.dataframe th, .out table.dataframe td { padding:3px 8px; text-align:right; border:0; }
+    .out table.dataframe thead th { border-bottom:1px solid #b9c4cd; }
+    .out table.dataframe tbody tr:nth-child(odd) { background:#f5f7f9; }
+    .out table.dataframe tbody tr:hover { background:#e8f1fa; }
+    .out .exec-prompt { color:#b8553a; font-family:var(--mono); font-size:12px; }
+    .add-between { height:6px; }
+
+    /* files */
+    .drop { border:2px dashed var(--line); border-radius:8px; padding:14px; text-align:center; font-size:13px; color:var(--muted); margin-bottom:12px; }
+    .drop.over { border-color:var(--blue); background:var(--blue-soft); }
+    .file-row { display:flex; align-items:center; gap:8px; padding:7px 4px; border-bottom:1px solid var(--line); font-size:13px; }
+    .file-row .n { flex:1; font-family:var(--mono); font-size:12.5px; cursor:pointer; color:var(--blue); }
+    .file-row .s { color:var(--muted); font-size:12px; }
+    .file-row a { font-size:12px; color:var(--muted); }
+    .subcheck { border-radius:8px; padding:10px 12px; font-size:13px; margin-bottom:12px; border:1px solid var(--line); }
+    .subcheck.yes { border-color:#b7dfc8; background:#f0faf4; }
+    .subcheck.no { border-color:#f0d9a8; background:#fff8e8; }
+    pre.preview { background:#fff; border:1px solid var(--line); border-radius:6px; padding:8px; font-size:11.5px; overflow:auto; max-height:340px; white-space:pre; }
+
+    /* modal + toast */
+    .modal-bg { position:fixed; inset:0; background:rgba(20,32,43,.45); display:flex; align-items:center; justify-content:center; z-index:50; padding:16px; }
+    .modal { background:#fff; border-radius:12px; max-width:460px; width:100%; padding:20px 22px; box-shadow:0 20px 50px rgba(0,0,0,.25); }
+    .modal h3 { margin:0 0 8px; font-size:18px; }
+    .modal .acts { display:flex; justify-content:flex-end; gap:8px; margin-top:18px; }
+    .toast { position:fixed; top:58px; left:50%; transform:translateX(-50%); background:var(--bar); color:#fff; padding:9px 16px; border-radius:8px; font-size:13px; font-weight:600; z-index:60; box-shadow:0 8px 24px rgba(0,0,0,.2); }
+    .toast.warn { background:#7a4b00; } .toast.err { background:var(--red); }
+    .CodeMirror-hints { font-family:var(--mono); font-size:12.5px; z-index:70; }
+
+    @media (max-width:760px) {
+      .main { flex-direction:column; }
+      .left { width:auto !important; max-width:none; height:40%; border-right:0; border-bottom:1px solid var(--line); }
+      .splitter { display:none; }
+      .topbar .title, .kstat span { display:none; }
+      .prompt { width:36px; font-size:10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ LOBBY ============ -->
+<div id="lobby" class="page hidden">
+  <header>
+    <a class="back" href="../index.html">← Cheat sheet index</a>
+    <h1>Data Science Framework · Practice</h1>
+    <div class="muted">Timed notebook assessments: wrangle a dataset, train a model, submit predictions.</div>
+  </header>
+  <div id="server-msg"></div>
+  <h2 class="sec">Available tests</h2>
+  <div id="test-list"></div>
+  <h2 class="sec">Past submissions</h2>
+  <div id="history"><p class="muted">None yet.</p></div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<div id="intro" class="page hidden">
+  <header>
+    <a class="back" href="#" id="intro-back">← All tests</a>
+    <h1 id="intro-title"></h1>
+    <div class="muted" id="intro-company"></div>
+  </header>
+  <p id="intro-summary"></p>
+  <div class="big-meta" id="intro-meta"></div>
+  <h2 class="sec">Before you start</h2>
+  <ol class="rules">
+    <li>The timer starts when you press <b>Start test</b> and <b>cannot be paused</b>. Refreshing the page or closing the tab does not stop it.</li>
+    <li>You work in a Python notebook. The data files are in the working directory; read them with <code>pd.read_csv("train.csv")</code>.</li>
+    <li>Task answers are read from the <b>variables in the running kernel</b> when you submit. If you restart the kernel, re-run your cells.</li>
+    <li>Predictions go in <code>submission.csv</code> — write it from the notebook or upload it in the <b>Files</b> tab.</li>
+    <li>When time runs out, your notebook is submitted automatically as it stands.</li>
+    <li>Keys: <b>Shift+Enter</b> run and move on · <b>Ctrl/⌘+Enter</b> run in place · <b>Tab</b> autocomplete · <b>Esc</b> then <b>A</b>/<b>B</b> add cell above/below, <b>D D</b> delete, <b>M</b>/<b>Y</b> markdown/code.</li>
+  </ol>
+  <p style="margin-top:20px"><button class="primary" id="start-btn" style="font-size:15px;padding:10px 22px">Start test</button></p>
+</div>
+
+<!-- ============ RESULT ============ -->
+<div id="result" class="page hidden">
+  <header>
+    <a class="back" href="#" id="result-back">← All tests</a>
+    <h1>Submitted</h1>
+    <div class="muted" id="result-sub"></div>
+  </header>
+  <div class="big-meta" id="result-meta"></div>
+  <h2 class="sec">Auto-graded breakdown</h2>
+  <div id="result-tasks"></div>
+  <h2 class="sec">Saved for review</h2>
+  <p>Your notebook, predictions, captured variables and this grade were saved to:</p>
+  <pre class="path" id="result-path"></pre>
+  <p class="muted">To get a code review, commit and push that folder (or run Claude Code in this repo) and ask: <i>“Review my submission in <span id="result-path2"></span>.”</i></p>
+</div>
+
+<!-- ============ IDE ============ -->
+<div id="ide" class="hidden">
+  <div class="topbar">
+    <div class="brand">DS Framework <span>Practice</span></div>
+    <div class="title" id="ide-title"></div>
+    <div class="kstat"><div class="dot" id="kdot"></div><span id="ktext">Python · idle</span></div>
+    <div class="timer" id="timer"><small>TIME LEFT</small><span id="timer-val">--:--</span></div>
+    <button class="primary" id="submit-btn">Submit</button>
+  </div>
+  <div class="main">
+    <div class="left" id="left">
+      <div class="tabs"><button class="on" data-tab="task">Task</button><button data-tab="files">Files</button></div>
+      <div class="pane task" id="pane-task"></div>
+      <div class="pane hidden" id="pane-files">
+        <div id="subcheck" class="subcheck no"></div>
+        <div class="drop" id="drop">Drop a file here to upload it to the working directory, or <button id="upload-btn">Choose file…</button><input type="file" id="upload-input" class="hidden"></div>
+        <div id="file-list"></div>
+        <div id="file-preview"></div>
+      </div>
+    </div>
+    <div class="splitter" id="splitter"></div>
+    <div class="right">
+      <div class="nbbar">
+        <button class="ghost" id="b-add" title="Insert code cell below (B)"><span class="ico">＋</span> Code</button>
+        <button class="ghost" id="b-addmd" title="Insert markdown cell below"><span class="ico">＋</span> Markdown</button>
+        <button class="ghost" id="b-up" title="Move cell up">↑</button>
+        <button class="ghost" id="b-down" title="Move cell down">↓</button>
+        <button class="ghost" id="b-del" title="Delete cell (D D)">🗑</button>
+        <div class="sep"></div>
+        <button class="ghost" id="b-run" title="Run cell and advance (Shift+Enter)">▶ Run</button>
+        <button class="ghost" id="b-runall" title="Run all cells">⏩ Run all</button>
+        <button class="ghost" id="b-int" title="Interrupt kernel">■</button>
+        <button class="ghost" id="b-restart" title="Restart kernel">↻ Restart</button>
+        <div class="sep"></div>
+        <select id="b-type" title="Cell type"><option value="code">Code</option><option value="markdown">Markdown</option></select>
+        <span class="saved" id="saved">Not saved yet</span>
+      </div>
+      <div class="banner hidden" id="banner"></div>
+      <div class="nb" id="nb"></div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+
+<script src="vendor/codemirror/codemirror.js"></script>
+<script src="vendor/codemirror/python.js"></script>
+<script src="vendor/codemirror/markdown.js"></script>
+<script src="vendor/codemirror/matchbrackets.js"></script>
+<script src="vendor/codemirror/closebrackets.js"></script>
+<script src="vendor/codemirror/show-hint.js"></script>
+<script>
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const hasCM = typeof window.CodeMirror === "function";
+
+// ------------------------------------------------------------------ api
+async function api(path, body, opts = {}) {
+  const init = body === undefined ? {} : {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
+  if (opts.raw) Object.assign(init, opts.raw);
+  const r = await fetch("/api/ds/" + path, init);
+  let data = {};
+  try { data = await r.json(); } catch (e) { /* empty */ }
+  if (!r.ok) { const err = new Error(data.error || ("HTTP " + r.status)); err.status = r.status; throw err; }
+  return data;
+}
+
+function toast(msg, kind = "", ms = 3200) {
+  const t = document.createElement("div");
+  t.className = "toast " + kind; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), ms);
+}
+
+function modal({ title, html, ok = "OK", cancel = "Cancel", danger = false }) {
+  return new Promise(res => {
+    const root = $("#modal-root");
+    root.innerHTML = `<div class="modal-bg"><div class="modal"><h3>${esc(title)}</h3><div>${html}</div>
+      <div class="acts">${cancel ? `<button data-a="0">${esc(cancel)}</button>` : ""}<button data-a="1" class="${danger ? "danger" : "primary"}">${esc(ok)}</button></div></div></div>`;
+    root.querySelectorAll("button[data-a]").forEach(b => b.onclick = () => { root.innerHTML = ""; res(b.dataset.a === "1"); });
+    root.querySelector("button[data-a='1']").focus();
+  });
+}
+
+function show(id) {
+  ["lobby", "intro", "result", "ide"].forEach(x => $("#" + x).classList.toggle("hidden", x !== id));
+  document.title = id === "ide" ? "DS Framework · " + (STATE.attempt ? STATE.attempt.title : "") : "DS Framework Practice";
+}
+
+const fmtTime = s => { s = Math.max(0, Math.floor(s)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+  return (h ? h + ":" + String(m).padStart(2, "0") : String(m).padStart(2, "0")) + ":" + String(x).padStart(2, "0"); };
+const fmtMins = s => { const m = Math.round(s / 60); return m >= 60 ? (Math.floor(m / 60) + " h" + (m % 60 ? " " + (m % 60) + " min" : "")) : m + " min"; };
+const fmtBytes = n => n < 1024 ? n + " B" : n < 1048576 ? (n / 1024).toFixed(1) + " KB" : (n / 1048576).toFixed(1) + " MB";
+
+const STATE = { tests: [], test: null, attempt: null, deadline: 0, timerId: null, warned: {}, submitting: false };
+
+// ------------------------------------------------------------------ lobby
+async function loadLobby() {
+  show("lobby");
+  try {
+    const { tests, python } = await api("tests");
+    STATE.tests = tests;
+    $("#server-msg").innerHTML = "";
+    $("#test-list").innerHTML = tests.map(t => `
+      <div class="test-card"><div class="info"><h3>${esc(t.title)}</h3><div class="muted">${esc(t.company)}</div>
+        <div style="margin-top:6px;font-size:13.5px">${esc(t.summary)}</div>
+        <div class="chips"><span class="chip">⏱ ${fmtMins(t.duration_minutes * 60)}</span><span class="chip">${t.tasks.length} tasks</span>
+        <span class="chip">${t.tasks.reduce((a, x) => a + x.points, 0)} points</span><span class="chip">${esc(t.framework)}</span></div></div>
+        <button class="primary" data-id="${esc(t.id)}">Open</button></div>`).join("") || "<p class='muted'>No tests found in assessments/tests/.</p>";
+    $("#test-list").querySelectorAll("button[data-id]").forEach(b => b.onclick = () => openIntro(b.dataset.id));
+    const { submissions } = await api("history");
+    if (submissions.length) {
+      $("#history").innerHTML = `<table class="hist"><tr><th>Started</th><th>Test</th><th>Time used</th><th>Score</th><th>Folder</th></tr>` +
+        submissions.map(s => `<tr><td>${esc(s.started.replace("T", " ").slice(0, 16))}</td><td>${esc(s.title)}</td>
+          <td>${fmtTime(s.elapsed_seconds)} / ${fmtMins(s.duration_limit_seconds)}${s.reason.startsWith("timeout") ? " <span class='warn'>(timed out)</span>" : ""}</td>
+          <td><b>${s.score}</b> / ${s.max_score}</td><td><code>${esc(s.dir)}</code></td></tr>`).join("") + "</table>";
+    }
+  } catch (e) {
+    $("#server-msg").innerHTML = `<div class="notice err"><b>The practice server isn't reachable.</b> This page needs the local server to run Python.
+      In a terminal at the repository root run<br><code>python3 tools/ds_assessment_server.py --open</code><br>then open
+      <code>http://localhost:8010/assessments/ds-framework.html</code>.</div>`;
+  }
+}
+
+function openIntro(id) {
+  const t = STATE.tests.find(x => x.id === id);
+  STATE.test = t;
+  $("#intro-title").textContent = t.title;
+  $("#intro-company").textContent = t.company + " · " + t.framework;
+  $("#intro-summary").textContent = t.summary;
+  $("#intro-meta").innerHTML = `<div><strong>${fmtMins(t.duration_minutes * 60)}</strong><span>total time</span></div>
+    <div><strong>${t.tasks.length}</strong><span>tasks</span></div>
+    <div><strong>${t.tasks.reduce((a, x) => a + x.points, 0)}</strong><span>points</span></div>
+    <div><strong>${t.data_files.length}</strong><span>data files</span></div>`;
+  show("intro");
+}
+
+$("#intro-back").onclick = e => { e.preventDefault(); loadLobby(); };
+$("#result-back").onclick = e => { e.preventDefault(); loadLobby(); };
+$("#start-btn").onclick = async () => {
+  const ok = await modal({ title: "Start the timer?", html: `<p>You'll have <b>${fmtMins(STATE.test.duration_minutes * 60)}</b>. The timer can't be paused.</p>`, ok: "Start test" });
+  if (!ok) return;
+  $("#start-btn").disabled = true;
+  try { const st = await api("start", { test_id: STATE.test.id }); await enterIDE(st.active); }
+  catch (e) { toast(e.message, "err", 5000); }
+  finally { $("#start-btn").disabled = false; }
+};
+
+// ------------------------------------------------------------------ notebook model
+let CELLS = [], SEL = 0, uid = 0, DIRTY = false, LAST_SAVE = 0;
+const QUEUE = []; let RUNNING = null; let KERNEL_OK = true;
+
+function newCell(type = "code", source = "", outputs = [], count = null) {
+  return { id: ++uid, type, source, outputs, count, editing: false, el: null, cm: null };
+}
+
+function loadNotebook(nb) {
+  CELLS = (nb && nb.cells || []).map(c => newCell(c.cell_type === "markdown" ? "markdown" : "code",
+    Array.isArray(c.source) ? c.source.join("") : (c.source || ""), c.outputs || [], c.execution_count || null));
+  if (!CELLS.length) CELLS.push(newCell());
+  SEL = 0;
+  renderAll();
+}
+
+function toNotebook() {
+  syncSources();
+  return {
+    nbformat: 4, nbformat_minor: 5,
+    metadata: { kernelspec: { name: "python3", display_name: "Python 3", language: "python" }, language_info: { name: "python" } },
+    cells: CELLS.map(c => c.type === "markdown"
+      ? { cell_type: "markdown", metadata: {}, source: c.source }
+      : { cell_type: "code", metadata: {}, execution_count: c.count, outputs: c.outputs, source: c.source }),
+  };
+}
+
+function syncSources() { CELLS.forEach(c => { if (c.cm) c.source = c.cm.getValue(); else if (c.ta) c.source = c.ta.value; }); }
+function markDirty() { DIRTY = true; $("#saved").textContent = "Unsaved changes"; clearTimeout(markDirty.t); markDirty.t = setTimeout(save, 2000); }
+
+async function save() {
+  if (!STATE.attempt || STATE.submitting) return;
+  try {
+    await api("save", { notebook: toNotebook() });
+    DIRTY = false; LAST_SAVE = Date.now(); updateSaved();
+  } catch (e) { $("#saved").textContent = "Save failed: " + e.message; }
+}
+function updateSaved() {
+  if (DIRTY || !LAST_SAVE) return;
+  const s = Math.round((Date.now() - LAST_SAVE) / 1000);
+  $("#saved").textContent = "Autosaved " + (s < 5 ? "just now" : s < 60 ? s + "s ago" : Math.round(s / 60) + " min ago");
+}
+
+// ---------- markdown (small subset)
+function mdToHtml(src) {
+  const blocks = [], codeRe = /```[^\n]*\n([\s\S]*?)```/g;
+  src = src.replace(codeRe, (_, code) => { blocks.push("<pre>" + esc(code) + "</pre>"); return "\u0000" + (blocks.length - 1) + "\u0000"; });
+  const inline = s => esc(s)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+    .replace(/(^|[^\w*])[*_]([^*_]+)[*_](?=[^\w*]|$)/g, "$1<i>$2</i>")
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  const out = []; let list = null;
+  for (const line of src.split("\n")) {
+    const m = line.match(/^\u0000(\d+)\u0000$/);
+    if (m) { if (list) { out.push("</" + list + ">"); list = null; } out.push(blocks[+m[1]]); continue; }
+    const h = line.match(/^(#{1,4})\s+(.*)/);
+    const li = line.match(/^\s*[-*]\s+(.*)/), ol = line.match(/^\s*\d+\.\s+(.*)/);
+    if ((li || ol) && !h) {
+      const tag = li ? "ul" : "ol";
+      if (list !== tag) { if (list) out.push("</" + list + ">"); out.push("<" + tag + ">"); list = tag; }
+      out.push("<li>" + inline((li || ol)[1]) + "</li>"); continue;
+    }
+    if (list) { out.push("</" + list + ">"); list = null; }
+    if (h) out.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`);
+    else if (line.trim()) out.push("<p>" + inline(line) + "</p>");
+  }
+  if (list) out.push("</" + list + ">");
+  return out.join("");
+}
+
+// ---------- outputs
+function renderOutputs(c) {
+  const box = c.el.querySelector(".outputs");
+  box.innerHTML = "";
+  for (const o of c.outputs) {
+    const d = document.createElement("div");
+    d.className = "out";
+    const text = v => Array.isArray(v) ? v.join("") : (v || "");
+    if (o.output_type === "stream") {
+      d.classList.add(o.name);
+      d.innerHTML = "<pre>" + esc(text(o.text)) + "</pre>";
+    } else if (o.output_type === "error") {
+      d.classList.add("error");
+      const tb = (o.traceback || []).join("").replace(/\x1b\[[0-9;]*m/g, "");
+      d.innerHTML = "<pre>" + esc(tb || (o.ename + ": " + o.evalue)) + "</pre>";
+    } else {
+      const data = o.data || {};
+      if (data["image/png"]) d.innerHTML = `<img alt="figure" src="data:image/png;base64,${text(data["image/png"]).trim()}">`;
+      else if (data["text/html"]) d.innerHTML = text(data["text/html"]);
+      else d.innerHTML = "<pre>" + esc(text(data["text/plain"])) + "</pre>";
+    }
+    box.appendChild(d);
+  }
+}
+
+function setPrompt(c) {
+  if (c.type !== "code") { c.el.querySelector(".prompt").textContent = ""; return; }
+  const p = c.el.querySelector(".prompt");
+  const queued = QUEUE.includes(c) || RUNNING === c;
+  p.textContent = queued ? "[*]:" : "[" + (c.count || " ") + "]:";
+  p.classList.toggle("run", queued);
+}
+
+// ---------- cell DOM
+function buildCell(c) {
+  const el = document.createElement("div");
+  el.className = "cell" + (c.type === "markdown" ? " md" : "");
+  el.innerHTML = `<div class="prompt"></div><div class="cbody"><div class="editor"></div><div class="md-render hidden"></div><div class="outputs"></div></div>`;
+  c.el = el;
+  const host = el.querySelector(".editor");
+  if (hasCM) {
+    c.cm = CodeMirror(host, {
+      value: c.source, mode: c.type === "markdown" ? "markdown" : "python", indentUnit: 4, tabSize: 4,
+      lineWrapping: c.type === "markdown", matchBrackets: true, autoCloseBrackets: true, viewportMargin: Infinity,
+      extraKeys: cellKeys(c),
+    });
+    c.cm.on("focus", () => { select(c, false); setEdit(c, true); });
+    c.cm.on("blur", () => setEdit(c, false));
+    c.cm.on("change", markDirty);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.className = "plain"; ta.value = c.source; ta.spellcheck = false;
+    const fit = () => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; };
+    ta.addEventListener("input", () => { fit(); markDirty(); });
+    ta.addEventListener("focus", () => { select(c, false); setEdit(c, true); });
+    ta.addEventListener("blur", () => setEdit(c, false));
+    ta.addEventListener("keydown", e => textareaKeys(e, c));
+    host.appendChild(ta); c.ta = ta; setTimeout(fit, 0);
+  }
+  const md = el.querySelector(".md-render");
+  md.addEventListener("dblclick", () => editMarkdown(c));
+  el.addEventListener("mousedown", e => { if (!e.target.closest(".editor")) select(c, false); });
+  if (c.type === "markdown" && c.source.trim()) showMarkdown(c);
+  renderOutputs(c);
+  setPrompt(c);
+  return el;
+}
+
+function showMarkdown(c) {
+  syncSources();
+  const md = c.el.querySelector(".md-render");
+  md.innerHTML = mdToHtml(c.source);
+  md.classList.remove("hidden");
+  c.el.querySelector(".editor").classList.add("hidden");
+  c.rendered = true;
+}
+function editMarkdown(c) {
+  c.rendered = false;
+  c.el.querySelector(".md-render").classList.add("hidden");
+  c.el.querySelector(".editor").classList.remove("hidden");
+  focusCell(c);
+}
+
+function renderAll() {
+  const nb = $("#nb");
+  nb.innerHTML = "";
+  CELLS.forEach(c => nb.appendChild(buildCell(c)));
+  if (hasCM) CELLS.forEach(c => c.cm && c.cm.refresh());
+  select(CELLS[SEL] || CELLS[0], false);
+}
+
+function idx(c) { return CELLS.indexOf(c); }
+function select(c, scroll = true) {
+  if (!c) return;
+  SEL = idx(c);
+  CELLS.forEach(x => x.el && x.el.classList.toggle("sel", x === c));
+  $("#b-type").value = c.type;
+  if (scroll) c.el.scrollIntoView({ block: "nearest" });
+}
+function setEdit(c, on) { c.editing = on; c.el.classList.toggle("edit", on); }
+function focusCell(c, atEnd = false) {
+  select(c);
+  if (c.rendered) return;
+  if (c.cm) { c.cm.focus(); if (atEnd) c.cm.setCursor(c.cm.lineCount(), 0); }
+  else if (c.ta) c.ta.focus();
+}
+function commandMode() { const c = CELLS[SEL]; if (c && c.cm) c.cm.getInputField().blur(); else if (c && c.ta) c.ta.blur(); $("#nb").focus(); }
+
+function insertCell(at, type = "code", focus = true) {
+  syncSources();
+  const c = newCell(type);
+  CELLS.splice(at, 0, c);
+  const nb = $("#nb");
+  const el = buildCell(c);
+  nb.insertBefore(el, nb.children[at] || null);
+  if (c.cm) c.cm.refresh();
+  markDirty();
+  if (focus) focusCell(c); else select(c);
+  return c;
+}
+function deleteCell(c) {
+  if (CELLS.length === 1) { if (c.cm) c.cm.setValue(""); c.outputs = []; renderOutputs(c); return; }
+  const i = idx(c);
+  CELLS.splice(i, 1); c.el.remove();
+  const qi = QUEUE.indexOf(c); if (qi >= 0) QUEUE.splice(qi, 1);
+  select(CELLS[Math.min(i, CELLS.length - 1)]);
+  markDirty();
+}
+function moveCell(c, d) {
+  const i = idx(c), j = i + d;
+  if (j < 0 || j >= CELLS.length) return;
+  CELLS.splice(i, 1); CELLS.splice(j, 0, c);
+  const nb = $("#nb");
+  nb.insertBefore(c.el, d < 0 ? CELLS[j + 1].el : (CELLS[j + 1] ? CELLS[j + 1].el : null));
+  select(c); markDirty();
+}
+function changeType(c, type) {
+  if (c.type === type) return;
+  syncSources();
+  const i = idx(c);
+  const n = newCell(type, c.source, [], null);
+  CELLS[i] = n;
+  const el = buildCell(n);
+  c.el.replaceWith(el);
+  if (n.cm) n.cm.refresh();
+  select(n); markDirty();
+}
+
+// ---------- running
+function runCell(c, advance = false, insert = false) {
+  syncSources();
+  if (c.type === "markdown") { if (c.source.trim()) showMarkdown(c); }
+  else if (!QUEUE.includes(c) && RUNNING !== c) { QUEUE.push(c); setPrompt(c); pump(); }
+  const i = idx(c);
+  if (insert) insertCell(i + 1);
+  else if (advance) { if (i + 1 >= CELLS.length) insertCell(i + 1); else focusCell(CELLS[i + 1]); }
+}
+
+async function pump() {
+  if (RUNNING || !QUEUE.length) return;
+  RUNNING = QUEUE.shift();
+  const c = RUNNING;
+  setKernel("busy");
+  setPrompt(c);
+  c.outputs = []; renderOutputs(c);
+  try {
+    const r = await api("execute", { code: c.source });
+    if (r.ok) {
+      c.outputs = r.outputs; c.count = r.count;
+      if (r.outputs.some(o => o.output_type === "error")) {
+        // like Jupyter, an error stops the queued cells
+        QUEUE.splice(0).forEach(setPrompt);
+      }
+    } else {
+      c.outputs = [{ output_type: "error", ename: "Kernel", evalue: r.message || r.error, traceback: [(r.message || r.error) + "\n"] }];
+      QUEUE.splice(0).forEach(setPrompt);
+      if (r.error === "dead") { KERNEL_OK = false; banner("The kernel stopped. Press <b>↻ Restart</b> and re-run your cells."); }
+    }
+  } catch (e) {
+    c.outputs = [{ output_type: "error", ename: "Error", evalue: e.message, traceback: [e.message + "\n"] }];
+    QUEUE.splice(0).forEach(setPrompt);
+    if (e.status === 409) timeUp();
+  }
+  RUNNING = null;
+  renderOutputs(c); setPrompt(c);
+  setKernel(QUEUE.length ? "busy" : KERNEL_OK ? "idle" : "dead");
+  markDirty();
+  refreshFiles();
+  pump();
+}
+
+function setKernel(s) {
+  $("#kdot").className = "dot" + (s === "idle" ? "" : " " + s);
+  $("#ktext").textContent = "Python · " + (s === "dead" ? "not running" : s);
+}
+function banner(html) { const b = $("#banner"); if (!html) { b.classList.add("hidden"); return; } b.innerHTML = html; b.classList.remove("hidden"); }
+
+async function interrupt() { QUEUE.splice(0).forEach(setPrompt); await api("interrupt", {}); }
+async function restart(ask = true) {
+  if (ask && !await modal({ title: "Restart the kernel?", html: "<p>All variables will be lost. Your code and outputs stay.</p>", ok: "Restart", danger: true })) return;
+  QUEUE.splice(0);
+  setKernel("busy"); $("#ktext").textContent = "Python · restarting";
+  try { await api("restart", {}); KERNEL_OK = true; banner(""); toast("Kernel restarted"); }
+  catch (e) { toast(e.message, "err"); }
+  CELLS.forEach(setPrompt);
+  setKernel(KERNEL_OK ? "idle" : "dead");
+  return true;
+}
+async function runAll() { CELLS.forEach(c => { if (c.type === "markdown") { syncSources(); if (c.source.trim()) showMarkdown(c); } else if (!QUEUE.includes(c)) { QUEUE.push(c); setPrompt(c); } }); pump(); }
+
+// ---------- keys
+function hint(cm, callback) {
+  const cur = cm.getCursor();
+  api("complete", { code: cm.getValue(), pos: cm.indexFromPos(cur) }).then(r => {
+    if (!r.ok || !r.matches || !r.matches.length) return callback(null);
+    callback({ list: r.matches, from: cm.posFromIndex(r.start), to: cur });
+  }).catch(() => callback(null));
+}
+hint.async = true;
+
+function cellKeys(c) {
+  const complete = cm => cm.showHint({ hint, completeSingle: true });
+  return {
+    "Shift-Enter": () => runCell(c, true),
+    "Ctrl-Enter": () => runCell(c), "Cmd-Enter": () => runCell(c),
+    "Alt-Enter": () => runCell(c, false, true),
+    "Esc": () => commandMode(),
+    "Ctrl-Space": complete,
+    "Tab": cm => {
+      if (cm.somethingSelected()) return cm.indentSelection("add");
+      const cur = cm.getCursor(), before = cm.getLine(cur.line).slice(0, cur.ch);
+      if (c.type === "code" && /[\w.]$/.test(before)) return complete(cm);
+      cm.replaceSelection("    ");
+    },
+    "Shift-Tab": cm => cm.indentSelection("subtract"),
+    "Cmd-/": "toggleComment", "Ctrl-/": cm => toggleComment(cm),
+  };
+}
+function toggleComment(cm) {
+  const from = cm.getCursor("from").line, to = cm.getCursor("to").line;
+  const lines = []; for (let i = from; i <= to; i++) lines.push(cm.getLine(i));
+  const all = lines.filter(l => l.trim()).every(l => /^\s*#/.test(l));
+  cm.operation(() => lines.forEach((l, k) => {
+    const n = from + k;
+    if (all) cm.replaceRange(l.replace(/^(\s*)# ?/, "$1"), { line: n, ch: 0 }, { line: n, ch: l.length });
+    else if (l.trim()) cm.replaceRange("# " + l, { line: n, ch: 0 }, { line: n, ch: l.length });
+  }));
+}
+function textareaKeys(e, c) {
+  if (e.key === "Enter" && e.shiftKey) { e.preventDefault(); runCell(c, true); }
+  else if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runCell(c); }
+  else if (e.key === "Escape") { e.preventDefault(); commandMode(); }
+  else if (e.key === "Tab") { e.preventDefault(); const t = e.target, s = t.selectionStart; t.setRangeText("    ", s, t.selectionEnd, "end"); markDirty(); }
+}
+if (hasCM) CodeMirror.commands.toggleComment = cm => toggleComment(cm);
+
+let lastD = 0;
+document.addEventListener("keydown", e => {
+  if ($("#ide").classList.contains("hidden") || $("#modal-root").firstChild) return;
+  const inEditor = e.target.closest && (e.target.closest(".CodeMirror") || e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT" || e.target.tagName === "SELECT");
+  if ((e.metaKey || e.ctrlKey) && e.key === "s") { e.preventDefault(); save(); return; }
+  if (inEditor) return;
+  const c = CELLS[SEL]; if (!c) return;
+  const k = e.key;
+  if (k === "Enter" && e.shiftKey) { e.preventDefault(); runCell(c, true); }
+  else if (k === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runCell(c); }
+  else if (k === "Enter") { e.preventDefault(); c.type === "markdown" ? editMarkdown(c) : focusCell(c); }
+  else if (k === "a") { e.preventDefault(); insertCell(SEL, "code", false); }
+  else if (k === "b") { e.preventDefault(); insertCell(SEL + 1, "code", false); }
+  else if (k === "m") changeType(c, "markdown");
+  else if (k === "y") changeType(c, "code");
+  else if (k === "ArrowUp" || k === "k") { e.preventDefault(); select(CELLS[Math.max(0, SEL - 1)]); }
+  else if (k === "ArrowDown" || k === "j") { e.preventDefault(); select(CELLS[Math.min(CELLS.length - 1, SEL + 1)]); }
+  else if (k === "d") { const t = Date.now(); if (t - lastD < 600) { deleteCell(c); lastD = 0; } else lastD = t; }
+  else if (k === "i" && e.repeat === false) { const t = Date.now(); if (t - (window._lastI || 0) < 600) interrupt(); window._lastI = t; }
+  else if (k === "0" && e.repeat === false) { const t = Date.now(); if (t - (window._last0 || 0) < 600) restart(); window._last0 = t; }
+});
+$("#nb").tabIndex = -1;
+
+// toolbar
+$("#b-add").onclick = () => insertCell(SEL + 1, "code");
+$("#b-addmd").onclick = () => insertCell(SEL + 1, "markdown");
+$("#b-up").onclick = () => moveCell(CELLS[SEL], -1);
+$("#b-down").onclick = () => moveCell(CELLS[SEL], 1);
+$("#b-del").onclick = () => deleteCell(CELLS[SEL]);
+$("#b-run").onclick = () => runCell(CELLS[SEL], true);
+$("#b-runall").onclick = runAll;
+$("#b-int").onclick = interrupt;
+$("#b-restart").onclick = () => restart();
+$("#b-type").onchange = e => changeType(CELLS[SEL], e.target.value);
+
+// tabs + splitter
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".tabs button").forEach(x => x.classList.toggle("on", x === b));
+  $("#pane-task").classList.toggle("hidden", b.dataset.tab !== "task");
+  $("#pane-files").classList.toggle("hidden", b.dataset.tab !== "files");
+  if (b.dataset.tab === "files") refreshFiles();
+});
+(() => {
+  const sp = $("#splitter"), left = $("#left");
+  try { const w = localStorage.getItem("dsf-left"); if (w) left.style.width = w; } catch (e) { /* storage blocked */ }
+  sp.addEventListener("mousedown", e => {
+    e.preventDefault(); sp.classList.add("drag");
+    const move = ev => { left.style.width = Math.max(260, Math.min(window.innerWidth * 0.7, ev.clientX)) + "px"; };
+    const up = () => { sp.classList.remove("drag"); document.removeEventListener("mousemove", move); document.removeEventListener("mouseup", up);
+      try { localStorage.setItem("dsf-left", left.style.width); } catch (e) { /* ignore */ } CELLS.forEach(c => c.cm && c.cm.refresh()); };
+    document.addEventListener("mousemove", move); document.addEventListener("mouseup", up);
+  });
+})();
+
+// ---------- files
+async function refreshFiles() {
+  if (!STATE.attempt) return;
+  let files = [];
+  try { files = (await api("files")).files; } catch (e) { return; }
+  const subName = STATE.test.submission.file;
+  const sub = files.find(f => f.name === subName);
+  $("#subcheck").className = "subcheck " + (sub ? "yes" : "no");
+  $("#subcheck").innerHTML = sub
+    ? `✅ <b>${esc(subName)}</b> found (${fmtBytes(sub.size)}, updated ${new Date(sub.mtime * 1000).toLocaleTimeString()}). It will be submitted.`
+    : `⚠️ <b>${esc(subName)}</b> not found yet. Write it from the notebook or upload it below.`;
+  $("#file-list").innerHTML = files.map(f => `<div class="file-row"><span class="n" data-n="${esc(f.name)}">${esc(f.name)}</span>
+     <span class="s">${fmtBytes(f.size)}</span><a href="/api/ds/file?name=${encodeURIComponent(f.name)}&download=1">download</a></div>`).join("");
+  $("#file-list").querySelectorAll(".n").forEach(n => n.onclick = () => previewFile(n.dataset.n));
+}
+async function previewFile(name) {
+  if (name.endsWith(".ipynb")) { $("#file-preview").innerHTML = "<p class='muted'>This is the notebook you're editing.</p>"; return; }
+  try {
+    const r = await api("file?name=" + encodeURIComponent(name));
+    $("#file-preview").innerHTML = `<h3 style="font-size:13px;margin:14px 0 6px">${esc(name)} <span class="muted">— first lines</span></h3><pre class="preview">${esc(r.preview)}</pre>`;
+  } catch (e) { toast(e.message, "err"); }
+}
+async function uploadFile(file) {
+  if (!file) return;
+  if (file.size > 50e6) return toast("File is larger than 50 MB", "err");
+  try {
+    await api("upload", undefined, { raw: { method: "POST", headers: { "X-Filename": file.name, "Content-Type": "application/octet-stream" }, body: file } });
+    toast("Uploaded " + file.name); refreshFiles();
+  } catch (e) { toast("Upload failed: " + e.message, "err"); }
+}
+$("#upload-btn").onclick = () => $("#upload-input").click();
+$("#upload-input").onchange = e => { uploadFile(e.target.files[0]); e.target.value = ""; };
+(() => {
+  const d = $("#drop");
+  ["dragenter", "dragover"].forEach(ev => d.addEventListener(ev, e => { e.preventDefault(); d.classList.add("over"); }));
+  ["dragleave", "drop"].forEach(ev => d.addEventListener(ev, e => { e.preventDefault(); d.classList.remove("over"); }));
+  d.addEventListener("drop", e => uploadFile(e.dataTransfer.files[0]));
+})();
+
+// ------------------------------------------------------------------ IDE lifecycle
+async function enterIDE(active) {
+  STATE.attempt = active;
+  STATE.test = STATE.tests.find(t => t.id === active.test_id) || (await api("tests")).tests.find(t => t.id === active.test_id);
+  STATE.deadline = Date.now() / 1000 + active.remaining_seconds;
+  STATE.warned = {}; STATE.submitting = false;
+  $("#ide-title").textContent = active.title + " — " + STATE.test.company;
+  const { html } = await api("task?test=" + encodeURIComponent(active.test_id));
+  $("#pane-task").innerHTML = html;
+  show("ide");
+  loadNotebook(active.notebook);
+  KERNEL_OK = active.kernel_alive;
+  setKernel(KERNEL_OK ? "idle" : "dead");
+  if (active.kernel_restarted_by_server) banner("The server was restarted, so the kernel is fresh: variables are gone. Use <b>⏩ Run all</b> to rebuild them.");
+  else if (!KERNEL_OK) banner("The kernel isn't running. Press <b>↻ Restart</b>.");
+  else banner("");
+  LAST_SAVE = Date.now(); DIRTY = false; updateSaved();
+  clearInterval(STATE.timerId);
+  STATE.timerId = setInterval(tick, 250);
+  tick();
+  refreshFiles();
+  setTimeout(() => focusCell(CELLS[Math.min(1, CELLS.length - 1)], true), 50);
+}
+
+function tick() {
+  const left = STATE.deadline - Date.now() / 1000;
+  $("#timer-val").textContent = fmtTime(left);
+  const t = $("#timer");
+  t.classList.toggle("warn", left <= 600 && left > 120);
+  t.classList.toggle("crit", left <= 120);
+  for (const [mark, msg] of [[600, "10 minutes left"], [300, "5 minutes left — make sure submission.csv exists"], [60, "1 minute left"]]) {
+    if (left <= mark && left > mark - 5 && !STATE.warned[mark]) { STATE.warned[mark] = true; toast(msg, "warn", 5000); }
+  }
+  if (left <= 0) timeUp();
+  if (Math.floor(Date.now() / 1000) % 5 === 0) updateSaved();
+}
+setInterval(() => { if (STATE.attempt && DIRTY) save(); }, 20000);
+
+function timeUp() { if (!STATE.submitting) doSubmit("timeout"); }
+
+async function doSubmit(reason) {
+  if (STATE.submitting) return;
+  STATE.submitting = true;
+  clearInterval(STATE.timerId);
+  if (reason === "timeout") toast("Time is up — submitting your notebook", "warn", 5000);
+  $("#submit-btn").disabled = true;
+  try {
+    if (RUNNING && reason !== "timeout") await interrupt();
+    const r = await api("submit", { notebook: toNotebook(), reason });
+    STATE.attempt = null;
+    showResult(r);
+  } catch (e) {
+    // already submitted by the server (e.g. page was asleep) → go back to the lobby
+    STATE.attempt = null;
+    toast(e.message, "err", 5000);
+    loadLobby();
+  } finally { $("#submit-btn").disabled = false; }
+}
+
+$("#submit-btn").onclick = async () => {
+  const left = STATE.deadline - Date.now() / 1000;
+  await refreshFiles();
+  const hasSub = $("#subcheck").classList.contains("yes");
+  const ok = await modal({ title: "Submit your work?", ok: "Submit", html:
+    `<p>You still have <b>${fmtTime(left)}</b>. After submitting you can't change anything.</p>
+     <p>${hasSub ? "✅ <code>submission.csv</code> is in the working directory." : "⚠️ <b>No <code>submission.csv</code> yet</b> — Task 4 will score 0."}</p>
+     <p class="muted" style="font-size:12.5px">Task 1–3 answers are read from the live kernel's variables right now.</p>` });
+  if (ok) doSubmit("manual");
+};
+
+window.addEventListener("beforeunload", e => { if (STATE.attempt && !STATE.submitting) { if (DIRTY) save(); e.preventDefault(); e.returnValue = ""; } });
+
+function showResult(r) {
+  const g = r.grade, m = r.meta;
+  $("#result-sub").textContent = `${m.title} · ${m.reason.startsWith("timeout") ? "auto-submitted when time ran out" : "submitted"} at ${m.submitted.replace("T", " ").slice(0, 19)}`;
+  $("#result-meta").innerHTML = `<div><strong>${g.score} / ${g.max_score}</strong><span>auto score</span></div>
+    <div><strong>${fmtTime(m.elapsed_seconds)}</strong><span>time used of ${fmtMins(m.duration_limit_seconds)}</span></div>
+    <div><strong>${m.cells_run}</strong><span>cells run (${m.cells_with_errors} with errors)</span></div>`;
+  $("#result-tasks").innerHTML = g.tasks.map(t => {
+    let items = "";
+    if (t.checks) items = t.checks.map(c => `<li class="${c.passed ? "ok" : "bad"}">${c.passed ? "✓" : "✗"} <code>${esc(c.var)}</code> ${esc(c.note)}</li>`).join("");
+    if (t.model) {
+      const md = t.model;
+      if (md.f1 !== undefined) items += `<li>F1 <b>${md.f1}</b> · accuracy ${md.accuracy} · predicted churn rate ${md.predicted_positive_rate} · ${md.rows} rows</li>`;
+      items += (md.problems || []).map(p => `<li class="warn">⚠ ${esc(p)}</li>`).join("");
+    }
+    return `<div class="result-task"><div class="row"><span>Task ${t.id} · ${esc(t.title)}</span><span>${t.points} / ${t.max}</span></div><ul>${items}</ul></div>`;
+  }).join("");
+  $("#result-path").textContent = r.submission_dir + "/";
+  $("#result-path2").textContent = r.submission_dir;
+  show("result");
+}
+
+// ------------------------------------------------------------------ boot
+(async function boot() {
+  if (location.protocol === "file:") { await loadLobby(); return; }
+  try {
+    const st = await api("state");
+    if (st.active) { STATE.tests = (await api("tests")).tests; return enterIDE(st.active); }
+  } catch (e) { /* fall through to lobby, which explains how to start the server */ }
+  loadLobby();
+})();
+</script>
+</body>
+</html>

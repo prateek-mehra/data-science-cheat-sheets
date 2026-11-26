@@ -32,3 +32,10 @@
 - Don't hand-write pandas report cards or edit `pandas-rounds.js` by hand; commit it like any other file. If the report format changes, update the renderer script on the reports page and the fields the quiz saves in `saveHistory()`.
 - Link the pandas reports page from the Quiz reports section of [index.html](index.html).
 - Fold learnings from wrong answers into a pandas cheat sheet (`sheets/pandas-cheatsheet.html`, created when the first learnings arrive), ordered by wrangling stage.
+
+## Data Science Framework practice tests
+
+- The timed notebook environment lives at [assessments/ds-framework.html](assessments/ds-framework.html), served by `python3 tools/ds_assessment_server.py` (kernel: `tools/ds_kernel_worker.py`, grader: `tools/ds_grade.py`). See [assessments/README.md](assessments/README.md).
+- Each test is a folder in `assessments/tests/<id>/` with `test.json`, `task.html`, `starter.ipynb`, `data/` and `_hidden/` (answers, labels, generator, reference solution). Use original synthetic datasets; don't copy problems from other sites.
+- Every task statement names the exact variables or file the grader reads, and states rounding and edge-case rules so there is one correct answer. Regenerate `_hidden/answers.json` with the reference solution whenever the data changes.
+- Submissions are written to `assessments/submissions/<test-id>/<stamp>/` by the server. Don't edit them by hand. When asked to review one, read `REVIEW.md`, `notebook.ipynb`, `answers.json` and `grade.json`, and judge cleaning, joins, leakage, validation, feature choices and code clarity beyond the auto score.
