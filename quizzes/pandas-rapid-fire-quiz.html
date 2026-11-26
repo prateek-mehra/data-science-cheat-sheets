@@ -119,7 +119,7 @@
     <div class="center">
       <div class="q" style="font-size:18px">Ready? Pick a round</div>
       <ul class="rules">
-        <li>Questions span the whole wrangling flow: load → inspect → select → clean → transform → reshape → combine → aggregate → export.</li>
+        <li>Each round draws fresh questions from a bank of <span id="banksize"></span>, spread across the wrangling flow: load → inspect → select → clean → transform → reshape → combine → aggregate → time series → export.</li>
         <li>Each question has its own countdown. Type one line of pandas and press <code>Enter</code>.</li>
         <li><strong>+1</strong> correct · <strong>0</strong> skip / timeout · <strong>−1</strong> wrong</li>
         <li>Assume <code>import pandas as pd</code>, <code>import numpy as np</code>, and the DataFrame shown.</li>
@@ -183,182 +183,19 @@
   <div class="toast" id="toast"></div>
 </main>
 
+<script src="pandas-question-bank.js"></script>
 <script>
-/* ---------- Question bank ----------
-   stage + difficulty are internal only (stage for coverage, difficulty sets the timer; neither is shown).
-   accept: answers in readable form; accept[0] is shown as "the" answer.
-   Grading normalises whitespace, quotes, df.col vs df['col'], keyword-argument order,
-   isnull/isna, head(5)/head(), np.sum/'sum', astype('float') forms, and an optional
-   `x = ` in front of an expression answer.                                            */
+/* Questions live in pandas-question-bank.js (window.PANDAS_BANK); see the format notes there.
+   Grading normalises whitespace, quotes, attribute vs bracket access (df.col → df['col']),
+   keyword-argument order, isnull/isna, head(5)/head(), np.sum/'sum', astype('float') forms,
+   and an optional `x = ` in front of an expression answer.                                   */
 const TIME = { easy: 20, medium: 35, hard: 60 };
-const EMP   = "df.columns → ['name', 'dept', 'salary', 'age', 'city', 'join_date']";
-const SALES = "df.columns → ['order_id', 'cust_id', 'date', 'region', 'product', 'qty', 'price']";
-const SALES_REV = "df.columns → ['order_id', 'cust_id', 'date', 'region', 'product', 'revenue']\ndf['date'].dtype → datetime64[ns]";
-
-const BANK = [
-  /* ---- load & inspect ---- */
-  { id:'read-csv', stage:'load', difficulty:'easy',
-    q:"Load 'sales.csv' into a DataFrame called df.", ctx:"import pandas as pd",
-    accept:["df = pd.read_csv('sales.csv')"],
-    learn:"pd.read_csv(path) → DataFrame. Handy args: usecols=, dtype=, parse_dates=, nrows= for a quick peek." },
-  { id:'head', stage:'inspect', difficulty:'easy',
-    q:'Show the first 5 rows of df.', ctx:EMP,
-    accept:["df.head()"],
-    learn:"df.head() defaults to n=5; df.tail() shows the last rows; df.sample(5) random rows." },
-  { id:'shape', stage:'inspect', difficulty:'easy',
-    q:'Get the number of rows and columns of df as a tuple.', ctx:EMP,
-    accept:["df.shape"],
-    learn:"df.shape is an attribute (no parentheses) → (rows, cols). len(df) gives the row count only." },
-  { id:'value-counts', stage:'inspect', difficulty:'medium',
-    q:'How many employees are in each dept?', ctx:EMP,
-    accept:["df['dept'].value_counts()", "df.groupby('dept').size()"],
-    learn:"value_counts() counts each distinct value, sorted descending; normalize=True gives shares, dropna=False counts NaN too." },
-  { id:'nulls', stage:'inspect', difficulty:'medium',
-    q:'Count the missing values in every column.', ctx:EMP,
-    accept:["df.isna().sum()"],
-    learn:"isna() returns a boolean frame; .sum() counts True per column. isnull() is an alias; .mean() gives the share missing." },
-
-  /* ---- select & filter ---- */
-  { id:'select-cols', stage:'select', difficulty:'easy',
-    q:"Select just the 'name' and 'salary' columns.", ctx:EMP,
-    accept:["df[['name', 'salary']]", "df.loc[:, ['name', 'salary']]"],
-    learn:"Double brackets: the inner list picks columns and returns a DataFrame. df['salary'] alone returns a Series." },
-  { id:'bool-filter', stage:'select', difficulty:'medium',
-    q:"Keep rows where age is over 30 and city is 'Delhi'.", ctx:EMP,
-    accept:[
-      "df[(df['age'] > 30) & (df['city'] == 'Delhi')]", "df[(df['city'] == 'Delhi') & (df['age'] > 30)]",
-      "df.loc[(df['age'] > 30) & (df['city'] == 'Delhi')]", "df.loc[(df['city'] == 'Delhi') & (df['age'] > 30)]",
-      `df.query("age > 30 and city == 'Delhi'")`, `df.query("age > 30 & city == 'Delhi'")`, `df.query("city == 'Delhi' and age > 30")`],
-    learn:"Combine masks with & / | (not and / or) and wrap each condition in parentheses — & binds tighter than > and ==. df.query() is the readable alternative." },
-  { id:'isin', stage:'select', difficulty:'medium',
-    q:"Keep rows where city is 'Delhi' or 'Mumbai', using a single membership test.", ctx:EMP,
-    accept:["df[df['city'].isin(['Delhi', 'Mumbai'])]", "df[df['city'].isin(['Mumbai', 'Delhi'])]",
-            "df.loc[df['city'].isin(['Delhi', 'Mumbai'])]", "df.loc[df['city'].isin(['Mumbai', 'Delhi'])]"],
-    learn:"Series.isin(list) is pandas' SQL IN (...): cleaner than chaining == with |. Negate with ~df['city'].isin(...)." },
-  { id:'nlargest', stage:'select', difficulty:'medium',
-    q:'Get the 3 highest-paid rows.', ctx:EMP,
-    accept:["df.nlargest(3, 'salary')", "df.sort_values('salary', ascending=False).head(3)",
-            "df.nlargest(n=3, columns='salary')", "df.sort_values(by='salary', ascending=False).head(3)"],
-    learn:"nlargest(n, col) is a fast top-n; sort_values(col, ascending=False).head(n) is the general pattern." },
-
-  /* ---- clean ---- */
-  { id:'dropna', stage:'clean', difficulty:'easy',
-    q:'Drop every row that has any missing value, keeping the result in df.', ctx:EMP,
-    accept:["df = df.dropna()", "df.dropna(inplace=True)", "df = df.dropna(how='any')"],
-    learn:"dropna() returns a new frame, so reassign it (or use inplace=True). subset=['col'] limits the check; how='all' drops only fully empty rows." },
-  { id:'fillna-median', stage:'clean', difficulty:'medium',
-    q:"Fill missing values in 'salary' with the salary median (overwrite the column).", ctx:EMP,
-    accept:["df['salary'] = df['salary'].fillna(df['salary'].median())", "df = df.fillna({'salary': df['salary'].median()})"],
-    learn:"Median imputation resists outliers. Assign the result back: df['col'].fillna(..., inplace=True) is chained assignment and is deprecated in pandas 2.x." },
-  { id:'drop-dupes', stage:'clean', difficulty:'medium',
-    q:'Remove duplicate rows, keeping the first occurrence; keep the result in df.', ctx:EMP,
-    accept:["df = df.drop_duplicates()", "df = df.drop_duplicates(keep='first')", "df.drop_duplicates(inplace=True)", "df.drop_duplicates(keep='first', inplace=True)"],
-    learn:"drop_duplicates() compares whole rows by default; subset=['col'] dedupes on a key; keep='last' or keep=False change which rows survive." },
-  { id:'to-datetime', stage:'clean', difficulty:'medium',
-    q:"'join_date' holds strings like '2024-03-15'. Convert the column to datetime.", ctx:EMP,
-    accept:["df['join_date'] = pd.to_datetime(df['join_date'])", "df['join_date'] = pd.to_datetime(df['join_date'], format='%Y-%m-%d')"],
-    learn:"pd.to_datetime turns strings into datetime64, which unlocks .dt, date filtering and resampling. errors='coerce' turns unparseable values into NaT." },
-  { id:'str-clean', stage:'clean', difficulty:'medium',
-    q:"Clean 'city': strip surrounding spaces and make it lowercase (overwrite the column).", ctx:EMP,
-    accept:["df['city'] = df['city'].str.strip().str.lower()", "df['city'] = df['city'].str.lower().str.strip()"],
-    learn:"The .str accessor vectorises string methods, and every call needs its own .str: df['c'].str.strip().str.lower()." },
-  { id:'price-clean', stage:'clean', difficulty:'hard',
-    q:"Convert 'price' to float (overwrite the column).", ctx:"df['price'].head(3) → ['$1,299.00', '$89.50', '$12.00']   dtype: object",
-    accept:["df['price'] = df['price'].str.replace('[$,]', '', regex=True).astype(float)",
-            "df['price'] = df['price'].str.replace('$', '').str.replace(',', '').astype(float)",
-            "df['price'] = df['price'].str.replace(',', '').str.replace('$', '').astype(float)"],
-    acceptRegex:[/^df\['price'\]=(pd\.to_numeric\(df\['price'\]\.str\.replace\('\[(\\?\$,|,\\?\$)\]','',regex=True\)\)|df\['price'\]\.str\.replace\('\[(\\?\$,|,\\?\$)\]','',regex=True\)\.astype\(float\))$/],
-    learn:"Strip symbols with .str.replace (regex=True for a character class like '[$,]'), then .astype(float), or pd.to_numeric(errors='coerce') to turn leftovers into NaN." },
-
-  /* ---- transform ---- */
-  { id:'revenue-col', stage:'transform', difficulty:'easy',
-    q:"Add a column 'revenue' equal to qty × price.", ctx:SALES,
-    accept:["df['revenue'] = df['qty'] * df['price']", "df['revenue'] = df['price'] * df['qty']",
-            "df = df.assign(revenue=df['qty'] * df['price'])", "df = df.assign(revenue=df['price'] * df['qty'])"],
-    learn:"Arithmetic between columns runs row by row, vectorised: no loop or apply needed. assign() returns a new frame and chains nicely." },
-  { id:'dt-year', stage:'transform', difficulty:'medium',
-    q:"Add a column 'year' holding the year from 'date'.", ctx:SALES + "\ndf['date'].dtype → datetime64[ns]",
-    accept:["df['year'] = df['date'].dt.year"],
-    learn:".dt exposes datetime parts: .year, .month, .day_name(), .to_period('M'). It only works on datetime64 columns." },
-  { id:'map-dict', stage:'transform', difficulty:'medium',
-    q:"Create 'segment_name' by translating the 'segment' codes with seg_map.", ctx:"df['segment'] → ['C', 'B', 'C', …]\nseg_map = {'C': 'Consumer', 'B': 'Business'}",
-    accept:["df['segment_name'] = df['segment'].map(seg_map)", "df['segment_name'] = df['segment'].replace(seg_map)"],
-    learn:"Series.map(dict) looks up each value and unmapped values become NaN. replace(dict) leaves unmapped values unchanged." },
-  { id:'cut-bins', stage:'transform', difficulty:'hard',
-    q:"Add 'age_band': bin 'age' with edges [0, 30, 50, 100] labelled 'young', 'mid', 'senior'.", ctx:EMP,
-    accept:["df['age_band'] = pd.cut(df['age'], bins=[0, 30, 50, 100], labels=['young', 'mid', 'senior'])",
-            "df['age_band'] = pd.cut(df['age'], [0, 30, 50, 100], labels=['young', 'mid', 'senior'])"],
-    learn:"pd.cut bins on fixed edges, right-inclusive: (30, 50]. You need one fewer label than edges. pd.qcut bins on quantiles instead." },
-
-  /* ---- reshape ---- */
-  { id:'pivot-table', stage:'reshape', difficulty:'hard',
-    q:'Total revenue with region as rows and product as columns.', ctx:SALES_REV,
-    accept:["df.pivot_table(index='region', columns='product', values='revenue', aggfunc='sum')",
-            "pd.pivot_table(df, index='region', columns='product', values='revenue', aggfunc='sum')",
-            "df.groupby(['region', 'product'])['revenue'].sum().unstack()"],
-    learn:"pivot_table aggregates duplicates, and its default aggfunc is mean, so ask for 'sum'. groupby([...]).sum().unstack() gives the same shape; fill_value=0 fills the gaps." },
-  { id:'melt', stage:'reshape', difficulty:'hard',
-    q:"Reshape to long form with columns 'id', 'month', 'sales'.", ctx:"df.columns → ['id', 'jan', 'feb', 'mar']   (wide: one column per month)",
-    accept:["df.melt(id_vars='id', var_name='month', value_name='sales')", "df.melt(id_vars=['id'], var_name='month', value_name='sales')",
-            "pd.melt(df, id_vars='id', var_name='month', value_name='sales')", "pd.melt(df, id_vars=['id'], var_name='month', value_name='sales')"],
-    learn:"melt goes wide → long, the inverse of pivot. id_vars stay fixed; the other column names go into var_name and their values into value_name." },
-
-  /* ---- combine ---- */
-  { id:'merge-left', stage:'combine', difficulty:'medium',
-    q:"Left-join customers onto orders by 'cust_id'.", ctx:"orders.columns    → ['order_id', 'cust_id', 'qty']\ncustomers.columns → ['cust_id', 'name', 'segment']",
-    accept:["orders.merge(customers, on='cust_id', how='left')", "pd.merge(orders, customers, on='cust_id', how='left')"],
-    learn:"how='left' keeps every order, even one with no matching customer (NaN-filled). validate='m:1' guards against accidental row blow-up; indicator=True shows where each row matched." },
-  { id:'concat', stage:'combine', difficulty:'medium',
-    q:'Stack df1 on top of df2 with a fresh 0…n-1 index.', ctx:"df1.columns.equals(df2.columns) → True",
-    accept:["pd.concat([df1, df2], ignore_index=True)", "pd.concat([df1, df2], axis=0, ignore_index=True)"],
-    learn:"pd.concat takes a list. ignore_index=True renumbers the rows; axis=1 places frames side by side instead." },
-
-  /* ---- aggregate ---- */
-  { id:'groupby-mean', stage:'aggregate', difficulty:'medium',
-    q:'Average salary for each dept.', ctx:EMP,
-    accept:["df.groupby('dept')['salary'].mean()", "df.groupby('dept')['salary'].agg('mean')", "df.groupby('dept').agg({'salary': 'mean'})"],
-    learn:"Split-apply-combine: groupby(key)[col].agg_fn(). Selecting the column before .mean() avoids averaging every numeric column." },
-  { id:'named-agg', stage:'aggregate', difficulty:'hard',
-    q:"Per dept, in one call: columns 'avg_salary' (mean salary) and 'headcount' (number of employees).", ctx:EMP,
-    accept:["df.groupby('dept').agg(avg_salary=('salary', 'mean'), headcount=('name', 'count'))"],
-    acceptRegex:[/^df\.groupby\('dept'\)\.agg\(avg_salary=\('salary','mean'\),headcount=\('\w+','(count|size|nunique)'\)\)$/],
-    learn:"Named aggregation, new_col=(source_col, func), gives clean flat column names, so there's no MultiIndex to tidy up afterwards." },
-  { id:'transform', stage:'aggregate', difficulty:'hard',
-    q:"Add 'dept_avg': each row's department mean salary (same length as df).", ctx:EMP,
-    accept:["df['dept_avg'] = df.groupby('dept')['salary'].transform('mean')"],
-    learn:"transform returns a result aligned to the original rows (agg collapses to one row per group). It's ideal for group-relative features like salary − dept_avg." },
-  { id:'rank-within', stage:'aggregate', difficulty:'hard',
-    q:"Add a column 'rank' ranking salary within each dept, highest salary = 1.", ctx:EMP,
-    accept:["df['rank'] = df.groupby('dept')['salary'].rank(ascending=False)"],
-    acceptRegex:[/^df\['rank'\]=df\.groupby\('dept'\)\['salary'\]\.rank\(ascending=False(,method='(dense|min|first|max|average)')?\)$/],
-    learn:"groupby().rank() keeps the original index, so it assigns straight back as a column, like SQL RANK() OVER (PARTITION BY dept ORDER BY salary DESC). method='dense' avoids gaps on ties." },
-
-  /* ---- time series ---- */
-  { id:'rolling', stage:'time-series', difficulty:'medium',
-    q:"7-day rolling mean of 'sales'.", ctx:"df: one row per day, sorted by 'date'; columns → ['date', 'sales']",
-    accept:["df['sales'].rolling(7).mean()", "df['sales'].rolling(window=7).mean()"],
-    learn:"rolling(n) builds a moving window over the previous n rows. The first n−1 results are NaN unless you pass min_periods=." },
-  { id:'resample-month', stage:'time-series', difficulty:'hard',
-    q:'Total revenue per calendar month (df has one row per order).', ctx:SALES_REV,
-    accept:["df.resample('ME', on='date')['revenue'].sum()", "df.resample('M', on='date')['revenue'].sum()",
-            "df.set_index('date').resample('ME')['revenue'].sum()", "df.set_index('date').resample('M')['revenue'].sum()",
-            "df.groupby(pd.Grouper(key='date', freq='ME'))['revenue'].sum()", "df.groupby(pd.Grouper(key='date', freq='M'))['revenue'].sum()",
-            "df.groupby(df['date'].dt.to_period('M'))['revenue'].sum()"],
-    learn:"resample is groupby for time. It needs a DatetimeIndex or on='date'. 'ME' means month-end in pandas ≥ 2.2 ('M' before). dt.to_period('M') groups by month label." },
-
-  /* ---- export ---- */
-  { id:'to-csv', stage:'export', difficulty:'easy',
-    q:"Save df to 'clean.csv' without writing the index.", ctx:EMP,
-    accept:["df.to_csv('clean.csv', index=False)"],
-    learn:"to_csv writes the index as an unnamed first column by default. index=False avoids the 'Unnamed: 0' column when you reload." },
-];
+const BANK = window.PANDAS_BANK || [];
 
 /* Round sizes keep the AGENTS.md difficulty mix (~25% easy / 50% medium / 25% hard). */
-const ROUNDS = { lightning: { name:'Lightning 5', easy:1, medium:3, hard:1 }, quick: { name:'Quick 10', easy:2, medium:5, hard:3 }, full: { name:'Full', easy:7, medium:15, hard:8 } };
+const ROUNDS = { lightning: { name:'Lightning 5', easy:1, medium:3, hard:1 }, quick: { name:'Quick 10', easy:2, medium:5, hard:3 }, full: { name:'Full 30', easy:7, medium:15, hard:8 } };
 
 /* ---------- Grading ---------- */
-const COLS = ['name','dept','salary','age','city','join_date','order_id','cust_id','date','region','product','qty','price',
-              'revenue','segment','segment_name','sales','id','jan','feb','mar','age_band','dept_avg'];
 function matchParen(s, i) {
   let d = 0, q = false;
   for (let k = i; k < s.length; k++) {
@@ -404,17 +241,22 @@ function sortKwargs(s) {
   }
   return out;
 }
+const STR = /('(?:[^'\\]|\\.)*')/;          // a single-quoted literal (after quote normalisation)
+function outsideStrings(t, fn) {             // apply fn only to code, never inside string literals
+  return t.split(STR).map((part, i) => (i % 2 ? part : fn(part))).join('');
+}
 function normalise(s) {
-  let t = s.trim().replace(/;+$/, '');
+  let t = s.trim().replace(/[;:]+$/, '');
   t = t.replace(/[“”"]/g, "'").replace(/[‘’]/g, "'");
   t = t.replace(/\s+/g, '');
-  t = t.replace(/(\d)_(?=\d)/g, '$1');                                     // 100_000 → 100000
-  t = t.replace(/([(,=\[])r'/g, "$1'");                                    // r'…' → '…'
-  t = t.replace(new RegExp(`\\.(${COLS.join('|')})(?![\\w(])`, 'g'), "['$1']");   // df.col → df['col']
-  t = t.replace(/\.isnull\(\)/g, '.isna()').replace(/\.notnull\(\)/g, '.notna()');
-  t = t.replace(/\.head\((n=)?5\)/g, '.head()');
-  t = t.replace(/np\.(sum|mean|median|max|min|size)(?![\w(])/g, "'$1'");
+  t = t.replace(/(^|[(,=\[])r'/g, "$1'");                                   // r'…' → '…'
   t = t.replace(/\.astype\((np\.)?'?float(64)?'?\)/g, '.astype(float)');
+  t = outsideStrings(t, c => c
+    .replace(/(\d)_(?=\d)/g, '$1')                                          // 100_000 → 100000
+    .replace(/np\.(sum|mean|median|max|min|size)(?![\w(])/g, "'$1'")        // np.sum → 'sum'
+    .replace(/\.isnull\(\)/g, '.isna()').replace(/\.notnull\(\)/g, '.notna()')
+    .replace(/\.head\((n=)?5\)/g, '.head()')
+    .replace(/\.([A-Za-z_]\w*)(?![\w(])/g, "['$1']"));                       // df.col → df['col'] (applied to both sides)
   return sortKwargs(t);
 }
 function grade(input, q) {
@@ -431,14 +273,25 @@ const $ = id => document.getElementById(id);
 let QUESTIONS = [], round = null;
 let idx = 0, score = 0, results = [], timerId = null, remaining = 0, limit = 0, answered = false, startedAt = 0;
 const CIRC = 62.83;
-$('qcount').textContent = BANK.length;
+$('qcount').textContent = ROUNDS.full.easy + ROUNDS.full.medium + ROUNDS.full.hard;
+$('banksize').textContent = BANK.length;
 
 function shuffle(a) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function buildRound(kind) {
+  // Exact difficulty mix per round; within it, always take a question from the least-used stage
+  // so short rounds cover as many wrangling stages as possible (ties broken at random).
   round = ROUNDS[kind];
-  if (kind === 'full') return shuffle(BANK);
-  const pick = d => shuffle(BANK.filter(q => q.difficulty === d)).slice(0, round[d]);
-  return shuffle([...pick('easy'), ...pick('medium'), ...pick('hard')]);
+  const chosen = [], used = {};
+  for (const d of ['hard', 'medium', 'easy']) {
+    const pool = shuffle(BANK.filter(q => q.difficulty === d));
+    for (let k = 0; k < round[d] && pool.length; k++) {
+      let best = 0;
+      pool.forEach((q, i) => { if ((used[q.stage] || 0) < (used[pool[best].stage] || 0)) best = i; });
+      const q = pool.splice(best, 1)[0];
+      chosen.push(q); used[q.stage] = (used[q.stage] || 0) + 1;
+    }
+  }
+  return shuffle(chosen);
 }
 
 function setMood(m, anim) {

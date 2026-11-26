@@ -53,7 +53,7 @@ mindmap
 | 🧩 Coding round | [NumPy](sheets/numpy-basics-cheatsheet.html) | Creating, reshaping, indexing, math and combining arrays |
 | 🧩 Coding round | [Pandas](sheets/pandas-cheatsheet.html) | Data wrangling syntax by stage: value counts, dates and times, map, pivot table, melt, concat, groupby, rolling means |
 | 🧩 Coding round | [ML pipeline](sheets/ml-pipeline-cheatsheet.html) | Timed EDA → preprocess → model round: lines to remember |
-| 🧩 Coding round | [Pandas rapid fire quiz](quizzes/pandas-rapid-fire-quiz.html) | Timed quiz: type one line of pandas per question, from loading data to exporting it |
+| 🧩 Coding round | [Pandas rapid fire quiz](quizzes/pandas-rapid-fire-quiz.html) | Timed quiz drawing from 200 questions: type one line of pandas per question, from loading data to exporting it |
 | 🗄️ SQL | [SQL](sheets/sql-cheatsheet.html) | `CASE WHEN`, joins, grouping, clause order, CTEs, window functions |
 | 📐 ML fundamentals | [Probability](sheets/probability-cheatsheet.html) | Conditional probability, Bayes theorem, random variables |
 | 📐 ML fundamentals | [Statistics](sheets/statistics-cheatsheet.html) | Descriptive stats, distributions, CLT, confidence intervals, hypothesis tests, A/B sample size |
