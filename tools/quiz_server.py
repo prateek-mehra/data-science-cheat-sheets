@@ -5,12 +5,13 @@ Run from anywhere:
 
     python3 tools/quiz_server.py
 
-then open http://localhost:8000/quizzes/pandas-rapid-fire-quiz.html.
+then open http://localhost:8000/quizzes/pandas-rapid-fire-quiz.html
+or http://localhost:8000/quizzes/python-rapid-fire-quiz.html.
 
-It serves the repository as static files and accepts one write:
-POST /api/pandas-rounds with a finished round (or a list of rounds) as JSON.
-Rounds are appended to quizzes/pandas-rounds.js, which
-quizzes/pandas-quiz-reports.html loads to build its report cards.
+It serves the repository as static files and accepts one kind of write per quiz:
+POST /api/pandas-rounds or /api/python-rounds with a finished round (or a list of rounds) as JSON.
+Rounds are appended to quizzes/pandas-rounds.js or quizzes/python-rounds.js, which
+quizzes/pandas-quiz-reports.html and quizzes/python-quiz-reports.html load to build their report cards.
 Standard library only; binds to 127.0.0.1 so nothing outside this machine can reach it.
 """
 import argparse
@@ -23,19 +24,22 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROUNDS_FILE = os.path.join("quizzes", "pandas-rounds.js")
-HEADER = (
-    "// Pandas Rapid Fire rounds, written by tools/quiz_server.py when a round ends.\n"
-    "// quizzes/pandas-quiz-reports.html builds a report card for each entry. Do not edit by hand.\n"
-    "window.PANDAS_ROUNDS = "
-)
+# endpoint → (rounds file, quiz name, report page, JS global)
+QUIZZES = {
+    "/api/pandas-rounds": ("pandas-rounds.js", "Pandas Rapid Fire", "pandas-quiz-reports.html", "PANDAS_ROUNDS"),
+    "/api/python-rounds": ("python-rounds.js", "Python Rapid Fire", "python-quiz-reports.html", "PYTHON_ROUNDS"),
+}
 MAX_BODY = 1_000_000
 REQUIRED = ("date", "round", "score", "items")
 LOCK = threading.Lock()
 
 
-def read_rounds(root):
-    path = os.path.join(root, ROUNDS_FILE)
+def rounds_path(root, quiz):
+    return os.path.join(root, "quizzes", QUIZZES[quiz][0])
+
+
+def read_rounds(root, quiz="/api/pandas-rounds"):
+    path = rounds_path(root, quiz)
     if not os.path.exists(path):
         return []
     text = open(path, encoding="utf-8").read()
@@ -45,9 +49,13 @@ def read_rounds(root):
     return json.loads(text[start:end + 1])
 
 
-def write_rounds(root, rounds):
-    path = os.path.join(root, ROUNDS_FILE)
-    body = HEADER + json.dumps(rounds, indent=1, ensure_ascii=False) + ";\n"
+def write_rounds(root, rounds, quiz="/api/pandas-rounds"):
+    path = rounds_path(root, quiz)
+    _, name, report, var = QUIZZES[quiz]
+    header = ("// %s rounds, written by tools/quiz_server.py when a round ends.\n"
+              "// quizzes/%s builds a report card for each entry. Do not edit by hand.\n"
+              "window.%s = " % (name, report, var))
+    body = header + json.dumps(rounds, indent=1, ensure_ascii=False) + ";\n"
     fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path), suffix=".tmp")
     with os.fdopen(fd, "w", encoding="utf-8") as f:
         f.write(body)
@@ -58,10 +66,10 @@ def valid_round(r):
     return isinstance(r, dict) and all(k in r for k in REQUIRED) and isinstance(r["items"], list)
 
 
-def save_rounds(root, incoming):
+def save_rounds(root, incoming, quiz="/api/pandas-rounds"):
     """Append new rounds (deduplicated by uid). Returns (rounds added, each incoming round's 1-based number)."""
     with LOCK:
-        rounds = read_rounds(root)
+        rounds = read_rounds(root, quiz)
         by_uid = {r.get("uid"): i + 1 for i, r in enumerate(rounds) if r.get("uid")}
         numbers, added = [], 0
         for r in incoming:
@@ -73,7 +81,7 @@ def save_rounds(root, incoming):
                 added += 1
             numbers.append(by_uid[uid])
         if added:
-            write_rounds(root, rounds)
+            write_rounds(root, rounds, quiz)
         return added, numbers
 
 
@@ -91,7 +99,7 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(data)
 
     def do_POST(self):
-        if self.path != "/api/pandas-rounds":
+        if self.path not in QUIZZES:
             return self._json(404, {"error": "not found"})
         # Only accept writes from pages this server served (blocks other websites posting to localhost).
         origin = self.headers.get("Origin")
@@ -110,7 +118,7 @@ class Handler(SimpleHTTPRequestHandler):
         incoming = payload if isinstance(payload, list) else [payload]
         if not incoming or not all(valid_round(r) for r in incoming):
             return self._json(400, {"error": "each round needs " + ", ".join(REQUIRED)})
-        added, numbers = save_rounds(self.server.root, incoming)
+        added, numbers = save_rounds(self.server.root, incoming, self.path)
         self._json(200, {"saved": added, "numbers": numbers})
 
     def log_message(self, fmt, *args):
@@ -131,12 +139,15 @@ def main():
     ap.add_argument("--open", action="store_true", help="open the quiz in your browser")
     args = ap.parse_args()
     root = os.path.abspath(args.root)
-    if not os.path.exists(os.path.join(root, ROUNDS_FILE)):
-        write_rounds(root, [])
+    for quiz in QUIZZES:
+        if not os.path.exists(rounds_path(root, quiz)):
+            write_rounds(root, [], quiz)
     server = make_server(root, args.port)
     url = "http://localhost:%d/quizzes/pandas-rapid-fire-quiz.html" % args.port
-    print("Serving %s\nQuiz:    %s\nReports: http://localhost:%d/quizzes/pandas-quiz-reports.html\nCtrl+C to stop."
-          % (root, url, args.port))
+    base = "http://localhost:%d/quizzes/" % args.port
+    print("Serving %s\nPandas quiz: %s\nPython quiz: %spython-rapid-fire-quiz.html\n"
+          "Reports:     %spandas-quiz-reports.html · %spython-quiz-reports.html\nCtrl+C to stop."
+          % (root, url, base, base, base))
     if args.open:
         webbrowser.open(url)
     try:

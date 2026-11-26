@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python Rapid Fire</title>
+  <style>
+    :root { --ink:#172026; --muted:#52616b; --line:#d7dee4; --soft:#f5f7f9; --blue:#3776ab; --green:#167a4a; --red:#b42318; --yellow:#ffd43b; --bg:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:900px; margin:0 auto; padding:22px; }
+    header { display:flex; align-items:center; gap:14px; padding-bottom:12px; margin-bottom:16px; border-bottom:2px solid var(--ink); }
+    header .titles { flex:1; }
+    h1 { margin:0 0 2px; font-size:26px; line-height:1.05; }
+    .subtitle { color:var(--muted); font-size:13px; }
+    .back { font-size:12px; color:var(--blue); text-decoration:none; font-weight:700; }
+    code, pre, input.answer { font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; }
+    code { font-size:12.5px; background:#f1f4f7; border:1px solid #e0e6eb; border-radius:4px; padding:1px 4px; }
+
+    /* snake mascot */
+    .snake { width:64px; height:64px; flex:none; }
+    .snake.bounce { animation:bounce .5s; }
+    .snake.shake { animation:shake .45s; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-10px)} }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+    .snake .mouth-happy, .snake .mouth-sad, .snake .mouth-o, .snake .tongue, .snake .tear { display:none; }
+    .snake[data-mood="neutral"] .mouth-o { display:block; }
+    .snake[data-mood="happy"] .mouth-happy, .snake[data-mood="happy"] .tongue { display:block; }
+    .snake[data-mood="sad"] .mouth-sad, .snake[data-mood="sad"] .tear { display:block; }
+
+    /* top bar: snake-scale progress + score */
+    .bar { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .scales { flex:1; display:flex; gap:4px; }
+    .scales span { flex:1; height:10px; border-radius:5px; background:var(--line); }
+    .scales span.correct { background:var(--yellow); box-shadow:inset 0 0 0 1px #e0b400; }
+    .scales span.wrong { background:#e57373; }
+    .scales span.skip { background:#cfd8dc; background-image:repeating-linear-gradient(45deg,transparent 0 3px,#fff 3px 5px); }
+    .scales span.current { outline:2px solid var(--ink); outline-offset:1px; }
+    .score { font-weight:800; font-size:15px; min-width:70px; text-align:right; }
+
+    .card { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; }
+    .card-head { display:flex; justify-content:space-between; align-items:center; padding:9px 12px; border-bottom:1px solid var(--line); color:var(--muted); font-weight:700; font-size:13px; }
+    .timer { display:flex; align-items:center; gap:8px; font-variant-numeric:tabular-nums; }
+    .ring { width:26px; height:26px; transform:rotate(-90deg); }
+    .ring circle { fill:none; stroke-width:4; }
+    .ring .track { stroke:var(--line); }
+    .ring .prog { stroke:var(--blue); stroke-linecap:round; transition:stroke-dashoffset .25s linear, stroke .25s; }
+    .timer.low .prog { stroke:#e57373; }
+    .timer.low .secs { color:var(--red); }
+    .card-body { padding:14px 14px 16px; }
+    .q { font-size:16px; font-weight:700; margin:0 0 10px; }
+    pre.code { margin:0 0 12px; padding:10px 12px; border-radius:6px; background:#1e2a33; color:#e8eef2; font-size:13px; line-height:1.5; overflow-x:auto; }
+    .prompt { display:flex; align-items:center; gap:8px; border:2px solid var(--line); border-radius:8px; padding:4px 6px 4px 10px; background:#fff; transition:border-color .15s; }
+    .prompt:focus-within { border-color:var(--blue); }
+    .prompt .ps { color:var(--muted); font-family:"SFMono-Regular",Consolas,Menlo,monospace; font-size:13px; white-space:nowrap; }
+    input.answer { flex:1; border:0; outline:0; font-size:14px; padding:8px 0; background:transparent; color:var(--ink); }
+    .btns { display:flex; gap:8px; margin-top:10px; }
+    button { font:inherit; font-weight:700; font-size:13px; border-radius:7px; padding:8px 14px; cursor:pointer; border:1px solid var(--line); background:var(--soft); color:var(--ink); }
+    button.primary { background:var(--blue); border-color:var(--blue); color:#fff; }
+    button:disabled { opacity:.5; cursor:default; }
+    .kbd { color:var(--muted); font-size:11px; margin-left:auto; align-self:center; }
+
+    .feedback { margin-top:12px; border-radius:8px; padding:10px 12px; font-size:13px; display:none; }
+    .feedback.show { display:block; animation:pop .2s ease-out; }
+    @keyframes pop { from{transform:scale(.97);opacity:0} to{transform:none;opacity:1} }
+    .feedback.ok { background:#eaf6ee; border:1px solid #b7dfc4; }
+    .feedback.bad { background:#fdecea; border:1px solid #f5c2bd; }
+    .feedback.skip { background:var(--soft); border:1px solid var(--line); }
+    .feedback .verdict { font-weight:800; margin-bottom:4px; }
+    .feedback .learn { color:var(--muted); margin-top:6px; }
+
+    /* start + results */
+    .center { text-align:center; padding:26px 16px; }
+    .rules { display:inline-block; text-align:left; margin:10px auto 16px; color:var(--muted); max-width:640px; }
+    .rules li { margin:3px 0; }
+    .metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:14px 0; }
+    .metric { border:1px solid var(--line); border-radius:8px; padding:10px; background:var(--soft); text-align:left; }
+    .metric strong { display:block; font-size:20px; }
+    .metric span { color:var(--muted); font-size:12px; }
+    h2.sec { font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:18px 0 6px; }
+    .learning { border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:8px 0; }
+    .learning pre { margin:6px 0 0; padding:7px 9px; border-radius:5px; background:var(--soft); font-size:12px; overflow-x:auto; }
+    .learning .tag { font-size:11px; font-weight:800; padding:1px 7px; border-radius:10px; margin-right:6px; }
+    .tag.ok { background:#eaf6ee; color:var(--green); } .tag.bad { background:#fdecea; color:var(--red); } .tag.skip { background:var(--soft); color:var(--muted); }
+    .learning .row { margin-top:4px; font-size:13px; }
+    .learning .row b { display:inline-block; min-width:78px; color:var(--muted); font-weight:600; }
+    .hidden { display:none !important; }
+    @media (max-width:600px) { main { padding:14px; } .kbd { display:none; } .metrics { grid-template-columns:repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <svg class="snake" id="snake" data-mood="neutral" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M8 54 Q8 44 20 44 L40 44 Q52 44 52 34" fill="none" stroke="#3776ab" stroke-width="9" stroke-linecap="round"/>
+      <path d="M8 54 Q8 44 20 44 L40 44 Q52 44 52 34" fill="none" stroke="#ffd43b" stroke-width="3" stroke-dasharray="3 6" stroke-linecap="round"/>
+      <ellipse cx="44" cy="22" rx="16" ry="14" fill="#3776ab" stroke="#172026" stroke-width="2"/>
+      <circle cx="38" cy="18" r="4" fill="#fff"/><circle cx="51" cy="18" r="4" fill="#fff"/>
+      <circle cx="38.6" cy="18.4" r="2" fill="#172026"/><circle cx="51.6" cy="18.4" r="2" fill="#172026"/>
+      <circle cx="34" cy="27" r="2.4" fill="#f8bbd0" opacity=".8"/><circle cx="55" cy="27" r="2.4" fill="#f8bbd0" opacity=".8"/>
+      <path class="mouth-happy" d="M39 27 Q44.5 32 50 27" stroke="#172026" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path class="tongue" d="M44.5 30 L44.5 35 M44.5 35 L42.5 37.5 M44.5 35 L46.5 37.5" stroke="#e53935" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path class="mouth-sad" d="M40 30 Q44.5 26 49 30" stroke="#172026" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse class="mouth-o" cx="44.5" cy="28.5" rx="2" ry="1.6" fill="#172026"/>
+      <path class="tear" d="M35 22 q-2 4 0 5 q2 -1 0 -5z" fill="#90caf9"/>
+    </svg>
+    <div class="titles">
+      <a class="back" href="../index.html">← Back to cheat sheets</a>
+      <h1>Python Rapid Fire</h1>
+      <div class="subtitle">Read the code, type what Python prints. Beat the clock. Grow the snake.</div>
+    </div>
+  </header>
+
+  <!-- START -->
+  <section id="start" class="card">
+    <div class="center">
+      <div class="q" style="font-size:18px">Ready? Pick a round</div>
+      <ul class="rules">
+        <li>Each round draws fresh questions from a bank of <span id="banksize"></span>, spread across core Python: types → strings → lists → tuples &amp; sets → dicts → control flow → functions → comprehensions → scope → classes → iterators → exceptions.</li>
+        <li>Most questions ask <strong>what the code prints</strong>. Type the output exactly as Python shows it (strings inside a list keep their quotes, a bare <code>print('hi')</code> doesn't). If it prints several lines, type them on one line separated by spaces.</li>
+        <li>If the code raises, type just the exception name, e.g. <code>KeyError</code>.</li>
+        <li>A few ask you to <strong>write one line</strong> of Python instead; the prompt shows <code>&gt;&gt;&gt;</code>.</li>
+        <li>Each question has its own countdown. Press <code>Enter</code> to submit. <strong>+1</strong> correct · <strong>0</strong> skip / timeout · <strong>−1</strong> wrong</li>
+      </ul><br>
+      <div class="btns" style="justify-content:center">
+        <button class="primary" id="lightningBtn">⚡ Lightning · 5</button>
+        <button id="quickBtn">Quick round · 10</button>
+        <button id="fullBtn">Full round · <span id="qcount"></span></button>
+      </div>
+      <p class="subtitle" style="margin-top:14px"><a href="python-quiz-reports.html">Past reports →</a></p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hidden">
+    <div class="bar">
+      <div class="scales" id="scales"></div>
+      <div class="score" id="score">0 pts</div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span id="qnum">Q1</span>
+        <span class="timer" id="timer">
+          <svg class="ring" viewBox="0 0 26 26"><circle class="track" cx="13" cy="13" r="10"/><circle class="prog" id="ringProg" cx="13" cy="13" r="10" stroke-dasharray="62.83" stroke-dashoffset="0"/></svg>
+          <span class="secs" id="secs">20s</span>
+        </span>
+      </div>
+      <div class="card-body">
+        <p class="q" id="qtext"></p>
+        <pre class="code" id="qcode"></pre>
+        <div class="prompt">
+          <span class="ps" id="ps">output</span>
+          <input class="answer" id="answer" autocomplete="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <div class="btns">
+          <button class="primary" id="submitBtn">Submit</button>
+          <button id="skipBtn">Skip</button>
+          <button class="primary hidden" id="nextBtn">Next →</button>
+          <span class="kbd" id="kbdHint">Enter = submit · Esc = skip</span>
+        </div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="hidden">
+    <div class="card"><div class="center" style="padding-bottom:12px">
+      <div class="q" style="font-size:20px" id="resultTitle"></div>
+      <div class="subtitle" id="resultSub"></div>
+      <div class="metrics" id="metrics"></div>
+      <div class="btns" style="justify-content:center">
+        <button class="primary" id="againBtn">Play again</button>
+        <a id="reportLink" href="python-quiz-reports.html"><button>View full report →</button></a>
+      </div>
+      <p class="subtitle" style="margin-top:10px" id="saveNote"></p>
+    </div></div>
+    <h2 class="sec">Learnings noted</h2>
+    <div id="learnings"></div>
+  </section>
+</main>
+
+<script src="python-question-bank.js"></script>
+<script>
+/* Questions live in python-question-bank.js (window.PYTHON_BANK); see the format notes there and run
+   tools/check_python_bank.py after editing it.
+   'out' answers are compared after normalising whitespace (runs collapse, none around brackets, commas
+   and colons) and quotes ("…" → '…'); exception names ignore case and anything after a colon.
+   'code' answers drop whitespace outside strings, normalise quotes, sort keyword arguments, and allow
+   an optional `x = ` in front of an expression answer.                                             */
+const TIME = { easy: 20, medium: 35, hard: 60 };
+const BANK = (window.PYTHON_BANK || []).map(q => ({ ...q, acceptRegex: (q.acceptRegex || []).map(r => new RegExp(r)) }));
+
+/* Round sizes keep the AGENTS.md difficulty mix (~25% easy / 50% medium / 25% hard). */
+const ROUNDS = { lightning: { name:'Lightning 5', easy:1, medium:3, hard:1 }, quick: { name:'Quick 10', easy:2, medium:5, hard:3 }, full: { name:'Full 30', easy:7, medium:15, hard:8 } };
+
+/* ---------- Grading: printed output ---------- */
+const isException = a => /^[A-Z]\w*(Error|Exception|Iteration|Interrupt|Exit)$/.test(a);
+function normaliseOut(s) {
+  return s.trim().replace(/[“”"]/g, "'").replace(/[‘’]/g, "'")
+    .replace(/\s+/g, ' ').replace(/ ?([,:\[\](){}]) ?/g, '$1');
+}
+function gradeOut(input, q) {
+  let t = input.trim();
+  if (isException(q.accept[0])) {
+    t = t.replace(/^(builtins\.)?/, '').split(':')[0].trim();
+    return q.accept.some(a => a.toLowerCase() === t.toLowerCase());
+  }
+  const n = normaliseOut(t);
+  return q.accept.some(a => normaliseOut(a) === n);
+}
+
+/* ---------- Grading: one line of code ---------- */
+function matchParen(s, i) {
+  let d = 0, q = false;
+  for (let k = i; k < s.length; k++) {
+    const c = s[k];
+    if (c === "'") { q = !q; continue; }
+    if (q) continue;
+    if ('([{'.includes(c)) d++;
+    else if (')]}'.includes(c)) { d--; if (d === 0) return c === ')' ? k : -1; }
+  }
+  return -1;
+}
+function splitTop(s) {
+  const parts = []; let d = 0, q = false, cur = '';
+  for (const c of s) {
+    if (c === "'") q = !q;
+    if (!q) {
+      if ('([{'.includes(c)) d++;
+      else if (')]}'.includes(c)) d--;
+      else if (c === ',' && d === 0) { parts.push(cur); cur = ''; continue; }
+    }
+    cur += c;
+  }
+  parts.push(cur); return parts;
+}
+const KW = /^\w+=(?!=)/;
+function reorder(inner) {        // sort trailing keyword args so their order never matters
+  if (!inner) return inner;
+  const parts = splitTop(inner), k = parts.findIndex(p => KW.test(p));
+  if (k < 0 || !parts.slice(k).every(p => KW.test(p))) return inner;
+  return [...parts.slice(0, k), ...parts.slice(k).sort()].join(',');
+}
+function sortKwargs(s) {
+  let out = '', i = 0;
+  while (i < s.length) {
+    const c = s[i];
+    if (c === "'") { const j = s.indexOf("'", i + 1); const e = j < 0 ? s.length : j + 1; out += s.slice(i, e); i = e; continue; }
+    if (c === '(') {
+      const j = matchParen(s, i);
+      if (j < 0) { out += s.slice(i); break; }
+      out += '(' + reorder(sortKwargs(s.slice(i + 1, j))) + ')'; i = j + 1; continue;
+    }
+    out += c; i++;
+  }
+  return out;
+}
+const STR = /('(?:[^'\\]|\\.)*')/;
+function outsideStrings(t, fn) { return t.split(STR).map((part, i) => (i % 2 ? part : fn(part))).join(''); }
+function normaliseCode(s) {
+  let t = s.trim().replace(/[;:]+$/, '');
+  t = t.replace(/[“”"]/g, "'").replace(/[‘’]/g, "'");
+  t = outsideStrings(t, c => c.replace(/\s+/g, ''));
+  return sortKwargs(t);
+}
+function gradeCode(input, q) {
+  const n = normaliseCode(input);
+  const cands = [n];
+  const m = n.match(/^[A-Za-z_]\w*=(?!=)(.+)$/);           // `result = <expr>` when the answer is a bare expression
+  if (m && !/^[A-Za-z_]\w*=(?!=)/.test(normaliseCode(q.accept[0]))) cands.push(m[1]);
+  return cands.some(c => q.accept.some(a => normaliseCode(a) === c) || q.acceptRegex.some(r => r.test(c)));
+}
+const grade = (input, q) => q.kind === 'code' ? gradeCode(input, q) : gradeOut(input, q);
+
+/* ---------- State ---------- */
+const $ = id => document.getElementById(id);
+let QUESTIONS = [], round = null, lastKind = 'quick';
+let idx = 0, score = 0, results = [], timerId = null, remaining = 0, limit = 0, answered = false, startedAt = 0;
+const CIRC = 62.83;
+$('qcount').textContent = ROUNDS.full.easy + ROUNDS.full.medium + ROUNDS.full.hard;
+$('banksize').textContent = BANK.length;
+
+function shuffle(a) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function buildRound(kind) {
+  // Exact difficulty mix per round; within it, always take a question from the least-used stage
+  // so short rounds cover as many concept areas as possible (ties broken at random).
+  round = ROUNDS[kind];
+  const chosen = [], used = {};
+  for (const d of ['hard', 'medium', 'easy']) {
+    const pool = shuffle(BANK.filter(q => q.difficulty === d));
+    for (let k = 0; k < round[d] && pool.length; k++) {
+      let best = 0;
+      pool.forEach((q, i) => { if ((used[q.stage] || 0) < (used[pool[best].stage] || 0)) best = i; });
+      const q = pool.splice(best, 1)[0];
+      chosen.push(q); used[q.stage] = (used[q.stage] || 0) + 1;
+    }
+  }
+  return shuffle(chosen);
+}
+
+function setMood(m, anim) {
+  const p = $('snake'); p.dataset.mood = m;
+  p.classList.remove('bounce','shake'); void p.offsetWidth;
+  if (anim) p.classList.add(anim);
+}
+function renderScales() {
+  $('scales').innerHTML = QUESTIONS.map((_, i) => {
+    const r = results[i]; const cls = r ? r.status : (i === idx ? 'current' : '');
+    return `<span class="${cls}"></span>`;
+  }).join('');
+  $('score').textContent = `${score} pt${Math.abs(score) === 1 ? '' : 's'}`;
+}
+function start(kind) {
+  if (kind) lastKind = kind;
+  QUESTIONS = buildRound(lastKind);
+  idx = 0; score = 0; results = []; startedAt = Date.now();
+  $('start').classList.add('hidden'); $('results').classList.add('hidden'); $('quiz').classList.remove('hidden');
+  show();
+}
+function show() {
+  const q = QUESTIONS[idx]; answered = false;
+  $('qnum').textContent = `Q${idx + 1} / ${QUESTIONS.length}`;
+  $('qtext').textContent = q.q;
+  $('qcode').textContent = q.code; $('qcode').classList.toggle('hidden', !q.code);
+  $('ps').textContent = q.kind === 'code' ? '>>>' : 'output';
+  $('answer').placeholder = q.kind === 'code' ? 'one line of Python…' : 'what gets printed (or the exception name)…';
+  $('answer').value = ''; $('answer').disabled = false; $('answer').focus();
+  $('feedback').className = 'feedback';
+  $('submitBtn').classList.remove('hidden'); $('skipBtn').classList.remove('hidden'); $('nextBtn').classList.add('hidden');
+  $('kbdHint').textContent = 'Enter = submit · Esc = skip';
+  setMood('neutral'); renderScales();
+  limit = TIME[q.difficulty]; remaining = limit; q._t0 = Date.now(); tick();
+  clearInterval(timerId); timerId = setInterval(() => { remaining--; tick(); if (remaining <= 0) finish('timeout'); }, 1000);
+}
+function tick() {
+  $('secs').textContent = `${Math.max(remaining,0)}s`;
+  $('ringProg').style.strokeDashoffset = CIRC * (1 - Math.max(remaining,0) / limit);
+  $('timer').classList.toggle('low', remaining <= 5);
+}
+function finish(kind) {
+  if (answered) return; answered = true; clearInterval(timerId);
+  const q = QUESTIONS[idx]; const input = $('answer').value.trim();
+  let status;
+  if (kind === 'submit' && input) status = grade(input, q) ? 'correct' : 'wrong';
+  else status = 'skip';
+  score += status === 'correct' ? 1 : status === 'wrong' ? -1 : 0;
+  results[idx] = { q, input, status, kind: status === 'skip' ? (kind === 'timeout' ? 'timeout' : 'skip') : kind,
+                   secs: Math.min(Math.round((Date.now() - q._t0) / 1000), limit), limit };
+  const fb = $('feedback');
+  const ans = `<code>${esc(q.accept[0])}</code>`;
+  if (status === 'correct') { fb.className = 'feedback show ok'; fb.innerHTML = `<div class="verdict">✓ Sss-uper! +1</div>`; setMood('happy','bounce'); }
+  else if (status === 'wrong') { fb.className = 'feedback show bad'; fb.innerHTML = `<div class="verdict">✗ Not quite (−1)</div>Expected: ${ans}`; setMood('sad','shake'); }
+  else { fb.className = 'feedback show skip'; fb.innerHTML = `<div class="verdict">${kind === 'timeout' ? '⏰ Time’s up' : '↷ Skipped'} (0)</div>Answer: ${ans}`; setMood('sad'); }
+  fb.innerHTML += `<div class="learn">💡 ${esc(q.learn)}</div>`;
+  $('answer').disabled = true;
+  $('submitBtn').classList.add('hidden'); $('skipBtn').classList.add('hidden'); $('nextBtn').classList.remove('hidden');
+  $('nextBtn').textContent = idx === QUESTIONS.length - 1 ? 'See results →' : 'Next →';
+  $('kbdHint').textContent = 'Enter = next';
+  $('nextBtn').focus(); renderScales();
+}
+function next() { idx++; if (idx < QUESTIONS.length) show(); else showResults(); }
+
+let lastDuration = 0;
+function count(st) { return results.filter(r => r.status === st).length; }
+function showResults() {
+  clearInterval(timerId);
+  $('quiz').classList.add('hidden'); $('results').classList.remove('hidden');
+  lastDuration = Math.round((Date.now() - startedAt) / 1000);
+  const total = QUESTIONS.length, c = count('correct'), w = count('wrong'), s = count('skip'), att = c + w;
+  const good = c >= total / 2;
+  setMood(good ? 'happy' : 'sad', good ? 'bounce' : null);
+  $('resultTitle').textContent = c === total ? '🐍 Perfect round — the snake is fully grown!' : good ? '🐍 Solid round!' : '🐍 The snake wants another go';
+  $('resultSub').textContent = `${round.name} · ${new Date().toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})} · total time ${fmt(lastDuration)}`;
+  const m = [[score > 0 ? `+${score}` : score, 'Net score'], [`${c}/${total}`, 'Correct'], [w, 'Wrong'],
+             [s, 'Skipped / timeout'], [att ? (100 * c / att).toFixed(1) + '%' : '—', 'Accuracy (attempted)'], [(100 * c / total).toFixed(1) + '%', 'Accuracy (all)']];
+  $('metrics').innerHTML = m.map(([v, l]) => `<div class="metric"><strong>${v}</strong><span>${l}</span></div>`).join('');
+  const order = results.map((r, i) => ({ r, i })).sort((a, b) => (a.r.status === 'correct') - (b.r.status === 'correct'));
+  $('learnings').innerHTML = order.map(({ r, i }) => {
+    const tag = r.status === 'correct' ? '<span class="tag ok">CORRECT</span>' : r.status === 'wrong' ? '<span class="tag bad">WRONG</span>' : `<span class="tag skip">${r.kind === 'timeout' ? 'TIMEOUT' : 'SKIPPED'}</span>`;
+    return `<div class="learning">${tag}<strong>Q${i + 1}. ${esc(r.q.q)}</strong>
+      ${r.q.code ? `<pre>${esc(r.q.code)}</pre>` : ''}
+      <div class="row"><b>You typed</b>${r.input ? `<code>${esc(r.input)}</code>` : '<i>nothing</i>'}</div>
+      ${r.status !== 'correct' ? `<div class="row"><b>Answer</b><code>${esc(r.q.accept[0])}</code></div>` : ''}
+      <div class="row"><b>Learned</b>${esc(r.q.learn)}</div>
+      <div class="row"><b>Time</b>${r.secs}s of ${r.limit}s</div></div>`;
+  }).join('');
+  saveHistory();
+}
+
+/* When a round ends it is posted to the local save server (tools/quiz_server.py), which appends it to
+   quizzes/python-rounds.js in the repo; python-quiz-reports.html builds a report card from that file.
+   If the server isn't running (e.g. the page was opened as a file), the round waits in browser storage
+   and is sent the next time this page is opened through the server. */
+const PENDING_KEY = 'pythonRapidFireHistory';
+const SAVE_URL = '/api/python-rounds';
+function pending() { try { return JSON.parse(localStorage.getItem(PENDING_KEY) || '[]'); } catch (e) { return []; } }
+function setPending(list) { try { localStorage.setItem(PENDING_KEY, JSON.stringify(list)); } catch (e) {} }
+async function flushPending() {
+  const list = pending();
+  if (!list.length || !location.protocol.startsWith('http')) return null;
+  list.forEach(r => { r.uid = r.uid || r.date; });
+  try {
+    const res = await fetch(SAVE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(list) });
+    if (!res.ok) return null;
+    const { numbers } = await res.json();
+    const sent = new Set(list.map(r => r.uid));
+    setPending(pending().filter(r => !sent.has(r.uid || r.date)));
+    return numbers;
+  } catch (e) { return null; }
+}
+async function saveHistory() {
+  const rec = { uid: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, date: new Date().toISOString(),
+    round: round.name, score, duration: lastDuration, limits: { ...TIME },
+    items: results.map(r => ({ id: r.q.id, stage: r.q.stage, difficulty: r.q.difficulty, kind: r.q.kind, question: r.q.q, code: r.q.code,
+      typed: r.input, status: r.status, endedBy: r.kind, answer: r.q.accept[0], learn: r.q.learn, secs: r.secs, limit: r.limit })) };
+  setPending([...pending(), rec]);
+  $('saveNote').textContent = 'Saving to the repo…';
+  const numbers = await flushPending();
+  if (numbers) {
+    const n = String(numbers[numbers.length - 1]).padStart(3, '0');
+    $('reportLink').href = `python-quiz-reports.html#python-${n}`;
+    $('saveNote').textContent = `Saved to the repo as Python Rapid Fire ${n}.`;
+  } else {
+    $('reportLink').href = 'python-quiz-reports.html';
+    $('saveNote').innerHTML = 'Not saved to the repo yet: the save server isn\'t running. It\'s kept in this browser and will be saved next time you open the quiz via <code>python3 tools/quiz_server.py</code>.';
+  }
+}
+flushPending();
+
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function fmt(s) { return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; }
+
+$('lightningBtn').onclick = () => start('lightning');
+$('quickBtn').onclick = () => start('quick');
+$('fullBtn').onclick = () => start('full');
+$('againBtn').onclick = () => start();
+$('submitBtn').onclick = () => finish('submit');
+$('skipBtn').onclick = () => finish('skip');
+$('nextBtn').onclick = next;
+document.addEventListener('keydown', e => {
+  if ($('quiz').classList.contains('hidden')) return;
+  if (e.key === 'Enter') { e.preventDefault(); answered ? next() : finish('submit'); }
+  else if (e.key === 'Escape' && !answered) finish('skip');
+});
+</script>
+</body>
+</html>
