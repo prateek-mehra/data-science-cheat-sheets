@@ -67,9 +67,10 @@
       <details class="card"><summary><h2>Descriptive statistics</h2></summary>
       <table>
         <tr><th>Measure</th><th>Formula or meaning</th></tr>
-        <tr><td>Mean</td><td><span class="formula">\(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)</span></td></tr>
+        <tr><td>Mean</td><td><span class="formula">\(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)</span>. Sensitive to outliers.</td></tr>
         <tr><td>Median</td><td>Middle value after sorting. Robust to outliers.</td></tr>
         <tr><td>Mode</td><td>Most frequent value.</td></tr>
+        <tr><td>Population variance</td><td><span class="formula">\(\sigma^2 = \frac{1}{N}\sum_{i=1}^{N} (x_i - \mu)^2\)</span>: spread around the mean. Large variance means unstable data.</td></tr>
         <tr><td>Sample variance</td><td><span class="formula">\(s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2\)</span></td></tr>
         <tr><td>Standard deviation</td><td><span class="formula">\(s = \sqrt{s^2}\)</span>, in the same units as the data.</td></tr>
         <tr><td>IQR</td><td><span class="formula">\(Q_3 - Q_1\)</span>. Outlier rule: below <span class="formula">\(Q_1 - 1.5\,\text{IQR}\)</span> or above <span class="formula">\(Q_3 + 1.5\,\text{IQR}\)</span>.</td></tr>
@@ -209,6 +210,18 @@
         <tr><td><span class="formula">\(R^2\)</span></td><td>In simple linear regression, <span class="formula">\(R^2 = r^2\)</span>: the share of variance in \(y\) explained by \(x\).</td></tr>
       </table>
       <div class="note">\(r = 0\) means no linear relationship, not independence: \(y = x^2\) on a symmetric range has \(r = 0\).</div>
+      </details>
+    </section>
+
+    <section>
+      <details class="card"><summary><h2>Bias-variance tradeoff</h2></summary>
+      <div class="math-block"><p>Expected test error of a model \(\hat f\):</p>\[ E[(y - \hat f(x))^2] = \text{Bias}^2 + \text{Variance} + \sigma^2_{\text{noise}} \]</div>
+      <table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td>High bias</td><td>Model too simple: underfits, high train and test error.</td></tr>
+        <tr><td>High variance</td><td>Model too flexible: overfits, low train error but high test error.</td></tr>
+      </table>
+      <div class="note">More complexity lowers bias and raises variance. Regularization, more data and bagging cut variance.</div>
       </details>
     </section>
 

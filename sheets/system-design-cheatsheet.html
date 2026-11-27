@@ -169,6 +169,40 @@
         </ol>
         </details>
       </section>
+      <section class="full">
+        <details class="card"><summary><h2>GenAI: RAG pipeline</h2></summary>
+        <p><strong>Flow:</strong> chunk docs → embed (OpenAI embeddings, BGE-large) → vector store → retrieve top K → rerank and filter → LLM answers from the retrieved context.</p>
+        <h3>Chunking strategies</h3>
+        <table><tr><th>Strategy</th><th>When</th><th>Pros / cons</th></tr>
+          <tr><td>Fixed size</td><td>Docs with no structure</td><td>+ simple, fast, parallel. − cuts across semantic boundaries.</td></tr>
+          <tr><td>Sliding window</td><td>Info spans chunk boundaries</td><td>+ overlap reduces boundary loss. − more chunks, higher storage cost.</td></tr>
+          <tr><td>Semantic</td><td>Docs with well-defined topics</td><td>+ higher retrieval precision. − more preprocessing (embed sentences, split on topic shifts).</td></tr>
+          <tr><td>Section / hierarchical</td><td>Structured docs (headings, manuals)</td><td>+ retrieve small chunks, pass parent section for context. − needs parsing, more index bookkeeping.</td></tr>
+          <tr><td>Agentic</td><td>Messy, high-value docs</td><td>+ an LLM decides boundaries and adds summaries. − slow and costly at ingest.</td></tr>
+          <tr><td>Code-aware</td><td>Source code</td><td>+ splits on functions/classes via the AST. − language-specific parsers.</td></tr>
+          <tr><td>Temporal</td><td>Logs, chats, news</td><td>+ chunks by time window, enables recency filters. − topics can straddle windows.</td></tr>
+          <tr><td>Table-aware</td><td>Tables, spreadsheets, PDFs with grids</td><td>+ keeps rows with headers intact. − needs layout extraction.</td></tr>
+        </table>
+        <h3>Retrieval evaluation (per query, then averaged)</h3>
+        <table><tr><th>Metric</th><th>Formula</th><th>Meaning</th></tr>
+          <tr><td>MRR</td><td><span class="formula">\(\dfrac{1}{|Q|}\sum_{q}\dfrac{1}{\text{rank}_q}\)</span></td><td>How high the first relevant doc sits.</td></tr>
+          <tr><td>Precision@K</td><td><span class="formula">\(\dfrac{\text{relevant in top }K}{K}\)</span></td><td>Share of the top K that is relevant.</td></tr>
+          <tr><td>Recall@K</td><td><span class="formula">\(\dfrac{\text{relevant in top }K}{\text{all relevant}}\)</span></td><td>Share of relevant sources found in the top K.</td></tr>
+          <tr><td>Hit Rate@K</td><td>1 if any relevant in top K, else 0</td><td>Did retrieval find at least one useful doc?</td></tr>
+        </table>
+        <h3>Context-window limits</h3>
+        <ul>
+          <li>Keep the last K turns verbatim; summarize older turns.</li>
+          <li>Retrieve only relevant memories: rerank and filter before stuffing the prompt.</li>
+        </ul>
+        <h3>Hallucination prevention</h3>
+        <ul>
+          <li>Answer only from retrieved docs; make citations mandatory.</li>
+          <li>Confidence threshold: below it, say "don't know" or fall back to a human.</li>
+          <li>Mix structured and unstructured retrieval: deterministic API/SQL results for facts, RAG for text.</li>
+        </ul>
+        </details>
+      </section>
       <section>
         <details class="card"><summary><h2>Final interview questions</h2></summary>
         <ul>

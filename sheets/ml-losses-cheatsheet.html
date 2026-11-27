@@ -127,7 +127,7 @@
           <tr><td>Hinge</td><td><span class="formula">\(\max(0,\, 1 - y \cdot f(x))\)</span>, \(y \in \{-1, +1\}\)</td><td>Max-margin classifiers / SVM intuition.</td></tr>
           <tr><td>KL divergence</td><td><span class="formula">\(\sum p \log \frac{p}{q}\)</span></td><td>Distribution matching, knowledge distillation, VAEs. Direction matters; \(\mathrm{KL}(p \,\|\, q)\) is not symmetric.</td></tr>
           <tr><td>Dice</td><td><span class="formula">\(1 - \frac{2\sum py + \varepsilon}{\sum p + \sum y + \varepsilon}\)</span></td><td>Segmentation with sparse foreground; overlap-based objective.</td></tr>
-          <tr><td>Triplet</td><td><span class="formula">\(\max(0,\, d(a,p) - d(a,n) + m)\)</span></td><td>Metric learning: anchor-positive closer than anchor-negative by margin \(m\).</td></tr>
+          <tr><td>Triplet</td><td><span class="formula">\(\max(0,\, d(a,p) - d(a,n) + m)\)</span></td><td>Metric learning: anchor-positive closer than anchor-negative by margin \(m\). Anchor = a face, positive = another photo of the same person, negative = a different person; goal <span class="formula">\(d(a,p) + m \lt d(a,n)\)</span>. \(d\) is usually Euclidean on L2-normalized embeddings (e.g. 128-d face embeddings), so cosine ranks the same.</td></tr>
           <tr><td>InfoNCE</td><td><span class="formula">\(-\log \frac{\exp(\mathrm{sim}(q,k^+)/\tau)}{\sum_j \exp(\mathrm{sim}(q,k_j)/\tau)}\)</span></td><td>Contrastive representation learning; identify a positive among negatives.</td></tr>
           <tr><td>Pairwise ranking</td><td><span class="formula">\(-\log \sigma(s^+ - s^-)\)</span></td><td>Learn relative order for search, recommendation, and ranking.</td></tr>
         </table>

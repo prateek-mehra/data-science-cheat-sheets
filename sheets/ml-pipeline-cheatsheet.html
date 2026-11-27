@@ -50,8 +50,14 @@
     .py .nf, .py .nc { color: #0b67b2; font-weight: 600; }                  /* def / class names */
     .py .o { color: #b4233c; }                                              /* operators */
     .py .p { color: #52616b; }                                              /* punctuation */
+    /* LaTeX formulas rendered by MathJax */
+    .formula { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; }
+    .formula mjx-container { margin: 0 !important; }
+    mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
     @media (max-width: 600px) { main { padding: 16px; } }
   </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -305,6 +311,55 @@ NaN        0.208    197</code></pre><p class="why">Same idea with group sizes, s
         <tr><td>Regression, interpretable error</td><td>MAE</td></tr>
         <tr><td>Regression, penalise big misses</td><td>RMSE</td></tr>
       </table>
+    </details></section>
+
+    <section class="step"><details><summary><h2>Classification metrics</h2></summary>
+      <table>
+        <tr><th>Metric</th><th>Formula</th><th>Meaning</th></tr>
+        <tr><td>Precision</td><td><span class="formula">\(\dfrac{TP}{TP+FP}\)</span></td><td>Of predicted positives, how many were right. Raise it when false alarms are costly.</td></tr>
+        <tr><td>Recall</td><td><span class="formula">\(\dfrac{TP}{TP+FN}\)</span></td><td>Of actual positives, how many were caught. Raise it when misses are costly.</td></tr>
+        <tr><td>Accuracy</td><td><span class="formula">\(\dfrac{TP+TN}{N}\)</span></td><td>Overall correctness; misleading on imbalanced data.</td></tr>
+        <tr><td>F1</td><td><span class="formula">\(\dfrac{2PR}{P+R}\)</span></td><td>Harmonic mean of precision and recall; low if either is low.</td></tr>
+        <tr><td>ROC AUC</td><td>Area under TPR vs FPR</td><td>Threshold-independent ranking quality: chance a random positive scores above a random negative.</td></tr>
+        <tr><td>PR AUC</td><td>Area under precision vs recall</td><td>Better for imbalance: ignores the many true negatives that inflate ROC AUC.</td></tr>
+      </table>
+      <p class="why">Threshold trade-off: a higher threshold gives fewer FP (precision up) but more FN (recall down).</p>
+    </details></section>
+
+    <section class="step"><details><summary><h2>K-means</h2></summary>
+      <ul>
+        <li><strong>Algorithm:</strong> pick K random centroids → assign each point to the nearest (L2) → move each centroid to its cluster mean → repeat the last two steps until assignments stop changing.</li>
+        <li><strong>Choose K:</strong> run several K and keep the highest mean silhouette <span class="formula">\(s=\dfrac{b-a}{\max(a,b)}\)</span>, where \(a\) is mean distance to own cluster and \(b\) to the nearest other cluster. Range [−1, 1].</li>
+        <li><strong>Limitations:</strong> K fixed up front; assumes convex, similar-size blobs (fails on elongated/non-convex shapes and imbalanced clusters); sensitive to outliers and feature scale (scale first).</li>
+        <li><strong>Not separable?</strong> Transform the data: feature engineering, a kernel-style map to a higher-dimensional space (as in SVM), or neural-network embeddings.</li>
+      </ul>
+    </details></section>
+
+    <section class="step"><details><summary><h2>DBSCAN &amp; curse of dimensionality</h2></summary>
+      <ul>
+        <li><strong>Params:</strong> <code>eps</code> (neighbourhood radius) and <code>min_samples</code> (points needed within <code>eps</code>).</li>
+        <li><strong>Core point:</strong> has ≥ <code>min_samples</code> neighbours. <strong>Border point:</strong> fewer neighbours but within <code>eps</code> of a core point. <strong>Noise:</strong> neither (label −1).</li>
+        <li><strong>Wins over K-means:</strong> no K needed, arbitrary shapes, flags outliers.</li>
+        <li><strong>Fails on:</strong> clusters of varying density (one <code>eps</code> can't fit all; try HDBSCAN) and high-dimensional data.</li>
+        <li><strong>Curse of dimensionality:</strong> in high dimensions points become almost equally distant, so distance-based methods (K-means, DBSCAN, kNN) lose meaning. Reduce dimensions (PCA) or use embeddings first.</li>
+      </ul>
+    </details></section>
+
+    <section class="step"><details><summary><h2>Embeddings &amp; transformers</h2></summary>
+      <ul>
+        <li><strong>Embedding:</strong> dense vector where semantically similar inputs sit close (compare with cosine similarity). Captures context better than sparse one-hot/TF-IDF.</li>
+        <li><strong>Token embeddings:</strong> each token maps to a learned dense vector.</li>
+        <li><strong>Positional encoding:</strong> added to token embeddings to inject sequence order (attention itself is order-blind).</li>
+        <li><strong>Self-attention:</strong> each token attends to every other token; \(Q, K, V\) are learned projections of the input:
+          \[ \operatorname{Attention}(Q,K,V)=\operatorname{softmax}\!\left(\frac{QK^\mathsf{T}}{\sqrt{d_k}}\right)V \]
+          Dividing by \(\sqrt{d_k}\) keeps the softmax from saturating.</li>
+      </ul>
+    </details></section>
+
+    <section class="step"><details><summary><h2>Forecasting: Prophet &amp; MAPE</h2></summary>
+      <p>Prophet models trend + seasonality + holidays; handles trend shifts and missing business data with little tuning.</p>
+      \[ \text{MAPE}=\frac{100}{N}\sum_{i=1}^{N}\left|\frac{y_i-\hat y_i}{y_i}\right| \]
+      <p class="why">Scale-free percentage error; undefined when \(y_i=0\) and blows up near zero (use MAE or sMAPE there).</p>
     </details></section>
 
     <section class="step"><details><summary><h2>~40-minute plan (75 min shared with SQL)</h2></summary>

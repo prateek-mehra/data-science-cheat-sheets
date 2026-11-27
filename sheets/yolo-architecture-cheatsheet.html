@@ -31,7 +31,14 @@
     details.card > summary::-webkit-details-marker { display: none; }
     details.card:not([open]) > summary h2 { margin-bottom: 0; }
     td:first-child, th:first-child { width: 15%; }
+    /* LaTeX formulas rendered by MathJax */
+    .math-block { margin-top: 10px; }
+    .math-block p { margin: 4px 0; color: var(--muted); }
+    mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+    .math-block mjx-container[display="true"] { margin: 4px 0 !important; }
   </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <main>
@@ -91,6 +98,89 @@
           <li><strong>Inference:</strong> NMS-based → learned end-to-end NMS-free variants.</li>
           <li><strong>Optimization:</strong> better training recipes and deployment-friendly graphs matter alongside layers.</li>
         </ul>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Backbone: Cross Stage Partial (CSP)</h2></summary>
+        <p>The backbone is the feature extractor: edges → textures → shapes → object parts.</p>
+        <table><tr><th>Word</th><th>Meaning</th></tr>
+          <tr><td>Stage</td><td>Group of layers at one feature-map resolution; each stage extracts deeper features and downsamples.</td></tr>
+          <tr><td>Partial</td><td>Split channels: only part A goes through the heavy conv blocks.</td></tr>
+          <tr><td>Cross</td><td>One path is transformed, the other skips the blocks; the two are concatenated and fused at the end of the stage.</td></tr>
+        </table>
+        <h3>Why introduced</h3>
+        <ul>
+          <li>Many layers learn similar features, so pushing every channel through every block is duplicate work.</li>
+        </ul>
+        <h3>Advantages</h3>
+        <ul>
+          <li>Lower FLOPs and memory, with similar or better accuracy; the skip path also gives a short gradient route.</li>
+          <li>Other common backbones: ResNet, DarkNet, EfficientNet.</li>
+        </ul>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Neck: FPN vs PAN</h2></summary>
+        <table><tr><th>Layer</th><th>Resolution</th><th>Captures</th><th>Good for</th></tr>
+          <tr><td>Deep</td><td>Low</td><td>Semantics ("that looks like a cat")</td><td>Classification, large objects</td></tr>
+          <tr><td>Shallow</td><td>High</td><td>Edges, corners, textures, exact location ("a vertical edge")</td><td>Small objects, localization</td></tr>
+        </table>
+        <table><tr><th>Neck</th><th>Idea</th><th>Note</th></tr>
+          <tr><td>FPN</td><td>Top-down: deep semantic features → upsample → add/concat with shallow features.</td><td>Limitation: one-way, so deep layers never receive the shallow layers' precise localization.</td></tr>
+          <tr><td>PAN</td><td>FPN plus a bottom-up path: shallow features are downsampled and fused back into deep levels.</td><td>Short path for localization signal; every scale gets both semantics and position.</td></tr>
+        </table>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Thresholds, IoU and mAP</h2></summary>
+        <table><tr><th>Confidence threshold</th><th>Effect</th></tr>
+          <tr><td>High</td><td>Fewer boxes kept → more false negatives (missed objects).</td></tr>
+          <tr><td>Low</td><td>More boxes kept → more false positives.</td></tr>
+        </table>
+        <div class="math-block">
+          \[ \text{IoU} = \frac{|B_{pred} \cap B_{gt}|}{|B_{pred} \cup B_{gt}|} \qquad \text{Precision} = \frac{TP}{TP+FP} \qquad \text{Recall} = \frac{TP}{TP+FN} \]
+          <p>A prediction counts as TP when its IoU with an unmatched ground-truth box of the same class is at or above the IoU threshold.</p>
+        </div>
+        <table><tr><th>Metric</th><th>Meaning</th></tr>
+          <tr><td>AP</td><td>Area under the precision-recall curve, traced by sweeping the confidence threshold (one class).</td></tr>
+          <tr><td>mAP</td><td>Mean of AP over all classes.</td></tr>
+          <tr><td>mAP@0.5</td><td>mAP at IoU threshold 0.5 (lenient on box placement).</td></tr>
+          <tr><td>mAP@0.5:0.95</td><td>Average of mAP at IoU = 0.50, 0.55, …, 0.95 (10 values); rewards tight boxes. COCO's main metric.</td></tr>
+        </table>
+        <div class="note">mAP summarizes detector quality across confidence thresholds and classes, so it does not depend on picking one threshold.</div>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Tracking: SORT vs DeepSORT</h2></summary>
+        <table><tr><th>Piece</th><th>What it does</th></tr>
+          <tr><td>Kalman filter</td><td>Predicts each track's next box from position + velocity; updated by the matched detection.</td></tr>
+          <tr><td>Appearance</td><td>DeepSORT crops each box and runs a re-ID CNN to get an embedding. SORT uses motion/IoU only, so IDs switch after occlusions or crossings.</td></tr>
+          <tr><td>ID assignment</td><td>Cost combines motion distance (Mahalanobis to the Kalman prediction, used as a gate) and cosine distance between embeddings; Hungarian matching assigns detections to tracks. Unmatched detections start new IDs.</td></tr>
+        </table>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>ResNet skip connections</h2></summary>
+        <table><tr><th>Item</th><th>Detail</th></tr>
+          <tr><td>Problem</td><td>In very deep nets the input signal (and gradient) fades as it passes through many non-linear layers; deeper can train worse.</td></tr>
+          <tr><td>Solution</td><td>Add the block's input to its output: \( y = F(x) + x \).</td></tr>
+          <tr><td>H × W mismatch</td><td>Downsample the shortcut with stride 2.</td></tr>
+          <tr><td>Channel mismatch</td><td>1×1 convolution projection on the shortcut (\( y = F(x) + W_s x \)), or zero-pad the extra channels (no parameters).</td></tr>
+          <tr><td>Advantages</td><td>Keeps the input signal strong through depth; if identity is best, the block only has to learn \( F(x) = 0 \), so the net chooses between a complex transform and passing info along. Makes 100+ layer nets trainable.</td></tr>
+        </table>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Face recognition embeddings</h2></summary>
+        <p>A ResNet maps each face to a 128-d embedding; faces match when their embeddings are close (dlib / face_recognition style).</p>
+        <table><tr><th>Distance</th><th>Use</th></tr>
+          <tr><td>Euclidean (L2)</td><td>Default: triplet loss trains the network to separate faces by this distance.</td></tr>
+          <tr><td>Cosine</td><td>Only the angle matters; equivalent ranking to L2 after L2-normalising. dlib embeddings are not strictly normalised, so the two can differ.</td></tr>
+          <tr><td>Manhattan (L1)</td><td>Not used: the network was not trained for L1 separation, and in high dimensions L1's diamond-shaped neighbourhoods distort the clusters.</td></tr>
+        </table>
+        <div class="math-block">
+          \[ \cos\theta = \frac{\sum_i x_i y_i}{\sqrt{\sum_i x_i^2}\,\sqrt{\sum_i y_i^2}} \qquad d_{L1}(x,y) = \sum_{i=1}^{n} |x_i - y_i| \]
+        </div>
         </details>
       </section>
       <section>
