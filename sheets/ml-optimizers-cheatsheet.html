@@ -120,6 +120,41 @@
         <div class="note"><strong>Reminder:</strong> optimizer, learning-rate schedule, batch size, gradient clipping, and regularization interact. Compare them with controlled experiments.</div>
         </details>
       </section>
+      <section>
+        <details class="card"><summary><h2>Gradients, backprop &amp; initialization</h2></summary>
+        <ul>
+          <li><strong>Gradient:</strong> direction of steepest increase; descent steps opposite to it.</li>
+          <li><strong>Learning rate:</strong> too high → overshoot / divergence; too low → slow convergence or stalling.</li>
+          <li><strong>Chain rule → backprop:</strong> <span class="formula">\(\frac{\partial L}{\partial w_1} = \frac{\partial L}{\partial a_n} \prod_{k} \frac{\partial a_{k}}{\partial a_{k-1}} \cdot \frac{\partial a_1}{\partial w_1}\)</span>; computes gradients layer by layer, output to input.</li>
+          <li><strong>Vanishing gradients:</strong> product of many factors \(\lt 1\) → tiny early-layer gradients; common with sigmoid/tanh (saturate; \(\sigma' \le 0.25\)). Fix: ReLU, residual connections, normalization, good init.</li>
+          <li><strong>Exploding gradients:</strong> factors \(\gt 1\) → huge updates / NaNs. Fix: gradient clipping, lower \(\eta\), good init.</li>
+          <li><strong>Initialization</strong> keeps activation variance stable across layers. Xavier/Glorot <span class="formula">\(\mathrm{Var}(w) = \frac{2}{n_{in} + n_{out}}\)</span> for tanh/sigmoid; He/Kaiming <span class="formula">\(\mathrm{Var}(w) = \frac{2}{n_{in}}\)</span> for ReLU.</li>
+        </ul>
+        </details>
+      </section>
+      <section>
+        <details class="card"><summary><h2>Activation functions</h2></summary>
+        <table><tr><th>Activation</th><th>Formula</th><th>Note</th></tr>
+          <tr><td>Sigmoid</td><td><span class="formula">\(\sigma(x) = \frac{1}{1+e^{-x}}\)</span></td><td>Output (0, 1); saturates → vanishing gradients; not zero-centered.</td></tr>
+          <tr><td>Tanh</td><td><span class="formula">\(\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}\)</span></td><td>Output (−1, 1); zero-centered but still saturates.</td></tr>
+          <tr><td>ReLU</td><td><span class="formula">\(\max(0, x)\)</span></td><td>Cheap, no saturation for \(x \gt 0\); “dead” units when stuck at \(x \lt 0\).</td></tr>
+          <tr><td>Leaky ReLU</td><td><span class="formula">\(\max(\alpha x, x)\)</span>, small \(\alpha\) (e.g. 0.01)</td><td>Small negative slope keeps gradients flowing; avoids dead units.</td></tr>
+        </table>
+        </details>
+      </section>
+      <section class="full">
+        <details class="card"><summary><h2>Regularization against overfitting</h2></summary>
+        <div class="note"><span class="formula">\(L_{\text{total}} = L_{\text{data}} + \lambda\, \Omega(w)\)</span> — a tug-of-war between the data-loss force and the penalty’s pull toward 0.</div>
+        <table><tr><th>Technique</th><th>Mechanism</th><th>Intuition</th></tr>
+          <tr><td><b>L1 / Lasso</b> <span class="formula">\(\lambda \sum |w|\)</span></td><td>Gradient <span class="formula">\(\lambda\,\operatorname{sign}(w)\)</span>: constant pull toward 0. Non-differentiable at 0; use the subgradient, any value in \([-1, 1]\).</td><td>Feature selection: weak features’ data gradients fall inside \(\pm\lambda\), get cancelled, and their weights stay at exactly 0; strong features escape 0.</td></tr>
+          <tr><td><b>L2 / Ridge</b> <span class="formula">\(\lambda \sum w^2\)</span></td><td>Gradient <span class="formula">\(2\lambda w\)</span>: pull shrinks as \(w \to 0\).</td><td>Keeps weights small but rarely exactly 0; penalizes large weights, so the model is less sensitive to small input changes.</td></tr>
+          <tr><td><b>Dropout</b></td><td>Randomly zero activations with prob. \(p\) during training; scale survivors by \(1/(1-p)\); off at inference.</td><td>Prevents co-adaptation; acts like an ensemble of thinned networks.</td></tr>
+          <tr><td><b>Early stopping</b></td><td>Stop when validation loss stops improving (patience); keep the best checkpoint.</td><td>Limits effective capacity / training time.</td></tr>
+          <tr><td><b>Batch norm</b></td><td><span class="formula">\(\hat x = \frac{x - \mu_B}{\sqrt{\sigma_B^2 + \varepsilon}},\ y = \gamma \hat x + \beta\)</span>; running stats at inference.</td><td>Stabilizes activations, allows higher \(\eta\); batch noise gives a mild regularizing effect.</td></tr>
+          <tr><td>Data / capacity</td><td>Data augmentation; reduce model size.</td><td>More effective data or fewer parameters to memorize with.</td></tr>
+        </table>
+        </details>
+      </section>
       <section class="full">
         <details class="card"><summary><h2>Original references</h2></summary>
         <ul>
