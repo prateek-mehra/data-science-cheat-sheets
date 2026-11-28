@@ -36,9 +36,9 @@
   <main>
     <header>
       <h1>Python Fundamentals Cheat Sheet</h1>
-      <div class="subtitle">Bools, operators, strings, lists, tuples, dicts, functions, exceptions and objects.</div>
+      <div class="subtitle">Bools, operators, strings, lists, deques, tuples, dicts, functions, exceptions and objects.</div>
     </header>
-    <p><a href="../index.html">← Back to cheat sheets</a> · <a href="python-deque-cheatsheet.html">deque cheat sheet</a></p>
+    <p><a href="../index.html">← Back to cheat sheets</a></p>
 
     <section aria-labelledby="bool">
       <details class="card"><summary><h2 id="bool">Bool</h2></summary>
@@ -128,6 +128,44 @@
         <li><code>=</code> on <code>b[0]</code> changes what the outer list points to.</li>
         <li><code>.append()</code> on <code>b[0]</code> changes the object that the outer list points to.</li>
       </ul>
+      </details>
+    </section>
+    <section aria-labelledby="deque">
+      <details class="card"><summary><h2 id="deque">Deque</h2></summary>
+      <p><code>collections.deque</code> is a double-ended queue: O(1) adds and removes at <em>both</em> ends. A <code>list</code> is a dynamic array, so it is fast only at the right end.</p>
+      <h3>Declaration</h3>
+<pre><code>from collections import deque
+d = deque()                    # empty
+d = deque([1, 2, 3])           # from any iterable
+d = deque(range(5), maxlen=3)  # deque([2, 3, 4]): keeps only the last 3</code></pre>
+      <h3>Usage</h3>
+<pre><code>d = deque([2, 3])
+d.append(4)           # deque([2, 3, 4])
+d.appendleft(1)       # deque([1, 2, 3, 4])
+d.pop()               # 4
+d.popleft()           # 1
+d.extendleft([1, 0])  # deque([0, 1, 2, 3]): added one at a time, so order reverses
+d[0], d[-1]           # (0, 3): peek at both ends
+d.rotate(1)           # deque([3, 0, 1, 2])</code></pre>
+      <ul>
+        <li>Popping from an empty deque raises <code>IndexError</code>.</li>
+        <li>No slicing (<code>d[1:3]</code> raises <code>TypeError</code>) and no <code>.sort()</code>.</li>
+        <li>Use it for queues, BFS, sliding windows and "last N items". Use a list for indexing, slicing and sorting.</li>
+      </ul>
+      <h3>Time complexity: deque vs list</h3>
+      <table>
+        <thead><tr><th>Operation</th><th>deque</th><th>list</th></tr></thead>
+        <tbody>
+          <tr><td>Add / remove right: <code>append</code>, <code>pop()</code></td><td>O(1)</td><td>O(1) amortised</td></tr>
+          <tr><td>Add left: <code>appendleft(x)</code> vs <code>insert(0, x)</code></td><td>O(1)</td><td>O(n)</td></tr>
+          <tr><td>Remove left: <code>popleft()</code> vs <code>pop(0)</code></td><td>O(1)</td><td>O(n)</td></tr>
+          <tr><td>Index in the middle: <code>d[i]</code></td><td>O(n)</td><td>O(1)</td></tr>
+          <tr><td>Insert / delete in the middle</td><td>O(n)</td><td>O(n)</td></tr>
+          <tr><td>Search: <code>x in d</code>, <code>remove(x)</code></td><td>O(n)</td><td>O(n)</td></tr>
+          <tr><td><code>rotate(k)</code></td><td>O(k)</td><td>O(n) (slicing)</td></tr>
+          <tr><td><code>len()</code>, peek at <code>[0]</code> / <code>[-1]</code></td><td>O(1)</td><td>O(1)</td></tr>
+        </tbody>
+      </table>
       </details>
     </section>
     <section aria-labelledby="tuple">
