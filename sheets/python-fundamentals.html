@@ -36,7 +36,7 @@
   <main>
     <header>
       <h1>Python Fundamentals Cheat Sheet</h1>
-      <div class="subtitle">Bools, operators, strings, lists, deques, tuples, dicts, functions, exceptions and objects.</div>
+      <div class="subtitle">Bools, operators, strings, lists, deques, tuples, dicts, functions, exceptions, objects and <code>self</code>.</div>
     </header>
     <p><a href="../index.html">← Back to cheat sheets</a></p>
 
@@ -201,6 +201,35 @@ d.rotate(1)           # deque([3, 0, 1, 2])</code></pre>
       <p>Remember the inheritance hierarchy:</p>
       <p><code>bool → int → object</code></p>
       <p>Everything in Python ultimately inherits from <code>object</code>, with some nuances around special types.</p>
+      </details>
+    </section>
+    <section aria-labelledby="self">
+      <details class="card"><summary><h2 id="self">Classes &amp; <code>self</code></h2></summary>
+      <p><strong>Definition:</strong> <code>self</code> is the first parameter of an instance method. It refers to the object the method was called on. It is a naming convention, not a keyword; any name works, but always use <code>self</code>.</p>
+<pre><code>class Counter:
+    def __init__(self, start=0):
+        self.count = start      # attribute stored on this object
+
+    def inc(self, step=1):
+        self.count += step      # reads and updates this object's data
+        return self.count
+
+a, b = Counter(), Counter(10)
+a.inc()                         # 1
+b.inc()                         # 11
+Counter.inc(a)                  # 2: what a.inc() really does</code></pre>
+      <h3>Why we write it</h3>
+      <ul>
+        <li><strong>Python passes the object explicitly.</strong> <code>a.inc()</code> is translated to <code>Counter.inc(a)</code>, so the method needs a parameter to receive <code>a</code>. Forget it and calling <code>a.inc()</code> raises <code>TypeError: inc() takes 0 positional arguments but 1 was given</code>.</li>
+        <li><strong>One method, many objects.</strong> The method is defined once on the class. <code>self</code> tells it which object's data to use, so <code>a</code> and <code>b</code> keep separate counts.</li>
+        <li><strong>Attributes vs local variables.</strong> <code>self.count = 0</code> stores data on the object, and it lasts after the method returns. <code>count = 0</code> is just a local variable that disappears.</li>
+        <li><strong>No implicit scope.</strong> Inside a method you must write <code>self.count</code> or <code>self.other_method()</code>. A bare <code>count</code> raises <code>NameError</code> ("explicit is better than implicit").</li>
+      </ul>
+      <h3>Related</h3>
+      <ul>
+        <li><code>@classmethod</code> receives the class as <code>cls</code> instead of an instance.</li>
+        <li><code>@staticmethod</code> receives neither; it is a plain function grouped inside the class.</li>
+      </ul>
       </details>
     </section>
   </main>
