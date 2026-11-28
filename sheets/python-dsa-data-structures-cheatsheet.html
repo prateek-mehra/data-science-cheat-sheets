@@ -135,6 +135,7 @@
           <tr><td>Add</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
           <tr><td>Remove safe</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
           <tr><td>Remove strict</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Clear all</td><td><code class="py"><span class="n">s</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></code></td><td>O(n)</td></tr>
           <tr><td>Exists</td><td><code class="py"><span class="n">x</span> <span class="ow">in</span> <span class="n">s</span></code></td><td>O(1)</td></tr>
           <tr><td>Union</td><td><code class="py"><span class="n">a</span> <span class="o">|</span> <span class="n">b</span></code></td><td>O(len(a)+len(b))</td></tr>
           <tr><td>Intersect</td><td><code class="py"><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span></code></td><td>O(min)</td></tr>
@@ -142,6 +143,14 @@
           <tr><td>Comprehension</td><td><code class="py"><span class="p">{</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">}</span></code></td><td>O(n)</td></tr>
         </table>
         <div class="note">Trap: <code class="py"><span class="p">{}</span></code> is a dict, not an empty set.</div>
+        <div class="note"><strong>Multi-test-case submissions:</strong> if the set lives outside the test loop (global or reused), call <code class="py"><span class="n">s</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></code> at the start of every test. Otherwise values from the previous test leak in and give wrong answers. <code class="py"><span class="n">s</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></code> empties the same object, so other references see the reset. <code class="py"><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span></code> only rebinds the name.</div>
+        <pre><code class="py"><span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())):</span>   <span class="c1"># t test cases</span>
+    <span class="n">seen</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>                  <span class="c1"># reset between tests</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seen</span><span class="p">))</span></code></pre>
         </details>
       </section>
       <section>
