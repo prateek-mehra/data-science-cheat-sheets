@@ -276,6 +276,31 @@
         </table>
         </details>
       </section>
+      <section>
+        <details class="card"><summary><h2>Graph: adjacency list</h2></summary>
+        <table>
+          <tr><th>Task</th><th>Syntax</th><th>Cost / note</th></tr>
+          <tr><td>Init (adjacency list)</td><td><code class="py"><span class="n">graph</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span></code></td><td>missing node → []</td></tr>
+          <tr><td>Undirected edge</td><td><code class="py"><span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="p">;</span> <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Directed edge</td><td><code class="py"><span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Weighted edge</td><td><code class="py"><span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Neighbours</td><td><code class="py"><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="p">:</span></code></td><td>O(deg u)</td></tr>
+          <tr><td>Has node (no insert)</td><td><code class="py"><span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span></code></td><td>O(1)</td></tr>
+          <tr><td>Safe read (no insert)</td><td><code class="py"><span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="p">[</span><span class="p">]</span><span class="p">)</span></code></td><td>O(1)</td></tr>
+          <tr><td>Nodes 0..n-1 known</td><td><code class="py"><span class="n">graph</span> <span class="o">=</span> <span class="p">[</span><span class="p">[</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="p">]</span></code></td><td>list alternative</td></tr>
+        </table>
+        <pre><code class="py"><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="p">]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+    <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>     <span class="c1"># drop this line for a directed graph</span>
+<span class="c1"># {0: [1, 2], 1: [0, 2], 2: [1, 0], 3: [4], 4: [3]}</span></code></pre>
+        <div class="note">Why <code class="py"><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span></code>: the first <code class="py"><span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]</span></code> creates an empty list, so there's no <code class="py">KeyError</code> and no need to check <code class="py"><span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span></code> before appending. Space O(V + E).</div>
+        <div class="note">Traps: just reading <code class="py"><span class="n">graph</span><span class="p">[</span><span class="n">x</span><span class="p">]</span></code> inserts <code class="py">x</code>, and doing it while looping over <code class="py">graph</code> raises <code class="py">RuntimeError</code>. Isolated nodes never appear as keys, so loop over <code class="py"><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></code> when n is known.</div>
+        </details>
+      </section>
       <section class="full">
         <details class="card"><summary><h2>Sparse table: static range min/max/gcd</h2></summary>
         <div class="split">
