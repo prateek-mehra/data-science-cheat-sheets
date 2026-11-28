@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python deque Cheat Sheet</title>
+  <style>
+    :root { --ink: #172026; --muted: #52616b; --line: #d7dee4; --soft: #f5f7f9; --blue: #0b67b2; --good: #1a7f37; --bad: #b42318; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fff; font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    h1 { margin: 0 0 5px; font-size: 30px; line-height: 1.1; }
+    .subtitle { color: var(--muted); }
+    a { color: var(--blue); }
+    section { margin: 16px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+    h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 10px 0 0; }
+    pre { overflow-x: auto; margin: 10px 0 0; padding: 14px; border-radius: 6px; background: var(--soft); }
+    code { font: 13px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    pre code { font-size: 12.5px; }
+    ul, ol { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+    th { color: var(--muted); font-weight: 600; }
+    .good { color: var(--good); font-weight: 600; }
+    .bad { color: var(--bad); font-weight: 600; }
+    .note { margin-top: 10px; color: var(--muted); }
+    @media (max-width: 600px) { main { padding: 16px; } }
+    details.card > summary { cursor: pointer; list-style: none; }
+    details.card > summary::-webkit-details-marker { display: none; }
+    details.card:not([open]) > summary h2 { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Python <code>deque</code> Cheat Sheet</h1>
+      <div class="subtitle">Declaration, usage, time complexity of basic operations, and how it compares to <code>list</code>.</div>
+    </header>
+    <p><a href="../index.html">← Back to cheat sheets</a> · <a href="python-fundamentals.html">Python fundamentals overview</a></p>
+
+    <section aria-labelledby="what">
+      <details class="card" open><summary><h2 id="what">What it is</h2></summary>
+      <ul>
+        <li><code>collections.deque</code> ("deck") is a <strong>double-ended queue</strong>: fast adds and removes at <em>both</em> ends.</li>
+        <li>CPython builds it as a doubly linked list of fixed-size blocks (64 slots each). That is why both ends are O(1) and the middle is O(n).</li>
+        <li>A <code>list</code> is a dynamic array: fast at the right end and for indexing, slow at the left end, because every element must shift.</li>
+        <li>Rule of thumb: queue, BFS, sliding window or "last N items" → <code>deque</code>. Random access, slicing or sorting → <code>list</code>.</li>
+      </ul>
+      </details>
+    </section>
+
+    <section aria-labelledby="declare">
+      <details class="card" open><summary><h2 id="declare">Declaration</h2></summary>
+<pre><code>from collections import deque
+
+d = deque()                    # empty
+d = deque([1, 2, 3])           # from any iterable
+d = deque("abc")               # deque(['a', 'b', 'c'])
+d = deque(range(5), maxlen=3)  # deque([2, 3, 4], maxlen=3), keeps the last 3
+d.maxlen                       # 3 (None when unbounded)</code></pre>
+      <ul>
+        <li><code>maxlen</code> makes a bounded deque. When it is full, adding on one end silently drops an item from the other end.</li>
+        <li><code>maxlen</code> is read-only after creation.</li>
+      </ul>
+      </details>
+    </section>
+
+    <section aria-labelledby="usage">
+      <details class="card" open><summary><h2 id="usage">Usage</h2></summary>
+      <h3>Both ends</h3>
+<pre><code>d = deque([2, 3])
+d.append(4)           # deque([2, 3, 4])        right end
+d.appendleft(1)       # deque([1, 2, 3, 4])     left end
+d.pop()               # 4                       remove right
+d.popleft()           # 1                       remove left
+d.extend([5, 6])      # deque([2, 3, 5, 6])
+d.extendleft([1, 0])  # deque([0, 1, 2, 3, 5, 6])  note: added one by one, so order reverses
+d[0], d[-1]           # (0, 6)   peek at the ends, O(1)</code></pre>
+      <h3>Rotate, search, remove</h3>
+<pre><code>d = deque([1, 2, 3, 4, 5])
+d.rotate(2)           # deque([4, 5, 1, 2, 3])  right by 2
+d.rotate(-2)          # deque([1, 2, 3, 4, 5])  left by 2
+d.index(3)            # 2
+d.count(3)            # 1
+d.remove(3)           # removes first 3, ValueError if missing
+d.insert(1, 9)        # deque([1, 9, 2, 4, 5])
+d.reverse()           # in place
+d.clear()</code></pre>
+      <h3>Gotchas</h3>
+      <ul>
+        <li><code>pop()</code> / <code>popleft()</code> on an empty deque raise <code>IndexError</code>. Check <code>if d:</code> first.</li>
+        <li>No slicing: <code>d[1:3]</code> raises <code>TypeError</code>. Use <code>itertools.islice(d, 1, 3)</code> or convert with <code>list(d)</code>.</li>
+        <li>No <code>sort()</code>. Use <code>sorted(d)</code>, which returns a list.</li>
+        <li>Mutating a deque while iterating over it raises <code>RuntimeError</code>.</li>
+        <li><code>insert()</code> on a full bounded deque raises <code>IndexError</code> instead of dropping an item.</li>
+        <li>Thread-safe for <code>append</code> / <code>popleft</code> from different threads, but use <code>queue.Queue</code> when you need blocking waits.</li>
+      </ul>
+      </details>
+    </section>
+
+    <section aria-labelledby="tc">
+      <details class="card" open><summary><h2 id="tc">Time complexity: deque vs list</h2></summary>
+      <table>
+        <thead><tr><th>Operation</th><th><code>deque</code></th><th><code>list</code></th></tr></thead>
+        <tbody>
+          <tr><td>Add right: <code>append(x)</code></td><td class="good">O(1)</td><td class="good">O(1) amortised</td></tr>
+          <tr><td>Remove right: <code>pop()</code></td><td class="good">O(1)</td><td class="good">O(1)</td></tr>
+          <tr><td>Add left: <code>appendleft(x)</code> vs <code>insert(0, x)</code></td><td class="good">O(1)</td><td class="bad">O(n)</td></tr>
+          <tr><td>Remove left: <code>popleft()</code> vs <code>pop(0)</code></td><td class="good">O(1)</td><td class="bad">O(n)</td></tr>
+          <tr><td>Peek ends: <code>d[0]</code>, <code>d[-1]</code></td><td class="good">O(1)</td><td class="good">O(1)</td></tr>
+          <tr><td>Index in the middle: <code>d[i]</code></td><td class="bad">O(n)</td><td class="good">O(1)</td></tr>
+          <tr><td>Insert / delete in the middle</td><td class="bad">O(n)</td><td class="bad">O(n)</td></tr>
+          <tr><td><code>extend(k items)</code></td><td>O(k)</td><td>O(k)</td></tr>
+          <tr><td><code>extendleft(k items)</code></td><td class="good">O(k)</td><td class="bad">O(n + k) (<code>lst[:0] = items</code>)</td></tr>
+          <tr><td><code>rotate(k)</code></td><td>O(k)</td><td>O(n) (slice and join)</td></tr>
+          <tr><td>Search: <code>x in d</code>, <code>index</code>, <code>count</code>, <code>remove</code></td><td>O(n)</td><td>O(n)</td></tr>
+          <tr><td><code>len(d)</code></td><td>O(1)</td><td>O(1)</td></tr>
+          <tr><td>Slicing</td><td>Not supported</td><td>O(k)</td></tr>
+          <tr><td>Sort</td><td><code>sorted(d)</code> O(n log n)</td><td>O(n log n) in place</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><code>d[i]</code> is O(1) at either end and gets slower towards the middle (about O(min(i, n − i))). Big-O lists it as O(n).</p>
+      </details>
+    </section>
+
+    <section aria-labelledby="compare">
+      <details class="card"><summary><h2 id="compare">deque vs list: when to use which</h2></summary>
+      <table>
+        <thead><tr><th>Need</th><th>Pick</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>FIFO queue / BFS</td><td><code>deque</code></td><td><code>popleft()</code> is O(1); <code>list.pop(0)</code> shifts every item.</td></tr>
+          <tr><td>Stack (LIFO)</td><td>Either</td><td>Both are O(1) at the right end. <code>list</code> is the usual choice.</td></tr>
+          <tr><td>Sliding window max/min</td><td><code>deque</code></td><td>Pop expired indices from the left, smaller values from the right.</td></tr>
+          <tr><td>Keep the last N items</td><td><code>deque(maxlen=N)</code></td><td>Old items fall off automatically.</td></tr>
+          <tr><td>Random access, binary search, slicing</td><td><code>list</code></td><td>O(1) indexing, slice syntax, <code>bisect</code>.</td></tr>
+          <tr><td>Sorting in place</td><td><code>list</code></td><td>deque has no <code>sort()</code>.</td></tr>
+          <tr><td>Memory per item</td><td>About the same</td><td>list over-allocates its array; deque allocates whole blocks.</td></tr>
+        </tbody>
+      </table>
+      </details>
+    </section>
+
+    <section aria-labelledby="patterns">
+      <details class="card"><summary><h2 id="patterns">Common patterns</h2></summary>
+      <h3>BFS on a grid or graph</h3>
+<pre><code>def bfs(graph, start):
+    seen = {start}
+    q = deque([start])
+    order = []
+    while q:
+        node = q.popleft()          # O(1); list.pop(0) would make BFS O(V^2)
+        order.append(node)
+        for nxt in graph[node]:
+            if nxt not in seen:
+                seen.add(nxt)
+                q.append(nxt)
+    return order</code></pre>
+      <h3>Sliding window maximum (monotonic deque)</h3>
+<pre><code>def window_max(nums, k):
+    q, out = deque(), []            # q holds indices, values decreasing
+    for i, x in enumerate(nums):
+        while q and nums[q[-1]] &lt;= x:
+            q.pop()
+        q.append(i)
+        if q[0] &lt;= i - k:
+            q.popleft()             # front index left the window
+        if i &gt;= k - 1:
+            out.append(nums[q[0]])
+    return out
+
+window_max([1, 3, -1, -3, 5, 3, 6, 7], 3)   # [3, 3, 5, 5, 6, 7]</code></pre>
+      <h3>Last N lines / moving average</h3>
+<pre><code>last3 = deque(maxlen=3)
+for x in [10, 20, 30, 40]:
+    last3.append(x)
+sum(last3) / len(last3)             # 30.0, from [20, 30, 40]</code></pre>
+      <h3>Palindrome check from both ends</h3>
+<pre><code>def is_pal(s):
+    d = deque(c.lower() for c in s if c.isalnum())
+    while len(d) &gt; 1:
+        if d.popleft() != d.pop():
+            return False
+    return True</code></pre>
+      </details>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var opened = [];
+      window.addEventListener("beforeprint", function () {
+        document.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; opened.push(d); });
+      });
+      window.addEventListener("afterprint", function () {
+        opened.forEach(function (d) { d.open = false; }); opened = [];
+      });
+    })();
+  </script>
+</body>
+</html>
